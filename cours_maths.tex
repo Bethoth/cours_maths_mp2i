@@ -612,7 +612,14 @@ per-mode=power-positive-first
 \newcommand{\ps}[2]{\left\langle#1\tq#2\right\rangle}
 \newcommand{\ortho}{^{\perp}}
 
-\newcommand{\operp}{\oplus_{\perp}}
+\newcommand{\operp}{\mathrel{%
+\begin{tikzpicture}[baseline=-0.25em]
+\draw (0,0) circle (0.45em);
+\draw (-0.38em,-0.25em) -- (0.38em,-0.25em);
+\draw (0,-0.25em) -- (0,0.45em);
+\end{tikzpicture}
+}%
+}
 
 \usepackage{titletoc}
 \dottedcontents{section}[5.5em]{}{3.2em}{1pc}
