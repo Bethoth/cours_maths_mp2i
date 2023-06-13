@@ -651,4 +651,117 @@ On sait que tout projecteur est le projecteur sur son image, parallèlement à s
 De même, tout projecteur orthogonal \(p\) est le projecteur orthogonal sur son image, \cad le projecteur sur \(\Im p\), parallèlement à \(\paren{\Im p}\ortho\).
 \end{rem}
 
+\subsection{Projecteur orthogonal sur un sous-espace vectoriel de dimension finie}
+
+\begin{deftheo}
+Soient \(E\) un espace préhilbertien et \(F\) un sous-espace vectoriel de \(E\).
+
+On suppose que \(F\) est de dimension finie.
+
+Alors \(F\) et son orthogonal \(F\ortho\) sont supplémentaires dans \(E\) : \[E=F\oplus F\ortho.\]
+
+Soit \(\paren{e_1,\dots,e_n}\) une base orthonormale de \(F\).
+
+Le projecteur orthogonal \(p_F\) sur \(F\) est donné par : \[\quantifs{\forall x\in E}p_F\paren{x}=\sum_{k=1}^{n}\ps{e_k}{x}e_k.\]
+\end{deftheo}
+
+\begin{dem}
+Posons \(\fonction{q}{E}{F}{x}{\sum_{k=1}^{n}\ps{e_k}{x}e_k}\)
+
+On a bien \(q\in\L{E}{F}\).
+
+On remarque : \(\quantifs{\forall x\in E}x=\underbrace{q\paren{x}}_{\in F}+\underbrace{x-q\paren{x}}_{\in F\ortho\text{ ?}}\).
+
+Soit \(x\in E\). Il suffit de montrer que \(x-q\paren{x}\in F\ortho\).
+
+En effet, on en déduira que \(E=F+F\ortho\) donc \(E=F\oplus F\ortho\) et que le projecteur orthogonal sur \(F\) est \(q\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall k\in\interventierii{1}{n}}\ps{e_k}{x-q\paren{x}}&=\ps{e_k}{x}-\ps{e_k}{\sum_{l=1}^{n}\ps{e_l}{x}e_l} \\
+&=\ps{e_k}{x}-\ps{e_k}{x} \\
+&=0.
+\end{aligned}\]
+
+Donc par combinaison linéaire : \(\quantifs{\forall y\in\Vect{e_1,\dots,e_n}}\ps{y}{x-q\paren{x}}=0\).
+
+Donc \(x-q\paren{x}\in F\ortho\).
+\end{dem}
+
+\begin{cor}
+Soient \(E\) un espace euclidien et \(F\) un sous-espace vectoriel de \(E\).
+
+On a : \[\dim F\ortho=\dim E-\dim F.\]
+\end{cor}
+
+\begin{dem}
+Comme \(F\) est de dimension finie, on sait (selon le théorème précédent) que \(F\ortho\) est un supplémentaire de \(F\). La formule en découle.
+\end{dem}
+
+\begin{defi}
+Soient \(E\) un espace préhilbertien, \(F\) un sous-espace vectoriel de \(E\) et \(x\) un vecteur de \(E\).
+
+On appelle distance de \(x\) à \(F\) le réel : \[d\paren{x,F}=\inf_{z\in F}d\paren{x,z}=\inf_{z\in F}\norme{x-z}\in\Rp.\]
+\end{defi}
+
+\begin{dem}
+Cette borne inférieure est bien définie car \(\accol{d\paren{x,z}}_{z\in F}\) est une partie non-vide de \(\R\) (elle contient \(d\paren{x,0}\)) et minorée (par \(0\)).
+\end{dem}
+
+\begin{prop}
+Soient \(E\) un espace préhilbertien, \(F\) un sous-espace vectoriel de \(E\) de dimension finie et \(x\) un vecteur de \(E\).
+
+On note \(p_F\) le projecteur orthogonal sur \(F\).
+
+Alors : \[d\paren{x,F}=\norme{x-p_F\paren{x}}.\]
+
+Ainsi, la distance (qui est une borne inférieure) est en fait atteinte.
+
+De plus, \(p_F\paren{x}\) est l'unique élément de \(F\) où la distance de \(x\) à \(F\) est atteinte.
+
+Enfin : \[\norme{x}^2=\norme{p_F\paren{x}}^2+\norme{x-p_F\paren{x}}^2.\]
+\end{prop}
+
+\begin{dem}
+On a : \[\begin{WithArrows}
+\quantifs{\forall z\in F}\norme{x-z}^2&=\norme{\underbrace{x-p_F\paren{x}}_{\in F\ortho}+\underbrace{p_F\paren{x}-z}_{\in F}}^2 \Arrow[tikz={text width=2.5cm}]{selon le théorème de Pythagore} \\
+&=\norme{x-p_F\paren{x}}^2+\norme{p_F\paren{x}-z}^2 \\
+&\geq\norme{x-p_F\paren{x}}^2\text{ avec égalité ssi }p_F\paren{x}=z.
+\end{WithArrows}\]
+
+D'où \(\min_{z\in F}\norme{x-z}=\norme{x-p_F\paren{x}}\).
+
+Enfin, en prenant \(z=0_E\), on a : \(\norme{x}^2=\norme{p_F\paren{x}}^2+\norme{x-p_F\paren{x}}^2\).
+\end{dem}
+
+\begin{exoex}
+Soient \(E\) un espace euclidien et \(v\in E\) unitaire.
+
+On pose : \[D=\Vect{v}\qquad\text{et}\qquad H=\Vect{v}\ortho.\]
+
+Soit \(x\in E\).
+
+\begin{enumerate}
+    \item Donner le projeté orthogonal de \(x\) sur \(D\). \\
+    \item Donner le projeté orthogonal de \(x\) sur \(H\). \\
+    \item Donner la distance de \(x\) à \(D\). \\
+    \item Donner la distance de \(x\) à \(H\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}
+On remarque que \(\paren{v}\) est une base orthonormale de \(D\).
+
+On a le projeté orthogonal de \(x\) sur \(D\) : \(p_D\paren{x}=\ps{v}{x}v\).
+
+On a le projeté orthogonal de \(x\) sur \(H\) : \(p_H\paren{x}=x-\ps{v}{x}v\).
+
+On a la distance de \(x\) à \(D\) : \(\norme{x-p_D\paren{x}}=\norme{x-\ps{v}{x}v}\).
+
+On a la distance de \(x\) à \(H\) : \[\begin{WithArrows}
+\norme{x-p_H\paren{x}}&=\norme{x-x+\ps{v}{x}v} \\
+&=\norme{\ps{v}{x}v} \Arrow{car \(v\) est unitaire} \\
+&=\abs{\ps{v}{x}}
+\end{WithArrows}\]
+\end{corr}
+
 \note{À FINIR}
