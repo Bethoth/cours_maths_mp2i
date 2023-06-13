@@ -488,7 +488,7 @@ On appelle orthogonal de \(A\) (dans \(E\)) et on note \(A\ortho\) l'ensemble de
 L'ensemble \(A\ortho\) est un sous-espace vectoriel de \(E\).
 \end{defi}
 
-\begin{prop}[Orthogonal d'un sous-espace vectoriel]
+\begin{prop}[Orthogonal d'un sous-espace vectoriel]\thlabel{prop:orthogonalD'UnSousEspaceVectoriel}
 Soient \(E\) un espace préhilbertien et \(F\) un sous-espace vectoriel de \(E\).
 
 On a :
@@ -556,5 +556,99 @@ D'où (1) \(\ssi\) (2).
 
 Idem pour (1) \(\ssi\) (3).
 \end{dem}
+
+\subsection{Supplémentaire orthogonal}
+
+\begin{rappel}
+Soient \(E\) un espace préhilbertien et \(F\) un sous-espace vectoriel de \(E\).
+
+Selon la \thref{prop:orthogonalD'UnSousEspaceVectoriel}, on a : \[F\inter F\ortho=\accol{0_E}.\]
+
+Donc \(F\) et \(F\ortho\) sont en somme directe.
+\end{rappel}
+
+\begin{defi}[Supplémentaire orthogonal]
+Soient \(E\) un espace préhilbertien et \(F\) un sous-espace vectoriel de \(E\).
+
+Un supplémentaire orthogonal de \(F\) (dans \(E\)) est un supplémentaire de \(F\) (dans \(E\)) qui est orthogonal à \(F\).
+
+En d'autres termes, c'est un sous-espace vectoriel \(G\) de \(E\) tel que : \[\begin{dcases}
+F\oplus G=E \\
+F\perp G
+\end{dcases}\]
+
+On résume parfois ce système avec la notation \(F\operp G=E\) ou des variantes de cette notation.
+\end{defi}
+
+\begin{prop}[Unicité du supplémentaire orthogonal]\thlabel{prop:unicitéDuSupplémentaireOrthogonal}
+Soient \(E\) un espace préhilbertien et \(F\) un sous-espace vectoriel de \(E\).
+
+Si \(G\) est un supplémentaire orthogonal de \(F\) alors \(G=F\ortho\).
+\end{prop}
+
+\begin{dem}
+\incdir Claire car \(G\perp F\).
+
+\increc
+
+Soit \(x\in F\ortho\).
+
+Montrons que \(x\in G\).
+
+Soient \(x_F\in F\) et \(x_G\in G\) tels que \(x=x_F+x_G\).
+
+On a \(\ps{x_F}{x_F+x_G}=\ps{x_F}{x}\) donc \[\norme{x_F}^2+\underbrace{\ps{x_F}{x_G}}_{=0\text{ car }F\perp G}=\underbrace{\ps{x_F}{x}}_{=0\text{ car }F\perp G}.\]
+
+Donc \(x_F=0_E\).
+
+Donc \(x=x_G\).
+
+Donc \(x\in G\).
+\end{dem}
+
+\begin{rem}
+Soient \(E\) un espace préhilbertien et \(F\) un sous-espace vectoriel de \(E\).
+
+D'après la proposition précédente, \(F\) admet un supplémentaire orthogonal si, et seulement si, \(F\ortho\) est un supplémentaire de \(F\) : \(F+F\ortho=E\).
+\end{rem}
+
+\begin{exo}
+Soient \(E\) un espace préhilbertien et \(F\) un sous-espace vectoriel de \(E\).
+
+On suppose que \(F\) admet un supplémentaire orthogonal dans \(E\).
+
+Montrer : \[\paren{F\ortho}\ortho=F.\]
+\end{exo}
+
+\begin{corr}
+On a \(E=F\oplus F\ortho\) donc \(F\) est un supplémentaire orthogonal de \(F\ortho\).
+
+Donc \(F=\paren{F\ortho}\ortho\) selon la \thref{prop:unicitéDuSupplémentaireOrthogonal}.
+\end{corr}
+
+\begin{defi}
+Soit \(E\) un espace préhilbertien.
+
+Un projecteur \(p\in\Lendo{E}\) est dit orthogonal si son image et son noyau sont orthogonaux : \[\Im p\perp\ker p.\]
+\end{defi}
+
+\begin{rem}
+Soient \(E\) un espace préhilbertien et \(F\) et \(G\) deux sous-espaces vectoriels supplémentaires dans \(E\).
+
+\begin{enumerate}
+    \item Notons \(p\) le projecteur sur \(F\), parallèlement à \(G\). \\ Si \(p\) est un projecteur orthogonal, alors \(G=F\ortho\). \\ On dit simplement que \(p\) est le projecteur orthogonal sur \(F\). \\
+    \item Le \guillemets{projecteur orthogonal sur \(F\)} est bien défini si, et seulement si, \(F\) admet un supplémentaire orthogonal.
+\end{enumerate}
+\end{rem}
+
+\begin{dem}[1]
+Si \(p\) est un projecteur orthogonal alors \(F\perp G\) et \(F\oplus G=E\) donc \(G=F\ortho\).
+\end{dem}
+
+\begin{rem}
+On sait que tout projecteur est le projecteur sur son image, parallèlement à son noyau.
+
+De même, tout projecteur orthogonal \(p\) est le projecteur orthogonal sur son image, \cad le projecteur sur \(\Im p\), parallèlement à \(\paren{\Im p}\ortho\).
+\end{rem}
 
 \note{À FINIR}
