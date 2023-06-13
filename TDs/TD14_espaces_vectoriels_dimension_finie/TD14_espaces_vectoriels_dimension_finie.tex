@@ -1,0 +1,261 @@
+\chapter{Espaces vectoriels en dimension finie}
+
+\minitoc
+
+\begin{exo}
+Si \(p\in\Ns\), on note \(E_p\) l'espace vectoriel des suites \(p\)-périodiques d'éléments de \(\K\) : \[E_p=\accol{\paren{x_n}_n\in\K^\N\tq\quantifs{\forall n\in\N}u_{n+p}=u_n}.\]
+
+On note \(E\) l'espace vectoriel des suites périodiques d'éléments de \(\K\) : \[E=\accol{\paren{x_n}_n\in\K^\N\tq\quantifs{\exists p\in\Ns;\forall n\in\N}u_{n+p}=u_n}.\]
+
+\begin{enumerate}
+\item Soit \(p\in\Ns\). Quelle est la dimension de \(E_p\) ? \\
+
+\item Quelle est la dimension de \(E\) ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[TPE MP 2018]
+On pose : \[E=\accol{P\in\poly[\C]\tq\paren{X^4+1}P=P\paren{X^2}}.\]
+
+\begin{enumerate}
+\item Montrer que \(E\) est un sous-espace vectoriel de \(\poly[\C]\). \\
+
+\item Si \(P\in E\excluant\accol{0}\), déterminer le degré de \(P\). \\
+
+\item Donner un polynôme non-nul appartenant à \(E\). \\
+
+\item Déterminer la dimension de \(E\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Relations de récurrence d'ordre 2]\thlabel{exo:relationsDeRécurrenceD'Ordre2}
+Soient \(a,b,c\in\C\) tels que \(a\not=0\).
+
+On note \(E\) le \(\C\)-espace vectoriel des suites \(\paren{u_n}_{n\in\N}\in\C^\N\) à coefficients dans \(\C\) vérifiant la relation de récurrence linéaire homogène d'ordre 2 à coefficients constants suivant : \[\quantifs{\forall n\in\N}au_{n+2}+bu_{n+1}+cu_n=0.\]
+
+\begin{enumerate}
+\item Montrer que l'application \[\fonction{\phi}{E}{\C^2}{\paren{u_n}_n}{\paren{u_0,u_1}}\] est un isomorphisme d'espaces vectoriels. \\
+
+\item Quelle est la dimension de \(E\) ? \\
+
+\item En déduire le théorème suivant (à retenir) :
+
+\begin{itemize}
+\item Si le polynôme \(aX^2+bX+c\) admet deux racines distinctes \(x,y\in\C\), alors \(E\) est l'ensemble des suites de la forme : \[\paren{\lambda x^n+\mu y^n}_{n\in\N}\] où \(\lambda,\mu\in\C\). \\
+
+\item Si le polynôme \(aX^2+bX+c\) admet une racine double \(x\in\C\), alors \(E\) est l'ensemble des suites de la forme : \[\paren{\paren{\lambda n+\mu}x^n}_{n\in\N}\] où \(\lambda,\mu\in\C\).
+\end{itemize}
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Donner un exemple d'espace vectoriel \(E\) et d'endomorphisme \(u\in\Lendo{E}\) tels que \(u\) soit inversible à droite mais pas à gauche (dans l'anneau \(\anneau{\Lendo{E}}[+][\rond]\)).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels de dimension finie.
+
+\begin{enumerate}
+\item Montrer qu'il existe une application linéaire injective \(u:E\to F\) si, et seulement si, \(\dim E\leq\dim F\). \\
+
+\item Montrer qu'il existe une application linéaire surjective \(u:E\to F\) si, et seulement si, \(\dim E\geq\dim F\). \\
+
+\item Montrer qu'il existe un isomorphisme (d'espaces vectoriels) \(u:E\to F\) si, et seulement si, \(\dim E=\dim F\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Endomorphismes de rang 1]
+Soient \(E\) un \(\K\)-espace vectoriel et \(u\in\Lendo{E}\).
+
+\begin{enumerate}[series=endoRG1]
+\item Justifier que l'endomorphisme \(u\) est de rang 1 si, et seulement si, il s'écrit : \[\fonction{u}{E}{E}{x}{l\paren{x}a}\] où \(a\) est un vecteur non-nul de \(E\) et \(l\in E\etoile\) est une forme linéaire non-nulle. \\
+\end{enumerate}
+
+On suppose désormais que \(u\) est de rang 1.
+
+\begin{enumerate}[resume=endoRG1]
+\item Montrer : \(\quantifs{\exists\lambda\in\K}u^2=\lambda u\). \\
+
+\item Montrer que les trois propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+\item \(\quantifs{\exists\lambda\in\K\excluant\accol{0}}\lambda u\text{ est un projecteur}\) \\
+
+\item \(E=\ker u\oplus\Im u\) \\
+
+\item \(u^2\not=0\).
+\end{enumerate}
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un \(\K\)-espace vectoriel et \(u\in\Lendo{E}\).
+
+On suppose : \[\dim E=3\qquad\text{et}\qquad u^2=0.\]
+
+Montrer : \(\rg u\leq1\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un espace vectoriel de dimension finie et \(u,v\in\Lendo{E}\).
+
+Montrer : \[\abs{\rg u-\rg v}\leq\rg\paren{u+v}\leq\rg u+\rg v.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un espace vectoriel de dimension finie et \(u,v\in\Lendo{E}\).
+
+Montrer : \[\rg\paren{uv}\leq\min\accol{\rg u;\rg v}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(u\in\L{\R^2}{\R^3}\) et \(v\in\L{\R^3}{\R^2}\).
+
+On suppose que \(u\rond v\) est un projecteur de rang 2 de \(\R^3\).
+
+Montrer que \(v\) est une surjection et que \(u\) est une injection puis que \(v\rond u=\id{\R^2}\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension finie et \(u,v\in\Lendo{E}\).
+
+Montrer l'équivalence : \[\ker u=\Im u\ssi\begin{dcases}
+u^2=0 \\
+\dim E=2\rg u
+\end{dcases}\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Formule de Grassmann]
+Soient \(E\) un \(\K\)-espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\) de dimension finie.
+
+\begin{enumerate}
+\item Montrer qu'il existe \(a,b,c\in\N\) et une base de \(F+G\) : \[\paren{e_1,\dots,e_a,e_1\prim,\dots,e_b\prim,e_1\seconde,\dots,e_c\seconde}\] tels que \[\begin{dcases}
+F\inter G=\Vect{e_1,\dots,e_a} \\
+F=\Vect{x_1,\dots,e_a,e_1\prim,\dots,e_b\prim} \\
+G=\Vect{e_1,\dots,e_a,e_1\seconde,\dots,e_b\seconde}
+\end{dcases}\]
+
+\item En déduire une nouvelle démonstration de la formule de Grassmann.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Centrale 2008 (extrait)]
+Soient \(E\) et \(F\) deux espaces vectoriels de dimension finie, \(f\in\L{E}{F}\) et \(G\) un sous-espace vectoriel de \(F\).
+
+Montrer : \[\dim f\inv\paren{G}=\dim E-\rg f+\dim\paren{\Im f\inter G}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un espace vectoriel de dimension finie et \(u,v\in\Lendo{E}\).
+
+Montrer : \[\rg\paren{u+v}=\rg u+\rg v\ssi\begin{dcases}
+\Im u\inter\Im v=\accol{0_E} \\
+\ker u+\ker v=E
+\end{dcases}\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un espace vectoriel de dimension finie et \(l_1,\dots,l_m\in E\etoile\).
+
+On considère l'application : \[\fonction{\phi}{E}{\K^m}{x}{\paren{l_1\paren{x},\dots,l_m\paren{x}}}\]
+
+\begin{enumerate}
+\item Montrer que la famille \(\paren{l_1,\dots,l_m}\) est une famille libre si, et seulement si, l'application \(\phi\) est surjective. \\
+
+\item Montrer : \[\rg\phi=\rg\paren{l_1,\dots,l_m}.\]
+
+\textit{Indication :} considérer une base \(\paren{l_{i_1},\dots,l_{i_r}}\) de \(\Vect{l_1,\dots,l_m}\). \\
+
+\item En déduire que la famille \(\paren{l_1,\dots,l_m}\) engendre \(E\etoile\) si, et seulement si, l'application \(\phi\) est injective.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un espace vectoriel de dimension finie et \(u\in\Lendo{E}\).
+
+Montrer que les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+\item \(\Im u^2=\Im u\) \\
+
+\item \(\ker u^2=\ker u\) \\
+
+\item \(E=\ker u\oplus\Im u\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un espace vectoriel de dimension finie et \(u,v\in\Lendo{E}\).
+
+On suppose : \[u\rond v=0\qquad\text{et}\qquad u+v\in\GL{}[E].\]
+
+Montrer : \[\rg u+\rg v=\dim E\qquad\text{et}\qquad\ker u\oplus\ker v=E.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}

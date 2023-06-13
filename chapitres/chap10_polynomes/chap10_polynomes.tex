@@ -1,0 +1,2923 @@
+\chapter{Polynômes, fractions rationnelles}
+
+\minitoc
+
+Dans tout ce chapitre, on considère un corps \(\corps{\K}\).
+
+En pratique, aux concours, on se limite à \(\K=\R\) ou \(\C\), voire parfois \(\Q\).
+
+\section{Polynômes}
+
+\subsection{Anneau des polynômes}
+
+Il n'est pas difficile de donner une construction rigoureuse de l'anneau des polynômes, mais c'est hors programme (et cela n'apporte rien en pratique). On se contente donc de la \guillemets{définition} suivante, qui décrit ce qu'il faut savoir.
+
+\begin{defi}
+L'anneau des polynômes en l'indéterminée \(X\) à coefficients dans \(\K\) est un anneau commutatif noté \(\anneau{\poly}\) tel que :
+
+\begin{enumerate}
+\item Le corps \(\corps{\K}\) est un sous-anneau de \(\anneau{\poly}\). \\
+
+\item Il existe un élément \(X\in\poly\) appelé l'indéterminée. \\
+
+\item Tout élément \(P\in\poly\) s'écrit de façon unique sous la forme : \[P=\sum_{k=0}^{n}a_kX^k\quad\text{où : }\begin{dcases}n\in\N \\ \quantifs{\forall k\in\interventierii{0}{n}}a_k\in\K\end{dcases}\] à des termes nuls près.
+
+Cette écriture est appelée l'écriture canonique du polynôme.
+
+Le coefficient \(a_k\) est appelé le coefficient de \(P\) de degré \(k\). \\
+\end{enumerate}
+\end{defi}
+
+\begin{rem}
+\begin{itemize}
+\item Le point (1) signifie que \(\K\) est inclus dans \(\poly\) et que, pour tout \(\lambda,\mu\in\K\), la somme \(\lambda+\mu\) et le produit \(\lambda\mu\) ont même valeur dans \(\K\) et dans \(\poly\). \\
+
+\item Dans le point (3), l'unicité de l'écriture à des termes nuls près signifie : \[\quantifs{\forall m,n\in\N;\forall a_0,\dots,a_n,b_0,\dots,b_m\in\K}\begin{dcases}n\leq m \\ \sum_{k=0}^na_kX^k=\sum_{k=0}^mb_kX^k\end{dcases}\imp\begin{dcases}\quantifs{\forall k\in\interventierii{0}{n}}a_k=b_k \\ \quantifs{\forall k\in\interventierii{n+1}{m}}b_k=0\end{dcases}\] \\
+
+\item L'indéterminée est parfois aussi notée \(Y\), \(Z\) ou \(T\). L'anneau des polynômes est alors noté \(\poly[\K][Y]\), \(\poly[\K][Z]\) ou \(\poly[\K][T]\). \\
+
+\item Les éléments \(\lambda\in\K\) sont appelés polynômes constants. Leur écriture canonique est \(\lambda X^0\) ou simplement \(\lambda\). On appelle polynôme nul le polynôme \(0=0X^0\). \\
+
+\item On pourrait tout aussi bien considérer l'anneau \(\poly[\A]\) des polynômes à coefficients dans un anneau commutatif \(\A\), mais dans ce chapitre, on ne s'intéresse qu'au cas où les polynômes sont à coefficients dans un corps. \\
+\end{itemize}
+\end{rem}
+
+\begin{rem}[Structure de l'anneau \(\poly\)]~\\
+Soient deux polynômes \(A=\sum_{k=0}^na_kX^k\) et \(B=\sum_{k=0}^mb_kX^k\) avec \(m,n\in\N\) et \(a_0,\dots,a_n,b_0,\dots,b_m\in\K\).
+
+\begin{itemize}
+\item Quitte à ajouter des termes nuls, on peut supposer \(m=n\).
+
+La somme de \(A\) et \(B\) est le polynôme \(C=\sum_{k=0}^{n}c_kX^k\) défini par : \[\quantifs{\forall k\in\interventierii{0}{n}}c_k=a_k+b_k.\] \\
+
+\item On pose : \(\quantifs{\forall k\in\interventierie{n+1}{\pinf}}a_k=0\) et \(\quantifs{\forall k\in\interventierie{m+1}{\pinf}}b_k=0\).
+
+Le produit de \(A\) et \(B\) est le polynôme \(D=\sum_{k=0}^{m+n}d_kX^k\) défini par : \[\quantifs{\forall k\in\interventierii{0}{m+n}}d_k=\sum_{j=0}^ka_jb_{k-j}.\] \\
+
+\item Les éléments neutres de l'anneau \(\poly\) sont les polynômes constants \(0=0X^0\) et \(1=1X^0\). \\
+\end{itemize}
+\end{rem}
+
+\begin{nota}\thlabel{nota:évaluationD'unPolynômeEnUnElément}
+Soit \(A\) un anneau. On suppose que \(\K\) est un sous-anneau de \(A\).
+
+Soient \(P\in\poly\) et \(x\in A\).
+
+On considère l'écriture canonique de \(P\) : \[P=\sum_{k=0}^{n}a_kX^k\quad\text{où : }\begin{dcases}n\in\N \\ \quantifs{\forall k\in\interventierii{0}{n}}a_k\in\K\end{dcases}\]
+
+On note \(P\paren{x}\) l'élément de \(A\) défini par : \[P\paren{x}=\sum_{k=0}^na_kx^k.\]
+
+On dit que \(P\paren{x}\) est l'élément obtenu en évaluant \(P\) en \(x\).
+
+Cela ne signifie pas que \(P\) est considéré comme une fonction : il n'y a pas d'ensemble de définition bien défini, on peut \guillemets{évaluer} \(P\) en n'importe quel élément d'un anneau contenant \(\K\) comme sous-anneau.
+\end{nota}
+
+\begin{ex}[mêmes notations]
+\begin{itemize}
+\item Si \(A=\K\) alors la notation \(P\paren{\lambda}\) est valide pour tout \(\lambda\in\K\). \\
+
+\item En particulier, si \(A=\K=\R\) et \(P=X^2+1\) alors la notation \(P\paren{\lambda}\) est valide pour tout \(\lambda\in\R\) mais aussi pour tout \(\lambda\in\C\). On a : \[P\paren{0}=1\qquad P\paren{1}=2\qquad P\paren{\i}=0.\] \\
+
+\item Si \(A=\poly\) alors la notation \(P\paren{Q}\) est valide pour tout \(Q\in\poly\). On dit que \(P\paren{Q}\) est la composition des polynômes \(P\) et \(Q\).
+
+Par exemple, si \(P=X^2+1\) alors \(P\paren{Q}=Q^2+1\in\poly\).
+
+La composition des polynômes \(P\) et \(Q\) est parfois aussi notée \(P\rond Q\). \\
+
+\item Dans les exemples qui précèdent, on a considéré des anneaux commutatifs, mais ce n'est pas nécessaire. En deuxième année, on appliquera très souvent des polynômes \(P\in\poly\) à des matrices carrées à coefficients dans \(\K\), et l'anneau formé par ces matrices n'est pas commutatif. \\
+\end{itemize}
+\end{ex}
+
+\begin{rem}[Rédaction]
+\begin{itemize}
+\item Quand on évalue le polynôme \(P\) en \(\i\) ou en \(X^2\), on ne doit surtout pas écrire \guillemets{on pose \(X=\i\)} ou \guillemets{on pose \(X=X^2\)}. \\
+
+\item La notation \(P\paren{X}\) désigne la composition des polynômes \(P\) et \(X\), \cad \(P\). On peut donc écrire au choix \guillemets{le polynôme \(P\paren{X}=X^2+1\)} ou \guillemets{le polynôme \(P=X^2+1\)}, il n'y a aucune différence, alors que si \(f\) est une fonction, il ne faut surtout pas confondre \(f\) et \(f\paren{x}\). \\
+\end{itemize}
+\end{rem}
+
+\begin{prop}
+Soit \(A\) un anneau et \(x\in A\). On suppose que \(\K\) est un sous-anneau de \(A\).
+
+Alors il existe un unique morphisme d'anneaux \(\phi:\poly\to A\) tel que : \[\phi\paren{X}=x\quad\text{et}\quad\quantifs{\forall\lambda\in\K}\phi\paren{\lambda}=\lambda.\]
+\end{prop}
+
+\begin{dem}
+\analyse
+
+Soit \(\phi:\poly\to A\) tel que \(\phi\paren{X}=x\) et \(\restr{\phi}{\K}=\id{\K}\).
+
+On montre par une récurrence immédiate : \(\quantifs{\forall n\in\N}\phi\paren{X^n}=x^n\).
+
+Soit \(P=\sum_{k=0}^{n}a_kX^k\) avec \(\begin{dcases}n\in\N \\ a_0,\dots,a_n\in\K\end{dcases}\).
+
+On a \[\begin{WithArrows}
+\phi\paren{P}&=\sum_{k=0}^{n}\phi\paren{a_kX^k}\Arrow{car \(\phi\) morphisme d'anneaux} \\
+&=\sum_{k=0}^{n}\phi\paren{a_k}\phi\paren{X^k} \\
+&=\sum_{k=0}^{n}a_kx^k \\
+&=P\paren{x}.
+\end{WithArrows}\]
+
+Ainsi, on a : \(\quantifs{\forall P\in\poly}\phi\paren{P}=P\paren{x}\).
+
+\synthese
+
+Posons \(\fonction{\phi}{\poly}{A}{P}{P\paren{x}}\).
+
+On a : \begin{itemize}
+\item \(\phi\paren{X}=x\) \\
+
+\item \(\quantifs{\forall\lambda\in\K}\phi\paren{\lambda}=\lambda\) \\
+
+\item \(\phi\) est un morphisme d'anneaux : \[\phi\paren{1}=1\quad\text{et}\quad\quantifs{\forall P,Q\in\poly}\begin{dcases}\phi\paren{P+Q}=\paren{P+Q}\paren{x}=P\paren{x}+Q\paren{x}=\phi\paren{P}+\phi\paren{Q} \\ \phi\paren{PQ}=PQ\paren{x}=P\paren{x}Q\paren{x}=\phi\paren{P}\phi\paren{Q}\end{dcases}\] \\
+\end{itemize}
+
+\conclusion
+
+Le morphisme existe et est unique.
+\end{dem}
+
+\begin{defi}[Conjugaison]
+Soit un polynôme à coefficients complexes \(P=\sum_{k=0}^{n}a_kX^k\in\poly[\C]\) (avec \(n\in\N\) et \(a_0,\dots,a_n\in\C\)).
+
+On appelle conjugué de \(P\) le polynôme : \[\conj{P}=\sum_{k=0}^{n}\conj{a_k}X^k.\]
+\end{defi}
+
+\begin{rem}
+On a : \(\quantifs{\forall P\in\poly[\C]}P=\conj{P}\ssi P\in\poly[\R]\).
+\end{rem}
+
+\begin{prop}
+La conjugaison \(\fonctionlambda{\poly[\C]}{\poly[\C]}{P}{\conj{P}}\) est un automorphisme d'anneaux.
+\end{prop}
+
+\begin{dem}
+\note{EXERCICE}
+\end{dem}
+
+\subsection{Degré}
+
+\begin{defi}[Degré d'un polynôme]~\\
+Soit un polynôme \(P=\sum_{k=0}^{n}a_kX^k\in\poly\) (avec \(n\in\N\) et \(a_0,\dots,a_n\in\K\)).
+
+Le degré de \(P\) est défini par : \[\deg P=\begin{dcases}\minf&\text{si }P=0 \\ \max\accol{k\in\interventierii{0}{n}\tq a_k\not=0}&\text{sinon}\end{dcases}\]
+\end{defi}
+
+\begin{prop}
+Soient \(A,B\in\poly\). On a :
+
+\begin{enumerate}
+\item \(\deg\paren{A+B}\leq\max\accol{\deg A;\deg B}\) avec égalité si \(\deg A\not=\deg B\). \\
+
+\item \(\deg\paren{AB}=\deg A+\deg B\). \\
+
+\item Si \(B\) non-constant alors \(\deg \paren{A\paren{B}}=\paren{\deg A}\times\paren{\deg B}\). \\
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[notations pour les démonstrations suivantes]~\\\renewcommand{\cqfd}{}
+Soient \(m,n\in\N\) et \(a_0,\dots,a_n,b_0,\dots,b_m\in\K\) tels que \(A=\sum_{k=0}^{n}a_kX^k\) et \(B=\sum_{k=0}^{m}b_kX^k\).
+
+On pose \(\begin{dcases}\quantifs{\forall k\in\interventierie{n+1}{\pinf}}a_k=0 \\ \quantifs{\forall k\in\interventierie{m+1}{\pinf}}b_k=0\end{dcases}\)
+
+On pose \(\begin{dcases}C=\sum_{k=0}^{p}c_kX^k=A+B&\text{avec }\begin{dcases}p=\max\accol{m;n} \\ c_0,\dots,c_p\in\K\end{dcases} \\ D=\sum_{k=0}^{m+n}d_kX^k=AB&\text{avec }d_0,\dots,d_{m+n}\in\K\end{dcases}\)
+\end{dem}
+
+\begin{dem}[1]~\\
+On a : \(\begin{dcases}\quantifs{\forall k>\deg A}a_k=0 \\ \quantifs{\forall k>\deg B}b_k=0\end{dcases}\)
+
+Donc \(\quantifs{\forall k\in\interventierii{\max\accol{\deg A;\deg B}+1}{p}}c_k=a_k+b_k=0\).
+
+Donc \(\deg C\leq\max\accol{\deg A;\deg B}\).
+
+Supposons \(\deg A\not=\deg B\), par exemple \(\deg A<\deg B\).
+
+On a : \(\max\accol{\deg A;\deg B}=\deg B\).
+
+Et : \(c_{\deg B}=\underbrace{a_{\deg B}}_{=0}+\underbrace{b_{\deg B}}_{\not=0}\not=0\).
+
+Donc \(\deg C\leq\deg B\) donc \(\deg C=\deg B\).
+\end{dem}
+
+\begin{dem}[2]
+Si \(A\) ou \(B\) est nul, alors \(\deg\paren{AB}=\minf=\deg A+\deg B\).
+
+Supposons \(A\) et \(B\) non-nuls.
+
+On a : \(\begin{dcases}a_{\deg A}\not=0\quad\text{et}\quad\quantifs{\forall k>\deg A}a_k=0 \\ b_{\deg B}\not=0\quad\text{et}\quad\quantifs{\forall k>\deg B}b_k=0\end{dcases}\)
+
+Montrons que \(\deg\paren{AB}=\deg A+\deg B\).
+
+Si \(k>\deg A+\deg B\) alors \(d_k=\sum_{j=0}^{k}a_jb_{k-j}=0\) car \(\quantifs{\forall j\in\interventierii{0}{k}}j>\deg A\quad\text{ou}\quad k-j>\deg B\) (car \(j+k-j>\deg A+\deg B\)).
+
+Si \(k=\deg A+\deg B\) alors \(d_k=\sum_{j=0}^{k}a_jb_{k-j}=a_{\deg A}+b_{\deg B}\not=0\) car si \(j>\deg A\) alors \(a_j=0\) et si \(j<\deg A\) alors \(k-j>\deg B\) donc \(b_{k-j}=0\).
+\end{dem}
+
+\begin{dem}[3]~\\
+On a \(A\paren{B}=\sum_{k=0}^{n}a_kB^k\).
+
+On suppose \(B\) non-constant.
+
+On a \(\paren{\deg B}^{\deg A}=\paren{\deg A}\paren{\deg B}\).
+
+Donc, comme \(a_{\deg A}\not=0\) : \[\deg\paren{a_{\deg A}B^{\deg B}}=\paren{\deg A}\paren{\deg B}\quad\text{et}\quad\quantifs{\forall k\in\interventierii{0}{\deg A-1}}\deg\paren{a_kB^k}<\paren{\deg A}\paren{\deg B}.\]
+
+Donc \(\deg\paren{\sum_{k=0}^{\deg A-1}a_kB^k}<\paren{\deg A}\paren{\deg B}\).
+
+Donc selon (1) : \(\deg\paren{A\rond B}=\paren{\deg A}\paren{\deg B}\).
+\end{dem}
+
+\begin{nota}
+Soit \(n\in\N\).
+
+On pose : \[\poly[\K_n]=\accol{P\in\poly\tq\deg P\leq n}.\]
+
+Autrement dit : \[\poly[\K_n]=\accol{P\in\poly\tq\quantifs{\exists a_0,\dots,a_n\in\K}P=\sum_{k=0}^{n}a_kX^k}.\]
+\end{nota}
+
+\begin{rem}
+\begin{itemize}
+\item Si \(n=0\) alors \(\poly[\K_0]=\K\) est l'ensemble des polynômes constants. \\
+
+\item Si \(n\in\Ns\) alors \(\poly[\K_n]\) est un sous-groupe de \(\groupe{\poly}\) (mais pas un sous-anneau de \(\anneau{\poly}\) car il n'est pas stable par produit).
+
+Le groupe \(\groupe{\poly[\K_n]}\) est isomorphe au groupe \(\K^{n+1}\). \\
+\end{itemize}
+\end{rem}
+
+\begin{prop}[Propriétés de l'anneau \(\poly\)]
+\begin{enumerate}
+\item L'anneau \(\anneau{\poly}\) est intègre. \\
+
+\item Les éléments inversibles de \(\poly\) sont les polynômes constants non-nuls : \[\poly\croix=\K\excluant\accol{0}.\]
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+On sait que \(\poly\) est non-nul et commutatif.
+
+Soient \(P,Q\in\poly\) tels que \(PQ=0\).
+
+On a \(\deg\paren{PQ}=\minf\).
+
+Donc \(\underbrace{\deg P}_{\in\N\union\accol{\minf}}+\underbrace{\deg Q}_{\in\N\union\accol{\minf}}=\minf\).
+
+Donc \(\deg P=\minf\quad\text{ou}\quad\deg Q=\minf\).
+
+Donc \(P=0\quad\text{ou}\quad Q=0\). Donc \(\poly\) est intègre.
+\end{dem}
+
+\begin{dem}[2]
+\analyse
+
+Soit \(P\in\poly\croix\).
+
+On a \(PP^{-1}=1\).
+
+Donc \(\deg\paren{PP^{-1}}=\deg1\).
+
+Donc \(\underbrace{\deg P}_{\in\N\union\accol{\minf}}+\underbrace{\deg P^{-1}}_{\in\N\union\accol{\minf}}=0\).
+
+Donc \(\deg P=\deg P^{-1}=0\).
+
+Donc \(P\) constant non-nul.
+
+\synthese
+
+Soit \(P\in\poly\) tel que \(\deg P=0\).
+
+On a \(P=\lambda\in\K\excluant\accol{0}\).
+
+Donc \(P\) inversible : \(\lambda\times\dfrac{1}{\lambda}=1\).
+
+\conclusion
+
+Les polynômes inversibles sont les polynômes constants non-nuls.
+\end{dem}
+
+\begin{defi}[Coefficient dominant]
+Le coefficient dominant d'un polynôme non-nul \(P\) est le coefficient de \(P\) de degré \(\deg P\).
+
+Un polynôme unitaire est un polynôme non-nul dont le coefficient dominant vaut \(1\).
+\end{defi}
+
+\begin{ex}
+\begin{itemize}
+\item Le coefficient dominant du polynôme \(P=7X^5-3X^2+5\) vaut \(7\). \\
+
+\item Le coefficient dominant du polynôme \(Q=X^3+3X^2+3X+1\) vaut \(1\) donc \(Q\) est unitaire. \\
+\end{itemize}
+\end{ex}
+
+\subsection{Division euclidienne}
+
+\begin{defprop}[Division euclidienne dans \(\poly\)]
+Soient \(A,B\in\poly\). On suppose \(B\not=0\).
+
+Il existe un unique couple \(\paren{Q,R}\in\poly^2\) tel que : \[\begin{dcases}A=QB+R \\ \deg R<\deg B\end{dcases}\]
+
+Le polynôme \(Q\) est appelé le quotient de la division euclidienne de \(A\) par \(B\).
+
+Le polynôme \(R\) est appelé le reste de la division euclidienne de \(A\) par \(B\).
+\end{defprop}
+
+\begin{dem}
+\unicite
+
+Soient \(Q_1,R_1,Q_2,R_2\in\poly\) tels que \(\begin{dcases}A=Q_1B+R_1=Q_2B+R_2 \\ \deg R_1<\deg B \\ \deg R_2<\deg B\end{dcases}\)
+
+On a \(\begin{dcases}\paren{Q_1-Q_2}B=R_2-R_1 \\ \deg\paren{R_2-R_1}<\deg B\end{dcases}\) donc \(\deg\paren{\paren{Q_1-Q_2}B}<\deg B\) donc \(\deg\paren{Q_1-Q_2}+\deg B<\deg B\).
+
+Donc \(\deg\paren{Q_1-Q_2}=\minf\) donc \(Q_1=Q_2\) donc \(R_1-R_2=0\times B=0\).
+
+Donc \(\paren{Q_1,R_1}=\paren{Q_2,R_2}\).
+
+\existence
+
+On fixe le polynôme \(B\in\poly\excluant\accol{0}\).
+
+Si \(B\) est constant, la proposition est vraie car \(\quantifs{\forall A\in\poly}A=QB\) avec \(Q=\dfrac{A}{B}\).
+
+Supposons \(B\) non-constant. Montrons que \(\underbrace{\quantifs{\forall n\in\N;\forall A\in\poly[\K_n];\exists Q,R\in\poly\excluant\accol{0}}\begin{dcases}A=QB+R \\ \deg R<\deg B\end{dcases}}_{\P{n}}\)
+
+Par récurrence sur \(n\in\N\) :
+
+Soit \(A\in\poly[\K_0]\). On a \(\begin{dcases}A=0\times B+A \\ \deg A=0<\deg B\end{dcases}\) donc \(Q=0\) et \(R=A\) conviennent. D'où \(\P{0}\).
+
+Soit \(n\in\N\) tel que \(\P{n}\). Montrons \(\P{n+1}\).
+
+Soit \(A\in\poly[\K_{n+1}]\).
+
+Il existe \(a_0,\dots,a_{n+1}\in\K\) tels que \(A=a_{n+1}X^{n+1}+\dots+a_0X^0\).
+
+Si \(n+1<\deg B\) alors le couple \(\paren{Q,R}=\paren{0,A}\) convient.
+
+Supposons \(n+1\geq\deg B\).
+
+Posons \(m=\deg B\) et \(B=b_mX^m+\dots+b_0X^0\) (avec \(b_0,\dots,b_m\in\K\) et \(b_m\not=0\)).
+
+Posons \(A_1=A-\dfrac{a_{n+1}}{b_m}X^{n+1-m}B\).
+
+On a \(\begin{dcases}\deg A\leq n+1 \\ \deg\paren{\dfrac{a_{n+1}}{b_m}X^{n+1-m}B}\leq n+1\end{dcases}\)
+
+Donc \(\deg A_1\leq n+1\).
+
+De plus, le coefficient de degré \(n+1\) de \(A_1\) est : \(a_{n+1}-\dfrac{a_{n+1}}{b_m}b_m=0\).
+
+Donc \(\deg A_1<n+1\).
+
+Donc il existe \(Q_1,R_1\in\poly\) tels que \(\begin{dcases}A_1=Q_1B+R_1 \\ \deg R_1<\deg B\end{dcases}\)
+
+Finalement, on a \(\begin{dcases}A=\paren{Q_1+\dfrac{a_{n+1}}{b_m}X^{n+1-m}}B+R_1 \\ \deg R_1<\deg B\end{dcases}\)
+
+D'où \(\P{n+1}\).
+
+D'où \(\quantifs{\forall n\in\N}\P{n}\).
+
+D'où l'existence car \(\poly=\bigunion_{n\in\N}\poly[\K_n]\).
+\end{dem}
+
+\begin{ex}
+Calculons la division euclidienne de \(2X^3+3X^2+1\) par \(X^2+1\) : \[\polylongdiv[style=D]{2X^3+3X^2+1}{X^2+1}\]
+
+Donc \(2X^3+3X^2+1=\underbrace{\paren{2X+3}}_{\text{quotient}}\paren{X^2+1}\underbrace{-2X-2}_{\text{reste}}\) et \(\deg\paren{-2X-2}<\deg\paren{X^2+1}\).
+
+De même, on a : \[\polylongdiv[style=D]{3X^4+X+1}{X+2}\]
+
+Donc \(3X^4+X+1=\underbrace{\paren{3X^3-6X^2+12X-23}}_{\text{quotient}}\paren{X+2}+\underbrace{47}_{\text{reste}}\) et \(\deg47<\deg\paren{X+2}\).
+\end{ex}
+
+\subsection{Divisibilité}
+
+\begin{defi}[Divisibilité dans \(\poly\)]
+Soient \(A,B\in\poly\).
+
+Si on a : \[\quantifs{\exists C\in\poly}AC=B\] alors on dit que \begin{itemize}
+\item \(A\) divise \(B\) ;
+\item \(A\) est un diviseur de \(B\) ;
+\item \(B\) est un multiple de \(A\) ;
+\item \(B\) est divisible par \(A\).
+\end{itemize}
+\end{defi}
+
+\begin{nota}
+Soient \(A,B\in\poly\).
+
+La notation \(A\divise B\) signifie \guillemets{\(A\) divise \(B\)}.
+
+L'ensemble \(\accol{AC}_{C\in\poly}\) des multiples de \(A\) est noté \(A\poly\) : \[A\poly=\accol{AC}_{C\in\poly}=\accol{P\in\poly\tq A\divise P}.\]
+
+Dans ce cours, on notera \(\ensdiv B\) (notation non-officielle) l'ensemble des polynômes nuls ou unitaires qui divisent \(B\) : \[\ensdiv B=\accol{P\in\poly\tq P\divise B\quad\text{et}\quad\paren{P=0\quad\text{ou}\quad P\text{ unitaire}}}.\]
+\end{nota}
+
+\begin{rem}[Lien avec la division euclidienne]
+Soient \(A,B\in\poly\). On suppose \(B\not=0\).
+
+On note \(R\) le reste de la division euclidienne de \(A\) par \(B\).
+
+Alors : \[B\divise A\ssi R=0.\]
+\end{rem}
+
+\begin{prop}[Divisibilité dans \(\poly\)]\thlabel{prop:divisibilitéDansPoly}
+\begin{enumerate}
+\item La relation binaire \(\divise\) sur \(\poly\) est réflexive et transitive (mais pas antisymétrique, donc ce n'est pas une relation d'ordre sur \(\poly\)). \\
+
+\item On a : \[\quantifs{\forall A,B,C\in\poly}A\divise B\imp CA\divise CB\] et : \[\quantifs{\forall A,B\in\poly;\forall C\in\poly\excluant\accol{0}}A\divise B\ssi CA\divise CB.\] \\
+
+\item On a : \[\quantifs{\forall A,B\in\poly}A\divise B\imp\paren{\deg A\leq\deg B\quad\text{ou}\quad B=0}.\]
+\end{enumerate}
+\end{prop}
+
+\begin{defprop}
+Soient \(A,B\in\poly\).
+
+On a : \[\paren{A\divise B\quad\text{et}\quad B\divise A}\ssi\quantifs{\exists\lambda\in\K\excluant\accol{0}}A=\lambda B.\]
+
+Lorsque ces propositions sont vérifiées, on dit que \(A\) et \(B\) sont associés.
+\end{defprop}
+
+\begin{dem}
+\impdir
+
+Supposons \(A\divise B\quad\text{et}\quad B\divise A\).
+
+Soient \(C,D\in\poly\) tels que \(AC=B\) et \(BD=A\). On a \(A=BD=ACD\).
+
+Si \(A\not=0\) alors \(CD=1\) donc \(D\) inversible (d'inverse \(C\)). Donc \(D=\lambda\) où \(\lambda\in\K\excluant\accol{0}\) et \(A=\lambda B\).
+
+Si \(A=0\) alors \(B=0\) car \(A\divise B\) et \(\lambda=1\) convient.
+
+\imprec
+
+Claire : on a \(B=\dfrac{1}{\lambda}A\).
+\end{dem}
+
+\begin{prop}[Divisibilité entre polynômes unitaires]\thlabel{prop:divisibilitéEntrePolynômesUnitaires}
+\renewcommand{\U}{\mathscr{U}}
+Notons \(\U\) l'ensemble des polynômes de \(\poly\) nuls ou unitaires : \[\begin{aligned}
+\U&=\ensdiv0 \\
+&=\accol{P\in\poly\tq\quantifs{\exists n\in\N;\exists R\in\poly[\K_n]}P=X^{n+1}+R}\union\accol{0;1}.
+\end{aligned}\]
+
+\begin{enumerate}
+\item La relation binaire \(\divise\) sur \(\U\) est une relation d'ordre sur \(\U\). \\
+
+\item Pour cette relation d'ordre, le polynôme nul est le plus grand élément de \(\U\) et le polynôme constant \(1\) est le plus petit : \[\quantifs{\forall P\in\U}P\divise0\quad\text{et}\quad1\divise P.\]
+\end{enumerate}
+\end{prop}
+
+\subsection{Racines}
+
+\begin{defi}[Racine]
+Soit \(P\in\poly\).
+
+On appelle racine de \(P\) (dans \(\K\)) tout élément \(\lambda\in\K\) tel que \(P\paren{\lambda}=0\).
+\end{defi}
+
+\begin{ex}
+Le polynôme \(X^2+1\) admet \(\i\) et \(-\i\) comme racines dans \(\C\). Il n'admet aucune racine dans \(\R\).
+
+Tout polynôme de degré \(1\) admet exactement une racine.
+\end{ex}
+
+\begin{theo}[Théorème de d'Alembert-Gauss]
+Tout polynôme non-constant à coefficients complexes admet une racine : \[\quantifs{\forall P\in\poly[\C]}\deg P\geq1\imp\quantifs{\exists\lambda\in\C}P\paren{\lambda}=0.\]
+\end{theo}
+
+\begin{dem}
+\note{ADMIS} (hors programme).
+\end{dem}
+
+\begin{prop}[Racines complexes des polynômes réels]\thlabel{prop:lambdaBarreEstRacine}
+Soit \(P\in\poly[\R]\). Soit \(\lambda\in\C\) une racine complexe de \(P\).
+
+Alors \(\conj{\lambda}\) est racine de \(P\).
+\end{prop}
+
+\begin{dem}
+On a \(P\paren{\lambda}=0\) donc \(\conj{P\paren{\lambda}}=0\) donc \(\conj{P}\paren{\conj{\lambda}}=0\).
+
+Or \(P=\conj{P}\) car \(P\in\poly[\R]\).
+
+Donc \(P\paren{\conj{\lambda}}=0\).
+
+Donc \(\conj{\lambda}\) est racine de \(P\).
+\end{dem}
+
+\begin{prop}\thlabel{prop:XMoinsLambdaDiviseP}
+Soit \(P\in\poly\). Soit \(\lambda\in\K\).
+
+On a : \[\lambda\text{ racine de }P\ssi\paren{X-\lambda}\divise P.\]
+\end{prop}
+
+\begin{dem}
+Notons \(Q\) et \(R\) le quotient et le reste de la division euclidienne de \(P\) par \(X-\lambda\) : \[P=\paren{X-\lambda}Q+R\quad\text{et}\quad\deg R<\deg\paren{X-\lambda}.\]
+
+On a donc \(R=\mu\) avec \(\mu\in\K\).
+
+On a : \[\begin{aligned}
+\lambda\text{ racine de }P&\ssi P\paren{\lambda}=0 \\
+&\ssi\paren{\lambda-\lambda}Q\paren{\lambda}+\mu=0 \\
+&\ssi\mu=0 \\
+&\ssi R=0 \\
+&\ssi\paren{X-\lambda}\divise P.
+\end{aligned}\]
+\end{dem}
+
+\subsection{Fonctions polynomiales}
+
+\begin{defi}[Fonction polynomiale associée à un polynôme]
+Soit un polynôme \(P\in\poly\).
+
+Soient \(n\in\N\) et \(a_0,\dots,a_n\in\K\) tels que \(P=a_nX^n+\dots+a_0X^0\).
+
+On appelle fonction polynomiale associée à \(P\) la fonction : \[\fonction{\tilde{P}}{\K}{\K}{x}{P\paren{x}=a_nx^n+\dots+a_0x^0}\]
+\end{defi}
+
+\begin{prop}[Anneau des fonctions polynomiales]\thlabel{prop:anneauDesFonctionsPolynomiales}
+L'application \[\fonction{\phi}{\poly}{\F{\K}{\K}}{P}{\tilde{P}}\] est un morphisme d'anneaux.
+
+En particulier, l'ensemble \(\Im\phi\) des fonctions polynomiales de \(\K\) dans \(\K\) est un sous-anneau de \(\F{\K}{\K}\).
+\end{prop}
+
+\begin{dem}
+\note{EXERCICE}
+\end{dem}
+
+\begin{rem}
+On a aussi : \[\quantifs{\forall P,Q\in\poly}\widetilde{P\rond Q}=\tilde{P}\rond\tilde{Q}.\]
+\end{rem}
+
+\begin{rem}
+On verra \hyperref[subsec:nbRacinesPoly]{plus loin} que si \(\K\) est infini, alors \(\phi\) est un isomorphisme d'anneaux. Ainsi, lorsque \(\K\) est infini, deux polynômes à coefficients dans \(\K\) sont égaux si, et seulement si, leur fonction polynomiale associée sont égales.
+
+Cela est faux lorsque le corps \(\K\) est fini puisque dans ce cas, il y a une infinité de polynômes à coefficients dans \(\K\) mais seulement un nombre fini de fonctions polynomiales. Le \hyperref[theo:petitThéorèmeDeFermat]{petit théorème de Fermat} donne un exemple de polynôme non-nul dont la fonction polynomiale associée est nulle : \(X^p-X\).
+\end{rem}
+
+\subsection{Dérivation}
+
+\begin{defi}[Polynôme dérivé d'un polynôme]
+Soit \(P\in\poly\) d'écriture canonique : \[P=\sum_{k=0}^{n}a_kX^k\quad\text{où : }\begin{dcases}n\in\N \\ \quantifs{\forall k\in\interventierii{0}{n}}a_k\in\K\end{dcases}\]
+
+On appelle polynôme dérivé de \(P\) le polynôme : \[P\prim=\sum_{k=1}^{n}ka_kX^{k-1}.\]
+\end{defi}
+
+\begin{rem}[Lien entre dérivation des polynômes et dérivation des fonctions]
+Soit \(P\in\poly[\R]\).
+
+La fonction polynomiale associée à \(P\prim\) est la dérivée de la fonction polynomiale associée à \(P\) : \[\widetilde{P\prim}=\paren{\tilde{P}}\prim.\]
+
+En particulier, toute fonction polynomiale est de classe \(\classe{\infty}\).
+\end{rem}
+
+\begin{prop}[Opérations algébriques sur les dérivés]
+Soient \(P,Q\in\poly\) et \(\lambda,\mu\in\K\).
+
+Somme : on a \[\paren{P+Q}\prim=P\prim+Q\prim.\]
+
+Combinaison linéaire : on a, plus généralement \[\paren{\lambda P+\mu Q}\prim=\lambda P\prim+\mu Q\prim.\]
+
+Produit : on a \[\paren{PQ}\prim=P\prim Q+PQ\prim.\]
+
+Composition : on a \[\paren{P\rond Q}\prim=Q\prim\times\paren{P\prim\rond Q}.\]
+\end{prop}
+
+\begin{dem}
+\note{EXERCICE}
+\end{dem}
+
+\begin{prop}[Formule de Leibniz pour les polynômes]
+Soit \(n\in\N\). Soient \(P,Q\in\poly\).
+
+On a : \[\paren{PQ}\deriv{n}=\sum_{k=0}^{n}\binom{k}{n}P\deriv{k}Q\deriv{n-k}.\]
+\end{prop}
+
+\begin{dem}
+\note{EXERCICE} (par récurrence, exactement comme on a démontré la formule de Leibniz pour les fonctions).
+\end{dem}
+
+\begin{rem}
+Soient \(n\in\N\) et \(P_1,\dots,P_n\in\poly\).
+
+On a : \[\paren{P_1\dots P_n}\prim=\sum_{k=0}^{n}P_1\dots P_{k-1}P_k\prim P_{k+1}\dots P_n.\]
+\end{rem}
+
+\begin{prop}[Degré du polynôme dérivé]
+On suppose ici que \(\K\) est un sous-corps de \(\C\).
+
+Soit \(P\in\poly\).
+
+On a : \[\deg P\prim=\begin{dcases}\deg P-1&\text{si }P\text{ non-constant, \cad si }\deg P\geq1 \\ \minf&\text{si }P\text{ constant, \cad si }\deg P\leq0\end{dcases}\]
+
+En particulier, on a : \(P\text{ constant}\ssi P\prim=0\).
+\end{prop}
+
+\begin{prop}[Formule de Taylor pour les polynômes]\label{prop:TaylorPoly}
+On suppose ici que \(\K\) est un sous-corps de \(\C\).
+
+Soit \(P\in\poly\excluant\accol{0}\) un polynôme de degré \(n\in\N\). Soit \(\lambda\in\K\).
+
+On a : \[P=\sum_{k=0}^{n}\dfrac{P\deriv{k}\paren{\lambda}}{k!}\paren{X-\lambda}^k.\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(\quantifs{\forall n\in\N}\underbrace{\quantifs{\forall P\in\poly[\K_n]}P=\sum_{k=0}^{n}\dfrac{P\deriv{k}\paren{\lambda}}{k!}\paren{X-\lambda}^k}_{\P{n}}\) par récurrence sur \(n\in\N\).
+
+Soit \(P=\mu\in\poly[\K_0]\). On a \(\begin{dcases}P\deriv{0}\paren{\lambda}=\mu \\ \quantifs{\forall k\in\Ns}P\deriv{k}\paren{\lambda}=0\end{dcases}\) donc la somme vaut \(\dfrac{\mu}{0!}\paren{X-\lambda}^0=\mu\). D'où \(\P{0}\).
+
+Soit \(n\in\N\) tel que \(\P{n}\). Soit \(P\in\poly[\K_{n+1}]\). On a \(P\prim\in\poly[\K_n]\) donc selon \(\P{n}\) : \[\begin{aligned}
+P\prim&=\sum_{k=0}^{n}\dfrac{\paren{P\prim}\deriv{k}}{k!}\paren{X-\lambda}^k \\
+&=\sum_{k=0}^{n}\dfrac{P\deriv{k+1}}{k!}\paren{X-\lambda}^k
+\end{aligned}\]
+
+Donc \(P\prim-\sum_{k=0}^{n}\dfrac{P\deriv{k+1}}{k!}\paren{X-\lambda}^k=0\).
+
+Donc \(\paren{P-\sum_{k=0}^{n}\dfrac{P\deriv{k+1}}{\paren{k+1}!}\paren{X-\lambda}^{k+1}}\prim=0\).
+
+Donc le polynôme \(Q=P-\sum_{l=1}^{n+1}\dfrac{P\deriv{l}}{l!}\paren{X-\lambda}^l\) est constant.
+
+Or \(Q\paren{\lambda}=P\paren{\lambda}-0\) donc \(P-\sum_{l=1}^{n+1}\dfrac{P\deriv{l}}{l!}\paren{X-\lambda}^l=P\paren{\lambda}=\dfrac{P\deriv{0}}{0!}\paren{X-\lambda}^0\).
+
+D'où \(\P{n+1}\).
+
+D'où \(\quantifs{\forall n\in\N}\P{n}\).
+\end{dem}
+
+\section{Arithmétique des polynômes}
+
+\subsection{Idéal d'un anneau commutatif}
+
+\begin{defi}[Idéal d'un anneau commutatif]
+Soit \(\anneau{A}\) un anneau commutatif.
+
+On appelle idéal de \(A\) toute partie \(I\subset A\) telle que :
+
+\begin{enumerate}
+\item \(I\) est un sous-groupe de \(\groupe{A}\). \\
+
+\item \(\quantifs{\forall a\in A;\forall x\in I}ax\in I\). \\
+\end{enumerate}
+\end{defi}
+
+\begin{prop}
+Soit \(\anneau{A}\) un anneau commutatif. Soit \(I\subset A\).
+
+Alors la partie \(I\) est un idéal de \(A\) si, et seulement si, elle vérifie :
+
+\begin{enumerate}\setcounter{enumi}{2}
+\item \(0_A\in I\). \\
+
+\item \(\quantifs{\forall x,y\in I}x+y\in I\). \\
+
+\item \(\quantifs{\forall a\in A;\forall x\in I}ax\in I\). \\
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\impdir
+
+Supposons (1) et (2).
+
+Alors on a (3) et (4) car \(I\) est un sous-groupe de \(A\) et on a (5) car on a (2).
+
+\imprec
+
+Supposons (3), (4) et (5).
+
+Alors (1) est vraie selon (3) et (4) et (2) est vraie selon (5).
+\end{dem}
+
+\begin{ex}
+Soit \(\anneau{A}\) un anneau commutatif dont on note \(0_A\) l'élément neutre pour la loi \(+\).
+
+Le singleton \(\accol{0}\) et l'ensemble en \(A\) tout-entier sont des idéaux de l'anneau commutatif \(A\).
+
+On appelle ces idéaux les idéaux triviaux de \(A\).
+\end{ex}
+
+\begin{ex}\thlabel{ex:ensembleDesMultiplesD'unElementEstUnIdeal}
+Soient \(\anneau{A}\) et \(a\in A\).
+
+L'ensemble des multiples de \(a\) : \[aA=\accol{b\in A\tq\quantifs{\exists c\in A}b=ca}\] est un idéal de \(A\).
+\end{ex}
+
+\begin{dem}
+On a \(0\in aA\) car \(0=0\times a\).
+
+Si \(x,y\in A\), il existe \(b,c\in A\) tels que \(x=ba\) et \(y=ca\).
+
+Donc \(x+y=\paren{b+c}a\in aA\).
+
+Si \(x\in aA\) et \(b\in A\), il existe \(c\in A\) tel que \(x=ac\) et on a \(bx=\paren{bc}a\in aA\).
+\end{dem}
+
+\begin{ex}\thlabel{ex:idéauxDeZ}
+Les idéaux de l'anneau \(\anneau{\Z}\) sont les sous-groupes du groupe \(\groupe{\Z}\).
+\end{ex}
+
+\begin{dem}
+Tout idéal de \(\Z\) est un sous-groupe de \(\Z\).
+
+Réciproquement, si \(H\) est un sous-groupe de \(\Z\) :
+
+Soit \(h\in H\).
+
+On a \(-h\in H\) et \(\quantifs{\forall n\in\N}\begin{dcases}nh\in H \\ -nh\in H\end{dcases}\) donc \(\quantifs{\forall n\in\Z}nh\in H\).
+
+Donc \(H\) est un idéal de \(\Z\).
+\end{dem}
+
+\begin{ex}
+Soient \(\anneau{A}\) et \(\anneau{B}\) deux anneaux et \(\phi:A\to B\) un morphisme d'anneaux.
+
+On suppose que l'anneau \(A\) est commutatif.
+
+On note \(0_B\) l'élément neutre de \(B\) pour la loi \(+\).
+
+On appelle noyau du morphisme d'anneaux \(\phi\) le noyau de \(\phi\) vu comme un morphisme de groupes de \(\groupe{A}\) vers \(\groupe{B}\), \cad : \[\ker\phi=\phi\inv\paren{\accol{0_B}}=\accol{x\in A\tq\phi\paren{x}=0_B}.\]
+
+Alors \(\ker\phi\) est un idéal de \(A\).
+\end{ex}
+
+\begin{dem}
+On sait que \(\ker\phi\) est un sous-groupe de \(\groupe{A}\).
+
+De plus, si \(a\in A\) et \(x\in\ker\phi\), alors \(\phi\paren{ax}=\phi\paren{a}\phi\paren{x}=\phi\paren{a}\times0=0\).
+
+Donc \(ax\in\ker\phi\).
+
+Donc \(\ker\phi\) est un idéal de \(A\).
+\end{dem}
+
+\begin{prop}[Intersection d'idéaux]
+Soient \(\anneau{A}\) un anneau commutatif et \(\paren{I_j}_{j\in J}\) une famille d'idéaux de \(A\).
+
+Alors l'intersection \(\biginter_{j\in J}I_j\) est un idéal de \(A\).
+\end{prop}
+
+\begin{dem}
+Pour tout \(j\in J\), \(I_j\) est un sous-groupe de \(\groupe{A}\) donc \(\biginter_{j\in J}I_j\) est un sous-groupe de \(\groupe{A}\).
+
+Soient \(a\in A\) et \(x\in\biginter_{j\in J}I_j\).
+
+On a \(\quantifs{\forall j\in J}ax\in I_j\) car \(x\in I_j\) et \(I_j\) est un idéal de \(A\).
+
+Donc \(ax\in\biginter_{j\in J}I_j\).
+
+Donc \(\biginter_{j\in J}\) est un idéal de \(A\).
+\end{dem}
+
+\begin{defprop}[Somme d'idéaux]
+Soient \(\anneau{A}\) un anneau commutatif et \(I_1,I_2\) deux idéaux de \(A\).
+
+On appelle somme de \(I_1\) et \(I_2\) et on note \(I_1+I_2\) l'ensemble : \[\begin{aligned}
+I_1+I_2&=\accol{x\in A\tq\quantifs{\exists x_1\in I_1;\exists x_2\in I_2}x=x_1+x_2} \\
+&=\accol{x_1+x_2}_{\paren{x_1,x_2}\in I_1\times I_2}
+\end{aligned}\]
+
+On a :
+
+\begin{enumerate}
+\item L'ensemble \(I_1+I_2\) est un idéal de \(A\). \\
+
+\item La loi \(+\) est une loi de composition interne sur l'ensemble des idéaux de \(A\). \\
+
+\item Cette loi \(+\) est associative et commutative.
+\end{enumerate}
+\end{defprop}
+
+\begin{dem}[1]
+On a \(I_1+I_2\subset A\) et \(\underbrace{0}_{\in A}=\underbrace{0}_{\in I_1}+\underbrace{0}_{\in I_2}\in I_1+I_2\).
+
+Enfin, si \(x\in I_1+I_2\) et \(a\in A\), il existe \(x_1\in I_1\) et \(x_2\in I_2\) tels que \(x=x_1+x_2\).
+
+D'où \(ax=\underbrace{ax_1}_{\in I_1}+\underbrace{ax_2}_{\in I_2}\in I_1+I_2\).
+
+Donc \(I_1+I_2\) est un idéal de \(A\).
+\end{dem}
+
+\begin{dem}[2 et 3]
+Clair car la loi \(+\) de \(A\) est associative et commutative.
+\end{dem}
+
+\begin{theo}[Idéaux de \(\Z\)]\thlabel{theo:idéauxDeZ}
+Les idéaux de l'anneau commutatif \(\anneau{\Z}\) sont les ensembles de la forme \(n\Z\) où \(n\in\N\).
+\end{theo}
+
+\begin{dem}
+On a vu à l'\thref{ex:idéauxDeZ} que les idéaux de \(\Z\) sont ses sous-groupes donc le théorème n'est qu'un reformulation de la description des sous-groupes de \(\Z\) (\cf \thref{theo:nZSontLesSousGroupesDeZ}).
+\end{dem}
+
+\begin{theo}[Idéaux de \(\poly\)]\thlabel{theo:idéauxDePoly}
+Les idéaux de l'anneau commutatif \(\anneau{\poly}\) sont les ensembles de la forme \(\poly P\) où \(P\in\poly\), \cad les idéaux formés des multiples d'un polynôme donné.
+\end{theo}
+
+\begin{dem}
+\increc
+
+On a déjà vu que pour tout \(P\in\poly\), \(\poly P\) est un idéal de \(\poly\) (\thref{ex:ensembleDesMultiplesD'unElementEstUnIdeal}).
+
+\incdir
+
+Soit \(I\) un idéal de \(\poly\).
+
+Si \(I=\accol{0}\) alors \(I=\poly P\) en prenant \(P=0\).
+
+On suppose \(I\not=\accol{0}\).
+
+On a \(I\excluant\accol{0}\not=\ensvide\) donc \(\accol{\deg P}_{P\in I\excluant\accol{0}}\) est une partie non-vide de \(\N\).
+
+Soit \(P\in I\excluant\accol{0}\) tel que \(\deg P\) soit minimal (\cad tel que \(\quantifs{\forall Q\in I\excluant\accol{0}}\deg P\leq\deg Q\)).
+
+Montrons que \(I=\poly P\).
+
+\increc On a \(\quantifs{\forall Q\in\poly}QP\in I\) donc \(\poly P\subset I\).
+
+\incdir
+
+Soit \(A\in I\).
+
+On note \(Q\) et \(R\) le quotient et le reste de la division euclidienne de \(A\) par \(P\).
+
+On a \(\begin{dcases}A=QP+R \\ \deg R<\deg P\end{dcases}\)
+
+On a \(R\in I\) car \(R=A-QP\) et \(A,P\in I\).
+
+Donc \(R=0\) car \(\deg R<\deg P\).
+
+Donc \(A=QP\in\poly P\).
+\end{dem}
+
+\begin{rem}[Hors-programme]
+Soit \(\anneau{A}\) un anneau commutatif.
+
+On appelle idéal principal de \(A\) tout idéal de la forme \(aA\) où \(a\in A\), \cad tout idéal formé des multiples d'un élément de \(A\) (\cf \thref{ex:ensembleDesMultiplesD'unElementEstUnIdeal}).
+
+On dit que \(A\) est un anneau principal si \(A\) est un anneau intègre et si tout idéal de \(A\) est principal.
+
+On peut résumer le \thref{theo:idéauxDeZ} et le \thref{theo:idéauxDePoly} en disant que les anneaux \(\Z\) et \(\poly\) sont des anneaux principaux.
+\end{rem}
+
+\subsection{PGCD}
+
+L'étude du PGCD de deux polynômes dans \(\poly\) se fait exactement de la même façon que celle du PGCD de deux entiers dans \(\Z\) (et, plus généralement, on pourrait traiter de la même façon le PGCD de deux éléments dans un anneau principal).
+
+Afin d'alléger l'exposé, on se contente de la preuve algébrique de l'existence du PGCD et de la relation de Bézout, mais on aurait aussi pu en donner, comme pour les entiers, une preuve algorithmique basée sur l'algorithme d'Euclide.
+
+\subsubsection{PGCD de deux polynômes}
+
+\begin{deftheo}
+Soient \(A,B\in\poly\).
+
+On rappelle qu'on note \(\ensdiv{A}\) l'ensemble des diviseurs de \(A\) nuls ou unitaires.
+
+Les diviseurs nuls ou unitaires communs à \(A\) et \(B\) sont les éléments de l'ensemble \(\ensdiv{A}\inter\ensdiv{B}\).
+
+On munit cet ensemble de la relation d'ordre \(\divise\) (la divisibilité est bien une relation d'ordre sur cet ensemble selon la \thref{prop:divisibilitéEntrePolynômesUnitaires}).
+
+L'ensemble \(\ensdiv{A}\inter\ensdiv{B}\) possède un plus grand élément appelé le plus grand diviseur commun à \(A\) et \(B\) et noté \(A\et B\).
+\end{deftheo}
+
+\begin{dem}
+L'ensemble \(\poly A+\poly B\) est un idéal de \(\poly\) donc il existe \(D_1\in\poly\) tel que \(\poly A+\poly B=\poly D_1\).
+
+Posons \(D=\begin{dcases}D_1 &\text{si }D_1=0 \\ \dfrac{1}{\lambda}D_1 &\text{sinon, en notant \(\lambda\) le coefficient dominant de \(D_1\)}\end{dcases}\)
+
+Ainsi, on a \(\begin{dcases}D\text{ nul ou unitaire} \\ \poly A+\poly B=\poly D\end{dcases}\)
+
+On a \(A=1A+0B\in\poly A+\poly B\) donc \(A\in\poly D\) donc \(D\divise A\).
+
+On montre de même \(D\divise B\).
+
+Soit \(C\in\poly\) divisant \(A\) et \(B\).
+
+Soient \(C_1,C_2\in\poly\) tels que \(CC_1=A\) et \(CC_2=B\).
+
+On a \(D\in\poly D\) donc \(D\in\poly A+\poly B\).
+
+Soient \(U,V\in\poly\) tels que \(UA+VB=D\).
+
+On a \(D=UCC_1+VCC_2=C\paren{UC_1+VC_2}\).
+
+Donc \(C\divise D\).
+
+Donc \(D\) est le plus grand élément de \(\ensdiv{A}\inter\ensdiv{B}\) pour \(\divise\).
+\end{dem}
+
+\begin{ex}
+Posons \(A=X^2-1\) et \(B=X^2-X\).
+
+Alors \(A\et B=X-1\).
+\end{ex}
+
+\begin{dem}
+On a \(A=\paren{X-1}\paren{X+1}\) et \(B=\paren{X-1}X\).
+
+Donc \(X-1\) divise \(A\) et \(B\).
+
+De plus, \(X-1\) est unitaire.
+
+Quels sont les diviseurs unitaires de \(A\) ?
+
+\analyse
+
+Soient \(A_1\in\poly\) un diviseur de \(A\) et \(A_2\in\poly\) tel que \(A_1A_2=A\).
+
+On a \(\deg A_1+\deg A_2=\deg A\) et \(\begin{dcases}A_1\not=0 \\ A_2\not=0\end{dcases}\)
+
+Donc \(\deg A_1\in\accol{0;1;2}\).
+
+Si \(\deg A_1=0\) alors \(A_1\) est constant et non-nul.
+
+Si \(\deg A_1=1\) alors \(A_1\) admet une unique racine qui doit être racine de \(A\), \ie \(1\) ou \(-1\).
+
+Si \(\deg A_1=2\) alors \(A_2\) est constant et non-nul, donc \(A_1\) est associé à \(A\).
+
+Si, de plus, \(A_1\) est unitaire, alors \(A_1=1\), \(A_1=X-1\), \(A_1=X+1\) ou \(A_1=X^2-1\).
+
+\synthese
+
+Ces quatre polynômes divisent \(A\) et sont unitaires.
+
+\conclusion
+
+On a \(\ensdiv{A}=\accol{1;X-1;X+1;X^2-1}\).
+
+De même, on a \(\ensdiv{B}=\accol{1;X-1;X;X^2-X}\).
+
+Donc \(\ensdiv{A}\inter\ensdiv{B}=\accol{1;X-1}\).
+
+Donc \(A\et B=X-1\).
+\end{dem}
+
+\begin{rem}
+Soit \(A\in\poly\).
+
+On a \(A\et1=1\).
+
+Si \(A=0\) alors \(A\et0=0\) ; sinon \(A\et0\) est l'unique polynôme unitaire associé à \(A\).
+\end{rem}
+
+\begin{rem}
+Soient \(A,B\in\poly\).
+
+\begin{enumerate}
+\item Le polynôme \(A\et B\) est le diviseur commun à \(A\) et \(B\) nul ou unitaire et qui est divisible par tous les autres diviseurs communs à \(A\) et \(B\). \\
+
+\item Il est donc caractérisé par : \[A\et B\text{ nul ou unitaire}\qquad\text{et}\qquad\ensdiv{A}\inter\ensdiv{B}=\ensdiv{A\et B}\] ou par : \[A\et B\text{ nul ou unitaire}\qquad\text{et}\qquad\quantifs{\forall P\in\poly}P\divise A\et B\ssi\croch{P\divise A\text{ et }P\divise B}.\]
+
+\item Si \(A=B=0\) alors \(0\et0=0\).
+
+Sinon, \(A\et B\) est le polynôme unitaire du plus haut degré qui divise \(A\) et \(B\) (selon la \thref{prop:divisibilitéDansPoly}).
+\end{enumerate}
+\end{rem}
+
+\begin{dem}[2]
+Soit \(P\in\poly\).
+
+Montrons qu'on a \(P\divise A\et B\ssi\croch{P\divise A\text{ et }P\divise B}\).
+
+\impdir Si \(P\divise A\et B\) alors \(P\divise A\) car \(A\et B\divise A\) et \(P\divise B\) car \(A\et B\divise B\).
+
+\imprec
+
+Supposons \(P\divise A\) et \(P\divise B\).
+
+On pose \(P_1\) le polynôme nul ou unitaire associé à \(P\) :
+
+\(P_1=\begin{dcases}P_1=0 &\text{si }P=0 \\ P_1=\dfrac{1}{\lambda}P &\text{en notant }\lambda\text{ le coefficient dominant de }P\end{dcases}\)
+
+On a \(P_1\divise P\), \(P\divise A\) et \(P\divise B\).
+
+Donc \(P_1\divise A\) et \(P_1\divise B\).
+
+Donc \(P_1\divise A\et B\).
+
+Donc \(P\divise A\et B\).
+\end{dem}
+
+\begin{rem}
+Soient \(A,B\in\poly\).
+
+Le polynôme \(A\et B\) est nul si, et seulement si, on a \(A=B=0\).
+
+Si \(A\) ou \(B\) est non-nul, on impose systématiquement au polynôme \(A\et B\) d'être unitaire.
+
+En revanche, on s'autorise parfois à appeler \guillemets{plus grand commun diviseur de \(A\) et \(B\)} tout polynôme \(P\) associé à \(A\) et \(B\), même s'il n'est pas unitaire.
+
+Ainsi, on dit que \(2X-2\) est un PGCD de \(X^2-1\) et \(X^2-X\).
+\end{rem}
+
+\subsubsection{Propriétés}
+
+\begin{prop}\thlabel{prop:PGCDFoisPolynomesAssocies}
+Soient \(A,B,P\in\poly\).
+
+Les polynômes \(PA\et PB\) et \(P\times\paren{A\et B}\) sont associés.
+\end{prop}
+
+\begin{dem}
+Montrons que \(P\times\paren{A\et B}\) divise \(PA\et PB\).
+
+On a \(A\et B\) divise \(A\) et \(B\).
+
+Donc \(P\times\paren{A\et B}\) divise \(PA\) et \(PB\).
+
+Donc \(P\times\paren{A\et B}\) divise \(PA\et PB\).
+
+Montrons que \(PA\et PB\) divise \(P\times\paren{A\et B}\).
+
+On a \(P\) divise \(PA\) et \(PB\).
+
+Donc \(P\) divise \(PA\et PB\).
+
+Soit \(Q\in\poly\) tel que \(PA\et PB=PQ\).
+
+On remarque que \(PQ\) divise \(PA\) et \(PB\).
+
+Donc, en supposant que \(P\not=0\), on a \(Q\) divise \(A\) et \(B\).
+
+Donc \(Q\) divise \(A\et B\).
+
+Donc \(PA\et PB=PQ\) divise \(P\times\paren{A\et B}\).
+
+Ceci est également vrai si \(P=0\).
+
+Finalement, comme les deux polynômes se divisent mutuellement, ils sont associés.
+\end{dem}
+
+\begin{defprop}[Relation de Bézout]\thlabel{defprop:relationDeBezoutPolys}
+Soient \(A,B\in\poly\).
+
+Il existe \(U,V\in\poly\) tels que \[UA+VB=A\et B.\]
+
+Une telle écriture s'appelle une relation de Bézout.
+
+Elle n'est pas unique.
+\end{defprop}
+
+\begin{dem}
+On a vu que \(\poly A+\poly B=\poly\paren{A\et B}\).
+
+On a \(A\et B\in\poly\paren{A\et B}\) donc \(A\et B\in\poly A+\poly B\).
+
+Donc il existe \(U,V\in\poly\) tels que \(A\et B=UA+VB\).
+
+Ces polynômes ne sont pas unique car si \(\paren{U,V}\) convient, \(\paren{U+B,V+A}\) convient aussi.
+\end{dem}
+
+\subsubsection{Algorithme d'Euclide}
+
+Les deux lemmes suivants servent à justifier l'algorithme d'Euclide.
+
+\begin{lem}
+Soient \(A,B\in\poly\) tels que \(B\not=0\).
+
+On note \(R\) le reste de la division euclidienne de \(A\) par \(B\).
+
+Alors \[A\et B=R\et B.\]
+\end{lem}
+
+\begin{dem}
+C'est clair car les polynômes qui divisent \(A\) et \(B\) sont ceux qui divisent \(R\) et \(B\).
+\end{dem}
+
+\begin{lem}
+Soient \(A,B\in\poly\).
+
+On définit le polynôme \(A_1\) en posant : \begin{itemize}
+\item si \(A=0\) alors \(A_1=0\) ;
+
+\item sinon \(A_1\) est l'unique polynôme unitaire associé à \(A\). \\
+\end{itemize}
+
+On a : \[A\et B=A_1\ssi A\divise B.\]
+\end{lem}
+
+\begin{dem}
+\impdir
+
+Comme \(A\) et \(A_1\) sont associés, ils se divisent mutuellement.
+
+On a \(A\divise A_1\) et \(A_1=A\et B\divise B\).
+
+D'où \(A\divise B\).
+
+\imprec
+
+Supposons \(A\divise B\).
+
+Alors les diviseurs communs à \(A\) et \(B\) sont les diviseurs de \(A\), \cad les diviseurs de \(A_1\).
+
+Donc \(A\et B=A_1\).
+\end{dem}
+
+\begin{algo}[Algorithme d'Euclide]
+\Cf \thref{algo:EuclideEntiers}.
+\end{algo}
+
+\begin{algo}[Algorithme d'Euclide étendu]
+\Cf \thref{algo:EuclideEtenduEntiers} (même principe).
+\end{algo}
+
+\subsubsection{PGCD de plusieurs polynômes}
+
+\begin{prop}
+La loi \(\et\) est une loi de composition interne sur \(\poly\).
+
+Elle est associative et commutative.
+\end{prop}
+
+\begin{dem}
+\note{Exercice} (\cf \thref{dem:pgcdLCIsurZ}).
+\end{dem}
+
+\begin{defprop}
+Soient \(r\in\Ns\) et \(A_1,\dots,A_r\in\poly\).
+
+Les diviseurs communs à \(A_1,\dots,A_r\) sont les diviseurs du polynôme \(A_1\et\dots\et A_r\).
+
+Ce polynôme est appelé le plus grand commun diviseur des polynômes \(A_1,\dots,A_r\).
+\end{defprop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}
+Soient \(r\in\Ns\) et \(A_1,\dots,A_r,P\in\poly\).
+
+Les polynômes \(PA_1\et\dots\et PA_r\) et \(P\times\paren{A_1\et\dots\et A_r}\) sont associés.
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:PGCDFoisPolynomesAssocies} par récurrence sur \(r\in\Ns\).
+\end{dem}
+
+\begin{defprop}[Relation de Bézout pour \(r\in\Ns\) polynômes]
+Soient \(r\in\Ns\) et \(A_1,\dots,A_r\in\poly\).
+
+Alors il existe \(U_1,\dots,U_r\in\poly\) tels que \[U_1A_1+\dots+U_rA_r=A_1\et\dots\et A_r.\]
+
+Une telle écriture est appelée une relation de Bézout. Elle n'est pas unique.
+\end{defprop}
+
+\begin{dem}
+On raisonne par récurrence sur \(r\in\interventierie{2}{\pinf}\).
+
+Pour tout \(r\geq2\), on note \(\P{r}\) la proposition \[\quantifs{\forall A_1,\dots,A_r\in\poly;\exists U_1,\dots,U_r\in\poly}U_1A_1+\dots+U_rA_r=A_1\et\dots\et A_r.\]
+
+D'après la \thref{defprop:relationDeBezoutPolys}, on a \(\P{2}\).
+
+Soit \(r\in\interventierie{2}{\pinf}\) tel que \(\P{r}\).
+
+Soient \(A_1,\dots,A_{r+1}\in\poly\).
+
+Selon \(\P{r}\), il existe \(U_1,\dots,U_r\in\poly\) tels que \(U_1A_1+\dots+U_rA_r=A_1\et\dots\et A_r\).
+
+Selon \(\P{2}\), il existe \(U,V\in\poly\) tels que \(U\times\paren{A_1\et\dots\et A_r}+VA_{r+1}=\paren{A_1\et\dots\et A_r}\et A_{r+1}\).
+
+Finalement : \[UU_1A_1+\dots+UU_rA_r+VA_{r+1}=A_1\et\dots\et A_{r+1}.\]
+
+D'où \(\P{r+1}\).
+
+Donc on a \(\quantifs{\forall r\in\interventierie{2}{\pinf}}\P{r}\).
+\end{dem}
+
+\subsection{Polynômes premiers entre eux}
+
+Les démonstrations sont laissées en exercice (\cf \ref{sec:entiersPremiersEntreEux}).
+
+\subsubsection{Cas de deux polynômes}
+
+\begin{defi}[Polynômes premiers entre eux]
+Deux polynômes \(A,B\in\poly\) sont dits premiers entre eux s'ils vérifient \[A\et B=1.\]
+
+Cela signifie que leurs seuls diviseurs communs sont les polynômes inversibles.
+\end{defi}
+
+\begin{theo}[Théorème de Bézout]
+Soient \(A,B\in\poly\).
+
+On a \[A\text{ et }B\text{ sont premiers entre eux}\ssi\quantifs{\exists U,V\in\poly}UA+VB=1.\]
+\end{theo}
+
+\begin{lem}[Lemme de Gauss]
+Soient \(A,B,P\in\poly\).
+
+On suppose \[P\divise AB\qquad\text{et}\qquad P\et B=1.\]
+
+Alors \[P\divise A.\]
+\end{lem}
+
+\begin{prop}
+Soient \(A,B,P\in\poly\).
+
+On suppose \[A\et P=1\qquad\text{et}\qquad B\et P=1.\]
+
+Alors \[P\et AB=1.\]
+\end{prop}
+
+\begin{cor}\thlabel{cor:polysTousPremiersImpliqueProduitPremier}
+Soient \(r\in\Ns\) et \(A_1,\dots,A_r\in\poly\).
+
+On suppose \[\quantifs{\forall k\in\interventierii{1}{r}}A_k\et P=1.\]
+
+Alors \[P\et A_1\dots A_r=1.\]
+\end{cor}
+
+\begin{prop}\thlabel{prop:polysPremiersEntreEuxQuiDivisentDoncProduitDivise}
+Soient \(A,B,P\in\poly\).
+
+On suppose \[A\divise P\qquad\text{et}\qquad B\divise P\qquad\text{et}\qquad A\et B=1.\]
+
+Alors \[AB\divise P.\]
+\end{prop}
+
+\subsubsection{Cas de plusieurs polynômes}
+
+\begin{defi}
+Soient \(r\in\Ns\) et \(A_1,\dots,A_r\in\poly\).
+
+On dit que les polynômes \(A_1,\dots,A_r\) sont premiers entre eux deux à deux si on a \[\quantifs{\forall i,j\in\interventierii{1}{r}}i\not=j\imp A_i\et A_j=1.\]
+
+On dit que les polynômes \(A_1,\dots,A_r\) sont premiers entre eux dans leur ensemble si \[A_1\et\dots\et A_r=1.\]
+\end{defi}
+
+\begin{rem}
+Soient \(r\in\interventierie{2}{\pinf}\) et \(A_1,\dots,A_r\in\poly\).
+
+La proposition \guillemets{\(A_1,\dots,A_r\) sont premiers entre eux deux à deux} implique la proposition \guillemets{\(A_1,\dots,A_r\) sont premiers entre eux dans leur ensemble}.
+
+L'implication réciproque est fausse.
+\end{rem}
+
+\subsection{PPCM}
+
+\subsubsection{PPCM de deux polynômes}
+
+\begin{defprop}
+\renewcommand{\U}{\mathscr{U}}
+Soient \(A,B\in\poly\).
+
+Notons \(\U\) l'ensemble des polynômes de \(\poly\) nuls ou unitaires.
+
+On a vu que la relation \(\divise\) est une relation d'ordre sur cet ensemble (\cf \thref{prop:divisibilitéEntrePolynômesUnitaires}).
+
+Dans cet ensemble ordonné \(\groupe{\U}[\divise]\), il existe un plus petit multiple commun à \(A\) et \(B\), \cad un polynôme \(A\ou B\in\poly\) tel que \[A\ou B\in\U\qquad\text{et}\qquad\begin{dcases}A\divise A\ou B \\ B\divise A\ou B\end{dcases}\qquad\text{et}\qquad\quantifs{\forall M\in\poly}\begin{dcases}A\divise M \\ B\divise M\end{dcases}\imp A\ou B\divise M.\]
+
+Ce polynôme \(A\ou B\) est appelé le plus petit commun multiple de \(A\) et \(B\).
+\end{defprop}
+
+\begin{dem}
+\renewcommand{\U}{\mathscr{U}}
+Posons \(I=\poly A\inter\poly B\).
+
+\(I\) est un idéal de \(\poly\) car c'est l'intersection de deux idéaux.
+
+Soit \(P\in\poly\) tel que \(I=\poly P\).
+
+Quitte à multiplier \(P\) par un élément non-nul de \(\K\), on peut supposer \(P\in\U\).
+
+On a \(P\in\poly A\) donc \(A\divise P\) et \(P\in\poly B\) donc \(B\divise P\).
+
+Soit \(M\in\poly\) tel que \(\begin{dcases}A\divise M \\ B\divise M\end{dcases}\)
+
+On a \(M\in\poly A\) et \(M\in\poly B\) donc \(M\in I\).
+
+Donc \(P\divise M\).
+\end{dem}
+
+\begin{ex}
+On pose \(A=X^2-1\) et \(B=X^2-X\).
+
+Alors \(A\ou B=X^3-X\).
+\end{ex}
+
+\begin{dem}
+On a \(X^3-X\) unitaire.
+
+\(X^3-X\) est un multiple commun à \(A\) et \(B\) car \(X^3-X=X\paren{X^2-1}=\paren{X+1}\paren{X^2-X}\).
+
+Soit \(M\in\poly\) tel que \(A\divise M\) et \(B\divise M\).
+
+On a \(\begin{dcases}\paren{X+1}\paren{X-1}\divise M \\ X\paren{X-1}\divise M\end{dcases}\) donc \(\begin{dcases}X+1\divise M \\ X\paren{X-1}\divise M\end{dcases}\)
+
+De plus, on a \(\paren{X+1}\et\paren{X^2-X}=1\) car \(\paren{X-2}\paren{X+1}-\paren{X^2-X}=2\).
+
+Donc \(\paren{X+1}X\paren{X-1}\divise M\).
+
+Donc \(X\paren{X-1}\paren{X+1}=X^3-X=A\ou B\).
+\end{dem}
+
+\begin{rem}
+Soit \(A\in\poly\).
+
+On a \(A\ou0=0\).
+
+Si \(A=0\) alors \(A\ou1=0\). Sinon, \(A\ou1\) est l'unique polynôme unitaire associé à \(A\).
+\end{rem}
+
+\begin{rem}
+Soient \(A,B\in\poly\).
+
+Le PPCM de \(A\) et \(B\) est le multiple commun à \(A\) et \(B\) nul ou unitaire et qui divise tous les autres multiples communs à \(A\) et \(B\).
+
+Il est donc caractérisé par : \[A\ou B\text{ nul ou unitaire}\qquad\text{et}\qquad\poly A\inter\poly B=\poly\paren{A\ou B}\] ou par \[A\ou B\text{ nul ou unitaire}\qquad\text{et}\qquad\quantifs{\forall P\in\poly}A\ou B\divise P\ssi\croch{A\divise P\text{ et }B\divise P}.\]
+
+Si \(A=0\) ou \(B=0\) alors \(A\ou B=0\).
+
+Sinon, \(A\ou B\) est le polynôme unitaire de plus bas degré qui est multiple de \(A\) et \(B\) (selon la \thref{prop:divisibilitéDansPoly}).
+\end{rem}
+
+\begin{rem}
+Soient \(A,B\in\poly\).
+
+Le polynôme \(A\ou B\) est nul si, et seulement si, on a \(A=B=0\).
+
+Si \(A\) ou \(B\) est non-nul, on impose systématiquement au polynôme noté \(A\ou B\) d'être unitaire.
+
+En revanche, on s'autorise parfois à appeler \guillemets{plus petit commun multiple de \(A\) et \(B\)} tout polynôme \(P\) associé à \(A\ou B\), même s'il n'est pas unitaire.
+
+Ainsi, on dit que \(2X^3-2X\) est un PPCM de \(X^2-1\) et \(X^2-X\).
+\end{rem}
+
+\begin{rem}
+Soient \(A,B\in\poly\).
+
+On définit le polynôme \(A_1\) en posant : \begin{itemize}
+\item si \(A=0\) alors \(A_1=0\) ;
+
+\item si \(A\not=0\) alors \(A_1\) est l'unique polynôme unitaire associé à \(A\). \\
+\end{itemize}
+
+On a \[A\ou B=A_1\ssi B\divise A.\]
+\end{rem}
+
+\begin{prop}\thlabel{prop:PPCMFoisPolyAssociés}
+Soient \(A,B,P\in\poly\).
+
+Les polynômes \(PA\ou PB\) et \(P\times\paren{A\ou B}\) sont associés.
+\end{prop}
+
+\begin{dem}
+Si \(P=0\), la proposition est vraie.
+
+Supposons \(P\not=0\).
+
+Montrons que \(PA\ou PB\) divise \(P\times\paren{A\ou B}\).
+
+On a \(A\) et \(B\) divisent \(A\ou B\).
+
+Donc \(PA\) et \(PB\) divisent \(P\times\paren{A\ou B}\).
+
+Donc \(PA\ou PB\) divise \(P\times\paren{A\ou B}\).
+
+Montrons que \(P\times\paren{A\ou B}\) divise \(PA\ou PB\).
+
+On remarque que \(P\) divise \(PA\ou PB\) (car \(P\divise PA\divise PA\ou PB\)).
+
+Soit \(M\in\poly\) tel que \(MP=PA\ou PB\).
+
+On a \(PA\) et \(PB\) divisent \(MP\).
+
+Comme \(P\not=0\), on en déduit \(A\) et \(B\) divisent \(M\).
+
+Donc \(A\ou B\) divise \(M\).
+
+Donc \(P\times\paren{A\ou B}\) divise \(PM\).
+
+Donc \(P\times\paren{A\ou B}\) divise \(PA\ou PB\).
+
+Conclusion : les polynômes \(PA\ou PB\) et \(P\times\paren{A\ou B}\) sont associés.
+\end{dem}
+
+\begin{prop}
+Soient \(A,B\in\poly\).
+
+Les polynômes \(\paren{A\ou B}\paren{A\et B}\) et \(AB\) sont associés.
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\subsubsection{PPCM de plusieurs polynômes}
+
+\begin{prop}
+La loi \(\ou\) est une loi de composition interne sur \(\poly\).
+
+Elle est associative et commutative.
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{defprop}
+Soient \(r\in\Ns\) et \(A_1,\dots,A_r\in\poly\).
+
+Les diviseurs communs à \(A_1,\dots,A_r\) sont les diviseurs du polynôme \(A_1\ou\dots\ou A_r\).
+
+Ce polynôme et ses polynômes associés sont appelés les plus petits communs multiples des polynômes \(A_1,\dots,A_r\).
+\end{defprop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}
+Soient \(r\in\Ns\) et \(A_1,\dots,A_r,P\in\poly\).
+
+Les polynômes \(PA_1\ou\dots\ou PA_r\) et \(P\times\paren{A_1\ou\dots\ou A_r}\) sont associés.
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:PPCMFoisPolyAssociés} par récurrence sur \(r\in\Ns\).
+\end{dem}
+
+\subsection{Polynômes irréductibles}
+
+\subsubsection{Définition}
+
+\begin{defi}[Polynôme irréductible]
+Un polynôme \(P\in\poly\) est dit irréductible sur \(\K\) ou dans \(\poly\) s'il est non-constant et s'il n'est pas le produit de deux polynômes non-constants : \[\begin{dcases}P\text{ non-constant} \\ \quantifs{\forall Q_1,Q_2\in\poly}P=Q_1Q_2\imp\croch{Q_1\text{ constant ou }Q_2\text{ constant}}\end{dcases}\]
+
+On a donc \[\quantifs{\forall P\in\poly}P\text{ irréductible}\ssi\croch{P\not\in\K\text{ et }\ensdiv{P}=\accol{1;P_1}}\] avec \(P_1\) l'unique polynôme unitaire associé à \(P\).
+\end{defi}
+
+\begin{dem}
+\impdir
+
+Supposons \(P\) irréductible.
+
+Alors \(P\not\in\K\) (en particulier, \(P\not=0\)).
+
+Déterminons \(\ensdiv{P}\) :
+
+\analyse
+
+Soit \(D\in\ensdiv{P}\).
+
+On a \(D\not=0\) car \(P\not=0\) donc \(D\) est unitaire.
+
+Soit \(Q\in\poly\) tel que \(P=QD\).
+
+Si \(D\) est constant alors \(D=1\) car \(D\) est unitaire.
+
+Si \(Q\) est constant alors \(Q\) est constant et non-nul (car \(P\not=0\)) donc \(D\) est unitaire et associé à \(P\) donc \(D=P_1\).
+
+\synthese \(1\) et \(P_1\) divisent \(P\) et sont irréductibles.
+
+\conclusion On a \(\ensdiv{P}=\accol{1;P_1}\).
+
+\imprec
+
+Supposons \(P\not\in\K\) et \(\ensdiv{P}=\accol{1;P_1}\).
+
+Montrons que \(P\) est irréductible.
+
+On a bien \(P\) non-constant.
+
+Soient \(Q_1,Q_2\in\poly\) tels que \(P=Q_1Q_2\).
+
+Comme \(P\not=0\), on a \(Q_1\not=0\) et \(Q_2\not=0\).
+
+On note \(\lambda_1\) le coefficient dominant de \(Q_1\).
+
+On a \(P=\paren{\dfrac{1}{\lambda_1}Q_1}\lambda_1Q_2\) donc \(\dfrac{1}{\lambda_1}Q_1\in\ensdiv{P}=\accol{1;P_1}\).
+
+Si \(\dfrac{1}{\lambda_1}Q_1=1\) alors \(Q_1\) est constant.
+
+Si \(\dfrac{1}{\lambda_1}Q_1=P_1\) alors \(Q_1\) est associé à \(P\).
+
+Donc \(\deg Q_1=\deg P\).
+
+Or \(P=Q_1Q_2\) donc \(\deg P=\deg Q_1+\deg Q_2\).
+
+Donc \(\deg Q_2=0\) donc \(Q_2\) est constant.
+\end{dem}
+
+\begin{rem}
+On n'impose pas aux polynômes irréductibles d'être unitaires.
+\end{rem}
+
+\begin{ex}
+\begin{enumerate}
+\item Tout polynôme de degré \(1\) est irréductible. \\
+
+\item Le polynôme \(P=X^2+1\) est irréductible sur \(\R\) mais pas sur \(\C\).
+\end{enumerate}
+\end{ex}
+
+\begin{dem}[1]
+Soit \(P\in\poly\) tel que \(\deg P=1\).
+
+Montrons que \(P\) est irréductible.
+
+On a \(P\) non-constant.
+
+Soient \(Q_1,Q_2\in\poly\) tels que \(P=Q_1Q_2\).
+
+On a \(P\not=0\) donc \(Q_1\not=0\) et \(Q_2\not=0\).
+
+On a \(1=\deg P=\deg Q_1+\deg Q_2\).
+
+Donc \(\deg Q_1=0\) ou \(\deg Q_2=0\).
+
+Donc \(Q_1\) constant ou \(Q_2\) constant.
+
+Donc \(P\) est irréductible.
+\end{dem}
+
+\begin{dem}[2]
+On a \(X^2+1=\paren{X-\i}\paren{X+\i}\) donc \(P\) n'est pas irréductible sur \(\C\).
+
+Montrons que \(P\) est irréductible sur \(\R\).
+
+On a \(P\) non-constant.
+
+Soient \(Q_1,Q_2\in\poly[\R]\) tels que \(P=Q_1Q_2\).
+
+On a \(2=\deg P=\deg Q_1+\deg Q_2\).
+
+Donc \(\paren{\deg Q_1,\deg Q_2}\in\accol{\paren{2,0};\paren{1,1};\paren{0,2}}\).
+
+Supposons par l'absurde \(\paren{\deg Q_1,\deg Q_2}=\paren{1,1}\).
+
+Alors \(Q_1\) et \(Q_2\) admettent chacun une racine dans \(\R\).
+
+Donc \(P\) admet une racine dans \(\R\) : contradiction.
+
+Donc \(\paren{\deg Q_1,\deg Q_2}\in\accol{\paren{2,0};\paren{0,2}}\).
+
+Donc \(Q_1\) ou \(Q_2\) est constant.
+
+Donc \(P\) est irréductible.
+\end{dem}
+
+\begin{rem}\thlabel{rem:polynômeIrréductibleEstDeDegré1S'ilAdmetUneRacine}
+Soit \(P\in\poly\) irréductible.
+
+\begin{enumerate}
+\item Si \(P\) admet une racine alors \(\deg P=1\). \\
+
+\item D'où, par contraposée : si \(\deg P\geq2\) alors \(P\) n'admet aucune racine.
+\end{enumerate}
+\end{rem}
+
+\begin{dem}
+Montrons (1).
+
+Supposons que \(P\) admet une racine \(\lambda\in\K\).
+
+Alors \(X-\lambda\divise P\).
+
+Soit \(Q\in\poly\) tel que \(\paren{X-\lambda}Q=P\).
+
+Comme \(P\) est irréductible, on a \(X-\lambda\) constant ou \(Q\) constant.
+
+Donc \(Q\) est constant.
+
+De plus, \(Q\not=0\) car \(P\not=0\).
+
+Donc \(\deg Q=0\) et \(\deg P=\deg\paren{X-\lambda}+\deg Q=1+0=1\).
+\end{dem}
+
+\begin{rem}
+Soient \(P,Q\in\poly\).
+
+On suppose que \(P\) est irréductible.
+
+Alors \[P\not\divise Q\ssi P\et Q=1.\]
+\end{rem}
+
+\subsubsection{Polynômes irréductibles sur \(\C\) et \(\R\)}
+
+\begin{theo}
+Les polynômes irréductibles dans \(\poly[\C]\) sont ceux de degré \(1\).
+\end{theo}
+
+\begin{dem}
+\increc On a déjà vu que tout polynôme de degré \(1\) est irréductible.
+
+\incdir
+
+Soit \(P\in\poly[\C]\) irréductible.
+
+Selon le théorème de D'Alembert-Gauss, \(P\) admet une racine car \(P\) n'est pas constant.
+
+Donc \(\deg P=1\) (selon la \thref{rem:polynômeIrréductibleEstDeDegré1S'ilAdmetUneRacine}).
+\end{dem}
+
+\begin{theo}
+Les polynômes irréductibles dans \(\poly[\R]\) sont ceux de degré \(1\) et ceux de la forme \[aX^2+bX+c\] où \(\begin{dcases}a,b,c\in\R \\ a\not=0 \\ \Delta=b^2-4ac<0\end{dcases}\)
+\end{theo}
+
+\begin{dem}
+\increc
+
+Tout polynôme de degré \(1\) est irréductible.
+
+Soient \(a,b,c\in\R\) tels que \(\begin{dcases}a\not=0 \\ \Delta=b^2-4ac<0\end{dcases}\)
+
+Le polynôme \(P=aX^2+bX+c\) n'admet aucune racine dans \(\R\).
+
+On a \(P\) non-constant.
+
+Soient \(Q_1,Q_2\in\poly[\R]\) tels que \(P=Q_1Q_2\).
+
+On a \(2=\deg P=\deg Q_1+\deg Q_2\).
+
+De plus, \(\deg Q_1\not=1\) car sinon \(Q_1\) admettrait une racine dans \(\R\) et \(P\) aussi.
+
+Donc \(\paren{Q_1,Q_2}\in\accol{\paren{0,2};\paren{2,0}}\).
+
+Donc \(Q_1\) ou \(Q_2\) constant.
+
+Donc \(P\) est irréductible.
+
+\incdir
+
+Soit \(P\in\poly[\R]\) irréductible.
+
+On a \(P\) non-constant.
+
+D'après le théorème de D'Alembert-Gauss, il existe une racine complexe de \(P\).
+
+Soit \(\lambda\in\C\) tel que \(P\paren{\lambda}=0\).
+
+Si \(\lambda\in\R\) alors \(X-\lambda\divise P\) (dans \(\poly[\R]\)).
+
+Soit \(Q\in\poly[\R]\) tel que \(\paren{X-\lambda}Q=P\).
+
+Comme \(P\) est irréductible, \(X-\lambda\) ou \(Q\) est constant donc \(Q\) est constant.
+
+Donc \(\deg P=1\) car \(Q\not=0\).
+
+Si \(\lambda\not\in\R\) alors \(P\paren{\conj{\lambda}}=0\).
+
+Donc \(X-\lambda\) et \(X-\conj{\lambda}\) divisent \(P\).
+
+Or \(\paren{X-\lambda}\et\paren{X-\conj{\lambda}}=1\) car \(\lambda\not=\conj{\lambda}\).
+
+Donc \(\paren{X-\lambda}\paren{X-\conj{\lambda}}\divise P\) selon la \thref{prop:polysPremiersEntreEuxQuiDivisentDoncProduitDivise}.
+
+Donc \(X^2-\paren{\lambda+\conj{\lambda}}X+\lambda\conj{\lambda}=X^2-2\Re\paren{\lambda}X+\abs{\lambda}^2\in\poly[\R]\).
+
+Ainsi \(X^2-2\Re\paren{\lambda}X+\abs{\lambda}^2\divise P\).
+
+Donc il existe \(Q\in\poly[\R]\) tel que \(\paren{X^2-2\Re\paren{\lambda}X+\abs{\lambda}^2}Q=P\) avec nécessairement \(Q\) constant car \(P\) est irréductible et \(Q\not=0\) car \(P\not=0\).
+
+Finalement, on a \[\quantifs{\exists a\in\Rs}ax^2-2a\Re\paren{\lambda}X+\abs{\lambda}^2a=P\] et \(\Delta<0\) car \(P\) n'a pas de racine réelle.
+\end{dem}
+
+\subsection{Théorème fondamental de l'arithmétique des polynômes}
+
+\subsubsection{Cas général}
+
+Le théorème suivant affirme que tout polynôme non-constant s'écrit de façon unique comme le produit de polynômes irréductibles, à l'ordre des facteurs près et à des facteurs inversibles près :
+
+\begin{theo}
+Soit \(P\in\poly\excluant\K\).
+
+Alors il existe un entier \(r\in\Ns\) et des polynômes irréductibles \(A_1,\dots,A_r\in\poly\) tels que \[P=A_1\dots A_r.\]
+
+De plus, si l'on a une autre décomposition \[P=B_1\dots B_s\] avec \(s\in\Ns\) et \(B_1,\dots,B_s\in\poly\) des polynômes irréductibles, alors il existe une bijection \(\sigma:\interventierii{1}{r}\to\interventierii{1}{s}\) telle que \[\quantifs{\forall k\in\interventierii{1}{r}}A_k\text{ et }B_{\sigma\paren{k}}\text{ sont associés}.\]
+\end{theo}
+
+\begin{dem}
+Pour tout \(n\in\Ns\), on note \(\P{n}\) la proposition : \guillemets{tout polynôme \(P\) de degré \(n\) s'écrit comme le produit de polynômes irréductibles, de façon unique à l'ordre des facteurs près et à des constantes multiplicatives non-nulles près}.
+
+Soit \(P\in\poly\) tel que \(\deg P=1\).
+
+\existence On a \(P=P\) et \(P\) est irréductible.
+
+\unicite
+
+Soient \(B_1,\dots,B_s\in\poly\) irréductibles et tels que \(P=B_1\dots B_s\).
+
+On a \(\quantifs{\forall j\in\interventierii{1}{s}}\deg B_j\geq1\) (car \(B_j\) est non-constant).
+
+Donc \(1=\deg P=\sum_{j=1}^s\deg B_j\geq\sum_{j=1}^s1=s\).
+
+Donc \(s\leq1\).
+
+De plus, \(s\not=0\) (sinon \(P=1\) est constant).
+
+Donc \(s=1\).
+
+Donc \(P=B_1\).
+
+D'où \(\P{1}\).
+
+Soit \(n\in\Ns\) tel que \(\quantifs{\forall k\in\interventierii{1}{n}}\P{k}\).
+
+\existence
+
+Soit \(P\in\poly\) tel que \(\deg P=n+1\).
+
+Si \(P\) est irréductible, \(P=P\) convient.
+
+Supposons \(P\) non-irréductible.
+
+Il existe \(Q_1,Q_2\in\poly\) non-constants tels que \(P=Q_1Q_2\).
+
+On a \(n+1=\deg P=\underbrace{\deg Q_1}_{\geq1}+\underbrace{\deg Q_2}_{\geq1}\).
+
+Donc \(\deg Q_1\leq n\) et \(\deg Q_2\leq n\).
+
+Selon l'hypothèse de récurrence, \(Q_1\) et \(Q_2\) sont produits de polynômes irréductibles donc leur produit \(P\) l'est aussi.
+
+\unicite
+
+Soient \(r,s\in\Ns\) et \(A_1,\dots,A_r,B_1,\dots,B_s\in\poly\) irréductibles.
+
+Supposons \(P=A_1\dots A_r=B_1\dots B_s\).
+
+Comme \(A_1\) est irréductible, on a \[\quantifs{\forall j\in\interventierii{1}{s}}\orenv{A_1\divise B_j \\ A_1\et B_j=1}\]
+
+Si \(\quantifs{\forall j\in\interventierii{1}{s}}A_1\et B_j=1\) alors \(A_1\et\paren{B_1\dots B_s}=1\) donc \(A_1\et P=1\) : contradiction car \(A_1\divise P\).
+
+Donc il existe \( j\in\interventierii{1}{s}\) tel que \(A_1\divise B_j\)  donc \(A_1\) est associé à \(B_j\) car \(A_1\) est non-constant et \(B_j\) est irréductible.
+
+Soit \(\lambda\in\K\excluant\accol{0}\) tel que \(B_j=\lambda A_1\).
+
+Quitte à renuméroter \(B_1,\dots,B_s\) et à remplacer \(B_1\) par \(\dfrac{1}{\lambda}B_1\) et \(B_2\) par \(\lambda B_2\), on a \(A_1=B_1\) donc \[A_2\dots A_r=B_2\dots B_s\] car \(\poly\) est intègre.
+
+Posons \(Q=A_2\dots A_r\).
+
+On a \(\deg Q\leq n\).
+
+Selon l'hypothèse de récurrence appliquée à \(Q\), il existe \(\sigma:\interventierii{2}{r}\to\interventierii{1}{s}\) une bijection telle que \[\quantifs{\forall i\in\interventierii{1}{r}}A_i\text{ et }B_{\sigma\paren{i}}\text{ sont associés}.\]
+
+Alors \(\fonction{\tilde{\sigma}}{\interventierii{1}{r}}{\interventierii{1}{s}}{i}{\begin{dcases}1 &\text{si }i=1 \\ \sigma\paren{i} &\text{si }i\geq2\end{dcases}}\) vérifie \[\quantifs{\forall i\in\interventierii{1}{r}}A_i\text{ et }B_{\tilde{\sigma}\paren{i}}\text{ sont associés}.\]
+
+D'où l'unicité.
+
+Donc, par récurrence forte, \(\quantifs{\forall n\in\Ns}\P{n}\).
+\end{dem}
+
+\begin{cor}[Reformulation]
+Soit \(P\in\poly\excluant\accol{0}\).
+
+On note \(\lambda\in\K\excluant\accol{0}\) le coefficient dominant de \(P\).
+
+Alors il existe \(r\in\N\), \(A_1,\dots,A_r\in\poly\) irréductibles, unitaires et deux à deux distincts et \(\alpha_1,\dots,\alpha_2\in\Ns\) tels que \[P=\lambda A_1^{\alpha_1}\dots A_r^{\alpha_r}.\]
+
+De plus, si l'on a une autre décomposition \[P=\mu B_1^{\beta_1}\dots B_s^{\beta_s}\] avec \(\mu\in\K\), \(s\in\N\), \(B_1,\dots,B_s\in\poly\) irréductibles, unitaires et deux à deux distincts, et \(\beta_1,\dots,\beta_s\in\Ns\), alors \(\lambda=\mu\) et il existe une bijection \(\sigma:\interventierii{1}{r}\to\interventierii{1}{s}\) telle que \[\quantifs{\forall k\in\interventierii{1}{r}}A_k=B_{\sigma\paren{k}}\qquad\text{et}\qquad\alpha_k=\beta_{\sigma\paren{k}}.\]
+\end{cor}
+
+\subsubsection{Polynômes à coefficients complexes}
+
+\begin{theo}
+Soit \(P\in\poly[\C]\excluant\accol{0}\).
+
+Alors \(P\) s'écrit de façon unique, à permutation de facteurs près : \[P=\mu\paren{X-\lambda_1}^{\alpha_1}\dots\paren{X-\lambda_r}^{\alpha_r}\text{ où }\begin{dcases}\mu\in\Cs \\ r\in\N \\ \lambda_1,\dots,\lambda_r\in\C\text{ deux à deux distincts} \\ \alpha_1,\dots,\alpha_r\in\Ns\end{dcases}\]
+
+Le coefficient dominant de \(P\) est \(\mu\).
+
+Les racines de \(P\) sont \(\lambda_1,\dots,\lambda_r\).
+
+Pour tout \(j\in\interventierii{1}{r}\), l'entier \(\alpha_j\) est appelé multiplicité de la racine \(\lambda_j\).
+
+Le polynôme \(P\) admet \(r\) racines comptées sans multiplicité et \(\alpha_1+\dots+\alpha_r\) racines comptées avec multiplicité.
+\end{theo}
+
+\begin{exo}[À retenir]
+Soit \(n\in\Ns\).
+
+Décomposer le polynôme \(X^n-1\) en produit de polynômes irréductibles sur \(\C\).
+\end{exo}
+
+\begin{corr}
+Le coefficient dominant de \(X^n-1\) est \(1\).
+
+Les racines de \(X^n-1\) sont les éléments de \(\U_n\) (il y en a \(n\)).
+
+Notons \(\alpha_\omega\in\Ns\) la multiplicité de \(\omega\in\U_n\).
+
+On a \(X^n-1=1\times\prod_{\omega\in\U_n}\paren{X-\omega}^{\alpha_\omega}\).
+
+Donc \(\deg\paren{X^n-1}=\sum_{\omega\in\U_n}\deg\paren{X-\omega}^{\alpha_\omega}\).
+
+Donc \(n=\sum_{\omega\in\U_n}\alpha_\omega\).
+
+Donc \(\quantifs{\forall\omega\in\U_n}\alpha_\omega=1\).
+
+Finalement : \[X^n-1=\prod_{\omega\in\U_n}\paren{X-\omega}.\]
+\end{corr}
+
+\begin{prop}
+Soient \(P,Q\in\poly[\C]\).
+
+Alors \(P\) et \(Q\) sont premiers entre eux si, et seulement si, \(P\) et \(Q\) n'ont aucune racine commune.
+
+Autrement dit, par contraposée : \[P\et Q\not=1\ssi\quantifs{\exists\lambda\in\C}P\paren{\lambda}=Q\paren{\lambda}=0.\]
+\end{prop}
+
+\begin{dem}
+S'il existe une racine \(\lambda\in\C\) commune à \(P\) et \(Q\), alors \(X-\lambda\) divise \(P\) et \(Q\).
+
+Donc \(X-\lambda\divise P\et Q\).
+
+Donc \(P\et Q\not=1\).
+
+S'il n'existe aucune racine commune à \(P\) et \(Q\) :
+
+Décomposons \(P\) et \(Q\) en produits de polynômes irréductibles : \(\begin{dcases}P=\lambda\paren{X-\lambda_1}\dots\paren{X-\lambda_\alpha} \\ Q=\mu\paren{X-\mu_1}\dots\paren{X-\mu_\beta}\end{dcases}\) où \(\begin{dcases}\alpha,\beta\in\N \\ \lambda,\mu\in\Cs \\ \lambda_1,\dots,\lambda_\alpha,\mu_1,\dots,\mu_\beta\in\C\end{dcases}\)
+
+On a \(\accol{\lambda_1;\dots;\lambda_\alpha}\inter\accol{\mu_1;\dots;\mu_\beta}=\ensvide\).
+
+Soit \(j\in\interventierii{1}{\beta}\).
+
+On a \(\quantifs{\forall i\in\interventierii{1}{\alpha}}\paren{X-\lambda_i}\et\paren{X-\mu_j}=1\) car \(\lambda_i\not=\mu_j\).
+
+Donc, selon le \thref{cor:polysTousPremiersImpliqueProduitPremier}, on a \[\lambda\prod_{i=1}^{\alpha}\paren{X-\lambda_i}\et\paren{X-\mu_j}=1.\]
+
+D'où, selon le \thref{cor:polysTousPremiersImpliqueProduitPremier}, on a \[\lambda\prod_{i=1}^{\alpha}\paren{X-\lambda_i}\et\mu\prod_{j=1}^{\beta}\paren{X-\mu_j}=1.\]
+
+Donc \(P\et Q=1\).
+\end{dem}
+
+\begin{prop}
+Soient \(P,Q\in\poly[\C]\excluant\accol{0}\).
+
+Alors \(P\) divise \(Q\) si, et seulement si, toute racine \(\lambda\) de \(P\) est racine de \(Q\) avec une multiplicité comme racine de \(Q\) au moins égale à sa multiplicité comme racine de \(P\).
+\end{prop}
+
+\begin{ex}
+On a \(2\paren{X-1}^{\alpha}\paren{X+\i}^\beta\divise\paren{X-1}^2\paren{X+\i}^3\ssi\begin{dcases}\alpha\leq2 \\ \beta\leq3\end{dcases}\)
+\end{ex}
+
+\subsubsection{Polynômes à coefficients réels}
+
+\begin{theo}
+Soit \(P\in\poly[\R]\excluant\accol{0}\).
+
+Alors \(P\) s'écrit de façon unique, à permutation des facteurs près : \[P=\mu\times\paren{X-\lambda_1}^{\alpha_1}\dots\paren{X-\lambda_r}^{\alpha_r}\times\paren{X^2+b_1X+c_1}^{\beta_1}\dots\paren{X^2+b_sX+c_s}^{\beta_s}\] où \(\begin{dcases}\mu\in\Rs \\ r,s\in\N \\ \lambda_1,\dots,\lambda_r\in\R\text{ deux à deux distincts} \\ \paren{b_1,c_1},\dots,\paren{b_s,c_s}\in\R^2\text{ deux à deux distincts} \\ \text{les facteurs de degré \(2\) sont irréductibles, \cad }\quantifs{\forall i\in\interventierii{1}{s}}b_i^2-4c_i<0 \\ \alpha_1,\dots,\alpha_r,\beta_1,\dots,\beta_s\in\Ns\end{dcases}\)
+
+Le coefficient dominant de \(P\) est \(\mu\).
+
+Les racines réelles de \(P\) sont \(\lambda_1,\dots,\lambda_r\).
+
+Pour tout \(j\in\interventierii{1}{r}\), l'entier \(\alpha_j\) est appelé multiplicité de la racine \(\lambda_j\).
+
+Le polynôme \(P\) admet \(r\) racines réelles comptées sans multiplicité et \(\alpha_1+\dots+\alpha_r\) racines comptées avec multiplicité.
+\end{theo}
+
+\begin{exo}[À retenir]
+Soit \(n\in\Ns\).
+
+Décomposer le polynôme \(X^n-1\) en produit de polynômes irréductibles sur \(\R\).
+\end{exo}
+
+\begin{corr}
+On a vu \[X^n-1=\prod_{\omega\in\U_n}\paren{X-\omega}=\prod_{k=0}^{n-1}\paren{X-\e{\frac{2\i k\pi}{n}}}.\]
+
+Si \(n\) est pair, on a \(n=2m\) où \(m=\dfrac{n}{2}\).
+
+Donc \(\U_n=\accol{-1;1}\union\bigunion_{k=1}^{m-1}\accol{\e{\frac{2\i k\pi}{n}};\e{\frac{-2\i k\pi}{n}}}\).
+
+D'où \[\begin{aligned}
+X^n-1&=\paren{X-1}\paren{X+1}\prod_{k=1}^{m-1}\paren{X-\e{\frac{2\i k\pi}{n}}}\paren{X-\e{\frac{-2\i k\pi}{n}}} \\
+&=\paren{X-1}\paren{X+1}\prod_{k=1}^{\frac{n}{2}-1}\paren{X^2-2\cos\paren{\dfrac{2k\pi}{n}}X+1}
+\end{aligned}\]
+
+Si \(n\) est impair, on a \(n=2m+1\) avec \(m=\dfrac{n-1}{2}\).
+
+On obtient de même \(\U_n=\accol{1}\union\bigunion_{k=1}^m\accol{\e{\frac{2\i k\pi}{n}};\e{\frac{-2\i k\pi}{n}}}\).
+
+Donc \[X^n-1=\paren{X-1}\prod_{k=1}^{\frac{n-1}{2}}\paren{X^2-2\cos\paren{\dfrac{2k\pi}{n}}X+1}.\]
+\end{corr}
+
+\begin{ex}
+On a \[\begin{aligned}
+X^4-1&=\paren{X^2-1}\paren{X^2+1} \\
+&=\paren{X-1}\paren{X+1}\paren{X^2+1}
+\end{aligned}\] et \[X^5-1=\paren{X-1}\paren{X^2-2\cos\paren{\dfrac{2\pi}{5}}X+1}\paren{X^2-2\cos\paren{\dfrac{4\pi}{5}}X+1}.\]
+\end{ex}
+
+\begin{prop}[Racines complexes de polynômes réels]
+Soient \(P\in\poly[\R]\) et \(\lambda\in\C\) une racine de \(P\).
+
+On sait, d'après la \thref{prop:lambdaBarreEstRacine}, que \(\conj{\lambda}\) est racine de \(P\).
+
+Les racines \(\lambda\) et \(\conj{\lambda}\) ont même multiplicité.
+\end{prop}
+
+\begin{dem}
+On considère la décomposition de \(P\) en produit d'irréductibles sur \(\C\) : \[P=\mu\paren{X-\lambda_1}^{\alpha_1}\dots\paren{X-\lambda_r}^{\alpha_r}\] où \(\begin{dcases}\mu\in\Cs \\ \lambda_1,\dots,\lambda_r\in\C\text{ deux à deux distincts} \\ \alpha_1,\dots,\alpha_r\in\Ns\end{dcases}\)
+
+On pose \(\lambda=\lambda_1\).
+
+En conjuguant, on a \[\conj{P}=\conj{\mu}\paren{X-\conj{\lambda_1}}^{\alpha_1}\dots\paren{X-\conj{\lambda_r}}^{\alpha_r}=P.\]
+
+Selon l'unicité de l'écriture en produit d'irréductibles, il existe \(k\in\interventierii{1}{r}\) tel que \(\paren{X-\lambda_1}^{\alpha_1}=\paren{X-\lambda_k}^{\alpha_k}\).
+
+Donc \(\lambda_k=\conj{\lambda}\) et \(\alpha_k=\alpha_1\).
+
+Or \(\alpha_k\) est la multiplicité de la racine \(\conj{\lambda}\) de \(P\) et \(\alpha_1\) est la multiplicité de la racine \(\lambda\) de \(P\).
+\end{dem}
+
+\section{Racines des polynômes}
+
+\subsection{Multiplicités}
+
+\begin{defi}[Multiplicité d'une racine]
+Soient \(P\in\poly\) non-nul et \(\lambda\in\K\) une racine de \(P\).
+
+On a vu, à la \thref{prop:XMoinsLambdaDiviseP}, que \(X-\lambda\) divise \(P\).
+
+On appelle multiplicité de \(\lambda\) comme racine de \(P\) l'exposant de \(X-\lambda\) dans la décomposition de \(P\) en produit de polynômes irréductibles.
+
+On dit que \(\lambda\) est racine simple de \(P\) si sa multiplicité vaut \(1\) ; sinon on dit que \(\lambda\) est racine multiple de \(P\).
+\end{defi}
+
+\begin{ex}
+Pour le polynôme \(P=X^2\paren{X-4}^3\paren{X-7}\in\poly[\R]\) :
+
+\begin{itemize}
+\item \(0\) est racine de multiplicité \(2\) (ou \guillemets{racine double}) \\
+
+\item \(4\) est racine de multiplicité \(3\) (ou \guillemets{racine triple}) \\
+
+\item et \(7\) est racine simple.
+\end{itemize}
+
+Ainsi, \(P\) admet :
+
+\begin{itemize}
+\item \(3\) racines comptées sans multiplicité \\
+
+\item \(6\) racines comptées avec multiplicité.
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+Soient \(P\in\poly\) non-nul et \(\lambda\in\K\) une racine de \(P\).
+
+La multiplicité de \(\lambda\) est l'entier \(\alpha\in\Ns\) caractérisé par : \[\begin{dcases}\paren{X-\lambda}^{\alpha}\divise P \\ \paren{X-\lambda}^{\alpha+1}\not\divise P\end{dcases}\]
+
+En particulier, \(\lambda\) est racine multiple de \(P\) si, et seulement si, on a : \[\paren{X-\lambda}^2\divise P.\]
+\end{rem}
+
+\begin{prop}[Caractérisation à l'aide des dérivés]
+Soient \(P\in\poly\) non-nul et \(\lambda\in\K\) une racine de \(P\).
+
+La multiplicité de \(\lambda\) est l'entier \(\alpha\in\Ns\) caractérisé par : \[\begin{dcases}\quantifs{\forall j\in\interventierii{0}{\alpha-1}}P\deriv{j}\paren{\lambda}=0 \\ P\deriv{\alpha}\paren{\lambda}\not=0\end{dcases}\]
+
+En particulier, \(\lambda\) est racine multiple de \(P\) si, et seulement si, on a : \[P\paren{\lambda}=P\prim\paren{\lambda}=0.\]
+\end{prop}
+
+\begin{dem}
+On note \(n\) le degré de \(P\) et \(\lambda\) le coefficient dominant de \(P\).
+
+On a \(P\deriv{n}=\lambda n!\) donc \(P\deriv{n}\paren{\lambda}=\lambda n!\not=0\).
+
+On note \(\gamma\in\N\) le plus petit entier tel que \(P\deriv{\gamma}\paren{\lambda}\not=0\) (toute partie non-vide de \(\N\) admet un minimum).
+
+On a \(\begin{dcases}\quantifs{\forall k\in\interventierii{0}{\gamma-1}}P\deriv{k}\paren{\lambda}=0 \\ P\deriv{\gamma}\paren{\lambda}\not=0\end{dcases}\)
+
+Donc selon la formule de Taylor pour les polynômes : \[\begin{aligned}
+P&=\sum_{k=\gamma}^n\dfrac{P\deriv{k}\paren{\lambda}}{k!}\paren{X-\lambda}^k \\
+&=\paren{X-\lambda}^{\gamma}Q\text{ où }Q=\sum_{k=\gamma}^n\dfrac{P\deriv{k}\paren{\lambda}}{k!}\paren{X-\lambda}^{k-\gamma}
+\end{aligned}\] et \(Q\paren{\lambda}=\dfrac{P\deriv{\gamma}\paren{\lambda}}{\gamma!}\not=0\).
+
+Donc \(X-\lambda\not\divise Q\) donc \[\begin{dcases}\paren{X-\lambda}^{\gamma}\divise P \\ \paren{X-\lambda}^{\gamma+1}\not\divise P\end{dcases}\]
+
+Donc la multiplicité de \(\lambda\) comme racine de \(P\) est \(\gamma\).
+\end{dem}
+
+\subsection{Nombre de racines d'un polynôme}\label{subsec:nbRacinesPoly}
+
+\begin{prop}
+Soit \(P\in\poly\) de degré \(n\in\N\).
+
+Alors \(P\) admet au plus \(n\) racines comptées avec multiplicité.
+
+En particulier, \(P\) admet au plus \(n\) racines comptées sans multiplicité.
+\end{prop}
+
+\begin{dem}
+Notons \(\lambda_1,\dots,\lambda_r\) les racines de \(P\) deux à deux distinctes et \(\alpha_1,\dots,\alpha_r\) leurs multiplicités respectives, avec \(r\in\N\).
+
+On a \(\paren{X-\lambda_1}^{\alpha_1}\dots\paren{X-\lambda_r}^{\alpha_r}\divise P\).
+
+Or, comme \(P\not=0\), on a \[\deg\paren{\paren{X-\lambda_1}^{\alpha_1}\dots\paren{X-\lambda_r}^{\alpha_r}}\leq\deg P.\]
+
+Donc (avec multiplicité) : \[\alpha_1+\dots+\alpha_r\leq n.\]
+
+Donc (sans multiplicité) : \[r\leq n.\]
+\end{dem}
+
+\begin{cor}
+Soient \(n\in\N\) et \(P\in\polydeg{n}\).
+
+Si \(P\) admet \(n+1\) racines alors \(P=0\).
+\end{cor}
+
+\begin{cor}
+Soit \(P\in\poly\).
+
+Si \(P\) admet une infinité de racines alors \(P=0\).
+\end{cor}
+
+\begin{cor}
+On note \(\Pol{\K}{\K}\) l'ensemble des fonctions polynomiales de \(\K\) dans \(\K\) (c'est un sous-anneau de \(\F{\K}{\K}\) selon la \thref{prop:anneauDesFonctionsPolynomiales}).
+
+Si \(\K\) est infini, alors l'application \[\fonction{\phi}{\poly}{\Pol{\K}{\K}}{P}{\tilde{P}}\] est un isomorphisme d'anneaux.
+\end{cor}
+
+\begin{dem}
+On a déjà vu que \(\phi\) est un morphisme d'anneaux (\cf \thref{prop:anneauDesFonctionsPolynomiales}).
+
+\(\phi\) est clairement une surjection.
+
+Montrons que \(\phi\) est injective.
+
+Soient \(P,Q\in\poly\) tels que \(\phi\paren{P}=\phi\paren{Q}\).
+
+On a \(\phi\paren{P-Q}=0\), \cad \[\quantifs{\forall\lambda\in\K}\paren{P-Q}\paren{\lambda}=0.\]
+
+Donc \(P-Q\) admet une infinité de racines (car \(\K\) est infini).
+
+Donc \(P-Q=0\) donc \(P=Q\) donc \(\phi\) est injectif.
+\end{dem}
+
+\subsection{Polynômes interpolateurs de Lagrange}
+
+\begin{defprop}[Polynôme interpolateur de Lagrange]\thlabel{defprop:polynômeInterpolateurDeLagrange}
+Soient \(x_0,\dots,x_n\in\K\) deux à deux distincts et \(y_0,\dots,y_n\in\K\).
+
+Les polynômes \(L_0,\dots,L_n\in\polydeg{n}\) définis par : \[\quantifs{\forall j\in\interventierii{0}{n}}L_j=\prod_{k\in\interventierii{0}{n}\excluant\accol{j}}\dfrac{X-x_k}{x_j-x_k}\] vérifient \[\quantifs{\forall i,j\in\interventierii{0}{n}}L_j\paren{x_i}=\delta_{ij}=\begin{dcases}1 &\text{si }i=j \\ 0 &\text{si }i\not=j\end{dcases}\]
+
+Le polynôme \[y_0L_0+\dots+y_nL_n\] est l'unique polynôme \(P\in\polydeg{n}\) tel que \[\quantifs{\forall k\in\interventierii{0}{n}}P\paren{x_k}=y_k.\]
+\end{defprop}
+
+\begin{dem}
+\unicite
+
+Soient \(P,Q\in\polydeg{n}\) tel que \(\quantifs{\forall k\in\interventierii{0}{n}}P\paren{x_k}=Q\paren{x_k}=y_k\).
+
+On a \(\quantifs{\forall k\in\interventierii{0}{n}}\paren{P-Q}\paren{x_k}=0\).
+
+Donc \(P-Q\) admet \(n+1\) racines et \(P-Q\in\polydeg{n}\).
+
+Donc \(P-Q=0\).
+
+Donc \(P=Q\).
+\end{dem}
+
+\begin{exo}
+Donner l'unique polynôme \(P\in\polydeg[\R]{3}\) tel que \[\begin{dcases}P\paren{-2}=-30 \\ P\paren{0}=-4 \\ P\paren{1}=3 \\ P\paren{2}=22\end{dcases}\]
+\end{exo}
+
+\begin{corr}
+On pose \[\begin{aligned}
+P&=-30\dfrac{\paren{X-0}\paren{X-1}\paren{X-2}}{\paren{-2-0}\paren{-2-1}\paren{-2-2}}-4\dfrac{\paren{X+2}\paren{X-1}\paren{X-2}}{\paren{0+2}\paren{0-1}\paren{0-2}}+3\dfrac{\paren{X+2}\paren{X-0}\paren{X-2}}{\paren{1+2}\paren{1-0}\paren{1-2}} \\
+&\color{white}=\color{black}+22\dfrac{\paren{X+2}\paren{X-0}\paren{X-1}}{\paren{2+2}\paren{2-0}\paren{2-1}} \\
+&=\dfrac{30}{24}\paren{X^2-X}\paren{X-2}-\paren{X^2+X-2}\paren{X-2}-\paren{X^2+2X}\paren{X-2}+\dfrac{22}{8}\paren{X^2+2X}\paren{X-1} \\
+&=\dfrac{5}{4}\paren{X^3-3X^2+2X}-\paren{X^3-X^2-4X+4}-\paren{X^3-4X}+\dfrac{11}{4}\paren{X^3+X^2-2X} \\
+&=2X^3+5X-4
+\end{aligned}\]
+\end{corr}
+
+\begin{exo}
+On garde les notations de la \thref{defprop:polynômeInterpolateurDeLagrange}.
+
+Compléter les égalités suivantes :
+
+\begin{enumerate}
+\item \(\quantifs{\forall P\in\polydeg{n}}P\paren{x_0}L_0+\dots+P\paren{x_n}L_n=\) \\
+
+\item \(L_0+\dots+L_n=\)
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+On a :
+
+\begin{enumerate}
+\item \(\quantifs{\forall P\in\polydeg{n}}P\paren{x_0}L_0+\dots+P\paren{x_n}L_n=P\) \\
+
+\item \(L_0+\dots+L_n=1\)
+\end{enumerate}
+\end{corr}
+
+\subsection{Polynômes scindés}
+
+\begin{defi}[Polynôme scindé]
+Soit \(P\in\poly\excluant\accol{0}\).
+
+On dit que \(P\) est scindé (sur \(\K\)) s'il est produit de polynômes de degré \(1\), \cad s'il admet \(\deg P\) racines comptées avec multiplicité.
+\end{defi}
+
+\begin{ex}
+Le polynôme \(X^2+1\) est scindé sur \(\C\) mais pas sur \(\R\).
+\end{ex}
+
+\begin{prop}
+Sur \(\C\), tout polynôme est scindé.
+
+Sur \(\R\), un polynôme est scindé si, et seulement si, dans sa décomposition en produit d'irréductibles, il n'y a aucun polynôme de degré \(2\). Cela revient à dire que toutes les racines complexes du polynômes sont réelles.
+\end{prop}
+
+\begin{defi}
+Soit \(P\in\poly\excluant\accol{0}\).
+
+On dit que \(P\) est scindé à racines simples (sur \(\K\)) s'il est scindé (sur \(\K\)) et si toutes ses racines sont simples (\cad de multiplicité \(1\)).
+
+Cela revient à dire que \(P\) admet \(\deg P\) racines comptées sans multiplicité.
+\end{defi}
+
+\begin{bilan}
+Soit \(P\in\poly\excluant\accol{0}\).
+
+On note \(n\) le nombre de racines de \(P\) comptées sans multiplicité.
+
+On note \(N\) le nombre de racines de \(P\) comptées avec multiplicité.
+
+On a \[n\underset{\text{(1)}}{\leq}N\underset{\text{(2)}}{\leq}\deg P.\]
+
+De plus :
+
+\begin{itemize}
+\item (1) est une égalité si, et seulement si, \(P\) est à racines simples. \\
+
+\item (2) est une égalité si, et seulement si, \(P\) est scindé. \\
+
+\item (1) et (2) sont des égalités si, et seulement si, \(P\) est scindé à racines simples.
+\end{itemize}
+\end{bilan}
+
+\begin{defi}[Polynômes symétriques élémentaires]
+Soit \[P=a_nX^n+\dots+a_0X^0\in\poly\] un polynôme de degré \(n\in\N\), où \(a_0,\dots,a_n\in\K\).
+
+On suppose ce polynôme scindé : \[P=\mu\paren{X-\lambda_1}\dots\paren{X-\lambda_n},\] où \(\mu,\lambda_1,\dots,\lambda_n\in\K\).
+
+Les polynômes symétriques élémentaires en les racines de \(P\) sont les sommes \(\sigma_1,\dots,\sigma_n\) définies par : \[\quantifs{\forall k\in\interventierii{1}{n}}\sigma_k=\sum_{1\leq i_1<\dots<i_k\leq n}\lambda_{i_1}\times\dots\times\lambda_{i_k}.\]
+\end{defi}
+
+\begin{ex}
+Si \(n=3\), on a :
+
+\begin{description}
+\item \(\sigma_1=\lambda_1+\lambda_2+\lambda_3\) \\
+
+\item \(\sigma_2=\lambda_1\lambda_2+\lambda_1\lambda_3+\lambda_2\lambda_3\) \\
+
+\item \(\sigma_3=\lambda_1\lambda_2\lambda_3\).
+\end{description}
+
+Si \(n=4\), on a :
+
+\begin{description}
+\item \(\sigma_1=\lambda_1+\lambda_2+\lambda_3+\lambda_4\) \\
+
+\item \(\sigma_2=\lambda_1\lambda_2+\lambda_1\lambda_3+\lambda_1\lambda_4+\lambda_2\lambda_3+\lambda_2\lambda_4+\lambda_3\lambda_4\) \\
+
+\item \(\sigma_3=\lambda_1\lambda_2\lambda_3+\lambda_1\lambda_2\lambda_4+\lambda_1\lambda_3\lambda_4+\lambda_2\lambda_3\lambda_4\) \\
+
+\item \(\sigma_4=\lambda_1\lambda_2\lambda_3\lambda_4\).
+\end{description}
+\end{ex}
+
+\begin{prop}[Relations coefficients/racines]
+On garde les notations de la définition précédente.
+
+Les polynômes symétriques élémentaires en les racines de \(P\) s'expriment en fonction des coefficients de \(P\) : \[\quantifs{\forall k\in\interventierii{1}{n}}\sigma_k=\sum_{1\leq i_1<\dots<i_k\leq n}\lambda_{i_1}\times\dots\times\lambda_{i_k}=\paren{-1}^k\dfrac{a_{n-k}}{a_n}.\]
+
+En particulier, la somme et le produit des racines de \(P\), comptées avec multiplicité, se lisent facilement sur les coefficients de \(P\) : \[\lambda_1+\dots+\lambda_n=\dfrac{-a_{n-1}}{a_n}\qquad\text{et}\qquad\lambda_1\dots\lambda_n=\paren{-1}^n\dfrac{a_0}{a_n}.\]
+\end{prop}
+
+\begin{dem}[Idée]
+On développe : \[P=\mu\paren{X-\lambda_1}\dots\paren{X-\lambda_n}=\mu X^n-\mu\sigma_1 X^{n-1}+\mu\sigma_2 X^{n-2}+\dots+\paren{-1}^n\mu\sigma_n.\]
+
+D'où \(P=\sum_{k=0}^n\paren{-1}^k\mu\sigma_k X^{n-k}\).
+
+Or \(P=\sum_{k=0}^na_{n-k}X^{n-k}\).
+
+Donc \(\quantifs{\forall k\in\interventierii{1}{n}}\paren{-1}^k\mu\sigma_k=a_{n-k}\).
+
+Donc \(\quantifs{\forall k\in\interventierii{1}{n}}\sigma_k=\paren{-1}^k\dfrac{a_{n-k}}{a_n}\) (car \(a_n=\mu\)).
+
+On en déduit \[\sum_{k=1}^n\lambda_k=\dfrac{-a_{n-1}}{a_n}\qquad\text{et}\qquad\prod_{k=1}^n\lambda_k=\paren{-1}^n\dfrac{a_0}{a_n}.\]
+\end{dem}
+
+\begin{exo}
+On pose \(P=X^3+3X^2+1\).
+
+\begin{enumerate}
+\item Montrer que toutes les racines complexes de \(P\) sont simples. \\
+
+\item Calculer la somme des carrés des racines complexes de \(P\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}[1]
+On a \(P\prim=3X^2+6X=X\paren{3X+6}\).
+
+Donc \(P\prim\) a pour racines \(0\) et \(-2\).
+
+Or \(P\paren{0}=1\not=0\) et \(P\paren{-2}=5\not=0\).
+
+Donc \(P\prim\) et \(P\) n'admettent aucune racine commune.
+
+Donc \(P\) n'admet aucune racine double.
+
+Donc toutes les racines de \(P\) sont simples.
+\end{corr}
+
+\begin{corr}[2]
+Notons \(x,y,z\in\C\) les racines de \(P\).
+
+On a \(\paren{x+y+z}^2=x^2+y^2+z^2+2xy+2xz+2yz\).
+
+Donc \[\begin{aligned}
+x^2+y^2+z^2&=\paren{x+y+z}^2-2\paren{xy+xz+yz} \\
+&=\sigma_1^2-2\sigma_2 \\
+&=\paren{-3}^2-2\times0 \\
+&=9.
+\end{aligned}\]
+\end{corr}
+
+\section{Fractions rationnelles}
+
+\subsection{Corps des fractions rationnelles}
+
+Le corps \(\fracrat\) se construit à partir de l'anneau intègre \(\poly\) exactement comme le corps \(\Q\) se construit à partir de l'anneau intègre \(\Z\) (plus généralement, on peut associer à tout anneau intègre sont \guillemets{corps des fractions}).
+
+Cette construction n'est pas difficile, mais elle est hors-programme (et n'apporte rien en pratique). On se contente donc de la définition suivante, qui décrit ce qu'il faut savoir en admettant l'existence du corps \(\fracrat\).
+
+\begin{defi}[Fractions rationnelles]
+Le corps des fractions rationnelles en l'indéterminée \(X\) à coefficients dans \(\K\) est un corps noté \(\corps{\fracrat}\) tel que :
+
+\begin{enumerate}
+\item L'anneau \(\poly\) est un sous-anneau de \(\corps{\fracrat}\). \\
+
+\item Tout élément de \(\fracrat\) est le quotient de deux éléments de \(\poly\) : \[\quantifs{\forall F\in\fracrat;\exists A\in\poly;\exists B\in\poly\excluant\accol{0}}F=\dfrac{A}{B}.\]
+\end{enumerate}
+
+À retenir :
+
+\begin{itemize}
+\item Les fractions rationnelles sont les quotients \(\dfrac{A}{B}\) où \(A\in\poly\) et \(B\in\poly\excluant\accol{0}\). \\
+
+\item Savoir reconnaître deux écritures de la même fraction rationnelle : \[\quantifs{\forall A,C\in\poly;\forall B,D\in\poly\excluant\accol{0}}\dfrac{A}{B}=\dfrac{C}{D}\ssi AD=BC.\]
+
+\item Tout polynôme \(A\in\poly\) est une fraction rationnelle : \(A=\dfrac{A}{1}\). \\
+
+\item Connaître enfin la structure de corps \(\corps{\fracrat}\) : \\
+
+On considère des polynômes \(A,C\in\poly\) et \(B,D\in\poly\excluant\accol{0}\). \\
+
+On a la somme et le produit : \[\dfrac{A}{B}+\dfrac{C}{D}=\dfrac{AD+BC}{BD}\qquad\text{et}\qquad\dfrac{A}{B}\times\dfrac{C}{D}=\dfrac{AC}{BD}.\]
+
+L'élément neutre de la somme est la fraction rationnelle nulle, qui est aussi le polynôme nul : \(0=\dfrac{0}{1}\). \\
+
+L'élément neutre du produit est le polynôme constant \(1=\dfrac{1}{1}\). \\
+
+L'opposé de \(\dfrac{A}{B}\) est \(\dfrac{-A}{B}\). \\
+
+Si \(A\not=0\), l'inverse de \(\dfrac{A}{B}\) est \(\dfrac{B}{A}\).
+\end{itemize}
+\end{defi}
+
+\begin{defprop}[Forme irréductible d'une fraction rationnelle]
+Soit \(F\in\fracrat\).
+
+Il existe un unique couple \(\paren{A,B}\in\poly\times\paren{\poly\excluant\accol{0}}\) tel que : \[F=\dfrac{A}{B}\qquad\text{et}\qquad A\et B=1\qquad\text{et}\qquad B\text{ est unitaire}.\]
+
+On appelle forme irréductible de \(F\) toute écriture de \(F\) sous la forme \[F=\dfrac{A}{B}\qquad\text{avec }A\et B=1.\]
+\end{defprop}
+
+\begin{dem}
+\note{Exercice} (\cf \thref{dem:formeIrreductibleD'unRationnel}).
+\end{dem}
+
+\begin{nota}
+\renewcommand{\L}{\mathbb{L}}
+Soit \(\L\) un corps tel que \(\K\) soit un sous-anneau de \(\L\).
+
+Soient \(F\in\fracrat\) et \(x\in\L\).
+
+On considère une forme irréductible de \(F\) : \[F=\dfrac{A}{B}\qquad\text{avec }\begin{dcases}A\in\poly \\ B\in\poly\excluant\accol{0} \\ A\et B=1\end{dcases}\]
+
+On a déjà défini les éléments \(A\paren{x}\in\L\) et \(B\paren{x}\in\L\) (\cf \thref{nota:évaluationD'unPolynômeEnUnElément}).
+
+Si \(B\paren{x}\not=0\) alors on note \(F\paren{x}\) l'élément de \(\L\) : \[F\paren{x}=\dfrac{A\paren{x}}{B\paren{x}}.\]
+
+On dit que \(F\paren{x}\) est l'élément obtenu en évaluant \(F\) en \(x\).
+\end{nota}
+
+\begin{ex}
+On garde les notations précédentes.
+
+Si \(\L=\K\) alors la notation \(F\paren{\lambda}\) est valide pour tout \(\lambda\in\K\) qui n'est pas racine de \(B\).
+
+Si \(\L=\fracrat\) alors la notation \(F\paren{G}\) est valide pour tout \(G\in\fracrat\) sauf les polynômes constants qui sont racines de \(B\).
+
+On dit que \(F\paren{G}\) est la composition des fractions rationnelles \(F\) et \(G\) (qu'on note parfois \(F\rond G\)).
+
+En particulier, on a le droit d'écrire \(F=F\paren{X}\).
+\end{ex}
+
+\begin{defi}[Conjugaison]~\\
+Soient \(F=\dfrac{A}{B}\in\fracrat[\C]\) (avec \(A\in\poly[\C]\) et \(B\in\poly[\C]\excluant\accol{0}\)).
+
+On appelle conjuguée de \(F\) la fraction rationnelle \[\conj{F}=\dfrac{\conj{A}}{\conj{B}}.\]
+
+Elle ne dépend pas du choix de \(A\) et \(B\).
+\end{defi}
+
+\begin{prop}
+La conjugaison \[\fonctionlambda{\fracrat[\C]}{\fracrat[\C]}{F}{\conj{F}}\] est un automorphisme d'anneau.
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\subsection{Degré}
+
+\begin{defi}[Degré d'une fraction rationnelle]
+Soit \(F=\dfrac{A}{B}\in\fracrat\) (avec \(A\in\poly\) et \(B\in\poly\excluant\accol{0}\)).
+
+Le degré de \(F\) est : \[\deg F=\deg A-\deg B.\]
+
+Le degré de \(F\) ne dépend pas du choix de \(A\) et \(B\), et appartient à \(\Z\union\accol{\minf}\).
+
+Si \(F\) est un polynôme, son degré comme fraction rationnelle coïncide avec son degré comme polynôme.
+\end{defi}
+
+\begin{prop}
+Soient \(F,G\in\fracrat\).
+
+On a :
+
+\begin{enumerate}
+\item \(\deg\paren{F+G}\leq\max\accol{\deg F;\deg G}\) avec égalité si \(\deg F\not=\deg G\) \\
+
+\item \(\deg FG=\deg F+\deg G\) \\
+
+\item \(\deg\dfrac{1}{F}=-\deg F\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[Globale]
+Soient \(A,C\in\poly\) et \(B,D\in\poly\excluant\accol{0}\) tels que \(F=\dfrac{A}{B}\) et \(G=\dfrac{C}{D}\).
+\end{dem}
+
+\begin{dem}[1]
+On a : \[\begin{aligned}
+\deg\paren{F+G}&=\deg\paren{\dfrac{A}{B}+\dfrac{C}{D}} \\
+&=\deg\dfrac{AD+BC}{BD} \\
+&=\deg\paren{AD+BC}-\deg BD \\
+&\leq\max\accol{\deg AD;\deg BC}-\deg BD\qquad\text{(*)} \\
+&=\max\accol{\deg AD-\deg BD;\deg BC-\deg BD} \\
+&=\max\accol{\deg A-\deg B;\deg C-\deg D} \\
+&=\max\accol{\deg F;\deg G}.
+\end{aligned}\]
+
+On a : \[\begin{aligned}
+\text{(*) est une égalité}&\impr\deg AD\not=\deg BC \\
+&\ssi\deg A+\deg D\not=\deg B+\deg C \\
+&\ssi\deg\dfrac{A}{B}\not=\deg\dfrac{C}{D} \\
+&\ssi\deg F\not=\deg G.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[2]
+On a : \[\begin{aligned}
+\deg FG&=\deg\dfrac{AC}{BD} \\
+&=\deg AC-\deg BD \\
+&=\deg A+\deg C-\deg B-\deg D \\
+&=\deg\dfrac{A}{B}+\deg\dfrac{C}{D} \\
+&=\deg F+\deg G.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[3]
+On a : \[\begin{aligned}
+\deg\dfrac{1}{F}&=\deg\dfrac{B}{A} \\
+&=\deg B-\deg A \\
+&=-\deg F.
+\end{aligned}\]
+\end{dem}
+
+\begin{defprop}[Partie entière d'une fraction rationnelle]
+Soit \(F\in\fracrat\).
+
+Il existe un unique couple \(\paren{E,G}\in\poly\times\fracrat\) tel que \(\begin{dcases}F=E+G \\ \deg G<0\end{dcases}\)
+
+Le polynôme \(E\) est appelé la partie entière de \(F\).
+\end{defprop}
+
+\begin{dem}
+\existence
+
+Soient \(A\in\poly\) et \(B\in\poly\excluant\accol{0}\) tels que \(F=\dfrac{A}{B}\).
+
+Soient \(Q,R\in\poly\) le quotient et le reste de la division euclidienne de \(A\) par \(B\) : \(\begin{dcases}A=QB+R \\ \deg R<\deg B\end{dcases}\)
+
+On a : \[\begin{aligned}
+F&=\dfrac{A}{B} \\
+&=\dfrac{QB+R}{B} \\
+&=\underbrace{Q}_{\in\poly}+\underbrace{\dfrac{R}{B}}_{\substack{\in\fracrat \\ \deg<0}}
+\end{aligned}\]
+
+\unicite
+
+Soient \(E_1,E_2\in\poly\) et \(G_1,G_2\in\fracrat\) tels que \(\begin{dcases}F=E_1+G_1=E_2+G_2 \\ \deg G_1<0 \\ \deg G_2<0\end{dcases}\)
+
+On a \(E_1-E_2=G_2-G_1\).
+
+Donc \(\underbrace{\deg\paren{E_1-E_2}}_{\in\N\union\accol{\minf}}=\underbrace{\deg\paren{G_2-G_1}}_{<0}\).
+
+Donc \(\deg\paren{E_1-E_2}=\minf\).
+
+Donc \(E_1=E_2\).
+
+Donc \(G_1=G_2\).
+\end{dem}
+
+\begin{rem}
+Soient \(A\in\poly\) et \(B\in\poly\excluant\accol{0}\).
+
+La partie entière de la fraction rationnelle \(\dfrac{A}{B}\) est :
+
+\begin{itemize}
+\item nulle si, et seulement si, \(\deg A<\deg B\) ; \\
+
+\item de degré \(\deg A-\deg B\) sinon.
+\end{itemize}
+\end{rem}
+
+\begin{exo}
+Donner la partie entière de \(F=\dfrac{X+1}{X-1}\) et de \(G=\dfrac{X^8+7}{X^4+X^2-1}\).
+\end{exo}
+
+\begin{corr}
+On a \[\begin{aligned}
+F&=\dfrac{X+1}{X-1} \\
+&=\dfrac{X-1+2}{X-1} \\
+&=\underbrace{1}_{\in\poly[\R]}+\underbrace{\dfrac{2}{X-1}}_{\deg<0}
+\end{aligned}\]
+
+Donc la partie entière de \(F\) est \(1\).
+
+On calcule la division euclidienne de \(X^8+7\) par \(X^4+X^2-1\) : \[\polylongdiv[style=D]{X^8+7}{X^4+X^2-1}\]
+
+Donc \(X^8+7=\paren{X^4+X^2-1}\paren{X^4-X^2+2}-3X^2+9\).
+
+Donc \(G=X^4-X^2+2+\underbrace{\dfrac{-3X^2+9}{X^4+X^2-1}}_{\deg<0}\).
+
+Donc la partie entière de \(G\) est \(X^4-X^2+2\).
+\end{corr}
+
+\subsection{Racines, pôles}
+
+\begin{defi}[Racines, pôles]
+Soit \(F\in\fracrat\).
+
+On considère une forme irréductible de \(F\) : \[F=\dfrac{A}{B}\qquad\text{avec }\begin{dcases}A\in\poly \\ B\in\poly\excluant\accol{0} \\ A\et B=1\end{dcases}\]
+
+On appelle racines de \(F\) les racines de \(A\) et pôles de \(F\) les racines de \(B\).
+
+De plus, la multiplicité d'une racine de \(F\) est sa multiplicité comme racine de \(A\) et la multiplicité d'un pôle de \(F\) est sa multiplicité comme racine de \(B\).
+\end{defi}
+
+\begin{ex}~\\
+Si \(F=\dfrac{\paren{X-1}\paren{X+2}^3}{\paren{X-4}\paren{X-5}^6}\) alors \(\begin{dcases}1\text{ est racine simple de }F \\ -2\text{ est racine triple de }F \\ 4\text{ est pôle simple de }F \\ 5\text{ est pôle sextuple de }F\end{dcases}\)
+\end{ex}
+
+\begin{prop}
+Soit \(F\in\fracrat\).
+
+Alors \(F\) admet une infinité de racines si, et seulement si, \(F\) est nulle.
+\end{prop}
+
+\begin{dem}
+Soient \(A,B\in\poly\) tels que \(\begin{dcases}F=\dfrac{A}{B} \\ A\et B=1\end{dcases}\)
+
+Les racines de \(F\) sont les racines de \(A\).
+
+Donc on a : \[\begin{aligned}
+F\text{ admet une infinité de racines}&\ssi A\text{ admet une infinité de racines} \\
+&\ssi A=0 \\
+&\ssi F=0.
+\end{aligned}\]
+\end{dem}
+
+\begin{rem}
+Soit \(F\in\fracrat\).
+
+\(F\) admet un nombre fini de pôles.
+\end{rem}
+
+\begin{defi}[Fonction rationnelle]
+Soit \(F\in\fracrat\).
+
+On note \(Z\) l'ensemble des pôles de \(F\) (c'est une partie finie de \(\K\)).
+
+La fonction rationnelle associée à \(F\) est la fonction \[\fonction{\tilde{F}}{\K\excluant Z}{\K}{x}{F\paren{x}}\]
+\end{defi}
+
+\subsection{Dérivation}
+
+\begin{defprop}[Dérivée d'une fraction rationnelle]~\\
+Soient \(F\in\fracrat\) et \(A\in\poly\) et \(B\in\poly\excluant\accol{0}\) tels que \(F=\dfrac{A}{B}\).
+
+La fraction rationnelle \[\dfrac{A\prim B-AB\prim}{B^2}\] ne dépend pas du choix de \(A\) et \(B\).
+
+On l'appelle la fraction rationnelle dérivée de \(F\) et on la note \(F\prim\).
+\end{defprop}
+
+\begin{rem}[Lien entre dérivation des fractions rationnelles et des fonctions]
+Soit \(F\in\fracrat[\R]\).
+
+La fonction rationnelle associée à \(F\prim\) est la dérivée de la fonction rationnelle associée à \(F\) : \[\widetilde{F\prim}=\paren{\tilde{F}}\prim.\]
+
+En particulier, toute fonction rationnelle est de classe \(\classe{\infty}\).
+\end{rem}
+
+\begin{prop}[Opérations algébriques sur les dérivées]
+Soient \(F,G\in\fracrat\) et \(\lambda,\mu\in\K\).
+
+On a la somme : \[\paren{F+G}\prim=F\prim+G\prim.\]
+
+On a, plus généralement : \[\paren{\lambda F+\mu G}\prim=\lambda F\prim+\mu G\prim.\]
+
+On a le produit : \[\paren{FG}\prim=F\prim G+FG\prim.\]
+
+On a le quotient : \[\paren{\dfrac{F}{G}}\prim=\dfrac{F\prim G-FG\prim}{G^2}.\]
+
+On a la composition : \[\paren{F\rond G}\prim=G\prim\times\paren{F\prim\rond G}.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\subsection{Décomposition en éléments simples}
+
+\subsubsection{Le théorème}
+
+\begin{defi}[Élément simple]
+On appelle élément simple (sur \(\K\)) toute fraction rationnelle \(F\) de la forme \[F=\dfrac{P}{Q^{\alpha}}\qquad\text{avec }\begin{dcases}P,Q\in\poly\excluant\accol{0} \\ \alpha\in\Ns \\ Q\text{ irréductible (sur \(\K\))} \\ \deg P<\deg Q\end{dcases}\]
+\end{defi}
+
+\begin{ex}
+Éléments simples sur \(\R\) et sur \(\C\) : \[\dfrac{4}{X+1}\qquad\dfrac{5}{\paren{X+1}^3}\qquad\dfrac{1}{X^5}\]
+
+Éléments simples sur \(\R\) mais pas sur \(\C\) : \[\dfrac{2X+1}{X^2+1}\qquad\dfrac{X}{\paren{X^2+1}^3}\]
+\end{ex}
+
+\begin{rem}
+Le principal résultat de ce paragraphe affirme que toute fraction rationnelle s'écrit de façon unique comme la somme d'un polynôme et d'éléments simples.
+
+Il faut savoir écrire le théorème sur \(\C\) et sur \(\R\).
+
+Voici d'abord la forme générale du théorème (hors-programme, mais elle peut aider à mieux retenir les deux formes au programme) :
+\end{rem}
+
+\begin{theo}[Décomposition en éléments simples sur \(\K\)]\thlabel{theo:DESsurK}
+Soit \(F\in\fracrat\).
+
+Soient \(A\in\poly\) et \(B\in\poly\excluant\accol{0}\) tels que : \[F=\dfrac{A}{B}\qquad\text{et}\qquad A\et B=1\qquad\text{et}\qquad B\text{ est unitaire}.\]
+
+Considérons la décomposition de \(B\) en produit de polynômes irréductibles : soient les polynômes irréductibles unitaires deux à deux distincts \(Q_1,\dots,Q_r\in\poly\) (avec \(r\in\N\)) et les entiers \(\alpha_1,\dots,\alpha_r\in\Ns\) tels que : \[B=Q_1^{\alpha_1}\dots Q_r^{\alpha_r}.\]
+
+Alors il existe un polynôme \(E\in\poly\) et un polynôme \(P_{i\gamma}\) pour tout couple d'entiers \(\paren{i,\gamma}\) tel que \(1\leq i\leq r\) et \(1\leq\gamma\leq\alpha_i\) tels que : \[\dfrac{A}{B}=E+\sum_{i=1}^r\sum_{\gamma=1}^{\alpha_i}\dfrac{P_{i\gamma}}{Q_i^\gamma}\qquad\text{et}\qquad\quantifs{\forall i\in\interventierii{1}{r};\forall\gamma\in\interventierii{1}{\alpha_i}}\deg P_{i\gamma}<\deg Q_i.\]
+
+Ces polynômes \(E\) et \(P_{i\gamma}\) sont uniques.
+
+Le polynôme \(E\) est la partie entière de \(F\).
+\end{theo}
+
+\begin{dem}
+\note{Admis} (hors-programme).
+\end{dem}
+
+\begin{theo}[Décomposition en éléments simples sur \(\C\)]
+Soit \(F\in\fracrat[\C]\).
+
+Soient \(A\in\poly[\C]\) et \(B\in\poly[\C]\excluant\accol{0}\) tels que \[F=\dfrac{A}{B}\qquad\text{et}\qquad A\et B=1\qquad\text{et}\qquad B\text{ est unitaire}.\]
+
+Considérons la décomposition de \(B\) en produit de polynômes irréductibles sur \(\C\) : \[B=\paren{X-\lambda_1}^{\alpha_1}\dots\paren{X-\lambda_r}^{\alpha_r}\qquad\text{avec }\begin{dcases}r\in\N \\ \lambda_1,\dots,\lambda_r\in\C\text{ deux à deux distincts} \\ \alpha_1,\dots,\alpha_r\in\Ns\end{dcases}\]
+
+Alors il existe un polynôme \(E\in\poly[\C]\) et un nombre complexe \(x_{i\gamma}\) pour tout couple d'entiers \(\paren{i,\gamma}\) tel que \(1\leq i\leq r\) et \(1\leq\gamma\leq\alpha_i\) tels que : \[\dfrac{A}{B}=E+\sum_{i=1}^r\sum_{\gamma=1}^{\alpha_i}\dfrac{x_{i\gamma}}{\paren{X-\lambda_i}^\gamma}.\]
+
+Ce polynôme \(E\) et ces nombres complexes \(x_{i\gamma}\) sont uniques.
+
+Le polynôme \(E\) est la partie entière de \(F\).
+\end{theo}
+
+\begin{dem}
+\note{Admis} (hors-programme ; découle du \thref{theo:DESsurK}).
+\end{dem}
+
+\begin{theo}[Décomposition en éléments simples sur \(\R\)]
+Soit \(F\in\fracrat[\R]\).
+
+Soient \(A\in\poly[\R]\) et \(B\in\poly[\R]\excluant\accol{0}\) tels que \[F=\dfrac{A}{B}\qquad\text{et}\qquad A\et B=1\qquad\text{et}\qquad B\text{ est unitaire}.\]
+
+Considérons la décomposition de \(B\) en produit de polynômes irréductibles sur \(\R\) : \[B=\paren{X-\lambda_1}^{\alpha_1}\dots\paren{X-\lambda_r}^{\alpha_r}\times\paren{X^2+b_1X+c_1}^{\beta_1}\dots\paren{X^2+b_sX+c_s}^{\beta_s}\] avec \(\begin{dcases}r,s\in\N \\ \lambda_1,\dots,\lambda_r\in\R\text{ deux à deux distincts} \\ \paren{b_1,c_1},\dots,\paren{b_s,c_s}\in\R^2\text{ deux à deux distincts} \\ \text{les facteurs de degré 2 sont irréductibles, \cad}\quantifs{\forall i\in\interventierii{1}{s}}b_i^2-4c_i<0 \\ \alpha_1,\dots,\alpha_r,\beta_1,\dots,\beta_s\in\Ns\end{dcases}\)
+
+Alors il existe :
+
+\begin{itemize}
+\item un polynôme \(E\in\poly[\R]\) ; \\
+
+\item un réel \(x_{i\gamma}\) pour tout couple d'entiers \(\paren{i,\gamma}\) tel que \(1\leq i\leq r\) et \(1\leq\gamma\leq\alpha_i\) ; \\
+
+\item deux réels \(y_{i\gamma},z_{i\gamma}\) pour tout couple d'entiers \(\paren{i,\gamma}\) tel que \(1\leq i\leq s\) et \(1\leq\gamma\leq\beta_i\)
+\end{itemize}
+
+tels que : \[\dfrac{A}{B}=E+\sum_{i=1}^r\sum_{\gamma=1}^{\alpha_i}\dfrac{x_{i\gamma}}{\paren{X-\lambda_i}^\gamma}+\sum_{i=1}^s\sum_{\gamma=1}^{\beta_i}\dfrac{y_{i\gamma}X+z_{i\gamma}}{\paren{X^2+b_iX+c_i}^\gamma}.\]
+
+Ce polynôme \(E\) et ces réels \(x_{i\gamma},y_{i\gamma},z_{i\gamma}\) sont uniques.
+
+Le polynôme \(E\) est la partie entière de \(F\).
+\end{theo}
+
+\begin{dem}
+\note{Admis} (hors-programme ; découle du \thref{theo:DESsurK}).
+\end{dem}
+
+\begin{defi}[Partie polaire associée au pôle \(\lambda\)]
+Soient \(F\in\fracrat\) et \(\lambda\in\K\) un pôle de \(F\) dont on note \(\alpha\) la multiplicité.
+
+On appelle partie polaire de \(F\) associée au pôle \(\lambda\) la somme des éléments simples de pôle \(\lambda\) dans la décomposition en éléments simples de \(F\).
+
+Elle est de la forme \[\sum_{\gamma=1}^{\alpha}\dfrac{x_\gamma}{\paren{X-\lambda}^\gamma}\qquad\text{avec }x_1,\dots,x_\alpha\in\K\] et \(\lambda\) n'est pas un pôle de \[F-\sum_{\gamma=1}^{\alpha}\dfrac{x_\gamma}{\paren{X-\lambda}^\gamma}.\]
+\end{defi}
+
+\begin{ex}
+On a les décompositions en éléments simples suivantes :
+
+\begin{itemize}
+\item Sur \(\K=\R\) ou \(\C\) : \[\dfrac{X^8+X+1}{X^4\paren{X-1}^3}=X+3+\underbrace{\dfrac{22}{X-1}-\dfrac{3}{\paren{X-1}^2}+\dfrac{3}{\paren{X-1}^3}}_{\text{partie polaire associée à }1}\underbrace{-\dfrac{16}{X}-\dfrac{9}{X^2}-\dfrac{4}{X^3}-\dfrac{1}{X^4}}_{\text{partie polaire associée à }0}\]
+
+\item Sur \(\K=\R\) : \[\dfrac{4}{X^4-1}=\dfrac{1}{X-1}-\dfrac{1}{X+1}-\dfrac{2}{X^2+1}\]
+
+\item Sur \(\K=\C\) : \[\dfrac{4}{X^4-1}=\dfrac{1}{X-1}-\dfrac{1}{X+1}+\dfrac{\i}{X-\i}-\dfrac{\i}{X+\i}\]
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+Il est simple de calculer des décompositions en éléments simples avec Python en utilisant le module \verb|sympy|.
+
+Par exemple :
+
+\begin{verbatim}
+>>> from sympy import apart, pprint
+>>> from sympy.abc import x
+>>> apart(1 / (x ** 2 + x))
+-1/(x + 1) + 1/x
+>>> pprint(apart(1 / (x ** 2 + x)))
+    1     1
+- ----- + -
+  x + 1   x
+\end{verbatim}
+\end{rem}
+
+\begin{rem}
+On verra que pour primitiver une fonction rationnelle réelle, on décompose la fraction rationnelle correspondante en éléments simples sur \(\R\).
+
+On se ramène ainsi, via des changements de variables affines, à primitiver par rapport à \(t\) des expressions de la forme \[\dfrac{1}{t-\lambda}\qquad\dfrac{1}{\paren{t-\lambda}^{\alpha}}\qquad\dfrac{t}{1+t^2}\qquad\dfrac{t}{\paren{1+t^2}^{\alpha}}\qquad\dfrac{1}{1+t^2}\qquad\dfrac{1}{\paren{1+t^2}^{\alpha}}\] avec \(\lambda\in\R\) et \(\alpha\in\interventierie{2}{\pinf}\).
+\end{rem}
+
+\begin{rem}
+La décomposition en éléments simples suivantes est à retenir. On l'énonce sous deux formes équivalentes :
+\end{rem}
+
+\begin{prop}[Décomposition en éléments simples de \(\dfrac{P\prim}{P}\) quand \(P\) est scindé]
+Soit \(P\in\poly\excluant\accol{0}\) scindé sur \(\K\).
+
+On a \[\dfrac{P\prim}{P}=\sum_{k=1}^n\dfrac{1}{X-\lambda_k}\] où \(\lambda_1,\dots,\lambda_n\in\K\) sont les racines de \(P\) comptées avec multiplicité.
+\end{prop}
+
+\begin{prop}[Décomposition en éléments simples de \(\dfrac{P\prim}{P}\) quand \(P\) est scindé]
+Soit \(P\in\poly\excluant\accol{0}\) scindé sur \(\K\).
+
+On a \[\dfrac{P\prim}{P}=\sum_{j=1}^r\dfrac{\alpha_j}{X-\mu_j}\] où \(\mu_1,\dots,\mu_r\in\K\) sont les racines de \(P\) comptées sans multiplicité et \(\alpha_1,\dots,\alpha_r\in\Ns\) leurs multiplicités respectives.
+\end{prop}
+
+\begin{dem}
+On a, en notant \(\mu\) le coefficient dominant de \(P\) : \[P=\mu\paren{X-\lambda_1}\dots\paren{X-\lambda_n}.\]
+
+Donc \[\begin{aligned}
+\dfrac{P\prim}{P}&=\dfrac{\mu\ds\sum_{k=1}^n\prod_{j\in\interventierii{1}{n}\excluant\accol{k}}\paren{X-\lambda_j}}{\mu\ds\prod_{j=1}^n\paren{X-\lambda_j}} \\
+&=\sum_{k=1}^n\dfrac{1}{X-\lambda_k}.
+\end{aligned}\]
+\end{dem}
+
+\begin{ex}
+Si \(P=5\paren{X-7}^3\paren{X-9}\) alors \[\dfrac{P\prim}{P}=\dfrac{3}{X-7}+\dfrac{1}{X-9}.\]
+\end{ex}
+
+\subsubsection{Quelques méthodes de calcul}
+
+\begin{rem}
+Les méthodes qui suivent servent à obtenir la décomposition en éléments simples d'une fraction rationnelle de degré strictement négatif.
+\end{rem}
+
+\begin{meth}[Fonctionne à tous les coups, mais à éviter car très calculatoire]
+Mettre au même dénominateur puis identifier.
+
+Cette méthode peut aussi être utilisée après les autres pour trouver les coefficients qui résistent.
+\end{meth}
+
+\begin{ex}
+On pose \(F=\dfrac{X}{X^2-1}\).
+
+On a \(X^2-1=\paren{X-1}\paren{X+1}\).
+
+La partie entière de \(F\) est nulle car \(\deg F<0\).
+
+On a \(F=\dfrac{a}{X-1}+\dfrac{b}{X+1}\) avec \(a,b\in\R\).
+
+Donc \(F=\dfrac{a\paren{X+1}+b\paren{X-1}}{\paren{X-1}\paren{X+1}}=\dfrac{\paren{a+b}X+a-b}{X^2-1}\).
+
+Donc \(\begin{dcases}a+b=1 \\ a-b=0\end{dcases}\)
+
+Donc \(a=b=\num{0.5}\).
+
+D'où \[F=\dfrac{\num{0.5}}{X+1}+\dfrac{\num{0.5}}{X-1}.\]
+\end{ex}
+
+\begin{meth}[Classique]
+Si \(\lambda\) est un pôle de multiplicité \(\alpha\) de \(F\) : multiplier par \(\paren{X-\lambda}^{\alpha}\) puis évaluer en \(\alpha\).
+\end{meth}
+
+\begin{ex}
+On pose \(F=\dfrac{X^4+1}{\paren{X-1}^2\paren{X-2}^3}\).
+
+On a \(F=0+\dfrac{a}{X-1}+\dfrac{b}{\paren{X-1}^2}+\dfrac{c}{X-2}+\dfrac{d}{\paren{X-2}^2}+\dfrac{e}{\paren{X-2}^3}\) avec \(a,b,c,d,e\in\R\).
+
+On multiplie par \(\paren{X-1}^2\) et on évalue en \(1\) ; on obtient \(b=-2\).
+
+On multiplie par \(\paren{X-2}^3\) et on évalue en \(2\) ; on obtient \(e=17\).
+
+On a donc \[F=\dfrac{a}{X-1}-\dfrac{2}{\paren{X-1}^2}+\dfrac{c}{X-2}+\dfrac{d}{\paren{X-2}^2}+\dfrac{17}{\paren{X-2}^3}.\]
+
+De plus, on a \[\quantifs{\forall t\in\R\excluant\accol{1;2}}t\dfrac{t^4+1}{\paren{t-1}^2\paren{t-2}^3}=\dfrac{at}{t-1}-\dfrac{2t}{\paren{t-1}^2}+\dfrac{ct}{t-2}+\dfrac{dt}{\paren{t-2}^2}+\dfrac{17t}{\paren{t-2}^3}.\]
+
+Donc quand \(t\to\pinf\) : \(1=a+c\).
+
+\note{Fin en exercice}
+\end{ex}
+
+\begin{meth}[Pour obtenir des informations sur les coefficients]
+\begin{itemize}
+\item Évaluer la fraction rationnelle en un point. \\
+
+\item Multiplier la fraction rationnelle par une puissance de \(X\) et évaluer sa limite en \(\pinf\).
+\end{itemize}
+\end{meth}
+
+\begin{meth}[Cas d'une fraction rationnelle réelle]
+\begin{itemize}
+\item On peut faire sa décomposition en éléments simples sur \(\C\) puis regrouper les éléments simples conjugués pour en déduire la décomposition en éléments simples sur \(\R\). \\
+
+\item Lorsqu'on fait sa décomposition en éléments simples sur \(\C\), on peut remarquer que la partie polaire de pôle \(\lambda\) et la partie polaire de pôle \(\conj{\lambda}\) sont conjuguées (d'après l'unicité de la décomposition en éléments simples).
+\end{itemize}
+\end{meth}
+
+\begin{ex}
+On pose \(F=\dfrac{X+1}{X^2+X+1}\in\fracrat[\R]\).
+
+La partie entière de \(F\) est nulle car \(\deg F<0\).
+
+On a \(X^2+X+1=\paren{X-j}\paren{X-j^2}\).
+
+D'où la décomposition en éléments simples : \[F=\dfrac{a}{X-j}+\dfrac{b}{X-j^2}\qquad\text{avec }a,b\in\C.\]
+
+Or \(F=\conj{F}=\dfrac{\conj{a}}{X-j^2}+\dfrac{\conj{b}}{X-j}\) (car \(j^2=\conj{j}\)).
+
+D'où, par unicité de la décomposition en éléments simples : \(\begin{dcases}a=\conj{b} \\ \conj{a}=b\end{dcases}\)
+
+On multiplie par \(X-j\) et on évalue en \(j\) ; on obtient \[\begin{aligned}
+a&=\dfrac{j+1}{j-j^2} \\
+&=\dfrac{-j^2}{\i\sqrt{3}} \\
+&=\dfrac{\i j^2}{\sqrt{3}} \\
+&=\dfrac{\e{\frac{-\i\pi}{6}}}{\sqrt{3}}
+\end{aligned}\]
+
+D'où \[F=\dfrac{\frac{\e{\frac{-\i\pi}{6}}}{\sqrt{3}}}{X-j}+\dfrac{\frac{\e{\frac{\i\pi}{6}}}{\sqrt{3}}}{X-j^2}.\]
+\end{ex}
+
+\begin{ex}
+On pose \(F=\dfrac{1}{X\paren{X^2+1}^2}\).
+
+Déterminons la décomposition en éléments simples de \(F\) sur \(\C\) puis sur \(\R\).
+
+La partie entière de \(F\) est nulle car \(\deg F<0\).
+
+On a \(X\paren{X^2+1}^2=X\paren{X+\i}^2\paren{X-\i}^2\).
+
+D'où la décomposition en éléments simples sur \(\C\) : \[F=\dfrac{a}{X}+\dfrac{b}{X-\i}+\dfrac{c}{\paren{X-\i}^2}+\dfrac{d}{X+\i}+\dfrac{e}{\paren{X+\i}^2}\qquad\text{avec }a,b,c,d,e\in\C.\]
+
+Or \(F=\conj{F}=\dfrac{\conj{a}}{X}+\dfrac{\conj{b}}{X+\i}+\dfrac{\conj{c}}{\paren{X+\i}^2}+\dfrac{\conj{d}}{X-\i}+\dfrac{\conj{e}}{\paren{X-\i}^2}\).
+
+D'où, par une unicité de la décomposition en éléments simples : \(\begin{dcases}a=\conj{a} \\ b=\conj{d} \\ e=\conj{c}\end{dcases}\)
+
+On multiplie par \(X\) et on évalue en \(0\) ; on obtient \(a=1\).
+
+On multiplie par \(\paren{X-\i}^2\) et on évalue en \(\i\) ; on obtient \(c=\dfrac{\i}{4}\).
+
+On multiplie par \(X\) et on prend la limite en \(\pinf\) ; on obtient \(b=\dfrac{-1}{2}\).
+
+Finalement, \(F\) est impaire donc on a \[\begin{aligned}
+F&=-F\paren{-X} \\
+&=\dfrac{-a}{-X}+\dfrac{-b}{-X-\i}+\dfrac{-c}{\paren{-X-\i}^2}+\dfrac{-d}{-X+\i}+\dfrac{-e}{\paren{-X+\i}^2} \\
+&=\dfrac{a}{X}+\dfrac{b}{X+\i}-\dfrac{c}{\paren{X+\i}^2}+\dfrac{d}{X-\i}-\dfrac{e}{\paren{X-\i}^2}.
+\end{aligned}\]
+
+D'où, par unicité de la décomposition en éléments simples : \(\begin{dcases}b=d \\ c=-e\end{dcases}\)
+
+D'où \[F=\dfrac{a}{X}+\dfrac{b}{X-\i}+\dfrac{c}{\paren{X-\i}^2}+\dfrac{b}{X+\i}-\dfrac{c}{\paren{X+\i}^2}.\]
+
+D'où la décomposition en éléments simples sur \(\C\) : \[F=\dfrac{1}{X}-\dfrac{1}{2\paren{X-\i}}+\dfrac{\i}{4\paren{X-\i}^2}-\dfrac{1}{2\paren{X+\i}}-\dfrac{\i}{4\paren{X+\i}^2}.\]
+
+On en déduit la décomposition en éléments simples sur \(\R\) : \[\begin{aligned}
+F&=\dfrac{1}{X}-\dfrac{1}{2}\paren{\dfrac{1}{X+\i}+\dfrac{1}{X-\i}}+\dfrac{\i}{4}\paren{\dfrac{1}{\paren{X-\i}^2}-\dfrac{1}{\paren{X+\i}^2}} \\
+&=\dfrac{1}{X}-\dfrac{1}{2}\times\dfrac{2X}{X^2+1}+\dfrac{\i}{4}\times\dfrac{4\i X}{\paren{X^2+1}^2} \\
+&=\dfrac{1}{X}-\dfrac{X}{X^2+1}-\dfrac{X}{\paren{X^2+1}^2}.
+\end{aligned}\]
+\end{ex}
+
+\begin{rem}[Astuce]
+On aurait aussi pu ruser : \[\begin{aligned}
+\dfrac{1}{X\paren{X^2+1}^2}&=\dfrac{X^2+1-X^2}{X\paren{X^2+1}^2} \\
+&=\dfrac{1}{X\paren{X^2+1}}-\dfrac{X}{\paren{X^2+1}^2} \\
+&=\dfrac{X^2+1-X^2}{X\paren{X^2+1}}-\dfrac{X}{\paren{X^2+1}^2} \\
+&=\dfrac{1}{X}-\dfrac{X}{X^2+1}-\dfrac{X}{\paren{X^2+1}^2}.
+\end{aligned}\]
+\end{rem}
+
+\begin{meth}
+La proposition suivante :
+\end{meth}
+
+\begin{prop}[Cas des pôles simples]\thlabel{prop:pôlesSimplesDES}~\\
+Soient \(F=\dfrac{A}{B}\in\fracrat\) une fraction rationnelle écrite sous forme irréductible et \(\lambda\in\K\) un pôle simple de \(F\) (\cad une racine simple de \(B\)).
+
+Alors l'élément simple de pôle \(\lambda\) dans la décomposition en éléments simples de \(F\) est : \[\dfrac{\frac{A\paren{\lambda}}{B\prim\paren{\lambda}}}{X-\lambda}.\]
+\end{prop}
+
+\begin{dem}
+On sait que la décomposition en éléments simples de \(F\) s'écrit \[\dfrac{A}{B}=\underbrace{\dfrac{\mu}{X-\lambda}}_{\substack{\text{partie polaire} \\ \text{associée à }\lambda}}+\underbrace{G}_{\substack{\text{la somme des autres} \\ \text{parties polaires} \\ \text{et de la partie} \\ \text{entière de }F}}\] où \(\mu\in\K\) et \(G\in\fracrat\) telle que \(\lambda\) n'est pas un pôle de \(G\).
+
+\(\lambda\) est racine simple de \(B\) donc \(X-\lambda\divise B\).
+
+Soit \(Q\in\poly\) tel que \(B=\paren{X-\lambda}Q\).
+
+On a \(B\prim=Q+\paren{X-\lambda}Q\prim\).
+
+Donc \(B\prim\paren{\lambda}=Q\paren{\lambda}+0\).
+
+En multipliant la décomposition en éléments simples par \(X-\lambda\), on a : \[\dfrac{A}{Q}=\mu+\paren{X-\lambda}G.\]
+
+Puis en évaluant en \(\lambda\) : \(\dfrac{A\paren{\lambda}}{Q\paren{\lambda}}=\mu\).
+
+D'où \[\mu=\dfrac{A\paren{\lambda}}{B\prim\paren{\lambda}}.\]
+\end{dem}
+
+\begin{exo}
+Soit \(n\in\Ns\).
+
+On pose \(F=\dfrac{1}{X^n-1}\).
+
+\begin{enumerate}
+\item Donner la décomposition en éléments simples de \(F\) sur \(\C\). \\
+
+\item En déduire la décomposition en éléments simples de \(F\) sur \(\R\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}[1]
+La partie entière de \(F\) est nulle car \(\deg F<0\).
+
+On a \(X^n-1=\prod_{\omega\in\U_n}\paren{X-\omega}\).
+
+Donc on a la décomposition en éléments simples suivante : \[F=\sum_{\omega\in\U_n}\dfrac{\mu_\omega}{X-\omega}.\]
+
+D'après la \thref{prop:pôlesSimplesDES}, on a \[\quantifs{\forall\omega\in\U_n}\mu_\omega=\dfrac{1}{n\omega^{n-1}}=\dfrac{\omega}{n}\text{ car }\omega^n=1.\]
+
+D'où la décomposition en éléments simples sur \(\C\) : \[F=\sum_{\omega\in\U_n}\dfrac{\omega}{n\paren{X-\omega}}.\]
+\end{corr}
+
+\begin{corr}[2]
+Si \(\omega=\e{\frac{2\i k\pi}{n}}\) avec \(k\in\interventierii{0}{n-1}\), alors \[\begin{aligned}
+\dfrac{\omega}{X-\omega}+\dfrac{\conj{\omega}}{X-\conj{\omega}}&=\dfrac{\omega\paren{X-\conj{\omega}}+\conj{\omega}\paren{X-\omega}}{\paren{X-\omega}\paren{X-\conj{\omega}}} \\
+&=\dfrac{2\paren{\Re\omega}X-2}{X^2-2\paren{\Re\omega}X+1} \\
+&=\dfrac{2\paren{\cos\frac{2k\pi}{n}}X-2}{X^2-2\paren{\cos\frac{2k\pi}{n}}X+1}.
+\end{aligned}\]
+
+Donc, si \(n\) est pair, on a la décomposition en éléments simples sur \(\R\) suivante : \[F=\dfrac{1}{n\paren{X-1}}+\dfrac{-1}{n\paren{X+1}}+\dfrac{2}{n}\sum_{k=1}^{\frac{n}{2}-1}\dfrac{\paren{\cos\frac{2k\pi}{n}}X-1}{X^2-2\paren{\cos\frac{2k\pi}{n}}X+1}.\]
+
+Et si \(n\) est impair, on a la décomposition en éléments simples sur \(\R\) suivante : \[F=\dfrac{1}{n\paren{X-1}}+\dfrac{2}{n}\sum_{k=1}^{\frac{n+1}{2}}\dfrac{\paren{\cos\frac{2k\pi}{n}}X-1}{X^2-2\paren{\cos\frac{2k\pi}{n}}X+1}.\]
+\end{corr}

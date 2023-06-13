@@ -1,0 +1,560 @@
+\chapter{Espaces préhilbertiens}
+
+\minitoc
+
+\section{Produit scalaire, norme associée}
+
+\subsection{Produit scalaire}
+
+\begin{defi}[Produit scalaire]
+Soit \(E\) un \(\R\)-espace vectoriel.
+
+On appelle produit scalaire sur \(E\) tout forme bilinéaire symétrique définie positive, \cad toute application \[\fonction{\ps{\cdot}{\cdot}}{E\times E}{\R}{\paren{x,y}}{\ps{x}{y}}\] qui vérifie : \[\begin{dcases}
+\ps{\cdot}{\cdot}\text{ est bilinéaire : }\begin{dcases}
+\quantifs{\forall\lambda,\mu\in\R;\forall x_1,x_2,y\in E}\ps{\lambda x_1+\mu x_2}{y}=\lambda\ps{x_1}{y}+\mu\ps{x_2}{y} \\
+\quantifs{\forall\lambda,\mu\in\R;\forall x,y_1,y_2\in E}\ps{x}{\lambda y_1+\mu y_2}=\lambda\ps{x}{y_1}+\mu\ps{x}{y_2}
+\end{dcases} \\
+\ps{\cdot}{\cdot}\text{ est symétrique : }\quantifs{\forall x,y\in E}\ps{x}{y}=\ps{y}{x} \\
+\ps{\cdot}{\cdot}\text{ est définie positive : }\quantifs{\forall x\in E}\begin{dcases}
+\ps{x}{x}\geq0 \\
+\ps{x}{x}=0\ssi x=0_E
+\end{dcases}
+\end{dcases}\]
+
+Le produit scalaire de deux vecteurs \(x\) et \(y\) est traditionnellement noté \(\ps{x}{y}\), \(\left(x\tq y\right)\), \(\left\langle x,y\right\rangle\) ou \(x\cdot y\). On le notera \(\ps{x}{y}\) dans tout ce cours.
+\end{defi}
+
+\begin{defi}[Espace euclidien]
+On appelle espace préhilbertien (réel) tout \(\R\)-espace vectoriel muni d'un produit scalaire.
+
+On appelle espace euclidien tout \(\R\)-espace vectoriel de dimension finie muni d'un produit scalaire.
+\end{defi}
+
+\begin{ex}\thlabel{ex:produitsScalaires}
+Les exemples suivants sont à connaître parfaitement :
+
+\begin{enumerate}
+\item Soit \(n\in\Ns\). L'application : \[\fonctionlambda{\R^n\times\R^n}{\R}{\paren{\tcoords{x_1}{\vdots}{x_n},\tcoords{x_1\prim}{\vdots}{x_n\prim}}}{x_1x_1\prim+\dots+x_nx_n\prim}\] est un produit scalaire sur \(\R^n\) appelé le produit scalaire canonique de \(\R^n\).
+
+Ce produit scalaire s'écrit aussi : \[\fonctionlambda{\R^n\times\R^n}{\R}{\paren{X,X\prim}}{\trans{X}X\prim}\]
+
+\item Soient \(a,b\in\R\) tels que \(a<b\). On pose \(E=\ensclasse{0}{\intervii{a}{b}}{\R}\). L'application : \[\fonctionlambda{E\times E}{\R}{\paren{f,g}}{\int_a^bf\paren{t}g\paren{t}\odif{t}}\] est un produit scalaire sur \(E\). \\
+
+\item L'application : \[\fonctionlambda{\M{n}[\R]\times\M{n}[\R]}{\R}{\paren{A,B}}{\tr\paren{\trans{A}B}}\] est un produit scalaire sur \(\M{n}[\R]\) appelé le produit scalaire canonique de \(\M{n}[\R]\).
+
+On a, pour toutes matrices \(A=\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{n}^2}\) et \(B=\paren{b_{ij}}_{\paren{i,j}\in\interventierii{1}{n}^2}\) : \[\tr\paren{\trans{A}B}=\sum_{i=1}^n\sum_{j=1}^na_{ij}b_{ij}.\]
+
+\item Plus généralement, l'application : \[\fonctionlambda{\M{np}[\R]\times\M{np}[\R]}{\R}{\paren{A,B}}{\tr\paren{\trans{A}B}}\] est un produit scalaire sur \(\M{np}[\R]\) appelé le produit scalaire canonique de \(\M{np}[\R]\).
+
+On a, pour toutes matrices \(A=\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{n}\times\interventierii{1}{p}}\) et \(B=\paren{b_{ij}}_{\paren{i,j}\in\interventierii{1}{n}\times\interventierii{1}{p}}\) : \[\tr\paren{\trans{A}B}=\sum_{i=1}^n\sum_{j=1}^pa_{ij}b_{ij}.\]
+\end{enumerate}
+\end{ex}
+
+\begin{dem}[2]\thlabel{dem:produitScalaireFonctionsContinues}
+On note \(\phi:E^2\to\R\) l'application.
+
+On a : \[\quantifs{\forall f,g\in E}\phi\paren{f,g}=\phi\paren{g,f}.\]
+
+Donc \(\phi\) est symétrique.
+
+On a : \[\begin{aligned}
+\quantifs{\forall\lambda,\mu\in\R;\forall f_1,f_2,g\in E}\phi\paren{\lambda f_1+\mu f_2,g}&=\int_a^b\paren{\lambda f_1\paren{t}+\mu f_2\paren{t}}g\paren{t}\odif{t} \\
+&=\lambda\int_a^bf_1\paren{t}g\paren{t}\odif{t}+\mu\int_a^bf_2\paren{t}g\paren{t}\odif{t} \\
+&=\lambda\phi\paren{f_1,g}+\mu\phi\paren{f_2,g}.
+\end{aligned}\]
+
+Donc \(\phi\) est linéaire à gauche.
+
+Comme \(\phi\) est symétrique, \(\phi\) est aussi linéaire à droite.
+
+Donc \(\phi\) est bilinéaire.
+
+Soit \(f\in E\).
+
+On a : \[\phi\paren{f,f}=\int_a^bf^2\paren{t}\odif{t}\geq0.\]
+
+Donc \(\phi\) est définie positive.
+
+Enfin, si \(\phi\paren{f,f}=0\) alors \(\int_a^bf^2\paren{t}\odif{t}=0\).
+
+Or la fonction \(f^2\) est continue et positive sur \(\intervii{a}{b}\) donc \(f^2=0\) donc \(f=0\).
+
+Finalement, \(\phi\) est un produit scalaire sur \(E\).
+\end{dem}
+
+\begin{dem}[Autres exemples]
+\note{Exercice}
+\end{dem}
+
+\subsection{Norme associée à un produit scalaire}
+
+\begin{nota}
+Soit \(E\) un espace préhilbertien.
+
+On pose : \[\quantifs{\forall x\in E}\norme{x}=\sqrt{\ps{x}{x}}.\]
+
+On étudie dans la suite l'application : \[\fonction{\norme{\cdot}}{E}{\R}{x}{\norme{x}=\sqrt{\ps{x}{x}}}\] appelée norme associée au produit scalaire de \(E\).
+\end{nota}
+
+\begin{theo}[Inégalité de Cauchy-Schwarz]
+Soient \(E\) un espace préhilbertien et \(x,y\in E\).
+
+On a l'inégalité de Cauchy-Schwarz : \[\abs{\ps{x}{y}}\leq\norme{x}\norme{y}.\]
+
+De plus, on a les cas d'égalités dans l'inégalité de Cauchy-Schwarz : \[\abs{\ps{x}{y}}=\norme{x}\norme{y}\ssi x\text{ et }y\text{ sont colinéaires}\] et : \[\ps{x}{y}=\norme{x}\norme{y}\ssi\quantifs{\exists\lambda\in\Rp}\orenv{x=\lambda y \\ y=\lambda x}\]
+\end{theo}
+
+\begin{dem}[Inégalité de Cauchy-Schwarz]
+Si \(y=0_E\) alors \(\ps{x}{y}=\norme{x}\norme{y}=0\).
+
+Supposons \(y\not=0_E\).
+
+On pose \(\fonction{f}{\R}{\R}{\lambda}{\norme{x+\lambda y}^2}\)
+
+On a : \[\begin{WithArrows}
+\quantifs{\forall\lambda\in\R}f\paren{\lambda}&=\ps{x+\lambda y}{x+\lambda y} \Arrow{car \(\ps{\cdot}{\cdot}\) est bilinéaire} \\
+&=\ps{x}{x}+\lambda\ps{x}{y}+\lambda^2\ps{y}{x}+\ps{y}{y} \Arrow{car \(\ps{\cdot}{\cdot}\) est symétrique} \\
+&=\lambda^2\underbrace{\norme{y}^2}_{\not=0}+2\lambda\ps{x}{y}+\norme{x}^2 \Arrow{car \(\ps{\cdot}{\cdot}\) est positif} \\
+&\geq0.
+\end{WithArrows}\]
+
+Donc \(f\) est une fonction polynomiale de degré \(2\) positive sur \(\R\).
+
+Donc le discriminant de \(\norme{y}^2X^2+2\ps{x}{y}X+\norme{x}^2\) est négatif : \[\Delta=4\ps{x}{y}^2-4\norme{x}^2\norme{y}^2\leq0.\]
+
+D'où \(\abs{\ps{x}{y}}\leq\norme{x}\norme{y}\).
+\end{dem}
+
+\begin{dem}[Cas d'égalité en valeur absolue]
+Si \(y=0_E\), l'équivalence est vraie.
+
+Supposons \(y=0_E\).
+
+On a : \[\begin{WithArrows}
+\abs{\ps{x}{y}}=\norme{x}\norme{y}&\ssi\Delta=0 \\
+&\ssi\quantifs{\exists\lambda\in\R}f\paren{\lambda}=0 \\
+&\ssi\quantifs{\exists\lambda\in\R}\norme{x+\lambda y}^2=0 \\
+&\ssi\quantifs{\exists\lambda\in\R}x=-\lambda y \Arrow{car \(y\not=0_E\)} \\
+&\ssi x\text{ et }y\text{ sont colinéaires}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{dem}[Cas d'égalité]
+On a : \[\begin{aligned}
+\ps{x}{y}=\norme{x}\norme{y}&\ssi\begin{dcases}
+x\text{ et }y\text{ sont colinéaires} \\
+\ps{x}{y}=\norme{x}\norme{y}
+\end{dcases} \\
+&\ssi\begin{dcases}
+\quantifs{\exists\lambda\in\R}\orenv{x=\lambda y \\ y=\lambda x} \\
+\ps{x}{y}=\norme{x}\norme{y}
+\end{dcases} \\
+&\ssi\quantifs{\exists\lambda\in\Rp}\orenv{x=\lambda y \\ y=\lambda x}
+\end{aligned}\]
+\end{dem}
+
+\begin{ex}
+Soient \(a,b\in\R\) tels que \(a<b\) et \(f,g\in\ensclasse{0}{\intervii{a}{b}}{\R}\).
+
+On a : \[\abs{\int_a^bf\paren{t}g\paren{t}\odif{t}}\leq\sqrt{\int_a^bf^2\paren{t}\odif{t}}\sqrt{\int_a^bg^2\paren{t}\odif{t}}.\]
+\end{ex}
+
+\begin{dem}
+C'est l'inégalité de Cauchy-Schwarz appliquée au produit scalaire (2) de l'\thref{ex:produitsScalaires}.
+\end{dem}
+
+\begin{theo}[Inégalité de Minkowski ou inégalité triangulaire pour la norme]
+Soient \(E\) un espace préhilbertien et \(x,y\in E\).
+
+On a l'inégalité de Minkowski : \[\norme{x+y}\leq\norme{x}+\norme{y}.\]
+
+De plus, on a le cas d'égalité dans l'inégalité de Minkowski : \[\norme{x+y}=\norme{x}+\norme{y}\ssi\quantifs{\exists\lambda\in\Rp}\orenv{x=\lambda y \\ y=\lambda x}\]
+\end{theo}
+
+\begin{dem}[Inégalité de Minkowski]
+On a : \[\begin{aligned}
+\norme{x+y}\leq\norme{x}+\norme{y}&\ssi\norme{x+y}^2\leq\paren{\norme{x}+\norme{y}}^2 \\
+&\ssi\ps{x+y}{x+y}\leq\paren{\norme{x}+\norme{y}}^2 \\
+&\ssi\norme{x}^2+2\ps{x}{y}+\norme{y}^2\leq\norme{x}^2+2\norme{x}\norme{y}+\norme{y}^2 \\
+&\color{white}\ssi\color{black}\text{ce qui est vrai selon l'inégalité de Cauchy-Schwarz}.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[Cas d'égalité]
+Découle du cas d'égalité sans valeur absolue dans l'inégalité de Cauchy-Schwarz.
+\end{dem}
+
+\begin{ex}
+Soient \(a,b\in\R\) tels que \(a<b\) et \(f,g\in\ensclasse{0}{\intervii{a}{b}}{\R}\).
+
+On a : \[\sqrt{\int_a^b\paren{f\paren{t}+g\paren{t}}^2\odif{t}}\leq\sqrt{\int_a^bf^2\paren{t}\odif{t}}+\sqrt{\int_a^bg^2\paren{t}\odif{t}}.\]
+\end{ex}
+
+\begin{dem}
+C'est l'inégalité de Minkowski appliquée au produit scalaire (2) de l'\thref{ex:produitsScalaires}.
+\end{dem}
+
+\begin{rem}
+Soit \(E\) un espace préhilbertien.
+
+La norme \(\norme{\cdot}\) associée au produit scalaire de \(E\) vérifie : \[\begin{dcases}
+\quantifs{\forall x\in E}\norme{x}=0\imp x=0_E \\
+\quantifs{\forall\lambda\in\R;\forall x\in E}\norme{\lambda x}=\abs{\lambda}\norme{x} \\
+\quantifs{\forall x,y\in E}\norme{x+y}\leq\norme{x}+\norme{y}
+\end{dcases}\]
+
+En deuxième année, vous étudierez les fonction \(E\to\Rp\) vérifiant ces trois propriétés. Une telle fonction sur un \(\R\) (ou \(\C\))-espace vectoriel est appelée une \guillemets{norme}.
+
+Ainsi, dans ce paragraphe, on a montré que la \guillemets{norme associée à un produit scalaire} est bien ce qu'on appelle une \guillemets{norme}.
+\end{rem}
+
+\begin{dem}
+Soit \(x\in E\).
+
+On a : \[\begin{aligned}
+\norme{x}=0&\ssi\sqrt{\ps{x}{x}}=0 \\
+&\ssi\ps{x}{x}=0 \\
+&\ssi x=0.
+\end{aligned}\]
+
+Soit \(\lambda\in\R\).
+
+On a : \[\begin{aligned}
+\norme{\lambda x}&=\sqrt{\ps{\lambda x}{\lambda x}} \\
+&=\sqrt{\lambda^2\ps{x}{x}} \\
+&=\abs{\lambda}\norme{x}.
+\end{aligned}\]
+\end{dem}
+
+\begin{defprop}[Distance]
+Soit \(E\) un espace préhilbertien.
+
+On appelle distance associée au produit scalaire de \(E\) l'application : \[\fonction{d}{E\times E}{\Rp}{\paren{x,y}}{\norme{y-x}}\]
+
+Elle vérifie : \[\begin{dcases}
+\quantifs{\forall x,y\in E}d\paren{x,y}=0\ssi x=y \\
+\quantifs{\forall x,y\in E}d\paren{x,y}=d\paren{y,x} \\
+\quantifs{\forall x,y,z\in E}d\paren{x,z}\leq d\paren{x,y}+d\paren{y,z}
+\end{dcases}\]
+\end{defprop}
+
+\subsection{Propriétés}
+
+Soit \(E\) un espace préhilbertien dont on note \(\ps{\cdot}{\cdot}\) le produit scalaire et \(\norme{\cdot}\) la norme associée.
+
+\begin{prop}\thlabel{prop:carréDeLaNormeD'UneSommeOuD'uneDifférence}
+Soient \(x,y\in E\).
+
+On a : \[\norme{x+y}^2=\norme{x}^2+2\ps{x}{y}+\norme{y}^2\qquad\text{et}\qquad\norme{x-y}^2=\norme{x}^2-2\ps{x}{y}+\norme{y}^2.\]
+\end{prop}
+
+\begin{dem}
+On a : \[\norme{x+y}^2=\ps{x+y}{x+y}=\ps{x}{x}+\ps{x}{y}+\ps{y}{x}+\ps{y}{y}=\norme{x}^2+2\ps{x}{y}+\norme{y}^2\] et : \[\norme{x-y}^2=\ps{x-y}{x-y}=\ps{x}{x}-\ps{x}{y}-\ps{y}{x}+\ps{y}{y}=\norme{x}^2-2\ps{x}{y}+\norme{y}^2.\]
+\end{dem}
+
+\begin{theo}[Identité du parallélogramme]
+Soient \(x,y\in E\).
+
+On a : \[\norme{x+y}^2+\norme{x-y}^2=2\norme{x}^2+2\norme{y}^2.\]
+\end{theo}
+
+\begin{dem}
+Découle de la \thref{prop:carréDeLaNormeD'UneSommeOuD'uneDifférence} par somme des deux égalités.
+\end{dem}
+
+\begin{theo}[Identités de polarisation]
+Soient \(x,y\in E\).
+
+On a : \[\begin{dcases}
+\ps{x}{y}=\dfrac{1}{2}\paren{\norme{x+y}^2-\norme{x}^2-\norme{y}^2} \\
+\ps{x}{y}=\dfrac{1}{4}\paren{\norme{x+y}^2-\norme{x-y}^2}
+\end{dcases}\]
+\end{theo}
+
+\begin{dem}
+Découle de la \thref{prop:carréDeLaNormeD'UneSommeOuD'uneDifférence}.
+\end{dem}
+
+\section{Orthogonalité, base orthonormale}
+
+\subsection{Vocabulaire}
+
+\begin{defi}
+Soit \(E\) un espace préhilbertien.
+
+On dit qu'un vecteur \(x\in E\) est unitaire s'il est de norme \(1\) : \[\norme{x}=1.\]
+
+On dit que deux vecteurs \(x,y\in E\) sont orthogonaux et on note \(x\perp y\) si leur produit scalaire est nul : \[\ps{x}{y}=0.\]
+
+On dit qu'une famille de vecteurs \(\paren{x_i}_{i\in I}\in E^I\) est orthogonale si ses vecteurs sont deux à deux orthogonaux : \[\quantifs{\forall i,j\in I}i\not=j\imp\ps{x_i}{x_j}=0.\]
+
+On dit qu'une famille de vecteurs \(\paren{x_i}_{i\in I}\in E^I\) est orthonormale ou orthonormée si ses vecteurs sont unitaires et deux à deux orthogonaux : \[\quantifs{\forall i,j\in I}\ps{x_i}{x_j}=\delta_{ij}.\]
+
+On dit qu'une famille de vecteurs est une base orthonormale ou orthonormée de \(E\) si c'est une famille orthonormale et une base de \(E\).
+\end{defi}
+
+\begin{ex}
+La base canonique de \(\R^n\), pour le produit scalaire canonique de \(\R^n\), est orthonormale.
+
+La base canonique de \(\M{np}[\R]\), pour le produit scalaire canonique de \(\M{np}[\R]\), est orthonormale.
+\end{ex}
+
+\begin{exo}
+On note \(\fami{C}_{2\pi}\) l'ensemble des fonctions continues \(2\pi\)-périodiques de \(\R\) dans \(\R\).
+
+\begin{enumerate}
+\item Montrer que l'application : \[\fonctionlambda{\fami{C}_{2\pi}\times\fami{C}_{2\pi}}{\R}{\paren{f,g}}{\dfrac{1}{2\pi}\int_0^{2\pi}f\paren{t}g\paren{t}\odif{t}}\] est un produit scalaire. L'espace vectoriel \(\fami{C}_{2\pi}\) est-il un espace euclidien ? \\
+\item On pose : \[\quantifs{\forall k\in\interventierii{0}{n}}\fonction{f_k}{\R}{\R}{t}{\cos\paren{kt}}\] La famille \(\paren{f_0,\dots,f_n}\) est-elle orthogonale ? orthonormale ? \\
+\item Même question avec la famille \(\paren{f_0,\dots,f_n,g_1,\dots,g_n}\), en posant : \[\quantifs{\forall k\in\interventierii{1}{n}}\fonction{g_k}{\R}{\R}{t}{\sin\paren{kt}}\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}[1]
+\Cf \thref{dem:produitScalaireFonctionsContinues}.
+
+On note tout de même :
+
+Soit \(f\in\fami{C}_{2\pi}\).
+
+Si \(\ps{f}{f}=0\) alors \(\dfrac{1}{2\pi}\int_0^{2\pi}f^2\paren{t}\odif{t}=0\).
+
+Or \(f^2\) est continue et positive.
+
+Donc \(\quantifs{\forall t\in\intervii{0}{2\pi}}f^2\paren{t}=0\).
+
+Donc \(f=0\) car \(f\) est \(2\pi\)-périodique.
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\begin{aligned}
+\quantifs{\forall k,l\in\interventierii{0}{n}}\ps{f_k}{f_l}&=\dfrac{1}{2\pi}\int_0^{2\pi}f_k\paren{t}f_l\paren{t}\odif{t} \\
+&=\dfrac{1}{2\pi}\int_0^{2\pi}\cos\paren{kt}\cos\paren{lt}\odif{t} \\
+&=\dfrac{1}{4\pi}\paren{\int_0^{2\pi}\cos\paren{\paren{k+l}t}\odif{t}+\int_0^{2\pi}\cos\paren{\paren{k-l}t}\odif{t}} \\
+&=\begin{dcases}
+\dfrac{1}{4\pi}\paren{\croch{\dfrac{\sin\paren{\paren{k+l}t}}{k+l}}_0^{2\pi}+\croch{\dfrac{\sin\paren{\paren{k-l}t}}{k-l}}_0^{2\pi}}=0 &\text{si }k\not=l \\
+\dfrac{1}{4\pi}\paren{\croch{\dfrac{\sin\paren{2kt}}{2k}}_0^{2\pi}+2\pi}=\dfrac{1}{2}\not=1 &\text{si }k=l\not=0 \\
+\dfrac{1}{4\pi}\paren{2\pi+2\pi}=1 &\text{si }k=l=0
+\end{dcases}
+\end{aligned}\]
+
+Donc \(\paren{f_0,\dots,f_n}\) est orthogonale mais pas orthonormée car \(\quantifs{\forall k\in\interventierii{1}{n}}\norme{f_k}=\dfrac{1}{\sqrt{2}}\not=1\).
+\end{corr}
+
+\begin{corr}[3]
+On a : \[\begin{aligned}
+\quantifs{\forall k\in\interventierii{0}{n};\forall l\in\interventierii{1}{n}}\ps{f_k}{g_l}&=\dfrac{1}{2\pi}\int_0^{2\pi}f_k\paren{t}g_l\paren{t}\odif{t} \\
+&=\dfrac{1}{2\pi}\int_0^{2\pi}\cos\paren{kt}\sin\paren{lt}\odif{t} \\
+&=\dfrac{1}{4\pi}\paren{\int_0^{2\pi}\sin\paren{\paren{k+l}t}\odif{t}+\int_0^{2\pi}\sin\paren{\paren{l-k}t}\odif{t}} \\
+&=\begin{dcases}
+\dfrac{1}{4\pi}\paren{\croch{\dfrac{-\cos\paren{\paren{k+l}t}}{k+l}}_0^{2\pi}+\croch{\dfrac{-\cos\paren{\paren{l-k}t}}{l-k}}_0^{2\pi}}=0 &\text{si }k\not=l \\
+\dfrac{1}{4\pi}\paren{\croch{\dfrac{-\cos\paren{2kt}}{2k}}_0^{2\pi}+0}=0 &\text{si }k=l
+\end{dcases}
+\end{aligned}\]
+
+Donc \(\quantifs{\forall k\in\interventierii{0}{n};\forall l\in\interventierii{1}{n}}f_k\perp g_l\).
+
+De plus, on a : \[\begin{aligned}
+\quantifs{\forall k,l\in\interventierii{1}{n}}\ps{g_k}{g_l}&=\dfrac{1}{2\pi}\int_0^{2\pi}g_k\paren{t}g_l\paren{t}\odif{t} \\
+&=\dfrac{1}{2\pi}\int_0^{2\pi}\sin\paren{kt}\sin\paren{lt}\odif{t} \\
+&=\dfrac{1}{4\pi}\paren{\int_0^{2\pi}\cos\paren{\paren{k-l}t}\odif{t}-\int_0^{2\pi}\cos\paren{\paren{k+l}t}\odif{t}} \\
+&=\begin{dcases}
+\dfrac{1}{4\pi}\paren{\croch{\dfrac{\sin\paren{\paren{k-l}t}}{k-l}}_0^{2\pi}-\croch{\dfrac{\sin\paren{\paren{k+l}t}}{k+l}}_0^{2\pi}}=0 &\text{si }k\not=l \\
+\dfrac{1}{4\pi}\paren{-\croch{\dfrac{\sin\paren{2kt}}{2k}}_0^{2\pi}+2\pi}=\dfrac{1}{2} &\text{si }k=l
+\end{dcases}
+\end{aligned}\]
+
+Donc \(\quantifs{\forall k,l\in\interventierii{1}{n}}g_k\perp g_l\).
+
+Finalement, \(\paren{f_0,\dots,f_n,g_1,\dots,g_n}\) est orthogonale mais pas orthonormée car \(\quantifs{\forall k\in\interventierii{1}{n}}\norme{g_k}=\dfrac{1}{\sqrt{2}}\not=1\).
+\end{corr}
+
+\subsection{Propriétés des familles orthogonales}
+
+\begin{theo}[Théorème de Pythagore]
+Soient \(E\) un espace préhilbertien et \(\paren{x_1,\dots,x_n}\) une famille orthogonale de vecteurs de \(E\).
+
+On a : \[\norme{\sum_{j=1}^{n}x_j}^2=\sum_{j=1}^{n}\norme{x_j}^2.\]
+\end{theo}
+
+\begin{dem}
+On a : \[\begin{aligned}
+\norme{\sum_{j=1}^{n}x_j}^2&=\ps{\sum_{j=1}^{n}x_j}{\sum_{k=1}^{n}x_k} \\
+&=\sum_{j=1}^{n}\sum_{k=1}^{n}\underbrace{\ps{x_j}{x_k}}_{=0\text{ si }j\not=k} \\
+&=\sum_{j=1}^{n}\norme{x_j}^2
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}
+Soient \(E\) un espace préhilbertien et \(\paren{x_1,\dots,x_n}\in E^n\) une famille orthogonale dont tous les vecteurs sont non-nuls.
+
+Alors \(\paren{x_1,\dots,x_n}\) est une famille libre.
+\end{prop}
+
+\begin{dem}
+Soient \(\lambda_1,\dots,\lambda_n\in\R\) tels que \(\sum_{j=1}^{n}\lambda_jx_j=0_E\) et \(k\in\interventierii{1}{n}\).
+
+On a \(\ps{\sum_{j=1}^{n}\lambda_jx_j}{x_k}=0\).
+
+Donc \(\sum_{j=1}^{n}\lambda_j\underbrace{\ps{x_j}{x_k}}_{=0\text{ si }j\not=k}=0\).
+
+Donc \(\lambda_k\norme{x_k}^2=0\).
+
+Donc \(\lambda_k=0\) car \(x_k\not=0\).
+
+Donc \(\paren{x_1,\dots,x_n}\) est libre.
+\end{dem}
+
+\begin{prop}
+Soient \(E\) un espace euclidien de dimension \(n\in\Ns\) et \(\paren{x_1,\dots,x_n}\in E^n\) une famille orthonormale possédant \(n\) vecteurs.
+
+Alors \(\paren{x_1,\dots,x_n}\) est une base orthonormale de \(E\).
+\end{prop}
+
+\begin{dem}
+La famille \(\paren{x_1,\dots,x_n}\) est libre car c'est une famille orthogonale de vecteurs non-nuls. De plus, elle possède \(n\) vecteurs et \(\dim E=n\) donc c'est une base de \(E\) et donc une base orthonormale de \(E\).
+\end{dem}
+
+\subsection{Calculs dans une base orthonormale}
+
+\begin{prop}
+Soient \(E\) un espace euclidien de dimension \(n\in\Ns\), \(\fami{B}=\paren{e_1,\dots,e_n}\) une base orthonormale de \(E\) et \(x\) et \(y\) deux vecteurs de \(E\) dont on note \(X=\tcoords{x_1}{\vdots}{x_n}\) et \(Y=\tcoords{y_1}{\vdots}{y_n}\) les coordonnées respectives dans \(\fami{B}\).
+
+On a :
+
+\begin{enumerate}
+    \item \(\quantifs{\forall i\in\interventierii{1}{n}}x_i=\ps{e_i}{x}\) ; \\
+    \item \(\ps{x}{y}=\sum_{i=1}^{n}x_iy_i=\trans{X}Y\) ; \\
+    \item \(\norme{x}=\sqrt{\sum_{i=1}^{n}x_i^2}=\sqrt{\trans{X}X}\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+Tout découle de : \[\begin{dcases}
+x=\sum_{i=1}^{n}x_ie_i \\
+y=\sum_{i=1}^{n}y_ie_i \\
+\quantifs{\forall i,j\in\interventierii{1}{n}}\ps{e_i}{e_j}=\delta_{ij}
+\end{dcases}\]
+
+On a : \[\begin{aligned}
+\quantifs{\forall i\in\interventierii{1}{n}}\ps{e_i}{x}&=\ps{e_i}{\sum_{j=1}^{n}x_je_j} \\
+&=\sum_{j=1}^{n}x_j\ps{e_i}{e_j} \\
+&=x_i
+\end{aligned}\] et : \[\begin{aligned}
+\ps{x}{y}&=\ps{\sum_{i=1}^{n}x_ie_i}{\sum_{j=1}^{n}y_je_j} \\
+&=\sum_{i=1}^{n}\sum_{j=1}^{n}x_iy_j\ps{e_i}{e_j} \\
+&=\sum_{i=1}^{n}x_iy_i.
+\end{aligned}\]
+\end{dem}
+
+\begin{rem}
+Attention au fait que les formules précédentes ne sont valables que dans une base orthonormale.
+
+Ainsi, si \(\paren{e_1,\dots,e_n}\) est une base orthonormale de \(E\), alors on a : \[\quantifs{\forall x\in E}x=\sum_{i=1}^{n}\ps{e_i}{x}e_i.\]
+\end{rem}
+
+\begin{cor}
+Soient \(E\) un espace euclidien, \(\fami{B}=\paren{e_1,\dots,e_n}\) une base orthonormale de \(E\) et \(u\in\Lendo{E}\).
+
+La matrice de \(u\) dans \(\fami{B}\) est : \[\Mat{u}=\begin{pmatrix}
+\ps{e_1}{u\paren{e_1}} & \dots & \ps{e_1}{u\paren{e_n}} \\
+\vdots &  & \vdots \\
+\ps{e_n}{u\paren{e_1}} & \dots & \ps{e_n}{u\paren{e_n}}
+\end{pmatrix}.\]
+\end{cor}
+
+\section{Sous-espaces vectoriels}
+
+\subsection{Sous-espaces vectoriels orthogonaux}
+
+\begin{defi}
+Soient \(E\) un espace préhilbertien et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\).
+
+On dit que \(F\) et \(G\) sont deux sous-espaces vectoriels orthogonaux et on note \(F\perp G\) si on a : \[\quantifs{\forall x\in F;\forall y\in G}x\perp y.\]
+\end{defi}
+
+\begin{ex}
+Soit \(E\) un espace préhilbertien.
+
+Soient \(x,y\in E\) tels que \(x\perp y\). On a alors \(\Vect{x}\perp\Vect{y}\).
+
+Le sous-espace vectoriel nul \(\accol{0_E}\) est orthogonal à tous les sous-espaces vectoriels de \(E\) (car le vecteur nul de \(E\) est orthogonal à tous les vecteurs de \(E\)).
+\end{ex}
+
+\begin{defi}[Orthogonal d'une partie]
+Soient \(E\) un espace préhilbertien et \(A\subset E\).
+
+On appelle orthogonal de \(A\) (dans \(E\)) et on note \(A\ortho\) l'ensemble des vecteurs de \(E\) qui sont orthogonaux à tous les vecteurs de \(A\) : \[A\ortho=\accol{x\in E\tq\quantifs{\forall y\in A}x\perp y}.\]
+
+L'ensemble \(A\ortho\) est un sous-espace vectoriel de \(E\).
+\end{defi}
+
+\begin{prop}[Orthogonal d'un sous-espace vectoriel]
+Soient \(E\) un espace préhilbertien et \(F\) un sous-espace vectoriel de \(E\).
+
+On a :
+
+\begin{enumerate}
+    \item \(F\ortho\) est un sous-espace vectoriel de \(E\) ; \\
+    \item \(F\perp F\ortho\) ; \\
+    \item \(F\inter F\ortho=\accol{0_E}\) ; \\
+    \item \(F\subset\paren{F\ortho}\ortho\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+On a \(F\ortho\subset E\) et \(0_E\in F\ortho\) car \(\quantifs{\forall y\in F}0_E\perp y\).
+
+Soient \(\lambda_1,\lambda_2\in\R\) et \(x_1,x_2\in F\ortho\).
+
+On a : \[\quantifs{\forall y\in F}\ps{\lambda_1x_1+\lambda_2x_2}{y}=\lambda_1\underbrace{\ps{x_1}{y}}_{=0}+\lambda_2\underbrace{\ps{x_2}{y}}_{=0}=0.\]
+
+Donc \(\lambda_1x_1+\lambda_2x_2\in F\ortho\).
+
+Donc \(F\ortho\) est un sous-espace vectoriel de \(E\).
+\end{dem}
+
+\begin{dem}[2]
+Clair par définition de \(F\ortho\).
+\end{dem}
+
+\begin{dem}[3]
+Soit \(x\in F\inter F\ortho\).
+
+On a \(x\perp x\) donc \(\ps{x}{x}=0\).
+
+Donc \(x=0_E\).
+\end{dem}
+
+\begin{dem}[4]
+Soit \(x\in F\).
+
+On a \(\quantifs{\forall y\in F\ortho}x\perp y\).
+
+Donc \(x\in\paren{F\ortho}\ortho\).
+\end{dem}
+
+\begin{rem}
+Soient \(E\) un espace préhilbertien et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(F\perp G\) \\
+    \item \(F\subset G\ortho\) \\
+    \item \(G\subset F\ortho\)
+\end{enumerate}
+\end{rem}
+
+\begin{dem}
+On a : \[\begin{aligned}
+F\perp G&\ssi\quantifs{\forall x\in F;\forall y\in G}x\perp y \\
+&\ssi\quantifs{\forall x\in F}x\in G\ortho \\
+&\ssi F\subset G\ortho.
+\end{aligned}\]
+
+D'où (1) \(\ssi\) (2).
+
+Idem pour (1) \(\ssi\) (3).
+\end{dem}
+
+\note{À FINIR}

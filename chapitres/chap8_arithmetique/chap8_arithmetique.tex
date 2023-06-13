@@ -1,0 +1,1393 @@
+\chapter{Arithmétique}
+
+\minitoc
+
+\section{Rappels \& compléments}
+
+\subsection{Division euclidienne}
+
+\begin{defprop}[Division euclidienne dans \(\Z\)]
+Soient \(a\in\Z\) et \(b\in\Ns\).
+
+Il existe un unique couple \(\paren{q,r}\in\Z^2\) tel que : \[\begin{dcases}a=qb+r \\ 0\leq r<b\end{dcases}\]
+
+L'entier \(q\) est appelé le quotient de la division euclidienne de \(a\) par \(b\).
+
+L'entier \(r\) est appelé le reste de la division euclidienne de \(a\) par \(b\).
+\end{defprop}
+
+\begin{ex}
+Divisions euclidiennes de \(37\) et \(-37\) par \(10\) : \[37=3\times10+7\quad\text{et}\quad-37=\paren{-4}\times10+3.\]
+\end{ex}
+
+\begin{dem}
+\textit{Cf.} \thref{dem:divEucli}.
+\end{dem}
+
+\subsection{Divisibilité}
+
+\begin{defi}[Divisibilité dans \(\Z\)]
+Soient \(a,b\in\Z\). Si on a \[\quantifs{\exists c\in\Z}ac=b\] alors on dit que \begin{itemize}
+\item \(a\) divise \(b\) ;
+
+\item \(a\) est un diviseur de \(b\) ;
+
+\item \(b\) est un multiple de \(a\) ;
+
+\item \(b\) est divisible par \(a\).
+\end{itemize}
+\end{defi}
+
+\begin{nota}
+Soient \(a,b\in\Z\).
+
+\begin{itemize}
+\item La notation \(a\divise b\) signifie \guillemets{\(a\) divise \(b\)} ;
+
+\item L'ensemble \(\accol{ac}_{c\in\Z}\) des multiples de \(a\) est noté \(a\Z\) : \[a\Z=\accol{ac}_{c\in\Z}=\accol{x\in\Z\tq a\divise x}.\]
+
+\item Dans ce cours, on notera \(\ensdiv{b}\) l'ensemble des diviseurs positifs de \(b\) : \[\ensdiv{b}=\accol{x\in\N\tq x\divise b}.\]
+\end{itemize}
+\end{nota}
+
+\begin{prop}[Divisibilité dans \(\Z\)]
+La relation binaire \(\divise\) sur \(\Z\) est réflexive et transitive (mais pas antisymétrique donc ce n'est pas une relation d'ordre sur \(\Z\)).
+
+On a : \(\quantifs{\forall a,b\in\Z}\paren{a\divise b\quad\text{et}\quad b\divise a}\ssi a=\pm b\).
+
+On a : \begin{itemize}
+\item \(\quantifs{\forall a,b\in\Z;\forall n\in\Z}a\divise b\imp na\divise nb\) ;
+
+\item \(\quantifs{\forall a,b\in\Z;\forall n\in\Zs}a\divise b\ssi na\divise nb\).
+\end{itemize}
+\end{prop}
+
+\begin{prop}[Divisibilité dans \(\N\)]\thlabel{prop:divisibilitéDansN}
+La relation binaire \(\divise\) sur \(\N\) est une relation d'ordre sur \(\N\).
+
+Pour cette relation d'ordre, \(0\) est le plus grand élément de \(\N\) et \(1\) le plus petit : \(\quantifs{\forall n\in\N}n\divise0\quad\text{et}\quad1\divise n\).
+
+On a : \(\quantifs{\forall a,b\in\Z}a\divise b\imp\paren{a\leq b\quad\text{ou}\quad b=0}\).
+\end{prop}
+
+\subsection{Congruences}
+
+\begin{defi}
+Soient \(a,b,n\in\Z\).
+
+On dit que \guillemets{\(a\) est congru à \(b\) modulo \(n\)} et on note \(a\equiv b\croch{n}\) si on a : \[\quantifs{\exists k\in\Z}a=b+kn.\]
+
+On a donc : \[\begin{aligned}
+a\equiv b\croch{n}&\ssi\quantifs{\exists k\in\Z}a=b+kn \\
+&\ssi n\divise\paren{a-b}.
+\end{aligned}\]
+\end{defi}
+
+\begin{rem}
+Soit \(n\in\Z\).
+
+La relation \guillemets{être congrus modulo \(n\)} est une relation d'équivalence sur \(\Z\).
+\end{rem}
+
+\begin{rem}
+Soient \(x\in\Z\) et \(n\in\Ns\).
+
+On note \(q\) et \(r\) le quotient et le reste de la division euclidienne de \(x\) par \(n\).
+
+On a : \begin{itemize}
+\item \(x\equiv r\croch{n}\) ;
+
+\item \(n\divise x\ssi r=0\).
+\end{itemize}
+\end{rem}
+
+\begin{prop}[Opérations sur les congruences]
+Soient \(a,b,c,d,n\in\Z\).
+
+On suppose \(a\equiv b\croch{n}\text{ et }c\equiv d\croch{n}\).
+
+On a : \begin{itemize}
+\item somme : \(a+c\equiv b+d\croch{n}\) ;
+
+\item produit : \(ac\equiv bd\croch{n}\) ;
+
+\item puissance : \(\quantifs{\forall k\in\N}a^k\equiv b^k\croch{n}\).
+\end{itemize}
+\end{prop}
+
+\begin{prop}
+Soient \(a,b,n\in\Z\).
+
+\begin{itemize}
+\item Pour tout \(\lambda\in\Zs\), on a : \(a\equiv b\croch{n}\ssi\lambda a\equiv\lambda b\croch{\lambda n}\).
+
+\item Pour tout diviseur \(d\) de \(n\), on a : \(a\equiv b\croch{n}\imp a\equiv b\croch{d}\).
+\end{itemize}
+\end{prop}
+
+\begin{ex}[Élément non-régulier modulo \(n\)]
+Trouvons \(\lambda,x,y,n\in\Z\) tels que : \[\lambda\not=0\quad\text{et}\quad\lambda x\equiv\lambda y\croch{n}\quad\text{et}\quad x\not\equiv y\croch{n}.\]
+
+On remarque que \(\lambda=2\), \(x=3\), \(y=0\) et \(n=6\) conviennent.
+
+En effet, on a \[2\not=0\quad\text{et}\quad2\times3\equiv2\times0\croch{6}\quad\text{et}\quad3\not\equiv0\croch{6}.\]
+\end{ex}
+
+\begin{ex}
+Calculons \(20.222.023\) modulo \(9\), modulo \(11\) et modulo \(999\).
+
+On a \[\begin{aligned}
+20.222.023&=2\E{7}+2\E{5}+2\E{4}+2\E{3}+2\E{1}+3\E{0} \\
+&\equiv2+2+2+2+2+3\croch{9}\quad\text{car }10\equiv1\croch{9} \\
+&\equiv13\croch{9} \\
+&\equiv4\croch{9}.
+\end{aligned}\]
+
+De plus, \(10\equiv-1\croch{11}\) donc on a \[\begin{aligned}
+20.222.023&\equiv-2-2-2+2-2+3\croch{11} \\
+&\equiv-3\croch{11} \\
+&\equiv8\croch{11}.
+\end{aligned}\]
+
+Enfin, comme \(1.000\equiv1\croch{999}\), on a \[\begin{aligned}
+20.222.023&=20\times1000^2+222\times1000^1+23\times1000^0 \\
+&\equiv20+222+23\croch{999} \\
+&\equiv265\croch{999}.
+\end{aligned}\]
+\end{ex}
+
+\subsection{Sous-groupes}
+
+\begin{prop}[Intersection de sous-groupes]
+Soit \(\paren{G,*}\) un groupe et \(\paren{H_i}_{i\in I}\) une famille de sous-groupes de \(G\).
+
+Alors l'intersection \(\biginter_{i\in I}H_i\) de ces sous-groupes est un sous-groupe de \(G\).
+\end{prop}
+
+\begin{dem}
+\Cf \thref{exo:6.15}.
+\end{dem}
+
+\begin{defprop}[Somme de sous-groupes]\thlabel{defprop:sommeDeSousGroupesEstUnSousGroupe}
+Soit \(\paren{G,+}\) un groupe abélien. Soient \(H_1,H_2\) des sous-groupes de \(G\).
+
+On appelle somme de \(H_1\) et \(H_2\) et on note \(H_1+H_2\) l'ensemble : \[\begin{aligned}
+H_1+H_2&=\accol{g\in G\tq\quantifs{\exists h_1\in H_1,\exists h_2\in H_2}g=h_1+h_2} \\
+&=\accol{h_1+h_2}_{\paren{h_1,h_2}\in H_1\times H_2}
+\end{aligned}\]
+
+On a : \begin{enumerate}
+\item l'ensemble \(H_1+H_2\) est un sous-groupe de \(G\) ;
+
+\item la loi \(+\) est une loi de composition interne sur l'ensemble des sous-groupes de \(G\) ;
+
+\item cette loi \(+\) est associative et commutative.
+\end{enumerate}
+\end{defprop}
+
+\begin{dem}[1]
+Montrons que \(H_1+H_2\) est un sous-groupe de \(G\).
+
+On note \(0\) le neutre de \(G\).
+
+On a \(H_1+H_2\subset G\).
+
+Comme \(H_1\) et \(H_2\) sont des sous-groupes de \(G\), \(0\in H_1\) et \(0\in H_2\) donc \(0=0+0\in H_1+H_2\).
+
+Soient \(h,h\prim\in H_1+H_2\).
+
+Montrons que \(h-h\prim\in H_1+H_2\).
+
+Soient \(h_1,h_1\prim\in H_1\) et \(h_2,h_2\prim\in H_2\) tels que \[h=h_1+h_2\qquad\text{et}\qquad h\prim=h_1\prim+h_2\prim.\]
+
+On a \[\begin{WithArrows}
+h-h\prim&=h_1+h_2-h_1\prim-h_2\prim \Arrow{car groupes abéliens} \\
+&=\underbrace{h_1-h_1\prim}_{\in H_1}+\underbrace{h_2-h_2\prim}_{\in H_2}
+\end{WithArrows}\]
+
+Donc \(h-h\prim\in H_1+H_2\).
+
+Donc \(H_1+H_2\) est un sous-groupe de \(G\).
+\end{dem}
+
+\begin{dem}[2]
+Clair.
+\end{dem}
+
+\begin{dem}[3]
+Montrons que \(+\) est associative :
+
+Soient \(H_1,H_2,H_3\) des sous-groupes de \(G\).
+
+Montrons que \(H_1+\paren{H_2+H_3}=\paren{H_1+H_2}+H_3\).
+
+On a \(H_1+\paren{H_2+H_3}\subset G\) et \(\paren{H_1+H_2}+H_3\subset G\).
+
+Soit \(g\in G\).
+
+On a \[\begin{aligned}
+g\in\paren{H_1+H_2}+H_3&\ssi\quantifs{\exists h\in H_1+H_2;\exists h_3\in H_3}g=h+h_3 \\
+&\ssi\quantifs{\exists h_1\in H_1;\exists h_2\in H_2;\exists h_3\in H_3}g=\paren{h_1+h_2}+h_3 \\
+&\ssi\quantifs{\exists h_1\in H_1;\exists h_2\in H_2;\exists h_3\in H_3}g=h_1+h_2+h_3 \\
+&\ssi\quantifs{\exists h_1\in H_1;\exists h\in H_2+H_3}g=h_1+h \\
+&\ssi g\in H_1+\paren{H_2+H_3}
+\end{aligned}\]
+
+Donc \(+\) est associative.
+
+Montrons que \(+\) est commutative :
+
+On a \(H_1+H_2\subset G\) et \(H_2+H_1\subset G\).
+
+Soit \(g\in G\).
+
+On a \[\begin{aligned}
+g\in H_1+H_2&\ssi\quantifs{\exists h_1\in H_1;\exists h_2\in H_2}g=h_1+h_2 \\
+&\ssi\quantifs{\exists h_2\in H_2;\exists h_1\in H_1}g=h_2+h_1 \\
+&\ssi g\in H_2+H_1
+\end{aligned}\]
+
+Donc \(+\) est commutative.
+\end{dem}
+
+\begin{theo}[Sous-groupes de \(\Z\)]\thlabel{theo:nZSontLesSousGroupesDeZ}
+Les sous-groupes de \(\paren{\Z,+}\) sont les ensembles de la forme \(n\Z\) où \(n\in\N\).
+\end{theo}
+
+\begin{dem}
+Montrons que les sous-groupes de \(\groupe{\Z}\) sont les parties de la forme \(n\Z=\accol{nk}_{k\in\Z}\) où \(n\in\N\).
+
+On a \[n\Z=\accol{\dots;-2n;-n;0;n;2n;\dots}.\]
+
+\increc
+
+Soit \(n\in\N\).
+
+Montrons que \(n\Z\) est un sous-groupe de \(\groupe{\Z}\).
+
+On a \(n\Z\subset\Z\).
+
+On a \(0\in n\Z\) car \(0=n\times0\).
+
+Soient \(x,y\in n\Z\).
+
+Montrons que \(x-y\in n\Z\).
+
+Soient \(x\prim,y\prim\in\Z\) tels que \(x=nx\prim\) et \(y=ny\prim\).
+
+On a \[x-y=nx\prim-ny\prim=n\underbrace{\paren{x-x\prim}}_{\in\Z}.\]
+
+Donc \(x-y\in n\Z\).
+
+Donc \(n\Z\) est un sous-groupe de \(\groupe{\Z}\).
+
+\incdir
+
+Soit \(H\) un sous-groupe de \(\groupe{\Z}\).
+
+On pose \(E=H\inter\Ns\).
+
+Si \(E=\ensvide\) :
+
+Montrons que \(H=0\Z=\accol{0}\).
+
+Par l'absurde, soit \(x\in H\excluant\accol{0}\).
+
+Si \(x>0\) alors \(x\in E\) : contradiction car \(E=\ensvide\).
+
+Si \(x<0\) alors \(-x\in E\) : contradiction car \(E=\ensvide\).
+
+Donc \(H=\accol{0}=0\Z\).
+
+Supposons \(E\not=\ensvide\).
+
+On pose \(n=\min E\) (\(n\) existe car \(E\) est une partie non-vide de \(\N\)).
+
+Montrons que \(H=n\Z\).
+
+\increc
+
+Montrons que \(\quantifs{\forall k\in\N}nk\in H\) par récurrence sur \(k\).
+
+Initialisation : on a \(0\in H\) et \(0=0\times n\).
+
+Hérédité : soit \(k\in\N\) tel que \(nk\in H\).
+
+On a \(n\paren{k+1}=nk+n\in H\) car \(H\) est un sous-groupe de \(\Z\) et \(nk,n\in H\).
+
+Conclusion : \(\quantifs{\forall k\in\N}nk\in H\).
+
+On en déduit que \(\quantifs{\forall k\in\N}-nk\in H\) car \(H\) est un sous-groupe de \(\Z\).
+
+Donc \(\quantifs{\forall k\in\Z}nk\in H\).
+
+D'où \(n\Z\subset H\).
+
+\incdir
+
+Soit \(h\in H\).
+
+On a \(n\in\Ns\).
+
+On note \(q\) et \(r\) le quotient et le reste de la division euclidienne de \(h\) par \(n\).
+
+On a donc \(\begin{dcases}h=nq+r \\ 0\leq r<n\end{dcases}\)
+
+On a \(h,n\in H\) donc \(r=h-nq\in H\).
+
+Donc \(r=0\) car \(n\) est le plus petit élément strictement positif de \(H\).
+
+Donc \(h=qn\in n\Z\).
+\end{dem}
+
+\section{PGCD}
+
+\subsection{PGCD de deux entiers}
+
+\subsubsection{Définition}
+
+\begin{defi}
+Soient \(a,b\in\Z\).
+
+On rappelle qu'on note \(\ensdiv{a}\) l'ensemble des diviseurs positifs de \(a\).
+
+Les diviseurs positifs communs à \(a\) et \(b\) sont les éléments de l'ensemble \(\ensdiv{a}\inter\ensdiv{b}\).
+
+Si celui-ci possède un plus grand élément pour la relation d'ordre \(\divise\), on l'appelle le plus grand commun diviseur de \(a\) et \(b\) et on le note \(a\et b\).
+\end{defi}
+
+\begin{ex}
+On a \[\ensdiv{12}=\accol{1;2;3;4;6;12}\qquad\text{et}\qquad\ensdiv{15}=\accol{1;3;5;15}.\]
+
+Donc les diviseurs communs à \(12\) et \(15\) sont : \[\ensdiv{12}\inter\ensdiv{15}=\accol{1;3}.\]
+
+Donc le PGCD de \(12\) et \(15\) est : \[12\et15=3.\]
+\end{ex}
+
+\begin{rem}
+Soient \(a,b\in\Z\).
+
+Le PGCD de \(a\) et \(b\) existe si, et seulement si, le PGCD de \(\abs{a}\) et \(\abs{b}\) existe.
+
+On a alors \[a\et b=\abs{a}\et\abs{b}.\]
+\end{rem}
+
+\begin{dem}
+Clair car \(\ensdiv{a}\inter\ensdiv{b}=\ensdiv{\abs{a}}\inter\ensdiv{\abs{b}}\).
+\end{dem}
+
+\begin{rem}
+On a, pour tout \(a\in\Z\) : \[a\et0=\abs{a}\qquad\text{et}\qquad a\et1=1.\]
+\end{rem}
+
+\begin{rem}
+Soient \(a,b\in\Z\).
+
+\begin{enumerate}
+\item Le PGCD de \(a\) et \(b\), s'il existe, est le diviseur commun à \(a\) et \(b\) positif et divisible par tous leurs autres diviseurs communs. \\
+
+\item Il est donc caractérisé par : \[a\et b\geq0\qquad\text{et}\qquad\ensdiv{a}\inter\ensdiv{b}=\ensdiv{a\et b}.\] \\
+
+\item Si \(a=b=0\) alors \(0\et0=0\). \\ Sinon, le plus grand diviseur commun à \(a\) et \(b\) pour l'ordre \(\divise\) est aussi le plus grand diviseur commun à \(a\) et \(b\) pour l'ordre \(\leq\) selon la \thref{prop:divisibilitéDansN}.
+\end{enumerate}
+\end{rem}
+
+\begin{dem}[2]
+Soit \(n\in\Z\) tel que \(n\geq0\) et \(\ensdiv{a}\inter\ensdiv{b}=\ensdiv{n}\).
+
+Montrons que \(n\) est le PGCD de \(a\) et \(b\).
+
+On a \(n\in\ensdiv{n}\) donc \(n\in\ensdiv{a}\inter\ensdiv{b}\) donc \[n\divise a\qquad\text{et}\qquad n\divise b.\]
+
+Donc \(n\) est un diviseur commun à \(a\) et \(b\).
+
+Montrons que \(n\) est le plus grand d'entre eux.
+
+Soit \(d\) un diviseur commun à \(a\) et \(b\).
+
+On a \(d\in\ensdiv{a}\inter\ensdiv{b}\) donc \(d\in\ensdiv{n}\).
+
+Donc \(d\divise n\).
+\end{dem}
+
+\begin{lem}
+Soient \(a,b,n\in\N\) tels que \(a\equiv b\croch{n}\).
+
+Alors \(a\) et \(n\) admettent un PGCD si, et seulement si, \(b\) et \(n\) admettent un PGCD.
+
+On a alors \[a\et n=b\et n.\]
+\end{lem}
+
+\begin{dem}
+Il suffit de montrer que \(\ensdiv{a}\inter\ensdiv{b}=\ensdiv{b}\inter\ensdiv{a}\).
+
+\incdir
+
+Soient \(d\in\ensdiv{a}\inter\ensdiv{b}\) et \(k\in\Z\) tel que \(b=a+kn\).
+
+On a \(d\divise a\) et \(d\divise kn\) donc \(d\divise b\).
+
+Donc \(d\in\ensdiv{b}\inter\ensdiv{a}\).
+
+\increc Idem.
+\end{dem}
+
+\begin{rem}
+Soient \(a,b\in\Z\).
+
+On a \[a\et b=\abs{a}\ssi a\divise b.\]
+\end{rem}
+
+\begin{dem}
+\impdir
+
+Supposons \(a\et b=\abs{a}\).
+
+On a \(a\divise\abs{a}\) et \(\abs{a}\divise b\).
+
+Donc \(a\divise b\).
+
+\imprec
+
+Supposons \(a\divise b\).
+
+On a \(\abs{a}\divise a\) et \(\abs{a}\divise b\).
+
+Donc \(\abs{a}\in\ensdiv{a}\inter\ensdiv{b}\).
+
+De plus, on a \(\quantifs{\forall d\in\ensdiv{a}\inter\ensdiv{b}}d\divise\abs{a}\).
+
+Donc \(\abs{a}=a\et b\).
+\end{dem}
+
+\begin{rem}
+Soient \(a,b\in\N\).
+
+Alors \(a\et b=\inf\accol{a;b}\) pour l'ordre \(\divise\), sous réserve d'existence.
+\end{rem}
+
+\subsubsection{Preuve algébrique}
+
+\begin{prop}
+Soient \(a,b\in\Z\).
+
+Alors \(a\) et \(b\) admettent un PGCD.
+\end{prop}
+
+\begin{dem}
+L'ensemble \(a\Z+b\Z\) est un sous-groupe de \(\Z\) (\cf \thref{defprop:sommeDeSousGroupesEstUnSousGroupe} et \thref{theo:nZSontLesSousGroupesDeZ}).
+
+Il existe donc \(n\in\Z\) tel que \(a\Z+b\Z=n\Z\).
+
+Montrons que \(n\) est le PGCD de \(a\) et \(b\).
+
+On a \(n\geq0\).
+
+De plus, on a \(a\in a\Z+b\Z\) car \(a=1\times a+0\times b\) donc \(a\in n\Z\) donc \(n\divise a\).
+
+De même, \(n\divise b\).
+
+Soient \(d\in\ensdiv{a}\inter\ensdiv{b}\) et \(k,l\in\Z\) tels que \(dk=a\) et \(dl=b\).
+
+On a \(n\in n\Z\) donc \(n\in a\Z+b\Z\).
+
+Soient \(u,v\in\Z\) tels que \(n=ua+vb\).
+
+On a \(n=udk+vdl=d\paren{uk+vl}\) donc \(d\divise n\).
+
+Donc \(n\) est le PGCD de \(a\) et \(b\).
+\end{dem}
+
+\subsubsection{Preuve algorithmique, algorithme d'Euclide}
+
+On définit une fonction récursive \(\pgcd:\Z^2\to\N\).
+
+Montrons que la fonction termine toujours et que \(\pgcd[a][b]\) renvoie le PGCD de \(a\) et \(b\) pour tout \(\paren{a,b}\in\Z^2\).
+
+\begin{algo}[Algorithme d'Euclide]\thlabel{algo:EuclideEntiers}
+Si \(a<0\) ou \(b<0\), on renvoie \(\pgcd[\abs{a}][\abs{b}]\).
+
+Si \(b=0\), on renvoie \(a\).
+
+Sinon : \begin{itemize}
+\item on fait la division euclidienne de \(a\) par \(b\) : \(\begin{dcases}a=qb+r \\ 0\leq r<b\end{dcases}\) ; \\
+
+\item on a \(a\equiv r\croch{b}\) donc on renvoie \(\pgcd[b][r]\).
+\end{itemize}
+\end{algo}
+
+\begin{dem}[Terminaison]
+Montrons que l'algorithme termine toujours.
+
+Soit \(\paren{a,b}\in\Z^2\).
+
+Par l'absurde, supposons que l'algorithme ne termine jamais : \[\pgcd[a][b]\to\underbrace{\pgcd[a_1][b_1]\to\pgcd[a_2][b_2]\to\dots}_{\text{arguments }\geq0}\]
+
+Pour tout \(k\in\Ns\), on a \(\begin{dcases}a_{k+1}=b_k \\ 0\leq b_{k+1}<b_k\end{dcases}\)
+
+Donc \(\paren{b_k}_{k\in\Ns}\) est une suite strictement décroissante d'entiers naturels : contradiction.
+
+Donc l'algorithme termine toujours.
+\end{dem}
+
+\begin{ex}
+Calculons le PGCD de \(1024\) et \(1000\) : \[\begin{aligned}
+1024&=1\times1000+24 \\
+1000&=41\times24+16 \\
+24&=1\times16+8 \\
+16&=2\times8+0
+\end{aligned}\]
+
+Donc \(1024\et1000=8\).
+\end{ex}
+
+\subsubsection{Propriétés}
+
+\begin{prop}\thlabel{prop:PGCDFoisLambdaEgal}
+Soient \(a,b,\lambda\in\Z\).
+
+On a : \[\paren{\lambda a}\et\paren{\lambda b}=\abs{\lambda}\paren{a\et b}.\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(\lambda\paren{a\et b}\divise\paren{\lambda a}\et\paren{\lambda b}\).
+
+On a \(a\et b\) divise \(a\) et \(b\).
+
+Donc \(\lambda\paren{a\et b}\) divise \(\lambda a\) et \(\lambda b\).
+
+Donc \(\lambda\paren{a\et b}\divise\paren{\lambda a}\et\paren{\lambda b}\).
+
+Montrons que \(\paren{\lambda a}\et\paren{\lambda b}\divise\lambda\paren{a\et b}\).
+
+On a \(\lambda\) divise \(\lambda a\) et \(\lambda b\).
+
+Donc \(\lambda\divise\paren{\lambda a}\et\paren{\lambda b}\).
+
+Soit \(d\in\Z\) tel que \(\paren{\lambda a}\et\paren{\lambda b}=d\lambda\).
+
+On a \(\paren{\lambda a}\et\paren{\lambda b}\) divise \(\lambda a\) et \(\lambda b\).
+
+Donc \(d\lambda\) divise \(\lambda a\) et \(\lambda b\).
+
+Supposons \(\lambda\not=0\).
+
+Alors \(d\) divise \(a\) et \(b\).
+
+Donc \(d\divise a\et b\).
+
+Donc \(\lambda d\divise\lambda\paren{a\et b}\).
+
+Donc \(\paren{\lambda a}\et\paren{\lambda b}\divise\lambda\paren{a\et b}\).
+
+Si \(\lambda=0\) : la proposition est vraie aussi car \(\begin{dcases}\paren{\lambda a}\et\paren{\lambda b}=0 \\ \lambda\paren{a\et b}=0\end{dcases}\)
+
+Finalement, les entiers \(\lambda\paren{a\et b}\) et \(\paren{\lambda a}\et\paren{\lambda b}\) se divisent mutuellement.
+
+Donc \(\abs{\lambda\paren{a\et b}}=\abs{\paren{\lambda a}\et\paren{\lambda b}}\).
+
+Donc \(\abs{\lambda}\paren{a\et b}=\paren{\lambda a}\et\paren{\lambda b}\).
+\end{dem}
+
+\subsection{Relation de Bézout}
+
+\subsubsection{Définition}
+
+\begin{defprop}[Relation de Bézout]\thlabel{defprop:relationDeBezout}
+Soient \(a,b\in\Z\).
+
+Alors il existe des entiers \(u,v\in\Z\) tels que : \[ua+vb=a\et b.\]
+
+Une telle écriture s'appelle une relation de Bézout.
+
+Elle n'est pas unique.
+\end{defprop}
+
+\begin{dem}[Absence d'unicité]
+Soient \(u,v\in\Z\) tels que \[ua+vb=a\et b.\]
+
+On a alors \[\paren{u-b}a+\paren{v+a}b=a\et b.\]
+
+Donc le couple \(\paren{u\prim,v\prim}=\paren{u-b,v+a}\) convient aussi.
+\end{dem}
+
+\subsubsection{Preuve algébrique}
+
+\begin{prop}
+Soient \(a,b\in\Z\).
+
+Alors \(a\) et \(b\) admettent une relation de Bézout.
+\end{prop}
+
+\begin{dem}
+On a vu que \(a\Z+b\Z=\paren{a\et b}\Z\).
+
+On a \(a\et b\in\paren{a\et b}\Z\) donc \(a\et b\in a\Z+b\Z\).
+
+Donc on a \[\quantifs{\exists u,v\in\Z}a\et b=ua+bv.\]
+\end{dem}
+
+\subsubsection{Preuve algorithmique, algorithme d'Euclide étendu}
+
+Écrivons \(\bezout[a][b]\) où \(a,b\in\Z\) et qui renvoie \(u,v,d\) tels que \(\begin{dcases}d=a\et b \\ ua+vb=a\et b\end{dcases}\)
+
+\begin{algo}[Algorithme d'Euclide étendu, en langage Python]\thlabel{algo:EuclideEtenduEntiers}
+\begin{code}
+def bezout(a, b):
+	if a < 0:
+		u, v, d = bezout(-a, b)
+		return -u, v, d
+	if b < 0:
+		u, v, d = bezout(a, -b)
+		return u, -v, d
+	elif b == 0:
+		return 1, 0, a
+	else:
+		q, r = a // b, a % b
+		u, v, d = bezout(b, r)
+		return v, u - v * q, d
+\end{code}
+\end{algo}
+
+\begin{ex}
+Déterminons le PGCD et une relation de Bézout de \(14\) et \(9\) : \[\begin{WithArrows}
+&\bezout[14][9]\text{ (\(q=1\), \(r=5\))} \Arrow[jump=9]{} \\
+&\hookrightarrow\bezout[9][5]\text{ (\(q=1\), \(r=4\))} \Arrow[jump=7]{} \\
+&\color{white}\hookrightarrow\color{black}\hookrightarrow\bezout[5][4]\text{ (\(q=1\), \(r=1\))} \Arrow[jump=5]{}  \\
+&\color{white}\hookrightarrow\hookrightarrow\color{black}\hookrightarrow\bezout[4][1]\text{ (\(q=4\), \(r=0\))} \Arrow[jump=3]{} \\
+&\color{white}\hookrightarrow\hookrightarrow\hookrightarrow\color{black}\hookrightarrow\bezout[1][0] \Arrow{} \\
+&\color{white}\hookrightarrow\hookrightarrow\hookrightarrow\hookrightarrow\color{black}1,0,1 \\
+&\color{white}\hookrightarrow\hookrightarrow\hookrightarrow\color{black}0,1,1 \\
+&\color{white}\hookrightarrow\hookrightarrow\color{black}1,-1,1 \\
+&\color{white}\hookrightarrow\color{black}-1,2,1 \\
+&2,-3,1
+\end{WithArrows}\]
+
+Donc \[14\et9=1\qquad\text{et}\qquad1=2\times14-3\times9.\]
+\end{ex}
+
+\subsection{PGCD de plusieurs entiers}
+
+\begin{rem}
+La loi \(\et\) est une loi de composition interne associative et commutative sur \(\Z\).
+\end{rem}
+
+\begin{dem}\thlabel{dem:pgcdLCIsurZ}
+La loi \(\et\) est clairement commutative.
+
+Montrons qu'elle est associative.
+
+Soient \(a,b,c\in\Z\).
+
+On a \[\ensdiv{a}\inter\ensdiv{b}\inter\ensdiv{c}=\ensdiv{a}\inter\ensdiv{b\et c}=\ensdiv{a\et\paren{b\et c}}\] et \[\ensdiv{a}\inter\ensdiv{b}\inter\ensdiv{c}=\ensdiv{a\et b}\inter\ensdiv{c}=\ensdiv{\paren{a\et b}\et c}.\]
+
+Donc \(a\paren{b\et c}\) et \(\paren{a\et b}\et c\) se divisent mutuellement.
+
+De plus, ce sont des entiers positifs.
+
+Donc ils sont égaux.
+\end{dem}
+
+\begin{defprop}
+Soient \(r\in\Ns\) et \(a_1,\dots,a_r\in\Z\).
+
+Les diviseurs positifs communs à \(a_1,\dots,a_r\) sont les diviseurs de \(a_1\et\dots\et a_r\).
+
+Ce nombre est le PGCD de \(a_1,\dots,a_r\).
+\end{defprop}
+
+\begin{prop}
+Soient \(r\in\Ns\) et \(a_1,\dots,a_r,\lambda\in\Z\).
+
+On a : \[\paren{\lambda a_1}\et\dots\et\paren{\lambda a_r}=\abs{\lambda}\paren{a_1\et\dots\et a_r}.\]
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:PGCDFoisLambdaEgal} par récurrence sur \(r\in\Ns\).
+\end{dem}
+
+\section{Entiers premiers entre eux}\label{sec:entiersPremiersEntreEux}
+
+\subsection{Cas de deux entiers}
+
+\begin{defi}[Entiers premiers entre eux]
+Deux entiers \(a,b\in\Z\) sont dits premiers entre eux s'ils vérifient : \[a\et b=1.\]
+
+Cela signifie que leurs seuls diviseurs communs sont \(1\) et \(-1\).
+\end{defi}
+
+\begin{theo}[Théorème de Bézout]
+Soient \(a,b\in\Z\).
+
+On a : \[a\text{ et }b\text{ premiers entre eux}\ssi\quantifs{\exists u,v\in\Z}ua+vb=1.\]
+\end{theo}
+
+\begin{dem}
+\impdir Déjà vu (\cf \thref{defprop:relationDeBezout}).
+
+\imprec
+
+Supposons qu'il existe \(u,v\in\Z\) tels que \(ua+bv=1\).
+
+On a \(a\et b\) divise \(a\) et \(b\).
+
+Donc \(a\et b\divise ua+vb\).
+
+Donc \(a\et b\divise1\).
+
+Donc \(a\et b=1\) car \(a\et b\in\N\).
+\end{dem}
+
+\begin{prop}
+Soient \(\lambda,x,y,n\in\Z\).
+
+On suppose que \(\lambda\) et \(n\) sont premiers entre eux.
+
+Alors : \[x\equiv y\croch{n}\ssi\lambda x\equiv\lambda y\croch{n}.\]
+\end{prop}
+
+\begin{dem}
+Soient \(u,v\in\Z\) tels que \(u\lambda+vn=1\).
+
+On a \(u\lambda\equiv1\croch{n}\).
+
+Montrons l'équivalence.
+
+\impdir Vraie : il suffit de multiplier par \(\lambda\).
+
+\imprec Vraie : il suffit de multiplier par \(u\).
+\end{dem}
+
+\begin{lem}[Lemme de Gauss]
+Soient \(a,b,n\in\Z\).
+
+On suppose : \[n\divise ab\qquad\text{et}\qquad n\et b=1.\]
+
+Alors : \[n\divise a.\]
+\end{lem}
+
+\begin{dem}
+Soient \(u,v\in\Z\) tels que \(un+vb=1\).
+
+On a \(n\divise ab\). Soit \(k\in\Z\) tel que \(nk=ab\).
+
+On a \(a\paren{un+vb}=a\) donc \(nau+vnk=a\).
+
+Donc \(n\paren{au+vk}=a\).
+
+Donc \(n\divise a\).
+\end{dem}
+
+\begin{rem}[Forme irréductible d'un rationnel]
+Soit \(q\in\Q\).
+
+Il existe un unique couple \(\paren{a,b}\in\Z\times\Ns\) tel que : \[q=\dfrac{a}{b}\qquad\text{et}\qquad a\et b=1.\]
+\end{rem}
+
+\begin{dem}\thlabel{dem:formeIrreductibleD'unRationnel}
+Soit \(\paren{a,b}\in\Z\times\Ns\) tel que \(q=\dfrac{a}{b}\).
+
+\existence
+
+On pose \(a\prim=\dfrac{a}{a\et b}\) et \(b\prim=\dfrac{b}{a\et b}\) (on a \(a\prim\in\Z\) et \(b\prim\in\Ns\) car \(a\et b\) divise \(a\) et \(b\)).
+
+On a \(q=\dfrac{a\prim}{b\prim}\).
+
+Montrons que \(a\prim\et b\prim=1\).
+
+Comme \(a\et b\geq0\), d'après la \thref{prop:PGCDFoisLambdaEgal}, on a \[a\et b=\paren{\paren{a\et b}a\prim}\et\paren{\paren{a\et b}\et b}=\paren{a\et b}\paren{a\prim\et b\prim}.\]
+
+Or \(a\et b\not=0\) donc \(1=a\prim\et b\prim\).
+
+\unicite
+
+Soit \(\paren{a\seconde,b\seconde}\in\Z\times\Ns\) tel que \(\begin{dcases}a\seconde\et b\seconde=1 \\ q=\dfrac{a\seconde}{b\seconde}\end{dcases}\)
+
+Montrons que \(\paren{a\prim,b\prim}=\paren{a\seconde,b\seconde}\).
+
+On a \(\dfrac{a\prim}{b\prim}=\dfrac{a\seconde}{b\seconde}\) donc \(a\prim b\seconde=b\prim a\seconde\).
+
+Donc \(b\seconde\divise b\prim a\seconde\) et \(b\seconde\et a\seconde=1\) donc \(b\seconde\divise b\prim\) selon le lemme de Gauss.
+
+De même, \(b\prim\divise b\seconde\) donc \(b\prim=b\seconde\) donc \(a\prim=a\seconde\).
+\end{dem}
+
+\begin{prop}
+Soient \(a,b,n\in\Z\).
+
+On suppose \[a\et n=1\qquad\text{et}\qquad b\et n=1.\]
+
+Alors \[ab\et n=1.\]
+\end{prop}
+
+\begin{dem}
+Soient \(u,v,u\prim,v\prim\in\Z\) tels que \(\begin{dcases}ua+vn=1 \\ u\prim b+v\prim n=1\end{dcases}\)
+
+On a, par produit : \[\underbrace{uu\prim}_{\in\Z}ab+n\underbrace{\paren{uav\prim+vbu\prim+vv\prim n}}_{\in\Z}=1\]
+
+Donc \(ab\et n=1\).
+\end{dem}
+
+\begin{cor}
+Soient \(r\in\Ns\) et \(a_1,\dots,a_r,n\in\Z\).
+
+On suppose \[\quantifs{\forall k\in\interventierii{1}{r}}a_k\et n=1.\]
+
+Alors \[\paren{a_1\dots a_r}\et n=1.\]
+\end{cor}
+
+\begin{dem}
+Par récurrence immédiate sur \(r\in\Ns\).
+\end{dem}
+
+\begin{prop}\thlabel{prop:deuxEntiersPremiersEntreEuxDivisantUnNombreImpliqueProduitDiviseCeNombre}
+Soient \(a,b,n\in\Z\).
+
+On suppose \[a\divise n\qquad\text{et}\qquad b\divise n\qquad\text{et}\qquad a\et b=1.\]
+
+Alors \[ab\divise n.\]
+\end{prop}
+
+\begin{dem}
+Comme \(a\divise n\), il existe \(\lambda\in\Z\) tel que \(a\lambda=n\).
+
+On a \(b\divise a\lambda\) et \(b\et a=1\).
+
+Donc selon le lemme de Gauss : \(b\divise\lambda\).
+
+Donc \(ab\divise a\lambda\).
+
+Donc \(ab\divise n\).
+\end{dem}
+
+\subsection{Cas de plusieurs entiers}
+
+\begin{defi}
+Soient \(r\in\Ns\) et \(a_1,\dots,a_r\in\Z\).
+
+On dit que les entiers \(a_1,\dots,a_r\) sont premiers entre eux deux à deux si on a : \[\quantifs{\forall i,j\in\interventierii{1}{r}}i\not=j\imp a_i\et a_j=1.\]
+
+On dit que les entiers \(a_1,\dots,a_r\) sont premiers entre eux dans leur ensemble si \(a_1\et\dots\et a_r=1\). Cela signifie que leurs seuls diviseurs communs sont \(1\) et \(-1\).
+\end{defi}
+
+\begin{rem}
+Soient \(r\in\N\excluant\accol{0;1}\) et \(a_1,\dots,a_r\in\Z\).
+
+\guillemets{\(a_1,\dots,a_r\) sont premiers entre eux deux à deux} implique \guillemets{\(a_1,\dots,a_r\) sont premiers entre eux dans leur ensemble}.
+
+L'implication réciproque est fausse, par exemple : \(6\), \(10\) et \(15\) sont premiers entre eux dans leur ensemble mais pas deux à deux.
+\end{rem}
+
+\section{PPCM}
+
+\begin{defprop}
+Soient \(a,b\in\Z\).
+
+Dans l'ensemble ordonné \(\groupe{\N}[\divise]\), il existe un plus petit multiple commun positif à \(a\) et \(b\) appelé le \guillemets{Plus Petit Commun Multiple} (PPCM) et noté \(a\ou b\).
+
+On a \(\begin{dcases}a\ou b\geq0 \\ a\divise a\ou b \\ b\divise a\ou b \\ \quantifs{\forall m\in\N}\croch{a\divise m\quad\text{et}\quad b\divise m}\imp a\ou b\divise m\end{dcases}\)
+\end{defprop}
+
+\begin{dem}
+L'ensemble \(a\Z\inter b\Z\) est un sous-groupe de \(\groupe{\Z}\).
+
+Donc il existe \(\mu\in\N\) tel que \(a\Z\inter b\Z=\mu\Z\).
+
+On a \(\mu\geq0\).
+
+Comme \(\mu\in a\Z\inter b\Z\), on a \(\begin{dcases}a\divise\mu \\ b\divise\mu\end{dcases}\)
+
+Enfin, soit \(m\in\N\) tel que \(\begin{dcases}a\divise m \\ b\divise m\end{dcases}\)
+
+On a \(m\in a\Z\inter b\Z\) donc \(m\in\mu\Z\).
+
+Donc \(\mu\divise m\).
+\end{dem}
+
+\begin{rem}
+On a :
+
+\begin{itemize}
+\item \(\quantifs{\forall a,b\in\Z}a\ou b=\abs{a}\ou\abs{b}\) \\
+
+\item \(\quantifs{\forall a,b\in\N}a\ou b=\sup\accol{a;b}\) dans \(\groupe{\N}[\divise]\)
+\end{itemize}
+\end{rem}
+
+\begin{prop}
+\(\ou\) est une loi de composition interne associative et commutative sur \(\Z\).
+\end{prop}
+
+\begin{dem}
+\(\ou\) est clairement commutative.
+
+Montrons que \(\ou\) est associative.
+
+Soient \(a,b,c\in\Z\).
+
+D'une part, \[a\Z\inter b\Z\inter c\Z=\paren{a\ou b}\Z\inter c\Z=\paren{\paren{a\ou b}\ou c}\Z.\]
+
+D'autre part, \[a\Z\inter b\Z\inter c\Z=a\Z\inter\paren{b\ou c}\Z=\paren{a\ou\paren{b\ou c}}\Z.\]
+
+Donc \(\paren{a\ou b}\ou c\) et \(a\ou\paren{b\ou c}\) se divisent mutuellement.
+
+De plus, ils appartiennent à \(\N\) donc ils égaux.
+\end{dem}
+
+\begin{defi}
+Soient \(r\in\Ns\) et \(a_1,\dots,a_r\in\Z\).
+
+L'élément \(a_1\ou\dots\ou a_r\) est le plus petit (pour \(\divise\)) multiple commun à \(a_1,\dots,a_r\).
+
+On l'appelle le PPCM de \(a_1,\dots,a_r\).
+\end{defi}
+
+\begin{ex}
+\(9\ou12=36\) car \(9\N=\accol{0;9;18;27;36;\dots}\) et \(12\N=\accol{0;12;24;36;\dots}\).
+
+On a \[\quantifs{\forall n\in\Z}\begin{dcases}n\ou1=\abs{n} \\ n\ou0=0 \\ n\ou2=\begin{dcases}n &\text{si \(n\) est pair} \\ 2n &\text{sinon}\end{dcases}\end{dcases}\]
+\end{ex}
+
+\begin{rem}
+Soient \(a,b\in\Z\).
+
+On a \[a\ou b=\abs{b}\ssi a\divise b.\]
+\end{rem}
+
+\begin{dem}
+\impdir
+
+Supposons \(a\ou b=\abs{b}\).
+
+On a \(a\divise\abs{b}\).
+
+Or \(\abs{b}\divise b\).
+
+Donc \(a\divise b\).
+
+\imprec
+
+Supposons \(a\divise b\).
+
+On a \[\quantifs{\forall m\in\N}\croch{a\divise m\quad\text{et}\quad b\divise m}\ssi b\divise m.\]
+
+Donc \(a\ou b=\abs{b}\).
+\end{dem}
+
+\begin{prop}
+On a
+
+\begin{enumerate}
+\item \(\quantifs{\forall a,b,\lambda\in\Z}\paren{\lambda a}\ou\paren{\lambda b}=\abs{\lambda}\paren{a\ou b}\) \\
+
+\item \(\quantifs{\forall r\in\Ns;\forall a_1,\dots,a_r,\lambda\in\Z}\paren{\lambda a_1}\ou\dots\ou\paren{\lambda a_r}=\abs{\lambda}\paren{a_1\ou\dots\ou a_r}\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+Montrons que \(\paren{\lambda a}\ou\paren{\lambda b}\divise\lambda\paren{a\ou b}\).
+
+On a \(\lambda a\) et \(\lambda b\) divisent \(\lambda\paren{a\ou b}\) donc \(\paren{\lambda a}\ou\paren{\lambda b}\divise\lambda\paren{a\ou b}\).
+
+Montrons que \(\lambda\paren{a\ou b}\divise\paren{\lambda a}\ou\paren{\lambda b}\).
+
+On a \(\lambda\divise\paren{\lambda a}\ou\paren{\lambda b}\) (car \(\lambda\divise\lambda a\divise\paren{\lambda a}\ou\paren{\lambda b}\)).
+
+Soit \(m\in\Z\) tel que \(\lambda m=\paren{\lambda a}\ou\paren{\lambda b}\).
+
+\Cad, en supposant \(\lambda\not=0\) : \(a\ou b\divise m\).
+
+On a \(\lambda a\) et \(\lambda b\) divisent \(\paren{\lambda a}\ou\paren{\lambda b}\) donc \(\lambda a\) et \(\lambda b\) divisent \(\lambda m\).
+
+Donc \(a\) et \(b\) divisent \(m\) car \(\lambda\not=0\).
+
+Donc \(a\ou b\divise m\).
+
+Donc \(\lambda\paren{a\ou b}\divise\lambda m\).
+
+Finalement, \(\paren{\lambda a}\ou\paren{\lambda b}\) et \(\lambda\paren{a\ou b}\) se divisent mutuellement donc ils ont même valeur absolue.
+\end{dem}
+
+\begin{dem}[2]
+Découle de (1) par récurrence sur \(r\in\Ns\).
+\end{dem}
+
+\begin{prop}
+Soient \(a,b\in\Z\).
+
+On a \[\paren{a\ou b}\paren{a\et b}=\abs{ab}.\]
+\end{prop}
+
+\begin{dem}
+Si \(a\et b=1\) :
+
+On a, selon la \thref{prop:deuxEntiersPremiersEntreEuxDivisantUnNombreImpliqueProduitDiviseCeNombre} : \[\quantifs{\forall m\in\Z}\begin{dcases}a\divise m \\ b\divise m\end{dcases}\ssi ab\divise m.\]
+
+Donc \(a\ou b=\abs{ab}\) donc \(\paren{a\ou b}\paren{a\et b}=\abs{ab}\).
+
+Sinon :
+
+On pose \(a\prim=\dfrac{a}{a\et b}\) et \(b\prim=\dfrac{b}{a\et b}\).
+
+Alors \(a\prim\in\Z\) et \(b\prim\in\Ns\) (\cf \thref{dem:formeIrreductibleD'unRationnel}).
+
+On a donc, selon le cas précédent : \(\paren{a\prim\ou b\prim}\paren{a\prim\et b\prim}=\abs{a\prim b\prim}\).
+
+Puis, en multipliant de chaque côté par \(\paren{a\et b}^2\) : \[\croch{\underbrace{\paren{\paren{a\et b}a\prim}}_{a}\et\underbrace{\paren{\paren{a\et b}b\prim}}_b}\croch{\underbrace{\paren{\paren{a\et b}a\prim}}_a\ou\underbrace{\paren{\paren{a\et b}b\prim}}_b}=\abs{\paren{a\et b}a\prim\paren{a\et b}b\prim}=\abs{ab}.\]
+\end{dem}
+
+\section{Nombres premiers}
+
+\subsection{Définition}
+
+\begin{defi}[Nombre premier]
+On appelle nombre premier tout entier \(p\in\interventierie{2}{\pinf}\) dont les seuls diviseurs positifs sont \(1\) et lui-même.
+
+L'ensemble des nombres premiers est souvent noté \(\prem\) : \[\quantifs{\forall p\in\Z}p\in\prem\ssi\croch{p\geq2\quad\text{et}\quad\ensdiv{p}=\accol{1;p}}.\]
+\end{defi}
+
+\begin{defi}[Nombre composé]
+On appelle nombre composé tout entier \(n\in\interventierie{2}{\pinf}\) qui n'est pas un nombre premier, \cad vérifiant : \[\quantifs{\exists a,b\in\interventierie{2}{\pinf}}ab=n.\]
+\end{defi}
+
+\begin{ex}
+Les entiers \(0\) et \(1\) ne sont ni des nombres premiers, ni des nombres composés.
+
+Les entiers \(2\), \(3\), \(5\), \(7\), \(11\) sont des nombres premiers.
+
+Les entiers \(4\), \(6\), \(8\), \(9\), \(10\) sont des nombres composés.
+\end{ex}
+
+\begin{rem}
+Soient \(p\in\prem\) et \(n\in\Z\).
+
+On a \[p\not\divise n\ssi p\et n=1.\]
+\end{rem}
+
+\begin{dem}
+Si \(p\divise n\) alors \(p\et n=\abs{n}\).
+
+Si \(p\not\divise n\) alors \(\begin{dcases}p\et n\in\ensdiv{p} \\ p\et n\in\ensdiv{n}\end{dcases}\)
+
+Donc \(\begin{dcases}p\et n\in\accol{1;p} \\ p\et n\not=p\end{dcases}\)
+
+Donc \(p\et n=1\).
+
+Finalement, \(p\et n=1\ssi p\not\divise n\).
+\end{dem}
+
+\begin{lem}
+Soit \(n\in\interventierie{2}{\pinf}\).
+
+Alors \(n\) admet un diviseur premier.
+\end{lem}
+
+\begin{dem}
+On raisonne par récurrence forte sur \(n\).
+
+On pose \[\quantifs{\forall n\in\interventierie{2}{\pinf}}\P{n}:\croch{\quantifs{\exists p\in\prem}p\divise n}.\]
+
+On a \(2\divise 2\). D'où \(\P{2}\).
+
+Soit \(n\in\interventierie{3}{\pinf}\) tel que \(\quantifs{\forall k\in\interventierii{2}{n-1}}\P{k}\).
+
+Montrons \(\P{n}\).
+
+Si \(n\in\prem\) alors on a \(\P{n}\) car \(n\divise n\).
+
+Sinon, \(n\) admet un diviseur positif autre que \(1\) et lui-même qu'on note \(d\).
+
+On a \(1<d<n\).
+
+Selon \(\P{d}\), il existe \(p\in\prem\) tel que \(p\divise d\).
+
+D'où \(p\divise n\).
+
+D'où, par récurrence forte, \(\quantifs{\forall n\in\interventierie{2}{\pinf}}\P{n}\).
+\end{dem}
+
+\begin{theo}
+Il existe une infinité de nombres premiers.
+\end{theo}
+
+\begin{dem}
+Soit \(n\in\N\).
+
+Posons \(N=n!+1\). On a \(N\geq2\).
+
+Soit \(p\in\prem\) tel que \(p\divise N\) (un tel \(p\) existe selon le lemme précédent).
+
+On a \(p\divise n!+1\).
+
+Montrons que \(p>n\).
+
+Par l'absurde, si \(p\leq n\) alors \(p\divise n!\) donc \(p\divise1\) : contradiction.
+
+On a donc montré \(\quantifs{\forall n\in\N;\exists p\in\prem}p>n\).
+
+Donc \(\prem\) n'est pas majorée.
+
+Donc \(\prem\) n'est pas finie.
+\end{dem}
+
+\begin{rem}[Crible d'Eratosthène]
+Soit \(N\in\interventierie{2}{\pinf}\).
+
+Tout nombre composé \(n\in\interventierii{1}{N}\) admet un diviseur premier \(p\) tel que \(p\leq N\).
+\end{rem}
+
+\begin{dem}
+Soit un nombre composé \(n\in\interventierii{1}{N}\).
+
+Il existe \(a,b\in\N\) tels que \(\begin{dcases}ab=n \\ 2\leq a<n \\ 2\leq b<n\end{dcases}\)
+
+Quitte à échanger \(a\) et \(b\), on peut supposer \(a\leq\sqrt{n}\).
+
+Soit, selon le lemme précédent, \(p\in\prem\) tel que \(p\divise a\).
+
+On a \(\begin{dcases}p\divise n &\text{car }p\divise a\text{ et }a\divise n \\ p\leq\sqrt{n} &\text{car }p\leq a\leq\sqrt{n}\end{dcases}\)
+
+On peut ainsi déterminer tous les nombres premiers de \(\interventierii{1}{N}\).
+\end{dem}
+
+\begin{ex}
+Avec \(N=25\) (et donc \(\sqrt{N}=5\)) :
+
+\begin{center}
+\begin{tabular}{ccccc}
+\textcolor{red}{1} & \textcolor{green}{2} & \textcolor{green}{3} & \textcolor{red}{4} & \textcolor{green}{5} \\
+\textcolor{red}{6} & \textcolor{green}{7} & \textcolor{red}{8} & \textcolor{red}{9} & \textcolor{red}{10} \\
+\textcolor{green}{11} & \textcolor{red}{12} & \textcolor{green}{13} & \textcolor{red}{14} & \textcolor{red}{15} \\
+\textcolor{red}{16} & \textcolor{green}{17} & \textcolor{red}{18} & \textcolor{green}{19} & \textcolor{red}{20} \\
+\textcolor{red}{21} & \textcolor{red}{22} & \textcolor{green}{23} & \textcolor{red}{24} & \textcolor{red}{25}
+\end{tabular}
+\end{center}
+\end{ex}
+
+\subsection{Théorème fondamental}
+
+Le théorème suivant affirme que tout entier strictement positif s'écrit comme produit de nombres premiers, de façon unique à l'ordre des facteurs près.
+
+\begin{theo}[Théorème fondamental de l'arithmétique]
+Soit \(n\in\Ns\).
+
+Alors \(n\) s'écrit de façon unique sous la forme : \[n=p_1^{\alpha_1}p_2^{\alpha_2}\dots p_r^{\alpha_r}\qquad\text{où}\qquad\begin{dcases}r\in\N \\ p_1,p_2,\dots,p_r\in\prem \\ p_1<p_2<\dots<p_r \\ \alpha_1,\alpha_2,\dots,\alpha_r\in\Ns\end{dcases}\]
+\end{theo}
+
+\begin{dem}
+Pour tout \(n\in\Ns\), on note \(\P{n}\) la proposition \guillemets{le théorème est vrai pour \(n\)}.
+
+On raisonne par récurrence forte.
+
+On a clairement \(\P{1}\) car \(1\) est le \guillemets{produit vide} (avec \(r=0\)), et seulement le produit vide.
+
+On a clairement \(\P{2}\) car \(2=p_1^{\alpha_1}\) avec \(r=1\), \(p_1=2\) et \(\alpha_1=1\).
+
+Soit \(n\in\interventierie{3}{\pinf}\) tel que \(\quantifs{\forall k\in\interventierii{1}{n-1}}\P{k}\).
+
+Montrons \(\P{n}\).
+
+\existence
+
+Si \(n\in\prem\) alors l'existence est claire.
+
+Sinon, il existe \(a,b\in\N\) tels que \(\begin{dcases}n=ab \\ 2\leq a<n \\ 2\leq b<n\end{dcases}\)
+
+Selon \(\P{a}\), l'entier \(a\) est produit de nombres premiers.
+
+Selon \(\P{b}\), l'entier \(b\) est produit de nombres premiers.
+
+Donc \(n\) est produit de nombres premiers.
+
+\unicite
+
+Soient \(r,s\in\N\), \(p_1,\dots,p_r,q_1,\dots,q_s\in\prem\) et \(\alpha_1,\dots,\alpha_r,\beta_1,\dots,\beta_s\in\Ns\) tels que \[\begin{dcases}n=p_1^{\alpha_1}\dots p_r^{\alpha_r}=q_1^{\beta_1}\dots q_s^{\beta_s} \\ p_1<\dots<p_r \\ q_1<\dots<q_s\end{dcases}\]
+
+Montrons que \(p_1=q_1\).
+
+Par l'absurde, supposons \(p_1\not=q_1\).
+
+Si \(p_1<q_1\) alors \(\quantifs{\forall l\in\interventierii{1}{s}}p_1<q_l\).
+
+Donc \(\quantifs{\forall l\in\interventierii{1}{s}}p_1\et q_l=1\).
+
+D'où par produit, selon la \thref{prop:deuxEntiersPremiersEntreEuxDivisantUnNombreImpliqueProduitDiviseCeNombre}, \(p_1\et\paren{q_1^{\beta_1}\dots q_s^{\beta_s}}=1\).
+
+Donc \(p_1\et n=1\) et \(p_1\divise n\) : contradiction.
+
+Si \(q_1<p_1\), on montre de même que \(q_1\et n=1\) : contradiction.
+
+Donc \(p_1=q_1\).
+
+Ainsi, \(\dfrac{n}{p_1}=p_1^{\alpha_1-1}\dots p_r^{\alpha_r}=q_1^{\beta_1-1}\dots q_s^{\beta_s}\).
+
+Selon la partie \unicite de \(\P{\dfrac{n}{p_1}}\), on a \[\begin{dcases}r=t \\ \quantifs{\forall k\in\interventierii{2}{s}}\begin{dcases}p_k=q_k \\ \alpha_k=\beta_k\end{dcases} \\ \alpha_1=\beta_1\end{dcases}\]
+
+D'où l'unicité.
+
+D'où \(\P{n}\).
+
+Donc \(\quantifs{\forall n\in\Ns}\P{n}\).
+\end{dem}
+
+\subsection{Valuations \(p\)-adiques}
+
+\begin{defi}[Valuation \(p\)-adique]
+Pour tout entier strictement positif \(n\in\Ns\) et tout nombre premier \(p\in\prem\), on note \(\valp{p}{n}\) l'exposant de \(p\) dans la décomposition de \(\abs{n}\) en produit de nombres premiers.
+\end{defi}
+
+\begin{ex}
+On a \(40=2^3\times5\).
+
+Donc \[\valp{2}{40}=3\qquad\valp{5}{40}=1\qquad\quantifs{\forall p\in\prem\excluant\accol{2;5}}\valp{p}{40}=0.\]
+\end{ex}
+
+\begin{nota}[Fonction signum]
+On pose \[\fonction{\sg}{\R}{\R}{x}{\begin{dcases}1 &\text{si }x>0 \\ 0 &\text{si }x=0 \\ -1 &\text{si }x<0\end{dcases}}\]
+\end{nota}
+
+\begin{nota}
+Soit \(n\in\Zs\).
+
+La valuation \(p\)-adique de \(n\) est nulle pour tous les nombres premiers \(p\in\prem\) sauf un nombre fini d'entre eux (on dit que la famille \(\paren{\valp{p}{n}}_{p\in\prem}\) est une famille d'entiers \guillemets{presque tous nuls}).
+
+Pour cette raison, on s'autorise à définir le \guillemets{produit infini} : \[\prod_{p\in\prem}p^{\valp{p}{n}}\] comme étant le produit de ses facteurs différents de \(1\).
+
+Sa valeur est donc en fait un produit fini : \[\prod_{p\in\prem}p^{\valp{p}{n}}=\prod_{\substack{p\in\prem \\ \valp{p}{n}\not=0}}p^{\valp{p}{n}}.\]
+\end{nota}
+
+\begin{cor}
+On a, selon le théorème fondamental de l'arithmétique : \[\quantifs{\forall n\in\Zs}n=\sg\paren{n}\times\prod_{p\in\prem}p^{\valp{p}{n}}.\]
+\end{cor}
+
+\begin{prop}[Valuations d'un produit]
+Soient \(a,b\in\Zs\).
+
+On a : \[\quantifs{\forall p\in\prem}\valp{p}{ab}=\valp{p}{a}+\valp{p}{b}.\]
+\end{prop}
+
+\begin{dem}~\\
+On a \(\begin{dcases}a=\prod_{p\in\prem}p^{\valp{p}{a}} \\ b=\prod_{p\in\prem}p^{\valp{p}{b}}\end{dcases}\) donc \[ab=\prod_{p\in\prem}p^{\valp{p}{a}+\valp{p}{b}}=\prod_{p\in\prem}p^{\valp{p}{ab}}.\]
+
+D'où l'égalité, par unicité de l'écriture de \(ab\) en produit de nombres premiers.
+\end{dem}
+
+\begin{prop}[Caractérisation de la divisibilité]\thlabel{prop:caractérisationDeLaDivisibilité}
+Soient \(a,b\in\Zs\).
+
+On a \[a\divise b\ssi\quantifs{\forall p\in\prem}\valp{p}{a}\leq\valp{p}{b}.\]
+\end{prop}
+
+\begin{dem}
+\imprec
+
+Supposons \(\quantifs{\forall p\in\prem}\valp{p}{a}\leq\valp{p}{b}\).
+
+Alors on a \[b=\prod_{p\in\prem}p^{\valp{p}{b}}=\prod_{p\in\prem}p^{\valp{p}{a}}\times\prod_{p\in\prem}p^{\valp{p}{b}-\valp{p}{a}}=\abs{a}\times\underbrace{\prod_{p\in\prem}p^{\overbrace{\valp{p}{b}-\valp{p}{a}}^{\text{entiers presque tous nuls}}}}_{\in\N}\]
+
+Donc \(\abs{a}\divise\abs{b}\).
+
+Donc \(a\divise b\).
+
+\imprec
+
+Supposons \(a\divise b\).
+
+Soit \(c\in\Z\) tel que \(ac=b\).
+
+Comme \(b\not=0\), on a \(c\not=0\).
+
+On a \[\paren{\sg\paren{a}\times\prod_{p\in\prem}p^{\valp{p}{a}}}\paren{\sg\paren{c}\times\prod_{p\in\prem}p^{\valp{p}{c}}}=\sg\paren{b}\times\prod_{p\in\prem}p^{\valp{p}{b}}\]
+
+D'où, selon l'unicité de l'écriture d'un entier en produit de nombres premiers : \[\quantifs{\forall p\in\prem}\valp{p}{a}+\underbrace{\valp{p}{c}}_{\in\N}=\valp{p}{b}.\]
+
+Donc \(\quantifs{\forall p\in\prem}\valp{p}{a}\leq\valp{p}{b}\).
+\end{dem}
+
+\begin{rem}[Caractérisation de \(\valp{p}{n}\)]
+En particulier, si \(n\in\Zs\) et \(p\in\prem\), alors \[\quantifs{\forall\alpha\in\N}\alpha=\valp{p}{n}\ssi\begin{dcases}p^\alpha\divise n \\ p^{\alpha+1}\not\divise n\end{dcases}\]
+\end{rem}
+
+\begin{prop}[PGCD et PPCM]
+Soient \(a,b\in\Zs\).
+
+On a : \[a\et b=\prod_{p\in\prem}p^{\min\accol{\valp{p}{a};\valp{p}{b}}}\qquad\text{et}\qquad a\ou b=\prod_{p\in\prem}p^{\max\accol{\valp{p}{a};\valp{p}{b}}}\]
+\end{prop}
+
+\begin{dem}
+Posons \(d=\prod_{p\in\prem}p^{\min\accol{\valp{p}{a};\valp{p}{b}}}\).
+
+Montrons que \(a\et b=d\).
+
+On a \(d\divise a\) et \(d\divise b\) selon la \thref{prop:caractérisationDeLaDivisibilité}.
+
+On a \(d\geq0\).
+
+Enfin, soit \(e\in\N\) tel que \(e\divise a\) et \(e\divise b\).
+
+On a \(e\not=0\) (car \(a\not=0\)).
+
+On a donc, selon la \thref{prop:caractérisationDeLaDivisibilité} : \[\quantifs{\forall p\in\prem}\begin{dcases}\valp{p}{e}\leq\valp{p}{a} \\ \valp{p}{e}\leq\valp{p}{b}\end{dcases}\]
+
+Donc \(\quantifs{\forall p\in\prem}\valp{p}{e}\leq\min\accol{\valp{p}{a};\valp{p}{b}}=\valp{p}{d}\).
+
+D'où \(e\divise d\) selon la \thref{prop:caractérisationDeLaDivisibilité}.
+
+Finalement, \(d=a\et b\).
+
+Idem pour \(a\ou b\).
+\end{dem}
+
+\section{Petit théorème de Fermat}
+
+\begin{lem}
+Soient \(p\in\prem\) et \(k\in\interventierii{1}{p-1}\).
+
+Alors \(p\divise\binom{k}{p}\).
+\end{lem}
+
+\begin{dem}~\\
+On a \(\binom{k}{p}=\dfrac{p!}{k!\,\paren{p-k}!}\).
+
+Donc \(p!=\binom{k}{p}k!\,\paren{p-k}!\).
+
+Donc \(p\divise\binom{k}{p}k!\,\paren{p-k}!\).
+
+Or \(p\et k!=1\) car \(k<p\) et \(p\et\paren{p-k}!=1\) car \(k>0\).
+
+Donc \(p\et k!\,\paren{p-k}!=1\).
+
+Donc \(p\divise\binom{k}{p}\) selon le lemme de Gauss.
+\end{dem}
+
+\begin{theo}[Petit théorème de Fermat]\thlabel{theo:petitThéorèmeDeFermat}
+Soit \(p\in\prem\).
+
+On a, pour tout \(x\in\Z\) : \[x^p\equiv x\croch{p}.\]
+
+De plus, pour tout entier \(x\) qui n'est pas divisible par \(p\) : \[x^{p-1}\equiv1\croch{p}.\]
+\end{theo}
+
+\begin{dem}
+Montrons que \(\quantifs{\forall x\in\N}\underbrace{x^p\equiv x\croch{p}}_{\P{x}}\) par récurrence sur \(x\in\N\).
+
+On a clairement \(\P{0}\) et \(\P{1}\).
+
+Soit \(x\in\N\) tel que \(\P{x}\).
+
+Montrons \(\P{x+1}\).
+
+On a \[\begin{WithArrows}
+\paren{x+1}^p&\equiv\sum_{k=0}^p\binom{k}{p}x^k\croch{p} \Arrow{car \(\binom{k}{n}\equiv0\croch{p}\) si \(1\leq k\leq p-1\)} \\
+&\equiv x^0+x^p\croch{p} \Arrow{selon \(\P{x}\)} \\
+&\equiv1+x\croch{p}
+\end{WithArrows}\]
+
+D'où \(\P{x+1}\).
+
+Ainsi, \(\quantifs{\forall x\in\N}x^p\equiv x\croch{p}\).
+
+Enfin, si \(x\in\Z\) alors il existe \(y\in\N\) tel que \(x\equiv y\croch{p}\).
+
+On a alors \(x^p\equiv y^p\equiv y\equiv x\croch{p}\).
+\end{dem}

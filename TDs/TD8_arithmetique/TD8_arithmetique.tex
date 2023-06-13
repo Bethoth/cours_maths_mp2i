@@ -1,0 +1,257 @@
+\chapter{Arithmétique}
+
+\minitoc
+
+\section{Compléments sur les groupes}
+
+\begin{exo}
+Soit \(\groupe{G}\) un groupe abélien. On note \(E\) l'ensemble de ses sous-groupes.
+
+On munit \(E\) de la loi de composition interne \(+\) (somme de sous-groupes) et de la relation d'ordre \(\subset\).
+
+Soit \(r\in\Ns\) et \(H_1,\dots,H_r\) des sous-groupes de \(G\).
+
+\begin{enumerate}
+\item \(\groupe{E}\) est-il un groupe ? \\
+
+\item Montrer que \(\accol{H_1;\dots;H_r}\) admet une borne inférieure et une borne supérieure dans \(E\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Familles d'entiers presque tous nuls]\thlabel{exo:familleD'EntiersPresqueTousNuls}
+\renewcommand{\F}{\mathscr{F}}
+
+Soit \(I\) un ensemble.
+
+On appelle support d'une famille d'entiers relatifs \(\F=\paren{x_i}_{i\in I}\in\Z^I\) l'ensemble : \[\supp\F=\accol{i\in I\tq x_i\not=0}.\]
+
+On dit que \(\F\) est une famille d'entiers presque tous nuls si son support est un ensemble fini, \cad si les termes de \(\F\) sont tous nuls sauf un nombre fini d'entre eux. L'ensemble de ces familles est noté \(\Z^{\paren{I}}\) : \[\Z^{\paren{I}}=\accol{\F\in\Z^I\tq\Card\supp\F<\pinf}.\]
+
+Montrer que \(\Z^{\paren{I}}\) est un sous groupe de \(\groupe{\Z^I}\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\section{Arithmétique}
+
+\begin{exo}
+Calculer :
+
+\begin{enumerate}
+\item \(100^{1234567}\) modulo \(13\) \\
+
+\item \(1234^{12345678910}\) modulo \(21\) \\
+
+\item \(1234^{12345^{123456}}\) modulo \(256\) \\
+
+\item \(1000^{1000^{1000}}\) modulo \(17\) \\
+
+\textit{Indication :} on pourra utiliser le petit théorème de Fermat.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}[1]
+On a \(100\equiv9\croch{13}\).
+
+Or on a \(9^2\equiv3\croch{13}\), \(9^3\equiv1\croch{13}\) et \(9^4\equiv9\croch{13}\).
+
+Donc, avec \(N\) un entier relatif, \(9^N\) modulo \(13\) ne dépend que de \(N\) modulo \(3\).
+
+Or \(1234567\equiv1\croch{3}\).
+
+Donc \(100^{1234567}\equiv9^1\croch{13}\equiv9\croch{13}\).
+\end{corr}
+
+\begin{exo}
+Soient \(a,b\in\Z\).
+
+\begin{enumerate}
+\item Montrer que \(8\) divise \(a^2-1\) si, et seulement si, \(a\) est impair. \\
+
+\item Montrer que \(7\) divise \(a^2+b^2\) si, et seulement si, \(7\) divise \(a\) et \(b\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}
+\item Soient \(n\) et \(\alpha\) deux entiers supérieurs ou égaux à \(2\). Montrer que si \(n^\alpha\) est un nombre premier alors \(n=2\) et \(\alpha\) est un nombre premier. La réciproque est-elle vraie ? \\
+
+\item Soit \(\beta\) un entier naturel. Montrer que si \(2^\beta+1\) est premier alors \(\beta\) est une puissance de \(2\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Pour tout \(n\in\N\), on note \(u_n\) l'entier naturel dont l'écriture en base \(10\) possède \(3^n\) chiffres, tous égaux à \(1\) : \[\quantifs{\forall n\in\N}u_n=\underbrace{1111\dots1}_{3^n\text{ chiffres}}.\]
+
+Déterminer la valuation \(3\)-adique de \(u_n\).
+
+\textit{Indication :} remarquer \(\quantifs{\forall n\in\N}u_{n+1}=u_n\paren{1+10^{3^n}+10^{3^n\times2}}\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(n\in\N\).
+
+\begin{enumerate}
+\item Justifier que \(n+1\) et \(2n+1\) sont premiers entre eux. \\
+
+\item Montrer que \(n+1\) divise \(\binom{n}{2n}\). \\
+
+\textit{Indication :} considérer \(\binom{n+1}{2n+1}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(m,n\in\interventierie{2}{\pinf}\).
+
+On suppose \(\dfrac{\ln m}{\ln n}\in\Q\).
+
+Montrer que \(m\) et \(n\) ont les mêmes diviseurs premiers.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Trouver un entier \(x\in\Z\) tel que \(\begin{dcases}x\equiv2\croch{7} \\ x\equiv3\croch{9}\end{dcases}\)
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Trouver un entier \(x\in\Z\) tel que \(\begin{dcases}x\equiv5\croch{7} \\ x\equiv10\croch{16}\end{dcases}\)
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Trouver un entier \(x\in\Z\) tel que \(\begin{dcases}x\equiv5\croch{9} \\ x\equiv10\croch{15}\end{dcases}\)
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(p\in\prem\).
+
+\begin{enumerate}
+\item Montrer \(\quantifs{\forall k\in\interventierii{1}{p-1}}p\divise\binom{k}{p}\). \\
+
+\item En déduire \(\quantifs{\forall k\in\interventierii{0}{p-1}}\binom{k}{p-1}\equiv\paren{-1}^k\croch{p}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(n\in\interventierie{2}{\pinf}\).
+
+Montrer \[n\in\prem\ssi\quantifs{\forall k\in\interventierii{1}{n-1}}n\divise\binom{k}{n}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Valuations \(p\)-adiques des rationnels]
+\begin{enumerate}
+\item Soit \(a\in\prem\). Montrer qu'on définit une fonction \(w_p:\Qs\to\Z\) en posant : \[\quantifs{\forall a\in\Zs;\forall b\in\Ns}w_p\paren{\dfrac{a}{b}}=\valp{p}{a}-\valp{p}{b}.\] \\
+
+\textit{Indication :} il s'agit de montrer que l'image d'un rationnel ne dépend pas de l'écriture \(\dfrac{a}{b}\) choisie. \\
+
+\item En utilisant l'\thref{exo:familleD'EntiersPresqueTousNuls}, montrer que les groupes \(\groupe{\Qs}[\times]\) et \(\groupe{\Z^{\paren{\prem}}}\) sont isomorphes.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On note \(\paren{p_n}_{n\in\N}\) la suite strictement croissante des nombres premiers (\cad \(p_0=2\), \(p_1=3\), \(p_2=5\), ...).
+
+\begin{enumerate}[series=exsuitepremiers]
+\item Montrer \(\quantifs{\forall n\in\N}p_{n+1}\leq p_0\times p_1\times\dots\times p_n+1\). \\
+
+\item En déduire \(\quantifs{\forall n\in\N}p_n\leq2^{2^n}\).
+\end{enumerate}
+
+Pour tout \(N\in\N\), on note \(\pi\paren{N}\) le nombre de nombres premiers inférieurs à \(N\) : \[\quantifs{\forall N\in\N}\pi\paren{N}=\Card\prem\inter\interventierii{1}{N}.\]
+
+\begin{enumerate}[resume=exsuitepremiers]
+\item Montrer l'encadrement \(\quantifs{\forall N\in\interventierie{2}{\pinf}}\log_2\rond\log_2\paren{N}\leq\pi\paren{N}\leq N\).
+\end{enumerate}
+
+\textit{Remarque :} le logarithme en base \(2\) est la fonction \(\log_2:\Rps\to\R\) qui est la bijection réciproque de la fonction \[\fonctionlambda{\R}{\Rps}{x}{2^x}\]
+
+On montre facilement : \(\quantifs{\forall x\in\Rps}\log_2 x=\dfrac{\ln x}{\ln2}\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(p\) un nombre premier impair.
+
+On suppose que \(-1\) est un carré modulo \(p\) : \[\quantifs{\exists x\in\Z}-1\equiv x^2\croch{p}.\]
+
+Montrer \(p\equiv1\croch{4}\).
+
+\textit{Indication :} utiliser le petit théorème de Fermat.
+
+{\small \textit{Remarque :} la CN prouvée est en fait une CNS : \(\croch{\quantifs{\exists x\in\Z}-1\equiv x^2\croch{p}}\ssi p\equiv1\croch{4}\).}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}
+\item Montrer qu'il existe une infinité de nombres premiers \(p\) tels que \(p\equiv3\croch{4}\). \\
+
+\item En utilisant l'exercice précédent, montrer qu'il existe une infinité de nombres premiers \(p\) tels que \(p\equiv1\croch{4}\).
+\end{enumerate}
+
+\textit{Indications :}
+
+\begin{enumerate}
+\item S'intéresser aux diviseurs premiers de \(4\paren{n!}-1\) avec \(n\in\N\). \\
+
+\item S'intéresser aux diviseurs premiers de \(\paren{n!}^2+1\) avec \(n\in\N\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}

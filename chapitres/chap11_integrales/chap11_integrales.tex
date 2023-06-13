@@ -1,0 +1,936 @@
+\chapter{Intégrales sur un segment}
+
+\minitoc
+
+Dans ce chapitre, on définit l'intégrale d'une fonction continue par morceaux sur un segment. L'étude des intégrales de fonctions sur un intervalle autre qu'un segment sera faite en deuxième année.
+
+Dans tout le chapitre, on pose \(\K=\R\) ou \(\C\) et on considère un segment \(\intervii{a}{b}\) de \(\R\) (avec \(a,b\in\R\) tels que \(a<b\)).
+
+\section{Définitions}
+
+\subsection{Subdivisions d'un segment}
+
+\begin{defi}
+On appelle subdivision de \(\intervii{a}{b}\) toute suite finie strictement croissante \(\sigma=\paren{x_0,x_1,\dots,x_n}\) d'éléments de \(\intervii{a}{b}\) telle que \[a=x_0<x_1<\dots<x_{n-1}<x_n=b.\]
+
+L'application qui à une telle subdivision associe l'ensemble fini \(\accol{x_1;x_2;\dots;x_{n-1}}\) est une bijection de l'ensemble des subdivisions de \(\intervii{a}{b}\) vers l'ensemble des parties finies de \(\intervee{a}{b}\).
+
+En pratique, on s'autorise à voir les subdivisions comme des ensembles finis et à parler, par exemple, de la subdivision réunion de deux subdivisions.
+\end{defi}
+
+\begin{defi}
+Soient \(\sigma\) et \(\sigma\prim\) deux subdivisions du segment \(\intervii{a}{b}\).
+
+On dit que \(\sigma\prim\) est plus fine que \(\sigma\) si on a \[\sigma\subset\sigma\prim.\]
+
+\Cad, du point de vue des suites finies : \(\sigma\) est une suite extraite de \(\sigma\prim\).
+\end{defi}
+
+\begin{rem}
+Pour toutes subdivisions \(\sigma_1\) et \(\sigma_2\) de \(\intervii{a}{b}\), il existe une subdivision \(\sigma_3\) plus fine que \(\sigma_1\) et \(\sigma_2\).
+\end{rem}
+
+\begin{defi}
+Soit \(n\in\Ns\).
+
+On appelle subdivision régulière de pas \(\dfrac{1}{n}\) la subdivision \(a=x_0<x_1<\dots<x_{n-1}<x_n=b\) définie par : \[\quantifs{\forall k\in\interventierii{0}{n}}x_k=a+\dfrac{k}{n}\paren{b-a}.\]
+\end{defi}
+
+\subsection{Fonctions en escalier}
+
+\begin{defi}
+On dit qu'une fonction \(\phi:\intervii{a}{b}\to\K\) est en escalier s'il existe une subdivision \(a=x_0<x_1<\dots<x_{n-1}<x_n=b\) de \(\intervii{a}{b}\) telle que : \[\quantifs{\forall j\in\interventierii{0}{n-1}}\restr{\phi}{\intervee{x_j}{x_{j+1}}}\text{ est constante},\] \cad si : \[\quantifs{\forall j\in\interventierii{0}{n-1};\forall t\in\intervee{x_j}{x_{j+1}}}\phi\paren{t}=\phi\paren{\dfrac{x_j+x_{j+1}}{2}}.\]
+
+Une telle subdivision est dite adaptée à \(\phi\).
+\end{defi}
+
+\begin{ex}
+La restriction à tout segment de la fonction \guillemets{partie entière} est en escalier.
+
+La restriction à tout segment de la fonction \guillemets{signum} est en escalier.
+\end{ex}
+
+\begin{nota}[Non-officielle]
+On notera \(\Esc\) l'ensemble des fonctions en escalier de \(\intervii{a}{b}\) vers \(\K\).
+
+C'est un sous-anneau de \(\anneau{\F{\intervii{a}{b}}{\K}}\).
+\end{nota}
+
+\begin{rem}
+Soient \(\phi_1,\phi_2\in\F{\intervii{a}{b}}{\R}\).
+
+On pose \(\phi=\phi_1+\i\phi_2\in\F{\intervii{a}{b}}{\C}\).
+
+Alors la fonction \(\phi\) est en escalier si, et seulement si, \(\phi_1\) et \(\phi_2\) sont en escalier.
+\end{rem}
+
+\begin{rem}
+Soit \(\phi\in\F{\intervii{a}{b}}{\R}\) une fonction en escalier.
+
+Alors l'ensemble image \(\Im\phi\) est fini.
+
+En particulier, la fonction \(\phi\) est bornée.
+\end{rem}
+
+\subsection{Fonctions continues par morceaux}
+
+\begin{defi}[Fonction continue par morceaux sur un segment]
+On dit qu'une fonction \(f:\intervii{a}{b}\to\K\) est continue par morceaux s'il existe une subdivision \(a=x_0<x_1<\dots<x_{n-1}<x_n=b\) de \(\intervii{a}{b}\) telle que : \[\quantifs{\forall j\in\interventierii{0}{n-1}}\restr{f}{\intervee{x_j}{x_{j+1}}}\text{ admet un prolongement continu à }\intervii{x_j}{x_{j+1}},\] \cad si \[\begin{dcases}\quantifs{\forall j\in\interventierii{0}{n-1}}\restr{f}{\intervee{x_j}{x_{j+1}}}\text{ est continue} \\ \quantifs{\forall j\in\interventierii{0}{n-1}}f\text{ admet une limite finie à droite en }x_j \\ \quantifs{\forall j\in\interventierii{1}{n}}f\text{ admet une limite finie à gauche en }x_j\end{dcases}\]
+
+Une telle subdivision est dite adaptée à \(f\).
+\end{defi}
+
+\begin{ex}\thlabel{ex:fonctionsContinuesParMorceauxOuPas}
+Toute fonction en escalier est continue par morceaux.
+
+Toute fonction continue est continue par morceaux.
+
+La fonction \(\fonction{f}{\intervii{0}{1}}{\R}{x}{\begin{dcases}\sin\dfrac{1}{x} &\text{si }x\not=0 \\ 0 &\text{si }x=0\end{dcases}}\) n'est pas continue par morceaux (elle est continue sur \(\intervei{0}{1}\) mais n'admet pas de limite finie en \(0^+\)).
+\end{ex}
+
+\begin{nota}[Non-officielle]
+On notera \(\contm\) l'ensemble des fonctions continues par morceaux de \(\intervii{a}{b}\) vers \(\K\).
+
+C'est un sous-anneau de l'anneau \(\anneau{\F{\intervii{a}{b}}{\K}}\).
+\end{nota}
+
+\begin{rem}
+Soient \(\phi_1,\phi_2\in\F{\intervii{a}{b}}{\R}\).
+
+On pose \(\phi=\phi_1+\i\phi_2\in\F{\intervii{a}{b}}{\C}\).
+
+Alors la fonction \(\phi\) est continue par morceaux si, et seulement si, \(\phi_1\) et \(\phi_2\) sont continues par morceaux.
+\end{rem}
+
+\begin{rem}
+Toute fonction continue par morceaux sur un segment est bornée (mais n'atteint pas forcément ses bornes).
+\end{rem}
+
+\begin{rem}
+Toute fonction continue par morceaux est la somme d'une fonction continue et d'une fonction en escalier.
+\end{rem}
+
+\begin{dem}
+On raisonne par récurrence sur le nombre (nécessairement fini) de points où la fonction continue par morceaux n'est pas continue.
+
+\note{Exercice} : montrer que l'écriture comme somme d'une fonction continue et d'une fonction en escalier est unique à une constante additive près.
+\end{dem}
+
+\subsection{Intégrales}
+
+\subsubsection{Intégrale d'une fonction en escalier}
+
+\begin{defi}
+Soient \(\phi\in\Esc\) et \(a=x_0<x_1<\dots<x_{n-1}<x_n=b\) une subdivision adaptée à \(\phi\).
+
+La valeur de la somme \[\sum_{j=0}^{n-1}\paren{x_{j+1}-x_j}\phi\paren{\dfrac{x_j+x_{j+1}}{2}}\] ne dépend pas de la subdivision choisie.
+
+On l'appelle intégrale de \(\phi\) sur \(\intervii{a}{b}\) et on la note : \[\int_{\intervii{a}{b}}\phi\qquad\text{ou}\qquad\int_a^b\phi\paren{t}\odif{t}\qquad\text{ou}\qquad\int_a^b\phi.\]
+\end{defi}
+
+\begin{ex}
+On a : \[\begin{aligned}
+\int_{-1}^2\floor{t}\odif{t}&=\sum_{j=0}^1\paren{x_{j+1}-x_j}\floor{\dfrac{x_j+x_{j+1}}{2}} \\
+&=\paren{0+1}\floor{\dfrac{0-1}{2}}+\paren{1-0}\floor{\dfrac{1+0}{2}}+\paren{2-1}\floor{\dfrac{2+1}{2}} \\
+&=-1+0+1 \\
+&=0
+\end{aligned}\]
+\end{ex}
+
+\begin{rem}
+Les propriétés suivantes (laissées en exercice) sont utiles pour définir l'intégrale d'une fonction continue par morceaux.
+\end{rem}
+
+\begin{prop}[Linéarité de l'intégrale]
+On a : \[\quantifs{\forall\lambda,\mu\in\K;\forall\phi,\psi\in\Esc}\int_{\intervii{a}{b}}\paren{\lambda\phi+\mu\psi}=\lambda\int_{\intervii{a}{b}}\phi+\mu\int_{\intervii{a}{b}}\psi.\]
+
+On dit que l'application \(\fonctionlambda{\Esc}{\K}{\phi}{\int_{\intervii{a}{b}}\phi}\) est linéaire (cela signifie que l'image d'une combinaison linéaire est la combinaison linéaire des images).
+\end{prop}
+
+\begin{prop}[Positivité et croissance de l'intégrale]\thlabel{prop:positivitéEtCroissanceDeLIntégraleDUneFonctionEnEscalier}
+Soient \(a,b\in\R\) tels que \(a\leq b\) et \(\phi,\psi\in\Esc\).
+
+On a \[\phi\geq0\imp\int_a^b\phi\paren{t}\odif{t}\geq0\qquad\text{(positivité)}\] et \[\phi\leq\psi\imp\int_a^b\phi\paren{t}\odif{t}\leq\int_a^b\psi\paren{t}\odif{t}\qquad\text{(croissance).}\]
+\end{prop}
+
+\subsubsection{Intégrale d'une fonction continue par morceaux}
+
+\begin{deftheo}[Cas d'une fonction à valeurs réelles]
+\newcommand{\Em}{\mathcal{E}_-}
+\newcommand{\Ep}{\mathcal{E}_+}
+Soit \(f\in\contm\).
+
+On note \(\Em\) l'ensemble des fonctions en escalier inférieurs à \(f\) : \[\Em=\accol{\phi\in\Esc\tq\phi\leq f}\] et \(\Ep\) l'ensemble des fonctions en escalier supérieures à \(f\) : \[\Ep=\accol{\psi\in\Esc\tq f\leq\psi}.\]
+
+Les bornes supérieure et inférieure suivantes sont bien définies : \[I_-\paren{f}=\sup_{\phi\in\Em}\int_{\intervii{a}{b}}\phi\qquad\text{et}\qquad I_+\paren{f}=\inf_{\psi\in\Ep}\int_{\intervii{a}{b}}\psi.\]
+
+De plus, elles ont la même valeur, que l'on appelle intégrale de \(f\) sur \(\intervii{a}{b}\) et qu'on note : \[\int_{\intervii{a}{b}}f\qquad\text{ou}\qquad\int_a^bf\paren{t}\odif{t}\qquad\text{ou}\qquad\int_a^bf.\]
+
+En résumé : \[\int_{\intervii{a}{b}}f=I_-\paren{f}=I_+\paren{f}.\]
+\end{deftheo}
+
+\begin{dem}~\\
+\newcommand{\Em}{\mathcal{E}_-}
+\newcommand{\Ep}{\mathcal{E}_+}
+L'ensemble \(\accol{\int_{\intervii{a}{b}}\phi}_{\phi\in\Em}\) est une partie non-vide de \(\R\) car \(f\) est continue par morceaux sur son segment, donc bornée, donc minorée par un réel \(m\in\R\) et donc la fonction constante égale à \(m\) appartient à \(\Em\), et majorée car \(f\) est majorée par un réel \(M\in\R\) qui vérifie : \[\quantifs{\forall\phi\in\Em}\phi\leq f\leq M\] et donc, selon la \thref{prop:positivitéEtCroissanceDeLIntégraleDUneFonctionEnEscalier} : \[\quantifs{\forall\phi\in\Em}\int_{\intervii{a}{b}}\phi\leq\int_{\intervii{a}{b}}M=\paren{b-a}M.\] Donc cet ensemble admet une borne supérieure. Donc \(I_-\paren{f}\) est bien définie.
+
+Idem pour \(I_+\paren{f}\).
+
+Montrons que \(I_-\paren{f}=I_+\paren{f}\).
+
+\leqbox
+
+On a \[\quantifs{\forall\phi\in\Em;\forall\psi\in\Ep}\phi\leq f\leq\psi.\]
+
+D'où, selon la \thref{prop:positivitéEtCroissanceDeLIntégraleDUneFonctionEnEscalier} : \[\quantifs{\forall\phi\in\Em;\forall\psi\in\Ep}\int_{\intervii{a}{b}}\phi\leq\int_{\intervii{a}{b}}\psi.\]
+
+Donc, par définition de \(I_+\paren{f}\) : \[\quantifs{\forall\phi\in\Em}\int_{\intervii{a}{b}}\phi\leq I_+\paren{f}.\]
+
+Et donc, par définition de \(I_-\) : \[I_-\paren{f}\leq I_+\paren{f}.\]
+
+\geqbox
+
+Soit \(\epsilon\in\Rps\).
+
+Comme \(f\) est continue par morceaux, il existe \(f_0\in\ensclasse{0}{\intervii{a}{b}}{\R}\) et \(\phi_0\in\Esc\) telles que \(f=f_0+\phi_0\).
+
+Comme \(f_0\) est continue sur un segment, elle est uniformément continue d'après le théorème de Heine.
+
+Il existe donc \(\delta\in\Rps\) tel que \[\quantifs{\forall x,y\in\intervii{a}{b}}\abs{x-y}\leq\delta\imp\abs{f_0\paren{x}-f_0\paren{y}}\leq\epsilon.\]
+
+Soit \(n\in\Ns\) tel que \(\dfrac{b-a}{n}\leq\delta\) (un tel entier existe car \(\lim_n\dfrac{b-a}{n}=0\)).
+
+On définit \(\phi\in\Em\) et \(\psi\in\Ep\) en posant \(\quantifs{\forall k\in\interventierii{0}{n}}x_k=a+k\dfrac{b-a}{n}\) et  \(\phi\paren{b}=\psi\paren{b}=f\paren{b}\) et \[\quantifs{\forall k\in\interventierii{0}{n-1};\forall t\in\intervie{x_k}{x_{k+1}}}\begin{dcases}\phi\paren{t}=\min_{\intervie{x_k}{x_{k+1}}}f_0 \\ \psi\paren{t}=\max_{\intervie{x_k}{x_{k+1}}}f_0\end{dcases}\]
+
+De plus, on a : \[\quantifs{\forall k\in\interventierii{0}{n-1};\forall x,y\in\intervie{x_k}{x_{k+1}}}\abs{x-y}\leq\dfrac{b-a}{n}\leq\delta.\]
+
+Donc, par définition de \(\delta\) : \[\quantifs{\forall k\in\interventierii{0}{n-1}}\abs{\min_{\intervie{x_k}{x_{k+1}}}f_0-\max_{\intervie{x_k}{x_{k+1}}}f_0}\leq\epsilon.\]
+
+D'où \(\quantifs{\forall t\in\intervii{a}{b}}\abs{\phi\paren{t}-\psi\paren{t}}\leq\epsilon\) donc \(\quantifs{\forall t\in\intervii{a}{b}}\psi\paren{t}-\phi\paren{t}\leq\epsilon\).
+
+D'où \(\psi\leq\phi+\epsilon\).
+
+Finalement, on a obtenu : \[\begin{dcases}\phi\leq f_0\leq\psi \\ \psi\leq\phi+\epsilon\end{dcases}\]
+
+D'où, en posant \(\phi_1=\phi+\phi_0\) et \(\psi_1=\psi+\psi_0\) : \[\begin{dcases}\phi_1\leq f\leq\psi_1 \\ \psi_1\leq\phi_1+\epsilon\end{dcases}\]
+
+On a donc \(\phi_1\in\Em\) et \(\psi_1\in\Ep\) donc \[\begin{dcases}\int_a^b\phi_1\leq I_-\paren{f} \\ \int_a^b\psi_1\geq I_+\paren{f}\end{dcases}\]
+
+Or \(\psi_1\leq\phi_1+\epsilon\) donc \[\int_a^b\psi_1\leq\int_a^b\phi_1+\paren{b-a}\epsilon.\]
+
+D'où \[I_+\paren{f}\leq\int_a^b\psi_1\leq\int_a^b\phi_1+\paren{b-a}\epsilon\leq I_-\paren{f}+\paren{b-a}\epsilon.\]
+
+D'où, avec \(\epsilon\to0\) : \[I_+\paren{f}\leq I_-\paren{f}.\]
+
+Donc \(I_-\paren{f}=I_+\paren{f}\).
+\end{dem}
+
+\begin{rem}
+\newcommand{\Em}{\mathcal{E}_-}
+\newcommand{\Ep}{\mathcal{E}_+}
+Seule l'intégration des fonctions continues par morceaux est au programme, mais la construction précédente (due au mathématicien Gaston Darboux) s'applique à toute fonction \(f\) bornée sur \(\intervii{a}{b}\) (afin que les ensembles \(\Em\) et \(\Ep\) ne soient pas vides) et telle que \(I_-\paren{f}=I_+\paren{f}\). Une telle fonction est dite Riemann-intégrable ou Darboux-intégrable.
+
+Par exemple, la fonction \(f\) de l'\thref{ex:fonctionsContinuesParMorceauxOuPas} n'est pas continue par morceaux mais est Riemann-intégrable.
+
+Il existe une autre théorie plus récente (1901) et plus satisfaisante pour définir l'intégrale d'une fonction réelle ou complexe, due à Henri Lebesgue (hors-programme).
+\end{rem}
+
+\begin{defi}[Cas d'une fonction à valeurs complexes]
+Soit \(f\in\contm[\intervii{a}{b}][\C]\).
+
+On note \(f_1,f_2\in\contm[\intervii{a}{b}][\R]\) les fonctions réelles telles que \(f=f_1+\i f_2\).
+
+L'intégrale de \(f\) sur \(\intervii{a}{b}\) est définie par : \[\int_{\intervii{a}{b}}f=\int_{\intervii{a}{b}}f_1+\i\int_{\intervii{a}{b}}f_2.\]
+\end{defi}
+
+\begin{rem}[Pour se ramener à des fonctions continues]
+Soient \(f\in\contm\) et \(a=x_0<x_1<\dots<x_{n-1}<x_n=b\) une subdivision adaptée à \(f\), \cad telle que pour tout \(j\in\interventierii{0}{n-1}\), la fonction \(\restr{f}{\intervee{x_j}{x_{j+1}}}\) admet un prolongement continu \(g_j:\intervii{x_j}{x_{j+1}}\to\K\).
+
+L'intégrale de \(f\) sur \(\intervii{a}{b}\) est alors \[\int_{\intervii{a}{b}}f=\int_a^bf\paren{t}\odif{t}=\sum_{j=0}^{n-1}\int_{x_j}^{x_{j+1}}g_j\paren{t}\odif{t}.\]
+\end{rem}
+
+\begin{nota}[Généralisation]
+Soit \(f\in\contm\).
+
+On pose : \[\quantifs{\forall x,y\in\intervii{a}{b}}\int_x^yf\paren{t}\odif{t}=\begin{dcases}\int_{\intervii{x}{y}}f &\text{si }x<y \\ -\int_{\intervii{x}{y}}f &\text{si }x>y \\ 0 &\text{si }x=y\end{dcases}\]
+\end{nota}
+
+\section{Propriétés}
+
+\subsection{Premières propriétés}
+
+\begin{prop}[Linéarité de l'intégrale]
+On a : \[\quantifs{\forall\lambda,\mu\in\K;\forall f,g\in\contm}\int_{\intervii{a}{b}}\paren{\lambda f+\mu g}=\lambda\int_{\intervii{a}{b}}f+\mu\int_{\intervii{a}{b}}g.\]
+
+On dit que l'application \(\fonctionlambda{\contm}{\K}{f}{\int_{\intervii{a}{b}}f}\) est linéaire.
+\end{prop}
+
+\begin{rem}
+Soient \(f,g\in\contm\).
+
+Si \(f\) et \(g\) coïncident sauf en un nombre fini de points, alors \[\int_{\intervii{a}{b}}f=\int_{\intervii{a}{b}}g.\]
+\end{rem}
+
+\begin{dem}
+\(g-f\) est une fonction en escalier nulle partout sauf en un nombre fini de points donc \(\int_a^b\paren{g-f}=0\).
+
+D'où, par linéarité de l'intégrale : \(\int_a^bg-\int_a^bf=0\).
+\end{dem}
+
+\begin{prop}[Relation de Chasles]
+Soit \(f\in\contm\).
+
+On a : \[\quantifs{\forall x,y,z\in\intervii{a}{b}}\int_x^yf\paren{t}\odif{t}=\int_x^zf\paren{t}\odif{t}+\int_z^yf\paren{t}\odif{t}.\]
+\end{prop}
+
+\begin{prop}[Inégalité triangulaire intégrale\protect\footnotemark]
+\footnotetext{Dans les programmes précédents (donc dans les annales de concours), cette inégalité était appelée \guillemets{inégalité de la moyenne}.}
+On a : \[\quantifs{\forall f\in\contm}\abs{\int_{\intervii{a}{b}}f}\leq\int_{\intervii{a}{b}}\abs{f}.\]
+\end{prop}
+
+\begin{prop}[Positivité et croissance de l'intégrale]
+Soient \(a,b\in\R\) tels que \(a\leq b\) et \(f,g\in\contm\).
+
+On a \[f\geq0\imp\int_a^bd\paren{t}\odif{t}\geq0\qquad\text{(positivité)}\] et \[f\leq g\imp\int_a^bf\paren{t}\odif{t}\leq\int_a^bg\paren{t}\odif{t}\qquad\text{(croissance)}.\]
+\end{prop}
+
+\begin{dem}[Positivité]
+\newcommand{\Em}{\mathcal{E}_-}
+Supposons \(f\geq0\).
+
+La fonction nulle \(\fonction{\phi_0}{\intervii{a}{b}}{\K}{t}{0}\) appartient à \(\Em\) donc on a \[\int_a^bf=\sup_{\phi\in\Em}\int_a^b\phi\geq\int_a^b\phi_0.\]
+\end{dem}
+
+\begin{dem}[Croissance]
+Supposons \(f\leq g\).
+
+Alors \(0\leq g-f\).
+
+Donc selon la positivité de l'intégrale, on a \(0\leq\int_a^b\paren{g-f}\).
+
+D'où, par linéarité de l'intégrale : \(0\leq\int_a^bg-\int_a^bf\).
+\end{dem}
+
+\begin{prop}
+On suppose \(a<b\).
+
+Soit \(f:\intervii{a}{b}\to\R\) continue.
+
+On a \[\croch{f\geq0\quad\text{et}\quad\int_a^bf\paren{t}\odif{t}=0}\imp f=0.\]
+
+NB : l'implication est fausse pour les fonctions continues par morceaux.
+\end{prop}
+
+\begin{dem}
+On suppose \(f\) continue et positive.
+
+Montrons que \(\int_a^bf\paren{t}\odif{t}=0\imp f=0\) par contraposée.
+
+Supposons \(f\not=0\).
+
+Montrons que \(\int_a^bf\paren{t}\odif{t}\not=0\).
+
+Soit \(x_0\in\intervii{a}{b}\) tel que \(f\paren{x_0}\not=0\).
+
+Supposons \(x_0\not=a\) et \(x_0\not=b\).
+
+On a \(\lim_{x\to x_0}f\paren{x}=f\paren{x_0}\) car \(f\) est continue en \(x_0\) et \(f\paren{x_0}>0\) car \(f\paren{x_0}\not=0\) et \(f\geq0\).
+
+Donc \(\dfrac{f\paren{x_0}}{2}<\lim_{x\to x_0}f\paren{x}\).
+
+Il existe \(\delta\in\Rps\) tel que \[\begin{dcases}\intervee{x_0-\delta}{x_0+\delta}\subset\intervii{a}{b} \\ \quantifs{\forall t\in\intervee{x_0-\delta}{x_0+\delta}}\dfrac{f\paren{x_0}}{2}<f\paren{t}\end{dcases}\] car \(\intervii{a}{b}\) est un voisinage de \(x_0\) et car \(f\) est continue en \(x_0\).
+
+Posons \(\fonction{\phi}{\intervii{a}{b}}{\R}{t}{\begin{dcases}\dfrac{f\paren{x_0}}{2} &\text{si }\abs{t-x_0}\leq\delta \\ 0 &\text{sinon}\end{dcases}}\)
+
+On a \(\phi\leq f\) donc par croissance de l'intégrale, on a \[0<\delta f\paren{x_0}=2\delta\dfrac{f\paren{x_0}}{2}=\int_a^b\phi\leq\int_a^bf.\]
+
+De même si \(x_0=a\) ou \(x_0=b\), on obtient \(\int_a^bf\geq\delta\dfrac{f\paren{x_0}}{2}>0\).
+\end{dem}
+
+\subsection{Sommes de Riemann}
+
+\begin{prop}[Convergence des sommes de Riemann]
+Soit \(f\in\contm\).
+
+On a : \[\lim_{n\to\pinf}\dfrac{b-a}{n}\sum_{k=1}^{n}f\paren{a+k\dfrac{b-a}{n}}=\lim_{n\to\pinf}\dfrac{b-a}{n}\sum_{k=0}^{n-1}f\paren{a+k\dfrac{b-a}{n}}=\int_a^bf\paren{t}\odif{t}.\]
+\end{prop}
+
+\begin{dem}[Cas où \(f\) est une fonction lipschitzienne]~\\
+On pose \(\quantifs{\forall k\in\interventierii{0}{n-1}}x_k=a+k\dfrac{b-a}{n}\).
+
+On pose \(\quantifs{\forall n\in\Ns}R_n\paren{f}=\dfrac{b-a}{n}\sum_{k=0}^{n-1}f\paren{x_k}\).
+
+On a : \[\begin{aligned}
+\int_a^bf\paren{t}\odif{t}-R_n\paren{f}&=\sum_{k=0}^{n-1}\int_{x_k}^{x_{k+1}}f\paren{t}\odif{t}-\sum_{k=0}^{n-1}\int_{x_k}^{x_{k+1}}f\paren{x_k}\odif{t} \\
+&=\sum_{k=0}^{n-1}\int_{x_k}^{x_{k+1}}\croch{f\paren{t}-f\paren{x_k}}\odif{t}.
+\end{aligned}\]
+
+Soit \(K\in\Rp\) tel que \(f\) est \(K\)-lipschitzienne.
+
+On a : \[\quantifs{\forall k\in\interventierii{0}{n-1};\forall t\in\intervii{x_k}{x_{k+1}}}\abs{f\paren{t}-f\paren{x_k}}\leq K\abs{t-x_k}.\]
+
+Donc on a : \[\begin{aligned}
+\quantifs{\forall k\in\interventierii{0}{n-1}}\abs{\int_{x_k}^{x_{k+1}}\croch{f\paren{t}-f\paren{x_k}}\odif{t}}&\leq\int_{x_k}^{x_{k+1}}\abs{f\paren{t}-f\paren{x_k}}\odif{t}\qquad\text{(inégalité triangulaire intégrale)} \\
+&\leq\int_{x_k}^{x_{k+1}}K\paren{t-x_k}\odif{t}\qquad\text{(croissance de l'intégrale)} \\
+&=\croch{K\dfrac{\paren{t-x_k}^2}{2}}_{x_k}^{x_{k+1}} \\
+&=\dfrac{K}{2}\paren{\dfrac{b-a}{n}}^2
+\end{aligned}\]
+
+D'où : \[\begin{aligned}
+\abs{\int_a^bf\paren{t}\odif{t}-R_n\paren{f}}&\leq\sum_{k=0}^{n-1}\abs{\int_{x_k}^{x_{k+1}}\croch{f\paren{t}-f\paren{x_k}}\odif{t}} \\
+&\leq\sum_{k=0}^{n-1}\dfrac{K}{2}\dfrac{\paren{b-a}^2}{n^2} \\
+&=\dfrac{K}{2}\dfrac{\paren{b-a}^2}{n}.
+\end{aligned}\]
+
+Or \(\lim_n\dfrac{K}{2}\dfrac{\paren{b-a}^2}{n}=0\).
+
+Donc selon le \hyperref[theo:gendarmes]{théorème des gendarmes}, \(\lim_nR_n\paren{f}=\int_a^bf\paren{t}\odif{t}\).
+
+L'autre limite en découle car on a \[\dfrac{b-a}{n}\sum_{k=1}^{n}f\paren{x_k}=R_n\paren{f}+\dfrac{b-a}{n}\paren{f\paren{b}-f\paren{a}}\quad\text{et}\quad\begin{dcases}\lim_nR_n\paren{f}=\int_a^bf\paren{t}\odif{t} \\ \lim_n\dfrac{b-a}{n}\paren{f\paren{b}-f\paren{a}}=0\end{dcases}\].
+\end{dem}
+
+\begin{dem}[Cas où \(f\) est une fonction continue]\thlabel{dem:convergenceDesSommesDeRiemannDansLeCasContinu}
+Cf. \thref{exo:convergenceDesSommesDeRiemannDansLeCasContinu}.
+\end{dem}
+
+\subsection{Théorème fondamental}
+
+\begin{defi}
+On appelle primitive d'une fonction \(f\) toute fonction dérivable \(F\) dont la dérivée est \(f\) : \[F\prim=f.\]
+\end{defi}
+
+\begin{prop}[Unicité à une constante additive près]
+Soient \(I\) un intervalle de \(\R\) et \(f:I\to\K\).
+
+On suppose que \(F_1,F_2\in\F{I}{\K}\) sont des primitives de \(f\).
+
+Alors \[\quantifs{\exists c\in\K}F_2=F_1+c.\]
+\end{prop}
+
+\begin{dem}
+On a \(\paren{F_2-F_1}\prim=f-f=0\).
+
+Donc la fonction \(F_2-F_1\) est constante sur l'intervalle \(I\) : \(\quantifs{\exists c\in\K}F_2-F_1=c\).
+
+Donc \(\quantifs{\exists c\in\K}F_2=F_1+c\).
+\end{dem}
+
+\begin{theo}[Théorème fondamental de l'analyse]
+Soient \(I\) un intervalle de \(\R\), \(f:I\to\K\) continue et \(x_0\in I\).
+
+Alors la fonction \[\fonction{F}{I}{\K}{x}{\int_{x_0}^xf\paren{t}\odif{t}}\] est une primitive de \(f\) sur \(I\) (c'est l'unique primitive de \(f\) qui s'annule en \(x_0\)).
+\end{theo}
+
+\begin{dem}
+Soit \(x\in I\).
+
+Montrons que \(\lim_{\substack{x\prim\to x \\ x\prim\not=x}}\dfrac{F\paren{x\prim}-F\paren{x}}{x\prim-x}=f\paren{x}\), \cad \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x\prim\in I}\abs{x\prim-x}\leq\delta\imp\abs{\dfrac{F\paren{x\prim}-F\paren{x}}{x\prim-x}-f\paren{x}}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(\delta\in\Rps\) tel que \[\quantifs{\forall x\seconde\in I}\abs{x-x\seconde}\leq\delta\imp\abs{f\paren{x}-f\paren{x\seconde}}\leq\epsilon.\]
+
+Un tel \(\delta\) existe car \(f\) est continue en \(x\).
+
+Soit \(x\prim\in I\) tel que \(\abs{x-x\prim}\leq\delta\).
+
+On a, selon la relation de Chasles : \[F\paren{x\prim}-F\paren{x}=\int_x^{x\prim}f\paren{t}\odif{t}.\]
+
+D'où \[\begin{aligned}
+\abs{F\paren{x\prim}-F\paren{x}-\paren{x\prim-x}f\paren{x}}&=\abs{\int_x^{x\prim}f\paren{t}\odif{t}-\int_x^{x\prim}f\paren{x}\odif{t}} \\
+&=\abs{\int_x^{x\prim}\paren{f\paren{t}-f\paren{x}}\odif{t}} \\
+&\leq\abs{\int_x^{x\prim}\abs{f\paren{t}-f\paren{x}}\odif{t}} \\
+&\leq\abs{\int_x^{x\prim}\epsilon\odif{t}} \\
+&=\epsilon\abs{x\prim-x}.
+\end{aligned}\]
+
+D'où, si \(x\not=x\prim\) : \[\abs{\dfrac{F\paren{x\prim}-F\paren{x}}{x\prim-x}}\leq\epsilon.\]
+
+Donc \(\delta\) convient.
+
+D'où \(F\prim\paren{x}=f\paren{x}\).
+\end{dem}
+
+\begin{cor}[Existence de primitives]
+Toute fonction continue sur un intervalle admet une primitive.
+\end{cor}
+
+\begin{exo}
+Donner une primitive des fonctions suivantes (à l'aide d'une intégrale) :
+
+\begin{enumerate}
+\item \(\Arctan:\R\to\R\) \\
+
+\item \(f:x\mapsto\dfrac{1}{\sqrt{\Arcsin x}}\)
+\end{enumerate}
+\end{exo}
+
+\begin{corr}[1]
+On a la primitive de \(\Arctan\) suivante : \[\fonctionlambda{\R}{\R}{x}{\int_0^x\Arctan t\odif{t}}\]
+\end{corr}
+
+\begin{corr}[2]
+\(f\) est bien définie sur \(\intervei{0}{1}\).
+
+On a la primitive suivante : \[\fonctionlambda{\intervei{0}{1}}{\R}{x}{\int_1^x\dfrac{\odif{t}}{\sqrt{\Arcsin t}}}\]
+\end{corr}
+
+\begin{cor}\thlabel{cor:intégraleEgaleDifférencePrimitive}
+Soient \(f:\intervii{a}{b}\to\K\) continue et \(F:\intervii{a}{b}\to\K\) une primitive de \(f\).
+
+Alors \[\int_a^bf\paren{t}\odif{t}=F\paren{b}-F\paren{a}.\]
+
+L'accroissement \(F\paren{b}-F\paren{a}\) est noté : \[\croch{F\paren{t}}_a^b\qquad\text{ou}\qquad\croch{F\paren{t}}_{t=a}^b.\]
+\end{cor}
+
+\begin{dem}
+Posons \(\fonction{G}{\intervii{a}{b}}{\K}{x}{\int_a^xf\paren{t}\odif{t}}\)
+
+Les fonctions \(F\) et \(G\) sont des primitives de \(f\) sur l'intervalle \(\intervii{a}{b}\).
+
+Il existe donc \(c\in\K\) tel que \(\quantifs{\forall x\in\intervii{a}{b}}G\paren{x}=F\paren{x}+c\).
+
+En particulier, si \(x=a\) : \(0=G\paren{a}=F\paren{a}+c\).
+
+Donc \(c=-F\paren{a}\) et \(\quantifs{\forall x\in\intervii{a}{b}}G\paren{x}=F\paren{x}-F\paren{a}\).
+
+D'où, en prenant \(x=b\) : \[\int_a^bf\paren{t}\odif{t}=G\paren{b}=F\paren{b}-F\paren{a}.\]
+\end{dem}
+
+\begin{cor}
+Soit \(g\in\ensclasse{1}{\intervii{a}{b}}{\K}\).
+
+On a : \[g\paren{b}-g\paren{a}=\int_a^bg\prim\paren{t}\odif{t}.\]
+\end{cor}
+
+\begin{dem}
+Découle du \thref{cor:intégraleEgaleDifférencePrimitive} en prenant \(\begin{dcases}f=g\prim \\ F=g\end{dcases}\)
+\end{dem}
+
+\subsection{Intégration par parties}
+
+\begin{prop}
+Soient \(f,g\in\ensclasse{1}{\intervii{a}{b}}{\K}\).
+
+On a \[\int_a^bf\paren{t}g\prim\paren{t}\odif{t}=\croch{f\paren{t}g\paren{t}}_a^b-\int_a^bf\prim\paren{t}g\paren{t}\odif{t}.\]
+\end{prop}
+
+\begin{dem}
+La fonction \(fg\) est de classe \(\classe{1}\).
+
+On a donc : \[\begin{aligned}
+\croch{f\paren{t}g\paren{t}}_a^b&=\int_a^b\paren{fg}\prim\paren{t}\odif{t} \\
+&=\int_a^bf\prim\paren{t}g\paren{t}\odif{t}+\int_a^bg\prim\paren{t}f\paren{t}\odif{t}.
+\end{aligned}\]
+\end{dem}
+
+\begin{exoex}
+\begin{enumerate}
+\item Calculer une primitive de \(\ln\) sur \(\Rps\). \\
+
+\item Calculer \(\int_0^1\Arctan t\odif{t}\). \\
+
+\item Calculer une primitive de \(t\mapsto t^2\ln t\) sur \(\Rps\). \\
+
+\item Calculer une primitive de \(t\mapsto t\e{t}\) sur \(\R\). \\
+
+\item Calculer une primitive de \(t\mapsto t^2\cos t\) sur \(\R\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a la primitive \[\begin{aligned}
+x\mapsto\int_1^x\ln t\odif{t}&=\croch{t\ln t}_1^x-\int_1^xt\dfrac{1}{t}\odif{t} \\
+&=x\ln x-\paren{x-1}
+\end{aligned}\]
+
+Donc une autre primitive est \(x\mapsto x\ln x-x\).
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\begin{aligned}
+\int_0^1\Arctan t\odif{t}&=\croch{t\Arctan t}_0^1-\int_0^1\dfrac{t}{1+t^2}\odif{t} \\
+&=\dfrac{\pi}{4}-\dfrac{1}{2}\int_0^1\dfrac{2t}{t^2+1}\odif{t} \\
+&=\dfrac{\pi}{4}-\dfrac{1}{2}\croch{\ln\paren{t^2+1}}_0^1 \\
+&=\dfrac{\pi}{4}-\dfrac{1}{2}\ln2.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[3]
+On a la primitive \[\begin{aligned}
+x\mapsto\int_1^xt^2\ln t\odif{t}&=\croch{\dfrac{t^3}{3}\ln t}_1^x-\int_1^x\dfrac{t^3}{3}\times\dfrac{1}{t}\odif{t} \\
+&=\dfrac{x^3\ln x}{3}-\croch{\dfrac{t^3}{9}}_1^x \\
+&=\dfrac{x^3\ln x}{3}-\dfrac{x^3}{9}+\dfrac{1}{9} \\
+&=\dfrac{x^3\paren{3\ln x-1}+1}{9}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[4]
+On a la primitive \[\begin{aligned}
+x\mapsto\int_0^xt\e{t}\odif{t}&=\croch{t\e{t}}_0^x-\int_0^x\e{t}\odif{t} \\
+&=x\e{x}-\e{x}+1 \\
+&=\e{x}\paren{x-1}+1.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[5]
+On a la primitive \[\begin{aligned}
+x\mapsto\int_0^xt^2\cos t\odif{t}&=\croch{t^2\sin t}_0^x-\int_0^x2t\sin t\odif{t} \\
+&=x^2\sin x-\croch{-2t\cos t}_0^x+\int_0^x-2\cos t\odif{t} \\
+&=x^2\sin x+2x\cos x-2\sin x.
+\end{aligned}\]
+\end{corr}
+
+\subsection{Formules de Taylor}
+
+\begin{theo}[Formule de Taylor avec reste intégral]
+Soient \(n\in\N\) et \(f\in\ensclasse{n+1}{\intervii{a}{b}}{\K}\).
+
+On a \[f\paren{b}=\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}\paren{b-a}^k+\int_a^b\dfrac{\paren{b-t}^n}{n!}f\deriv{n+1}\paren{t}\odif{t}.\]
+\end{theo}
+
+\begin{dem}
+On raisonne par récurrence finie.
+
+On note \[\quantifs{\forall m\in\interventierii{0}{n}}\underbrace{f\paren{b}=\sum_{k=0}^m\dfrac{f\deriv{k}\paren{a}}{k!}\paren{b-a}^k+\int_a^b\dfrac{\paren{b-t}^m}{m!}f\deriv{m+1}\paren{t}\odif{t}}_{\P{m}}.\]
+
+On a bien \(f\paren{b}=f\paren{a}+\int_a^bf\prim\paren{t}\odif{t}\) car \(f\in\ensclasse{1}{\intervii{a}{b}}{\K}\), d'où \(\P{0}\).
+
+Soit \(m\in\interventierii{0}{n-1}\) tel que \(\P{m}\).
+
+Montrons \(\P{m+1}\).
+
+On peut intégrer la fonction \(t\mapsto\dfrac{\paren{b-t}^m}{m!}f\deriv{m+1}\paren{t}\) car les fonctions \(t\mapsto\dfrac{-\paren{b-t}^{m+1}}{\paren{m+1}!}\) et \(f\deriv{m+1}\) sont de classe \(\classe{1}\).
+
+D'où \[\begin{aligned}
+\int_a^b\dfrac{\paren{b-t}^m}{m!}f\deriv{m+1}\paren{t}\odif{t}&=\croch{\dfrac{-\paren{b-t}^{m+1}}{\paren{m+1}!}f\deriv{m+1}\paren{t}}_a^b-\int_a^b\dfrac{-\paren{b-t}^{m+1}}{\paren{m+1}!}f\deriv{m+2}\paren{t}\odif{t} \\
+&=0-\dfrac{-\paren{b-a}^{m+1}}{\paren{m+1}!}f\deriv{m+1}\paren{a}+\int_a^b\dfrac{\paren{b-t}^{m+1}}{\paren{m+1}!}f\deriv{m+2}\paren{t}\odif{t}.
+\end{aligned}\]
+
+D'où, selon \(\P{m}\) : \[\begin{aligned}
+f\paren{b}&=\sum_{k=0}^m\dfrac{f\deriv{k}\paren{a}}{k!}\paren{b-a}^k+\dfrac{\paren{b-a}^{m+1}}{\paren{m+1}!}f\deriv{m+1}\paren{a}+\int_a^b\dfrac{\paren{b-t}^{m+1}}{\paren{m+1}!}f\deriv{m+2}\paren{t}\odif{t} \\
+&=\sum_{k=0}^{m+1}\dfrac{f\deriv{k}\paren{a}}{k!}\paren{b-a}^k+\int_a^b\dfrac{\paren{b-t}^{m+1}}{\paren{m+1}!}f\deriv{m+2}\paren{t}\odif{t}.
+\end{aligned}\]
+
+D'où \(\P{m+1}\).
+
+D'où, par récurrence : \(\P{n}\).
+\end{dem}
+
+\begin{cor}[Inégalité de Taylor-Lagrange]
+Soient \(n\in\N\), \(f\in\ensclasse{n+1}{\intervii{a}{b}}{\K}\) et \(M\in\Rp\) tel que \(\quantifs{\forall x\in\intervii{a}{b}}\abs{f\deriv{n+1}\paren{x}}\leq M\).
+
+Alors \[\abs{f\paren{b}-\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}\paren{b-a}^k}\leq\dfrac{M}{\paren{n+1}!}\paren{b-a}^{n+1}.\]
+\end{cor}
+
+\begin{dem}
+On a, selon la formule de Taylor avec reste intégral : \[\begin{WithArrows}
+\abs{f\paren{b}-\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}\paren{b-a}^k}&=\abs{\int_a^b\dfrac{\paren{b-t}^n}{n!}f\deriv{n+1}\paren{t}\odif{t}} \Arrow[tikz={text width=4cm}]{inégalité triangulaire intégrale} \\
+&\leq\int_a^b\abs{\dfrac{\paren{b-t}^n}{n!}f\deriv{n+1}\paren{t}}\odif{t} \Arrow{croissance de l'intégrale} \\
+&\leq\int_a^b\dfrac{\paren{b-t}^n}{n!}M\odif{t} \\
+&\leq\dfrac{M}{n!}\croch{\dfrac{\paren{b-t}^{n+1}}{n+1}}_a^b \\
+&=\dfrac{M}{n!}\paren{0-\dfrac{\paren{b-a}^{n+1}}{n+1}} \\
+&=\dfrac{M}{\paren{n+1}!}\paren{b-a}^{n+1}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{ex}
+Soit \(x\in\Rp\).
+
+Prenons \(a=0\), \(b=x\), \(f=\exp\) et \(n=3\).
+
+On a \[\begin{aligned}
+\abs{\e{x}-\paren{1+x+\dfrac{x^2}{2}+\dfrac{x^3}{6}}}&\leq\dfrac{\ds\max_{\intervii{0}{x}}\exp}{4!}x^4 \\
+&=\dfrac{\e{x}x^4}{24}.
+\end{aligned}\]
+\end{ex}
+
+\subsection{Changements de variable}
+
+\begin{theo}
+Soient \(I\) un intervalle de \(\R\), \(f\in\ensclasse{1}{I}{\R}\) et \(u\in\ensclasse{1}{\intervii{a}{b}}{\R}\) telle que \(\Im u\subset I\).
+
+On a \[\int_{u\paren{a}}^{u\paren{b}}f\paren{t}\odif{t}=\int_a^bf\paren{u\paren{s}}u\prim\paren{s}\odif{s}.\]
+
+On dit qu'on fait le changement de variable \(\begin{dcases}t=u\paren{s} \\ \odif{t}=u\prim\paren{s}\odif{s}\end{dcases}\)
+\end{theo}
+
+\begin{dem}
+Posons \(\fonction{g}{\intervii{a}{b}}{\R}{x}{\int_{u\paren{a}}^{u\paren{x}}f\paren{t}\odif{t}-\int_a^xf\paren{u\paren{s}}u\prim\paren{s}\odif{s}}\)
+
+Montrons que \(g\) est dérivable.
+
+La fonction \(\fonctionlambda{\intervii{a}{b}}{\K}{s}{f\paren{u\paren{s}}u\prim\paren{s}}\) est continue car \(\begin{dcases}f\text{ est continue} \\ u\text{ est de classe }\classe{1}\end{dcases}\)
+
+Donc \(x\mapsto\int_a^xf\paren{u\paren{s}}u\prim\paren{s}\odif{s}\) est dérivable de dérivée \(x\mapsto f\paren{u\paren{x}}u\prim\paren{x}\).
+
+La fonction \(\fonctionlambda{I}{\K}{y}{\int_{u\paren{a}}^yf\paren{t}\odif{t}}\) est dérivable car \(f\) est continue, de dérivée \(y\mapsto f\paren{y}\).
+
+De plus, \(u\) est de classe \(\classe{1}\) donc par composition de fonctions dérivables : \(\fonctionlambda{\intervii{a}{b}}{\K}{x}{\int_{u\paren{a}}^{u\paren{x}}f\paren{t}\odif{t}}\) est dérivable de dérivée \(\fonctionlambda{\intervii{a}{b}}{\K}{x}{u\prim\paren{x}f\paren{u\paren{x}}}\)
+
+Finalement, \(g\) est dérivable de dérivée nulle.
+
+Donc \(g\) est constante sur l'intervalle \(\intervii{a}{b}\).
+
+Enfin, \(g\paren{a}=0-0=0\).
+
+Donc \(g\) est nulle, d'où la formule énoncée.
+\end{dem}
+
+\begin{rem}
+Si \(f\) était continue par morceaux alors \(s\mapsto f\paren{u\paren{s}}u\prim\paren{s}\) pourrait ne pas être continue par morceaux.
+\end{rem}
+
+\begin{exoex}~\\
+\begin{enumerate}
+\item Calculer \(I=\int_{-1}^0\dfrac{t}{t^2+2t+2}\odif{t}\). \\
+
+\item Calculer une primitive de \(\dfrac{1}{\ch}\). \\
+
+\item Calculer une primitive de \(f:x\mapsto\dfrac{1}{x\ln x\ln\paren{\ln x}}\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]~\\
+On a \(I=\int_{-1}^0\dfrac{t}{\paren{t+1}^2+1}\odif{t}\).
+
+On fait le changement de variable \[\begin{dcases}u=t+1 \\ \odif{u}=\odif{t}\end{dcases}\ssi\begin{dcases}t=u-1 \\ \odif{t}=\odif{u}\end{dcases}\]
+
+Donc \[\begin{aligned}
+I&=\int_0^1\dfrac{u-1}{u^2+1}\odif{u} \\
+&=\dfrac{1}{2}\int_0^1\dfrac{2u}{u^2+1}\odif{u}-\int_0^1\dfrac{\odif{u}}{u^2+1} \\
+&=\dfrac{1}{2}\croch{\ln\paren{u^2+1}}_0^1-\croch{\Arctan u}_0^1 \\
+&=\dfrac{1}{2}\ln2-\dfrac{\pi}{4}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[2]~\\
+Une primitive de \(\dfrac{1}{\ch}\) est \(F:x\mapsto\int_0^x\dfrac{1}{\ch t}\odif{t}=\int_0^x\dfrac{2}{\e{t}+\e{-t}}\odif{t}\).
+
+On fait le changement de variable \[\begin{dcases}u=\e{t} \\ \odif{u}=\e{t}\odif{t}\end{dcases}\ssi\begin{dcases}t=\ln u \\ \odif{t}=\dfrac{\odif{u}}{u}\end{dcases}\]
+
+On a \[\begin{aligned}
+F:x\mapsto\int_0^x\dfrac{2}{\e{t}+\e{-t}}\odif{t}&=\int_1^{\e{x}}\dfrac{2}{u^2+1}\odif{u} \\
+&=2\croch{\Arctan u}_1^{\e{x}} \\
+&=2\Arctan\e{x}-\dfrac{\pi}{2}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[3]
+Une primitive de \(f\) est \(F:x\mapsto\int_{10}^x\dfrac{1}{t\ln t\ln\paren{\ln t}}\odif{t}\).
+
+On fait le changement de variable \[\begin{dcases}u=\ln t \\ \odif{u}=\dfrac{\odif{t}}{t}\end{dcases}\ssi\begin{dcases}t=\e{u} \\ \odif{t}=\e{u}\odif{u}\end{dcases}\]
+
+Donc \[\begin{aligned}
+F:x\mapsto\int_{\ln10}^{\ln x}\dfrac{\e{u}}{\e{u}u\ln u}\odif{u}&=\int_{\ln10}^{\ln x}\dfrac{1}{u\ln u}\odif{u} \\
+&=\int_{\ln10}^{\ln x}\dfrac{\frac{1}{u}}{\ln u}\odif{u} \\
+&=\croch{\ln\abs{\ln u}}_{\ln10}^{\ln x} \\
+&=\ln\paren{\ln\paren{\ln x}}-\ln\paren{\ln\paren{\ln10}}.
+\end{aligned}\]
+
+Donc une primitive de \(f\) est \(x\mapsto\ln\paren{\ln\paren{\ln x}}\).
+\end{corr}
+
+\begin{nota}[Officielle]~\\
+On peut noter \(x\mapsto\int^xf\paren{t}\odif{t}\) une primitive de la fonction continue \(f\).
+\end{nota}
+
+\subsection{Symétries}
+
+\begin{prop}
+Soient \(\alpha\in\Rp\) et \(f\in\contm[\intervii{-\alpha}{\alpha}]\).
+
+Si \(f\) est impaire alors \[\int_{-\alpha}^{\alpha}f\paren{t}\odif{t}=0.\]
+
+Si \(f\) est paire, alors \[\int_{-\alpha}^{\alpha}f\paren{t}\odif{t}=2\int_0^{\alpha}f\paren{t}\odif{t}.\]
+\end{prop}
+
+\begin{dem}[Dans le cas continu]
+On a \[\begin{aligned}
+\int_{-\alpha}^0f\paren{t}\odif{t}&=\int_{\alpha}^0-f\paren{-u}\odif{u}\qquad\text{avec }\begin{dcases}u=-t \\ \odif{u}=-\odif{t}\end{dcases}\text{ car }\begin{dcases}f\text{ est de classe }\classe{0} \\ t\mapsto-t\text{ est de classe }\classe{1}\end{dcases} \\
+&=\int_0^{\alpha}f\paren{-u}\odif{u} \\
+&=\begin{dcases}-\int_0^{\alpha}f\paren{u}\odif{u} &\text{si }f\text{ est impaire} \\ \int_0^{\alpha}f\paren{u}\odif{u} &\text{si }f\text{  est paire}\end{dcases}
+\end{aligned}\]
+
+D'où le résultat (car \(\int_{-\alpha}^{\alpha}f\paren{t}\odif{t}=\int_{-\alpha}^0f\paren{t}\odif{t}+\int_0^{\alpha}f\paren{t}\odif{t}\)).
+\end{dem}
+
+\begin{prop}
+Soient \(f\in\contm[\R]\) et \(T\in\Rps\).
+
+On suppose que \(f\) est \(T\)-périodique.
+
+Alors \[\quantifs{\forall x\in\R}\int_x^{x+T}f\paren{t}\odif{t}=\int_0^Tf\paren{t}\odif{t}.\]
+\end{prop}
+
+\begin{dem}[Dans le cas continu]
+On pose \(\fonction{g}{\R}{\K}{x}{\int_x^{x+T}f\paren{t}\odif{t}}\)
+
+On a \(\quantifs{\forall x\in\R}g\paren{x}=\int_0^{x+T}f\paren{t}\odif{t}-\int_0^xf\paren{t}\odif{t}\).
+
+Donc \(g\) est dérivable et \(\quantifs{\forall x\in\R}g\prim\paren{x}=f\paren{x+T}-f\paren{x}=0\).
+
+Donc \(g\) est constante sur l'intervalle \(\R\).
+
+D'où le résultat.
+\end{dem}
+
+\section{Techniques de calcul}
+
+\subsection{Utiliser les nombres complexes}
+
+\begin{rappel}
+Soit \(\alpha\in\C\).
+
+La fonction \(\fonctionlambda{\R}{\C}{x}{\e{\alpha x}}\) est dérivable de dérivée \(\fonctionlambda{\R}{\C}{x}{\alpha\e{\alpha x}}\)
+\end{rappel}
+
+\begin{ex}
+Calculons une primitive de \(f:x\mapsto\e{2x}\sin x\).
+
+On a \(f=\Im g\) en posant \(\fonction{g}{\R}{\C}{x}{\e{\paren{2+\i}x}}\)
+
+On a \[\begin{aligned}
+\quantifs{\forall x\in\R}\int^xg\paren{t}\odif{t}&=\int^x\e{\paren{2+\i}t}\odif{t} \\
+&=\croch{\dfrac{1}{2+\i}\e{\paren{2+\i}t}}^x \\
+&=\dfrac{1}{2+\i}\e{\paren{2+\i}x} \\
+&=\dfrac{\paren{2-\i}\e{\paren{2+\i}x}}{5} \\
+&=\dfrac{2}{5}\e{2x}\cos x+\dfrac{2\i}{5}\e{2x}\sin x-\dfrac{\i}{5}\e{2x}\cos x+\dfrac{1}{5}\e{2x}\sin x.
+\end{aligned}\]
+
+Donc \(\int^xf\paren{t}\odif{t}=\dfrac{\e{2x}}{5}\paren{2\sin x-\cos x}\).
+\end{ex}
+
+\subsection{Primitives des fonctions rationnelles}
+
+\begin{ex}
+Calculons une primitive de \(f:x\mapsto\dfrac{3}{x^3-1}\) (sur \(\R\excluant\accol{1}\)).
+
+Calculons la décomposition en éléments simples de \(\dfrac{3}{X^3-1}\).
+
+On a \(X^3-1=\paren{X-1}\paren{X^2+X+1}\).
+
+Donc \(\dfrac{3}{X^3-1}=\dfrac{a}{X-1}+\dfrac{bX+c}{X^2+X+1}\) avec \(a,b,c\in\R\).
+
+Donc \(\dfrac{3}{X^3-1}=\dfrac{a\paren{X^2+X+1}+\paren{X-1}\paren{bX+c}}{X^3-1}\).
+
+Donc \(3=aX^2+aX+a+bX^2+\paren{c-b}X-c\).
+
+Donc \(\begin{dcases}a+b=0 \\ a-b+c=0 \\ a-c=3\end{dcases}\)
+
+Donc \(\begin{dcases}a=1 \\ b=-1 \\ c=-2\end{dcases}\)
+
+Donc \(\dfrac{3}{X^3-1}=\dfrac{1}{X-1}-\dfrac{X+2}{X^2+X+1}\).
+
+D'où \[\int^x\dfrac{3}{t^3-1}\odif{t}=\int^x\dfrac{\odif{t}}{t-1}-\int^x\dfrac{t+2}{t^2+t+1}\odif{t}.\]
+
+Or \(\int^x\dfrac{\odif{t}}{t-1}=\croch{\ln\abs{t-1}}^x=\ln\abs{x-1}\).
+
+De plus, \(\int^x\dfrac{t+2}{t^2+t+1}\odif{t}=\int^x\dfrac{t+2}{\paren{t+\frac{1}{2}}^2+\frac{3}{4}}\odif{t}=\int^x\dfrac{t+2}{\frac{3}{4}\paren{\paren{\frac{2}{\sqrt{3}}\paren{t+\frac{1}{2}}}^2}+1}\odif{t}\).
+
+On fait le changement de variable \[\begin{dcases}u=\dfrac{2}{\sqrt{3}}\paren{t+\dfrac{1}{2}} \\ \odif{u}=\dfrac{2}{\sqrt{3}}\odif{t}\end{dcases}\ssi\begin{dcases}t=\dfrac{\sqrt{3}}{2}u-\dfrac{1}{2} \\ \odif{t}=\dfrac{\sqrt{3}}{2}\odif{u}\end{dcases}\]
+
+D'où \[\begin{aligned}
+\int^x\dfrac{t+2}{t^2+t+1}\odif{t}&=\int^{\frac{2}{\sqrt{3}}\paren{x+\frac{1}{2}}}\dfrac{\frac{\sqrt{3}}{2}u-\frac{1}{2}+2}{\frac{3}{4}\paren{u^2+1}}\odif{u} \\
+&=\dfrac{2}{\sqrt{3}}\int^{\frac{2}{\sqrt{3}}\paren{x+\frac{1}{2}}}\dfrac{\frac{\sqrt{3}}{2}+\frac{3}{2}}{u^2+1}\odif{u} \\
+&=\dfrac{2}{\sqrt{3}}\croch{\dfrac{\sqrt{3}}{4}\ln\paren{u^2+1}+\dfrac{3}{2}\Arctan u}^{\frac{2}{\sqrt{3}}\paren{x+\frac{1}{2}}} \\
+&=\dfrac{1}{2}\ln\paren{\dfrac{4}{3}\paren{x+\dfrac{1}{2}}^2+1}+\sqrt{3}\Arctan\paren{\dfrac{2}{\sqrt{3}}\paren{x+\dfrac{1}{2}}} \\
+&=\dfrac{1}{2}\ln\paren{\dfrac{4}{3}\paren{x^2+x+1}}+\sqrt{3}\Arctan\dfrac{2x+1}{\sqrt{3}}.
+\end{aligned}\]
+
+Donc une primitive de \(f\) est \[x\mapsto\ln\abs{x-1}-\dfrac{1}{2}\ln\paren{\dfrac{4}{3}\paren{x^2+x+1}}-\sqrt{3}\Arctan\dfrac{2x+1}{\sqrt{3}}.\]
+\end{ex}
+
+\begin{prop}
+On peut primitiver toute fonction rationnelle en écrivant sa décomposition en éléments simples sur \(\R\).
+\end{prop}
+
+\begin{rem}
+C'est suffisant, pas nécessaire.
+
+Par exemple : \(\int_0^1\dfrac{t^7}{t^8+1}\odif{t}=\croch{\dfrac{1}{8}\ln\paren{t^8+1}}_0^1=\dfrac{\ln2}{8}\).
+\end{rem}
+
+\begin{dem}
+On peut primitiver chaque terme de la décomposition en éléments simples sur \(\R\) :
+
+La partie entière : c'est un polynôme.
+
+Les termes de la forme \(t\mapsto\dfrac{1}{t-\lambda}\) avec \(\lambda\in\R\) : primitive \[t\mapsto\ln\abs{t-\lambda}.\]
+
+Les termes de la forme \(t\mapsto\dfrac{1}{\paren{t-\lambda}^{\alpha}}=\paren{t-\lambda}^{-\alpha}\) où \(\begin{dcases}\lambda\in\R \\ \alpha\in\interventierie{2}{\pinf}\end{dcases}\) : primitive \[t\mapsto\dfrac{1}{1-\alpha}\paren{t-\lambda}^{1-\alpha}.\]
+
+Les termes de la forme \(t\mapsto\dfrac{\lambda t+\mu}{t^2+bt+c}\) avec \(\begin{dcases}\lambda,\mu\in\R \\ b,c\in\R\text{ tels que }\Delta=b^2-4c<0\end{dcases}\) :
+
+Par un changement de variable affine, on se ramène à \[\int^y\dfrac{\lambda\prim u+\mu\prim}{u^2+1}\odif{u}=\dfrac{\lambda\prim}{2}\ln\paren{y^2+1}+\mu\prim\Arctan y\] et \[\begin{aligned}
+\int^x\dfrac{\odif{t}}{t^2+bt+c}&=\int^x\dfrac{\odif{t}}{\paren{t+\frac{b}{2}}^2-\frac{b^2}{4}+c} \\
+&=\int^x\dfrac{\odif{t}}{\paren{t+\frac{b}{2}}^2\underbrace{-\frac{\Delta}{4}}_{>0}} \\
+&=\int^x\dfrac{\odif{t}}{-\frac{\Delta}{4}\paren{\paren{\frac{\sqrt{-\Delta}}{2}\paren{t+\frac{b}{2}}}^2+1}}.
+\end{aligned}\]
+
+D'où ce qu'on voulait par le changement de variable \(u=\dfrac{\sqrt{-\Delta}}{2}\paren{t+\dfrac{b}{2}}\).
+
+Les termes de la forme \(t\mapsto\dfrac{\lambda t+\mu}{\paren{t^2+bt+c}^{\alpha}}\) avec \(\begin{dcases}\alpha\in\interventierie{2}{\pinf} \\ \lambda,\mu,b,c\in\R \\ b^2-4c<0\end{dcases}\) :
+
+Quitte à faire un changement de variable affine, on peut supposer \(b=0\) et \(c=1\). Il suffit donc de savoir calculer \[\int_0^x\dfrac{\lambda t+\mu}{\paren{t^2+1}^{\alpha}}\odif{t}=\underbrace{\lambda\int_0^xt\paren{t^2+1}^{-\alpha}\odif{t}}_{\frac{\lambda}{2\paren{1-\alpha}}\paren{x^2+1}^{1-\alpha}}+\underbrace{\mu\int_0^x\dfrac{\odif{t}}{\paren{t^2+1}^{\alpha}}}_{I_\alpha\paren{x}}.\]
+
+Reste à calculer \(I_\alpha\paren{x}\) par récurrence sur \(\alpha\), à l'aide d'une intégration par partie.
+
+En effet : \[\begin{aligned}
+\int_0^x\paren{t^2+1}^{-\alpha}\odif{t}&=\croch{t\paren{t^2+1}^{-\alpha}}_0^x-\int_0^xt\times2t\paren{-\alpha}\paren{t^2+1}^{-\alpha-1}\odif{t} \\
+&=\dfrac{x}{\paren{x^2+1}^{\alpha}}+2\alpha\int_0^x\paren{t^2+1-1}\paren{t^2+1}^{-\alpha-1}\odif{t} \\
+&=\dfrac{x}{\paren{x^2+1}^{\alpha}}+2\alpha I_\alpha\paren{x}-2\alpha I_{\alpha+1}\paren{x}.
+\end{aligned}\]
+
+D'où \(\paren{1-2\alpha}I_\alpha\paren{x}=\dfrac{x}{\paren{x^2+1}^{\alpha}}-2\alpha I_{\alpha+1}\paren{x}\).
+
+On connaît \(I_1\paren{x}\) (\cf termes de la forme \(t\mapsto\dfrac{1}{\paren{t-\lambda}^{\alpha}}\)).
+
+On en déduit \(I_2\), \(I_3\), ...
+\end{dem}
+
+\subsection{Fonctions rationnelles en \(\e{t}\)}
+
+\begin{ex}
+\[t\mapsto\dfrac{1}{\ch t}=\dfrac{2}{\e{t}+\e{-t}}=\dfrac{2\e{t}}{\e{2t}+1}\qquad\text{et}\qquad t\mapsto\dfrac{\e{2t}+1}{\e{t}-1}\]
+\end{ex}
+
+\begin{prop}
+On remarque \[\quantifs{\forall F\in\fracrat}\int^xF\paren{\e{t}}\odif{t}=\int^{\e{x}}\dfrac{F\paren{u}}{u}\odif{u}\] en opérant le changement de variable \[\begin{dcases}u=\e{t} \\ \odif{u}=\e{t}\odif{t}\end{dcases}\ssi\begin{dcases}t=\ln u \\ \odif{t}=\dfrac{\odif{u}}{u}\end{dcases}\]
+
+Or \(\dfrac{F}{X}\in\fracrat\) donc on sait primitiver.
+\end{prop}
+
+\subsection{Règle de Bioche}
+
+\begin{meth}~\\
+Pour calculer \(\int F\paren{\cos\theta,\sin\theta}\odif{\theta}\) :
+
+\begin{itemize}
+\item Si \(F\paren{\cos\theta,\sin\theta}\odif{\theta}\) est invariant quand on remplace \(\theta\) par \(-\theta\) : \[\text{faire le changement de variable }t=\cos\theta.\]
+
+\item Si \(F\paren{\cos\theta,\sin\theta}\odif{\theta}\) est invariant quand on remplace \(\theta\) par \(\pi-\theta\) : \[\text{faire le changement de variable }t=\sin\theta.\]
+
+\item Si \(F\paren{\cos\theta,\sin\theta}\odif{\theta}\) est invariant quand on remplace \(\theta\) par \(\pi+\theta\) : \[\text{faire le changement de variable }t=\tan\theta.\]
+
+\item Dans tous les cas, on peut \[\text{faire le changement de variable }t=\tan\dfrac{\theta}{2}.\]
+\end{itemize}
+\end{meth}
+
+\begin{exoex}
+Calculer une primitive de \(x\mapsto\dfrac{\sin^3x}{1+\cos^2x}\).
+\end{exoex}
+
+\begin{corr}
+On a la primitive \[x\mapsto\int^x\dfrac{\sin^3\theta}{1+\cos^2\theta}\odif{\theta}.\]
+
+On fait le changement de variable \(\begin{dcases}t=\cos\theta \\ \odif{t}=-\sin\theta\odif{\theta}\end{dcases}\)
+
+Donc \[\begin{aligned}
+x\mapsto\int^x\dfrac{\sin^3\theta}{1+\cos^2\theta}\odif{\theta}&=\int^x\dfrac{-1+\cos^2\theta}{1+\cos^2\theta}\paren{-\sin\theta}\odif{\theta} \\
+&=\int^{\cos x}\dfrac{-1+t^2}{1+t^2}\odif{t} \\
+&=\int^{\cos x}\dfrac{t^2+1-2}{t^2+1}\odif{t} \\
+&=\int^{\cos x}\paren{1-\dfrac{2}{t^2+1}}\odif{t} \\
+&=\cos x-2\Arctan\paren{\cos x}.
+\end{aligned}\]
+\end{corr}

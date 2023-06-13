@@ -1,0 +1,255 @@
+\chapter{Intégrales sur un segment}
+
+\minitoc
+
+\begin{exo}
+Soit \(\alpha\in\Rps\).
+
+Calculer l'intégrale \[\int_0^1\dfrac{\odif{t}}{1+t^{\alpha}}\] pour \(\alpha=1\), \(\alpha=2\), \(\alpha=3\) et \(\alpha=4\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Déterminer une primitive pour chacun des fonctions suivantes (on précisera sur quel ensemble de définition) :
+
+\begin{enumerate}
+\item \(f:x\mapsto\dfrac{1}{x^4-x^2-2}\) \\
+
+\item \(f:x\mapsto\dfrac{x}{1+x^4}\) \\
+
+\item \(f:x\mapsto\dfrac{x^2}{1+x^3}\) \\
+
+\item \(f:x\mapsto\dfrac{1}{x+\i}\) \\
+
+\item \(f=\cos^3\) \\
+
+\item \(f=\tan\) \\
+
+\item \(f=\Arctan\) \\
+
+\item \(f:x\mapsto x\Arctan x\) \\
+
+\item \(f:x\mapsto\dfrac{1}{\cos x}\) \\
+
+\item \(f:x\mapsto\dfrac{\sin x}{\cos^2x+2}\) \\
+
+\item \(f:x\mapsto x^7\ln x\) \\
+
+\item \(f:x\mapsto\ln^3x\) \\
+
+\item \(f:x\mapsto\dfrac{x}{\sqrt{1+x^2}}\) \\
+
+\item \(f:x\mapsto\dfrac{1}{\sqrt{x}+2x}\) \\
+
+\item \(f:x\mapsto\dfrac{1}{x\ln x}\) \\
+
+\item \(f:x\mapsto\dfrac{1}{1+\e{x}}\)
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On pose \[f:x\mapsto\int_0^{\sin^2x}\Arcsin\sqrt{t}\odif{t}+\int_0^{\cos^2x}\Arccos\sqrt{t}\odif{t}.\]
+
+\begin{enumerate}
+\item Quel est l'ensemble de définition de \(f\) ? \\
+
+\item Déterminer \(f\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(a,b\in\R\) tels que \(a<b\).
+
+On pose : \[f:x\mapsto\dfrac{1}{\sqrt{\paren{x-a}\paren{b-x}}}.\]
+
+\begin{enumerate}
+\item Quel est l'ensemble de définition de \(f\) ? \\
+
+\item Déterminer une primitive de \(f\).
+
+\textit{Indication :} faire le changement de variable \[y=\dfrac{2}{b-a}\paren{x-\dfrac{a+b}{2}}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On pose \[I=\int_0^{\frac{\pi}{2}}\dfrac{\sin t}{\sin t+\cos t}\odif{t}\qquad\text{et}\qquad J=\int_0^{\frac{\pi}{2}}\dfrac{\cos t}{\sin t+\cos t}\odif{t}.\]
+
+\begin{enumerate}
+\item Justifier que les intégrales \(I\) et \(J\) sont bien définies. \\
+
+\item Montrer \(I=J\) par un changement de variable. \\
+
+\item En déduire la valeur de \(I\) et \(J\). \\
+
+\item En déduire \(\int_0^1\dfrac{\odif{t}}{t+\sqrt{1-t^2}}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(f\in\ensclasse{2}{\R}{\R}\).
+
+On suppose \[\lim_{x\to\pinf}f\paren{x}=\lim_{x\to\pinf}f\seconde\paren{x}=0.\]
+
+Montrer : \[\lim_{x\to\pinf}f\prim\paren{x}=0.\]
+
+\textit{Indication :} on pourra utiliser la formule de Taylor avec reste intégral.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Classique à l'oral, de CCP à l'X]
+On pose \[\fonction{f}{\Rps\excluant\accol{1}}{\R}{x}{\int_x^{x^2}\dfrac{\odif{t}}{\ln t}}\]
+
+\begin{enumerate}
+\item Vérifier que la fonction \(f\) est bien définie. Quel est son signe ? \\
+
+\item Dresser le tableau de variations de \(f\) (en précisant les limites en \(0^+\), \(1^-\), \(1^+\) et \(\pinf\)).
+
+\textit{Indication :} pour la limite en \(1^+\), montrer : \[\quantifs{\forall x\in\intervee{1}{\pinf}}\int_x^{x^2}\dfrac{x\odif{t}}{t\ln t}\leq f\paren{x}\leq\int_x^{x^2}\dfrac{x^2\odif{t}}{t\ln t}.\]
+
+\item En déduire que \(f\) se prolonge en une fonction continue \(g:\Rp\to\R\). \\
+
+\item Montrer que \(g\) est de classe \(\classe{1}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Lemme de Lebesgue]
+Soient \(a,b\in\R\) tels que \(a<b\) et \(f\in\ensclasse{1}{\intervii{a}{b}}{\C}\).
+
+Montrer : \[\lim_{n\to\pinf}\int_a^bf\paren{t}\cos\paren{nt}\odif{t}=0.\]
+
+\textit{Indication :} faire une intégration par parties.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+À l'aide de la formule de Taylor avec reste intégral, montrer :
+
+\begin{enumerate}
+\item \(\quantifs{\forall x\in\intervei{-1}{1}}\ln\paren{1+x}=\lim_{n\to\pinf}\sum_{k=1}^n\dfrac{\paren{-1}^{k-1}x^k}{k}\). \\
+
+\item \(\quantifs{\forall n\in\Ns;\forall x\in\intervei{-1}{0}}\ln\paren{1+x}\leq\sum_{k=1}^n\dfrac{\paren{-1}^{k-1}x^k}{k}\). \\
+
+\item \(\quantifs{\forall n\in\Ns;\forall x\in\intervie{0}{\pinf}}\sum_{k=1}^{2n}\dfrac{\paren{-1}^{k-1}x^k}{k}\leq\ln\paren{1+x}\leq\sum_{k=1}^{2n+1}\dfrac{\paren{-1}^{k-1}x^k}{k}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(f:\intervii{0}{1}\to\intervii{0}{1}\) une fonction continue telle que : \[\int_0^1f\paren{t}\odif{t}=\int_0^1f\paren{t}^2\odif{t}.\]
+
+Montrer que \(f\) est constante, égale à \(0\) ou \(1\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit une fonction continue \(f:\intervii{0}{1}\to\R\) telle que : \[\int_0^1f\paren{t}\odif{t}=\dfrac{1}{2}.\]
+
+Montrer que \(f\) admet un point fixe.
+
+Donner un contre-exemple quand \(f\) n'est pas supposée continue (et seulement supposée continue par morceaux).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Calculer la fonction \[\fonction{f}{\Rs}{\R}{x}{\int_{\frac{1}{x}}^x\dfrac{t}{1+t+t^2+t^3}\odif{t}}\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[\thref{dem:convergenceDesSommesDeRiemannDansLeCasContinu}]\thlabel{exo:convergenceDesSommesDeRiemannDansLeCasContinu}
+Soient \(a,b\in\R\) tels que \(a<b\) et \(f:\intervii{a}{b}\to\R\) continue.
+
+On considère les sommes de Riemann de \(f\) : \[\quantifs{\forall n\in\Ns}R_n\paren{f}=\dfrac{b-a}{n}\sum_{k=0}^{n-1}f\paren{a+k\dfrac{b-a}{n}}.\]
+
+Montrer que la suite \(\paren{R_n\paren{f}}_{n\in\Ns}\) converge vers l'intégrale de \(f\) sur \(\intervii{a}{b}\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Déterminer \[\lim_{n\to\pinf}\sum_{k=1}^{2n}\dfrac{k}{n^2+k^2}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Déterminer \[\lim_{n\to\pinf}\sum_{k=n}^{2n}\dfrac{1}{k}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Déterminer \[\lim_{n\to\pinf}\sum_{k=n}^{2n}\dfrac{1}{2k+1}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Déterminer \[\lim_{n\to\pinf}\dfrac{1}{n}\sqrt[n]{\dfrac{\paren{2n}!}{n!}}.\]
+
+\textit{Indication :} remarquer que pour tout \(n\in\Ns\), on a : \[\prod_{k=1}^n\paren{n+k}=n^n\prod_{k=1}^n\paren{1+\dfrac{k}{n}}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[ENSEA 2018]
+\begin{enumerate}
+\item À l'aide de la formule de Taylor avec reste intégral, montrer : \[\quantifs{\forall x\in\intervii{0}{1}}0\leq\e{x}-1-x\leq\dfrac{\e{}}{2}x^2.\]
+
+\item En déduire la limite de la suite \(\paren{u_n}_n\) définie par : \[\quantifs{\forall n\in\Ns}u_n=\sum_{k=1}^n\e{\frac{1}{n+k}}-n.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}

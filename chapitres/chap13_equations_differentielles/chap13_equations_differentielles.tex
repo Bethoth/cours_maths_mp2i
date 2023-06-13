@@ -1,0 +1,720 @@
+\chapter{Équations différentielles}\label{chap:équationsDifférentielles}
+
+\minitoc
+
+On pose \(\K=\R\) ou \(\C\).
+
+\section{Équations différentielles linéaires du premier ordre}
+
+\subsection{Cadre}
+
+On considère :
+
+\begin{itemize}
+\item \(I\) un intervalle de \(\R\) ; \\
+
+\item \(a,b\in\ensclasse{0}{I}{\K}\) ; \\
+
+\item éventuellement \(t_0\in I\) et \(v_0\in\K\) ; \\
+
+\item l'équation différentielle linéaire du premier ordre \(\paren{E}~y\prim+a\paren{t}y=b\paren{t}\).
+\end{itemize}
+
+Résoudre\footnote{On dit aussi \guillemets{intégrer l'équation différentielle \(\paren{E}\)}.} l'équation différentielle \(\paren{E}\), c'est déterminer quelles sont les fonctions \(y\in\ensclasse{1}{I}{\K}\) qui sont solutions de \(\paren{E}\), \cad qui vérifient : \[\quantifs{\forall t\in I}y\prim\paren{t}+a\paren{t}y\paren{t}=b\paren{t}.\]
+
+L'ensemble solution de l'équation différentielle \(E\) est l'ensemble des solutions de \(\paren{E}\) : \[\fami{S}=\accol{y\in\ensclasse{1}{I}{\K}\tq\quantifs{\forall t\in I}y\prim\paren{t}+a\paren{t}y\paren{t}=b\paren{t}}.\]
+
+L'équation différentielle \(\paren{E}\) est dite homogène si \(b\) est la fonction identiquement nulle.
+
+On appelle équation homogène associée à \(\paren{E}\) l'équation différentielle linéaire homogène du premier ordre : \(\paren{E_0}~y\prim+a\paren{t}y=0\).
+
+Lorsque l'on recherche la\footnote{On verra que cette solution existe et est unique.} solution de \(\paren{E}\) qui vérifie de plus une condition initiale, on dit qu'on résout le problème de Cauchy : \[\begin{dcases}
+y\prim+a\paren{t}y=b\paren{t} \\
+y\paren{t_0}=v_0
+\end{dcases}\]
+
+\begin{ex}
+\begin{itemize}
+\item Équation différentielle linéaire homogène du premier ordre : \[y\prim+\paren{3\ln t+1}y=0.\]
+
+\item Équation différentielle linéaire du premier ordre : \[y\prim-\dfrac{\ln t}{t}y=t.\]
+
+\item Problème de Cauchy : \[\begin{dcases}
+y\prim+ty=t \\
+y\paren{0}=1
+\end{dcases}\]
+\end{itemize}
+\end{ex}
+
+\subsection{Cas homogène}
+
+\begin{prop}\thlabel{prop:solutionsD'UneÉquationDifférentielleLinéaireHomogène}
+Soient \(I\) un intervalle de \(\R\), \(a\in\ensclasse{0}{I}{\K}\) et \(A:I\to\K\) une primitive de \(a\).
+
+Les solutions de l'équation différentielle linéaire homogène du premier ordre \[\paren{E_0}~y\prim+a\paren{t}y=0\] sont les fonctions de la forme \[\fonction{y_0}{I}{\K}{t}{\lambda\e{-A\paren{t}}}\qquad\text{où }\lambda\in\K.\]
+\end{prop}
+
+\begin{dem}
+Soit \(y\in\ensclasse{1}{I}{\K}\).
+
+On a \[\begin{WithArrows}
+y\text{ est solution de }\paren{E_0}&\ssi\quantifs{\forall t\in I}y\prim\paren{t}+a\paren{t}y\paren{t}=0 \\
+&\ssi\quantifs{\forall t\in I}y\prim\paren{t}\e{A\paren{t}}+a\paren{t}y\paren{t}\e{A\paren{t}}=0 \\
+&\ssi\quantifs{\forall t\in I}\paren{y\e{A}}\prim\paren{t}=0 \Arrow[tikz={text width=3cm}]{car \(I\) est un intervalle} \\
+&\ssi\quantifs{\exists\lambda\in\K;\forall t\in I}y\paren{t}\e{A\paren{t}}=\lambda \\
+&\ssi\quantifs{\exists\lambda\in\K;\forall t\in I}y\paren{t}=\lambda\e{-A\paren{t}}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{exoex}
+Résoudre sur l'intervalle \(\Rps\) l'équation différentielle homogène \[\paren{E_0}~y\prim+\dfrac{1}{t}y=0.\]
+\end{exoex}
+
+\begin{corr}
+Une primitive de \(a:t\mapsto\dfrac{1}{t}\) est \(A:t\mapsto\ln t\).
+
+Donc les solutions de \(\paren{E_0}\) sont les fonctions de la forme \[\fonctionlambda{\Rps}{\R}{t}{\lambda\e{-\ln t}=\dfrac{\lambda}{t}}\] où \(\lambda\in\R\).
+\end{corr}
+
+\begin{exoex}
+Résoudre sur l'intervalle \(\Rps\) l'équation différentielle homogène \[\paren{E_0}~y\prim+\paren{\ln t}y=0.\]
+\end{exoex}
+
+\begin{corr}
+Une primitive de \(t\mapsto\ln t\) est \(t\mapsto t\ln t-t\).
+
+Donc les solutions de \(\paren{E_0}\) sont les fonctions de la forme \[\fonctionlambda{\Rps}{\R}{t}{\lambda\e{-t\ln t+t}=\lambda t^{-t}\e{t}=\lambda\paren{\dfrac{\e{}}{t}}^t}\] où \(\lambda\in\R\).
+\end{corr}
+
+\subsection{Méthode de variation de la constante}
+
+\begin{rem}
+Il existe beaucoup de méthodes dites de \guillemets{variation de la constante}. Elles permettent de trouver une/des/les solutions d'une équation différentielle linéaire à partir d'une solution non-nulle de l'équation différentielle linéaire homogène associée.
+
+On montre dans ce paragraphe comment obtenir une solution (particulière) d'une équation différentielle linéaire à partir d'une solution de l'équation différentielle linéaire homogène associée.
+\end{rem}
+
+\begin{meth}[Méthode de variation de la constante]\thlabel{meth:variationDeLaConstante}
+Soient \(I\) un intervalle de \(\R\) et \(a,b\in\ensclasse{0}{I}{\K}\).
+
+On considère l'équation différentielle linéaire \[\paren{E}~y\prim+a\paren{t}y=b\paren{t}\] et son équation homogène associée \[\paren{E_0}~y\prim+a\paren{t}y=0.\]
+
+On suppose que \(y_0\in\ensclasse{1}{I}{\K}\) est une solution de \(\paren{E_0}\) qui ne s'annule jamais.
+
+On peut en déduire une solution de \(\paren{E}\) sous la forme \[t\mapsto\lambda\paren{t}y_0\paren{t}\] où \(\lambda\in\ensclasse{1}{I}{\K}\).
+
+En particulier, l'ensemble solution de \(\paren{E}\) est non-vide.
+\end{meth}
+
+\begin{dem}
+Soit \(\lambda\in\ensclasse{1}{I}{\K}\).
+
+On pose \(y_1=\lambda y_0\).
+
+On a \[\begin{aligned}
+y_1\text{ est solution de }\paren{E}&\ssi\quantifs{\forall t\in I}\paren{\lambda y_0}\prim\paren{t}+a\paren{t}\paren{\lambda y_0}\paren{t}=b\paren{t} \\
+&\ssi\quantifs{\forall t\in I}\lambda\prim\paren{t}y_0\paren{t}+\underbrace{\lambda\paren{t}y_0\prim\paren{t}+a\paren{t}\lambda\paren{t}y_0\paren{t}}_{=0\text{ car }y_0\text{ est solution de }\paren{E_0}}=b\paren{t} \\
+&\ssi\quantifs{\forall t\in I}\lambda\prim\paren{t}=\dfrac{b\paren{t}}{y_0\paren{t}}.
+\end{aligned}\]
+
+La fonction \(\dfrac{b}{y_0}\) est continue sur \(I\) donc elle admet une primitive \(\lambda\in\ensclasse{1}{I}{\K}\).
+
+Alors \(y_1\) est solution de \(\paren{E}\).
+\end{dem}
+
+\begin{exoex}
+Trouver une solution sur l'intervalle \(\Rps\) de l'équation différentielle \[\paren{E}~y\prim+\dfrac{1}{t}y=1.\]
+\end{exoex}
+
+\begin{corr}
+On a l'équation homogène associée à \(\paren{E}\) : \(\paren{E_0}~y\prim+\dfrac{1}{t}y=0\).
+
+Les solutions de \(\paren{E_0}\) sont les fonctions de la forme \(\fonctionlambda{\Rps}{\R}{t}{\dfrac{\lambda}{t}}\) où \(\lambda\in\R\).
+
+Soit \(\lambda\in\ensclasse{1}{\Rps}{\R}\).
+
+On pose \(y_1:t\mapsto\dfrac{\lambda\paren{t}}{t}\).
+
+On a \[\begin{aligned}
+y_1\text{ est solution de }\paren{E}&\ssi\quantifs{\forall t\in\Rps}y_1\prim\paren{t}+\dfrac{1}{t}y_1\paren{t}=1 \\
+&\ssi\quantifs{\forall t\in\Rps}\dfrac{\lambda\prim\paren{t}t-\lambda\paren{t}}{t^2}+\dfrac{\lambda\paren{t}}{t^2}=1 \\
+&\ssi\quantifs{\forall t\in\Rps}\dfrac{\lambda\prim\paren{t}t}{t^2}=1 \\
+&\ssi\quantifs{\forall t\in\Rps}\dfrac{\lambda\prim\paren{t}}{t}=1 \\
+&\ssi\quantifs{\forall t\in\Rps}\lambda\prim\paren{t}=t \\
+&\impr\quantifs{\forall t\in\Rps}\lambda\paren{t}=\dfrac{t^2}{2}
+\end{aligned}\]
+
+Donc \(t\mapsto\dfrac{t}{2}\) est solution de \(\paren{E}\).
+\end{corr}
+
+\subsection{Conséquences de la linéarité}
+
+\begin{prop}[Structure de l'ensemble solution]
+Soient \(I\) un intervalle de \(\R\) et \(a,b\in\ensclasse{0}{I}{\K}\).
+
+On considère l'équation différentielle linéaire \[\paren{E}~y\prim+a\paren{t}y=b\paren{t}\] et son équation homogène associée \[\paren{E_0}~y\prim+a\paren{t}y=0.\]
+
+\begin{enumerate}
+\item L'ensemble solution \(\fami{S}_0\) de \(\paren{E_0}\) est un espace vectoriel. \\
+
+\item L'ensemble solution \(\fami{S}\) de \(\paren{E}\) est un espace affine de direction \(\fami{S}_0\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}\thlabel{dem:structureDeL'ensembleSolutionD'uneEquaDiffDuPremierOrdre}
+Posons \[\fonction{u}{\ensclasse{1}{I}{\K}}{\ensclasse{0}{I}{\K}}{y}{y\prim+ay}\]
+
+On a \(u\in\L{\ensclasse{1}{I}{\K}}{\ensclasse{0}{I}{\K}}\).
+
+On a \(\fami{S}_0=\ker u\) donc \(\fami{S}_0\) est un sous-espace vectoriel de \(\ensclasse{1}{I}{\K}\).
+
+\(\fami{S}\) est l'ensemble solution de l'équation linéaire \(u\paren{y}=b\) d'inconnue \(y\in\ensclasse{1}{I}{\K}\).
+
+Selon la \thref{meth:variationDeLaConstante}, on a \(\fami{S}\not=\ensvide\) donc \(\fami{S}\) est un sous-espace affine de \(\ensclasse{1}{I}{\K}\) de direction \(\ker u=\fami{S}_0\).
+\end{dem}
+
+\begin{prop}[Principe de superposition]\thlabel{prop:principeDeSuperposition}
+Soient \(I\) un intervalle de \(\R\), \(\lambda_1,\lambda_2\in\K\) et \(a,b_1,b_2\in\ensclasse{0}{I}{\K}\).
+
+Si \(y_1\in\ensclasse{1}{I}{\K}\) est solution de \[\paren{E_1}~y\prim+a\paren{t}y=b_1\paren{t}\] et \(y_2\in\ensclasse{1}{I}{\K}\) est solution de \[\paren{E_2}~y\prim+a\paren{t}y=b_2\paren{t}\] alors \(\lambda_1y_1+\lambda_2y_2\) est solution de \[\paren{E}~y\prim+a\paren{t}y=\lambda_1b_1\paren{t}+\lambda_2b_2\paren{t}.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}\thlabel{prop:partiesRéelleEtImaginaireDesSolutionsD'UneÉquationDifférentielle}
+Soient \(I\) un intervalle de \(\R\) et \(a\in\ensclasse{0}{I}{\R}\) et \(b\in\ensclasse{0}{I}{\C}\).
+
+Si \(z\in\ensclasse{1}{I}{\C}\) est solution de \[y\prim+a\paren{t}y=b\paren{t}\] alors \(\Re z\) est solution de \[y\prim+a\paren{t}y=\Re b\paren{t}\] et \(\Im z\) est solution de \[y\prim+a\paren{t}y=\Im b\paren{t}.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\subsection{Méthode de résolution}
+
+Soient \(I\) un intervalle de \(\R\) et \(a,b\in\ensclasse{0}{I}{\K}\).
+
+On considère l'équation différentielle linéaire \[\paren{E}~y\prim+a\paren{t}y=b\paren{t}.\]
+
+\subsubsection{Résolution de l'équation homogène associée}
+
+Soit \(A:I\to\K\) une primitive de \(a\) sur \(I\).
+
+Selon la \thref{prop:solutionsD'UneÉquationDifférentielleLinéaireHomogène}, les solutions de l'équation homogène associée à \(\paren{E}\) : \[\paren{E_0}~y\prim+a\paren{t}y=0\] sont les fonctions de la forme \[\fonction{y_0}{I}{\K}{t}{\lambda\e{-A\paren{t}}}\qquad\text{où }\lambda\in\K.\]
+
+\subsubsection{Recherche d'une solution particulière de \(\paren{E}\)}
+
+On obtient une solution particulière de \(\paren{E}\), que l'on note \(y_1\) :
+
+\begin{itemize}
+\item soit en remarquant qu'il existe une solution \guillemets{évidente} ; \\
+
+\item soit en utilisant la méthode de variation de la constante (en utilisant la \thref{prop:principeDeSuperposition} et la \thref{prop:partiesRéelleEtImaginaireDesSolutionsD'UneÉquationDifférentielle} si cela allège les calculs).
+\end{itemize}
+
+\subsubsection{Conclusion}
+
+Les solutions de \(\paren{E}\) sont les fonctions de la forme \[\fonction{y}{I}{\K}{t}{\lambda\e{-A\paren{t}}+y_1\paren{t}}\qquad\text{où }\lambda\in\K.\]
+
+S'il existe une condition initiale, on trouve la valeur de la constante \(\lambda\) pour que la condition initiale soit vérifiée (cette valeur existe et est unique).
+
+\begin{exoex}
+Résoudre l'équation différentielle \[\paren{E}~y\prim-\dfrac{1}{t}y=1+\dfrac{2}{t}+t^2\sin t\] sur l'intervalle \(\Rps\).
+\end{exoex}
+
+\begin{corr}
+On a l'équation homogène associée \(\paren{E_0}~y\prim-\dfrac{1}{t}y=0\).
+
+Les solutions de \(\paren{E_0}\) sont les fonctions de la forme \(\fonctionlambda{\Rps}{\R}{t}{\lambda t}\) où \(\lambda\in\R\).
+
+Déterminons une solution particulière de \(\paren{E_1}~y\prim-\dfrac{1}{t}y=1\).
+
+Soit \(\lambda\in\ensclasse{1}{\Rps}{\R}\).
+
+Posons \(y_1:t\mapsto\lambda\paren{t}t\).
+
+On a \[\begin{aligned}
+y_1\text{ est solution de }\paren{E_1}&\ssi\quantifs{\forall t\in\Rps}\lambda\prim\paren{t}t+\lambda\paren{t}-\lambda\paren{t}=1 \\
+&\ssi\quantifs{\forall t\in\Rps}\lambda\prim\paren{t}t=1 \\
+&\ssi\quantifs{\forall t\in\Rps}\lambda\prim\paren{t}=\dfrac{1}{t} \\
+&\impr\lambda=\ln
+\end{aligned}\]
+
+Donc \(y_1:t\mapsto t\ln t\) est solution de \(\paren{E_1}\).
+
+On remarque que \(y_2:t\mapsto-1\) est solution de \(\paren{E_2}~y\prim-\dfrac{1}{t}y=\dfrac{1}{t}\).
+
+Déterminons une solution particulière de \(\paren{E_3}~y\prim-\dfrac{1}{t}y=t^2\e{\i t}\).
+
+Soit \(\lambda\in\ensclasse{1}{\Rps}{\C}\).
+
+Posons \(y_3:t\mapsto\lambda\paren{t}t\).
+
+On a \[\begin{aligned}
+y_3\text{ est solution de }\paren{E_3}&\ssi\quantifs{\forall t\in\Rps}\lambda\prim\paren{t}t+\lambda\paren{t}-\lambda\paren{t}=t^2\e{\i t} \\
+&\ssi\quantifs{\forall t\in\Rps}\lambda\prim\paren{t}t=t^2\e{\i t} \\
+&\ssi\quantifs{\forall t\in\Rps}\lambda\prim\paren{t}=t\e{\i t} \\
+&\impr\quantifs{\forall t\in\Rps}\lambda\paren{t}=\int^tx\e{\i x}\odif{x} \\
+&\ssi\quantifs{\forall t\in\Rps}\lambda\paren{t}=\croch{-\i\e{\i x}x}^t-\int^t-\i\e{\i x}\odif{x} \\
+&\ssi\quantifs{\forall t\in\Rps}\lambda\paren{t}=-\i t\e{\i t}+\e{\i t} \\
+&\ssi\quantifs{\forall t\in\Rps}\lambda\paren{t}=\e{\i t}\paren{1-\i t}
+\end{aligned}\]
+
+Donc \(y_3:t\mapsto t\e{\i t}\paren{1-\i t}\) est solution de \(\paren{E_3}\).
+
+On a \[\begin{aligned}
+\quantifs{\forall t\in\Rps}\Im y_3\paren{t}&=\Im\paren{t\e{\i t}\paren{1-\i t}} \\
+&=\Im\paren{t\paren{\cos t+\i\sin t}\paren{1-\i t}} \\
+&=t\sin t-t^2\cos t \\
+&=t\paren{\sin t-t\cos t}.
+\end{aligned}\]
+
+On en déduit, par le principe de superposition, que \[y_4:t\mapsto t\ln t-2+t\paren{\sin t-t\cos t}\] est solution de \(\paren{E}\).
+
+Finalement, les solutions de \(\paren{E}\) sont les fonctions de la forme \[\fonctionlambda{\Rps}{\R}{t}{\lambda t+t\mapsto t\ln t-2+t\paren{\sin t-t\cos t}}\] où \(\lambda\in\R\).
+\end{corr}
+
+\section{Équations différentielles linéaires du second ordre à coefficients constants}
+
+\subsection{Cadre}
+
+On considère :
+
+\begin{itemize}
+\item un intervalle \(I\) de \(\R\) ; \\
+
+\item des scalaires \(a,b,c\in\K\) avec \(a\not=0\) ; \\
+
+\item une fonction continue \(f\in\ensclasse{0}{I}{\K}\) ; \\
+
+\item éventuellement trois éléments \(t_0\in I\) et \(v_0,w_0\in\K\) ; \\
+
+\item l'équation différentielle linéaire du second ordre à coefficients constants \[\paren{E}~ay\seconde+by\prim+cy=f\paren{t}.\]
+\end{itemize}
+
+Résoudre\footnote{On dit aussi \guillemets{intégrer l'équation différentielle \(\paren{E}\)}.} l'équation différentielle \(\paren{E}\), c'est déterminer quelles sont les fonctions \(y\in\ensclasse{2}{I}{\K}\) qui sont solutions de \(\paren{E}\), \cad qui vérifient \[\quantifs{\forall t\in I}ay\seconde\paren{t}+by\prim\paren{t}+cy\paren{t}=f\paren{t}.\]
+
+L'ensemble solution de l'équation différentielle \(\paren{E}\) est l'ensemble des solutions de \(\paren{E}\) : \[\fami{S}=\accol{y\in\ensclasse{2}{I}{\K}\tq\quantifs{\forall t\in I}ay\seconde\paren{t}+by\prim\paren{t}+cy\paren{t}=f\paren{t}}.\]
+
+L'équation différentielle \(\paren{E}\) est dite homogène si \(f\) est la fonction identiquement nulle.
+
+On appelle équation homogène associée à \(\paren{E}\) l'équation différentielle linéaire homogène du second ordre \[\paren{E_0}~ay\seconde+by\prim+cy=0.\]
+
+Lorsque l'on rechercher la\footnote{Cette solution existe et est unique.} solution de \(\paren{E}\) qui vérifie de plus une condition initiale, on dit qu'on résout le problème de Cauchy : \[\begin{dcases}
+ay\seconde+by\prim+cy=f\paren{t} \\
+y\paren{t_0}=v_0 \\
+y\prim\paren{t_0}=w_0
+\end{dcases}\]
+
+\begin{ex}
+\begin{itemize}
+\item Équation différentielle linéaire homogène du second ordre à coefficients constants : \[y\seconde+2y\prim+y=0.\]
+
+\item Équation différentielle linéaire du second ordre à coefficients constants : \[y\seconde+2y\prim+y=\cos t.\]
+
+\item Problème de Cauchy : \[\begin{dcases}
+y\seconde+2y\prim+y=\cos t \\
+y\paren{0}=0 \\
+y\prim\paren{0}=1
+\end{dcases}\]
+\end{itemize}
+\end{ex}
+
+\subsection{Conséquences de la linéarité}
+
+\begin{prop}[Structure de l'ensemble solution]
+Soient \(I\) un intervalle de \(\R\), \(a,b,c\in\K\) tels que \(a\not=0\) et \(f\in\ensclasse{0}{I}{\K}\).
+
+On considère l'équation différentielle linéaire \[\paren{E}~ay\seconde+by\prim+cy=f\paren{t}\] et son équation homogène associée \[\paren{E_0}~ay\seconde+by\prim+cy=0.\]
+
+\begin{enumerate}
+\item L'ensemble solution \(\fami{S}_0\) de \(\paren{E_0}\) est un espace vectoriel. \\
+
+\item L'ensemble solution \(\fami{S}\) de \(\paren{E}\) est un espace affine de direction \(\fami{S}_0\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\Cf \thref{dem:structureDeL'ensembleSolutionD'uneEquaDiffDuPremierOrdre} en admettant que \(\fami{S}\) est non-vide.
+\end{dem}
+
+\begin{prop}[Principe de superposition]
+Soient \(I\) un intervalle de \(\R\), \(\lambda_1,\lambda_2,a,b,c\in\K\) tels que \(a\not=0\) et \(f_1,f_2\in\ensclasse{0}{I}{\K}\).
+
+Si \(y_1\in\ensclasse{2}{I}{\K}\) est solution de \[\paren{E_1}~ay\seconde+by\prim+cy=f_1\paren{t}\] et \(y_2\in\ensclasse{2}{I}{\K}\) est solution de \[\paren{E_2}~ay\seconde+by\prim+cy=f_2\paren{t}\] alors \(\lambda_1y_1+\lambda_2y_2\) est solution de \[\paren{E}~ay\seconde+by\prim+cy=\lambda_1f_1\paren{t}+\lambda_2f_2\paren{t}.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}
+Soient \(I\) un intervalle de \(\R\), \(a,b,c\in\R\) avec \(a\not=0\) et \(f\in\ensclasse{0}{I}{\C}\).
+
+Si \(z\in\ensclasse{2}{I}{\C}\) est solution de \[ay\seconde+by\prim+cy=f\paren{t}\] alors \(\Re z\) est solution de \[ay\seconde+by\prim+cy=\Re f\paren{t}\] et \(\Im z\) est solution de \[ay\seconde+by\prim+cy=\Im f\paren{t}.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\subsection{Cas homogène}
+
+\begin{rem}
+Attention à ne jamais appliquer les résultats de ce paragraphe à des équations différentielles linéaires homogènes du second ordre à coefficients non-constants.
+\end{rem}
+
+\subsubsection{Cas complexe}
+
+\begin{prop}
+Soient \(I\) un intervalle de \(\R\) et \(a,b,c\in\C\) tels que \(a\not=0\).
+
+On considère l'équation différentielle linéaire homogène du second ordre \[\paren{E_0}~ay\seconde+by\prim+cy=0.\]
+
+On lui associe son équation caractéristique : \[ax^2+bx+c=0\] d'inconnue \(x\in\C\) et dont on note \(\Delta\) le discriminant.
+
+Si \(\Delta\not=0\) alors l'équation caractéristique admet deux solutions distinctes \(\alpha,\beta\in\C\) et les solutions de \(\paren{E_0}\) sur \(I\) sont les fonctions de la forme \[\fonctionlambda{I}{\C}{t}{\lambda\e{\alpha t}+\mu\e{\beta t}}\qquad\text{où }\lambda,\mu\in\C.\]
+
+Si \(\Delta=0\) alors l'équation caractéristique admet une unique solution (double) \(\alpha\in\C\) et les solutions de \(\paren{E_0}\) sur \(I\) sont les fonctions de la forme \[\fonctionlambda{I}{\C}{t}{\paren{\lambda t+\mu}\e{\alpha t}}\qquad\text{où }\lambda,\mu\in\C.\]
+\end{prop}
+
+\begin{dem}
+Soient \(\alpha\in\C\) tel que \(a\alpha^2+b\alpha+c=0\) et \(y\in\ensclasse{2}{I}{\C}\).
+
+On pose \(\fonction{\lambda}{I}{\C}{t}{\e{-\alpha t}y\paren{t}}\) de sorte qu'on a \(\begin{dcases}
+\quantifs{\forall t\in I}y\paren{t}=\lambda\paren{t}\e{\alpha t} \\
+\lambda\in\ensclasse{2}{I}{\C}
+\end{dcases}\)
+
+On a, selon la formule de Leibniz : \[\begin{aligned}
+y\text{ est solution de }\paren{E_0}&\ssi\quantifs{\forall t\in I}a\paren{\lambda\seconde\paren{t}\e{\alpha t}+2\alpha\lambda\prim\paren{t}\e{\alpha t}+\underbrace{\alpha^2\lambda\paren{t}\e{\alpha t}}_{\star}}+b\paren{\lambda\prim\paren{t}\e{\alpha t}+\underbrace{\alpha\lambda\paren{t}\e{\alpha t}}_{\star}} \\
+&\color{white}\ssi\quantifs{\forall t\in I}\color{black}+\underbrace{c\lambda\paren{t}}_{\star}=0 \\
+&\ssi\quantifs{\forall t\in I}a\lambda\seconde\paren{t}+2a\alpha\lambda\prim\paren{t}+b\lambda\prim\paren{t}=0 \\
+&\ssi\lambda\prim\text{ est solution de }\paren{E_0\prim}~z\prim+\paren{2\alpha+\dfrac{b}{a}}z=0.
+\end{aligned}\]
+
+\(\star\) : s'annulent car \(a\alpha^2+b\alpha+c=0\).
+
+On note \(\alpha,\beta\) les racines de \(aX^2+bX+c\) (\cad \(\beta=\alpha\) si \(\Delta=0\)).
+
+On sait que \(\alpha+\beta=\dfrac{-b}{a}\) donc \[2\alpha+\dfrac{b}{a}=2\alpha-\alpha-\beta=\alpha-\beta.\]
+
+Si \(\Delta\not=0\) :
+
+Résolvons \(\paren{E_0\prim}\).
+
+Une primitive de \(t\mapsto\alpha-\beta\) est \(t\mapsto\paren{\alpha-\beta}t\) donc les solutions de \(\paren{E_0\prim}\) sont les fonctions de la forme \[t\mapsto\mu\e{-\paren{\alpha-\beta}t}=\mu\e{\paren{\beta-\alpha}t}\qquad\text{où }\mu\in\C.\]
+
+Résolvons maintenant \(\paren{E_0}\).
+
+On a : \[\begin{aligned}
+y\text{ est solution de }\paren{E_0}&\ssi\lambda\prim\text{ est solution de }\paren{E_0\prim} \\
+&\ssi\quantifs{\exists\mu\in\C;\forall t\in I}\lambda\prim\paren{t}=\mu\e{\paren{\beta-\alpha}t} \\
+&\ssi\quantifs{\exists\mu,\nu\in\C;\forall t\in I}\lambda\paren{t}=\dfrac{\mu}{\beta-\alpha}\e{\paren{\beta-\alpha}t}+\nu \\
+&\ssi\quantifs{\exists\mu\prim,\nu\in\C;\forall t\in I}\lambda\paren{t}=\mu\prim\e{\paren{\beta-\alpha}t}+\nu \\
+&\ssi\quantifs{\exists\mu\prim,\nu\in\C;\forall t\in I}y\paren{t}=\mu\prim\e{\beta t}+\nu\e{\alpha t}
+\end{aligned}\]
+
+Les solutions de \(\paren{E_0}\) sont donc les fonctions de la forme \[t\mapsto\mu\prim\e{\beta t}+\nu\e{\alpha t}\] où \(\mu\prim,\nu\in\C\).
+
+Si \(\Delta=0\) :
+
+On a : \[\begin{aligned}
+y\text{ est solution de }\paren{E_0}&\ssi\lambda\prim\text{ est solution de }z\prim=0 \\
+&\ssi\lambda\seconde=0 \\
+&\ssi\quantifs{\exists\mu\in\C;\forall t\in I}\lambda\prim\paren{t}=\mu \\
+&\ssi\quantifs{\exists\mu,\nu\in\C;\forall t\in I}\lambda\paren{t}=\mu t+\nu \\
+&\ssi\quantifs{\exists\mu,\nu\in\C;\forall t\in I}y\paren{t}=\paren{\mu t+\nu}\e{\alpha t}
+\end{aligned}\]
+
+Les solutions de \(\paren{E_0}\) sont donc les fonctions de la forme \[t\mapsto\paren{\mu t+\nu}\e{\alpha t}\qquad\text{où }\mu,\nu\in\C.\]
+\end{dem}
+
+\begin{exoex}
+Donner les solutions complexes sur l'intervalle \(\R\) de l'équation différentielle \[\paren{E_0}~y\seconde+2y\prim+y=0.\]
+\end{exoex}
+
+\begin{corr}
+L'unique solution de l'équation caractéristique \(x^2+2x+1=0\) est \(-1\).
+
+Donc les solutions de \(\paren{E_0}\) sont les fonctions de la forme \[t\mapsto\paren{\lambda t+\mu}\e{-t}\] où \(\lambda,\mu\in\C\).
+\end{corr}
+
+\begin{exoex}
+Donner les solutions complexes sur l'intervalle \(\R\) de l'équation différentielle \[\paren{E_0}~y\seconde+y\prim+y=0.\]
+\end{exoex}
+
+\begin{corr}
+Les solutions de l'équation caractéristique \(x^2+x+1=0\) sont \(j\) et \(j^2\).
+
+Donc les solutions de \(\paren{E_0}\) sont les fonctions de la forme \[t\mapsto\lambda\e{jt}+\mu\e{j^2t}\] où \(\lambda,\mu\in\C\).
+\end{corr}
+
+\subsubsection{Cas réel}
+
+\begin{prop}
+Soient \(I\) un intervalle de \(\R\) et \(a,b,c\in\R\) tels que \(a\not=0\).
+
+On considère l'équation différentielle linéaire homogène du second ordre \[\paren{E_0}~ay\seconde+by\prim+cy=0.\]
+
+On lui associe son équation caractéristique : \[ax^2+bx+c=0\] d'inconnue \(x\in\R\) et dont on note \(\Delta\) le discriminant.
+
+Si \(\Delta>0\) alors l'équation caractéristique admet deux solutions distinctes \(\alpha,\beta\in\R\) et les solutions de \(\paren{E_0}\) sur \(I\) sont les fonctions de la forme \[\fonctionlambda{I}{\R}{t}{\lambda\e{\alpha t}+\mu\e{\beta t}}\qquad\text{où }\lambda,\mu\in\R.\]
+
+Si \(\Delta=0\) alors l'équation caractéristique admet une unique solution (double) \(\alpha\in\R\) et les solutions de \(\paren{E_0}\) sur \(I\) sont les fonctions de la forme \[\fonctionlambda{I}{\R}{t}{\paren{\lambda t+\mu}\e{\alpha t}}\qquad\text{où }\lambda,\mu\in\R.\]
+
+Si \(\Delta<0\) alors l'équation caractéristique admet deux solutions complexes conjuguées \(\alpha+\i\beta\) et \(\alpha-\i\beta\) avec \(\alpha,\beta\in\R\) et les solutions de \(\paren{E_0}\) sont les fonctions de la forme \[\fonctionlambda{I}{\R}{t}{\paren{\lambda\cos\paren{\beta t}+\mu\sin\paren{\beta t}}\e{\alpha t}}\qquad\text{où }\lambda,\mu\in\R.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice} (déduire le cas réel du cas complexe).
+\end{dem}
+
+\begin{exoex}
+Donner les solutions réelles sur l'intervalle \(\R\) de l'équation différentielle \[\paren{E_0}~y\seconde+y\prim+y=0.\]
+\end{exoex}
+
+\begin{corr}
+Les solutions de l'équation caractéristique \(x^2+x+1=0\) sont \(\dfrac{-1}{2}\pm\i\dfrac{\sqrt{3}}{2}\).
+
+Donc les solutions de \(\paren{E_0}\) sont les fonctions de la forme \[t\mapsto\paren{\lambda\cos\paren{\dfrac{\sqrt{3}}{2}t}+\mu\sin\paren{\dfrac{\sqrt{3}}{2}t}}\e{\frac{-t}{2}}\] avec \(\lambda,\mu\in\R\).
+\end{corr}
+
+\subsection{Second membre de la forme \guillemets{polynôme \(\times\) exponentielle}}
+
+\begin{meth}
+Soient \(a,b,c,\gamma\in\K\) tels que \(a\not=0\) et \(P\in\poly\).
+
+Pour trouver une solution de \[\paren{E}~ay\seconde+by\prim+cy=P\paren{t}\e{\gamma t},\] on la cherche sous la forme \[Q\paren{t}\e{\gamma t}\] avec \(Q\in\poly\) de degré \[\begin{dcases}
+\deg P &\text{si }\gamma\text{ n'est pas racine de }aX^2+bX+c \\
+\deg P+1 &\text{si }\gamma\text{ est racine simple de }aX^2+bX+c \\
+\deg P+2 &\text{si }\gamma\text{ est racine double de }aX^2+bX+c \\
+\end{dcases}\]
+\end{meth}
+
+\begin{exoex}
+Résoudre les équations différentielles suivantes :
+
+\begin{enumerate}
+\item \(\paren{E}~y\seconde-3y\prim+2y=\ch t\) \\
+
+\item \(\paren{E}~y\seconde-y=t\sh t\) \\
+
+\item \(\paren{E}~y\seconde+y=\sin t\)
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+Résolvons l'équation homogène associée à \(\paren{E}\) : \[\paren{E_0}~y\seconde-3y\prim+2y=0.\]
+
+L'équation caractéristique \(x^2-3x+2=0\) admet pour solutions \(1\) et \(2\).
+
+Les solutions de \(\paren{E_0}\) sont donc les fonctions de la forme \[\fonctionlambda{\R}{\R}{t}{\lambda\e{t}+\mu\e{2t}}\qquad\text{où }\lambda,\mu\in\R.\]
+
+Cherchons une solutions particulière de \(\paren{E}\).
+
+On pose \[\paren{E_1}~y\seconde-3y\prim+2y=\e{t}\qquad\text{et}\qquad\paren{E_2}~y\seconde-3y\prim+2y=\e{-t}.\]
+
+Déterminons une solution particulière de \(\paren{E_1}\).
+
+\begin{brouill}
+On a \(P\paren{t}\e{\gamma t}\) avec \(\begin{dcases}
+P=1\text{ donc }\deg P=0 \\
+\gamma=1\text{ racine simple de }X^2-3X+2
+\end{dcases}\)
+
+Donc on cherche une solution de la forme \[Q\paren{t}\e{\gamma t}\] avec \(\deg Q=0+1=1\), \cad de la forme \[\paren{at+\cancel{b}}\e{t}.\]
+
+\textit{Remarque :} on peut ici considérer que \(b=0\) car \(b\e{t}\) est solution de \(\paren{E_0}\).
+\end{brouill}
+
+Soit \(a\in\R\).
+
+On pose \(y_1:t\mapsto at\e{t}\).
+
+On a \[\quantifs{\forall t\in\R}\begin{dcases}
+y_1\prim\paren{t}=a\e{t}\paren{1+t} \\
+y_1\seconde\paren{t}=a\e{t}\paren{t+2}
+\end{dcases}\]
+
+D'où : \[\begin{aligned}
+y_1\text{ est solution de }\paren{E_1}&\ssi\quantifs{\forall t\in\R}a\e{t}\paren{t+2}-3a\e{t}\paren{t+1}+2at\e{t}=\e{t} \\
+&\ssi\quantifs{\forall t\in\R}at\e{t}+2a\e{t}-3at\e{t}-3a\e{t}+2at\e{t}=\e{t} \\
+&\ssi\quantifs{\forall t\in\R}-a\e{t}=\e{t} \\
+&\ssi a=-1
+\end{aligned}\]
+
+Donc \(y_1:t\mapsto-t\e{t}\) est solution de \(\paren{E_1}\).
+
+Déterminons une solution particulière de \(\paren{E_2}\).
+
+\begin{brouill}
+On a \(P\paren{t}\e{\gamma t}\) avec \(\begin{dcases}
+P=1\text{ donc }\deg P=0 \\
+\gamma=-1\text{ pas racine de }X^2-3X+2
+\end{dcases}\)
+
+Donc on cherche une solution de la forme \[Q\paren{t}\e{\gamma t}\] avec \(\deg Q=0\), \cad de la forme \[a\e{-t}.\]
+\end{brouill}
+
+Soit \(a\in\R\).
+
+On pose \(y_2:t\mapsto a\e{-t}\).
+
+On a \[\quantifs{\forall t\in\R}\begin{dcases}
+y_2\prim\paren{t}=-a\e{-t} \\
+y_2\seconde\paren{t}=a\e{-t}
+\end{dcases}\]
+
+D'où : \[\begin{aligned}
+y_2\text{ est solution de }\paren{E_2}&\ssi\quantifs{\forall t\in\R}a\e{-t}+3a\e{-t}+2a\e{-t}=\e{-t} \\
+&\ssi\quantifs{\forall t\in\R}6a\e{-t}=\e{-t} \\
+&\ssi a=\dfrac{1}{6}
+\end{aligned}\]
+
+Donc \(y_2:t\mapsto\dfrac{\e{-t}}{6}\) est solution de \(\paren{E_2}\).
+
+Ainsi, comme on a \(\quantifs{\forall t\in\R}\ch t=\dfrac{\e{t}+\e{-t}}{2}\), d'après le principe de superposition : \[y_3:t\mapsto-\dfrac{t\e{t}}{2}+\dfrac{\e{-t}}{12}\] est solution de \(\paren{E}\).
+
+Finalement, les solutions de \(\paren{E}\) sont les fonctions de la forme \[t\mapsto\lambda\e{t}+\mu\e{2t}-\dfrac{t\e{t}}{2}+\dfrac{\e{-t}}{12}\qquad\text{où }\lambda,\mu\in\R.\]
+\end{corr}
+
+\begin{corr}[2]
+Résolvons l'équation homogène associée à \(\paren{E}\) : \[\paren{E_0}~y\seconde-y=0.\]
+
+Les solutions de l'équation caractéristique \(x^2-1=0\) sont \(1\) et \(-1\).
+
+Les solutions de \(\paren{E_0}\) sont donc les fonctions de la forme \[t\mapsto\lambda\e{t}+\mu\e{-t}\qquad\text{où }\lambda,\mu\in\R.\]
+
+Cherchons une solution particulière de \(\paren{E}\).
+
+On pose \[\paren{E_1}~y\seconde-y=t\e{t}\qquad\text{et}\qquad\paren{E_2}~y\seconde-y=t\e{-t}\]
+
+Déterminons une solution particulière de \(\paren{E_1}\).
+
+\begin{brouill}
+On a \(P\paren{t}\e{\gamma t}\) avec \(\begin{dcases}
+P=X\text{ donc }\deg P=1 \\
+\gamma=1\text{ racine simple de }X^2-1
+\end{dcases}\)
+
+Donc on cherche une solution de la forme \[Q\paren{t}\e{\gamma t}\] avec \(\deg Q=1+1=2\), \cad de la forme \[\paren{at^2+bt}\e{t}.\]
+\end{brouill}
+
+Soient \(a,b\in\R\).
+
+On pose \(y_1:t\mapsto\paren{at^2+bt}\e{t}\).
+
+On a \[\quantifs{\forall t\in\R}\begin{dcases}
+y_1\prim\paren{t}=\e{t}\paren{2at+b+at^2+bt}=\e{t}\paren{at^2+\paren{2a+b}t+b} \\
+y_1\seconde\paren{t}=\e{t}\paren{at^2+\paren{2a+b}t+b+2at+2a+b}=\e{t}\paren{at^2+\paren{4a+b}t+2\paren{a+b}}
+\end{dcases}\]
+
+D'où : \[\begin{aligned}
+y_1\text{ est solution de }\paren{E_1}&\ssi\quantifs{\forall t\in\R}\e{t}\paren{at^2+\paren{4a+b}t+2\paren{a+b}}-\e{t}\paren{at^2+bt}=t\e{t} \\
+&\ssi\quantifs{\forall t\in\R}4at+2a+2b=t \\
+&\ssi\quantifs{\forall t\in\R}\paren{4a-1}t+2a+2b=0 \\
+&\impr\begin{dcases}
+2a+2b=0 \\
+4a-1=0
+\end{dcases} \\
+&\ssi\begin{dcases}
+a=\dfrac{1}{4} \\
+b=\dfrac{-1}{4}
+\end{dcases}
+\end{aligned}\]
+
+Donc \(y_1:t\mapsto\dfrac{1}{4}\paren{t^2-t}\e{t}\) est solution de \(\paren{E_1}\).
+
+Déterminons une solution particulière de \(\paren{E_2}\).
+
+\begin{brouill}
+On a \(P\paren{t}\e{\gamma t}\) avec \(\begin{dcases}
+P=X\text{ donc }\deg P=1 \\
+\gamma=-1\text{ racine simple de }X^2-1
+\end{dcases}\)
+
+Donc on cherche une solution de la forme \[Q\paren{t}\e{\gamma t}\] avec \(\deg Q=2\) donc de la forme \[\paren{at^2+bt}\e{-t}.\]
+\end{brouill}
+
+Soient \(a,b\in\R\).
+
+On pose \(y_2:t\mapsto\paren{at^2+bt}\e{-t}\).
+
+On a \[\quantifs{\forall t\in\R}\begin{dcases}
+y_2\prim\paren{t}=\e{-t}\paren{-at^2-bt+2at+b} \\
+y_2\seconde\paren{t}=\e{-t}\paren{at^2+bt-2at-b-2at-b+2a}=\e{-t}\paren{at^2+\paren{b-4a}t+2a-2b}
+\end{dcases}\]
+
+D'où : \[\begin{aligned}
+y_2\text{ est solution de }\paren{E_2}&\ssi\quantifs{\forall t\in\R}\e{-t}\paren{at^2+\paren{b-4a}t+2a-2b}-\paren{at^2+bt}\e{-t}=t\e{-t} \\
+&\ssi\quantifs{\forall t\in\R}-\paren{4a+1}t+2a-2b=0 \\
+&\impr\begin{dcases}
+-4a-1=0 \\
+2a-2b=0
+\end{dcases} \\
+&\ssi\begin{dcases}
+a=\dfrac{-1}{4} \\
+b=\dfrac{-1}{4}
+\end{dcases}
+\end{aligned}\]
+
+Donc \(y_2:t\mapsto\dfrac{-1}{4}\paren{t^2+t}\e{-t}\) est solution de \(\paren{E_2}\).
+
+Finalement, les solutions de \(\paren{E}\) sont les fonctions de la forme \[t\mapsto\lambda\e{t}+\mu\e{-t}+\dfrac{1}{8}\paren{t^2-t}\e{t}+\dfrac{1}{8}\paren{t^2+t}\e{-t}\qquad\text{où }\lambda,\mu\in\R.\]
+\end{corr}
+
+\begin{corr}[3]
+Résolvons l'équation homogène associée à \(\paren{E}\) : \[\paren{E_0}~y\seconde+y=0.\]
+
+Les solutions de l'équation caractéristique \(x^2+x=0\) sont \(\i\) et \(-\i\).
+
+Les solutions de \(\paren{E_0}\) sont donc les fonctions de la forme \[t\mapsto\lambda\cos t+\mu\sin t\qquad\text{où }\lambda,\mu\in\R.\]
+
+Déterminons une solution particulière de \(\paren{E_1}~y\seconde+y=\e{\i t}\).
+
+\begin{brouill}
+On a \(P\paren{t}\e{\gamma t}\) avec \(\begin{dcases}
+P=1\text{ donc }\deg P=0 \\
+\gamma=\i\text{ racine simple de }X^2+X
+\end{dcases}\)
+
+Donc on cherche une solution de la forme \[Q\paren{t}\e{\gamma t}\] avec \(\deg Q=1\), \cad de la forme \[at\e{\i t}.\]
+\end{brouill}
+
+Soit \(a\in\R\).
+
+On pose \(y_1:t\mapsto at\e{\i t}\).
+
+On a \[\quantifs{\forall t\in\R}\begin{dcases}
+y_1\prim\paren{t}=a\paren{\e{\i t}+\i t\e{\i t}}=a\e{\i t}\paren{\i t+1} \\
+y_1\seconde\paren{t}=a\paren{\i\e{\i t}\paren{\i t+1}+\i\e{\i t}}=a\i\e{\i t}\paren{\i t+2}
+\end{dcases}\]
+
+D'où : \[\begin{aligned}
+y_1\text{ est solution de }\paren{E_1}&\ssi\quantifs{\forall t\in\R}a\i\e{\i t}\paren{\i t+2}+at\e{\i t}=\e{\i t} \\
+&\ssi2a\i=1 \\
+&\impr a=\dfrac{-\i}{2}
+\end{aligned}\]
+
+Donc \(y_1:t\mapsto\dfrac{-\i}{2}t\e{\i t}\) est solution de \(\paren{E_1}\).
+
+De plus, on a : \[\begin{aligned}
+\quantifs{\forall t\in\R}\Im y_1\paren{t}&=\Im\paren{\dfrac{-\i}{2}t\paren{\cos t+\i\sin t}} \\
+&=\Im\paren{\dfrac{-\i}{2}t\cos t+\dfrac{1}{2}t\sin t} \\
+&=\dfrac{-1}{2}t\cos t
+\end{aligned}\]
+
+Finalement, les solutions de \(\paren{E}\) sont les fonctions de la forme \[t\mapsto\lambda\cos t+\mu\sin t-\dfrac{1}{2}t\cos t\qquad\text{où }\lambda,\mu\in\R.\]
+\end{corr}
+
+\section{Changements de variable}
+
+\Cf \thref{exo:exempleChangementDeVariableCours}.
+
+\section{Problèmes de raccord}
+
+\Cf \thref{exo:exempleProblèmesDeRaccordCours}.

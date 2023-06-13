@@ -1,0 +1,1507 @@
+\chapter{Espaces vectoriels de dimension finie}
+
+\minitoc
+
+On considère un corps \(\K\) (en pratique, \(\K=\R\) ou \(\C\), voire \(\Q\)).
+
+\section{Familles de vecteurs}
+
+\subsection{Quelques rappels}
+
+\begin{rappel}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels, \(u\in\L{E}{F}\) et \(x_1,\dots,x_n\in E\).
+
+On a \[u\paren{\Vect{x_1,\dots,x_n}}=\Vect{u\paren{x_1},\dots,u\paren{x_n}}.\]
+\end{rappel}
+
+\begin{rappel}\thlabel{rappel:familleLibreSiVecteurAjoutéPasDansLeVectDesAutres}
+Soient \(E\) un \(\K\)-espace vectoriel, \(\paren{x_1,\dots,x_n}\in E^n\) une famille libre de \(E\) et \(x_{n+1}\in E\).
+
+Alors \(\paren{x_1,\dots,x_{n+1}}\) est libre si, et seulement si, \(x_{n+1}\not\in\Vect{x_1,\dots,x_n}\).
+\end{rappel}
+
+\begin{rappel}\thlabel{rappel:familleGénératriceSsiTousLesVecteursSontDansLeVectD'UneFamilleQuelconque}
+Soient \(E\) un \(\K\)-espace vectoriel, \(n,m\in\Ns\), \(\paren{x_1,\dots,x_n}\in E^n\) une famille quelconque de vecteurs de \(E\) et \(\paren{y_1,\dots,y_m}\in E^m\) une famille génératrice de \(E\).
+
+Alors \(\paren{x_1,\dots,x_n}\) est une famille génératrice de \(E\) si, et seulement si : \[\quantifs{\forall j\in\interventierii{1}{m}}y_j\in\Vect{x_1,\dots,x_n}.\]
+\end{rappel}
+
+\begin{rappel}\thlabel{rappel:imageD'UneBaseParUneApplicationLinéaire}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels, \(u\in\L{E}{F}\) et \(\paren{x_1,\dots,x_p}\in E^p\) une famille de vecteurs de \(E\).
+
+On a :
+
+\begin{enumerate}
+\item Si \(\paren{x_1,\dots,x_p}\) est libre et \(u\) injective, alors \(\paren{u\paren{x_1},\dots,u\paren{x_p}}\) est libre. \\
+
+\item Si \(\paren{x_1,\dots,x_p}\) engendre \(E\) et \(u\) est surjective, alors \(\paren{u\paren{x_1},\dots,u\paren{x_p}}\) engendre \(F\). \\
+
+\item Si \(\paren{x_1,\dots,x_p}\) est une base de \(E\) et \(u\) un isomorphisme, alors \(\paren{u\paren{x_1},\dots,u\paren{x_p}}\) est une base de \(F\).
+\end{enumerate}
+\end{rappel}
+
+\subsection{Cardinaux des familles libres / génératrices}
+
+\begin{lem}\thlabel{lem:cardFamilleLibreInférieurCardFamilleGénératrice}
+Soient \(E\) un \(\K\)-espace vectoriel, \(n,m\in\N\) et \(x_1,\dots,x_n,y_1,\dots,y_m\in E\).
+
+On suppose que \(\paren{x_1,\dots,x_n}\in E^n\) est libre et que \(\paren{y_1,\dots,y_m}\) est génératrice de \(E\).
+
+Alors on a : \[n\leq m.\]
+\end{lem}
+
+\begin{dem}
+On raisonne par l'absurde : supposons \(n>m\).
+
+\textit{Idée :} On va montrer qu'on peut remplacer un par un chaque vecteur de la famille génératrice par un vecteur de la famille libre, et cela en conservant une famille génératrice de \(E\). Les vecteurs de la famille libre qui restent seront des combinaisons linéaires des autres vecteurs de la famille libre : contradiction.
+
+\textit{Démonstration formelle :}
+
+Pour tout \(k\in\interventierii{0}{m}\), on note \(\P{k}\) la propriété : \[\quantifs{\exists i_{k+1},\dots,i_m\in\interventierii{1}{m}}\paren{x_1,\dots,x_k,y_{i_{k+1}},\dots,y_{i_m}}\text{ est génératrice de }E.\]
+
+Montrons \(\P{k}\) pour tout \(k\in\interventierii{0}{m}\) par une récurrence finie sur \(k\).
+
+La propriété \(\P{0}\) est vraie : il suffit de poser \(i_1=1,\dots,i_m=m\) et la famille \(\paren{y_{i_1},\dots,y_{i_m}}\) est bien une famille génératrice de \(E\).
+
+Soit \(k\in\interventierii{0}{m-1}\) tel que \(\P{k}\).
+
+Considérons \(i_{k+1},\dots,i_m\in\interventierii{1}{m}\) tels que \[\fami{G}=\paren{x_1,\dots,x_k,y_{i_{k+1}},\dots,y_{i_m}}\] soit une famille génératrice de \(E\).
+
+Soient \(\lambda_1,\dots,\lambda_m\in\K\) tels que \[\paren{R}~x_{k+1}=\lambda_1x_1+\dots+\lambda_kx_k+\lambda_{k+1}y_{i_{k+1}}+\dots+\lambda_my_{i_m}\] (de tels scalaires existent par hypothèse).
+
+Les coefficients \(\lambda_{k+1},\dots,\lambda_m\) ne sont pas tous nuls, car sinon on aurait \(x_{k+1}\in\Vect{x_1,\dots,x_k}\) alors que la famille \(\paren{x_1,\dots,x_n}\) est libre.
+
+Soit \(p\in\interventierii{k+1}{m}\) tel que \(\lambda_p\not=0\).
+
+Quitte à renuméroter les entiers \(i_{k+1},\dots,i_m\), on peut supposer \(p=k+1\).
+
+Montrons que \[\fami{F}=\paren{x_1,\dots,x_k,x_{k+1},y_{i_{k+2}},\dots,y_{i_m}}\] est une famille génératrice de \(E\).
+
+Pour cela, selon le \thref{rappel:familleGénératriceSsiTousLesVecteursSontDansLeVectD'UneFamilleQuelconque}, il suffit de montrer que chaque vecteur de la famille \(\fami{G}\) appartient à \(\Vect{\fami{F}}\).
+
+On a, selon la relation \(\paren{R}\) : \[y_{i_{k+1}}=\dfrac{-\lambda_1}{\lambda_{k+1}}x_1+\dots+\dfrac{-\lambda_k}{\lambda_{k+1}}x_k+\dfrac{1}{\lambda_{k+1}}x_{k+1}+\dfrac{-\lambda_{k+2}}{\lambda_{k+1}}y_{i_{k+2}}+\dots+\dfrac{-\lambda_m}{\lambda_{k+1}}y_{i_m}\] donc \(y_{i_{k+1}}\in\Vect{\fami{F}}\).
+
+C'est clair pour les autres vecteurs de \(\fami{G}\) (ils appartiennent à \(\Vect{\fami{F}}\) car ils appartiennent à \(\fami{F}\)).
+
+Ainsi, la famille \(\fami{F}\) est génératrice de \(E\) et la propriété \(\P{k+1}\) est donc vraie.
+
+On a donc, par récurrence (finie) : \(\quantifs{\forall k\in\interventierii{0}{m}}\P{k}\text{ est vraie}\).
+
+En particulier (en prenant \(k=m\)) : la famille \(\paren{x_1,\dots,x_m}\) est génératrice de \(E\) donc \[x_{m+1}\in\Vect{x_1,\dots,x_m}.\]
+
+On a donc bien une contradiction car la famille \(\paren{x_1,\dots,x_n}\) est libre.
+
+Donc \(n\leq m\).
+\end{dem}
+
+\subsection{Théorème de la base incomplète}
+
+\begin{theo}\thlabel{theo:baseÀPartirD'uneFamilleGénératriceDontUneSousFamilleEstLibre}
+Soient \(E\) un \(\K\)-espace vectoriel, \(n,m\in\N\) et \(x_1,\dots,x_n,y_1,\dots,y_m\in E\).
+
+On suppose que \(\paren{x_1,\dots,x_n}\in E^n\) est libre et que \(\paren{x_1,\dots,x_n,y_1,\dots,y_m}\) est génératrice de \(E\).
+
+Alors il existe des éléments \(i_1,\dots,i_r\in\interventierii{1}{m}\) tels que la famille \[\paren{x_1,\dots,x_n,y_{i_1},\dots,y_{i_r}}\] soit une base de \(E\).
+\end{theo}
+
+\begin{dem}
+\textit{Idée :} si \(\paren{x_1,\dots,x_n}\) est déjà une base de \(E\), le théorème est vrai (en prenant \(r=0\)). Sinon, la famille libre \(\paren{x_1,\dots,x_n}\) n'est pas une famille génératrice de \(E\). Selon le \thref{rappel:familleGénératriceSsiTousLesVecteursSontDansLeVectD'UneFamilleQuelconque}, il existe un élément de la famille génératrice \(\paren{x_1,\dots,x_n,y_1,\dots,y_m}\) qui n'est pas combinaison linéaire de \(x_1,\dots,x_n\) : considérons un tel élément \(y_{i_1}\) (où \(i_1\in\interventierii{1}{m}\)). Selon le \thref{rappel:familleLibreSiVecteurAjoutéPasDansLeVectDesAutres}, la famille \(\paren{x_1,\dots,x_n,y_{i_1}}\) est libre. On continue ensuite à rajouter des éléments parmi \(y_1,\dots,y_m\) à la famille libre jusqu'à ce qu'on obtienne une famille génératrice (à chaque étape, la famille reste libre), et on finit par obtenir une base.
+
+\textit{Démonstration formelle :}
+
+Posons : \[J=\accol{p\in\interventierii{0}{m}\tq\quantifs{\exists i_1,\dots,i_p\in\interventierii{1}{m}}\paren{x_1,\dots,x_n,y_{i_1},\dots,y_{i_p}}\text{ est libre}}.\]
+
+L'ensemble \(J\) est une partie de \(\N\) non-vide (car elle contient \(0\)) et majorée (par \(m\)). Elle admet donc un plus grand élément ; notons le \(r\).
+
+Soient \(i_1,\dots,i_r\in\interventierii{1}{m}\) tels que la famille \(\paren{x_1,\dots,x_n,y_{i_1},\dots,y_{i_r}}\) soit libre.
+
+Montrons que la famille \(\paren{x_1,\dots,x_n,y_{i_1},\dots,y_{i_r}}\) est une base de \(E\) : il s'agit de montrer qu'elle est génératrice de \(E\).
+
+Raisonnons par l'absurde : on suppose qu'elle ne l'est pas.
+
+D'après le \thref{rappel:familleGénératriceSsiTousLesVecteursSontDansLeVectD'UneFamilleQuelconque}, la famille \(\paren{x_1,\dots,x_n,y_1,\dots,y_m}\) étant génératrice, elle contient un élément qui n'est pas combinaison linéaire de \(x_1,\dots,x_n,y_{i_1},\dots,y_{i_r}\).
+
+Considérons un tel élément \(y_{i_{r+1}}\) (où \(i_{r+1}\in\interventierii{1}{m}\)).
+
+Finalement, la famille \(\paren{x_1,\dots,x_n,y_{i_1},\dots,y_{i_r}}\) est libre, on lui ajoute un vecteur qui n'est pas combinaison linéaire de ses éléments, donc d'après le \thref{rappel:familleLibreSiVecteurAjoutéPasDansLeVectDesAutres}, la famille qu'on obtient est libre : \[\paren{x_1,\dots,x_n,y_{i_1},\dots,y_{i_{r+1}}}\text{ est libre}.\]
+
+Donc \(r+1\) appartient à \(J\), ce qui contredit le fait que \(r\) soit le plus grand élément de \(J\).
+
+Donc la famille libre \(\paren{x_1,\dots,x_n,y_{i_1},\dots,y_{i_r}}\) est génératrice de \(E\) : c'est une base.
+\end{dem}
+
+\begin{theo}[Reformulation]
+Soient \(E\) un \(\K\)-espace vectoriel, \(\paren{x_k}_{k\in K}\in E^K\) une famille de vecteurs de \(E\) indicée par un ensemble fini \(K\) et \(I\subset K\).
+
+On suppose que \(\paren{x_k}_{k\in I}\) est libre et que \(\paren{x_k}_{k\in K}\) est génératrice de \(E\).
+
+Alors il existe un ensemble \(J\) tel que \[I\subset J\subset K\qquad\text{et}\qquad\paren{x_k}_{k\in J}\text{ est une base de }E.\]
+\end{theo}
+
+\begin{cor}[Théorème de la base extraite]\thlabel{cor:théorèmeDeLaBaseExtraite}
+De toute famille génératrice finie d'un \(\K\)-espace vectoriel, on peut extraire une base.
+\end{cor}
+
+\begin{dem}
+Découle du \thref{theo:baseÀPartirD'uneFamilleGénératriceDontUneSousFamilleEstLibre} (en prenant \(n=0\)).
+\end{dem}
+
+\begin{cor}[Théorème de la base incomplète]
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+Si \(E\) admet une famille génératrice finie, alors toute famille libre de \(E\) peut être complétée en une base de \(E\) (finie).
+\end{cor}
+
+\begin{dem}
+Découle du \thref{theo:baseÀPartirD'uneFamilleGénératriceDontUneSousFamilleEstLibre}.
+\end{dem}
+
+\section{Dimension}
+
+\subsection{Définition}
+
+\begin{deftheo}
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+Si \(E\) admet une base finie, alors toutes les bases de \(E\) sont finies et on le même nombre d'éléments, appelé dimension de \(E\) et noté \(\dim E\).
+
+Si \(E\) n'admet aucune base finie, alors on dit que \(E\) est de dimension infinie et on pose \(\dim E=\pinf\).
+\end{deftheo}
+
+\begin{dem}
+Supposons que \(\fami{B}=\paren{e_1,\dots,e_n}\) est une base finie de \(E\).
+
+Soit \(\fami{B}\prim=\paren{x_i}_{i\in I}\) une base de \(E\) (où \(I\) est un ensemble quelconque).
+
+Montrons que \(\Card I\leq n\).
+
+Par l'absurde, si \(\Card I\geq n+1\) alors il existe \(i_1,\dots,i_{n+1}\in I\) deux à deux distincts.
+
+On a \(\begin{dcases}
+\paren{x_{i_1},\dots,x_{i_{n+1}}}\text{ est une famille libre de vecteurs de }E \\
+\paren{e_1,\dots,e_n}\text{ est une famille génératrice de }E
+\end{dcases}\) : contradiction selon le \thref{lem:cardFamilleLibreInférieurCardFamilleGénératrice}.
+
+En particulier, on a montré que \(I\) est fini.
+
+Montrons que \(\Card I\geq n\).
+
+On a \[\begin{dcases}
+\paren{e_1,\dots,e_n}\text{ est une famille libre de vecteurs de }E \\
+\paren{x_i}_{i\in I}\text{ est une famille génératrice de }E
+\end{dcases}\]
+
+Donc \(n\leq\Card I\) selon le \thref{lem:cardFamilleLibreInférieurCardFamilleGénératrice}.
+
+Donc \(\Card I=n\).
+
+D'où le résultat.
+\end{dem}
+
+\begin{prop}[Espaces vectoriels de dimension infinie]
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+\item \(E\) est de dimension infinie (\ie \(E\) n'admet aucune base finie) \\
+
+\item \(E\) n'admet aucune famille génératrice finie \\
+
+\item \(\quantifs{\forall n\in\N;\exists x_1,\dots,x_n\in E}\paren{x_1,\dots,x_n}\text{ est une famille libre}\) \\
+
+\item Il existe une famille libre infinie de vecteurs de \(E\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[(2) \(\imp\) (1)]
+Claire.
+\end{dem}
+
+\begin{dem}[(1) \(\imp\) (2)]
+Découle du théorème de la base extraite (\thref{cor:théorèmeDeLaBaseExtraite}).
+\end{dem}
+
+\begin{dem}[(4) \(\imp\) (3)]
+Claire car toute sous-famille d'une famille libre est libre.
+\end{dem}
+
+\begin{dem}[(3) \(\imp\) (2)]
+Supposons (3).
+
+Par l'absurde, soit \(\paren{x_1,\dots,x_m}\) une famille génératrice finie de \(E\) (où \(m\in\N\)).
+
+Selon (3) et le \thref{lem:cardFamilleLibreInférieurCardFamilleGénératrice}, on a \[\quantifs{\forall n\in\N}n\leq m\text{ : contradiction}.\]
+\end{dem}
+
+\begin{dem}[(2) \(\imp\) (4)]
+Supposons (2).
+
+On construit par récurrence une suite \(\paren{x_n}_{n\in\N}\in E^\N\) de la façon suivante :
+
+On considère \(x_0\in E\excluant\accol{0}\).
+
+Soient \(n\in\N\) et \(x_0,\dots,x_n\in E\) tels que \(\paren{x_0,\dots,x_n}\) est libre.
+
+Selon (2), \(\paren{x_0,\dots,x_n}\) n'est pas une famille génératrice de \(E\).
+
+Donc il existe \(x_{n+1}\in E\) tel que \(x_{n+1}\not\in\Vect{x_0,\dots,x_n}\).
+
+Donc \(\paren{x_0,\dots,x_{n+1}}\) est libre.
+
+On construit ainsi par récurrence une suite \(\paren{x_n}_{n\in\N}\in E^\N\) telle que \[\quantifs{\forall n\in\N}\paren{x_0,\dots,x_n}\text{ est libre}.\]
+
+Déduisons-en que \(\paren{x_n}_{n\in\N}\) est libre.
+
+Soit \(I\subset\N\) tel que \(I\) est fini.
+
+Montrons que \(\paren{x_n}_{n\in I}\) est libre.
+
+Soit \(N\in\N\) un majorant de \(I\).
+
+\(\paren{x_n}_{n\in I}\) est une sous-famille de la famille libre \(\paren{x_n}_{n\in\interventierii{0}{N}}\).
+
+Donc \(\paren{x_n}_{n\in I}\) est libre.
+
+Donc \(\paren{x_n}_{n\in\N}\) est libre.
+\end{dem}
+
+\begin{defi}
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+On a \(\dim E=0\) si, et seulement si, \(E\) est l'espace vectoriel nul : \(E=\accol{0_E}\).
+
+Si \(\dim E=1\), on dit que \(E\) est une droite vectorielle (cela revient à dire qu'on a \(E=\Vect{x}\) où \(x\) est un vecteur non-nul).
+
+Si \(\dim E=2\), on dit que \(E\) est un plan vectoriel (cela revient à dire qu'on a \(E=\Vect{x,y}\) où \(x\) et \(y\) sont deux vecteurs non-colinéaires).
+\end{defi}
+
+\begin{defi}
+On appelle dimension d'un sous-espace affine la dimension de sa direction.
+
+Une droite affine est un sous-espace affine de dimension \(1\).
+
+Un plan affine est un sous-espace affine de dimension \(2\).
+\end{defi}
+
+\subsection{Exemples}
+
+\begin{exoex}
+Donner la dimension des espaces vectoriels suivants :
+
+\begin{enumerate}
+\item \(\K^n\) (où \(n\in\Ns\)) \\
+
+\item \(\polydeg{n}\) (où \(n\in\N\)) \\
+
+\item \(\poly\) \\
+
+\item \(\ensclasse{\infty}{\R}{\R}\) \\
+
+\item On prend \(\K=\R\) ou \(\C\).
+
+L'ensemble solution \(\fami{S}_0\) de l'équation différentielle linéaire homogène du premier ordre : \[\paren{E_0}~y\prim+a\paren{t}y=0\] où \(I\) est un intervalle de \(\R\) tel que \(\Card I\geq2\) et \(a\in\ensclasse{0}{I}{\K}\). \\
+
+\item On prend \(\K=\R\) ou \(\C\).
+
+L'ensemble solution \(\fami{S}_0\) de l'équation différentielle linéaire homogène du second ordre : \[\paren{E_0}~ay\seconde+by\prim+cy=0\] où \(a,b,c\in\K\) tels que \(a\not=0\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}
+\begin{enumerate}
+\item On a \(\dim\K^n=n\) car la base canonique de \(\K^n\) possède \(n\) éléments. \\
+
+\item On a \(\dim\polydeg{n}=n+1\) car la base canonique de \(\polydeg{n}\) possède \(n+1\) éléments. \\
+
+\item On a \(\dim\poly=\pinf\) car \(\paren{X^n}_{n\in\N}\) est une famille libre infinie de vecteurs de \(\poly\). \\
+
+\item On a \(\dim\ensclasse{\infty}{\R}{\R}=\pinf\) car \(\paren{t\mapsto\e{\lambda t}}_{\lambda\in\R}\) est une famille libre infinie de vecteurs de \(\ensclasse{\infty}{\R}{\R}\). \\
+
+\item On a vu que \(\fami{S}_0\) admet pour base la famille \(\paren{f_0}\) où \(\fonction{f_0}{I}{\K}{t}{\e{-A\paren{t}}}\) où \(A\) est une primitive de \(a\). Donc \(\dim\fami{S}_0=1\). \\
+
+\item De même, on a \(\dim\fami{S}_0=2\) (\cf chapitre \ref{chap:équationsDifférentielles}).
+\end{enumerate}
+\end{corr}
+
+\begin{prop}
+Soit \(E\) un \(\C\)-espace vectoriel de dimension finie.
+
+On sait que \(E\) est naturellement un \(\R\)-espace vectoriel.
+
+Notons \(\dim_\C E\) la dimension de \(E\) comme \(\C\)-espace vectoriel et \(\dim_\R E\) la dimension de \(E\) comme \(\R\)-espace vectoriel.
+
+Alors on a : \[\dim_\R E=2\dim_\C E.\]
+\end{prop}
+
+\begin{dem}
+Soit \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\) en tant que \(\C\)-espace vectoriel.
+
+On a \(n=\dim_\C E\).
+
+Posons \(\fami{B}\prim=\paren{e_1,\i e_1,\dots,e_n,\i e_n}\).
+
+Montrons que \(\fami{B}\prim\) est une base de \(E\) en tant que \(\R\)-espace vectoriel.
+
+Montrons que \(\fami{B}\prim\) est génératrice de \(E\) sur \(\R\).
+
+Comme \(\fami{B}\) est une base de \(E\) sur \(\C\), on a : \[\quantifs{\forall x\in E;\exists z_1,\dots,z_n\in\C}x=z_1e_1+\dots+z_ne_n.\]
+
+Donc \(\quantifs{\forall x\in E;\exists a_1,b_1,\dots,a_n,b_n\in\R}x=a_1e_1+\i b_1e_1+\dots+a_ne_n+\i b_ne_n\).
+
+Donc \(\quantifs{\forall x\in E}x\in\Vect[\R]{\fami{B}\prim}\).
+
+Donc \(\fami{B}\prim\) est génératrice de \(E\) sur \(\R\).
+
+Montrons que \(\fami{B}\prim\) est libre sur \(\R\).
+
+Soient \(a_1,b_1,\dots,a_n,b_n\in\R\) tels que \(a_1e_1+\i b_1e_1+\dots+a_ne_n+\i b_ne_n=0\).
+
+On a \(\paren{a_1+\i b_1}e_1+\dots+\paren{a_n+\i b_n}e_n=0\).
+
+Or \(\fami{B}\) est libre sur \(\C\).
+
+Donc \(\quantifs{\forall k\in\interventierii{1}{n}}a_k+\i b_k=0\).
+
+Donc \(\quantifs{\forall k\in\interventierii{1}{n}}a_k=b_k=0\).
+
+Donc \(\fami{B}\prim\) est libre sur \(\R\).
+
+Donc \(\fami{B}\prim\) est une base de \(E\) sur \(\R\) possédant \(2n\) vecteurs.
+
+Donc \(\dim_\R E=2n\).
+\end{dem}
+
+\section{Familles de vecteurs en dimension finie}
+
+\begin{theo}\thlabel{theo:nombreDeVecteursDansLesFamillesLibresEtGénératricesD'UnEVDeDimensionFinie}
+Soit \(E\) un \(\K\)-espace vectoriel de dimension finie.
+
+On pose \(n=\dim E\).
+
+Alors :
+
+\begin{enumerate}
+\item Toute famille libre de \(E\) possède au plus \(n\) vecteurs. \\
+
+\item Toute famille génératrice de \(E\) possède au moins \(n\) vecteurs.
+\end{enumerate}
+\end{theo}
+
+\begin{dem}
+Soit \(\fami{B}\) une base de \(E\) (qui possède donc \(n\) vecteurs).
+
+\begin{enumerate}
+\item Comme \(\fami{B}\) est une famille génératrice de \(E\) possédant \(n\) vecteurs, toute famille libre de \(E\) possède au plus \(n\) vecteurs. \\
+
+\item Comme \(\fami{B}\) est une famille libre de \(E\) possédant \(n\) vecteurs, toute famille génératrice de \(E\) possède au moins \(n\) vecteurs.
+\end{enumerate}
+\end{dem}
+
+\begin{prop}
+Soient \(E\) et \(F\) deux espaces vectoriels.
+
+\begin{enumerate}
+\item S'il existe une application linéaire injective de \(E\) vers \(F\) alors \[\dim E\leq\dim F.\]
+
+\item S'il existe une application linéaire surjective de \(E\) vers \(F\) alors \[\dim E\geq\dim F.\]
+
+\item Si \(E\) et \(F\) sont isomorphes alors \[\dim E=\dim F.\]
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+Soit \(u\in\L{E}{F}\) injective.
+
+Si \(\dim E<\pinf\) :
+
+Soit \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+Comme \(u\) est injective, \(\paren{u\paren{e_1},\dots,u\paren{e_n}}\) est une famille libre de \(F\) selon le \thref{rappel:imageD'UneBaseParUneApplicationLinéaire}.
+
+Donc \(n\leq\dim F\) car \(F\) possède une famille libre de \(n\) vecteurs.
+
+Si \(\dim E=\pinf\) alors il existe une famille libre infinie \(\paren{x_i}_{i\in I}\in E^I\) de vecteurs de \(E\) et \(\paren{u\paren{x_i}}_{i\in I}\) est une famille libre infinie de vecteurs de \(F\) (selon le \thref{rappel:imageD'UneBaseParUneApplicationLinéaire}).
+
+Donc \(\dim E\leq\dim F\).
+\end{dem}
+
+\begin{dem}[2]
+Soit \(u\in\L{E}{F}\) surjective.
+
+Si \(\dim E=\pinf\) alors \(\dim E\geq\dim F\).
+
+Si \(\dim E<\pinf\) :
+
+Soit \(\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+Selon le \thref{rappel:imageD'UneBaseParUneApplicationLinéaire}, \(\paren{u\paren{e_1},\dots,u\paren{e_n}}\) est une famille génératrice de \(F\).
+
+Donc \(\dim F\leq n\).
+\end{dem}
+
+\begin{dem}[3]
+Découle de (1) et (2).
+\end{dem}
+
+\begin{theo}\thlabel{theo:conditionsPourqQu'UneFamilleD'UnEVDeDimensionFinieSoitUneBase}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension finie \(n\) et \(\paren{e_1,\dots,e_p}\) une famille d'éléments de \(E\).
+
+Alors \(\paren{e_1,\dots,e_p}\) est une base de \(E\) si elle vérifie deux des trois propositions suivantes :
+
+\begin{enumerate}
+\item \(p=n\) \\
+
+\item \(\paren{e_1,\dots,e_p}\) est une famille libre \\
+
+\item \(\paren{e_1,\dots,e_p}\) est une famille génératrice de \(E\).
+\end{enumerate}
+\end{theo}
+
+\begin{dem}
+Si on a (2) et (3) alors \(\paren{e_1,\dots,e_p}\) est une base de \(E\).
+
+Si on a (1) et (2) alors on peut compléter \(\paren{e_1,\dots,e_p}\) en une base de \(E\) selon le théorème de la base incomplète. Donc \(\paren{e_1,\dots,e_p}\) est une base de \(E\).
+
+Si on a (3) alors on peut extraire de \(\paren{e_1,\dots,e_p}\) une base de \(E\) selon le théorème de la base extraite. Si, de plus, \(n=p\) alors \(\paren{e_1,\dots,e_p}\) est une base de \(E\).
+\end{dem}
+
+\begin{exo}
+Montrer que la famille \(\fami{B}=\paren{\tcoords{1}{2}{0},\tcoords{0}{1}{2},\tcoords{2}{1}{0}}\) est une base de \(\R^3\).
+\end{exo}
+
+\begin{corr}
+Montrons que \(\fami{B}\) est libre.
+
+Soient \(a,b,c\in\R\) tels que \(a\tcoords{1}{2}{0}+b\tcoords{0}{1}{2}+c\tcoords{2}{1}{0}=0\).
+
+Alors \(\begin{dcases}
+a+2c=0 \\
+2a+b+c=0 \\
+2b=0
+\end{dcases}\) donc \(\begin{dcases}
+-3c=0 &L_1\gets L_2-2L_1 \\
+-3a=0 &L_2\gets L_1-2L_2 \\
+b=0
+\end{dcases}\)
+
+Donc \(\fami{B}\) est libre.
+
+De plus, elle possède \(3\) éléments et \(\dim\R^3=3\) donc c'est une base de \(\R^3\).
+\end{corr}
+
+\section{Sous-espaces vectoriels en dimension finie}
+
+\subsection{Dimension d'un sous-espace vectoriel}
+
+\begin{theo}\thlabel{theo:dimensionD'UnSousEVEstPlusPetite}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension finie et \(F\) un sous-espace vectoriel de \(E\).
+
+Alors : \[\dim F\leq\dim E,\] avec égalité si, et seulement si, \(E=F\).
+\end{theo}
+
+\begin{dem}
+On pose \(n=\dim E\).
+
+Toute famille libre de \(F\) est une famille libre de \(E\) et possède donc au plus \(n\) éléments.
+
+Donc \(F\) est de dimension finie.
+
+Soit \(\paren{e_1,\dots,e_p}\) une base de \(F\) où \(p\in\N\).
+
+Comme \(\paren{e_1,\dots,e_p}\) est une famille libre de vecteurs de \(E\), on a \(p\leq n\).
+
+Donc \[\dim F=p\leq n=\dim E.\]
+
+Montrons que \(\dim E=\dim F\ssi E=F\).
+
+\imprec Claire.
+
+\impdir
+
+Si \(p=n\) alors \(\paren{e_1,\dots,e_p}\) est une famille libre de vecteurs de \(E\) possédant \(p=\dim E\) vecteurs de \(E\).
+
+C'est donc une base de \(E\).
+
+Donc \(E=\Vect{e_1,\dots,e_p}=F\).
+\end{dem}
+
+\begin{defi}[Base adaptée à un sous-espace vectoriel]
+Soient \(E\) un espace vectoriel de dimension finie et \(F\) un sous-espace vectoriel de \(E\).
+
+On dit qu'une base \(\fami{B}\) de \(E\) est adaptée au sous-espace vectoriel \(F\) si ses premiers vecteurs forment une base de \(F\), \cad si elle est de la forme \[\fami{B}=\paren{e_1,\dots,e_p,\dots,e_n}\in E^n\] avec \(p=\dim F\), \(n=\dim E\) et \(\paren{e_1,\dots,e_p}\) est une base de \(F\).
+
+Il est facile de voir si un vecteur de \(E\) appartient à \(F\) à partir de ses coordonnées dans \(\fami{B}\) : \[\quantifs{\forall x_1,\dots,x_n\in\K}x_1e_1+\dots+x_ne_n\in F\ssi x_{p+1}=\dots=x_n=0.\]
+\end{defi}
+
+\begin{exoex}
+Donner une base de \(E\) adaptée au sous-espace vectoriel \(F\) dans les situations suivantes :
+
+\begin{enumerate}
+\item \(E=\polydeg{N}\) et \(F=\polydeg{n}\) où les entiers \(n,N\in\N\) vérifient \(n\leq N\). \\
+
+\item \(E=\polydeg{4}\) et \(F=\accol{P\in\polydeg{4}\tq3\text{ est racine multiple de }P}\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+La base canonique de \(\polydeg{N}\) \(\paren{\underbrace{1,\dots,X^n}_{\text{base de }\polydeg{n}},\dots,X^N}\) est adaptée à \(\polydeg{n}\).
+\end{corr}
+
+\begin{corr}[2]
+On a \(\dim E=5\).
+
+On a \[\begin{aligned}
+\quantifs{\forall P\in E}P\in F&\ssi\paren{X-3}^2\divise P \\
+&\ssi\quantifs{\exists a,b,c\in\K}P=\paren{X-3}^2\paren{aX^2+bX+c} \\
+&\ssi\quantifs{\exists a,b,c\in\K}P=aX^2\paren{X-3}^2+bX\paren{X-3}^2+c\paren{X-3}^2 \\
+&\ssi P\in\Vect{\paren{X-3}^2,X\paren{X-3}^2,X^2\paren{X-3}^2}
+\end{aligned}\]
+
+D'où une base de \(E\) adaptée à \(F\) : \(\paren{\paren{X-3}^2,X\paren{X-3}^2,X^2\paren{X-3}^2,1,X}\).
+
+C'est bien une base de \(E\) car c'est une famille de polynômes à degrés échelonnés.
+\end{corr}
+
+\begin{prop}
+Soient \(E\) un espace vectoriel de dimension finie et \(F\) un sous-espace vectoriel de \(E\).
+
+Il existe une base de \(E\) adaptée à \(F\).
+\end{prop}
+
+\begin{dem}
+Comme \(F\) est un sous-espace vectoriel de \(E\), il est de dimension finie.
+
+Soit \(\paren{e_1,\dots,e_p}\) une base de \(F\) (avec \(p\in\N\)).
+
+Comme \(\paren{e_1,\dots,e_p}\) est une famille libre de vecteurs de \(F\), c'est une famille libre de vecteurs de \(E\).
+
+Selon le théorème de la base incomplète, on peut la compléter en une base de \(E\) : \[\paren{\underbrace{e_1,\dots,e_p}_{\text{base de }F},\dots,e_n}.\]
+\end{dem}
+
+\subsection{Rang d'une famille de vecteurs}
+
+\begin{defi}
+Soient \(E\) un \(\K\)-espace vectoriel et \(\fami{F}=\paren{x_1,\dots,x_p}\in E^p\) une famille de vecteurs de \(E\) (où \(p\in\N\)).
+
+Le rang de la famille \(\fami{F}\) est la dimension du sous-espace vectoriel qu'elle engendre : \[\rg\fami{F}=\dim\Vect{\fami{F}}.\]
+\end{defi}
+
+\begin{rem}
+On ne modifie pas le rang d'une famille de vecteurs :
+
+\begin{itemize}
+\item en permutant ses vecteurs ; \\
+
+\item en multipliant l'un de ses vecteurs par un scalaire non-nul ; \\
+
+\item en ajoutant à l'un de ses vecteurs une combinaison linéaire de ses autres vecteurs ; \\
+
+\item en lui ôtant le vecteur nul.
+\end{itemize}
+\end{rem}
+
+\begin{dem}
+C'est clair puisque ces transformations ne modifient pas l'espace vectoriel engendré par la famille.
+\end{dem}
+
+\begin{exoex}
+Donner le rang des familles de vecteurs suivantes :
+
+\begin{enumerate}
+\item La famille \(\paren{\tcoords{2}{4}{0},\tcoords{1}{2}{0},\tcoords{0}{1}{1},\tcoords{1}{0}{-2}}\) (famille de vecteurs de \(\R^3\)) ; \\
+
+\item La famille \(\paren{X-1,X^3-X^2,X^3-3X^2+2,X^2-1}\) (famille de vecteurs de \(\poly[\R]\)).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]~\\
+On a, comme \(\tcoords{2}{4}{0}=2\tcoords{1}{2}{0}\) : \[\begin{WithArrows}
+\rg\paren{\tcoords{2}{4}{0},\tcoords{1}{2}{0},\tcoords{0}{1}{1},\tcoords{1}{0}{-2}}&=\rg\paren{\tcoords{1}{2}{0},\tcoords{0}{1}{1},\tcoords{1}{0}{-2}} \Arrow{car \(\tcoords{1}{0}{-2}=\tcoords{1}{2}{0}-2\tcoords{0}{1}{1}\)} \\
+&=\rg\paren{\tcoords{1}{2}{0},\tcoords{0}{1}{1}} \Arrow[tikz={text width=5cm}]{car \(\tcoords{1}{2}{0}\) et \(\tcoords{0}{1}{1}\) ne sont pas colinéaires} \\
+&=2
+\end{WithArrows}\]
+\end{corr}
+
+\begin{corr}[2]
+On remarque \(X^3-3X^2+2=\paren{X^3-X^2}-2\paren{X^2-1}\).
+
+Donc \(\rg\paren{X-1,X^3-X^2,X^3-3X^2+2,X^2-1}=\rg\paren{X-1,X^3-X^2,X^2-1}=3\).
+
+En effet, la famille \(\paren{X-1,X^3-X^2,X^2-1}\) est libre car c'est une famille de polynômes non-nuls de degrés deux à deux distincts.
+
+Donc c'est une base de \(\Vect{X-1,X^3-X^2,X^2-1}\).
+
+Donc on a \(\dim\Vect{X-1,X^3-X^2,X^2-1}=3\).
+\end{corr}
+
+\begin{rem}\thlabel{rem:rangD'UneFamilleLibreInférieurÀSonCardEtRangD'UneFamilleGénératriceInférieurÀLaDimension}
+Soient \(E\) un \(\K\)-espace vectoriel et \(\fami{F}=\paren{x_1,\dots,x_p}\in E^p\) une famille de vecteurs de \(E\) (où \(p\in\N\)).
+
+On a d'une part (selon le \thref{theo:nombreDeVecteursDansLesFamillesLibresEtGénératricesD'UnEVDeDimensionFinie}) : \[\rg\fami{F}\leq p,\] avec égalité si, et seulement si, la famille \(\fami{F}\) est libre (selon le \thref{theo:conditionsPourqQu'UneFamilleD'UnEVDeDimensionFinieSoitUneBase}).
+
+On a d'autre part (selon le \thref{theo:dimensionD'UnSousEVEstPlusPetite}) : \[\rg\fami{F}\leq\dim E,\] avec égalité si, et seulement si, la famille \(\fami{F}\) est une famille génératrice de \(E\).
+\end{rem}
+
+\subsection{Sommes directes en dimension finie}
+
+\begin{defi}
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+Si \(\fami{F}_1=\paren{v_1\deriv{1},\dots,v_{d_1}\deriv{1}},\dots,\fami{F}_m=\paren{v_1\deriv{m},\dots,v_{d_m}\deriv{m}}\) sont des familles de vecteurs de \(E\), on appelle famille obtenue en juxtaposant \(\fami{F}_1,\dots,\fami{F}_m\) la famille : \[\paren{v_1\deriv{1},\dots,v_{d_1}\deriv{1},\dots,v_1\deriv{m},\dots,v_{d_m}\deriv{m}}.\]
+\end{defi}
+
+\begin{prop}\thlabel{prop:familleObtenueEnJuxtaposantLesBasesDeSousEVSupplémentairesEstUneBase}
+Soient \(E\) un espace vectoriel de dimension finie, \(F\) et \(G\) deux sous-espaces vectoriels supplémentaires dans \(E\), \(\fami{B}_F=\paren{v_1,\dots,v_n}\) une base de \(F\) et \(\fami{B}_G=\paren{w_1,\dots,w_m}\) une base de \(G\).
+
+Alors la famille \[\fami{B}=\paren{v_1,\dots,v_n,w_1,\dots,w_m}\] obtenue en juxtaposant \(\fami{B}_F\) et \(\fami{B}_G\) est une base de \(E\).
+\end{prop}
+
+\begin{dem}
+Montrons que \(\fami{B}\) est libre.
+
+Soient \(\lambda_1,\dots,\lambda_n,\mu_1,\dots,\mu_m\in\K\) tels que \[\underbrace{\lambda_1v_1+\dots+\lambda_nv_n}_{\in F}+\underbrace{\mu_1w_1+\dots+\mu_mw_m}_{\in G}=0_E.\]
+
+Donc comme \(F\) et \(G\) sont en somme directe : \(\begin{dcases}
+\lambda_1v_1+\dots+\lambda_nv_n=0_E \\
+\mu_1w_1+\dots+\mu_mw_m=0_E
+\end{dcases}\)
+
+Donc comme \(\fami{B}_F\) et \(\fami{B}_G\) sont libres : \(\begin{dcases}
+\lambda_1=\dots=\lambda_n=0 \\
+\mu_1=\dots=\mu_m=0
+\end{dcases}\)
+
+Donc \(\fami{B}\) est libre.
+
+Montrons que \(\fami{B}\) est génératrice de \(E\).
+
+Soit \(x\in E\).
+
+Comme \(E=F+G\), il existe \(x_F\in F\) et \(x_G\in G\) tels que \(x=x_F+x_G\).
+
+Comme \(\fami{B}_F\) est génératrice de \(F\), il existe \(\lambda_1,\dots,\lambda_n\in\K\) tels que \[x_F=\lambda_1v_1+\dots+\lambda_nv_n.\]
+
+Comme \(\fami{B}_G\) est génératrice de \(G\), il existe \(\mu_1,\dots,\mu_m\in\K\) tels que \[x_G=\mu_1w_1+\dots+\mu_mw_m.\]
+
+Finalement, on a \(x=\lambda_1v_1+\dots+\lambda_nv_n+\mu_1w_1+\dots+\mu_mw_m\).
+
+Donc \(x\in\Vect{\fami{B}}\).
+
+Donc \(\fami{B}\) est génératrice de \(E\).
+
+Finalement, \(\fami{B}\) est une base de \(E\).
+\end{dem}
+
+\begin{cor}
+Soient \(E\) un espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\) en somme directe : \[F\inter G=\accol{0_E}.\]
+
+Alors on a : \[\dim F\oplus G=\dim F+\dim G.\]
+\end{cor}
+
+\begin{dem}
+Posons \(E\prim=F\oplus G\).
+
+Si \(F\) ou \(G\) est de dimension infinie, alors \(E\prim\) aussi donc on a bien \(\dim E\prim=\dim F+\dim G\).
+
+Supposons \(F\) et \(G\) de dimension finie.
+
+Soient \(\fami{B}_F\) une base de \(F\) et \(\fami{B}_G\) une base de \(G\).
+
+On note \(\fami{B}\) la famille obtenue en juxtaposant \(\fami{B}_F\) et \(\fami{B}_G\).
+
+Selon la \thref{prop:familleObtenueEnJuxtaposantLesBasesDeSousEVSupplémentairesEstUneBase}, \(\fami{B}\) est une base de \(E\prim\).
+
+Donc \[\dim E\prim=\Card\fami{B}=\Card\fami{B}_F+\Card\fami{B}_G=\dim F+\dim G.\]
+\end{dem}
+
+\begin{defi}[Base adaptée à une somme directe]
+Soient \(E\) un espace vectoriel de dimension finie et \(F\) et \(G\) deux sous-espaces vectoriels supplémentaires dans \(E\) : \[E=F\oplus G.\]
+
+Une base de \(E\) obtenue en juxtaposant une base de \(F\) et une base de \(G\) est dite adaptée à la décomposition de \(E\) en somme directe.
+
+On a vu à la \thref{prop:familleObtenueEnJuxtaposantLesBasesDeSousEVSupplémentairesEstUneBase} qu'une telle base existe.
+\end{defi}
+
+\begin{exo}
+Soient \(F\) et \(G\) deux plans vectoriels de \(\K^3\) tels que \(F\not=G\).
+
+Quelle est la dimension de leur intersection ?
+\end{exo}
+
+\begin{corr}~\\
+On a \(\begin{dcases}
+F\inter G\text{ est un sous-espace vectoriel de }F \\
+\dim F=2
+\end{dcases}\) donc \(\dim F\inter G\leq2\).
+
+Si \(\dim F\inter G=2\) :
+
+On a \(\begin{dcases}
+F\inter G\subset F \\
+\dim F\inter G=\dim F<\pinf
+\end{dcases}\) donc \(F\inter G=F\) donc \(F\subset G\).
+
+Ainsi \(\begin{dcases}
+F\subset G \\
+\dim F=\dim G<\pinf
+\end{dcases}\) donc \(F=G\) : contradiction.
+
+Si \(\dim F\inter G=0\) alors on a \(F\inter G=\accol{0}\) donc \(F\oplus G\) est un sous-espace vectoriel de \(\K^3\) tel que \(\dim F\oplus G=\dim F+\dim G=4\) : contradiction car \(\dim\K^3=3\).
+
+Donc \(\dim F\inter G=1\).
+\end{corr}
+
+\subsection{Supplémentaire en dimension finie}
+
+\begin{theo}[Existence d'un supplémentaire en dimension finie]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension finie et \(F\) un sous-espace vectoriel de \(E\).
+
+Alors \(F\) admet un supplémentaire dans \(E\).
+\end{theo}
+
+\begin{dem}
+Soit \(\paren{e_1,\dots,e_p}\) une base de \(F\) (avec \(p\in\N\)).
+
+La famille \(\paren{e_1,\dots,e_p}\) est une famille libre de vecteurs de \(E\).
+
+Donc selon le théorème de la base incomplète, on peut la compléter en une base \(\paren{e_1,\dots,e_n}\) de \(E\) (avec \(n\in\N\) tel que \(n\geq p\)).
+
+Posons \(S=\Vect{e_{p+1},\dots,e_n}\).
+
+Montrons que \(S\) est un supplémentaire de \(F\) dans \(E\), \cad \[F\inter S=\accol{0_E}.\]
+
+Soit \(x\in F\inter S\).
+
+On a \(x\in F=\Vect{e_1,\dots,e_p}\) donc il existe \(x_1,\dots,x_p\in\K\) tels que \[x=x_1e_1+\dots+x_pe_p\] et \(x\in S=\Vect{e_{p+1},\dots,e_n}\) donc il existe \(x_{p+1},\dots,x_n\in\K\) tels que \[x=x_{p+1}e_{p+1}+\dots+x_ne_n.\]
+
+On a \(x_1e_1+\dots+x_pe_p-x_{p+1}e_{p+1}-\dots-x_ne_n=x-x=0_E\).
+
+Or \(\paren{e_1,\dots,e_n}\) est libre.
+
+Donc \(\quantifs{\forall k\in\interventierii{1}{n}}x_k=0\).
+
+Donc \(x=0_E\) donc \(F\inter S=\accol{0_E}\).
+
+Montrons que \(F+S=E\).
+
+Soit \(x\in E\).
+
+Comme \(\paren{e_1,\dots,e_n}\) est une base de \(E\), il existe \(x_1,\dots,x_n\in\K\) tels que \[x=\underbrace{x_1e_1+\dots+x_pe_p}_{\in F}\underbrace{+x_{p+1}e_{p+1}+\dots+x_ne_n}_{\in S}.\]
+
+Donc \(x\in F+S\).
+
+Finalement, \(E=F\oplus S\).
+\end{dem}
+
+\section{Autres exemples de dimensions}
+
+\subsection{Dimension d'un produit d'espaces vectoriels}
+
+\begin{prop}
+Soient \(F_1,\dots,F_m\) des espaces vectoriels de dimension finie.
+
+On pose : \[\begin{dcases}
+F_1\prim=F_1\times\accol{0_{F_2}}\times\dots\times\accol{0_{F_m}} \\
+\vdots \\
+F_m\prim=\accol{0_{F_1}}\times\dots\accol{0_{F_{m-1}}}\times F_m
+\end{dcases}\]
+
+On a \(\quantifs{\forall k\in\interventierii{1}{m}}F_k\text{ est isomorphe à }F_k\prim\) donc \(\dim F_k=\dim F_k\prim\).
+
+Soient \(\fami{B}_1\) une base de \(F_1\prim\), ..., \(\fami{B}_m\) une base de \(F_m\prim\).
+
+On note \(\fami{B}\) la famille obtenue en juxtaposant \(\fami{B}_1,\dots,\fami{B}_m\).
+
+Alors \(\fami{B}\) est une base de l'espace vectoriel produit \(F_1\times\dots\times F_m\).
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{cor}\thlabel{cor:dimensionDuProduitD'EVsEstLaSommeDesDimensionsDesEVs}
+Soient \(F_1,\dots,F_m\) des espaces vectoriels.
+
+Alors : \[\dim\paren{F_1\times\dots\times F_m}=\dim F_1+\dots+\dim F_m.\]
+\end{cor}
+
+\begin{dem}
+On distingue deux cas :
+
+\begin{itemize}
+\item Si l'un des espaces vectoriels \(F_1,\dots,F_m\) est de dimension infinie, alors \(F_1\times\dots\times F_m\) est aussi de dimension infinie. \\
+
+\item Si les espaces vectoriels \(F_1,\dots,F_m\) sont de dimension finie alors la formule découle de la proposition précédente.
+\end{itemize}
+\end{dem}
+
+\subsection{Dimension de \(\L{E}{F}\)}
+
+\begin{theo}
+Soient \(E\) et \(F\) deux espaces vectoriels de dimension finie.
+
+Alors on a : \[\dim\L{E}{F}=\paren{\dim E}\paren{\dim F}.\]
+
+En particulier, l'espace vectoriel \(\L{E}{F}\) est de dimension finie.
+\end{theo}
+
+\begin{dem}
+Soit \(\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+On sait que \[\fonctionlambda{\L{E}{F}}{F^n}{u}{\paren{u\paren{e_1},\dots,u\paren{e_n}}}\] est un isomorphisme d'espaces vectoriels.
+
+Donc \[\begin{WithArrows}
+\dim\L{E}{F}&=\dim F^n \Arrow{selon le \thref{cor:dimensionDuProduitD'EVsEstLaSommeDesDimensionsDesEVs}} \\
+&=n\dim F \\
+&=\paren{\dim E}\paren{\dim F}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{cor}
+Soit \(E\) un espace vectoriel de dimension finie.
+
+Alors on a : \[\dim\Lendo{E}=\paren{\dim E}^2\] et : \[\dim E\etoile=\dim E.\]
+
+En particulier, les espaces vectoriels \(\Lendo{E}\) et \(E\etoile\) sont de dimension finie.
+\end{cor}
+
+\begin{dem}
+Posons \(n=\dim E\).
+
+On a \(\dim\Lendo{E}=\dim\L{E}{E}=n^2\).
+
+On a \(\dim E\etoile=\dim\L{E}{\K}=n\times1=n\).
+\end{dem}
+
+\begin{rem}
+Soit \(E\) un espace vectoriel de dimension finie.
+
+On a vu en TD (\cf \thref{exo:baseDuale}) que si \(\fami{B}\) est une base de \(E\) alors la base duale \(\fami{B}\prim\) possède le même nombre d'éléments que \(\fami{B}\), ce qui redémontre que \(\dim E\etoile=\dim E\).
+\end{rem}
+
+\section{Rang d'une application linéaire}
+
+\subsection{Définition}
+
+\begin{defi}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels et \(u\in\L{E}{F}\).
+
+On appelle rang de l'application linéaire \(u\) la dimension de son image : \[\rg u=\dim\Im u.\]
+\end{defi}
+
+\begin{rem}\thlabel{rem:rangD'UneApplicationLinéaireÉgalAuRangD'UneFamilleGénératriceAppliquéeÀL'ApplicationLinéaire}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels et \(u\in\L{E}{F}\).
+
+On suppose que \(\paren{e_1,\dots,e_p}\in E^p\) est une famille génératrice de \(E\).
+
+Alors \[\rg u=\rg\paren{u\paren{e_1},\dots,u\paren{e_p}}.\]
+\end{rem}
+
+\begin{dem}
+On a : \[\begin{aligned}
+\rg u&=\dim\Im u \\
+&=\dim u\paren{E} \\
+&=\dim u\paren{\Vect{e_1,\dots,e_p}} \\
+&=\dim\Vect{u\paren{e_1},\dots,u\paren{e_p}} \\
+&=\rg\paren{u\paren{e_1},\dots,u\paren{e_p}}.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels et \(u\in\L{E}{F}\).
+
+On a : \[\rg u\leq\min\accol{\dim E;\dim F}.\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(\rg u\leq\dim E\).
+
+C'est vrai si \(\dim E<\pinf\).
+
+Sinon, on considère une base \(\paren{e_1,\dots,e_n}\) de \(E\) (où \(n\in\N\)) et on a : \[\begin{WithArrows}
+\rg u&=\rg\paren{u\paren{e_1},\dots,u\paren{e_n}} \Arrow{selon la \thref{rem:rangD'UneFamilleLibreInférieurÀSonCardEtRangD'UneFamilleGénératriceInférieurÀLaDimension}} \\
+&\leq n.
+\end{WithArrows}\]
+
+Montrons que \(\rg u\leq\dim F\).
+
+On a \(\Im u\subset F\) donc \(\rg u=\dim\Im u\leq\dim F\).
+\end{dem}
+
+\begin{exoex}
+Soit \(n\in\N\).
+
+Quel est le rang de l'endomorphisme \[\fonction{D}{\polydeg[\R]{n}}{\polydeg[\R]{n}}{P}{P\prim}\text{ ?}\]
+\end{exoex}
+
+\begin{corr}
+On a \(\polydeg[\R]{n}=\Vect{1,X,\dots,X^n}\).
+
+Donc selon la \thref{rem:rangD'UneApplicationLinéaireÉgalAuRangD'UneFamilleGénératriceAppliquéeÀL'ApplicationLinéaire} : \[\begin{WithArrows}
+\rg D&=\rg\paren{D\paren{1},\dots,D\paren{X^n}} \\
+&=\rg\paren{0,1,2X,3X^2,\dots,nX^{n-1}} \\
+&=\rg\paren{1,2X,3X^2,\dots,nX^{n-1}} \Arrow[tikz={text width=5cm}]{car \(\Vect{1,2X,\dots,nX^{n-1}}=\polydeg[\R]{n-1}\)} \\
+&=n.
+\end{WithArrows}\]
+\end{corr}
+
+\begin{prop}[Invariance du rang par composition par un isomorphisme]
+Soient \(E\), \(F\) et \(G\) des \(\K\)-espaces vectoriels et \(u\in\L{E}{F}\) et \(v\in\L{F}{G}\).
+
+\begin{enumerate}
+\item Si \(u\) est un isomorphisme, alors : \(\rg vu=\rg v\). \\
+
+\item Si \(v\) est un isomorphisme, alors : \(\rg vu=\rg u\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+On a : \[\begin{WithArrows}
+\rg vu&=\dim vu\paren{E} \\
+&=\dim v\paren{u\paren{E}} \Arrow{car \(u\paren{E}=F\) car \(u\) est surjectif} \\
+&=\dim v\paren{F} \\
+&=\rg v.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{dem}[2]
+On a \[\Im vu=vu\paren{E}=v\paren{\Im u}.\]
+
+Comme \(v\) est un isomorphisme, les espaces vectoriels \(\Im vu\) et \(\Im u\) sont isomorphes.
+
+Donc \(\dim\Im vu=\dim\Im u\).
+
+Donc \(\rg vu=\rg u\).
+\end{dem}
+
+\subsection{Théorème du rang}
+
+\begin{theo}[Forme géométrique du théorème du rang]
+Soient \(E\) et \(F\) deux \(\K\)-espace vectoriel, \(u\in\L{E}{F}\) et \(S\) un supplémentaire de \(\ker u\) dans \(E\) : \[E=\ker u\oplus S.\]
+
+Alors \(u\) induit un isomorphisme de \(S\) vers \(\Im u\).
+
+Cela signifie que l'application \[\fonction{v}{S}{\Im u}{x}{u\paren{x}}\] est un isomorphisme.
+\end{theo}
+
+\begin{dem}
+On a \(u\in\L{E}{F}\) et \(S\) est un sous-espace vectoriel de \(E\) donc \(\restr{u}{S}\in\L{S}{F}\) et \(\Im\restr{u}{S}\subset\Im u\) donc \(v\in\L{S}{\Im u}\).
+
+Montrons que \(\ker v=\accol{0_E}\).
+
+Soit \(x\in S\) tel que \(v\paren{x}=0_F\).
+
+On a \(u\paren{x}=0_F\) car \(v\paren{x}=u\paren{x}\).
+
+Donc \(x\in\ker v\inter S=\accol{0_E}\).
+
+Donc \(x=0_E\).
+
+Donc \(v\) est injectif.
+
+Montrons que \(v\) est surjectif de \(S\) vers \(\Im u\).
+
+Soient \(y\in\Im u\) et \(x\in E\) tel que \(u\paren{x}=y\).
+
+Comme \(\ker u+S=E\), il existe \(x_0\in\ker u\) et \(x_1\in S\) tels que \(x=x_0+x_1\).
+
+On a \[y=u\paren{x}=u\paren{x_0}+u\paren{x_1}=0_E+v\paren{x_1}.\]
+
+Donc \(y\in\Im v\).
+
+Donc \(v\) est surjectif.
+
+Donc \(v\) est un isomorphisme de \(S\) vers \(\Im u\).
+\end{dem}
+
+\begin{theo}[Théorème du rang]
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels et \(u\in\L{E}{F}\).
+
+On suppose que \(E\) est de dimension finie.
+
+On a : \[\dim E=\rg u+\dim\ker u.\]
+\end{theo}
+
+\begin{dem}
+Soit \(S\) un supplémentaire de \(\ker u\) dans \(E\).
+
+Selon le théorème précédent, \(S\) et \(\Im u\) sont isomorphes donc \(\dim S=\dim\Im u\), \cad \(\dim E-\dim\ker u=\rg u\).
+
+Donc \[\dim E=\rg u+\dim\ker u.\]
+\end{dem}
+
+\begin{rem}
+Le théorème est également vrai en dimension infinie.
+\end{rem}
+
+\subsection{Applications}
+
+\subsubsection{Isomorphismes en dimension finie}
+
+\begin{theo}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels de même dimension finie et \(u\in\L{E}{F}\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+\item \(u\) est injective (\cad \(\ker u=\accol{0_E}\)) \\
+
+\item \(u\) est surjective (\cad \(\rg u=\dim F\)) \\
+
+\item \(u\) est bijective.
+\end{enumerate}
+\end{theo}
+
+\begin{dem}
+On a : \[\begin{WithArrows}
+u\text{ est surjectif}&\ssi\Im u=F \Arrow[tikz={text width=5cm}]{car \(\Im u\) est un sous-espace vectoriel de \(F\) et \(\dim F<\pinf\)} \\
+&\ssi\dim\Im u=\dim F \\
+&\ssi\rg u=\dim F.
+\end{WithArrows}\]
+
+Les implications (3) \(\imp\) (1) et (3) \(\imp\) (2) sont claires.
+
+Selon le théorème du rang appliqué à \(u\), on a \[\dim E=\rg u+\dim\ker u.\]
+
+D'où \[\begin{aligned}
+u\text{ est injective}&\ssi\ker u=\accol{0_E} \\
+&\ssi\dim\ker u=0 \\
+&\ssi\rg u=\dim E \\
+&\ssi\rg u=\dim F \\
+&\ssi u\text{ est surjective}.
+\end{aligned}\]
+
+D'où les équivalences.
+\end{dem}
+
+\begin{cor}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension finie et \(u\in\Lendo{E}\).
+
+On rappelle que l'anneau \(\anneau{\Lendo{E}}[+][\rond]\) n'est pas commutatif (sauf si \(\dim E\leq1\)).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+\item \(u\) est inversible : \(u\in\GL{}[E]\). \\
+
+\item \(u\) est inversible à droite : \(\quantifs{\exists v\in\Lendo{E}}uv=\id{E}\). \\
+
+\item \(u\) est inversible à gauche : \(\quantifs{\exists v\in\Lendo{E}}vu=\id{E}\).
+\end{enumerate}
+\end{cor}
+
+\begin{dem}
+Supposons \(u\) inversible à droite.
+
+Alors \(u\) est une surjection.
+
+Donc \(u\) est un isomorphisme car \(\dim E<\pinf\).
+
+D'où (1).
+
+Supposons \(u\) inversible à gauche.
+
+Alors \(u\) est une injection.
+
+Donc \(u\) est un isomorphisme car \(\dim E<\pinf\).
+
+D'où (1).
+
+Finalement, les implications (1) \(\imp\) (2) et (1) \(\imp\) (3) sont claires.
+\end{dem}
+
+\subsubsection{Formule de Grassmann}
+
+\begin{prop}[Formule de Grassmann]
+Soient \(E\) un \(\K\)-espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\) de dimension finie.
+
+On a : \[\dim\paren{F+G}=\dim F+\dim G-\dim F\inter G.\]
+\end{prop}
+
+\begin{dem}
+On pose : \[\fonction{u}{F\times G}{E}{\paren{x,y}}{x+y}\]
+
+On a \(\begin{dcases}
+u\in\L{F\times G}{E} \\
+\Im u=F+G
+\end{dcases}\)
+
+Selon le théorème du rang appliqué à \(u\), on a : \[\dim\paren{F\times G}=\dim\ker u+\rg u,\] avec \(\begin{dcases}
+\dim\paren{F\times G}=\dim F+\dim G \\
+\rg u=\dim\paren{F+G} \\
+\ker u=\accol{\paren{x,y}\in F\times G\tq x+y=0_E}=\accol{\paren{z,-z}}_{z\in F\inter G}
+\end{dcases}\)
+
+Or \(\accol{\paren{z,-z}}_{z\in F\inter G}\) est isomorphe à \(F\inter G\) (en effet, \(\fonctionlambda{F\inter G}{\accol{\paren{z,-z}}_{z\in F\inter G}}{z}{\paren{z,-z}}\) est clairement linéaire et bijective donc c'est un isomorphisme).
+
+Donc \(\dim\ker u=\dim F\inter G\).
+
+Finalement, on a \(\dim F+\dim G=\dim F\inter G+\dim\paren{F+G}\), \cad : \[\dim\paren{F+G}=\dim F+\dim G-\dim F\inter G.\]
+\end{dem}
+
+\begin{cor}
+Soient \(E\) un \(\K\)-espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\) de dimension finie.
+
+On a : \[\dim\paren{F+G}\leq\dim F+\dim G\] avec égalité si, et seulement si, \(F\) et \(G\) sont en somme directe.
+\end{cor}
+
+\begin{dem}
+Selon la formule de Grassmann, on a \[\begin{aligned}
+\dim\paren{F+G}&=\dim F+\dim G-\dim F\inter G \\
+&\leq\dim F+\dim G
+\end{aligned}\] avec égalité ssi \(\dim F\inter G=0\) ssi \(F\inter G=\accol{0_E}\) ssi \(F\) et \(G\) sont en somme directe.
+\end{dem}
+
+\subsubsection{Supplémentaires}
+
+\begin{prop}[Caractérisation des supplémentaires]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension finie et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\).
+
+On a \[E=F\oplus G\] si deux des trois conditions suivantes sont satisfaites :
+
+\begin{enumerate}
+\item Les sous-espaces vectoriels \(F\) et \(G\) sont en somme directe \\
+
+\item \(E=F+G\) \\
+
+\item \(\dim E=\dim F+\dim G\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[((1) et (3))\(\imp\)(2)]
+Supposons (1) et (3).
+
+Selon la formule de Grassmann et (1), on a : \[\begin{WithArrows}
+\dim\paren{F+G}&=\dim F+\dim G-0 \Arrow{selon (3)} \\
+&=\dim E
+\end{WithArrows}\]
+
+Ainsi, on a \(\begin{dcases}
+F+G\subset E \\
+\dim\paren{F+G}=\dim E<\pinf
+\end{dcases}\)
+
+Donc \(F+G=E\).
+\end{dem}
+
+\begin{dem}[((2) et (3))\(\imp\)(1)]
+Supposons (2) et (3).
+
+Selon la formule de Grassmann, on a : \[\begin{aligned}
+\dim F\inter G&=\underbrace{\dim F+\dim G}_{=\dim E\text{ selon (3)}}-\underbrace{\dim\paren{F+G}}_{=\dim E\text{ selon (2)}} \\
+&=0
+\end{aligned}\]
+
+Donc \(F\inter G=\accol{0_E}\).
+\end{dem}
+
+\section{Hyperplans}
+
+\subsection{Hyperplans en dimension quelconque}
+
+\begin{defi}
+Soient \(E\) un espace vectoriel et \(H\) un sous-espace vectoriel de \(E\).
+
+On dit que \(H\) est un hyperplan (de \(E\)) si \(H\) est le noyau d'une forme linéaire non-nulle : \[\quantifs{\exists l\in E\etoile\excluant\accol{0}}H=\ker l.\]
+\end{defi}
+
+\begin{prop}\thlabel{prop:droiteVectorielleNonIncluseDansUnHyperplanEstUnSupplémentaireDeCetHyperplan}
+Soient \(E\) un espace vectoriel, \(D\) une droite vectorielle de \(E\) et \(H\) un hyperplan de \(E\) ne contenant pas \(D\) : \[D\not\subset H.\]
+
+Alors \(H\) et \(D\) sont supplémentaires dans \(E\) : \[H\oplus D=E.\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(H\inter D=\accol{0_E}\).
+
+On a \(H\inter D\subset D\) et \(\dim D=1\) donc \(\dim H\inter D=0\) ou \(\dim H\inter D=1\).
+
+Si \(\dim H\inter D=1\) :
+
+Alors \(\begin{dcases}
+H\inter D\subset D \\
+\dim H\inter D=\dim D<\pinf
+\end{dcases}\)
+
+Donc \(H\inter D=D\).
+
+Donc \(D\subset H\) : contradiction.
+
+Donc \(\dim H\inter D=0\) donc \(H\inter D=\accol{0_E}\).
+
+Montrons que \(H+D=E\).
+
+Comme \(H\) est un hyperplan de \(E\), il existe \(l\in E\etoile\excluant\accol{0}\) telle que \(H=\ker l\).
+
+Soit \(x\in E\).
+
+Montrons que \(x\in H+D\).
+
+On a \(D\not\subset H\) donc \(D\not\subset\ker l\).
+
+Donc \(\quantifs{\exists x\in D}l\paren{x}\not=0\).
+
+Donc \(\restr{l}{D}\not=0\) donc \(\restr{l}{D}\) est surjective.
+
+Donc \(\quantifs{\exists y\in D}l\paren{y}=l\paren{x}\).
+
+Donc \[\begin{aligned}
+\quantifs{\exists y\in D}&y-x\in\ker l \\
+&\quantifs{\exists z\in\ker l}y-x=z \\
+&\quantifs{\exists z\in H}y-z=x.
+\end{aligned}\]
+
+Donc \(H+D=E\).
+\end{dem}
+
+\begin{prop}\thlabel{prop:hyperplansD'UnEVSontLesSousEVsQuiAdmettentCommeSupplémentaireUneDroite}
+Les hyperplans de \(E\) sont les sous-espaces vectoriels de \(E\) qui admettent comme supplémentaire une droite vectorielle.
+\end{prop}
+
+\begin{dem}
+Soit \(H\subset E\).
+
+Montrons que \[H\text{ est un hyperplan de }E\ssi H\text{ admet comme supplémentaire une droite}.\]
+
+\impdir
+
+Supposons que \(H\) est un hyperplan de \(E\).
+
+Soit \(l\in E\etoile\excluant\accol{0}\) telle que \(H=\ker l\).
+
+Comme \(l\not=0\), on a \(H\not=E\).
+
+Soit \(x\in E\excluant H\).
+
+Alors \(D=\Vect{x}\) est une droite (car \(x\not=0_E\) car \(x\not\in H\)) non-incluse dans \(H\) (car \(x\not\in H\)).
+
+Donc \(D\) est une droite supplémentaire de \(H\) dans \(E\) selon la \thref{prop:droiteVectorielleNonIncluseDansUnHyperplanEstUnSupplémentaireDeCetHyperplan}.
+
+\imprec
+
+Supposons \(E=H\oplus D\) où \(D\) est une droite de \(E\).
+
+On a \(\dim D=\dim\K=1\).
+
+Donc il existe un isomorphisme \(l_1\in D\etoile\).
+
+Notons \(l_0\in H\etoile\) la forme linéaire nulle sur \(H\).
+
+Soit \(l\in E\etoile\) l'unique forme linéaire sur \(E\) telle que \[\restr{l}{H}=l_0\qquad\text{et}\qquad\restr{l}{D}=l_1.\]
+
+On a : \[\begin{WithArrows}
+\quantifs{\forall h\in H;\forall d\in D}h+d\in\ker l&\ssi l\paren{h+d}=0_\K \\
+&\ssi l_0\paren{h}+l_1\paren{d}=0_\K \\
+&\ssi l_1\paren{d}=0_\K \Arrow{car \(l_1\) est injective} \\
+&\ssi d=0 \\
+&\ssi h+d=h \\
+&\ssi h+d\in H
+\end{WithArrows}\]
+
+Donc \(\ker l=H\) donc \(H\) est un hyperplan car \(l\in E\etoile\excluant\accol{0}\).
+\end{dem}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel, \(H\) un hyperplan de \(E\) et \(l\in E\etoile\excluant\accol{0}\) une forme linéaire non-nulle de \(E\) telle que \(\ker l=H\).
+
+Les formes linéaires nulles sur \(H\) sont celles qui sont colinéaires à \(l\) : \[\quantifs{\forall l\prim\in E\etoile}H\subset\ker l\prim\ssi\croch{\quantifs{\exists\lambda\in\K}l\prim=\lambda l}.\]
+
+Les formes linéaires dont \(H\) est le noyau sont donc celles de la forme \(\lambda l\) où \(\lambda\in\K\excluant\accol{0}\).
+\end{prop}
+
+\begin{dem}
+Soient \(D\) une droite telle que \(H\oplus D=E\) et \(x\in E\) tel que \(D=\Vect{x}\).
+
+Soit \(l\prim\in E\etoile\).
+
+Montrons que \[\quantifs{\forall l\prim\in E\etoile}H\subset\ker l\prim\ssi\croch{\quantifs{\exists\lambda\in\K}l\prim=\lambda l}.\]
+
+\imprec S'il existe \(\lambda\in\K\) tel que \(l\prim=\lambda l\) alors \(\quantifs{\forall h\in H}l\prim\paren{h}=\lambda l\paren{h}=0\) donc \(H\subset\ker l\prim\).
+
+\impdir
+
+Supposons \(H\subset\ker l\prim\).
+
+On a \(l\paren{x}\not=0\).
+
+Posons \(\lambda=\dfrac{l\prim\paren{x}}{l\paren{x}}\).
+
+On a \(l\prim\paren{x}=\lambda l\paren{x}\) donc comme \(l\prim\) est linéaire : \[\begin{aligned}
+\quantifs{\forall h\in H;\forall\mu\in\K}l\prim\paren{h+\mu x}&=l\prim\paren{h}+\mu l\prim\paren{x} \\
+&=0+\mu\lambda l\paren{x} \\
+&=\lambda l\paren{h}+\mu\lambda l\paren{x} \\
+&=\lambda l\paren{h+\mu x}.
+\end{aligned}\]
+
+Ainsi, \(\quantifs{\forall y\in H+\Vect{x}}l\prim\paren{y}=\lambda l\paren{y}\).
+
+Donc \(l\prim=\lambda l\) car \(E=H+\Vect{x}\).
+\end{dem}
+
+\subsection{Hyperplans en dimension finie}
+
+\begin{prop}
+Soit \(E\) un espace vectoriel de dimension finie \(n\in\Ns\).
+
+Les hyperplans de \(E\) sont ses sous-espaces vectoriels de dimension \(n-1\).
+\end{prop}
+
+\begin{dem}
+Rappel : si \(l\in E\etoile=\L{E}{\K}\) alors \(\rg l\leq\dim\K=1\) donc toute forme linéaire non-nulle est surjective.
+
+\incdir
+
+Soient \(H\) un hyperplan de \(E\) et \(l\in E\etoile\excluant\accol{0}\) telle que \(H=\ker l\).
+
+D'après le théorème du rang appliqué à \(l\), on a : \[\dim E=\dim\ker l+\rg l.\]
+
+Donc \(n=\dim H+1\) donc \(\dim H=n-1\).
+
+\increc
+
+Soient \(H\) un sous-espace vectoriel de \(E\) de dimension \(n-1\) et \(D\) un supplémentaire de \(H\) dans \(E\) : \[E=H\oplus D.\]
+
+On a \(\dim E=\dim H+\dim D\) donc \(\dim D=1\).
+
+Donc \(H\) est un hyperplan selon la \thref{prop:hyperplansD'UnEVSontLesSousEVsQuiAdmettentCommeSupplémentaireUneDroite}.
+\end{dem}
+
+\begin{dem}[Autre méthode]
+Soient \(H\) un sous-espace vectoriel de \(E\) de dimension \(n-1\) et \(\paren{\underbrace{e_1,\dots,e_{n-1}}_{\text{base de }H},e_n}\) une base de \(E\) adaptée à \(H\).
+
+On note \(\paren{e_1\etoile,\dots,e_n\etoile}\) la base duale de \(\paren{e_1,\dots,e_n}\).
+
+On a \(H=\ker e_n\etoile\) avec \(e_n\etoile\) une forme linéaire non-nulle.
+
+Donc \(H\) est un hyperplan de \(E\).
+\end{dem}
+
+\begin{prop}[Équation cartésienne d'un hyperplan dans une base]
+Soient \(E\) un espace vectoriel de dimension finie \(n\in\Ns\), \(H\) un hyperplan de \(E\) et \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+Alors \(H\) admet dans \(\fami{B}\) une équation cartésienne de la forme : \[a_1x_1+\dots+a_nx_n=0,\] où \(a_1,\dots,a_n\) sont des scalaires non-tous nuls.
+
+En d'autres termes, on a : \[\quantifs{\exists\paren{a_1,\dots,a_n}\in\K^n\excluant\accol{0};\forall x_1,\dots,x_n\in\K}x_1e_1+\dots+x_ne_n\in H\ssi a_1x_1+\dots+a_nx_n=0.\]
+
+De plus, l'équation cartésienne d'un hyperplan de \(E\) est unique à un facteur multiplicatif non-nul près.
+
+Autrement dit, si \(a_1x_1+\dots+a_nx_n=0\) est une équation cartésienne de \(H\) dans \(\fami{B}\), alors les autres équations cartésiennes de \(H\) dans \(\fami{B}\) sont celles de la forme : \[\lambda a_1x_1+\dots+\lambda a_nx_n=0\] où \(\lambda\in\K\excluant\accol{0}\).
+\end{prop}
+
+\begin{rem}
+Soient \(E\) un \(\K\)-espace vectoriel et \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+Déterminons les formes linéaires sur \(E\).
+
+\analyse
+
+Soit \(l\in E\etoile\).
+
+On note \(\paren{x_1,\dots,x_n}\in\K^n\) les coordonnées de \(x\) dans \(\fami{B}\) : \(x=x_1e_1+\dots+x_ne_n\).
+
+On a \[\begin{aligned}
+l\paren{x}&=l\paren{x_1e_1+\dots+x_ne_n} \\
+&=x_1l\paren{e_1}+\dots+x_nl\paren{e_n} \\
+&=a_1x_1+\dots+a_nx_n
+\end{aligned}\] en posant \(a_1=l\paren{e_1},\dots,a_n=l\paren{e_n}\).
+
+\synthese
+
+Si \(a_1,\dots,a_n\in\K\) alors la fonction \(\fonctionlambda{E}{\K}{x_1e_1+\dots+x_ne_n}{a_1x_1+\dots+a_nx_n}\) est clairement une forme linéaire sur \(E\).
+
+\conclusion
+
+Les formes linéaires sur \(E\) sont les fonctions de la forme \[\fonction{l}{E}{\K}{x_1e_1+\dots+x_ne_n}{a_1x_1+\dots+a_nx_n}\] où \(a_1,\dots,a_n\in\K\).
+
+De plus, comme \(\quantifs{\forall k\in\interventierii{1}{n}}a_k=l\paren{e_k}\), on remarque : \[l=0\ssi a_1=\dots=a_n=0\]
+\end{rem}
+
+\begin{dem}[De la proposition précédente]
+Soient \(l\in E\etoile\excluant\accol{0}\) telle que \(H=\ker l\) et \(\paren{a_1,\dots,a_n}\in\K^n\excluant\accol{0}\) tel que \[\quantifs{\forall x_1,\dots,x_n\in\K}l\paren{x_1e_1+\dots+x_ne_n}=a_1x_1+\dots+a_nx_n.\]
+
+On a \[\begin{aligned}
+\quantifs{\forall x_1,\dots,x_n\in\K}x_1e_1+\dots+x_ne_n\in H&\ssi l\paren{x_1e_1+\dots+x_ne_n}=0 \\
+&\ssi a_1x_1+\dots+a_nx_n=0.
+\end{aligned}\]
+\end{dem}
+
+\begin{ex}
+On pose \[F=\accol{\paren{x,y,z}\in\K^3\tq2x+z=0}\].
+
+Alors \(F\) est un hyperplan de \(\K^3\) car les hyperplans de \(\K^3\) sont les noyaux de ses formes linéaires non-nulles.
+\end{ex}
+
+\subsection{Intersections d'hyperplans en dimension finie}
+
+\begin{prop}
+Soient \(E\) un espace vectoriel de dimension finie \(n\in\Ns\) et \(H_1,\dots,H_m\) des hyperplans de \(E\) (où \(m\in\Ns\)).
+
+Alors : \[\dim\biginter_{i=1}^mH_i\geq n-m.\]
+\end{prop}
+
+\begin{dem}
+Soient \(l_1,\dots,l_m\in E\etoile\excluant\accol{0}\) telles que \(\quantifs{\forall i\in\interventierii{1}{m}}H_i=\ker l_i\).
+
+On pose \[\fonction{u}{E}{\K^m}{x}{\paren{l_1\paren{x},\dots,l_m\paren{x}}}\] de sorte que \[\ker u=\biginter_{i=1}^m\ker l_i=\biginter_{i=1}^mH_i.\]
+
+Appliquons le théorème du rang à \(u\) : \[\dim E=\dim\ker u+\rg u\qquad\text{avec }\begin{dcases}
+\dim E=n \\
+\dim\ker u=\dim\biginter_{i=1}^mH_i \\
+\rg u\leq m
+\end{dcases}\]
+
+Donc \(\dim\biginter_{i=1}^mH_i\geq n-m\).
+\end{dem}
+
+\begin{prop}
+Soient \(E\) un espace vectoriel de dimension finie \(n\in\Ns\) et \(F\) un sous-espace vectoriel de \(E\) de dimension \(m\in\interventierii{0}{n-1}\).
+
+Alors \(F\) est l'intersection de \(n-m\) hyperplans de \(E\).
+\end{prop}
+
+\begin{dem}~\\
+Soit \(\paren{\underbrace{e_1,\dots,e_m}_{\text{base de }F},\dots,e_n}\) une base de \(E\) adaptée à \(F\).
+
+On a \[F=\underbrace{\biginter_{i=m+1}^n\ker e_i\etoile}_{n-m\text{ hyperplans}}.\]
+\end{dem}
+
+\begin{cor}
+Soient \(E\) un espace vectoriel de dimension finie \(n\in\Ns\) et \(F\) un sous-espace vectoriel de \(E\) tel que \(E\not=F\).
+
+Alors il existe un hyperplan \(H\) de \(E\) tel que \(F\subset H\).
+\end{cor}
+
+\begin{dem}~\\
+On a \(F=\biginter_{i=1}^mH_i\) avec \(m\geq1\) donc \(F\subset H_1\).
+\end{dem}
+
+\begin{ex}
+Les droites vectorielles du plan \(\R^2\) sont les parties de \(\R^2\) définies par une équation cartésienne de la forme \[ax+by=0\] où \(\paren{a,b}\in\R^2\excluant\accol{\paren{0,0}}\).
+\end{ex}
+
+\begin{ex}
+Les droites affines du plan \(\R^2\) sont les parties de \(\R^2\) définies par une équation cartésienne de la forme \[ax+by=c\] où \(\paren{a,b}\in\R^2\excluant\accol{\paren{0,0}}\) et \(c\in\R\).
+\end{ex}
+
+\begin{ex}
+Les plans vectoriels de \(\R^3\) sont les parties de \(\R^3\) définies par une équation cartésienne de la forme \[ax+by+cz=0\] où \(\paren{a,b,c}\in\R^3\excluant\accol{\paren{0,0,0}}\).
+\end{ex}
+
+\begin{ex}
+Les plans affines de \(\R^3\) sont les parties de \(\R^3\) définies par une équation cartésienne de la forme \[ax+by+cz=d\] où \(\paren{a,b,c}\in\R^3\excluant\accol{\paren{0,0,0}}\) et \(d\in\R\).
+\end{ex}
+
+\begin{ex}
+Les droites vectorielles de \(\R^3\) sont les parties de \(\R^3\) définies par un système cartésien de la forme \[\begin{dcases}
+ax+by+cz=0 \\
+a\prim x+b\prim y+c\prim z=0
+\end{dcases}\] où les vecteurs \(\tcoords{a}{b}{c}\) et \(\tcoords{a\prim}{b\prim}{c\prim}\) sont non-colinéaires.
+\end{ex}
+
+\begin{ex}
+Les droites affines de \(\R^3\) sont les parties de \(\R^3\) définies par un système cartésien de la forme \[\begin{dcases}
+ax+by+cz=d \\
+a\prim x+b\prim y+c\prim z=d\prim
+\end{dcases}\] où les vecteurs \(\tcoords{a}{b}{c}\) et \(\tcoords{a\prim}{b\prim}{c\prim}\) sont non-colinéaires et \(d,d\prim\in\R\).
+\end{ex}

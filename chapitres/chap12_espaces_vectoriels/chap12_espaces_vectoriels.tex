@@ -1,0 +1,2160 @@
+\chapter{Espaces vectoriels}
+
+\minitoc
+
+Dans tout le chapitre, on considère un corps \(\K\) (en pratique, \(\K=\R\) ou \(\C\)).
+
+\begin{nota}
+Soient \(p\in\N\) et \(x_1,\dots,x_p\in\K\).
+
+On s'autorise à écrire le \(p\)-uplet \(\paren{x_1,\dots,x_p}\) verticalement (écriture \guillemets{matricielle}) : \[\paren{x_1,\dots,x_p}=\begin{pmatrix}x_1 \\ \vdots \\ x_p\end{pmatrix}\in\K^p.\]
+\end{nota}
+
+\section{Espaces vectoriels, sous-espaces vectoriels}
+
+\subsection{Espaces vectoriels}
+
+\begin{defi}[\(\K\)-espace vectoriel]\thlabel{def:K-EV}
+On appelle \(\K\)-espace vectoriel (ou espace vectoriel sur \(\K\)) tout triplet \(\corps{E}[+][\cdot]\) où \(\groupe{E}\) est un groupe abélien et \(\cdot\) est une application (appelée parfois loi externe) : \[\fonctionlambda{\K\times E}{E}{\paren{\lambda,x}}{\lambda\cdot x=\lambda x}\] qui vérifient \[\begin{dcases}\quantifs{\forall\lambda\in\K;\forall x,y\in E}\lambda\cdot\paren{x+y}=\lambda\cdot x+\lambda\cdot y \\ \quantifs{\forall\lambda,\mu\in\K;\forall x\in E}\paren{\lambda+\mu}\cdot x=\lambda\cdot x+\mu\cdot x \\ \quantifs{\forall\lambda,\mu\in\K;\forall x\in E}\paren{\lambda\mu}\cdot x=\lambda\cdot\paren{\mu\cdot x} \\ \quantifs{\forall x\in E}1_\K\cdot x=x\end{dcases}\]
+
+Les éléments de \(E\) sont appelés les vecteurs.
+
+Les éléments de \(\K\) sont appelés les scalaires.
+
+L'élément neutre du groupe abélien \(\groupe{E}\) est noté \(0\) ou \(0_E\). Il est appelé le vecteur nul de \(E\).
+
+Par abus, on dit que \(E\) est un \(\K\)-espace vectoriel.
+
+Un espace vectoriel est nécessairement non-vide (puisqu'il contient son vecteur nul). Si \(E\) ne contient pas d'autre vecteur que le vecteur nul (\cad si \(E=\accol{0_E}\)), on dit que \(E\) est l'espace vectoriel nul.
+\end{defi}
+
+\begin{defi}[Combinaison linéaire]\thlabel{def:combinaisonLinéaire}
+Soient \(E\) un \(\K\)-espace vectoriel et \(x_1,\dots,x_n\in E\) (où \(n\in\N\)).
+
+On appelle combinaison linéaire de \(x_1,\dots,x_n\) tout vecteur de la forme : \[\lambda_1\cdot x_1+\dots+\lambda_n\cdot x_n\] avec \(\lambda_1,\dots,\lambda_n\in\K\).
+\end{defi}
+
+\begin{ex}\thlabel{ex:EVs}
+Soit \(n\in\Ns\). Alors \(\K^n\) est naturellement un \(\K\)-espace vectoriel.
+
+\(\poly\) est naturellement un \(\K\)-espace vectoriel.
+
+Soit \(\Omega\) un ensemble quelconque. L'ensemble \(\F{\Omega}{\K}\) des fonctions de \(\Omega\) dans \(\K\) est naturellement un \(\K\)-espace vectoriel.
+
+L'ensemble \(\K^\N\) des suites d'éléments de \(\K\) est naturellement un \(\K\)-espace vectoriel.
+
+Soient \(E_1,\dots,E_m\) des \(\K\)-espaces vectoriels. On rappelle que l'ensemble produit \(E_1\times\dots\times E_m\) est formé des \(m\)-uplets de la forme \(\paren{x_1,\dots,x_m}\) où \(x_1\in E_1,\dots,x_m\in E_m\). L'ensemble \(E_1\times\dots\times E_m\) est naturellement un \(\K\)-espace vectoriel.
+\end{ex}
+
+\begin{reform}[Concrète]
+La reformulation suivante n'est ici que pour faire le point sur les opérations autorisées dans un \(\K\)-espace vectoriel (à lire simplement, la définition à connaître est la \thref{def:K-EV}).
+
+Un \(\K\)-espace vectoriel est un triplet \(\corps{E}[+][\cdot]\) où \(E\) est un ensemble, \(+\) est une fonction de \(E\times E\) dans \(E\) et \(\cdot\) est une fonction de \(\K\times E\) dans \(E\) : \[\fonctionlambda{E\times E}{E}{\paren{x,y}}{x+y}\qquad\text{et}\qquad\fonctionlambda{\K\times E}{E}{\paren{\lambda,x}}{\lambda\cdot x=\lambda x}\] qui vérifient \[\begin{dcases}
+\quantifs{\forall x,y,z\in E}\paren{x+y}+z=x+\paren{y+z} \\
+\quantifs{\forall x,y\in E}x+y=y+x \\
+\quantifs{\exists0_E\in E;\forall x\in E}x+0_E=x \\
+\quantifs{\forall x\in E;\exists-x\in E}x+\paren{-x}=0_E
+\end{dcases}\] et \[\begin{dcases}
+\quantifs{\forall\lambda\in\K;\forall x,y\in E}\lambda\cdot\paren{x+y}=\lambda\cdot x+\lambda\cdot y \\
+\quantifs{\forall\lambda,\mu\in\K;\forall x\in E}\paren{\lambda+\mu}\cdot x=\lambda\cdot x+\mu\cdot x \\
+\quantifs{\forall\lambda,\mu\in\K;\forall x\in E}\paren{\lambda\mu}\cdot x=\lambda\cdot\paren{\mu\cdot x} \\
+\quantifs{\forall x\in E}1_\K\cdot x=x
+\end{dcases}\]
+
+Le vecteur \(0_E\) est en fait unique. Il est appelé le vecteur nul de \(E\).
+
+Pour tout vecteur \(x\in E\), le vecteur \(-x\) est unique et appelé l'opposé de \(x\). Pour simplifier, on note \(y-x\) pour \(y+\paren{-x}\).
+\end{reform}
+
+\begin{reform}[Abstraite]
+Un \(\K\)-espace vectoriel est un groupe abélien \(\groupe{E}\) muni d'un morphisme d'anneaux \(\K\to\Hom{E}{E}\).
+\end{reform}
+
+\begin{rem}
+On a vu à l'\thref{ex:EVs} que \(\K\) est naturellement un \(\K\)-espace vectoriel (en prenant \(n=1\)). La loi \(\cdot\) coïncide alors avec la loi produit du corps \(\K\) ; les éléments de \(\K\) peuvent alors être vus comme des scalaires ou comme des vecteurs.
+
+Si \(E\) est un \(\C\)-espace vectoriel, alors \(E\) est naturellement un \(\R\)-espace vectoriel (en ne gardant de la loi \(\C\times E\to E\) que sa restriction \(\R\times E\to E\)).
+\end{rem}
+
+\begin{exo}
+\begin{enumerate}
+\item On considère le \(\R\)-espace vectoriel \(\poly[\R]\).
+
+Le vecteur \(X^2-1\) est-il combinaison linéaire des vecteurs \(X-1\) et \(X+1\) ?
+
+Le vecteur \(X^2-1\) est-il combinaison linéaire des vecteurs \(X^2+X\) et \(X+1\) ? \\
+
+\item On considère le \(\R\)-espace vectoriel \(\R^4\).
+
+Le vecteur \(\paren{2,2,2,2}\) est-il combinaison linéaire des vecteurs \(\paren{1,2,0,0}\) et \(\paren{0,1,-1,-1}\) ?
+
+Le vecteur \(\paren{1,0,0,0}\) est-il combinaison linéaire des vecteurs \(\paren{1,2,0,0}\) et \(\paren{0,1,-1,-1}\) ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}[1]
+On a \(\quantifs{\forall\lambda,\mu\in\R}\deg\paren{\lambda\paren{X-1}+\mu\paren{X+1}}\leq1\) donc \(\quantifs{\forall\lambda,\mu\in\R}\lambda\paren{X-1}+\mu\paren{X+1}\not=X^2-1\). Donc \(X^2-1\) n'est pas une combinaison linéaire de \(X-1\) et \(X+1\).
+
+De plus, on a \(X^2-1=1\cdot\paren{X^2+X}-1\cdot\paren{X+1}\) donc \(X^2-1\) est une combinaison linéaire de \(X^2+X\) et \(X+1\).
+\end{corr}
+
+\begin{corr}[2]
+On a \(\paren{2,2,2,2}=2\cdot\paren{1,2,0,0}-2\cdot\paren{0,1,-1,-1}\) donc \(\paren{2,2,2,2}\) est combinaison linéaire de \(\paren{1,2,0,0}\) et \(\paren{0,1,-1,-1}\).
+
+On a \(\quantifs{\forall\lambda,\mu\in\R}\lambda\paren{1,2,0,0}+\mu\paren{0,1,-1,-1}=\paren{1,0,0,0}\ssi\begin{dcases}
+\lambda=1 \\
+2\lambda+\mu=0 \\
+-\mu=0 \\
+-\mu=0
+\end{dcases}\text{ : impossible}\)
+
+Donc \(\paren{1,0,0,0}\) n'est pas combinaison linéaire de \(\paren{1,2,0,0}\) et \(\paren{0,1,-1,-1}\).
+\end{corr}
+
+\begin{prop}\thlabel{prop:lambdaFoisXNulSsiLambdaNulOuXNul}
+Soient \(E\) un \(\K\)-espace vectoriel, \(\lambda\in\K\) un scalaire et \(x\in E\) un vecteur.
+
+On a \[\lambda\cdot x=0_E\ssi\orenv{\lambda=0_\K \\ x=0_E}\]
+\end{prop}
+
+\begin{dem}
+Supposons \(\lambda=0\).
+
+Montrons que \(\lambda\cdot x=0_E\).
+
+On a \(\lambda+1_\K=1_\K\).
+
+Donc \(\paren{\lambda+1_\K}\cdot x=1_\K\cdot x\).
+
+Donc \(\lambda\cdot x+1_\K\cdot x=1_\K\cdot x\).
+
+Donc \(\lambda\cdot x=0_E\) car \(\groupe{E}\) est un groupe.
+
+D'où l'équivalence.
+
+Supposons \(\lambda\not=0_\K\).
+
+Alors \(\lambda\) est inversible car \(\K\) est un corps.
+
+On a \[\begin{aligned}
+\lambda\cdot x=0_E&\imp\lambda\inv\cdot\paren{\lambda\cdot x}=\lambda\inv\cdot0_E \\
+&\imp\paren{\lambda\inv\lambda}\cdot x=0_E \\
+&\imp1_\K\cdot x=0_E \\
+&\imp x=0_E \\
+&\imp\lambda\cdot x=0_E
+\end{aligned}\]
+
+Donc \(\lambda\cdot x\ssi x=0_E\).
+
+D'où l'équivalence.
+\end{dem}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel, \(\lambda\in\K\) un scalaire et \(x\in E\) un vecteur.
+
+On a \[\paren{-\lambda}\cdot x=\lambda\cdot\paren{-x}=-\paren{\lambda\cdot x}\] et \[\paren{-\lambda}\cdot\paren{-x}=\lambda\cdot x.\]
+\end{prop}
+
+\begin{dem}
+On remarque \[\paren{-\lambda}\cdot x+\lambda\cdot x=\paren{-\lambda+\lambda}\cdot x=0_\K\cdot x=0_E.\]
+
+Donc \(\paren{-\lambda}\cdot x=-\paren{\lambda\cdot x}\).
+
+De même : \[\lambda\cdot\paren{-x}+\lambda\cdot x=\lambda\cdot\paren{x-x}=\lambda\cdot0_E=0_E.\]
+
+Donc \(\lambda\cdot\paren{-x}=-\paren{\lambda\cdot x}\).
+
+Enfin : \[\paren{-\lambda}\cdot\paren{-x}=-\paren{\lambda\cdot\paren{-x}}=-\paren{\paren{-\lambda}\cdot x}=\lambda x.\]
+\end{dem}
+
+\subsection{Sous-espaces vectoriels}
+
+\begin{defi}
+Soient \(E\) un \(\K\)-espace vectoriel dont on note \(0_E\) l'élément neutre et \(F\) une partie de \(E\).
+
+On dit que \(F\) est un sous-\(\K\)-espace vectoriel de \(E\) (ou sous-espace vectoriel de \(E\)) si les conditions suivantes sont vérifiées :
+
+\begin{enumerate}
+\item \(0_E\in F\) \\
+
+\item La partie \(F\) est \guillemets{stable par combinaison linéaire} : \[\quantifs{\forall\lambda_1,\lambda_2\in\K;\forall x_1,x_2\in F}\lambda_1\cdot x_1+\lambda_2\cdot x_2\in F.\]
+\end{enumerate}
+\end{defi}
+
+\begin{prop}
+Tout sous-espace vectoriel \(F\) d'un \(\K\)-espace vectoriel \(\corps{E}[+][\cdot]\) est naturellement un \(\K\)-espace vectoriel : ses lois sont celles induites par celles de \(E\).
+\end{prop}
+
+\begin{dem}
+On note \(0_E\) le vecteur nul de \(E\).
+
+Montrons que \(F\) est un sous-groupe de \(\groupe{E}\).
+
+On a \[\begin{dcases}0_E\in F \\ \quantifs{\forall x,y\in F}x-y=1_\K\cdot x+\paren{-1_\K}\cdot y\in F\end{dcases}\]
+
+Donc \(F\) est un sous-groupe de \(\groupe{E}\).
+
+Donc la loi \(+\) de \(E\) induit une loi de groupe abélien \(\fonctionlambda{F\times F}{F}{\paren{x,y}}{x+y}\)
+
+On a \[\quantifs{\forall\lambda\in\K;\forall x\in F}\lambda\cdot x\in F\] car \(\lambda\cdot x=\lambda\cdot x+0_\K\cdot0_E\in F\).
+
+Donc la loi externe \(\cdot\) induite \(\fonctionlambda{\K\times F}{F}{\paren{\lambda,x}}{\lambda\cdot x}\) est bien définie.
+
+Enfin, les quatre propriétés sont clairement conservées.
+\end{dem}
+
+\begin{ex}
+Soient \(n\in\N\) et \(I\) un intervalle de \(\R\) contenant au moins deux points.
+
+L'ensemble \(\ensclasse{n}{I}{\K}\) est un sous-espace vectoriel de \(\F{I}{\K}\) et est donc muni d'une structure naturelle de \(\R\)-espace vectoriel.
+\end{ex}
+
+\begin{prop}[Intersection de sous-espaces vectoriels]
+Soient \(E\) un \(\K\)-espace vectoriel, \(I\) un ensemble quelconque et \(\paren{F_i}_{i\in I}\) une famille de sous-espaces vectoriels de \(E\).
+
+Alors \(\biginter_{i\in I}F_i\) est un sous-espace vectoriel de \(E\).
+\end{prop}
+
+\begin{dem}
+On a \(\quantifs{\forall i\in I}0_E\in F_i\) donc \(0_E\in\biginter_{i\in I}F_i\).
+
+Soient \(\lambda,\mu\in\K\) et \(x,y\in\biginter_{i\in I}F_i\).
+
+On a \(\quantifs{\forall i\in I}x,y\in F_i\).
+
+Donc \(\quantifs{\forall i\in I}\lambda\cdot x+\mu\cdot y\in F_i\).
+
+Donc \(\lambda\cdot x+\mu\cdot y\in\biginter_{i\in I}F_i\).
+\end{dem}
+
+\begin{ex}
+Soit \(I\) un intervalle de \(\R\) contenant au moins deux points.
+
+L'ensemble \(\ensclasse{\infty}{I}{\K}\) est un sous-espace vectoriel de \(\F{I}{\K}\) car c'est l'intersection des sous-espaces vectoriels \(\ensclasse{n}{I}{\K}\) où \(n\in\N\).
+\end{ex}
+
+\begin{defprop}
+Soient \(E\) un \(\K\)-espace vectoriel et \(x_1,\dots,x_n\in E\).
+
+On appelle sous-espace vectoriel engendré par \(x_1,\dots,x_n\) et on note \(\Vect{x_1,\dots,x_n}\) le plus petit sous-espace vectoriel de \(E\) qui contient \(x_1,\dots,x_n\).
+
+Ses éléments sont les combinaisons linéaires en \(x_1,\dots,x_n\) : \[\Vect{x_1,\dots,x_n}=\accol{\lambda_1x_1+\dots+\lambda_nx_n}_{\lambda_1,\dots,\lambda_n\in\K}\]
+\end{defprop}
+
+\begin{dem}
+Notons \(F\) l'ensemble des combinaisons linéaires en \(x_1,\dots,x_n\) : \[F=\accol{\lambda_1x_1+\dots+\lambda_nx_n}_{\lambda_1,\dots,\lambda_n\in\K}\]
+
+Montrons que \(F\) est un sous-espace vectoriel de \(E\).
+
+On a \(0_E=0_\K x_1+\dots+0_\K x_n\) donc \(0_E\in F\).
+
+De plus, si \(x,x\prim\in F\) alors il existe \(\lambda_1,\dots,\lambda_n,\lambda_1\prim,\dots,\lambda_n\prim\in\K\) tels que \[x=\lambda_1x_1+\dots+\lambda_nx_n\qquad\text{et}\qquad x\prim=\lambda_1\prim x_1+\dots+\lambda_n\prim x_n.\]
+
+Soient \(\mu,\mu\prim\in\K\).
+
+On a \[\mu x+\mu\prim x\prim=\paren{\mu\lambda_1+\mu\prim\lambda_1\prim}x_1+\dots+\paren{\mu\lambda_n+\mu\prim\lambda_n\prim}x_n.\]
+
+Donc \(\mu x+\mu\prim x\prim\in F\).
+
+Donc \(F\) est un sous-espace vectoriel de \(E\).
+
+On a \(x_1,\dots,x_n\in F\) car \(\quantifs{\forall k\in\interventierii{1}{n}}x_k=\sum_{i=1}^n\delta_{ki}x_i\) où \(\delta_{ki}=\begin{dcases}1 &\text{si }k=i \\ 0 &\text{sinon}\end{dcases}\) (c'est le symbole de Kronecker).
+
+Enfin, si \(G\) est un sous-espace vectoriel de \(E\) contenant \(x_1,\dots,x_n\) alors on a \[\quantifs{\forall\lambda_1,\dots,\lambda_n\in\K}\lambda_1x_1+\dots+\lambda_nx_n\in G\] donc \(F\subset G\).
+
+Donc \(F\) est le plus petit sous-espace vectoriel de \(E\) contenant \(x_1,\dots,x_n\).
+\end{dem}
+
+\subsection{Sommes, sommes directes}
+
+\begin{defprop}[Somme de deux sous-espaces vectoriels]
+Soient \(E\) un \(\K\)-espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\).
+
+L'ensemble des vecteurs de la forme \(y+z\), où \(y\in F\) et \(z\in G\), est un sous-espace vectoriel de \(E\), appelé somme des sous-espaces vectoriels \(F\) et \(G\). On le note \(F+G\) : \[F+G=\accol{y+z}_{\paren{y,z}\in F\times G}=\accol{x\in E\tq\quantifs{\exists y\in F;\exists z\in G}x=y+z}.\]
+\end{defprop}
+
+\begin{defi}[Somme directe]
+Soient \(E\) un \(\K\)-espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\).
+
+On dit que \(F\) et \(G\) sont en somme directe si l'écriture de tout vecteur de \(F+G\) sous la forme \(y+z\) est unique, où \(y\in F\) et \(z\in G\), \cad si : \[\quantifs{\forall x\in F+G;\exists!\paren{y,z}\in F\times G}x=y+z.\]
+
+La somme de \(F\) et \(G\) est alors appelée somme directe de \(F\) et \(G\) et est notée \[F\oplus G.\]
+\end{defi}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\).
+
+Alors \(F\) et \(G\) sont en somme directe si, et seulement si, leur intersection est le sous-espace vectoriel nul : \[F\inter G=\accol{0_E}.\]
+\end{prop}
+
+\begin{dem}
+Montrons l'équivalence \[F\text{ et }G\text{ sont en somme directe}\ssi F\inter G=\accol{0_E}.\]
+
+\impdir
+
+\increc Claire.
+
+\incdir
+
+Soit \(x\in F\inter G\).
+
+On a \[x=\underbrace{x}_{\in F}+\underbrace{0_E}_{\in G}=\underbrace{0_E}_{\in F}+\underbrace{x}_{\in G}.\]
+
+Donc comme \(F\) et \(G\) sont en somme directe : \(\paren{x,0_E}=\paren{0_E,x}\).
+
+Donc \(x=0_E\).
+
+Donc \(F\inter G=\accol{0_E}\).
+
+\imprec
+
+Supposons \(F\inter G=\accol{0_E}\).
+
+Montrons que \(F\) et \(G\) sont en somme directe.
+
+Soient \(x_F,y_F\in F\) et \(x_G,y_G\in G\) tels que \(x_F+x_G=y_F+y_G\).
+
+Donc \(\underbrace{x_F-y_F}_{\in F}=\underbrace{y_G-x_G}_{\in G}\).
+
+Donc \(\begin{dcases}x_F-y_F\in F\inter G=\accol{0_E} \\ y_G-x_G\in F\inter G=\accol{0_E}\end{dcases}\)
+
+Donc \(\begin{dcases}x_F-y_F=0_E \\ y_G-x_G=0_E\end{dcases}\)
+
+Donc \(\paren{x_F,x_G}=\paren{y_F,y_G}\).
+
+Donc l'écriture est unique.
+
+Donc \(F\) et \(G\) sont en somme directe.
+\end{dem}
+
+\begin{defi}[Supplémentaire]
+Soient \(E\) un \(\K\)-espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\).
+
+On dit que \(G\) est un supplémentaire de \(F\) dans \(E\) (ou que \(F\) et \(G\) sont deux sous-espaces vectoriels supplémentaires dans \(E\)) si on a : \[E=F\oplus G,\] \cad \(\begin{dcases}F\inter G=\accol{0_E} \\ E=F+G\end{dcases}\)
+\end{defi}
+
+\begin{ex}\thlabel{ex:EVsSupplémentaires}
+\begin{enumerate}
+\item En voyant \(\C\) comme un \(\R\)-espace vectoriel, on a \(\C=\R\oplus\i\R\). \\
+
+\item On considère le \(\R\)-espace vectoriel \(\F{\R}{\R}\). On note \(F\) (respectivement \(G\)) l'ensemble des fonctions paires (respectivement impaires) de \(\R\) dans \(\R\). Alors \(F\) et \(G\) sont deux sous-espaces vectoriels supplémentaires dans \(\F{\R}{\R}\). \\
+
+\item Soit \(n\in\N\) et \(Q\in\poly\) un polynôme de degré \(n+1\). On note \(\poly Q\) l'ensemble des multiples de \(Q\) dans \(\poly\). Il admet pour supplémentaire l'espace des polynômes de degré au plus \(n\) : \[\poly=\poly Q\oplus\polydeg{n}.\]
+\end{enumerate}
+\end{ex}
+
+\begin{dem}[2]
+Montrons que \(F\inter G=\accol{0}\).
+
+Soit \(f\in F\inter G\).
+
+On a \(\quantifs{\forall x\in\R}f\paren{x}=f\paren{-x}=-f\paren{x}\) donc \(f=0\).
+
+Donc \(F\inter G=\accol{0}\).
+
+Donc \(F\) et \(G\) sont en somme directe.
+
+Montrons que \(F+G=\F{\R}{\R}\).
+
+\incdir Claire.
+
+\increc
+
+Soit \(f\in\F{\R}{\R}\).
+
+On remarque \[\quantifs{\forall x\in\R}f\paren{x}=\dfrac{f\paren{x}+f\paren{-x}}{2}+\dfrac{f\paren{x}-f\paren{-x}}{2}.\]
+
+Donc \(f=g+h\) en posant \(\fonction{g}{\R}{\R}{x}{\dfrac{f\paren{x}+f\paren{-x}}{2}}\) et \(\fonction{h}{\R}{\R}{x}{\dfrac{f\paren{x}-f\paren{-x}}{2}}\)
+
+De plus, on a \(g\in F\) et \(h\in G\).
+
+Donc \(f\in F+G\).
+
+Conclusion : on a montré \(\begin{dcases}F\inter G=\accol{0} \\ F+G=\F{\R}{\R}\end{dcases}\) donc \(F\oplus G=\F{\R}{\R}\).
+
+Donc \(F\) et \(G\) sont supplémentaires dans \(\F{\R}{\R}\).
+\end{dem}
+
+\begin{dem}[3]
+Montrons que \(\poly Q\inter\polydeg{n}=\accol{0}\).
+
+Soit \(P\in\poly Q\inter\polydeg{n}\).
+
+Comme \(P\in\poly Q\), il existe \(A\in\poly\) tel que \(P=AQ\).
+
+On a donc \(\deg P=\underbrace{\deg A}_{\in\N\union\accol{\minf}}+\underbrace{\deg Q}_{=n+1}\leq n\).
+
+Donc \(\deg P=\minf\) donc \(P=0\).
+
+Donc \(\poly Q\inter\polydeg{n}=\accol{0}\).
+
+Montrons que \(\poly Q+\polydeg{n}=\poly\).
+
+Soit \(P\in\poly\).
+
+On note \(A\) et \(B\) le quotient et le reste de la division euclidienne de \(P\) par \(Q\) : on a \(P=AQ+B\) avec \(\begin{dcases}AQ\in\poly Q \\ B\in\polydeg{n}\end{dcases}\)
+
+Donc \(P\in\poly Q+\polydeg{n}\).
+
+Finalement : \[\poly=\poly Q\oplus\polydeg{n}.\]
+\end{dem}
+
+\begin{rem}
+\begin{itemize}
+\item Ne pas confondre supplémentaire et complémentaire. Le complémentaire d'un sous-espace vectoriel n'est jamais un sous-espace vectoriel car il ne contient pas le vecteur nul. \\
+
+\item Ne pas confondre \guillemets{deux sous-espaces vectoriels sont en somme directe} et \guillemets{deux sous-espaces vectoriels sont supplémentaires}. \\
+
+\item Il n'y a pas unicité du supplémentaire d'un sous-espace vectoriel, sauf dans le cas des deux sous-espaces vectoriels triviaux : si \(E\) est un \(\K\)-espace vectoriel, le seul supplémentaire de \(\accol{0_E}\) dans \(E\) est \(E\) ; le seul supplémentaire de \(E\) dans \(E\) est \(\accol{0_E}\).
+\end{itemize}
+\end{rem}
+
+\section{Applications linéaires}
+
+\subsection{Définitions}
+
+\begin{defi}[Application linéaire]
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels et \(u:E\to F\).
+
+On dit que \(u\) est une application linéaire si on a : \[\quantifs{\forall\lambda,\mu\in\K;\forall x,y\in E}u\paren{\lambda x+\mu y}=\lambda u\paren{x}+\mu u\paren{y}.\]
+
+L'ensemble des applications linéaires de \(E\) dans \(F\) est noté \(\L{E}{F}\).
+\end{defi}
+
+\begin{defi}[Endomorphisme]
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+Un endomorphisme de \(E\) est une application linéaire de \(E\) dans \(E\).
+
+L'ensemble des endomorphismes de \(E\) est noté \(\Lendo{E}\).
+\end{defi}
+
+\begin{defi}[Forme linéaire]
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+Une forme linéaire sur \(E\) est une application linéaire de \(E\) dans \(\K\).
+
+L'ensemble des formes linéaires sur \(E\) est noté \(E\etoile\) et est appelé le dual de \(E\).
+\end{defi}
+
+\begin{ex}
+L'application \[\fonctionlambda{\contm[\intervii{a}{b}][\R]}{\R}{f}{\int_{\intervii{a}{b}}f}\] est une forme linéaire.
+\end{ex}
+
+\begin{rem}
+Si \(E\) et \(F\) sont des \(\K\)-espaces vectoriels alors on a \[\Lendo{E}=\L{E}{E}\qquad\text{et}\qquad E\etoile=\L{E}{\K}.\]
+\end{rem}
+
+\begin{ex}[Homothéties]
+Soient \(E\) un \(\K\)-espace vectoriel et \(\lambda\in\K\).
+
+On appelle homothétie de rapport \(\lambda\) l'endomorphisme \[\fonctionlambda{E}{E}{x}{\lambda\cdot x}\]
+
+Cet endomorphisme est aussi noté \(\lambda\id{E}\).
+
+L'endomorphisme nul est une homothétie (de rapport \(0\)).
+
+L'application \(\id{E}\) est une homothétie (de rapport \(1\)).
+\end{ex}
+
+\begin{ex}
+Autres exemples d'endomorphismes : les opérateurs de dérivation \[\fonction{D}{\poly}{\poly}{P}{P\prim}\qquad\text{et}\qquad\fonction{D}{\ensclasse{\infty}{\R}{\R}}{\ensclasse{\infty}{\R}{\R}}{f}{f\prim}\]
+\end{ex}
+
+\subsection{Opérations sur les applications linéaires}
+
+\subsubsection{Cas des applications linéaires}
+
+\begin{prop}
+Une composée d'applications linéaires est linéaire.
+\end{prop}
+
+\begin{dem}
+Soient \(E,F,G\) des \(\K\)-espaces vectoriels et \(u\in\L{E}{F}\) et \(v\in\L{F}{G}\).
+
+Montrons que \(v\rond u\in\L{E}{G}\).
+
+Soient \(\lambda,\mu\in\K\) et \(x,y\in E\).
+
+On a \[\begin{aligned}
+v\rond u\paren{\lambda x+\mu y}&=v\paren{\lambda u\paren{x}+\mu u\paren{y}}\qquad\text{car }u\text{ est linéaire} \\
+&=\lambda v\rond u\paren{x}+\mu v\rond u\paren{y}\qquad\text{car }v\text{ est linéaire}
+\end{aligned}\]
+
+Donc \(v\rond u\) est linéaire.
+\end{dem}
+
+\begin{nota}
+Soient \(E,F,G\) des \(\K\)-espaces vectoriels et \(u\in\L{E}{F}\) et \(v\in\L{F}{G}\).
+
+La composée de \(u\) et \(v\) est souvent notée \(vu\) au lieu de \(v\rond u\).
+\end{nota}
+
+\begin{prop}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels.
+
+L'ensemble des applications linéaires de \(E\) dans \(F\) est naturellement muni d'une structure de \(\K\)-espace vectoriel \(\corps{\L{E}{F}}[+][\cdot]\) dont le vecteur nul (noté \(0\) ou \(0_{\L{E}{F}}\)) est l'application identiquement nulle (\ie en tout point) de \(E\) dans \(F\).
+
+En particulier, \(\Lendo{E}\) et \(E\etoile\) sont des \(\K\)-espaces vectoriels.
+\end{prop}
+
+\begin{dem}
+Montrons que \(\L{E}{F}\) est un sous-espace vectoriel de \(\corps{\F{E}{F}}[+][\cdot]\).
+
+Montrons que \(0_{\F{E}{F}}\in\L{E}{F}\).
+
+On a \[\begin{aligned}
+\quantifs{\forall\lambda,\mu\in\K;\forall x,y\in E}0_{\F{E}{F}}\paren{\lambda x+\mu y}&=0_F \\
+&=\lambda0_F+\mu0_F \\
+&=\lambda0_{\F{E}{F}}\paren{x}+\mu0_{\F{E}{F}}\paren{y}.
+\end{aligned}\]
+
+Donc \(0_{\F{E}{F}}\in\L{E}{F}\).
+
+Soient \(\lambda,\mu\in\K\) et \(u,v\in\L{E}{F}\).
+
+Montrons que \(\lambda u+\mu v\in\L{E}{F}\).
+
+Soient \(\omega_1,\omega_2\in\K\) et \(x_1,x_2\in E\).
+
+On a \[\begin{aligned}
+\paren{\lambda u+\mu v}\paren{\omega_1x_1+\omega_2x_2}&=\lambda u\paren{\omega_1x_1+\omega_2x_2}+\mu v\paren{\omega_1x_1+\omega_2x_2} \\
+&=\lambda\paren{\omega_1u\paren{x_1}+\omega_2u\paren{x_2}}+\mu\paren{\omega_1v\paren{x_1}+\omega_2v\paren{x_2}} \\
+&=\omega_1\paren{\lambda u\paren{x_1}+\mu v\paren{x_1}}+\omega_2\paren{\lambda v\paren{x_2}+\mu v\paren{x_2}} \\
+&=\omega_1\paren{\lambda u+\mu v}\paren{x_1}+\omega_2\paren{\lambda u+\mu v}\paren{x_2}.
+\end{aligned}\]
+
+Donc \(\lambda u+\mu v\in\L{E}{F}\).
+
+Donc \(\L{E}{F}\) est un sous-espace vectoriel de \(\F{E}{F}\).
+
+Donc \(\L{E}{F}\) est un \(\K\)-espace vectoriel.
+\end{dem}
+
+\subsubsection{Cas des endomorphismes}
+
+\begin{nota}
+Soient \(E\) un espace vectoriel, \(u\in\Lendo{E}\) et \(k\in\N\).
+
+L'itéré \(k\)-ème de \(u\) est souvent noté \(u^k\) (au lieu de \(u^{\rond k}\)).
+\end{nota}
+
+\begin{prop}
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+L'ensemble des endomorphismes de \(E\) est naturellement muni d'une structure d'anneau \(\corps{\Lendo{E}}[+][\rond]\).
+
+Ses éléments neutres sont l'application identiquement nulle \(0=0_{\Lendo{E}}\) pour \(+\) et l'application identité \(\id{E}\) pour \(\rond\).
+
+En effet : \[\quantifs{\forall u\in\Lendo{E}}u\rond0=0\rond u=0\qquad\text{et}\qquad u\rond\id{E}=\id{E}\rond u=u.\]
+
+L'anneau \(\Lendo{E}\) n'est pas commutatif en général.
+\end{prop}
+
+\begin{dem}
+On sait que \(\anneau{\Lendo{E}}[+][\cdot]\) est un \(\K\)-espace vectoriel.
+
+Donc \(\groupe{\Lendo{E}}\) est un groupe abélien.
+
+La loi \(\rond\) est associative et elle admet \(\id{E}\) comme élément neutre.
+
+Montrons que \(\rond\) est distributive par rapport à \(+\).
+
+Soient \(u,v,w\in\Lendo{E}\).
+
+On a \(\quantifs{\forall x\in E}\paren{u+v}w\paren{x}=uw\paren{x}+vw\paren{x}=\paren{uw+vw}\paren{x}\).
+
+Donc \(\paren{u+v}w=uw+vw\).
+
+De plus : \[\begin{WithArrows}
+\quantifs{\forall x\in E}u\paren{v+w}\paren{x}&=u\paren{v\paren{x}+w\paren{x}} \Arrow{car \(u\) est linéaire} \\
+&=uv\paren{x}+uw\paren{x} \\
+&=\paren{uv+uw}\paren{x}.
+\end{WithArrows}\]
+
+Donc \(u\paren{v+w}=uv+uw\).
+
+Donc \(\rond\) est distributive par rapport à \(+\).
+
+Donc \(\anneau{\Lendo{E}}[+][\rond]\) est un anneau.
+\end{dem}
+
+\begin{rem}
+\(\anneau{\F{E}{E}}[+][\rond]\) n'est pas un anneau.
+\end{rem}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel et \(u,v\in\Lendo{E}\) deux endomorphismes qui commutent : \(uv=vu\).
+
+On a la formule du binôme de Newton : \[\quantifs{\forall m\in\N}\paren{u+v}^m=\sum_{k=0}^m\binom{k}{m}u^kv^{m-k}\] et \[\quantifs{\forall m\in\N}u^m-v^m=\paren{u-v}\sum_{k=0}^{m-1}u^kv^{m-1-k}.\]
+\end{prop}
+
+\subsection{Applications linéaires et sous-espaces vectoriels}
+
+\begin{prop}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels, \(u\in\L{E}{F}\) et \(x_1,\dots,x_n\in E\).
+
+On a \[u\paren{\Vect{x_1,\dots,x_n}}=\Vect{u\paren{x_1},\dots,u\paren{x_n}}.\]
+\end{prop}
+
+\begin{dem}
+On a \[\begin{WithArrows}
+u\paren{\Vect{x_1,\dots,x_n}}&=u\paren{\accol{\lambda_1x_1+\dots+\lambda_nx_n}_{\lambda_1,\dots,\lambda_n\in\K}} \\
+&=\accol{u\paren{\lambda_1x_1+\dots+\lambda_nx_n}}_{\lambda_1,\dots,\lambda_n\in\K} \Arrow{car \(u\) est linéaire} \\
+&=\accol{\lambda_1u\paren{x_1}+\dots+\lambda_nu\paren{x_n}}_{\lambda_1,\dots,\lambda_n\in\K} \\
+&=\Vect{u\paren{x_1},\dots,u\paren{x_n}}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{ex}
+Considérons l'endomorphisme \(\fonction{D}{\poly}{\poly}{P}{P\prim}\)
+
+Soit \(n\in\Ns\).
+
+Alors \[D\paren{\polydeg{n}}=\polydeg{n-1}.\]
+\end{ex}
+
+\begin{dem}
+On a \[\polydeg{n}=\accol{a_nX^n+\dots+a_0X^0}_{a_0,\dots,a_n\in\K}=\Vect{X^n,\dots,X^0}.\]
+
+En particulier, \(\polydeg{n}\) est un sous-espace vectoriel de \(\poly\).
+
+On a \[\begin{WithArrows}
+D\paren{\polydeg{n}}&=D\paren{\Vect{X^n,\dots,X^0}} \Arrow{car \(D\) est linéaire} \\
+&=\Vect{D\paren{X^n},\dots,D\paren{X^0}} \\
+&=\Vect{nX^{n-1},\dots,4X^3,3X^2,2X,1,0} \\
+&=\Vect{X^{n-1},\dots,X^3,X^2,X,1} \\
+&=\polydeg{n-1}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{prop}\thlabel{prop:imageEtImageRéciproqueD'UnSousEVParUneApplicationLinéaireSontDesSousEVs}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels, \(u\in\L{E}{F}\), \(E_1\) un sous-espace vectoriel de \(E\) et \(F_1\) un sous-espace vectoriel de \(F\).
+
+Alors \[u\inv\paren{F_1}\text{ est un sous-espace vectoriel de }E\] et \[u\paren{E_1}\text{ est un sous-espace vectoriel de }F.\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(u\inv\paren{F_1}\) est un sous-espace vectoriel de \(E\).
+
+On a \(u\inv\paren{F_1}\subset E\).
+
+On a \(u\paren{0_E}=0_F\) car \(u\) est linéaire donc \(u\paren{0_E}\in F_1\) donc \(0_E\in u\inv\paren{F_1}\).
+
+Montrons que \(u\inv\paren{F_1}\) est stable par combinaison linéaire.
+
+Soient \(\lambda,\mu\in\K\) et \(x,y\in u\inv\paren{F_1}\).
+
+Montrons que \(\lambda x+\mu y\in u\inv\paren{F_1}\).
+
+Comme \(u\) est linéaire, on a \[u\paren{\lambda x+\mu y}=\underbrace{\lambda u\paren{x}}_{\substack{\in F_1\text{ car} \\ x\in u\inv\paren{F_1}}}+\underbrace{\mu u\paren{y}}_{\substack{\in F_1\text{ car} \\ y\in u\inv\paren{F_1}}}.\]
+
+Donc \(u\paren{\lambda x+\mu y}\in F_1\) car \(F_1\) est un sous-espace vectoriel de \(F\).
+
+Donc \(\lambda u\paren{x}+\mu u\paren{y}\in u\inv\paren{F_1}\).
+
+Donc \(u\inv\paren{F_1}\) est un sous-espace vectoriel de \(E\).
+
+Montrons que \(u\paren{E_1}\) est un sous-espace vectoriel de \(F\).
+
+On a \(u\paren{E_1}\subset F\).
+
+On a \(0_F=u\paren{0_E}\) et \(0_E\in E_1\) donc \(0_F\in u\paren{E_1}\).
+
+Montrons que \(u\paren{E_1}\) est stable par combinaison linéaire.
+
+Soient \(\lambda_1,\lambda_2\in\K\) et \(y_1,y_2\in u\paren{E_1}\).
+
+Montrons que \(\lambda_1y_1+\lambda_2y_2\in u\paren{E_1}\).
+
+Soient \(x_1,x_2\in E_1\) tels que \(\begin{dcases}y_1=u\paren{x_1} \\ y_2=u\paren{x_2}\end{dcases}\)
+
+On a \[\begin{WithArrows}
+\lambda_1y_1+\lambda_2y_2&=\lambda_1u\paren{x_1}+\lambda_2u\paren{x_2} \Arrow{car \(u\) est linéaire} \\
+&=u\paren{\lambda_1x_1+\lambda_2x_2}
+\end{WithArrows}\] et \(\lambda_1x_1+\lambda_2x_2\in E_1\) car \(E_1\) est un sous-espace vectoriel de \(E\).
+
+Donc \(\lambda_1y_1+\lambda_2y_2\in u\paren{E_1}\).
+
+Donc \(u\paren{E_1}\) est un sous-espace vectoriel de \(F\).
+\end{dem}
+
+\begin{defi}[Noyau et image d'une application linéaire]
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels et \(u\in\L{E}{F}\).
+
+On note \(0_F\) l'élément neutre de \(F\).
+
+L'image de \(u\) est l'ensemble image de l'application \(u\) : \[\Im u=\accol{u\paren{x}}_{x\in E}=\accol{y\in F\tq\quantifs{\exists x\in E}u\paren{x}=y}=u\paren{E}.\]
+
+Le noyau de \(u\) est l'ensemble des vecteurs de \(E\) d'image nulle : \[\ker u=u\inv\paren{\accol{0_F}}=\accol{x\in E\tq u\paren{x}=0_F}.\]
+\end{defi}
+
+\begin{prop}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels et \(u\in\L{E}{F}\).
+
+Alors \(\ker u\) est un sous-espace vectoriel de \(E\) et \(\Im u\) est un sous-espace vectoriel de \(F\).
+\end{prop}
+
+\begin{dem}
+\(\ker u\) est l'image réciproque de \(\accol{0_F}\) par \(u\).
+
+Or \(u\) est linéaire et \(\accol{0_F}\) est un sous-espace vectoriel de \(F\).
+
+Donc \(\ker u\) est un sous-espace vectoriel de \(E\) selon la \thref{prop:imageEtImageRéciproqueD'UnSousEVParUneApplicationLinéaireSontDesSousEVs}.
+
+De même, \(\Im u=u\paren{E}\) est l'image directe de \(E\) par \(u\).
+
+Or \(u\) est linéaire et \(E\) est un sous-espace vectoriel de \(E\).
+
+Donc \(\Im u\) est un sous-espace vectoriel de \(F\) selon la \thref{prop:imageEtImageRéciproqueD'UnSousEVParUneApplicationLinéaireSontDesSousEVs}.
+\end{dem}
+
+\begin{theo}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels et \(u\in\L{E}{F}\).
+
+On note \(0_E\) l'élément neutre de \(E\).
+
+Alors \(u\) est injective si, et seulement si, son noyau est \guillemets{nul}, \cad \[u\text{ est injective}\ssi\ker u=\accol{0_E}.\]
+\end{theo}
+
+\begin{dem}[Découle du théorème analogue pour les groupes (\cf \thref{theo:morphismeDeGroupeInjectifSsiNoyauNul})]
+\impdir
+
+Supposons \(u\) injective.
+
+Alors \(0_F\) n'admet d'autre antécédent que \(0_E\) par \(u\).
+
+Donc \(\ker u=\accol{0_E}\).
+
+\imprec
+
+Supposons \(\ker u=\accol{0_E}\).
+
+Montrons que \(u\) est injective.
+
+Soient \(x,y\in E\) tels que \(u\paren{x}=u\paren{y}\).
+
+On a \(u\paren{x}-u\paren{y}=0_F\) donc \(u\paren{x-y}=0_F\) car \(u\) est linéaire.
+
+Donc \(x-y\in\ker u\).
+
+Donc \(x-y=0_E\) donc \(x=y\).
+
+Donc \(u\) est injective.
+\end{dem}
+
+\subsection{Projecteurs}
+
+\begin{defprop}
+Soient \(E\) un \(\K\)-espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels supplémentaires dans \(E\).
+
+Le projecteur \(p_F\) sur \(F\) parallèlement à \(G\) et le projecteur \(p_G\) sur \(G\) parallèlement à \(F\) sont les endomorphismes de \(E\) caractérisés par : \[\quantifs{\forall x\in E}\begin{dcases}
+x=p_F\paren{x}+p_G\paren{x} \\
+p_F\paren{x}\in F \\
+p_G\paren{x}\in G
+\end{dcases}\]
+
+On a \[\Im p_F=F\qquad\text{et}\qquad\ker p_F=G.\]
+\end{defprop}
+
+\begin{dem}[\(\Im p_F\)]
+On a, par définition de \(p_F\) : \(\Im p_F\subset F\).
+
+Montrons que \(\Im p_F\supset F\).
+
+Soit \(x\in F\).
+
+Montrons que \(x\in\Im p_F=F\).
+
+On a \(x=\underbrace{x}_{\in F}+\underbrace{0_E}_{\in G}\) donc \(p_F\paren{x}=x\).
+
+Donc \(x\in\Im p_F\).
+
+D'où \(\Im p_F=F\).
+\end{dem}
+
+\begin{dem}[\(\ker p_F=G\)]
+\increc
+
+Soit \(x\in G\)
+
+On a \(x=\underbrace{0_E}_{\in F}+\underbrace{x}_{\in G}\) donc \(p_F\paren{x}=0_E\).
+
+Donc \(x\in\ker p_F\).
+
+\incdir
+
+Soit \(x\in\ker p_F\).
+
+On a \(x=p_F\paren{x}+p_G\paren{x}=p_G\paren{x}\in G\).
+
+D'où l'égalité.
+\end{dem}
+
+\begin{defi}
+Soient \(E\) un \(\K\)-espace vectoriel et \(p\in\Lendo{E}\).
+
+On dit que \(p\) est un projecteur s'il existe deux sous-espaces vectoriels \(F\) et \(G\) supplémentaires dans \(E\) tels que \(p\) soit le projecteur sur \(F\) parallèlement à \(G\).
+\end{defi}
+
+\begin{ex}[On reprend les couples de supplémentaires de l'\thref{ex:EVsSupplémentaires}]
+\begin{enumerate}
+\item On a vu \(\C=\R\oplus\i\R\).
+
+Le projecteur sur \(\R\) parallèlement à \(\i\R\) est \[\fonctionlambda{\C}{\C}{z}{\Re z}\]
+
+Le projecteur sur \(\i\R\) parallèlement à \(\R\) est \[\fonctionlambda{\C}{\C}{z}{\i\Im z}\]
+
+\item On a vu \(\F{\R}{\R}=F\oplus G\) où \(F\) (respectivement \(G\)) est l'ensemble des fonctions paires (respectivement impaires) de \(\R\) dans \(\R\).
+
+Les projecteurs \(p_F\) et \(p_G\) associés à cette décomposition de \(\F{\R}{\R}\) en somme directe sont : \[\fonction{p_F}{\F{\R}{\R}}{\F{\R}{\R}}{f}{\fonctionlambda{\R}{\R}{x}{\dfrac{f\paren{x}+f\paren{-x}}{2}}}\] et \[\fonction{p_G}{\F{\R}{\R}}{\F{\R}{\R}}{f}{\fonctionlambda{\R}{\R}{x}{\dfrac{f\paren{x}-f\paren{-x}}{2}}}\]
+
+\item Soient \(n\in\N\) et \(Q\in\poly\) un polynôme de degré \(n+1\).
+
+On a vu \(\poly=\poly Q\oplus\polydeg{n}\).
+
+Le projecteur sur \(\polydeg{n}\) parallèlement à \(\poly Q\) est l'application qui à tout polynôme \(P\in\poly\) associe le reste de sa division euclidienne par \(Q\).
+\end{enumerate}
+\end{ex}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel et \(p\in\Lendo{E}\).
+
+Alors \(p\) est un projecteur si, et seulement si, \(p^2=p\) (\cad \(p\rond p=p\)).
+
+Précisément, \(p\) est alors le projecteur sur \(\Im p\) parallèlement à \(\ker p\).
+\end{prop}
+
+\begin{dem}
+\impdir
+
+Supposons que \(p\) est un projecteur.
+
+Soient \(F\) et \(G\) deux sous-espaces vectoriels de \(E\) tels que \(\begin{dcases}E=F\oplus G \\ p\text{ est le projecteur sur }F\text{ parallèlement à }G\end{dcases}\)
+
+Montrons que \(p^2=p\).
+
+Soit \(x\in E\).
+
+On a \(p\paren{x}\in F\) donc \(p\paren{x}=\underbrace{p\paren{x}}_{\in F}+\underbrace{0_E}_{\in G}\).
+
+Donc \(p\paren{p\paren{x}}=p\paren{x}\).
+
+Donc \(p^2=p\).
+
+\imprec
+
+Supposons \(p^2=p\).
+
+Posons \(F=\Im p\) et \(G=\ker p\).
+
+Montrons que \(F\) et \(G\) sont supplémentaires dans \(E\).
+
+Montrons que \(F\inter G=\accol{0_E}\).
+
+Soit \(y\in F\inter G\).
+
+Comme \(y\in F\), il existe \(x\in E\) tel que \(y=p\paren{x}\).
+
+Comme \(y\in G\), on a \(p\paren{y}=0_E\).
+
+Donc \(p\paren{p\paren{x}}=p^2\paren{x}=p\paren{x}=0_E\).
+
+Donc \(y=0_E\).
+
+Montrons que \(F+G=E\).
+
+Soit \(x\in E\).
+
+On remarque \(x=\underbrace{x-p\paren{x}}_{\substack{\in\ker p \\ \text{car }p\paren{x-p\paren{x}}=p\paren{x}-p^2\paren{x}=0_E}}+\underbrace{p\paren{x}}_{\in\Im p}\).
+
+Donc \(F+G=E\).
+
+Finalement, \(F\oplus G=E\).
+
+Notons \(p_F\) le projecteur sur \(F\) parallèlement à \(G\).
+
+Montrons que \(p=p_F\).
+
+Soit \(x\in E\).
+
+On a \(x=\underbrace{p\paren{x}}_{\in F}+\underbrace{x-p\paren{x}}_{\in G}\).
+
+Donc \(p_F\paren{x}=p\paren{x}\) donc \(p=p_F\).
+
+Donc \(p\) est un projecteur.
+\end{dem}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel et \(p\) un projecteur de \(E\).
+
+Alors \(\Im p\) est l'ensemble des points fixes de \(p\) : \[\Im p=\accol{x\in E\tq p\paren{x}=x}=\ker\paren{p-\id{E}}.\]
+\end{prop}
+
+\begin{dem}
+On remarque \[\begin{aligned}
+\quantifs{\forall x\in E}x\in\ker\paren{p-\id{E}}&\ssi\paren{p-\id{E}}\paren{x}=0_E \\
+&\ssi p\paren{x}-x=0_E \\
+&\ssi p\paren{x}=x
+\end{aligned}\] donc \(\ker\paren{p-\id{E}}\) est l'ensemble des points fixes de \(p\).
+
+Montrons que \(\Im p=\accol{x\in E\tq p\paren{x}=x}\).
+
+\increc Soit \(x\in E\) tel que \(p\paren{x}=x\). Alors \(x\in\Im p\).
+
+\incdir
+
+Soit \(y\in\Im p\).
+
+Il existe \(x\in E\) tel que \(y=p\paren{x}\).
+
+Donc \(p\paren{y}=p\paren{p\paren{x}}\).
+
+Donc \(p\paren{y}=p^2\paren{x}=p\paren{x}=y\).
+\end{dem}
+
+\begin{prop}\thlabel{prop:applicationsLinéairesRestrictionSSEVsSupplémentaires}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels, \(E_1\) et \(E_2\) deux sous-espaces vectoriels supplémentaires dans \(E\) et \(u_1\in\L{E_1}{F}\) et \(u_2\in\L{E_2}{F}\).
+
+Alors il existe une unique application linéaire \(u\in\L{E}{F}\) telle que \[\restr{u}{E_1}=u_1\qquad\text{et}\qquad\restr{u}{E_2}=u_2.\]
+
+Elle est donnée par : \[\quantifs{\forall x\in E}u\paren{x}=u_1\paren{p_1\paren{x}}+u_2\paren{p_2\paren{x}}\] où \(p_1\) (respectivement \(p_2\)) est le projecteur sur \(E_1\) (respectivement \(E_2\)) parallèlement à \(E_2\) (respectivement \(E_1\)).
+\end{prop}
+
+\begin{dem}
+Déterminons les applications linéaires \(u\in\L{E}{F}\) telles que \(\restr{u}{E_1}=u_1\) et \(\restr{u}{E_2}=u_2\).
+
+\analyse
+
+Soient \(u\in\L{E}{F}\) telle que \(\begin{dcases}\restr{u}{E_1}=u_1 \\ \restr{u}{E_2}=u_2\end{dcases}\) et \(x\in E\).
+
+On a \(x=\underbrace{p_1\paren{x}}_{\in E_1}+\underbrace{p_2\paren{x}}_{\in E_2}\).
+
+Comme \(u\) est linéaire, on a \[\begin{aligned}
+u\paren{x}&=u\paren{p_1\paren{x}}+u\paren{p_2\paren{x}} \\
+&=u_1\paren{p_1\paren{x}}+u_2\paren{p_2\paren{x}}.
+\end{aligned}\]
+
+Donc \(u=u_1p_1+u_2p_2\).
+
+\synthese
+
+Posons \(u=\overbrace{\underbrace{u_1}_{\in\L{E_1}{F}}\underbrace{p_1}_{\in\L{E}{E_1}}}^{\in\L{E}{F}}+\overbrace{\underbrace{u_2}_{\in\L{E_2}{F}}\underbrace{p_2}_{\in\L{E}{E_2}}}^{\in\L{E}{F}}\).
+
+On a \(u\in\L{E}{F}\).
+
+De plus, on a : \[\begin{aligned}
+\quantifs{\forall x\in E_1}u\paren{x}&=u_1\paren{p_1\paren{x}}+u_2\paren{p_2\paren{x}} \\
+&=u_1\paren{x}+u_2\paren{0_E} \\
+&=u_1\paren{x}
+\end{aligned}\] donc \(\restr{u}{E_1}=u_1\).
+
+On montre de même \(\restr{u}{E_2}=u_2\).
+
+\conclusion
+
+\(u_1p_1+u_2p_2\) est l'unique \(u\in\L{E}{F}\) telle que \(\restr{u}{E_1}=u_1\) et \(\restr{u}{E_2}=u_2\).
+\end{dem}
+
+\begin{rem}
+On peut reformuler la proposition précédente (dont on garde les notations) en écrivant que l'application \[\fonctionlambda{\L{E}{F}}{\L{E_1}{F}\times\L{E_2}{F}}{u}{\paren{\restr{u}{E_1},\restr{u}{E_2}}}\] est une bijection.
+\end{rem}
+
+\subsection{Symétries}
+
+Dans ce paragraphe, on suppose que le corps \(\K\) considéré est un sous-corps de \(\C\).
+
+\begin{defprop}
+Soient \(E\) un \(\K\)-espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels supplémentaires dans \(E\).
+
+On note \(p_F\) (respectivement \(p_G\)) le projecteur sur \(F\) (respectivement \(G\)) parallèlement à \(G\) (respectivement \(F\)).
+
+On appelle symétrie par rapport à \(F\) parallèlement à \(G\) l'endomorphisme \(s\in\Lendo{E}\) tel que : \[\begin{dcases}\quantifs{\forall x_F\in F}s\paren{x_F}=x_F \\ \quantifs{\forall x_G\in G}s\paren{x_G}=-x_G\end{dcases}\]
+
+Selon la \thref{prop:applicationsLinéairesRestrictionSSEVsSupplémentaires}, cela définit bien l'endomorphisme \(s\).
+
+En d'autres termes, on a : \[s=p_F-p_G.\]
+
+D'où les relations : \[s=2p_F-\id{E}\qquad\text{et}\qquad p_F=\dfrac{1}{2}\paren{\id{E}+s}.\]
+
+On a enfin : \[F=\ker\paren{s-\id{E}}\qquad\text{et}\qquad G=\ker\paren{s+\id{E}}.\]
+\end{defprop}
+
+\begin{dem}
+Soient \(x\in E\) et \(x_F\in F\) et \(x_G\in G\) tels que \(x=x_F+x_G\).
+
+On a \(s\paren{x}=x_F-x_G\).
+
+On a \[\begin{aligned}
+x\in\ker\paren{s-\id{E}}&\ssi s\paren{x}=x \\
+&\ssi x_F-x_G=x_F+x_G \\
+&\ssi-x_G=x_G \\
+&\ssi x_G=0 \\
+&\ssi x\in F.
+\end{aligned}\]
+
+Donc \(F=\ker\paren{s-\id{E}}\).
+
+De même, on a \[\begin{aligned}
+x\in\ker\paren{s+\id{E}}&\ssi s\paren{x}=-x \\
+&\ssi x_F-x_G=-x_F-x_G \\
+&\ssi x_F=-x_F \\
+&\ssi x_F=0 \\
+&\ssi x\in G.
+\end{aligned}\]
+
+Donc \(G=\ker\paren{s+\id{E}}\).
+\end{dem}
+
+\begin{defi}
+Soient \(E\) un \(\K\)-espace vectoriel et \(s\in\Lendo{E}\).
+
+On dit que \(s\) est une symétrie s'il existe deux sous-espaces vectoriels \(F\) et \(G\) supplémentaires dans \(E\) tels que \(s\) soit la symétrie par rapport à \(F\) parallèlement à \(G\).
+\end{defi}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel et \(s\in\Lendo{E}\).
+
+Alors \(s\) est un symétrie si, et seulement si, \(s^2=\id{E}\) (\cad \(s\rond s=\id{E}\)).
+
+Précisément, \(s\) est alors la symétrie par rapport à \(\ker\paren{s-\id{E}}\) parallèlement à \(\ker\paren{s+\id{E}}\).
+\end{prop}
+
+\begin{dem}
+\imprec
+
+Supposons \(s^2=\id{E}\).
+
+Montrons que \(E=\ker\paren{s-\id{E}}\oplus\ker\paren{s+\id{E}}\), \cad \[\quantifs{\forall x\in E;\exists!\paren{x_1,x_{-1}}\in\ker\paren{s-\id{E}}\times\ker\paren{s+\id{E}}}x=x_1+x_{-1}.\]
+
+Soit \(x\in E\).
+
+\analyse
+
+Soit \(\paren{x_1,x_{-1}}\in\ker\paren{s-\id{E}}\times\ker\paren{s+\id{E}}\) tel que \(x=x_1+x_{-1}\).
+
+On a \(x_1\in\ker\paren{s-\id{E}}\) donc \(s\paren{x_1}=x_1\).
+
+On a \(x_{-1}\in\ker\paren{s+\id{E}}\) donc \(s\paren{x_{-1}}=-x_{-1}\).
+
+Or \(x=x_1+x_{-1}\) donc \(s\paren{x}=s\paren{x_1}+s\paren{x_{-1}}=x_1-x_{-1}\).
+
+Donc \[x_1=\dfrac{x+s\paren{x}}{2}\qquad\text{et}\qquad x_{-1}=\dfrac{x-s\paren{x}}{2}.\]
+
+\synthese
+
+Posons \(x_1=\dfrac{x+s\paren{x}}{2}\) et \(x_{-1}=\dfrac{x-s\paren{x}}{2}\).
+
+On a \(s\paren{x_1}=\dfrac{s\paren{x}+s^2\paren{x}}{2}=\dfrac{s\paren{x}+x}{2}=x_1\).
+
+On a \(s\paren{x_{-1}}=\dfrac{s\paren{x}-s^2\paren{x}}{2}=\dfrac{s\paren{x}-x}{2}=-x_{-1}\).
+
+On a \(x_1+x_{-1}=\dfrac{x+s\paren{x}}{2}+\dfrac{x-s\paren{x}}{2}=\dfrac{2x}{2}=x\).
+
+\conclusion D'où l'existence et l'unicité de \(x_1\) et \(x_{-1}\).
+
+Montrons que \(s\) est une symétrie par rapport à \(\ker\paren{s-\id{E}}\) parallèlement à \(\ker\paren{s+\id{E}}\).
+
+On a \[\begin{aligned}
+\quantifs{\forall x_1\in\ker\paren{s-\id{E}};\forall x_{-1}\in\ker\paren{s+\id{E}}}s\paren{x_1+x_{-1}}&=s\paren{x_1}+s\paren{x_{-1}} \\
+&=x_1-x_{-1}.
+\end{aligned}\]
+
+D'où le résultat.
+
+\impdir
+
+Supposons que \(s\) est une symétrie.
+
+Alors il existe \(F\) et \(G\) deux sous-espaces vectoriels de \(E\) tels que \(E=F\oplus G\) et \(s\) est la symétrie par rapport à \(F\) parallèlement à \(G\) : \[\quantifs{\forall x_F\in F;\forall x_G\in G}s\paren{x_F+x_G}=x_F-x_G.\]
+
+On remarque : \[\quantifs{\forall x_F\in F;\forall x_G\in G}s^2\paren{x_F+x_G}=s\paren{x_F-x_G}=x_F+x_G.\]
+
+Donc \(s^2=\id{E}\).
+\end{dem}
+
+\begin{ex}
+L'application suivante est une symétrie : \[\fonctionlambda{\F{\R}{\R}}{\F{\R}{\R}}{f}{\fonctionlambda{\R}{\R}{x}{f\paren{-x}}}\]
+\end{ex}
+
+\begin{rem}
+Soient \(E\) un \(\K\)-espace vectoriel et \(s\) une symétrie de \(E\).
+
+On a \(s^2=\id{E}\) donc \(s\) est surjective et injective donc \(\begin{dcases}\ker s=\accol{0_E} \\ \Im s=E\end{dcases}\)
+\end{rem}
+
+\subsection{Isomorphismes, automorphismes}
+
+\begin{defi}[Isomorphisme]
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels.
+
+On appelle isomorphisme (de \(\K\)-espaces vectoriels) de \(E\) vers \(F\) toute application linéaire \(u:E\to F\) qui est une bijection de \(E\) vers \(F\).
+
+Lorsqu'il existe un isomorphisme de \(E\) vers \(F\), on dit que \(E\) et \(F\) sont des espaces vectoriels isomorphes.
+\end{defi}
+
+\begin{prop}
+Soient \(E\), \(F\) et \(G\) des \(\K\)-espaces vectoriels et \(u:E\to F\) et \(v:F\to G\) deux isomorphismes de \(\K\)-espaces vectoriels.
+
+Alors \(vu:E\to G\) est un isomorphisme de \(\K\)-espaces vectoriels.
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}\thlabel{prop:isomorphismeD'EVsImpliqueBijectionRéciproqueIsomorphismeD'EVs}
+Si \(u:E\to F\) est un isomorphisme de \(\K\)-espaces vectoriels alors sa bijection réciproque \(u\inv:F\to E\) est aussi un isomorphisme de \(\K\)-espaces vectoriels.
+\end{prop}
+
+\begin{dem}
+On a \(u\inv:F\to E\).
+
+Montrons que \(u\inv\) est linéaire.
+
+Soient \(\lambda_1,\lambda_2\in\K\) et \(y_1,y_2\in F\).
+
+Posons \(\begin{dcases}
+x_1=u\inv\paren{y_1} \\
+x_2=u\inv\paren{y_2}
+\end{dcases}\)
+
+On a \(\begin{dcases}
+y_1=u\paren{x_1} \\
+y_2=u\paren{x_2}
+\end{dcases}\)
+
+Donc comme \(u\) est linéaire : \(\lambda_1y_1+\lambda_2y_2=u\paren{\lambda_1x_1+\lambda_2x_2}\).
+
+Donc \[u\inv\paren{\lambda_1y_1+\lambda_2y_2}=\lambda_1x_1+\lambda_2x_2=\lambda_1u\inv\paren{y_1}+\lambda_2u\inv\paren{y_2}.\]
+
+Donc \(u\inv\) est linéaire.
+\end{dem}
+
+\begin{defi}[Automorphisme]
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+Un automorphisme de \(\K\)-espace vectoriel de \(E\) est un isomorphisme \(u:E\to E\) de \(\K\)-espaces vectoriels de \(E\) vers \(E\), \cad un endomorphisme de \(\K\)-espace vectoriel de \(E\) bijectif.
+
+L'ensemble des automorphismes de \(\K\)-espace vectoriel de \(E\) est appelé le groupe linéaire de \(E\) et est noté \(\GL{}[E]\).
+\end{defi}
+
+\begin{prop}
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+Alors \(\groupe{\GL{}[E]}[\rond]\) est un groupe.
+
+Son élément neutre est \(\id{E}\).
+
+L'inverse \(u\inv\) d'un élément \(u\in\GL{}[E]\) est sa bijection réciproque.
+
+Rappel : on a \[\quantifs{\forall u,v\in\GL{}[E]}\paren{u\rond v}\inv=v\inv\rond u\inv.\]
+\end{prop}
+
+\begin{dem}
+On sait que \(\groupe{S_E}[\rond]\) est un groupe (où \(S_E\) est l'ensemble des bijections de \(E\) dans \(E\)) et que dans ce groupe, l'élément neutre est \(\id{E}\) et l'inverse d'un élément \(f\) est sa bijection réciproque \(f\inv\).
+
+Montrons que \(\GL{}[E]\) est un sous-groupe de \(S_E\).
+
+On a \(\GL{}[E]\subset S_E\).
+
+On a \(\id{E}\in\GL{}[E]\).
+
+Soient \(u,v\in\GL{}[E]\).
+
+Alors \(u\rond v\in\GL{}[E]\) (\(u\rond v\) est une bijection car \(u\) et \(v\) sont des bijections et \(u\rond v\) est linéaire car \(u\) et \(v\) sont linéaires).
+
+De plus, \(u\inv\in\GL{}[E]\) selon la \thref{prop:isomorphismeD'EVsImpliqueBijectionRéciproqueIsomorphismeD'EVs}.
+
+Donc \(\GL{}[E]\) est un sous-groupe de \(S_E\).
+
+Donc \(\GL{}[E]\) est un groupe.
+\end{dem}
+
+\section{Familles de vecteurs}
+
+\subsection{Familles libres}
+
+\begin{defi}
+Soient \(E\) un \(\K\)-espace vectoriel, un entier \(p\in\Ns\) et une famille de vecteurs \(\fami{F}=\paren{x_1,\dots,x_p}\in E^p\).
+
+On dit que \(\fami{F}\) est une famille libre (sur \(\K\)) ou que les vecteurs \(x_1,\dots,x_p\) sont linéairement indépendants (sur \(\K\)) si : \[\quantifs{\forall\lambda_1,\dots,\lambda_p\in\K}\lambda_1x_1+\dots+\lambda_px_p=0_E\imp\paren{\lambda_1,\dots,\lambda_p}=\paren{0,\dots,0}.\]
+
+Si la famille \(\fami{F}\) n'est pas libre, on dit qu'elle est liée.
+\end{defi}
+
+\begin{ex}
+Soient \(E\) un \(\K\)-espace vectoriel et \(x\in E\).
+
+Alors la famille \(\paren{x}\) est liée si, et seulement si, le vecteur \(x\) est nul.
+\end{ex}
+
+\begin{dem}
+Découle de la \thref{prop:lambdaFoisXNulSsiLambdaNulOuXNul}.
+\end{dem}
+
+\begin{exoex}
+On pose \[E=\R^2\qquad v_1=\paren{1,0}\qquad v_2=\paren{1,1}\qquad v_3=\paren{0,1}.\]
+
+Montrer :
+
+\begin{enumerate}
+\item que la famille \(\paren{v_1,v_2}\in E^2\) est libre. \\
+
+\item que la famille \(\paren{v_1,v_2,v_3}\in E^3\) est liée.
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[2]
+On a \(v_1-v_2+v_3=\paren{0,0}\) or \(\paren{1,-1,1}\not=\paren{0,0,0}\) donc \(\paren{v_1,v_2,v_3}\) est liée.
+\end{corr}
+
+\begin{corr}[1]
+Soient \(\lambda_1,\lambda_2\in\R\) tels que \(\lambda_1v_1+\lambda_2v_2=0\).
+
+Montrons que \(\lambda_1=\lambda_2=0\).
+
+On a \(\lambda_1\dcoords{1}{0}+\lambda_2\dcoords{1}{1}=\dcoords{0}{0}\) donc \(\dcoords{\lambda_1+\lambda_2}{\lambda_2}=\dcoords{0}{0}\).
+
+Donc \(\begin{dcases}
+\lambda_1+\lambda_2=0 \\
+\lambda_2=0
+\end{dcases}\) donc \(\lambda_2=0\) et \(\lambda_1=0\).
+
+Donc \(\paren{v_1,v_2}\) est libre.
+\end{corr}
+
+\begin{rem}
+Soient \(E\) un \(\K\)-espace vectoriel, \(p\in\Ns\) et \(\fami{F}=\paren{x_1,\dots,x_p}\in E^p\).
+
+\begin{enumerate}
+\item Le fait que la famille \(\fami{F}\) soit libre ne dépend pas de l'ordre de ses vecteurs : \[\quantifs{\forall\sigma\in S_p}\paren{x_{\sigma\paren{1}},\dots,x_{\sigma\paren{p}}}\text{ est libre}\ssi\paren{x_1,\dots,x_p}\text{ est libre}.\]
+
+\item Si la famille \(\fami{F}\) contient le vecteur nul, alors elle est liée. \\
+
+\item Pour que \(\fami{F}\) soit libre, il faut que ses vecteurs soient deux à deux distincts. \\
+
+\item Soit \(\fami{G}=\paren{x_1,\dots,x_p,\dots,x_m}\in E^m\) une famille contenant \(\fami{F}\) (avec \(m\geq p\)).
+
+On a l'implication \[\fami{F}\text{ est liée}\imp\fami{G}\text{ est liée}.\]
+
+On a donc aussi, en contraposant : \[\fami{G}\text{ est libre}\imp\fami{F}\text{ est libre}.\]
+\end{enumerate}
+\end{rem}
+
+\begin{dem}[2]
+Soit \(k\in\interventierii{1}{p}\) tel que \(x_k=0_E\).
+
+On a \[0_\K\cdot x_1+\dots+0_\K\cdot x_{k-1}+1_\K\cdot x_k+0_\K\cdot x_{k+1}+\dots+0_\K\cdot x_p=0_E.\]
+
+Donc \(\paren{x_1,\dots,x_p}\) est liée.
+\end{dem}
+
+\begin{dem}[3]
+Soient \(k,l\in\interventierii{1}{p}\) tels que \(k<l\) et \(x_k=x_l\).
+
+On a \[0x_1+\dots+0x_{k-1}+x_k+0x_{k+1}+\dots+0x_{l-1}-x_l+0x_{l+1}+\dots+0x_p=0.\]
+
+Donc \(\paren{x_1,\dots,x_p}\) est liée.
+\end{dem}
+
+\begin{dem}[4]
+Supposons que \(\fami{F}\) est liée.
+
+Soient \(\lambda_1,\dots,\lambda_p\in\K\) tels que \(\begin{dcases}
+\lambda_1x_1+\dots+\lambda_px_p=0 \\
+\paren{\lambda_1,\dots,\lambda_p}\not=\paren{0,\dots,0}
+\end{dcases}\)
+
+Posons \(\quantifs{\forall k\in\interventierii{p+1}{m}}\lambda_k=0\).
+
+On a \(\begin{dcases}
+\lambda_1x_1+\dots+\lambda_mx_m=0 \\
+\paren{\lambda_1,\dots,\lambda_m}\not=\paren{0,\dots,0}
+\end{dcases}\)
+
+Donc \(\fami{G}\) est liée.
+\end{dem}
+
+\begin{prop}\thlabel{prop:familleLiéeSsiUnVecteurEstCombinaisonLinéaireDesAutres}
+Une famille est liée si, et seulement si, l'un de ses vecteurs est combinaison linéaire de ses autres vecteurs.
+\end{prop}
+
+\begin{dem}
+Soient \(E\) un \(\K\)-espace vectoriel et \(\paren{x_1,\dots,x_p}\in E^p\).
+
+\impdir
+
+Supposons que \(\paren{x_1,\dots,x_p}\) est liée.
+
+Soient \(\lambda_1,\dots,\lambda_p\in\K\) tels que \(\begin{dcases}
+\lambda_1x_1+\dots+\lambda_px_p=0_E \\
+\paren{\lambda_1,\dots,\lambda_p}\not=\paren{0,\dots,0}
+\end{dcases}\)
+
+Soit \(k\in\interventierii{1}{p}\) tel que \(\lambda_k\not=0\).
+
+On remarque : \[x_k=\sum_{j\in\interventierii{1}{p}\excluant\accol{k}}\dfrac{-\lambda_j}{\lambda_k}x_j.\]
+
+Donc \(x_k\in\Vect{x_1,\dots,x_{k-1},x_{k+1},\dots,x_p}\).
+
+\imprec
+
+Supposons que l'un des vecteurs de \(\paren{x_1,\dots,x_p}\) est combinaison linéaire des autres.
+
+Montrons que \(\paren{x_1,\dots,x_p}\) est liée.
+
+Quitte à permuter les vecteurs de la famille, on peut supposer \(x_1\in\Vect{x_2,\dots,x_p}\).
+
+Soient \(\mu_2,\dots,\mu_p\in\K\) tels que \(x_1=\mu_2x_2+\dots+\mu_px_p\).
+
+On remarque \(\begin{dcases}
+x_1-\mu_2x_2-\dots-\mu_px_p=0_E \\
+\paren{1,-\mu_2,\dots,-\mu_p}\not=\paren{0,\dots,0}
+\end{dcases}\)
+
+Donc \(\paren{x_1,\dots,x_p}\) est liée.
+\end{dem}
+
+\begin{defi}
+Soient \(E\) un \(\K\)-espace vectoriel et \(x,y\in E\).
+
+On dit que les vecteurs \(x\) et \(y\) sont colinéaires si la famille \(\paren{x,y}\) est liée, \cad si \[\quantifs{\exists\lambda\in\K}y=\lambda x\qquad\text{ou}\qquad\quantifs{\exists\lambda\in\K}x=\lambda y.\]
+\end{defi}
+
+\begin{ex}\thlabel{ex:familleDePolynômesADegrésDeuxADeuxDistinctsEstLibre}
+Soit une famille de polynômes non-nuls \(\fami{F}=\paren{P_1,\dots,P_r}\in\poly^r\) de degrés deux à deux distincts, \cad telle que : \[\quantifs{\forall i,j\in\interventierii{1}{r}}i\not=j\imp\deg P_i\not=\deg P_j.\]
+
+Alors \(\fami{F}\) est libre.
+\end{ex}
+
+\begin{dem}~\\
+Posons \(\quantifs{\forall i\in\interventierii{1}{r}}\begin{dcases}
+\mu_i\text{ le coefficient dominant de }P_i \\
+d_i=\deg P_i\in\N
+\end{dcases}\)
+
+Quitte à permuter les vecteurs de la famille, on peut supposer \(d_1>d_2>\dots>d_r\).
+
+Montrons que \(\paren{P_1,\dots,P_r}\) est libre.
+
+Soient \(\lambda_1,\dots,\lambda_r\in\K\) tels que \(\lambda_1P_1+\dots+\lambda_rP_r=0\).
+
+Montrons que \(\lambda_1=\dots=\lambda_r=0\).
+
+Le coefficient de degré \(d_1\) de \(\lambda_1P_1+\dots+\lambda_rP_r\) est \(\lambda_1\mu_1\).
+
+Donc \(\lambda_1\mu_1=0\) or \(\mu_1\not=0\) donc \(\lambda_1=0\).
+
+Donc \(\lambda_2P_2+\dots+\lambda_rP_r=0\).
+
+On continue de même (récurrence finie) : \(\lambda_2=0\) puis \(\lambda_3=0\), etc...
+
+Donc \(\paren{P_1,\dots,P_r}\) est libre.
+\end{dem}
+
+\begin{ex}
+\(\paren{X^5-X^3+1,X^2,X^4-X,5}\) est une famille libre de \(\poly\) car c'est une famille de polynômes non-nuls de degrés deux à deux distincts.
+\end{ex}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel, \(\paren{x_1,\dots,x_n}\in E^n\) une famille libre de \(E\) et \(x_{n+1}\in E\).
+
+Alors \(\paren{x_1,\dots,x_{n+1}}\) est une famille libre si, et seulement si, \(x_{n+1}\not\in\Vect{x_1,\dots,x_n}\).
+\end{prop}
+
+\begin{dem}
+Par contraposée, montrons que \(\paren{x_1,\dots,x_{n+1}}\text{ est liée}\ssi x_{n+1}\in\Vect{x_1,\dots,x_n}\).
+
+\imprec Vraie selon la \thref{prop:familleLiéeSsiUnVecteurEstCombinaisonLinéaireDesAutres}.
+
+\impdir
+
+Supposons que \(\paren{x_1,\dots,x_{n+1}}\) est liée.
+
+Soient \(\lambda_1,\dots,\lambda_{n+1}\in\K\) tels que \(\begin{dcases}
+\lambda_1x_1+\dots+\lambda_{n+1}x_{n+1}=0_E \\
+\paren{\lambda_1,\dots,\lambda_{n+1}}\not=\paren{0,\dots,0}
+\end{dcases}\)
+
+Montrons que \(\lambda_{n+1}\not=0\).
+
+Par l'absurde, supposons \(\lambda_{n+1}=0\).
+
+On a \(\begin{dcases}
+\lambda_1x_1+\dots+\lambda_nx_n=0 \\
+\paren{\lambda_1,\dots,\lambda_n}\not=\paren{0,\dots,0}
+\end{dcases}\)
+
+Donc \(\paren{x_1,\dots,x_n}\) est liée : contradiction.
+
+Donc \(\lambda_{n+1}\not=0\).
+
+Donc \(x_{n+1}=\dfrac{-\lambda_1}{\lambda_{n+1}}x_1+\dots+\dfrac{-\lambda_n}{\lambda_{n+1}}x_n\).
+
+Donc \(x_{n+1}\in\Vect{x_1,\dots,x_n}\).
+\end{dem}
+
+\subsection{Familles génératrices}
+
+\begin{defi}
+Soient \(E\) un \(\K\)-espace vectoriel et \(\paren{x_1,\dots,x_p}\in E^p\) une famille d'élément de \(E\).
+
+On dit que \(\paren{x_1,\dots,x_p}\) est une famille génératrice de \(E\) ou que la famille \(\paren{x_1,\dots,x_p}\) engendre \(E\) si tout vecteur de \(E\) est combinaison linéaire de ses vecteurs, \cad si \[E=\Vect{x_1,\dots,x_p},\] \cad : \[\quantifs{\forall x\in E;\exists\lambda_1,\dots,\lambda_p\in\K}x=\lambda_1x_1+\dots+\lambda_px_p.\]
+\end{defi}
+
+\begin{rem}
+Soient \(E\) un \(\K\)-espace vectoriel, \(p\in\Ns\) et \(\fami{F}=\paren{x_1,\dots,x_p}\in E^p\).
+
+\begin{enumerate}
+\item Le fait que \(\fami{F}\) soit une famille génératrice de \(E\) ne dépend pas de l'ordre de ses vecteurs : \[\quantifs{\forall\sigma\in S_p}\paren{x_{\sigma\paren{1}},\dots,x_{\sigma\paren{p}}}\text{ engendre }E\ssi\paren{x_1,\dots,x_p}\text{ engendre }E.\]
+
+\item Soit \(\fami{G}=\paren{x_1,\dots,x_p,\dots,x_m}\in E^m\) une famille contenant \(\fami{F}\) (avec \(m\geq p\)).
+
+On a l'implication \[\fami{F}\text{ est génératrice}\imp\fami{G}\text{ est génératrice}.\]
+\end{enumerate}
+\end{rem}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel, \(m,n\in\Ns\), \(\paren{x_1,\dots,x_n}\in E^n\) une famille quelconque de vecteurs de \(E\) et \(\paren{y_1,\dots,y_m}\in E^m\) une famille génératrice de \(E\).
+
+Alors \(\paren{x_1,\dots,x_n}\) est une famille génératrice de \(E\) si, et seulement si : \[\quantifs{\forall j\in\interventierii{1}{m}}y_j\in\Vect{x_1,\dots,x_n}.\]
+\end{prop}
+
+\begin{dem}
+\impdir Claire.
+
+\imprec
+
+Supposons \(\quantifs{\forall j\in\interventierii{1}{m}}y_j\in\Vect{x_1,\dots,x_n}\).
+
+Soit \(\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{n}\times\interventierii{1}{m}}\in\K^{\interventierii{1}{n}\times\interventierii{1}{m}}\) tels que \[\quantifs{\forall j\in\interventierii{1}{m}}y_j=\sum_{i=1}^na_{ij}x_i.\]
+
+Montrons que \(\paren{x_1,\dots,x_n}\) est génératrice de \(E\).
+
+Soit \(x\in E\).
+
+Montrons que \(x\in\Vect{x_1,\dots,x_n}\).
+
+Comme \(\paren{y_1,\dots,y_m}\) est génératrice de \(E\), il existe \(b_1,\dots,b_m\in\K\) tels que \[x=\sum_{j=1}^mb_jy_j.\]
+
+On a donc \[\begin{aligned}
+x&=\sum_{j=1}^mb_j\sum_{i=1}^na_{ij}x_i \\
+&=\sum_{i=1}^n\underbrace{\sum_{j=1}^ma_{ij}b_j}_{\in\K}x_i \\
+&\in\Vect{x_1,\dots,x_n}.
+\end{aligned}\]
+\end{dem}
+
+\subsection{Bases}
+
+\begin{defi}
+Soient \(E\) un \(\K\)-espace vectoriel et \(\paren{e_1,\dots,e_p}\in E^p\) une famille d'éléments de \(E\).
+
+On dit que \(\paren{e_1,\dots,e_p}\) est une base de \(E\) si c'est une famille libre et génératrice de \(E\).
+
+Il est équivalent de dire que tout vecteur de \(E\) s'écrit de façon unique comme combinaison linéaire des vecteurs de la famille : \[\quantifs{\forall x\in E;\exists!\paren{\lambda_1,\dots,\lambda_p}\in\K^p}x=\lambda_1e_1+\dots+\lambda_pe_p.\]
+
+On appelle alors \(\paren{\lambda_1,\dots,\lambda_p}\) les coordonnées du vecteur \(x\) dans la base \(\paren{e_1,\dots,e_p}\).
+\end{defi}
+
+\begin{ex}[Base canonique de \(\K^n\)]
+Posons : \[\quantifs{\forall k\in\interventierii{1}{n}}e_k=\paren{\delta_{1k},\delta_{2k},\dots,\delta_{nk}}\in\K^n\] (autrement dit, le \(n\)-uplet \(e_k\) a tous ses coefficients nuls sauf le \(k\)-ème qui vaut \(1\)).
+
+La famille \(\paren{e_1,\dots,e_n}\in\paren{\K^n}^n\) est une base de \(\K^n\) appelée la base canonique de \(\K^n\).
+\end{ex}
+
+\begin{ex}[Base canonique de \(\polydeg{n}\)]
+La famille \[\paren{1,X,X^2,\dots,X^n}\] est une base de \(\polydeg{n}\) appelée la base canonique de \(\polydeg{n}\).
+\end{ex}
+
+\begin{exoex}
+On pose \[E=\R^2\qquad v_1=\paren{1,0}\qquad v_2=\paren{1,1}.\]
+
+Montrer que la famille \(\paren{v_1,v_2}\in E^2\) est une base de \(E\) et donner les coordonnées d'un vecteur quelconque \(\paren{x,y}\in\R^2\).
+\end{exoex}
+
+\begin{corr}~\\
+Soient \(\dcoords{x}{y}\in\R^2\) et \(\lambda,\mu\in\R\).
+
+On a \[\begin{aligned}
+\lambda v_1+\mu v_2=\dcoords{x}{y}&\ssi\lambda\dcoords{1}{0}+\mu\dcoords{1}{1}=\dcoords{x}{y} \\
+&\ssi\begin{dcases}
+\lambda+\mu=x \\
+\mu=y
+\end{dcases} \\
+&\ssi\begin{dcases}
+\lambda=x-y \\
+\mu=y
+\end{dcases}
+\end{aligned}\]
+
+Donc tout vecteur \(\dcoords{x}{y}\in\R^2\) s'écrit de façon unique comme combinaison linéaire de \(v_1\) et \(v_2\).
+
+Donc \(\paren{v_1,v_2}\) est une base de \(\R^2\).
+
+De plus, on a obtenu les coordonnées de \(\dcoords{x}{y}\) dans la base \(\paren{v_1,v_2}\) : \[\paren{x-y,y}.\]
+\end{corr}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel et \(\paren{x_1,\dots,x_p}\in E^p\) une famille d'éléments de \(E\).
+
+Considérons l'application linéaire \[\fonction{\phi}{\K^p}{E}{\paren{\lambda_1,\dots,\lambda_p}}{\lambda_1x_1+\dots+\lambda_px_p}\]
+
+On a les équivalences suivantes : \[\begin{aligned}
+\paren{x_1,\dots,x_p}\text{ est une famille libre}&\ssi\phi\text{ est injective} \\
+\paren{x_1,\dots,x_p}\text{ est une famille génératrice de }E&\ssi\phi\text{ est surjective} \\
+\paren{x_1,\dots,x_p}\text{ est une base de }E&\ssi\phi\text{ est un isomorphisme}
+\end{aligned}\]
+\end{prop}
+
+\begin{dem}
+On a : \[\begin{aligned}
+\paren{x_1,\dots,x_p}\text{ est libre}&\ssi\croch{\quantifs{\forall\paren{\lambda_1,\dots,\lambda_p}\in\K^p}\lambda_1x_1+\dots+\lambda_px_p=0_E\imp\paren{\lambda_1,\dots,\lambda_p}=\paren{0,\dots,0}} \\
+&\ssi\croch{\quantifs{\forall\paren{\lambda_1,\dots,\lambda_p}\in\K^p}\paren{\lambda_1,\dots,\lambda_p}\in\ker\phi\imp\paren{\lambda_1,\dots,\lambda_p}=\paren{0,\dots,0}} \\
+&\ssi\ker\phi=\accol{0_E} \\
+&\ssi\phi\text{ est injective}.
+\end{aligned}\]
+
+De plus : \[\begin{aligned}
+\paren{x_1,\dots,x_p}\text{ est génératrice de }E&\ssi\quantifs{\forall x\in E;\exists\paren{\lambda_1,\dots,\lambda_p}\in\K^p}x=\phi\paren{\paren{\lambda_1,\dots,\lambda_p}} \\
+&\ssi\phi\text{ est une surjection de }\K^p\text{ vers }E.
+\end{aligned}\]
+
+Enfin : \[\begin{aligned}
+\paren{x_1,\dots,x_p}\text{ est une base de }E&\ssi\paren{x_1,\dots,x_p}\text{ est libre et génératrice de }E \\
+&\ssi\phi\text{ est injective et surjective} \\
+&\ssi\phi\text{ est bijective}.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}
+Soit \(n\in\N\).
+
+On considère une famille de polynômes \(\fami{B}=\paren{P_0,\dots,P_n}\in\polydeg{n}^{n+1}\) \guillemets{à degrés échelonnés}, \cad telle que \[\quantifs{\forall k\in\interventierii{0}{n}}\deg P_k=k.\]
+
+Alors \(\fami{B}\) est une base de \(\polydeg{n}\).
+\end{prop}
+
+\begin{dem}
+On sait que \(\fami{B}\) est une famille libre (selon l'\thref{ex:familleDePolynômesADegrésDeuxADeuxDistinctsEstLibre}).
+
+Montrons que \(\fami{B}\) est génératrice de \(\polydeg{n}\).
+
+Montrons que \(\quantifs{\forall k\in\interventierii{0}{n}}\underbrace{\quantifs{\forall P\in\polydeg{k}}P\in\Vect{P_0,\dots,P_k}}_{\P{k}}\) par récurrence sur \(k\).
+
+Soit \(P\in\polydeg{0}\).
+
+On a \(P_0\) constant et non-nul et \(P\) constant donc \(P=\dfrac{P}{P_0}P_0\) avec \(\dfrac{P}{P_0}\in\K\).
+
+Donc \(P\in\Vect{P_0}\).
+
+D'où \(\P{0}\).
+
+Soit \(k\in\interventierii{0}{n-1}\) tel que \(\P{k}\).
+
+Montrons \(\P{k+1}\).
+
+Soient \(P\in\polydeg{k+1}\) et \(a_0,\dots,a_{k+1}\in\K\) tels que \[P=a_{k+1}X^{k+1}+\dots+a_0X^0.\]
+
+On note \(\mu\) le coefficient dominant de \(P_{k+1}\).
+
+On a \[\begin{dcases}
+\deg\paren{P-\dfrac{a_{k+1}}{\mu}P_{k+1}}\leq k+1\text{ car }\begin{dcases}
+\deg P\leq k+1 \\
+\deg P_{k+1}\leq k+1
+\end{dcases} \\
+\text{le coefficient de degré }k+1\text{ de }P-\dfrac{a_{k+1}}{\mu}P_{k+1}\text{ vaut }a_{k+1}-\dfrac{a_{k+1}}{\mu}\mu=0
+\end{dcases}\]
+
+Donc \(P-\dfrac{a_{k+1}}{\mu}P_{k+1}\in\polydeg{k}\).
+
+Selon \(\P{k}\), il existe \(\omega_0,\dots,\omega_k\in\K\) tels que \[P-\dfrac{a_{k+1}}{\mu}P_{k+1}=\omega_0P_0+\dots+\omega_kP_k.\]
+
+Finalement, on a : \[P=\omega_0P_0+\dots+\omega_kP_k+\dfrac{a_{k+1}}{\mu}P_{k+1}.\]
+
+Donc \(P\in\Vect{P_0,\dots,P_{k+1}}\).
+
+D'où \(\P{k+1}\).
+
+On a \(\P{n}\) donc \(\polydeg{n}=\Vect{\fami{B}}\).
+
+Donc \(\fami{B}\) est une famille génératrice de \(\polydeg{n}\).
+
+Finalement, \(\fami{B}\) est une base de \(\polydeg{n}\).
+\end{dem}
+
+\subsection{Pivot de Gauss pour les systèmes linéaires}
+
+Soient \(n,p\in\Ns\) et deux familles de scalaires : \[\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{n}\times\interventierii{1}{p}}\in\K^{\interventierii{1}{n}\times\interventierii{1}{p}}\qquad\text{et}\qquad\paren{b_1,\dots,b_n}\in\K^n.\]
+
+Considérons le système linéaire de \(n\) équations à \(p\) inconnues suivant : \[\paren{S}\begin{dcases}
+a_{11}x_1+\dots+a_{1p}x_p=b_1 \\
+\vdots \\
+a_{n1}x_1+\dots+a_{np}x_p=b_n
+\end{dcases}\]
+
+On peut dire au choix :
+
+\begin{itemize}
+\item que ses inconnues sont les scalaires \(x_1,\dots,x_p\in\K\). \\
+
+\item que son inconnue est le \(p\)-uplet \(\paren{x_1,\dots,x_p}\in\K^p\).
+\end{itemize}
+
+L'ensemble solution \(\fami{S}\subset\K^p\) de \(\paren{S}\) est l'ensemble des \(p\)-uplets qui vérifient \(\paren{S}\).
+
+On dit que \(\paren{S}\) est un système linéaire homogène si \(b_1=\dots=b_n=0\).
+
+On a \[\fami{S}\text{ est un sous-espace vectoriel de }\K^p\ssi\paren{S}\text{ est un système linéaire homogène}.\]
+
+L'algorithme du \guillemets{pivot de Gauss} permet de résoudre le système \(\paren{S}\) en raisonnant par équivalences, en appliquant au système les transformations suivantes :
+
+\begin{itemize}
+\item \(L_i\echange L_j\) : échange des lignes \(L_i\) et \(L_j\). \\
+
+\item \(L_i\gets\lambda L_i\) : multiplication de la ligne \(L_i\) par \(\lambda\in\K\excluant\accol{0}\). \\
+
+\item \(L_i\gets L_i+\lambda L_j\) : ajout à \(L_i\) de \(\lambda L_j\) où \(\lambda\in\K\excluant\accol{0}\).
+\end{itemize}
+
+De plus, si le système \(\paren{S}\) est linéaire homogène, il permet d'obtenir une base de l'espace vectoriel \(\fami{S}\).
+
+\begin{exoex}
+Soient \(\alpha,\beta,\gamma\in\R\).
+
+Résoudre les systèmes linéaires suivants en appliquant l'algorithme du pivot de Gauss.
+
+Donner une base de l'ensemble solution de chaque système linéaire homogène.
+
+\[\paren{S_1}\begin{dcases}
+2x+3y=-1 \\
+x+2y=-3
+\end{dcases}\quad\paren{S_2}\begin{dcases}
+x+2y-z=\alpha \\
+2x+5y+3z=\beta \\
+3x+7y+2z=\gamma
+\end{dcases}\quad\paren{S_3}\begin{dcases}
+a+2b+c+3d=0 \\
+3a+7b+3c+6d=0 \\
+a+3b+c=0
+\end{dcases}\quad\paren{S_4}~8a+4b-2c+d=0\]
+\end{exoex}
+
+\begin{corr}[1]
+On a \[\begin{aligned}
+\paren{S_1}&\ssi\begin{dcases}
+2x+3y=-1 \\
+x+2y=-3
+\end{dcases} \\
+&\ssi\begin{dcases}
+x+2y=-3 &L_1\echange L_2 \\
+2x+3y=-1
+\end{dcases} \\
+&\ssi\begin{dcases}
+x+2y=-3 \\
+-y=5 &L_2\gets L_2-2L_1
+\end{dcases} \\
+&\ssi\begin{dcases}
+x=7 \\
+y=-5
+\end{dcases}
+\end{aligned}\]
+
+Donc \(\fami{S}_1=\accol{\paren{7,-5}}\).
+\end{corr}
+
+\begin{corr}[2]
+On a \[\begin{aligned}
+\paren{S_2}&\ssi\begin{dcases}
+x+2y-z=\alpha \\
+2x+5y+3z=\beta \\
+3x+7y+2z=\gamma
+\end{dcases} \\
+&\ssi\begin{dcases}
+x+2y-z=\alpha \\
+y+5z=\beta-2\alpha &L_2\gets L_2-2L_1 \\
+y+5z=\gamma-3\alpha &L_3\gets L_3-3L_1
+\end{dcases} \\
+&\ssi\begin{dcases}
+x+2y-z=\alpha \\
+y+5z=\beta-2\alpha \\
+0=\gamma-\beta-\alpha
+\end{dcases} \\
+&\ssi\begin{dcases}
+x-11z=5\alpha-2\beta &L_1\gets L_1-2L_2 \\
+y+5z=\beta-2\alpha \\
+0=\gamma-\beta-\alpha
+\end{dcases}
+\end{aligned}\]
+
+Si \(\gamma-\beta-\alpha\not=0\) alors \(\fami{S}_2=\ensvide\).
+
+Supposons \(\gamma-\beta-\alpha=0\).
+
+Alors \[\fami{S}_2=\accol{\tcoords{5\alpha-2\beta}{\beta-2\alpha}{0}+\lambda\tcoords{11}{-5}{1}}_{\lambda\in\R}\]
+
+De plus, si \(\alpha=\beta=\gamma=0\) alors \(\paren{S_2}\) est homogène et \(\fami{S}_2\) est un \(\R\)-espace vectoriel de base \(\paren{\tcoords{11}{-5}{1}}\).
+\end{corr}
+
+\begin{corr}[3]
+On a \[\begin{aligned}
+\paren{S_3}&\ssi\begin{dcases}
+a+2b+c+3d=0 \\
+3a+7b+3c+6d=0 \\
+a+3b+c=0
+\end{dcases} \\
+&\ssi\begin{dcases}
+a+2b+c+3d=0 \\
+b-3d=0 &L_2\gets L_2-3L_1 \\
+b-3d=0 &L_3\gets L_3-L_1
+\end{dcases} \\
+&\ssi\begin{dcases}
+a+c+9d=0 &L_1\gets L_1-2L_2 \\
+b-3d=0
+\end{dcases}
+\end{aligned}\]
+
+Donc \[\fami{S}_3=\accol{\lambda\begin{pmatrix}-1 \\ 0 \\ 1 \\ 0\end{pmatrix}+\mu\begin{pmatrix}-9 \\ 3 \\ 0 \\ 1\end{pmatrix}}_{\paren{\lambda,\mu}\in\R^2}\]
+
+Donc \(\fami{S}_3\) est un \(\R\)-espace vectoriel de base \(\paren{\begin{pmatrix}-1 \\ 0 \\ 1 \\ 0\end{pmatrix},\begin{pmatrix}-9 \\ 3 \\ 0 \\ 1\end{pmatrix}}\).
+\end{corr}
+
+\begin{corr}[4]
+On a \[\begin{aligned}
+\paren{S_4}&\ssi8a+4b-2c+d=0 \\
+&\ssi d+8a+4b-2c=0
+\end{aligned}\]
+
+On a \[\begin{aligned}
+\quantifs{\forall\begin{pmatrix}a\\b\\c\\d\end{pmatrix}\in\R^4}\begin{pmatrix}a\\b\\c\\d\end{pmatrix}\in\fami{S}_4&\ssi d=-8a-4b+2c \\
+&\ssi\begin{pmatrix}a\\b\\c\\d\end{pmatrix}=\begin{pmatrix}a\\b\\c\\-8a-4b+2c\end{pmatrix} \\
+&\ssi\begin{pmatrix}a\\b\\c\\d\end{pmatrix}=a\begin{pmatrix}1\\0\\0\\-8\end{pmatrix}+b\begin{pmatrix}0\\1\\0\\-4\end{pmatrix}+c\begin{pmatrix}0\\0\\1\\2\end{pmatrix}
+\end{aligned}\]
+
+Donc \[\fami{S}_4=\Vect{\begin{pmatrix}1\\0\\0\\-8\end{pmatrix},\begin{pmatrix}0\\1\\0\\-4\end{pmatrix},\begin{pmatrix}0\\0\\1\\2\end{pmatrix}}\] et \(\paren{\begin{pmatrix}1\\0\\0\\-8\end{pmatrix},\begin{pmatrix}0\\1\\0\\-4\end{pmatrix},\begin{pmatrix}0\\0\\1\\2\end{pmatrix}}\) est une base de \(\fami{S}_4\).
+\end{corr}
+
+\subsection{Familles de vecteurs et applications linéaires}
+
+\subsubsection{Image d'une famille par une application linéaire}
+
+\begin{prop}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels, \(u\in\L{E}{F}\) et \(\paren{x_1,\dots,x_p}\in E^p\) une famille de vecteurs de \(E\).
+
+On a :
+
+\begin{enumerate}
+\item Si \(\paren{x_1,\dots,x_p}\) est libre et \(u\) injective, alors \(\paren{u\paren{x_1},\dots,u\paren{x_p}}\) est libre. \\
+
+\item Si \(\paren{x_1,\dots,x_p}\) est génératrice de \(E\) et \(u\) surjective, alors \(\paren{u\paren{x_1},\dots,u\paren{x_p}}\) est génératrice de \(F\). \\
+
+\item Si \(\paren{x_1,\dots,x_p}\) est une base de \(E\) et \(u\) un isomorphisme, alors \(\paren{u\paren{x_1},\dots,u\paren{x_p}}\) est une base de \(F\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+On suppose que \(\paren{x_1,\dots,x_p}\) est libre et \(u\) injective.
+
+Soient \(\lambda_1,\dots,\lambda_p\in\K\) tels que \(\lambda_1u\paren{x_1}+\dots+\lambda_pu\paren{x_p}=0_F\).
+
+Montrons que \(\lambda_1=\dots=\lambda_p=0\).
+
+Comme \(u\) est linéaire, on a \(u\paren{\lambda_1x_1+\dots+\lambda_px_p}=0_F\).
+
+Donc, comme \(u\) est injective, on a \(\lambda_1x_1+\dots+\lambda_px_p=0_E\).
+
+Donc, comme \(\paren{x_1,\dots,x_p}\) est libre, on a \(\lambda_1=\dots=\lambda_p=0\).
+
+Donc \(\paren{u\paren{x_1},\dots,u\paren{x_p}}\) est libre.
+\end{dem}
+
+\begin{dem}[2]
+Supposons que \(\paren{x_1,\dots,x_p}\) engendre \(E\) et que \(u\) est surjective.
+
+On a \[\begin{WithArrows}
+\Vect{u\paren{x_1},\dots,u\paren{x_p}}&=u\paren{\Vect{x_1,\dots,x_p}} \Arrow{car \(\paren{x_1,\dots,x_p}\) engendre \(E\)} \\
+&=u\paren{E} \Arrow{car \(u\) est surjective} \\
+&=F
+\end{WithArrows}\]
+
+Donc \(\paren{u\paren{x_1},\dots,u\paren{x_p}}\) engendre \(F\).
+\end{dem}
+
+\begin{dem}[3]
+Découle de (1) et (2).
+\end{dem}
+
+\subsubsection{Application linéaire définie par l'image d'une base}
+
+\begin{prop}
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels, \(\paren{e_1,\dots,e_p}\) une base de \(E\) et \(\paren{y_1,\dots,y_p}\) une famille d'éléments de \(F\).
+
+Alors \[\quantifs{\exists!u\in\L{E}{F};\forall j\in\interventierii{1}{p}}u\paren{e_j}=y_j.\]
+\end{prop}
+
+\begin{dem}
+Pour tout vecteur \(x\in E\), on note \(\paren{e_1\etoile\paren{x},\dots,e_p\etoile\paren{x}}\) les coordonnées de \(x\) dans la base \(\paren{e_1,\dots,e_p}\). Autrement dit, on a \[\begin{dcases}
+e_1\etoile\paren{x},\dots,e_p\etoile\paren{x}\in\K \\
+x=e_1\etoile\paren{x}e_1+\dots+e_p\etoile\paren{x}e_p
+\end{dcases}\]
+
+\analyse
+
+Soit \(u\in\L{E}{F}\) tel que \(\quantifs{\forall j\in\interventierii{1}{p}}u\paren{e_j}=y_j\).
+
+On a \(\quantifs{\forall x\in E}x=e_1\etoile\paren{x}e_1+\dots+e_p\etoile\paren{x}e_p\).
+
+Donc comme \(u\) est linéaire, on a : \[\begin{aligned}
+\quantifs{\forall x\in E}u\paren{x}&=e_1\etoile\paren{x}u\paren{e_1}+\dots+e_p\etoile\paren{x}u\paren{e_p} \\
+&=e_1\etoile\paren{x}y_1+\dots+e_p\etoile\paren{x}y_p.
+\end{aligned}\]
+
+D'où \(\fonction{u}{E}{F}{x}{e_1\etoile\paren{x}y_1+\dots+e_p\etoile\paren{x}y_p}\)
+
+\synthese
+
+Posons \(\fonction{u}{E}{F}{x}{e_1\etoile\paren{x}y_1+\dots+e_p\etoile\paren{x}y_p}\)
+
+\(u\) est clairement linéaire car \(e_1\etoile,\dots,e_p\etoile\) sont linéaires.
+
+On a \[\quantifs{\forall j\in\interventierii{1}{p}}u\paren{e_j}=e_1\etoile\paren{x}y_1+\dots+e_p\etoile\paren{x}y_p=\delta_{1j}y_1+\dots+\delta_{pj}y_p=y_j.\]
+\end{dem}
+
+\subsection{Extension aux familles quelconques}
+
+Dans ce paragraphe, on étend ce qu'on a vu précédemment à des familles de vecteurs indicées par un ensemble quelconque (éventuellement infini).
+
+\subsubsection{Combinaisons linéaires}
+
+\begin{defi}[Famille de scalaires \guillemets{presque tous nuls}]
+Soient \(I\) un ensemble et \(\paren{\lambda_i}_{i\in I}\in\K^I\) une famille de scalaires indicée par \(I\).
+
+On appelle support de la famille \(\paren{\lambda_i}_{i\in I}\in\K^I\) l'ensemble \[\Supp\paren{\lambda_i}_{i\in I}=\accol{i\in I\tq\lambda_i\not=0}.\]
+
+Cette famille est dite à support fini si son support est fini. Si l'ensemble \(I\) est infini, on dit alors aussi que c'est une famille de scalaires presque tous nuls.
+
+L'ensemble des familles de scalaires indicées par \(I\) à support fini est souvent noté \(\K\deriv{I}\) : \[\K\deriv{I}=\accol{\paren{\lambda_i}_{i\in I}\in\K^I\tq\Card\Supp\paren{\lambda_i}_{i\in I}<\pinf}.\]
+
+Si \(I\) est fini, on a \(\K\deriv{I}=\K^I\).
+\end{defi}
+
+\begin{nota}
+Soient \(I\) un ensemble, \(E\) un \(\K\)-espace vectoriel et \(\fami{F}=\paren{x_i}_{i\in I}\in E^I\) une famille de vecteurs de \(E\).
+
+Si \(\paren{\lambda_i}_{i\in I}\in\K\deriv{I}\) est une famille de scalaires à support fini, on pose : \[\sum_{i\in I}\lambda_ix_i=\sum_{i\in\Supp\fami{F}}\lambda_ix_i.\]
+
+Ainsi, on s'autorise à écrire une somme éventuellement infinie \(\sum_{i\in I}\lambda_ix_i\) car on la voit comme une somme finie.
+\end{nota}
+
+\begin{defi}[Combinaison linéaire, généralisation de la \thref{def:combinaisonLinéaire}]
+Soient \(I\) un ensemble, \(E\) un \(\K\)-espace vectoriel et \(\fami{F}=\paren{x_i}_{i\in I}\in E^I\) une famille de vecteurs de \(E\).
+
+On appelle combinaison linéaire de \(\fami{F}\) tout vecteur de la forme : \[\sum_{i\in I}\lambda_ix_i\] où \(\paren{\lambda_i}_{i\in I}\in\K\deriv{I}\) est une famille de scalaires à support fini.
+\end{defi}
+
+\begin{defprop}
+Soient \(I\) un ensemble, \(E\) un \(\K\)-espace vectoriel et \(\fami{F}=\paren{x_i}_{i\in I}\in E^I\) une famille de vecteurs de \(E\).
+
+On appelle sous-espace vectoriel engendré par \(\fami{F}\) et on note \(\Vect{\fami{F}}\) le plus petit sous-espace vectoriel de \(E\) qui contient les vecteurs de \(\fami{F}\).
+
+Ses éléments sont les combinaisons linéaires de \(\fami{F}\).
+\end{defprop}
+
+\begin{ex}
+Considérons le \(\K\)-espace vectoriel \(\poly\) et la famille \(\fami{F}=\paren{X^n}_{n\in\N}\).
+
+Alors \[\Vect{\fami{F}}=\poly.\]
+\end{ex}
+
+\subsubsection{Familles génératrices}
+
+\begin{defi}
+Soient \(I\) un ensemble, \(E\) un \(\K\)-espace vectoriel et \(\fami{F}=\paren{x_i}_{i\in I}\in E^I\) une famille de vecteurs de \(E\).
+
+On dit que \(\fami{F}\) est une famille génératrice de \(E\) ou que la famille \(\fami{F}\) engendre \(E\) si tout vecteur de \(E\) est combinaison linéaire des vecteurs de \(\fami{F}\), \cad si : \[E=\Vect{\fami{F}},\] \cad : \[\quantifs{\forall x\in E;\exists\paren{\lambda_i}_{i\in I}\in\K\deriv{I}}x=\sum_{i\in I}\lambda_ix_i.\]
+\end{defi}
+
+\subsubsection{Familles libres}
+
+\begin{defi}
+Soient \(I\) un ensemble, \(E\) un \(\K\)-espace vectoriel et \(\fami{F}=\paren{x_i}_{i\in I}\in E^I\) une famille de vecteurs de \(E\).
+
+On dit que \(\fami{F}\) est une famille libre si : \[\quantifs{\forall\paren{\lambda_i}_{i\in I}\in\K\deriv{I}}\sum_{i\in I}\lambda_ix_i=0_E\imp\croch{\quantifs{\forall i\in I}\lambda_i=0}.\]
+
+Si la famille \(\fami{F}\) n'est pas libre, on dit qu'elle est liée.
+\end{defi}
+
+\begin{rem}
+Soient \(I\) un ensemble, \(E\) un \(\K\)-espace vectoriel et \(\fami{F}=\paren{x_i}_{i\in I}\in E^I\) une famille de vecteurs de \(E\).
+
+Alors la famille \(\fami{F}\) est libre si, et seulement si, pour tous \(p\in\Ns\) et tous \(i_1,\dots,i_p\in I\) deux à deux distincts, la famille \(\paren{x_{i_1},\dots,x_{i_p}}\) est libre.
+\end{rem}
+
+\begin{ex}
+Soient \(I\) un ensemble et \(\fami{F}=\paren{P_i}_{i\in I}\in\poly^I\) une famille de polynômes non-nuls de degrés deux à deux distincts, \cad telle que : \[\quantifs{\forall i,j\in I}i\not=j\imp\deg P_i\not=\deg P_j.\]
+
+Alors \(\fami{F}\) est libre.
+\end{ex}
+
+\subsubsection{Bases}
+
+\begin{defi}
+Soient \(I\) un ensemble, \(E\) un \(\K\)-espace vectoriel et \(\fami{F}=\paren{e_i}_{i\in I}\in E^I\) une famille de vecteurs de \(E\).
+
+On dit que \(\fami{F}\) est une base de \(E\) si c'est une famille libre et génératrice de \(E\).
+
+Il est équivalent de dire que tout vecteur de \(E\) s'écrit de façon unique comme combinaison linéaire des vecteurs de la famille : \[\quantifs{\forall x\in E;\exists!\paren{\lambda_i}_{i\in I}\in\K\deriv{I}}x=\sum_{i\in I}\lambda_ie_i.\]
+
+On appelle alors \(\paren{\lambda_i}_{i\in I}\) les coordonnées du vecteur \(x\) dans la base \(\fami{F}\).
+\end{defi}
+
+\begin{ex}[Base canonique de \(\poly\)]
+La famille \[\paren{X^n}_{n\in\N}\] est une base de \(\poly\) appelée la base canonique de \(\poly\).
+\end{ex}
+
+\subsubsection{Cas des ensembles de vecteurs}
+
+\begin{defi}[Parties libres, génératrices]
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+On dit qu'une partie \(A\subset E\) est :
+
+\begin{itemize}
+\item libre si la famille \(\paren{x}_{x\in A}\) est libre. \\
+
+\item génératrice si la famille \(\paren{x}_{x\in A}\) est génératrice de \(E\). \\
+
+\item une base de \(E\) si la famille \(\paren{x}_{x\in A}\) est une base de \(E\).
+\end{itemize}
+\end{defi}
+
+\section{Géométrie affine}
+
+\subsection{Translations}
+
+\begin{defi}[Translation]
+Soient \(E\) un \(\K\)-espace vectoriel et \(v\in E\).
+
+On appelle translation de vecteur \(v\) la fonction : \[\fonctionlambda{E}{E}{x}{x+v}\]
+\end{defi}
+
+\begin{rem}
+Soient \(E\) un \(\K\)-espace vectoriel et \(v\in E\).
+
+L'image du vecteur nul par la translation de vecteur \(v\) est le vecteur \(v\).
+
+En particulier, une translation n'est jamais un endomorphisme, sauf si \(v=0\) (dans ce cas, la translation de vecteur \(v\) est l'application identité \(\id{E}\)).
+\end{rem}
+
+\subsection{Sous-espaces affines}
+
+\begin{defprop}[Sous-espace affine d'un espace vectoriel]
+Soit \(E\) un \(\K\)-espace vectoriel.
+
+On appelle sous-espace affine de \(E\) toute partie \(A\subset E\) de la forme : \[A=v_1+A_0=\accol{v_1+v_0}_{v_0\in A_0}\] où \(v_1\in E\) et \(A_0\) est un sous-espace vectoriel de \(E\).
+
+On dit que \(v_1+A_0\) est le sous-espace affine de direction \(A_0\) passant par \(v_1\).
+
+\begin{enumerate}
+\item On a alors nécessairement : \[A_0=\accol{v-v\prim}_{v,v\prim\in A}.\]
+
+En particulier, l'espace vectoriel \(A_0\) est unique. Il est appelé la direction du sous-espace affine \(A\). \\
+
+\item En revanche, le vecteur \(v_1\) n'est pas unique en général car tout vecteur de \(A\) convient : \[\quantifs{\forall v_2\in A}A=v_2+A_0.\]
+\end{enumerate}
+\end{defprop}
+
+\begin{dem}[1]
+Montrons que \(A_0=\accol{v-v\prim}_{v,v\prim\in A}\).
+
+\increc
+
+Soient \(v,v\prim\in A\).
+
+Montrons que \(v-v\prim\in A_0\).
+
+Il existe \(v_0,v_0\prim\in A_0\) tels que \(\begin{dcases}
+v=v_1+v_0 \\
+v\prim=v_1+v_0\prim
+\end{dcases}\)
+
+On a \[\begin{WithArrows}
+v-v\prim&=v_1+v_0-\paren{v_1+v_0}\prim \\
+&=v_0-v_0\prim \Arrow{car \(A_0\) est un sous-espace vectoriel} \\
+&\in A_0
+\end{WithArrows}\]
+
+\incdir
+
+Soit \(v_0\in A_0\).
+
+On a \(\begin{dcases}
+v_1+v_0\in A \\
+v_1+0_E\in A
+\end{dcases}\)
+
+D'où \[v_0=v_1+v_0-\paren{v_1+0_E}\in\accol{v-v\prim}_{v,v\prim\in A}.\]
+\end{dem}
+
+\begin{dem}[2]
+Soit \(v_2\in A\).
+
+Montrons que \(A=v_2+A_0\), \cad \(v_1+A_0=v_2+A_0\).
+
+On a \(v_2=v_1+v_0\) où \(v_0\in A_0\).
+
+Donc \[v_2+A_0=v_1+v_0+A_0=v_1+A_0\text{ car }v_0\in A_0.\]
+\end{dem}
+
+\begin{rem}
+Les sous-espaces affines de \(E\) sont les images des sous-espaces vectoriels de \(E\) par les translations de \(E\).
+\end{rem}
+
+\begin{ex}
+Soit \(E\) un espace vectoriel.
+
+Alors \begin{itemize}
+\item L'ensemble \(E\) est un sous-espace affine de \(E\), de direction \(E\). \\
+
+\item Tout singleton de \(E\) est un sous-espace affine de \(E\), de direction \(\accol{0_E}\). \\
+
+\item Tout sous-espace vectoriel \(F\) de \(E\) est un sous-espace affine de \(E\), de direction \(F\). \\
+
+\item L'ensemble vide n'est pas un sous-espace affine de \(E\).
+\end{itemize}
+\end{ex}
+
+\begin{ex}
+Prenons \(E=\R^3\) et considérons le système suivant, d'inconnue \(\paren{x,y,z}\in E\) : \[\paren{S}\begin{dcases}
+x+y-4z=1 \\
+x-y-2z=3
+\end{dcases}\]
+
+Son ensemble solution \(A\) est un sous-espace affine de \(E\).
+\end{ex}
+
+\begin{dem}
+On a \[\begin{aligned}
+\paren{S}&\ssi\begin{dcases}
+x+y-4z=1 \\
+x-y-2z=3
+\end{dcases} \\
+&\ssi\begin{dcases}
+x+y-4z=1 \\
+-2y+2z=2 &L_2\gets L_2-L_1
+\end{dcases} \\
+&\ssi\begin{dcases}
+x-3z=2 &L_1\gets L_1+\dfrac{1}{2}L_2 \\
+y-z=-1 &L_2\gets\dfrac{-1}{2}L_2
+\end{dcases}
+\end{aligned}\]
+
+Donc \[\begin{aligned}
+A&=\accol{\tcoords{2}{-1}{0}+\lambda\tcoords{3}{1}{1}}_{\lambda\in\R} \\
+&=\Vect{\tcoords{3}{1}{1}}+\tcoords{2}{-1}{0}.
+\end{aligned}\]
+
+Donc \(A\) est le sous-espace affine de \(E\) passant par \(\tcoords{2}{-1}{0}\) et dirigé par \(\Vect{\tcoords{3}{1}{1}}\).
+\end{dem}
+
+\begin{prop}[Intersection de sous-espaces affines]
+Soient \(E\) un \(\K\)-espace vectoriel et \(\paren{A_i}_{i\in I}\) une famille de sous-espaces affines de \(E\).
+
+Pour tout \(i\in I\), on note \(A_i\prim\) la direction de \(A_i\).
+
+Alors l'intersection \(\biginter_{i\in I}A_i\) est soit l'ensemble vide, soit un sous-espace affine de \(E\) de direction \(\biginter_{i\in I}A_i\prim\).
+\end{prop}
+
+\begin{dem}
+Supposons \(\biginter_{i\in I}A_i\not=\ensvide\).
+
+Soit \(x\in\biginter_{i\in I}A_i\).
+
+Montrons que \(\biginter_{i\in I}A_i=x+\biginter_{i\in I}A_i\prim\).
+
+\incdir
+
+Soit \(y\in\biginter_{i\in I}A_i\).
+
+On a \(\quantifs{\forall i\in I}y\in A_i=x+A_i\prim\).
+
+Donc pour tout \(i\in I\), il existe \(z_i\in A_i\prim\) tel que \(y=x+z_i\).
+
+D'où \(\quantifs{\forall i\in I}y-x=z_i\in A_i\prim\).
+
+Donc \(y-x\in\biginter_{i\in I}a_i\prim\).
+
+D'où \(y=x+y-x\in x+\biginter_{i\in I}A_i\prim\).
+
+\increc
+
+Soit \(y\in x+\biginter_{i\in I}A_i\prim\).
+
+Alors \(\quantifs{\forall j\in I}y\in x+A_j\prim\) car \(A_j\prim\subset\biginter_{i\in I}A_i\prim\).
+
+Donc \(y\in\biginter_{j\in I}\paren{x+A_j\prim}=\biginter_{j\in I}A_j\).
+\end{dem}
+
+\subsection{Équations linéaires}
+
+\begin{defi}[Équation linéaire]
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels, \(u\in\L{E}{F}\) et \(y\in F\).
+
+L'équation suivante, d'inconnue \(x\in E\), est appelée équation linéaire : \[u\paren{x}=y.\]
+\end{defi}
+
+\begin{ex}[Système linéaire]
+Le système suivant : \[\paren{S}\begin{dcases}
+x+y-4z=1 \\
+x-y-2z=3
+\end{dcases}\] peut être vu comme une équation linéaire.
+
+Posons \(\fonction{u}{\R^3}{\R^2}{\tcoords{x}{y}{z}}{\dcoords{x+y-4z}{x-y-2z}}\in\L{\R^3}{\R^2}\) et \(Y=\dcoords{1}{3}\).
+
+Alors \(\paren{S}\ssi u\paren{X}=Y\) : équation linéaire d'inconnue \(X\in\R^3\).
+\end{ex}
+
+\begin{ex}[Équation différentielle linéaire]
+L'équation différentielle \[\paren{E}~y\seconde+y=\cos t\] peut être vue comme une équation linéaire.
+
+Posons \(\fonction{u}{\ensclasse{2}{\R}{\R}}{\ensclasse{0}{\R}{\R}}{y}{y\seconde+y}\) et \(z=\cos\in\ensclasse{0}{\R}{\R}\).
+
+Alors \(\paren{E}\ssi u\paren{y}=z\) : équation linéaire d'inconnue \(y\in\ensclasse{2}{\R}{\R}\).
+\end{ex}
+
+\begin{ex}[Polynômes interpolateurs de Lagrange]
+Soient \(x_0,\dots,x_n\in\R\) deux à deux distincts et \(y_0,\dots,y_n\in\R\).
+
+Le système suivant, d'inconnue \(P\in\poly[\R]\) : \[\paren{S}\begin{dcases}
+P\paren{x_0}=y_0 \\
+\vdots \\
+P\paren{x_n}=y_n
+\end{dcases}\] peut être vu comme une équation linéaire.
+
+Posons \(\fonction{u}{\poly[\R]}{\R^{n+1}}{P}{\paren{P\paren{x_0},\dots,P\paren{x_n}}}\in\L{\poly[\R]}{\R^{n+1}}\) et \(Y=\paren{y_0,\dots,y_n}\in\R^{n+1}\).
+
+Alors \(\paren{S}\ssi u\paren{P}=Y\) : équation linéaire d'inconnue \(P\in\poly[\R]\).
+\end{ex}
+
+\begin{prop}[Ensemble solution d'une équation linéaire]
+Soient \(E\) et \(F\) deux \(\K\)-espaces vectoriels, \(u\in\L{E}{F}\) et \(y\in F\).
+
+L'ensemble solution \(\fami{S}\) de l'équation linéaire suivante, d'inconnue \(x\in E\) : \[u\paren{x}=y\] est soit l'ensemble vide, soit un sous-espace affine de \(E\) de direction \(\ker u\).
+\end{prop}
+
+\begin{dem}
+Supposons \(\fami{S}\not=\ensvide\).
+
+Soit \(x_1\in\fami{S}\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall x\in E}u\paren{x}=y&\ssi u\paren{x}=u\paren{x_1} \\
+&\ssi u\paren{x-x_1}=0 \\
+&\ssi x-x_1\in\ker u \\
+&\ssi\quantifs{\exists x_0\in\ker u}x-x_1=x_0 \\
+&\ssi\quantifs{\exists x_0\in\ker u}x=x_0+x_1 \\
+&\ssi x\in\ker u+x_1.
+\end{aligned}\]
+
+Donc \(\fami{S}=x_1+\ker u\).
+\end{dem}

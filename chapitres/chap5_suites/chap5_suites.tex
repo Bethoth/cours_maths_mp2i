@@ -1,0 +1,1423 @@
+\chapter{Suites}
+
+\minitoc
+
+\section{Suites}
+
+\subsection{Cadre}
+
+On appelle suite réelle toute famille de réels \(\paren{u_n}_{n\in\N}\in\R^\N\) indicée par \(\N\).
+
+On appelle suite complexe toute famille \(\paren{u_n}_{n\in\N}\in\C^\N\) indicée par \(\N\).
+
+On note aussi abusivement \(\paren{u_n}_n\) ces suites.
+
+Plus généralement, on peut appeler suite toute famille de la forme \(\paren{u_n}_{n\in\interventierie{n_0}{\pinf}}\) où \(n_0\in\Z\).
+
+\subsection{Définitions}
+
+Soient \(u=\paren{u_n}_{n\in\N},v=\paren{v_n}_{n\in\N}\in\R^\N\).
+
+On dit que \(u\) est constante si \(\quantifs{\exists c\in\R;\forall n\in\N}u_n=c\).
+
+On dit que \(u\) est stationnaire (ou \guillemets{constante à partir d'un certain rang}) si \(\quantifs{\exists c\in\R;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=c\).
+
+On dit que \(u\) est \begin{itemize}
+\item croissante si \(\quantifs{\forall n\in\N}u_n\leq u_{n+1}\) ;
+
+\item décroissante si \(\quantifs{\forall n\in\N}u_{n+1}\leq u_n\) ;
+
+\item strictement croissante si \(\quantifs{\forall n\in\N}u_n<u_{n+1}\) ;
+
+\item strictement décroissante si \(\quantifs{\forall n\in\N}u_{n+1}<u_n\) ;
+
+\item monotone si elle est croissante ou décroissante ;
+
+\item strictement monotone si elle est strictement croissante ou strictement décroissante.
+\end{itemize}
+
+On dit que \(u\) est \begin{itemize}
+\item majorée si \(\quantifs{\exists M\in\R;\forall n\in\N}u_n\leq M\) ;
+
+\item minorée si \(\quantifs{\exists m\in\R,\forall n\in\N}m\leq u_n\) ;
+
+\item bornée si elle est majorée et minorée, c'est à dire si \(\quantifs{\exists K\in\Rp;\forall n\in\N}\abs{u_n}\leq K\).
+\end{itemize}
+
+On dit que \(u\) est inférieure ou égale à \(v\) et on note \(u\leq v\) si \(\quantifs{\forall n\in\N}u_n\leq v_n\).
+
+On dit que \(u\) est positive (ou \guillemets{à termes positifs}) et on note \(u\geq0\) si \(\quantifs{\forall n\in\N}u_n\geq0\).
+
+On note \(u+v\) la suite \(\paren{w_n}_{n\in\N}\in\R^\N\) définie par \(\quantifs{\forall n\in\N}w_n=u_n+v_n\). Autrement dit, \(\paren{u_n}_{n\in\N}+\paren{v_n}_{n\in\N}=\paren{u_n+v_n}_{n\in\N}\).
+
+On pose de même \(\paren{u_n}_{n\in\N}\times\paren{v_n}_{n\in\N}=\paren{u_nv_n}_{n\in\N}\).
+
+On pose enfin, si \(\lambda\in\R\) : \(\lambda\paren{u_n}_{n\in\N}=\paren{\lambda u_n}_{n\in\N}\).
+
+\begin{ex}
+Supposons \(\quantifs{\forall n\in\N}u_n=\paren{-1}^n\) et \(v_n=\paren{-1}^{n+1}\).
+
+On a \(u+v=\paren{0}_n\) et \(uv=\paren{-1}_n\).
+\end{ex}
+
+\subsection{Suite définie en itérant une fonction}
+
+\begin{prop}
+Soient \(I\subset\R\), \(x\in I\) et \(f:I\to\R\).
+
+On suppose \(f\paren{I}\subset I\) (\(I\) est stable par \(f\)).
+
+Alors il existe une unique suite \(\paren{u_n}_n\in\R^\N\) telle que \(\begin{dcases}u_0=x \\ \quantifs{\forall n\in\N}u_{n+1}=f\paren{u_n}\end{dcases}\)
+\end{prop}
+
+\begin{dem}
+\unicite
+
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\) telles que \(\begin{dcases}u_0=v_0=x \\ \quantifs{\forall n\in\N}\begin{dcases}u_{n+1}=f\paren{u_n} \\ v_{n+1}=f\paren{v_n}\end{dcases}\end{dcases}\)
+
+Montrons que \(\quantifs{\forall n\in\N}u_n=v_n\) par récurrence sur \(n\).
+
+On a \(u_0=x=v_0\).
+
+Soit \(n\in\N\) tel que \(u_n=v_n\). On a \(f\paren{u_n}=f\paren{v_n}\) donc \(u_{n+1}=v_{n+1}\).
+
+\existence
+
+On pose \(\quantifs{\forall n\in\N}f^{\rond n}=\begin{dcases}\id{E} &\text{si }n=0 \\ \underbrace{f\rond f\rond f\rond\dots\rond f}_{n\text{ facteurs}} &\text{sinon}\end{dcases}\)
+
+On remarque que la suite \(\paren{f^{\rond n}\paren{x}}_{n\in\N}\) convient.
+\end{dem}
+
+\begin{ex}
+Avec \(\fonction{f}{\R}{\R}{t}{t^2}\) et \(x=2\), on a \(u_0=2\), \(u_1=4\), \(u_2=16\), \(u_3=256\), ...
+
+Avec \(\fonction{f}{\Rps}{\R}{t}{\ln t}\) et \(x=\e{}\), on a \(u_0=\e{}\), \(u_1=1\), \(u_2=0\), \(u_3=\) problème car \(\Rps\) n'est pas stable par \(f\).
+\end{ex}
+
+\subsection{Suites particulières}
+
+\begin{defi}
+On dit que \(\paren{u_n}_{n\in\N}\in\R^\N\) est une suite arithmétique si on a \(\quantifs{\exists r\in\R;\forall n\in\N}u_{n+1}=u_n+r\).
+
+Un tel réel \(r\) est unique et est appelé raison de la suite.
+\end{defi}
+
+\begin{prop}
+Soit \(\paren{u_n}_n\in\R^\N\) une suite arithmétique de raison \(r\in\R\).
+
+On a \(\quantifs{\forall n\in\N}u_n=u_0+nr\).
+\end{prop}
+
+\begin{defi}
+On dit que \(\paren{u_n}_n\in\R^\N\) est une suite géométrique si on a \(\quantifs{\exists q\in\R;\forall n\in\N}u_{n+1}=qu_n\).
+
+Un tel réel \(q\) est unique si \(v_0\not=0\) et est alors appelé raison de la suite.
+\end{defi}
+
+\begin{prop}
+Soit \(\paren{u_n}_n\in\R^\N\) une suite géométrique de raison \(q\in\R\).
+
+On a \(\quantifs{\forall n\in\N}u_n=u_0\times q^n\).
+\end{prop}
+
+\begin{defi}
+On dit que \(\paren{u_n}_n\in\R^\N\) est une suite arithmético-géométrique si on a \(\quantifs{\exists a,b\in\R;\forall n\in\N}u_{n+1}=au_n+b\).
+\end{defi}
+
+\begin{prop}
+Soit \(\paren{u_n}_n\) une suite arithmético-géométrique. Soient \(a,b\in\R\) tels que \(\quantifs{\forall n\in\N}u_{n+1}=au_n+b\).
+
+Si \(a=1\) alors \(\quantifs{\forall n\in\N}u_n=u_0+nb\).
+
+Supposons désormais \(a\not=1\). Alors la fonction \(\fonction{f}{\R}{\R}{x}{ax+b}\) admet un unique point fixe \(\lambda\in\R\) : \(\quantifs{\exists!\lambda\in\R}f\paren{\lambda}=\lambda\) et la suite \(\paren{u_n-\lambda}_n\) est une suite géométrique.
+\end{prop}
+
+\begin{dem}
+Soit \(x\in\R\). On a : \[\begin{aligned}
+x\text{ point fixe de }f&\ssi f\paren{x}=x \\
+&\ssi ax+b=x \\
+&\ssi x=\dfrac{b}{1-a}.
+\end{aligned}\] Donc \(\lambda=\dfrac{b}{1-a}\) est l'unique point fixe de \(f\).
+
+De plus, on a : \[\begin{aligned}
+\quantifs{\forall n\in\N}u_{n+1}-\lambda&=au_n+b-\dfrac{b}{1-a} \\
+&=au_n+b\paren{1-\dfrac{1}{1-a}} \\
+&=au_n+b\dfrac{-a}{1-a} \\
+&=a\paren{u_n-\dfrac{b}{1-a}} \\
+&=a\paren{u_n-\lambda}.
+\end{aligned}\] Donc \(\paren{u_n-\lambda}_n\) est une suite géométrique de raison \(a\).
+\end{dem}
+
+\begin{ex}
+Soit \(\paren{u_n}_n\) définie par \(\begin{dcases}u_0=2 \\ \quantifs{\forall n\in\N}u_{n+1}=5u_n+3\end{dcases}\).
+
+Calculons \(u_n\) pour tout \(n\in\N\).
+
+Résolvons l'équation \(x=5x+3\) pour tout \(x\in\R\) : \(x=-\dfrac{3}{4}\).
+
+Ainsi, on a : \[\begin{aligned}
+\quantifs{\forall n\in\N}u_{n+1}+\dfrac{3}{4}&=5u_n+3+\dfrac{3}{4} \\
+&=5u_n+\dfrac{15}{4} \\
+&=5\paren{u_n+\dfrac{3}{4}}.
+\end{aligned}\] Donc \(\paren{u_n+\dfrac{3}{4}}_n\) est géométrique de raison \(5\).
+
+Donc \(\quantifs{\forall n\in\N}u_n+\dfrac{3}{4}=\paren{u_0+\dfrac{3}{4}}\times5^n\).
+
+D'où \(\quantifs{\forall n\in\N}u_n=\dfrac{11}{4}\times5^n-\dfrac{3}{4}\).
+\end{ex}
+
+\section{Convergence}
+
+\subsection{Définition}
+
+\begin{defprop}
+Soient \(\paren{u_n}_n\in\R^\N\) et \(l\in\R\).
+
+On dit que \(\paren{u_n}_n\) converge (ou tend) vers \(l\) si on a : \[\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\abs{u_n-l}\leq\epsilon.\]
+
+Un tel réel \(l\) est unique et est appelé la limite de \(\paren{u_n}_n\). Il est noté : \[l=\lim_{n\to\pinf}u_n=\lim_nu_n\quad\text{ou}\quad u_n\xrightarrow[n\to\pinf]{}l.\]
+
+On dit enfin que \(\paren{u_n}_n\) est convergente. Sinon, on dit que \(\paren{u_n}_n\) est divergente.
+\end{defprop}
+
+\begin{rem}
+La notation \guillemets{\(\lim_nu_n=l\)} signifie \guillemets{la limite de \(\paren{u_n}_n\) existe et vaut \(l\)}. Sa négation n'est donc pas \(\lim_nu_n\not=l\) mais \[\quantifs{\exists\epsilon\in\Rps;\forall N\in\N;\exists n\in\interventierie{N}{\pinf}}\abs{u_n-l}>\epsilon.\]
+\end{rem}
+
+\begin{dem}
+Montrons que \(\paren{u_n}_n\) admet au plus une limite.
+
+Soient \(l,l\prim\in\R\) tels que \(\begin{dcases}
+\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\abs{u_n-l}\leq\epsilon \\
+\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\abs{u_n-l\prim}\leq\epsilon
+\end{dcases}\).
+
+Supposons \(l\not=l\prim\). Posons \(\epsilon=\dfrac{\abs{l-l\prim}}{3}\). On a \(\epsilon\in\Rps\).
+
+Soit \(N_1\in\N\) tel que \(\quantifs{\forall n\geq N_1}\abs{u_n-l}\leq\epsilon\).
+
+Soit \(N_2\in\N\) tel que \(\quantifs{\forall n\geq N_2}\abs{u_n-l\prim}\leq\epsilon\).
+
+Posons \(N=\max\accol{N_1;N_2}\). On a \(\begin{dcases}\abs{u_N-l}\leq\epsilon \\ \abs{u_N-l\prim}\leq\epsilon\end{dcases}\).
+
+Donc on a : \[\begin{aligned}
+\abs{l-l\prim}&\leq\abs{l-u_N}+\abs{u_N-l\prim} \\
+&\leq\epsilon+\epsilon \\
+&=2\epsilon \\
+&=\dfrac{2}{3}\abs{l-l\prim}\quad\text{contradiction.}
+\end{aligned}\]
+
+Donc par l'absurde, \(l=l\prim\) donc la limite est unique.
+\end{dem}
+
+\begin{ex}
+Montrons que \(\lim_{n}\dfrac{1}{n}=0\), \cad : \[\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\abs{\dfrac{1}{n}-0}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall n\in\Ns}\abs{\dfrac{1}{n}}\leq\epsilon&\ssi n\geq\dfrac{1}{\epsilon} \\
+&\impr n\geq\floor{\dfrac{1}{\epsilon}}+1.
+\end{aligned}\]
+
+Donc l'entier \(\floor{\dfrac{1}{\epsilon}}+1\) convient (donc \(N\) existe).
+\end{ex}
+
+\begin{rem}
+Pour une suite, on a : \[\text{constante}\imp\text{stationnaire}\imp\text{convergente}.\]
+\end{rem}
+
+\begin{rem}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\).
+
+Si \(\paren{u_n}_n\) et \(\paren{v_n}_n\) coïncident à partir d'un certain rang, \cad si on a : \[\quantifs{\exists N\in\N;\forall n\geq N}u_n=v_n\] alors on a : \[\paren{u_n}_n\text{ convergente}\ssi\paren{v_n}_n\text{ convergente}\] et les limites sont égales.
+\end{rem}
+
+\begin{prop}
+Soient \(\paren{u_n}_n\in\R^\N\) et \(l\in\R\).
+
+Alors on a : \[\lim_nu_n=l\ssi\lim_n\paren{u_n-l}=0.\]
+\end{prop}
+
+\begin{dem}
+On a : \[\begin{aligned}
+\lim_nu_n=l&\ssi\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{u_n-l}\leq\epsilon \\
+&\ssi\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{\paren{u_n-l}-0}\leq\epsilon \\
+&\ssi\lim_n\paren{u_n-l}=0
+\end{aligned}\]
+\end{dem}
+
+\subsection{Convergence et ordre}
+
+\begin{prop}
+Toute suite convergente est bornée.
+\end{prop}
+
+\begin{dem}\thlabel{dem:suiteReelleConvergenteDoncBornee}
+Soit \(\paren{u_n}_n\) une suite convergente. On note \(l\) sa limite.
+
+Soit \(N\in\N\) tel que \(\quantifs{\forall n\geq N}\abs{u_n-l}\leq1\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall n\geq N}\abs{u_n}&=\abs{u_n-l+l} \\
+&\leq\abs{u_n-l}+\abs{l} \\
+&\leq1+\abs{l}.
+\end{aligned}\]
+
+Posons \(M=\max\accol{\abs{u_0};\dots;\abs{u_{N-1}};1+\abs{l}}\).
+
+On a \(\quantifs{\forall n\in\N}\abs{u_n}\leq M\).
+
+Donc \(\paren{u_n}_n\) est bornée.
+\end{dem}
+
+\begin{prop}
+Soit \(\paren{u_n}_n\) une suite convergente de limite \(l\in\R\).
+
+Tout minorant strict de \(l\) minore strictement \(\paren{u_n}_n\) à partir d'un certain rang.
+\end{prop}
+
+\begin{dem}
+Soit \(m\in\R\) tel que \(m<l\).
+
+On a : \[\quantifs{\exists N\in\N;\forall n\geq N}u_n>m.\]
+
+Posons \(\epsilon=\dfrac{l-m}{2}\). On a \(\epsilon\in\Rps\).
+
+Soit \(N\in\N\) tel que \(\quantifs{\forall n\geq N}\abs{u_n-l}\leq\epsilon\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall n\geq N}u_n-l&\geq-\epsilon \\
+\quantifs{\forall n\geq N}u_n-l&\geq\dfrac{m-l}{2} \\
+\quantifs{\forall n\geq N}u_n&\geq\dfrac{m+l}{2}>m.
+\end{aligned}\]
+
+Donc \(N\) convient.
+\end{dem}
+
+\begin{ex}
+Soient \(\paren{u_n}_n\in\R^\N\) et \(l\in\Rps\).
+
+On a \(0<l\) donc \(\quantifs{\exists N\in\N;\forall n\geq N}0<u_n\).
+
+En particulier, \(\paren{\dfrac{1}{u_n}}_n\) est bien définie à partir d'un certain rang.
+\end{ex}
+
+\begin{prop}
+Soit \(\paren{u_n}_n\) une suite convergente de limite \(l\in\R\).
+
+Tout majorant strict de \(l\) majore strictement \(\paren{u_n}_n\) à partir d'un certain rang.
+\end{prop}
+
+\begin{dem}
+Idem.
+\end{dem}
+
+\begin{rem}
+On ne peut rien dire d'analogue concernant les minorants ou majorants larges de la limite. Par exemple, \(0\) majore \(0\) mais ne majore pas \(\paren{\dfrac{1}{n}}_n\) à partir d'un certain rang.
+\end{rem}
+
+\begin{prop}[Passage à la limite dans une inégalité large]\thlabel{prop:passageALaLimiteDansUneInegaliteLargeAvecUnScalaire}
+Soit \(\paren{u_n}_n\) une suite convergente de limite \(l\in\R\). Soit \(\lambda\in\R\).
+
+Si \(\quantifs{\forall n\in\N}u_n\leq\lambda\) alors \(l\leq\lambda\).
+
+Si \(\quantifs{\forall n\in\N}u_n\geq\lambda\) alors \(l\geq\lambda\).
+\end{prop}
+
+\begin{dem}
+Supposons \(\quantifs{\forall n\in\N}u_n\leq\lambda\). Montrons que \(l\leq\lambda\).
+
+Supposons \(\lambda<l\).
+
+Alors \(\quantifs{\exists N\in\N;\forall n\geq N}u_n>l\) : contradiction.
+
+Donc \(l\leq\lambda\) par l'absurde.
+
+On montre de même que si \(\quantifs{\forall n\in\N}u_n\geq\lambda\) alors \(l\geq\lambda\).
+\end{dem}
+
+\begin{rem}
+C'est faux avec des inégalités strictes. Par exemple, on a : \(\quantifs{\forall n\in\N}0<\dfrac{1}{n}\) mais on n'a pas \(0<\lim_n\dfrac{1}{n}\).
+\end{rem}
+
+\begin{theo}[Théorème des gendarmes]\label{theo:gendarmes}
+Soient \(\paren{u_n}_n,\paren{v_n}_n,\paren{w_n}_n\in\R^\N\).
+
+On suppose que : \begin{itemize}
+\item les suites \(\paren{u_n}_n\) et \(\paren{w_n}_n\) sont convergentes et de même limite \(l\in\R\) ;
+\item l'on a \(\quantifs{\forall n\in\N}u_n\leq v_n\leq w_n\). \\
+\end{itemize}
+
+Alors \(\paren{v_n}_n\) est convergente de limite \(l\).
+\end{theo}
+
+\begin{dem}\thlabel{dem:théorèmeDesGendarmesDansLeCasFiniSuites}
+Montrons que \(\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{v_n-l}\leq\epsilon\).
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(N_1\in\N\) tel que \(\quantifs{\forall n\geq N_1}l-\epsilon\leq u_n\).
+
+Soit \(N_2\in\N\) tel que \(\quantifs{\forall n\geq N_2}l+\epsilon\geq w_n\).
+
+Posons \(N=\max\accol{N_1;N_2}\).
+
+On a : \[\quantifs{\forall n\geq N}l-\epsilon\leq u_n\leq w_n\leq l+\epsilon.\]
+
+D'où \(\lim_nv_n=l\).
+\end{dem}
+
+\begin{ex}~\\
+On a vu \(\lim_n\dfrac{1}{n}=0\). On admet \(\lim_n-\dfrac{1}{n}=0\).
+
+Montrons que \(\paren{\dfrac{\paren{-1}^n}{n}}_n\) est convergente et tend vers \(0\).
+
+On a : \[\quantifs{\forall n\in\Ns}-\dfrac{1}{n}\leq\dfrac{\paren{-1}^n}{n}\leq\dfrac{1}{n}\quad\text{et}\quad\lim_n-\dfrac{1}{n}=\lim_n\dfrac{1}{n}=0.\]
+
+Donc selon le théorème des gendarmes, \(\lim_n\dfrac{\paren{-1}^n}{n}=0\).
+\end{ex}
+
+\begin{cor}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\). Soit \(l\in\R\).
+
+On suppose \(\begin{dcases}\lim_nv_n=0 \\ \quantifs{\forall n\in\N}\abs{u_n-l}\leq v_n\end{dcases}\)
+
+Alors \(\paren{u_n}_n\) est convergente et \(\lim_nu_n=l\).
+\end{cor}
+
+\begin{dem}
+On a \(\quantifs{\forall n\in\N}-v_n\leq u_n-l\leq v_n\).
+
+Donc \(\quantifs{\forall n\in\N}l-v_n\leq u_n\leq l+v_n\).
+
+Or \(\lim_n\paren{l-v_n}=\lim_n\paren{l+v_n}=l\).
+
+Donc \(\lim_nu_n=l\) d'après le théorème des gendarmes.
+\end{dem}
+
+\begin{nota}
+Soit \(\paren{u_n}_n\in\R^\N\). Soit \(l\in\R\).
+
+La notation \(\lim_nu_n=l^+\) signifie que \(\paren{u_n}_n\) converge vers \(l\) par valeurs supérieures, \cad : \[\begin{dcases}\lim_nu_n=l \\ \quantifs{\exists N\in\N;\forall n\geq N}l<u_n\end{dcases}\]
+
+De même, la notation \(\lim_nu_n=l^-\) signifie que \(\paren{u_n}_n\) converge vers \(l\) par valeurs inférieures, \cad : \[\begin{dcases}\lim_nu_n=l \\ \quantifs{\exists N\in\N;\forall n\geq N}l>u_n\end{dcases}\]
+\end{nota}
+
+\subsection{Opérations sur les limites}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\). Soient \(\lambda,\mu\in\R\). Soient \(l,l\prim\in\R\).
+
+On suppose \(\lim_nu_n=l\) et \(\lim_nv_n=l\prim\).
+
+On a alors :
+
+\begin{enumerate}
+\item \(\lim_n\paren{u_n+v_n}=l+l\prim\) \\
+\item \(\lim_n\paren{\lambda u_n+\mu v_n}=\lambda l+\mu l\prim\) \\
+\item \(\lim_nu_nv_n=ll\prim\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]\thlabel{dem:sommeLimitesReellesSuites}
+Montrons que \(\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{u_n+v_n-l-l\prim}\leq\epsilon\).
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(N_1\in\N\) tel que \(\quantifs{\forall n\geq N_1}\abs{u_n-l}\leq\dfrac{\epsilon}{2}\).
+
+Soit \(N_2\in\N\) tel que \(\quantifs{\forall n\geq N_2}\abs{v_n-l\prim}\leq\dfrac{\epsilon}{2}\).
+
+On pose \(N=\max\accol{N_1;N_2}\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall n\geq N}\abs{u_n+v_n-l-l\prim}&\leq\abs{u_n-l}+\abs{v_n-l\prim} \\
+&\leq\dfrac{\epsilon}{2}+\dfrac{\epsilon}{2} \\
+&=\epsilon.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[2]
+Montrons que \(\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{\lambda u_n+\mu v_n-\lambda l-\mu l\prim}\leq\epsilon\).
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(N_1\in\N\) tel que \(\quantifs{\forall n\geq N_1}\abs{u_n-l}\leq\dfrac{\epsilon}{2\paren{\abs{\lambda}+1}}\).
+
+Soit \(N_2\in\N\) tel que \(\quantifs{\forall n\geq N_2}\abs{v_n-l\prim}\leq\dfrac{\epsilon}{2\paren{\abs{\mu}+1}}\).
+
+On pose \(N=\max\accol{N_1;N_2}\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall n\geq N}\abs{\lambda u_n+\mu v_n-\lambda l-\mu l\prim}&=\abs{\lambda\paren{u_n-l}+\mu\paren{v_n-l\prim}} \\
+&\leq\abs{\lambda}\abs{u_n-l}+\abs{\mu}\abs{v_n-l\prim} \\
+&\leq\abs{\lambda}\dfrac{\epsilon}{2\paren{\abs{\lambda}+1}}+\abs{\mu}\dfrac{\epsilon}{2\paren{\abs{\mu}+1}} \\
+&=\dfrac{\epsilon}{2}\paren{\dfrac{\abs{\lambda}}{\abs{\lambda}+1}+\dfrac{\abs{\mu}}{\abs{\mu}+1}} \\
+&\leq\epsilon.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[3]\thlabel{dem:produitLimitesReellesSuites}
+Montrons que \(\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{u_nv_n-ll\prim}\leq\epsilon\).
+
+Soit \(\epsilon\in\Rps\).
+
+On remarque : \[\begin{aligned}
+\quantifs{\forall n\in\N}\abs{u_nv_n-ll\prim}&=\abs{u_nv_n-u_nl\prim+u_nl\prim-ll\prim} \\
+&\leq\abs{u_nv_n-u_nl\prim}+\abs{u_nl\prim-ll\prim} \\
+&=\abs{u_n}\abs{v_n-l\prim}+\abs{u_n-l}\abs{l\prim}.
+\end{aligned}\]
+
+Comme \(\paren{u_n}_n\) est convergente, elle est bornée. Soit \(M\in\Rps\) tel que \(\quantifs{\forall n\in\N}\abs{u_n}\leq M\).
+
+Soit \(N_1\in\N\) tel que \(\quantifs{\forall n\geq N_1}\abs{u_n-l}\leq\dfrac{\epsilon}{2\paren{\abs{l'}+1}}\).
+
+Soit \(N_2\in\N\) tel que \(\quantifs{\forall n\geq N_2}\abs{v_n-l\prim}\leq\dfrac{\epsilon}{2M}\).
+
+On pose \(N=\max\accol{N_1;N_2}\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall n\geq N}\abs{u_nv_n-ll\prim}&\leq\abs{u_n}\abs{v_n-l\prim}+\abs{u_n-l}\abs{l\prim} \\
+&\leq M\dfrac{\epsilon}{2M}+\dfrac{\epsilon}{2\paren{\abs{l\prim}+1}}\abs{l\prim} \\
+&\leq\epsilon.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\).
+
+On suppose \(\lim_nu_n=0\) et \(\paren{v_n}_n\) bornée.
+
+Alors \(\lim_nu_nv_n=0\).
+\end{prop}
+
+\begin{dem}\thlabel{dem:limiteProduitSuiteBornéeEtSuiteTendantVersZéroVautZéroSuites}
+Montrons que \(\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{u_nv_n}\leq\epsilon\).
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(M\in\Rps\) tel que \(\quantifs{\forall n\in\N}\abs{v_n}\leq M\).
+
+Soit \(N\in\N\) tel que \(\quantifs{\forall n\geq N}\abs{u_n}\leq\dfrac{\epsilon}{M}\).
+
+On a \(\quantifs{\forall n\geq N}\abs{u_nv_n}\leq\dfrac{\epsilon}{M}M=\epsilon\).
+
+Donc \(N\) convient.
+
+Donc \(\lim_nu_nv_n=0\).
+\end{dem}
+
+\begin{prop}
+Soit \(\paren{u_n}_n\in\R^\N\).
+
+On suppose que \(\lim_nu_n=l\in\Rs\).
+
+Alors \(\paren{\dfrac{1}{u_n}}_n\) est \guillemets{bien définie à partir d'un certain rang}.
+
+\Cad : \(\quantifs{\exists N_0\in\N;\forall n\geq N_0}u_n\not=0\).
+
+De plus, \(\lim_n\dfrac{1}{u_n}=\dfrac{1}{l}\).
+\end{prop}
+
+\begin{dem}\thlabel{dem:inverseLimiteReelleSuite}
+Supposons \(l>0\).
+
+Comme \(0\) minore strictement \(\lim_nu_n\), \(0\) minore strictement \(\paren{u_n}_n\) à partir d'un certain rang \(N_0\in\N\) : \(\quantifs{\forall n\geq N_0}0<u_n\).
+
+Montrons que \(\paren{\dfrac{1}{u_n}}_{n\geq N_0}\) converge vers \(\dfrac{1}{l}\).
+
+Soit \(\epsilon\in\Rps\).
+
+On a \(\quantifs{\forall n\in\N}\abs{\dfrac{1}{u_n}-\dfrac{1}{l}}=\dfrac{\abs{l-u_n}}{u_nl}=\dfrac{1}{\abs{l}}\dfrac{1}{\abs{u_n}}\abs{l-u_n}\).
+
+On a \(\dfrac{l}{2}<\lim_nu_n\).
+
+Donc il existe \(N_1\in\N\) tel que \(\quantifs{\forall n\geq N_1}\dfrac{l}{2}<u_n\).
+
+Soit \(N_2\in\N\) tel que \(\quantifs{\forall n\geq N_2}\abs{u_n-l}\leq\dfrac{\epsilon l^2}{2}\).
+
+On pose \(N=\max\accol{N_1;N_2}\).
+
+On a \(\quantifs{\forall n\geq N}\abs{\dfrac{1}{u_n}-\dfrac{1}{l}}\leq\dfrac{1}{l}\dfrac{2}{l}\dfrac{\epsilon l^2}{2}=\epsilon\).
+
+Donc \(\lim_n\dfrac{1}{u_n}=\dfrac{1}{l}\).
+
+De même si \(l<0\).
+\end{dem}
+
+\begin{cor}
+Soient deux suites convergentes \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\) de limites respectives \(l,l\prim\in\R\).
+
+Si \(l\prim\not=0\) alors \(\lim_n\dfrac{u_n}{v_n}=\dfrac{l}{l\prim}\).
+\end{cor}
+
+\begin{dem}
+On a \(\lim_nv_n=l\prim\not=0\) donc \(\lim_n\dfrac{1}{v_n}=\dfrac{1}{l\prim}\).
+
+Ainsi, on a \(\lim_n\dfrac{u_n}{v_n}=\dfrac{l}{l\prim}\) par produit.
+\end{dem}
+
+\section{Limites infinies}
+
+\begin{defi}
+Soit \(\paren{u_n}_n\in\R^\N\).
+
+On dit que \(\paren{u_n}_n\) tend (ou diverge) vers \(\pinf\) si on a \[\quantifs{\forall\alpha\in\R;\exists N\in\N;\forall n\geq N}u_n\geq\alpha.\]
+
+On note alors \(\lim_nu_n=\pinf\) et on dit que \(\pinf\) est la limite de \(\paren{u_n}_n\).
+
+De même, on dit que \(\paren{u_n}_n\) diverge (ou tend) vers \(\minf\) si on a \[\quantifs{\forall\alpha\in\R;\exists N\in\N;\forall n\geq N}u_n\leq\alpha.\]
+\end{defi}
+
+\begin{rem}
+Une suite convergente est une suite admettant une limite finie \(l\in\R\).
+
+Une suite divergente est une suite admettant une limite infinie \(l\in\accol{\minf;\pinf}\) ou n'admettant pas de limite.
+\end{rem}
+
+\begin{ex}
+On a les limites suivantes :
+
+\begin{itemize}
+\item \(\lim_nn=\pinf\) \\
+
+\item \(\lim_nn!=\pinf\) \\
+
+\item \(\lim_n\e{n}=\pinf\) \\
+
+\item \(\lim_n\ln n=\pinf\) \\
+\end{itemize}
+\end{ex}
+
+\begin{dem}
+Montrons que \(\lim_n\ln n=\pinf\), \cad \[\quantifs{\forall\alpha\in\R;\exists N\in\N;\forall n\geq N}\ln n\geq\alpha.\]
+
+Soit \(\alpha\in\R\).
+
+On a \[\begin{aligned}
+\quantifs{\forall n\in\Ns}\ln n\geq\alpha&\ssi n\geq\e{\alpha} \\
+&\impr n\geq\floor{\e{\alpha}}+1
+\end{aligned}\]
+
+Donc l'entier \(N=\floor{\e{\alpha}}+1\) convient.
+\end{dem}
+
+\begin{prop}
+Toute suite qui tend vers \(\pinf\) est minorée.
+
+Toute suite qui tend vers \(\minf\) est majorée.
+\end{prop}
+
+\begin{dem}
+Soit \(\paren{u_n}_n\in\R^\N\) une suite de limite \(\pinf\).
+
+Il existe \(N\in\N\) tel que \(\quantifs{\forall n\geq N}0\leq u_n\).
+
+Posons \(m=\min\accol{u_0;\dots;u_{N-1};0}\).
+
+On a \(\quantifs{\forall n\in\N}m\leq u_n\).
+
+Donc \(\paren{u_n}_n\) est minorée.
+
+Idem si \(\lim_nu_n=\minf\).
+\end{dem}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\).
+
+Si \(\begin{dcases}\lim_nu_n=\pinf \\ \paren{v_n}_n\text{ minorée}\end{dcases}\) alors \(\lim_n\paren{u_n+v_n}=\pinf\).
+
+Si \(\begin{dcases}\lim_nu_n=\minf \\ \paren{v_n}_n\text{ majorée}\end{dcases}\) alors \(\lim_n\paren{u_n+v_n}=\minf\).
+\end{prop}
+
+\begin{dem}\thlabel{dem:limiteSommeSuiteMajoréeOuMinoréeEtSuiteDivergente}
+Supposons \(\lim_nu_n=\pinf\) et \(\paren{v_n}_n\) minorée.
+
+Soit \(m\in\R\) un minorant de \(\paren{v_n}_n\) : \(\quantifs{\forall n\in\N}m\leq v_n\).
+
+Montrons que \(\lim_n\paren{u_n+v_n}=\pinf\), \cad \[\quantifs{\forall\alpha\in\R;\exists N\in\N;\forall n\geq N}\alpha\leq u_n+v_n.\]
+
+Soit \(\alpha\in\R\).
+
+Soit \(N\in\N\) tel que \(\quantifs{\forall n\geq N}u_n\geq\alpha-v_n\).
+
+On a \(\quantifs{\forall n\geq N}u_n+v_n\geq\alpha-m+m=\alpha\).
+
+Donc \(N\) convient.
+
+Donc \(\lim_n\paren{u_n+v_n}=\pinf\).
+
+Idem pour l'autre implication.
+\end{dem}
+
+\section{Suites extraites}
+
+\begin{defi}
+Soit \(\paren{u_n}_n\in\R^\N\).
+
+On appelle suite extraite de \(\paren{u_n}_n\) toute suite de la forme \(\paren{u_{\phi\paren{n}}}_{n\in\N}\) où \(\phi:\N\to\N\) strictement croissante.
+\end{defi}
+
+\begin{rem}
+Soit \(\phi:\N\to\N\) strictement croissante.
+
+On a \(\quantifs{\forall n\in\N}\phi\paren{n}\geq n\).
+\end{rem}
+
+\begin{dem}
+Par récurrence sur \(n\in\N\) :
+
+On a \(\phi\paren{0}\in\N\) donc \(\phi\paren{0}\geq 0\).
+
+Soit \(n\in\N\) tel que \(\phi\paren{n}\geq n\).
+
+On a \(\phi\paren{n+1}>\phi\paren{n}\) car \(\phi\) strictement croissante.
+
+Donc \(\phi\paren{n+1}\geq\phi\paren{n}+1\geq n+1\).
+
+Ainsi, on a \(\quantifs{\forall n\in\N}\phi\paren{n}\geq n\).
+\end{dem}
+
+\begin{ex}
+Prenons \(\quantifs{\forall n\in\N}u_n=\paren{-1}^n\).
+
+Si \(\phi:n\mapsto2n\) alors on obtient la suite extraite \(\paren{u_{2n}}_n=\paren{\paren{-1}^{2n}}_n=\paren{1}_n\).
+
+Si \(\phi:n\mapsto2n+1\) alors on obtient la suite extraite \(\paren{u_{2n+1}}_n=\paren{\paren{-1}^{2n+1}}_n=\paren{-1}_n\).
+
+Prenons maintenant \(\quantifs{\forall n\in\Ns}u_n=\dfrac{1}{n}\).
+
+Si \(\phi:n\mapsto2^n\) alors \(\paren{u_{\phi\paren{n}}}_{n\geq1}=\paren{\dfrac{1}{2^n}}_{n\geq1}\).
+
+Si \(\phi:n\mapsto n^2\) alors \(\paren{u_{\phi\paren{n}}}_{n\geq1}=\paren{\dfrac{1}{n^2}}_{n\geq1}\).
+\end{ex}
+
+\begin{theo}\thlabel{theo:suiteExtraiteTendVersLaMemeLimite}
+Soient \(\paren{u_n}_n\in\R^\N\) et \(l\in\Rb\).
+
+On suppose \(\lim_nu_n=l\).
+
+Alors toute suite extraite de \(\paren{u_n}_n\) tend vers \(l\).
+\end{theo}
+
+\begin{dem}
+Soit \(\phi:\N\to\N\) strictement croissante.
+
+Montrons que \(\lim_nu_{\phi\paren{n}}=l\).
+
+Supposons \(l\in\R\).
+
+Montrons que \[\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{u_{\phi\paren{n}}-l}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(N\in\N\) tel que \(\quantifs{\forall k\geq N}\abs{u_k-l}\leq\epsilon\).
+
+On remarque \(\quantifs{\forall n\geq N}\abs{u_{\phi\paren{n}}-l}\leq\epsilon\) car \(\phi\paren{n}\geq n\geq N\).
+
+Donc \(N\) convient.
+
+Idem si \(l=\pm\infty\).
+\end{dem}
+
+\begin{ex}[Exemple d'application]
+Montrons que \(\paren{\paren{-1}^n}_{n\in\N}\) n'admet pas de limite.
+
+Par l'absurde, supposons que la suite admet une limite \(l\in\Rb\).
+
+Alors les suites extraites \(\paren{\paren{-1}^{2n}}_{n\in\N}\) et \(\paren{\paren{-1}^{2n+1}}_{n\in\N}\) tendent aussi vers \(l\).
+
+Or, les limites respectives de ces suites sont \(1\) et \(-1\).
+
+Donc par unicité de la limite, \(l=1=-1\) : contradiction.
+
+Donc \(\paren{\paren{-1}^n}_{n\in\N}\) n'admet pas de limite.
+\end{ex}
+
+\section{Opérations sur les limites}
+
+\begin{theo}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\). Soient \(l,l\prim\in\Rb\).
+
+On suppose que \(\lim_nu_n=l\) et \(\lim_nv_n=l\prim\).
+
+\begin{enumerate}
+\item Si \(\paren{l,l\prim}\not\in\accol{\paren{\pinf,\minf};\paren{\minf,\pinf}}\) alors \[\lim_n\paren{u_n+v_n}=l+l\prim.\] \\
+
+\item Si \(\paren{l,l\prim}\not\in\accol{\paren{0,\pinf};\paren{0,\minf};\paren{\pinf,0};\paren{\minf,0}}\) alors \[\lim_nu_nv_n=ll\prim.\] \\
+
+\item Si \(l\not=0\) alors \[\lim_n\dfrac{1}{u_n}=\begin{dcases}0&\text{si }l\in\accol{\minf;\pinf} \\ \dfrac{1}{l}&\text{sinon}\end{dcases}\] \\
+
+\item Si \(\lim_nu_n=0^+\), respectivement \(0^-\), alors \[\begin{dcases}\paren{\dfrac{1}{u_n}}_n\text{ est définie à partir d'un certain rang} \\ \lim_n\dfrac{1}{u_n}=\pinf\text{, respectivement }\minf\end{dcases}\].
+\end{enumerate}
+\end{theo}
+
+\begin{dem}[1]
+Si \(l,l\prim\in\R\), voir la \thref{dem:sommeLimitesReellesSuites}.
+
+Si \(l=\pinf\) et \(l\prim\not=\minf\) alors \[\begin{dcases}\lim_nu_n=\pinf \\ \paren{v_n}_n\text{ minorée car }\begin{dcases}\paren{v_n}_n&\text{ bornée si }l\prim\in\R \\ \paren{v_n}_n&\text{ minorée si }l\prim=\pinf\end{dcases}\end{dcases}\]
+
+Donc \(\lim_n\paren{u_n+v_n}=\pinf\).
+
+Idem si \(l\prim=\pinf\) et \(l\not=\minf\).
+
+Idem si \(l=\minf\) ou \(l\prim=\minf\).
+\end{dem}
+
+\begin{dem}[2]
+Si \(l,l\prim\in\R\), voir la \thref{dem:produitLimitesReellesSuites}.
+
+Si \(l=\pinf=l\prim\), montrons que \(\lim_nu_nv_n=\pinf\), \cad \[\quantifs{\forall\alpha\in\Rp;\exists N\in\N;\forall n\geq N}u_nv_n\geq\alpha.\]
+
+Soit \(\alpha\in\Rp\).
+
+Soit \(N_1\in\N\) tel que \(\quantifs{\forall n\geq N_1}u_n\geq\alpha\).
+
+Soit \(N_2\in\N\) tel que \(\quantifs{\forall n\geq N_2}v_n\geq1\).
+
+Posons \(N=\max\accol{N_1;N_2}\).
+
+On a \[\quantifs{\forall n\geq N}u_nv_n\geq\alpha\] donc \(N\) convient.
+
+Si \(l=\pinf\) et \(l\prim\in\Rps\), on a \(\dfrac{l\prim}{2}<\lim_nv_n\).
+
+Donc il existe un rang \(N_1\in\N\) tel que \(\quantifs{\forall n\geq N_1}\dfrac{l\prim}{2}<v_n\).
+
+Montrons que \(\lim_nu_nv_n=\pinf\), \cad \[\quantifs{\forall\alpha\in\Rp;\exists N\in\N;\forall n\geq N}u_nv_n\geq\alpha.\]
+
+Soit \(\alpha\in\Rp\).
+
+Soit \(N_2\in\N\) tel que \(\quantifs{\forall n\geq N_2}u_n\geq\dfrac{2\alpha}{l\prim}\).
+
+On pose \(N=\max\accol{N_1;N_2}\).
+
+On a \(\quantifs{\forall n\geq N}u_nv_n\geq\dfrac{2\alpha}{l\prim}\times\dfrac{l\prim}{2}=\alpha\).
+
+Donc \(\lim_nu_nv_n=\pinf=ll\prim\).
+
+Idem dans les autres cas.
+\end{dem}
+
+\begin{dem}[3]
+Si \(l\in\R\), voir la \thref{dem:inverseLimiteReelleSuite}.
+
+Si \(l=\pinf\), montrons que \(\lim_n\dfrac{1}{u_n}=0\).
+
+La suite \(\paren{\dfrac{1}{u_n}}_n\) est bien définie à partir d'un certain rang car on a \[\quantifs{\exists N_0\in\N;\forall n\geq N_0}u_n\geq1\not=0.\]
+
+Soit \(N_0\in\N\) tel que \(\quantifs{\forall n\geq N_0}u_n\not=0\).
+
+Montrons que \[\quantifs{\forall\epsilon\in\Rps;\exists N\geq N_0;\forall n\geq N}\abs{\dfrac{1}{u_n}}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(N_1\geq N_0\) tel que \(\quantifs{\forall n\geq N_1}u_n\geq\dfrac{1}{\epsilon}\).
+
+On a \(\quantifs{\forall n\geq N_1}\abs{\dfrac{1}{u_n}}=\dfrac{1}{u_n}\leq\epsilon\).
+
+Idem si \(l=\minf\)
+\end{dem}
+
+\begin{dem}[4]
+Si \(\lim_nu_n=0^+\) alors il existe un rang \(N_0\in\N\) tel que \(\quantifs{\forall n\geq N_0}u_n>0\).
+
+En particulier, \(\paren{\dfrac{1}{u_n}}_{n\geq N_0}\) est bien définie.
+
+Montrons que \(\paren{\dfrac{1}{u_n}}_{n\geq N_0}\) tend vers \(\pinf\), \cad \[\quantifs{\forall\alpha\in\Rps;\exists N\geq N_0;\forall n\geq N}\dfrac{1}{u_n}\geq\alpha.\]
+
+Soit \(\alpha\in\Rps\).
+
+Soit \(N\geq N_0\) tel que \(\quantifs{\forall n\geq N}u_n\leq\dfrac{1}{\alpha}\).
+
+On a donc \(\quantifs{\forall n\geq N}0<u_n\leq\dfrac{1}{\alpha}\).
+
+D'où \(\quantifs{\forall n\geq N}\alpha\leq\dfrac{1}{u_n}\) car \(t\mapsto\dfrac{1}{t}\) est décroissante sur \(\Rps\).
+
+Donc \(\lim_n\dfrac{1}{u_n}=\pinf\).
+
+Idem si \(\lim_nu_n=0^-\).
+\end{dem}
+
+\begin{theo}[Théorème des gendarmes dans le cas d'une limite infinie]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\).
+
+Si \(\begin{dcases}\lim_nu_n=\pinf \\ \quantifs{\forall n\in\N}u_n\leq v_n\end{dcases}\) alors \(\lim_nv_n=\pinf\).
+
+Si \(\begin{dcases}\lim_nv_n=\minf \\ \quantifs{\forall n\in\N}v_n\geq u_n\end{dcases}\) alors \(\lim_nu_n=\minf\).
+\end{theo}
+
+\begin{dem}\thlabel{dem:théorèmeDesGendarmesDansLeCasInfiniSuites}
+Supposons \(\lim_nu_n=\pinf\) et \(\quantifs{\forall n\in\N}u_n\leq v_n\).
+
+On a \(\quantifs{\forall\alpha\in\R;\exists N\in\N;\forall n\geq N}\alpha\leq u_n\).
+
+Donc \(\quantifs{\forall\alpha\in\R;\exists N\in\N;\forall n\geq N}\alpha\leq v_n\).
+
+Idem si \(\lim_nv_n=\minf\) et \(\quantifs{\forall n\in\N}v_n\geq u_n\).
+\end{dem}
+
+\begin{theo}[Passage à la limite dans les inégalités larges]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\) deux suites convergentes.
+
+On suppose \(\quantifs{\forall n\in\N}u_n\leq v_n\).
+
+Alors \(\lim_nu_n\leq\lim_nv_n\).
+\end{theo}
+
+\begin{dem}
+On sait que \(\paren{v_n-u_n}_n\) est convergente et de limite \(\lim_nv_n-\lim_nu_n\).
+
+Donc on a \(\quantifs{\forall n\in\N}0\leq v_n-u_n\).
+
+Donc \(0\geq\lim_nv_n-\lim_nu_n\) d'après la \thref{prop:passageALaLimiteDansUneInegaliteLargeAvecUnScalaire}.
+
+Donc \(\lim_nu_n\leq\lim_nv_n\).
+\end{dem}
+
+\section{Suites monotones}
+
+\begin{theo}[Théorème de la limite monotone]
+Toute suite monotone admet une limite.
+
+Soit \(\paren{u_n}_n\in\R^\N\) une suite monotone.
+
+Si \(\paren{u_n}_n\) est croissante et non-majorée alors \(\lim_nu_n=\pinf\).
+
+Si \(\paren{u_n}_n\) est croissante et majorée alors \(\lim_nu_n=\sup_{n\in\N}u_n\).
+
+Si \(\paren{u_n}_n\) est décroissante et non-minorée alors \(\lim_nu_n=\minf\).
+
+Si \(\paren{u_n}_n\) est décroissante et minorée alors \(\lim_nu_n=\inf_{n\in\N}u_n\).
+\end{theo}
+
+\begin{dem}
+Supposons \(\paren{u_n}_n\) croissante et non-majorée.
+
+Montrons que \(\lim_nu_n=\pinf\), \cad \[\quantifs{\forall\alpha\in\R;\exists N\in\N;\forall n\geq N}u_n\geq\alpha.\]
+
+Soit \(\alpha\in\R\).
+
+Comme \(\paren{u_n}_n\) n'est pas majorée, il existe \(N\in\N\) tel que \(\alpha<u_N\).
+
+On a \(\quantifs{\forall n\geq N}u_n\geq u_N>\alpha\).
+
+Donc \(N\) convient et on a \(\lim_nu_n=\pinf\).
+
+Supposons maintenant \(\paren{u_n}_n\) croissante et majorée.
+
+Comme \(\accol{u_n}_{n\in\N}\) est une partie non-vide et majorée de \(\R\), elle admet une borne supérieure \(S\).
+
+\(S\) vérifie \(\begin{dcases}\quantifs{\forall n\in\N}u_n\leq S \\ \quantifs{\forall\epsilon\in\Rps;\exists N\in\N}S-\epsilon\leq u_N\end{dcases}\)
+
+Montrons que \(\lim_nu_n=S\), \cad \[\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}S-\epsilon\leq u_n\leq S+\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(N\in\N\) tel que \(S-\epsilon\leq u_N\).
+
+On a \(\quantifs{\forall n\geq N}S-\epsilon\leq u_n\leq S+\epsilon\).
+
+Donc \(N\) convient et \(\lim_nu_n=S\).
+
+Idem pour les suites décroissantes.
+\end{dem}
+
+\begin{theo}[Théorème des suites adjacentes]
+Soient \(\paren{a_n}_n,\paren{b_n}_n\in\R^\N\) telles que \(\paren{a_n}_n\) croissante, \(\paren{b_n}_n\) décroissante et \(\lim_n\paren{b_n-a_n}=0\).
+
+Deux telles suites sont dites adjacentes.
+
+Alors \(\paren{a_n}_n\) et \(\paren{b_n}_n\) sont convergentes et de même limite \(l\).
+
+On a alors \(\quantifs{\forall n\in\N}a_n\leq l\leq b_n\).
+\end{theo}
+
+\begin{dem}
+La suite \(\paren{b_n-a_n}_n\) est décroissante et convergente donc décroissante et minorée.
+
+Elle converge donc vers sa borne inférieure.
+
+Donc \(\inf_{n\in\N}\paren{b_n-a_n}=0\) donc \(\quantifs{\forall n\in\N}b_n-a_n\geq0\) donc \(\quantifs{\forall n\in\N}a_n\leq b_n\).
+
+De plus, on a \(\paren{a_n}_n\) croissante et \(\paren{b_n}_n\) décroissante.
+
+Donc \(\quantifs{\forall n\in\N}a_0\leq a_n\leq b_n\leq b_0\).
+
+Ainsi, \(\paren{a_n}_n\) est croissante et majorée donc convergente et \(\paren{b_n}_n\) est décroissante et minorée donc convergente.
+
+Enfin, on a \(0=\lim_n\paren{b_n-a_n}=\lim_nb_n-\lim_na_n\).
+\end{dem}
+
+\begin{rem}
+Toute suite décroissante et convergente est minorée par sa limite.
+
+De même, toute suite croissante et convergente est majorée par sa limite.
+\end{rem}
+
+\section{Retour sur les suites extraites}
+
+\begin{prop}
+Soit \(\paren{u_n}_n\in\R^\N\). Soit \(l\in\Rb\).
+
+On a \[\lim_nu_n=l\ssi\begin{dcases}\lim_ku_{2k}=l \\ \lim_ku_{2k+1}=l\end{dcases}\]
+\end{prop}
+
+\begin{dem}
+\impdir Déjà vue (\thref{theo:suiteExtraiteTendVersLaMemeLimite}).
+
+\imprec
+
+Supposons \(\lim_ku_{2k}=\lim_ku_{2k+1}=l\).
+
+Supposons \(l\in\R\).
+
+Montrons que \(\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{u_n-l}\leq\epsilon\).
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(K_1\in\N\) tel que \(\quantifs{\forall k\geq K_1}\abs{u_{2k}-l}\leq\epsilon\).
+
+Soit \(K_2\in\N\) tel que \(\quantifs{\forall k\geq K_2}\abs{u_{2k+1}-l}\leq\epsilon\).
+
+Posons \(K=\max\accol{K_1;K_2}\).
+
+On a \(\quantifs{\forall k\geq K}\begin{dcases}\abs{u_{2k}-l}\leq\epsilon \\ \abs{u_{2k+1}-l}\leq\epsilon\end{dcases}\)
+
+Donc \(\quantifs{\forall n\geq 2K+1}\abs{u_n-l}\leq\epsilon\).
+
+En effet, si \(n\) est pair, il existe \(k\in\N\) tel que \(n=2k\) et on a \(2k\geq 2K+1\) donc \(k\geq K\).
+
+Si \(n\) est impair, il existe \(k\in\N\) tel que \(n=2k+1\) et on a \(2k+1\geq 2K+1\) donc \(k\geq K\).
+
+L'entier \(N=2k+1\) convient et on a \(\lim_nu_n=l\).
+\end{dem}
+
+\begin{theo}[Théorème de Bolzano-Weierstrass]
+De toute suite réelle bornée, on peut extraire une suite convergente.
+\end{theo}
+
+\begin{dem}
+Soit \(\paren{u_n}_n\in\R^\N\) une suite bornée.
+
+Soit \(M\in\Rp\) tel que \(\quantifs{\forall n\in\N}\abs{u_n}\leq M\).
+
+On a \(\quantifs{\forall n\in\N}u_n\in\intervii{-M}{M}\).
+
+S'il existe une infinité d'indices \(n\in\N\) tels que \(u_n\leq0\), on construit par récurrence la fonction \(\phi_1:\N\to\N\) : \[\begin{dcases}\phi_1\paren{0}=\min\accol{n\in\N\tq u_n\leq0} \\ \quantifs{\forall n\in\Ns}\phi_1\paren{n}=\min\accol{k\in\interventierie{\phi_1\paren{n-1}+1}{\pinf}\tq u_k\leq0}&\text{ (partie non-vide de \(N\))}\end{dcases}\]
+
+On obtient ainsi une fonction \(\phi_1\) strictement croissante telle que \(\quantifs{\forall n\in\N}u_{\phi_1\paren{n}}\leq0\).
+
+Sinon, on définit de même une fonction \(\phi_1:\N\to\N\) strictement croissante telle que \(\quantifs{\forall n\in\N}u_{\phi_1\paren{n}}\geq0\).
+
+On pose \(\begin{dcases}a_0=-M \\ b_0=M\end{dcases}\)
+
+Puis, dans le premier cas \(\begin{dcases}a_1=-M \\ b_1=0\end{dcases}\) et dans le second cas \(\begin{dcases}a_1=0 \\ b_1=M\end{dcases}\)
+
+Ainsi, \(\quantifs{\forall n\in\N}u_{\phi_1\paren{n}}\in\intervii{a_1}{b_1}\).
+
+De même que précédemment :
+
+Si \(\Card\accol{n\in\N\tq u_{\phi_1\paren{n}}\leq\dfrac{a_1+b_1}{2}}=\pinf\) alors on pose \(\begin{dcases}a_2=a_1 \\ b_2=\dfrac{a_1+b_1}{2}\end{dcases}\)
+
+Sinon, on pose \(\begin{dcases}a_2=\dfrac{a_1+b_1}{2} \\ b_2=b_1\end{dcases}\)
+
+Dans les deux cas, on considère \(\phi_2:\N\to\N\) strictement croissante telle que \[\quantifs{\forall n\in\N}u_{\phi_1\rond\phi_2\paren{n}}\in\intervii{a_2}{b_2}.\]
+
+On continue le procédé et on définit ainsi \(\paren{a_n}_n\) une suite croissante, \(\paren{b_n}_n\) une suite décroissante et \(\paren{\phi_k}\) une suite de fonctions strictement croissantes, telles que \[\begin{dcases}\quantifs{\forall n\in\N}b_n-a_n=\dfrac{2M}{2^n} \\ \quantifs{\forall k\in\N;\forall n\in\N}u_{\phi_1\rond\dots\rond\phi_k\paren{n}}\in\intervii{a_k}{b_k}\end{dcases}\]
+
+On pose enfin \(\quantifs{\forall n\in\N}\psi\paren{n}=\phi_1\rond\dots\rond\phi_n\paren{n}\), \cad \[\begin{aligned}
+\psi\paren{0}&=0 \\
+\psi\paren{1}&=\phi_1\paren{1} \\
+\psi\paren{2}&=\phi_1\rond\phi_2\paren{2} \\
+\psi\paren{3}&=\phi_1\rond\phi_2\rond\phi_3\paren{3} \\
+&\vdots
+\end{aligned}\]
+
+Montrons que \(\psi\) est strictement croissante.
+
+Soit \(n\in\N\). Montrons que \(\psi\paren{n}<\psi\paren{n+1}\).
+
+On a \[\begin{aligned}
+\psi\paren{n}&=\phi_1\rond\dots\rond\phi_n\paren{n} \\
+&<\phi_1\rond\dots\rond\phi_n\paren{n+1} \\
+&\leq \phi_1\rond\dots\rond\phi_n\paren{\phi_{n+1}\paren{n+1}}\quad\text{car }\phi_{n+1}\paren{n+1}\geq n+1 \\
+&=\psi\paren{n+1}
+\end{aligned}\]
+
+Donc la suite \(\paren{u_{\psi\paren{n}}}_n\) est une suite extraite de \(\paren{u_n}_n\).
+
+Appliquons le théorème des suites adjacentes à \(\paren{a_n}_n\) et \(\paren{b_n}_n\) :
+
+On a \(\begin{dcases}\paren{a_n}_n\text{ croissante} \\ \paren{b_n}_n\text{ décroissante} \\ \lim_n\paren{b_n-a_n}=0\end{dcases}\) donc \(\paren{a_n}_n\) et \(\paren{b_n}_n\) sont convergentes de même limite.
+
+Enfin, on a \(\quantifs{\forall n\in\N}a_n\leq u_{\psi\paren{n}}\leq b_n\) donc selon le théorème des gendarmes, \(\paren{u_{\psi\paren{n}}}_n\) est convergente.
+\end{dem}
+
+\begin{ex}
+De \(\paren{\paren{-1}^n}_n\) on peut extraire une suite convergente : \(\paren{\paren{-1}^{2n}}_n\).
+
+De \(\paren{\sin n}_n\) on peut extraire une suite convergente.
+\end{ex}
+
+\section{Densité}
+
+\subsection{Rappels}
+
+\begin{defi}
+On appelle nombre rationnel tout réel de la forme \(\dfrac{a}{b}\) avec \(\begin{dcases}a\in\Z \\ b\in\Ns\end{dcases}\)
+
+L'ensemble des rationnels est noté : \[\Q=\accol{\dfrac{a}{b}}_{\paren{a,b}\in\Z\times\Ns}\]
+
+Tout nombre rationnel s'écrit de façon unique \(\dfrac{a}{b}\) (écriture irréductible) avec \(\begin{dcases}a\in\Z \\ b\in\Ns \\ a\text{ et }b\text{ premiers entre eux}\end{dcases}\)
+\end{defi}
+
+\begin{defi}
+On appelle nombre décimal tout nombre réel de la forme \(\dfrac{a}{10^\alpha}\) où \(a\in\Z\) et \(\alpha\in\N\).
+\end{defi}
+
+\begin{rem}
+Soit \(x\in\R\). On a \(x\text{ décimal}\imp x\text{ rationnel}\).
+\end{rem}
+
+\begin{ex}~\\
+\(\dfrac{1}{3}\) est rationnel non-décimal.
+
+\(\sqrt{2},\pi,\e{},\dots\in\R\excluant\Q\).
+\end{ex}
+
+\begin{dem}
+Par l'absurde, supposons \(\sqrt{2}\in\Q\).
+
+Considérons l'écriture irréductible de \(\sqrt{2}\) : \(\sqrt{2}=\dfrac{a}{b}\) avec \(a\in\Z\) et \(b\in\Ns\) premiers entre eux.
+
+On a \(\sqrt{2}b=a\)
+
+donc \(2b^2=a^2\)
+
+donc \(a^2\) pair
+
+donc \(a\) pair
+
+donc il existe \(k\in\Z\) tel que \(a=2k\)
+
+donc on a \(2b^2=\paren{2k}^2\)
+
+donc \(b^2=2k^2\)
+
+donc \(b\) est pair donc \(2\) divise \(a\) et \(b\) : contradiction.
+\end{dem}
+
+\subsection{Densité}
+
+\begin{defi}\thlabel{defi:partieDenseDansR}
+Soit \(A\subset\R\).
+
+On dit que \(A\) est dense dans \(\R\) si on a \[\quantifs{\forall a,b\in\R}a<b\imp\intervee{a}{b}\inter A\not=\ensvide.\]
+\end{defi}
+
+\begin{ex}
+\(\R\) est dense dans \(\R\).
+
+\(\Rs\) est dense dans \(\R\).
+\end{ex}
+
+\begin{prop}
+\begin{enumerate}
+\item L'ensemble des décimaux est dense dans \(\R\). \\
+
+\item \(\Q\) est dense dans \(\R\). \\
+
+\item \(\R\excluant\Q\) est dense dans \(\R\). \\
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+Notons \(\D\) l'ensemble des décimaux.
+
+Soient \(a,b\in\R\) tels que \(a<b\).
+
+On a \(b-a>0\).
+
+Donc il existe \(\alpha\in\N\) tel que \(10^\alpha\paren{b-a}\geq1\) (il suffit de prendre \(\alpha=\floor{\dfrac{-\ln\paren{b-a}}{\ln10}}+1\)).
+
+Montrons que \(10^\alpha a\leq\floor{10^\alpha b}\leq10^\alpha b\).
+
+On a \(\floor{10^\alpha b}\geq10^\alpha b-1\geq10^\alpha a\), d'où l'encadrement.
+
+Ainsi, \(\dfrac{\floor{10^\alpha b}}{10^\alpha}\in\intervii{a}{b}\).
+
+Donc \(\D\inter\intervii{a}{b}\not=\ensvide\).
+
+Montrons que \(\D\inter\intervee{a}{b}\not=\ensvide\).
+
+On pose \(a\prim=\dfrac{2}{3}a+\dfrac{1}{3}b=a+\dfrac{1}{3}\paren{b-a}\) et \(b\prim=\dfrac{1}{3}a+\dfrac{2}{3}b=a+\dfrac{2}{3}\paren{b-a}\).
+
+On a \(b\prim-a\prim=\dfrac{1}{3}\paren{b-a}>0\).
+
+Donc d'après ce qui précède, \(\D\inter\intervee{a\prim}{b\prim}\not=\ensvide\).
+
+Donc \(\D\inter\intervee{a}{b}\not=\ensvide\).
+\end{dem}
+
+\begin{dem}[2]
+Comme \(\D\subset\Q\), on en déduit que \(\Q\) est dense aussi.
+\end{dem}
+
+\begin{dem}[3]
+Montrons que \(\R\excluant\Q\) est dense dans \(\R\).
+
+Soient \(a,b\in\R\) tels que \(a<b\).
+
+On a \(\dfrac{a}{\sqrt{2}}<\dfrac{b}{\sqrt{2}}\).
+
+Comme \(\Q\) est dense dans \(\R\), il existe \(q\in\Q\inter\intervee{\dfrac{a}{\sqrt{2}}}{\dfrac{b}{\sqrt{2}}}\).
+
+On a \(\dfrac{a}{\sqrt{2}}<q<\dfrac{b}{\sqrt{2}}\).
+
+Donc \(a<\sqrt{2}q<b\).
+
+Si \(q\not=0\) alors \(\sqrt{2}q\in\R\).
+
+En effet, par l'absurde, soient \(a_1,a_2\in\Z\) et \(b_1,b_2\in\Ns\) tels que \(q=\dfrac{a_1}{b_1}\) et \(\sqrt{2}q=\dfrac{a_2}{b_2}\). On a \(\dfrac{a_1}{b_1}\sqrt{2}=\dfrac{a_2}{b_2}\). Comme \(q\not=0\), on a \(a_1\not=0\) donc \(\sqrt{2}=\dfrac{a_2b_1}{a_1b_2}\in\Q\) : contradiction.
+
+Donc \(\sqrt{2}q\in\paren{\R\excluant\Q}\inter\intervee{a}{b}\).
+
+Finalement, si \(0\not\in\intervee{a}{b}\) alors \(\paren{\R\excluant\Q}\inter\intervee{a}{b}\not=\ensvide\).
+
+Sinon, on a \(a<0<b\) donc \(\intervee{0}{b}\) contient un irrationnel donc \(\intervee{a}{b}\) aussi.
+\end{dem}
+
+\subsection{Caractérisation séquentielle de la densité}
+
+\begin{prop}
+Soit \(A\subset\R\).
+
+\(A\) est dense dans \(\R\) si et seulement si tout réel est limite d'une suite d'éléments de \(A\) : \[\quantifs{\forall x\in\R;\exists\paren{a_n}_n\in A^\N}\lim_na_n=x.\]
+\end{prop}
+
+\begin{dem}
+\imprec
+
+Supposons que tout réel est limite d'une suite d'éléments de \(A\).
+
+Montrons que \(A\) est dense.
+
+Soient \(a,b\in\R\) tels que \(a<b\). Montrons que \(A\inter\intervee{a}{b}\not=\ensvide\).
+
+Soit \(\paren{a_n}_n\in A^\N\) une suite qui tend vers \(\dfrac{a+b}{2}\).
+
+Posons \(\epsilon=\dfrac{b-a}{2}\).
+
+Soit \(N\in\N\) tel que \(\quantifs{\forall n\geq N}\abs{a_n-\dfrac{a+b}{2}}\leq\epsilon\).
+
+On remarque \(\begin{dcases}a_N\in A \\ \abs{a_N-\dfrac{a+b}{2}}<\epsilon\end{dcases}\)
+
+Donc \(a=\dfrac{a+b}{2}-\epsilon<a_N<\dfrac{a+b}{2}+\epsilon=b\).
+
+Ainsi, \(a_N\in A\inter\intervee{a}{b}\).
+
+\impdir
+
+Supposons \(A\) dense dans \(\R\).
+
+Soit \(x\in\R\).
+
+Pour tout \(n\in\Ns\), on a \[A\inter\intervee{x-\dfrac{1}{n}}{x+\dfrac{1}{n}}\not=\ensvide.\]
+
+Donc il existe un élément \(a_n\in A\inter\intervee{x-\dfrac{1}{n}}{x+\dfrac{1}{n}}\).
+
+On définit ainsi une suite \(\paren{a_n}_n\in\R^{\Ns}\) telle que \[\quantifs{\forall n\in\Ns}\begin{dcases}a_n\in A \\ x-\dfrac{1}{n}<a_n<x+\dfrac{1}{n}\end{dcases}\]
+
+De plus, on a \(\lim_n\paren{x-\dfrac{1}{n}}=\lim_n\paren{x+\dfrac{1}{n}}=x\).
+
+Donc d'après le théorème des gendarmes, \(\lim_na_n=x\).
+
+Enfin, \(\paren{a_n}_n\in A^{\Ns}\).
+\end{dem}
+
+\section{Remarque}
+
+En général, ne jamais confondre \(<\) et \(\leq\).
+
+Notamment : \begin{itemize}
+\item si deux suites convergentes vérifient \(\quantifs{\forall n\in\N}u_n\leq v_n\) alors \(\lim_nu_n\leq\lim_nv_n\) ; \\
+
+\item tout majorant \textbf{strict} de la limite d'une suite convergente majore \textbf{strictement} la suite à partir d'un certain rang. \\
+\end{itemize}
+
+Parfois, on a le choix entre \(<\) et \(\leq\). Par exemple : \begin{itemize}
+\item \(\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{u_n-l}\leq\epsilon\) ; \\
+
+\item \(\quantifs{\forall\alpha\in\R;\exists N\in\N;\forall n\geq N}u_n\geq\alpha\).
+\end{itemize}
+
+\section{Suites de nombres complexes}
+
+On rappelle que les suites de nombres complexes (ou suites complexes) sont les familles de complexes indicées par \(\N\) (voire par un intervalle de la forme \(\interventierie{n_0}{\pinf}\) où \(n_0\in\Z\)).
+
+L'ensemble des suites complexes est noté \(\C^\N\) (ou \(\C^{\interventierie{n_0}{\pinf}}\)).
+
+\begin{defi}[Opérations algébriques sur les suites]
+De manière analogue au cas réel, si \(\paren{u_n}_n,\paren{v_n}_n\) sont deux suites complexes et \(\lambda,\mu\) deux nombres complexes, on définit :
+
+\begin{itemize}
+\item la somme de \(\paren{u_n}_n\) et \(\paren{v_n}_n\) : \[\paren{u_n}_n+\paren{v_n}_n=\paren{u_n+v_n}_n\] \\
+
+\item le produit de \(\paren{u_n}_n\) et \(\paren{v_n}_n\) : \[\paren{u_n}_n\times\paren{v_n}_n=\paren{u_nv_n}_n\] \\
+
+\item la combinaison linéaire de \(\paren{u_n}_n\) et \(\paren{v_n}_n\) : \[\lambda\paren{u_n}_n+\mu\paren{v_n}_n=\paren{\lambda u_n+\mu v_n}_n\] \\
+\end{itemize}
+
+Dans le cas complexe, on définit de plus :
+
+\begin{itemize}
+\item la partie réelle de \(\paren{u_n}_n\) : \[\Re\paren{\paren{u_n}_n}=\paren{\Re\paren{u_n}}_n\] \\
+
+\item la partie imaginaire de \(\paren{u_n}_n\) : \[\Im\paren{\paren{u_n}_n}=\paren{\Im\paren{u_n}}_n\] \\
+
+\item la suite des modules : \[\paren{\abs{u_n}}_n\] \\
+
+\item la suite conjuguée : \[\paren{\conj{u_n}}_n\] \\
+\end{itemize}
+\end{defi}
+
+\begin{defi}[Suite bornée]
+Soit \(\paren{u_n}_n\) une suite complexe. On dit que \(\paren{u_n}_n\) est bornée si on a : \[\quantifs{\exists M\in\Rp;\forall n\in\N}\abs{u_n}\leq M\] \cad si la suite \(\paren{\abs{u_n}}_n\) est majorée.
+\end{defi}
+
+\begin{rem}
+La notion de \guillemets{suite bornée} pour les suites complexes généralise celle déjà vue pour les suites réelles. En revanche, on ne généralise pas les notions de suite majorée, minorée, croissante, décroissante ou monotone (car \(\C\) n'est pas ordonné \guillemets{canoniquement}).
+\end{rem}
+
+\begin{defprop}[Limite d'une suite complexe]
+Soient \(\paren{u_n}_n\in\C^\N\) et \(l\in\C\).
+
+On dit que \(\paren{u_n}_n\) converge (ou tend) vers \(l\) si l'on a : \[\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\geq N}\abs{u_n-l}\leq\epsilon.\]
+
+On dit alors que \(l\) est la limite de \(\paren{u_n}_n\). Elle est unique et notée \[l=\lim_{n\to\pinf}u_n=\lim_nu_n.\]
+
+On dit alors aussi que \(\paren{u_n}_n\) est convergente. Sinon on dit qu'elle est divergente.
+\end{defprop}
+
+\begin{rem}
+\begin{enumerate}
+\item On a \[\text{constante}\imp\text{stationnaire}\imp\text{convergente}.\] \\
+
+\item Si \(\paren{u_n}_n\) et \(\paren{v_n}_n\) sont deux suites complexes convergentes qui coïncident à partir d'un certain rang, \cad si l'on a : \[\quantifs{\exists N\in\N;\forall n\geq N}u_n=v_n\] alors \(\paren{u_n}_n\) est convergente si, et seulement si, \(\paren{v_n}_n\) est convergente, et dans ce cas leurs limites sont égales. \\
+\end{enumerate}
+\end{rem}
+
+\begin{prop}[Une façon de se ramener au cas réel]
+Soient \(\paren{u_n}_n\in\C^\N\) et \(l\in\C\).
+
+Alors la suite complexe \(\paren{u_n}_n\) converge vers \(l\) si, et seulement si, la suite réelle \(\paren{\abs{u_n-l}}_n\) converge vers \(0\).
+\end{prop}
+
+\begin{dem}
+Clair.
+\end{dem}
+
+\begin{theo}[Une autre façon de se ramener au cas réel]
+Soient \(\paren{u_n}_n\in\C^\N\) et \(l\in\C\).
+
+Alors la suite complexe \(\paren{u_n}_n\) converge vers \(l\) si, et seulement si, \[\begin{dcases}\text{la suite réelle }\paren{\Re u_n}_n\text{ converge vers }\Re l \\ \text{la suite réelle }\paren{\Im u_n}_n\text{ converge vers }\Im l\end{dcases}\]
+\end{theo}
+
+\begin{dem}~\\
+On pose \(\quantifs{\forall n\in\N}\begin{dcases}a_n=\Re u_n \\ b_n=\Im u_n\end{dcases}\) et \(l_1=\Re l\) et \(l_2=\Im l\).
+
+\impdir
+
+Supposons \(\lim_nu_n=l\).
+
+On a \(\lim_n\abs{u_n-l}=0\).
+
+Or \(\quantifs{\forall n\in\N}\begin{dcases}\abs{a_n-l_1}\leq\abs{u_n-l} \\ \abs{b_n-l_2}\leq\abs{u_n-l}\end{dcases}\) car \(\abs{u_n-l}=\sqrt{\paren{a_n-l_1}^2+\paren{b_n-l_2}^2}\).
+
+Donc selon le théorème des gendarmes, \(\lim_na_n=l_1\) et \(\lim_nb_n=l_2\).
+
+\imprec
+
+Supposons \(\lim_na_n=l_1\) et \(\lim_nb_n=l_2\).
+
+On a \(\lim_n\abs{a_n-l_1}=\lim_n\abs{b_n-l_2}=0\).
+
+Donc \(\lim_n\sqrt{\paren{a_n-l_1}^2+\paren{b_n-l_2}^2}=0\).
+
+Donc \(\lim_n\abs{u_n-l}=0\).
+
+Donc \(\lim_nu_n=l\).
+\end{dem}
+
+\begin{prop}
+Toute suite convergente est bornée.
+\end{prop}
+
+\begin{dem}
+Voir le cas des suites réelles convergentes : \thref{dem:suiteReelleConvergenteDoncBornee}.
+\end{dem}
+
+\begin{prop}
+Soient \(\paren{u_n}_n\) et \(\paren{v_n}_n\) deux suites complexes convergentes et \(\lambda\) et \(\mu\) deux nombres complexes.
+
+On pose \(\begin{dcases}l=\lim_nu_n \\ l\prim=\lim_nv_n\end{dcases}\)
+
+Alors :
+
+\begin{enumerate}
+\item \(\lim_n\paren{u_n+v_n}=l+l\prim\) \\
+
+\item \(\lim_nu_nv_n=ll\prim\) \\
+
+\item \(\lim_n\paren{\lambda u_n+\mu v_n}=\lambda l+\mu l\prim\) \\
+
+\item \(\lim_n\Re u_n=\Re l\) \\
+
+\item \(\lim_n\Im u_n=\Im l\) \\
+
+\item \(\lim_n\abs{u_n}=\abs{l}\) \\
+
+\item \(\lim_n\conj{u_n}=\conj{l}\) \\
+
+\item Si \(l\not=0\) alors \(\paren{u_n}_n\) est à termes non-nuls à partir d'un certain rang et on a \(\lim_n\dfrac{1}{u_n}=\dfrac{1}{l}\). \\
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\note{EXERCICE}
+\end{dem}
+
+\begin{theo}[Théorème de Bolzano-Weierstrass]
+De toute suite complexe bornée on peut extraire une suite convergente.
+\end{theo}
+
+\begin{dem}
+Soit \(\paren{u_n}_n\in\C^\N\) une suite bornée.
+
+On pose \(\quantifs{\forall n\in\N}\begin{dcases}a_n=\Re u_n \\ b_n=\Im u_n\end{dcases}\)
+
+Comme \(\paren{u_n}_n\) est bornée, il existe \(M\in\Rp\) tel que \(\quantifs{\forall n\in\N}\abs{u_n}\leq M\).
+
+On a \(\quantifs{\forall n\in\N}\abs{a_n}=\sqrt{a_n^2}\leq\sqrt{a_n^2+b_n^2}=\abs{u_n}\leq M\).
+
+Donc \(\paren{a_n}_n\) est bornée.
+
+De même, on a \(\quantifs{\forall n\in\N}\abs{b_n}\leq M\).
+
+Donc \(\paren{b_n}_n\) est bornée.
+
+Comme \(\paren{a_n}_n\) est bornée, selon le théorème de Bolzano-Weierstrass réel, il existe \(\phi_1:\N\to\N\) strictement croissante telle que \(\paren{a_{\phi_1\paren{n}}}_n\) converge.
+
+Comme \(\paren{b_n}_n\) est bornée, la suite \(\paren{b_{\phi_1\paren{n}}}_n\) est bornée.
+
+Selon le théorème de Bolzano-Weierstrass réel, il existe \(\phi_2:\N\to\N\) strictement croissante telle que \(\paren{b_{\phi_1\rond\phi_2\paren{n}}}_n\) converge.
+
+Posons \(\phi=\phi_1\rond\phi_2\).
+
+On a \(\phi\) strictement croissante (composée de deux fonctions strictement croissantes).
+
+De plus, on a \(\paren{b_{\phi\paren{n}}}_n\) convergente et \(\paren{a_{\phi\paren{n}}}_n\) convergente (car c'est une suite extraite de \(\paren{a_{\phi_1\paren{n}}}_n\) qui est convergente).
+
+Donc \(\paren{u_{\phi\paren{n}}}_n\) converge.
+\end{dem}

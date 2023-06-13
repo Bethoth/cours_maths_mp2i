@@ -1,0 +1,297 @@
+\chapter{Espaces préhilbertiens}
+
+\minitoc
+
+\begin{exo}[Exercice 1]
+Soit \(n\in\Ns\).
+
+On munit \(\M{n}[\R]\) de son produit scalaire canonique : \[\fonctionlambda{\M{n}[\R]\times\M{n}[\R]}{\R}{\paren{A,B}}{\tr\paren{\trans{A}B}=\sum_{i=1}^n\sum_{j=1}^na_{ij}b_{ij}}\] et on note \(\norme{\cdot}\) la norme associée.
+
+\begin{enumerate}
+\item Calculer \(\norme{I_n}\). \\
+
+\item Déterminer l'orthogonal de \(\sym{n}[\R]\) dans \(\M{n}[\R]\). \\
+
+\item Montrer : \[\quantifs{\forall A,B\in\M{n}[\R]}\norme{AB}\leq\norme{A}\norme{B}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 2]
+Soient \(\groupe{E}[\ps{\cdot}{\cdot}]\) un espace préhilbertien réel et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\).
+
+\begin{enumerate}[series=exoOrthos]
+\item Montrer \(\paren{F+G}\ortho=F\ortho\inter G\ortho\). \\
+
+\item Montrer \(F\subset G\imp G\ortho\subset F\ortho\).
+\end{enumerate}
+
+On suppose désormais que \(E\) est de dimension finie.
+
+\begin{enumerate}[resume=exoOrthos]
+\item Montrer \(\paren{F\ortho}\ortho=F\). \\
+
+\item Montrer \(\paren{F\inter G}\ortho=F\ortho+G\ortho\). \\
+
+\item Montrer \(F\subset G\ssi G\ortho\subset F\ortho\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 3]
+\begin{enumerate}
+\item Montrer que l'application \[\fonction{\phi}{\poly[\R]\times\poly[\R]}{\R}{\paren{P,Q}}{\int_{-1}^1P\paren{t}Q\paren{t}\odif{t}}\] est un produit scalaire sur le \(\R\)-espace vectoriel \(\poly[\R]\). \\
+
+\item Appliquer l'algorithme de Gram-Schmidt à la base canonique de \(\polydeg[\R]{3}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 4, CCP PSI 2012]
+Déterminer les réels \(a,b,c,d\) tels que l'intégrale \[\int_{\frac{-\pi}{2}}^{\frac{\pi}{2}}\paren{\sin x-ax^3-bx^2-cx-d}^2\odif{x}\] soit la plus petite possible.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 5, CCP PSI]
+On munit \(\R^4\) de son produit scalaire canonique et de sa base canonique \(\fami{B}_0\).
+
+Donner la matrice dans \(\fami{B}_0\) de la projection orthogonale sur le plan \[\Pi:\begin{dcases}
+x+2y+z+2t=0 \\
+x-y+z-t=0
+\end{dcases}\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 6]
+Calculer : \[\inf_{a,b,c\in\R}\int_{-1}^1\paren{t^3-at^2-bt-c}^2\odif{t}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 7]
+Calculer : \[\inf_{a,b,c\in\R}\int_0^1\paren{\e{t}-at^2-bt-c}^2\odif{t}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 8]
+On munit \(\R^3\) de son produit scalaire canonique.
+
+On note \(H\) l'hyperplan de \(\R^3\) d'équation cartésienne \[x+y-z=0\] (dans la base canonique).
+
+Déterminer la matrice de la projection orthogonale sur \(H\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 9]
+Soient \(E\) un espace euclidien, \(u\in\Lendo{E}\) et \(x\in E\).
+
+On note \(S\) la sphère unité de \(E\) : \[S=\accol{y\in E\tq\norme{y}=1}.\]
+
+Montrer : \[\norme{x}=\max_{y\in S}\ps{y}{x}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 10]
+Soient \(E\) et \(F\) des espaces euclidiens dont on note \(\norme{\cdot}_E\) et \(\norme{\cdot}_F\) les normes, \(\fami{B}=\paren{e_1,\dots,e_n}\) une base orthonormée de \(E\) et \(u\in\L{E}{F}\).
+
+On suppose que la famille \(\paren{u\paren{e_1},\dots,u\paren{e_n}}\in F^n\) est orthonormale.
+
+Montrer : \[\quantifs{\forall x\in E}\norme{u\paren{x}}_F=\norme{x}_E.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 11]
+Soit \(f\in\ensclasse{0}{\intervii{0}{1}}{\R}\) positive et non-nulle.
+
+On pose : \[\quantifs{\forall n\in\N}I_n=\int_0^1f^n\paren{t}\odif{t}\] et : \[\quantifs{\forall n\in\N}u_n=\dfrac{I_{n+1}}{I_n}.\]
+
+\begin{enumerate}
+\item Justifier : \(\quantifs{\forall n\in\N}I_n>0\). \\
+
+\item Montrer que \(\paren{u_n}_{n\in\N}\) est croissante.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 12, Centrale]
+Soient \(E\) un espace euclidien dont on note le produit scalaire \(\paren{x,y}\mapsto\ps{x}{y}\) et \(f\in\Lendo{E}\).
+
+On considère l'application \[\fonction{g}{E^2}{\R}{\paren{x,y}}{\ps{f\paren{x}}{f\paren{y}}}\]
+
+\begin{enumerate}
+\item Donner une CNS sur \(f\) pour que \(g\) soit un produit scalaire. \\
+
+\item On suppose désormais : \[\quantifs{\forall x,y\in E}\ps{x}{y}=0\ssi\ps{f\paren{x}}{f\paren{y}}=0.\]
+
+\begin{enumerate}
+\item Montrer que \(f\) est inversible. \\
+
+\item Montrer : \[\quantifs{\exists\lambda\in\Rps}\ps{f\paren{x}}{f\paren{y}}=\lambda\ps{x}{y}.\]
+\end{enumerate}
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 13, CCP PSI 2016]
+On pose : \[\quantifs{\forall P,Q\in\polydeg[\R]{3}}\phi\paren{P,Q}=\int_{-1}^1P\paren{t}Q\paren{t}\odif{t}.\]
+
+\begin{enumerate}
+\item Montrer que \(\phi\) est un produit scalaire. \\
+
+\item Calculer le projeté orthogonal de \(X^3\) sur \(\polydeg[\R]{2}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice supplémentaire]
+Soient \(E\) un espace préhilbertien réel dont on note \(\norme{\cdot}\) la norme et \(p\in\Lendo{E}\) un projecteur.
+
+Montrer : \[p\text{ est un projecteur orthogonal}\ssi\quantifs{\forall x\in E}\norme{p\paren{x}}\leq\norme{x}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 14, sous-espace vectoriel sans supplémentaire orthogonal]
+On considère le \(\R\)-espace vectoriel \(E=\ensclasse{0}{\intervii{0}{1}}{\R}\) muni de son produit scalaire usuel : \[\quantifs{\forall f,g\in E}\ps{f}{g}=\int_0^1f\paren{t}g\paren{t}\odif{t}\] et de la norme associée : \[\quantifs{\forall f\in E}\norme{f}=\sqrt{\int_0^1f^2\paren{t}\odif{t}}.\]
+
+\begin{enumerate}[series=ssevsanssupportho]
+\item Justifier que \(F=\accol{f\in E\tq f\paren{0}=0}\) est un hyperplan de \(E\).
+\end{enumerate}
+
+Soit \(f\in E\). On pose : \[\quantifs{\forall n\in\Ns}\fonction{f_n}{\intervii{0}{1}}{\R}{x}{\begin{dcases}
+nf\paren{\dfrac{1}{n}}x &\text{si }x\leq\dfrac{1}{n} \\
+f\paren{x} &\text{sinon}
+\end{dcases}}\]
+
+\begin{enumerate}[resume=ssevsanssupportho]
+\item Montrer : \[\lim_{n\to\pinf}\norme{f_n-f}=0.\]
+
+\item En déduire : \[F\ortho=\accol{0_E}.\]
+
+\item \(F\) admet-il un supplémentaire orthogonal dans \(E\) ? \\
+
+\item Que vaut \(\paren{F\ortho}\ortho\) ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 15]
+Soient \(E\) un espace euclidien et \(v_1,\dots,v_p\) des vecteurs de \(E\) tels que : \[\quantifs{\forall i,j\in\interventierii{1}{p}}i\not=j\imp\ps{v_i}{v_j}<0.\]
+
+\begin{enumerate}
+\item Montrer : \[\quantifs{\forall\lambda_1,\dots,\lambda_p\in\R}\norme{\sum_{i=1}^p\abs{\lambda_i}v_i}\leq\norme{\sum_{i=1}^p\lambda_iv_i}.\]
+
+\item Montrer que toute sous-famille à \(p-1\) éléments de \(\paren{v_1,\dots,v_p}\) est libre.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 16, endomorphismes \guillemets{symétriques}]
+Soit \(E\) un espace euclidien de dimension \(n\in\Ns\).
+
+On dit qu'un endomorphisme \(u\in\Lendo{E}\) est symétrique si l'on a : \[\quantifs{\forall x,y\in E}\ps{u\paren{x}}{y}=\ps{x}{u\paren{y}}.\]
+
+\begin{enumerate}
+\item Les homothéties de \(E\) sont-elles des endomorphismes symétriques ? \\
+
+\item Soit \(u\in\Lendo{E}\) un endomorphisme symétrique. Montrer que \(\ker u\) et \(\Im u\) sont des supplémentaires orthogonaux. \\
+
+\item Soit \(p\in\Lendo{E}\) un projecteur. Montrer l'équivalence : \[p\text{ est un endomorphisme symétrique}\ssi p\text{ est un projecteur orthogonal}.\]
+
+\item Soient \(u\in\Lendo{E}\) et \(\fami{B}\) une base orthonormée de \(E\). Montrer : \[u\text{ est un endomorphisme symétrique}\ssi\Mat{u}\text{ est une matrice symétrique}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 17, matrices \guillemets{orthogonales}]
+Soient \(n\in\Ns\) et \(A=\paren{a_{ij}}_{\paren{i,j}}\in\M{n}[\R]\).
+
+On note \(\paren{C_1,\dots,C_n}\in\paren{\R^n}^n\) la famille des colonnes de \(A\) : \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}=\begin{pmatrix}
+C_1 & \dots & C_n
+\end{pmatrix}.\]
+
+La matrice \(A\) est dite orthogonale si la famille \(\paren{C_1,\dots,C_n}\) est une base orthonormée de \(\R^n\) pour le produit scalaire usuel.
+
+\begin{enumerate}
+\item Exprimer la matrice suivante en fonction de \(A\) par une formule simple : \[M=\begin{pmatrix}
+\ps{C_1}{C_1} & \dots & \ps{C_1}{C_n} \\
+\vdots &  & \vdots \\
+\ps{C_n}{C_1} & \dots & \ps{C_n}{C_n}
+\end{pmatrix}.\]
+
+\item Compléter : \[A\text{ est une matrice orthogonale}\ssi A\text{ est inversible, d'inverse ...}\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 18]
+Soit \(\sigma\in\S{\N}\).
+
+\begin{enumerate}
+\item Déterminer la nature de la série \(\sum_n\dfrac{1}{n\sigma\paren{n}}\). \\
+
+\item Montrer que la série \(\sum_n\dfrac{\sigma\paren{n}}{n^2}\) est divergente.
+
+\textit{Indication :} considérer les sommes partielles de la série : \(\quantifs{\forall N\in\N}S_N=\sum_{n=1}^N\dfrac{\sigma\paren{n}}{n^2}\) et minorer \(S_{2N}-S_N\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}

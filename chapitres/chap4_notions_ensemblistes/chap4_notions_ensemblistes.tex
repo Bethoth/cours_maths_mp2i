@@ -1,0 +1,1192 @@
+\chapter{Notions ensemblistes}
+
+\minitoc
+
+\section{Ensembles}
+
+\subsection{Notations de base}
+
+Ensemble vide : \(\ensvide\) ou \(\accol{}\).
+
+Singletons (ensembles avec un unique élément) : \(\accol{1}\), \(\accol{\sin}\), \(\accol{\ensvide}\), ...
+
+Ensembles finis : \(\accol{1;2;3}\), \(\accol{0;\ensvide;\cos;\R}\), ...
+
+Ensembles classiques (infinis) : \(\N\), \(\Z\), \(\Q\), \(\R\), \(\C\), \(\Qp\), \(\Rps\), ...
+
+Sous-ensembles définis par une condition : \(\accol{x\in\R\tq x\geq0}=\Rp\), ...
+
+Ensembles paramétrés par un autre ensemble : \(\accol{x+\i y}_{\paren{x,y}\in\R^2}\), \(\accol{\cos+\lambda\sin}_{\lambda\in\Rp}\), \(\accol{\fonctionlambda{\R}{\R}{x}{ax+b}}_{\paren{a,b}\in\R^2}\), ...
+
+Appartenance : \guillemets{\(x\in E\)} signifie que l'élément \(x\) appartient à l'ensemble \(E\).
+
+Inclusion : \guillemets{\(A\subset B\)} signifie \(\quantifs{\forall x\in A}x\in B\).
+
+Égalité : \(A=B\ssi\begin{dcases}A\subset B \\ B\subset A\end{dcases}\)
+
+\begin{rem}~\\
+\(\begin{dcases}A\subset B \\ B\subset C\end{dcases}\imp A\subset C\).
+\end{rem}
+
+\subsection{Opérations sur les ensembles}
+
+\subsubsection{Réunion}
+
+Si \(A,B\) sont deux ensembles, alors leur réunion est l'ensemble des éléments qui appartiennent à \(A\) ou à \(B\).
+
+Elle est définie par \(x\in A\union B\ssi\paren{x\in A\ou x\in B}\) pour tout élément \(x\).
+
+La réunion \(\union\) est une loi associative : \(\paren{A\union B}\union C=A\union\paren{B\union C}\) pour tous ensembles \(A,B,C\). En pratique, on note simplement \(A\union B\union C\).
+
+Si \(I\) est un ensemble et \(\paren{A_i}_{i\in I}\) est une famille d'ensembles indicée par \(I\), alors on définit la réunion \(\bigunion_{i\in I}A_i\) par \(x\in\bigunion_{i\in I}A_i\ssi\exists i\in I,x\in A_i\).
+
+\begin{ex}
+\(\bigunion_{n\in\N}\accol{n}=\N\).
+\end{ex}
+
+\subsubsection{Intersection}
+
+Si \(A,B\) sont deux ensembles, alors leur intersection est l'ensemble des éléments qui appartiennent à \(A\) et à \(B\). Elle est définie par \(x\in A\inter B\ssi\paren{x\in A\et x\in B}\) pour tout élément \(x\).
+
+L'intersection \(\inter\) est une loi associative : \(\paren{A\inter B}\inter C=A\inter\paren{B\inter C}\) pour tous ensembles \(A,B,C\). En pratique, on note simplement \(A\inter B\inter C\).
+
+Si \(I\) est un ensemble et \(\paren{A_i}_{i\in I}\) est une famille d'ensembles indicées par \(I\), alors on définit l'intersection \(\biginter_{i\in I}A_i\) par \(x\in\biginter_{i\in I}A_i\ssi\forall i\in I,x\in A_i\).
+
+\begin{ex}
+\(\biginter_{n\in\N}\intervie{n}{\pinf}=\ensvide\)
+\end{ex}
+
+\begin{dem}
+\begin{itemize}
+\item[\increc] Claire.
+
+\item[\incdir] Supposons \(\biginter_{n\in\N}\intervie{n}{\pinf}\).
+
+On a \(\quantifs{\forall n\in\N}n\leq x\). En particulier, \(\floor{x}+1\leq x\) : impossible.
+\end{itemize}
+\end{dem}
+
+\begin{ex}~\\
+\(\biginter_{n\in\Ns}\intervii{-\dfrac{1}{n}}{\dfrac{1}{n}}=\accol{0}\)
+\end{ex}
+
+\begin{dem}
+\begin{itemize}
+\item[\increc] Claire : on a bien \(\quantifs{\forall n\in\Ns}-\dfrac{1}{n}\leq0\leq\dfrac{1}{n}\).
+
+\item[\incdir] Soit \(x\in\biginter_{n\in\Ns}\intervii{-\dfrac{1}{n}}{\dfrac{1}{n}}\). Montrons que \(x\in\accol{0}\), c'est à dire \(x=0\).
+
+On a \(\quantifs{\forall n\in\Ns}x\in\intervii{-\dfrac{1}{n}}{\dfrac{1}{n}}\).
+
+Donc \(\quantifs{\forall n\in\Ns}-\dfrac{1}{n}\leq x\leq\dfrac{1}{n}\).
+
+Donc \(\quantifs{\forall n\in\Ns}\abs{x}\leq\dfrac{1}{n}\).
+
+Supposons \(x\not=0\). Alors on a \(\quantifs{\forall n\in\Ns}n\leq\dfrac{1}{\abs{x}}\).
+
+En particulier, \(\floor{\dfrac{1}{\abs{x}}}+1\leq\dfrac{1}{\abs{x}}\) : contradiction.
+
+Donc par l'absurde, \(x=0\), d'où l'inclusion.
+\end{itemize}
+\end{dem}
+
+\begin{rem}
+Si \(I\) est un ensemble et \(\paren{A_i}_{i\in I}\) est une famille d'ensembles indicée par \(I\), alors \(\quantifs{\forall j\in I}\biginter_{i\in I}A_i\subset A_j\subset\bigunion_{i\in I}A_i\).
+\end{rem}
+
+\subsection{Produit cartésien}
+
+\begin{rappel}
+Soient \(E_1,\dots,E_n\) des ensembles avec \(n\in\Ns\). Le produit cartésien \(E_1\times\dots\times E_n\) est l'ensemble des n-uplets \(\paren{x_1,\dots,x_n}\) tels que \(\quantifs{\forall i\in\interventierii{1}{n}}x_i\in E_i\).
+
+Alors si \(E_1,\dots,E_m,F_1,\dots,F_n\) sont des ensembles avec \(m,n\in\Ns\), on identifie les ensembles \(\paren{E_1\times\dots\times E_m}\times\paren{F_1\times\dots\times F_n}\) et \(E_1\times\dots\times E_m\times F_1\times\dots\times F_n\). Autrement dit : \[\quantifs{\forall x_1\in E_1,\dots,\forall x_m\in E_m;\forall y_1\in F_1,\dots,\forall y_n\in F_n}\croch{\paren{x_1,\dots,x_m},\paren{y_1,\dots,y_n}}=\paren{x_1,\dots,x_m,y_1,\dots,y_n}.\]
+\end{rappel}
+
+\subsection{Autres opérations}
+
+\begin{defi}
+Soit \(E\) un ensemble. Une partie de \(E\) est un ensemble inclus dans \(E\). L'ensemble des parties de \(E\) est noté \(\P{E}\).
+\end{defi}
+
+\begin{defi}[Différence ensembliste]
+Soient \(A,B\) deux ensembles.
+
+On pose \(A\excluant B=\accol{x\in A\tq x\not\in B}\).
+\end{defi}
+
+\begin{ex}
+\(\R\excluant\Rm=\Rps\)
+\end{ex}
+
+\begin{defi}[Complémentaire]
+Soient \(E\) un ensemble et \(A\in\P{E}\).
+
+Le complémentaire de \(A\) (dans \(E\)) est \(E\excluant A\).
+
+Il est noté \(\complement_E A\) ou \(\conj{A}\) ou \(A^C\).
+\end{defi}
+
+\subsection{Partitions}
+
+\begin{defi}
+Soient \(E\) un ensemble et \(P\subset\P{E}\) un ensemble de parties de \(E\).
+
+On dit que \(P\) est un recouvrement disjoint de \(E\) si on a \(\begin{dcases}\bigunion_{A\in P}A=E\text{ (recouvrement)} \\ \quantifs{\forall A,B\in P}A\not=B\text{ (disjoints deux à deux)}\end{dcases}\)
+\end{defi}
+
+\begin{ex}
+Si \(E=\interventierii{1}{5}\) alors \(\accol{\accol{1};\accol{2;4};\ensvide;\accol{3;5}}\) est un recouvrement disjoint de \(E\).
+\end{ex}
+
+\begin{rem}
+On note alors \(E=\bigsqcup_{A\in P}A\).
+\end{rem}
+
+\begin{defi}
+Soit \(E\) un ensemble et \(P\subset\P{E}\). On dit que \(P\) est une partition de \(E\) si \(P\) est un recouvrement disjoint de \(E\) et \(\ensvide\not\in P\).
+\end{defi}
+
+\begin{ex}
+Si \(E=\ensvide\) alors \(\P{E}=\accol{\ensvide}\) et \(P=\ensvide\) est l'unique partition de \(\ensvide\).
+
+Si \(E=\accol{1}\) alors \(\P{E}=\accol{\accol{1};\ensvide}\) et \(P=\accol{1}\) est l'unique partition de \(E\).
+
+Si \(E=\accol{1;2}\) alors il existe deux partitions de \(E\) : \(\accol{\accol{1;2}}\) et \(\accol{\accol{1};\accol{2}}\).
+
+Si \(E=\accol{1;2;3}\) alors il existe cinq partitions de \(E\) : \(\accol{\accol{1;2;3}}\), \(\accol{\accol{1;2};\accol{3}}\), \(\accol{\accol{1;3};\accol{2}}\), \(\accol{\accol{2;3};\accol{1}}\) et \(\accol{\accol{1};\accol{2};\accol{3}}\).
+
+Si \(E=\R\), on a notamment les partitions \(\accol{\Rms;\accol{0};\Rps}\) et \(\accol{\R\excluant\Z}\union\bigunion_{n\in\Z}\accol{\accol{n}}\).
+\end{ex}
+
+\subsection{Droite réelle achevée}
+
+La droite réelle achevée est l'ensemble \(\Rb=\intervii{\minf}{\pinf}=\R\union\accol{\minf;\pinf}\).
+
+\subsubsection{Somme de deux éléments de \(\Rb\)}
+
+La somme \(a+b\) est définie pour tout couple \(\paren{a,b}\in\Rb^2\excluant\accol{\paren{\minf,\pinf};\paren{\pinf,\minf}}\).
+
+Si \(\paren{a,b}\in\R^2\) alors \(a+b\) est simplement la somme des réels \(a\) et \(b\).
+
+Sinon, on pose \(\begin{dcases}
+\paren{\pinf}+\paren{\pinf}=\pinf \\
+\quantifs{\forall x\in\R}\paren{\pinf}+x=x+\paren{\pinf}=\pinf \\
+\paren{\minf}+\paren{\minf}=\minf \\
+\quantifs{\forall x\in\R}\paren{\minf}+x=x+\paren{\minf}=\minf
+\end{dcases}\)
+
+\subsubsection{Produit de deux éléments de \(\Rb\)}
+
+Le produit \(a\times b\) est défini pour tout couple \(\paren{a,b}\in\Rb^2\excluant\accol{\paren{\minf,0};\paren{\pinf,0};\paren{0,\minf};\paren{0,\pinf}}\).
+
+Si \(\paren{a,b}\in\R^2\) alors \(a\times b\) est simplement le produit des réels \(a\) et \(b\).
+
+Sinon, on pose \(\begin{dcases}
+\paren{\pinf}\times\paren{\pinf}=\paren{\minf}\times\paren{\minf}=\pinf \\
+\paren{\minf}\times\paren{\pinf}=\paren{\pinf}\times\paren{\minf}=\minf \\
+\quantifs{\forall x\in\Rps}\paren{\pinf}\times x=x\times\paren{\pinf}=\pinf\quad\text{et}\quad\paren{\minf}\times x=x\times\paren{\minf}=\minf \\
+\quantifs{\forall x\in\Rms}\paren{\pinf}\times x=x\times\paren{\pinf}=\minf\quad\text{et}\quad\paren{\minf}\times x=x\times\paren{\minf}=\pinf
+\end{dcases}\)
+
+\subsubsection{Relation d'ordre sur \(\Rb\)}
+
+On munit l'ensemble \(\Rb\) de la relation d'ordre notée \(\leq\) qui prolonge la relation d'ordre usuelle de \(\R\) et pour laquelle \(\pinf\) est le plus grand élément de \(\Rb\) et \(\minf\) le plus petit élément de \(\Rb\).
+
+On a donc \(\quantifs{\forall x\in\Rb}\minf\leq x\leq\pinf\).
+
+C'est un ordre total.
+
+\section{Fonctions}
+
+\subsection{Notations de base}
+
+Les termes \guillemets{fonction} et \guillemets{application} sont synonymes.
+
+\begin{defi}
+Une fonction \(f\) d'un ensemble \(E\) dans un ensemble \(F\) associe à tout élément \(x\) de \(E\) un unique élément de \(F\) noté \(f\paren{x}\) : \(\quantifs{\forall x\in E;\exists! y\in F}y=f\paren{x}\).
+
+On dit que \(E\) et \(F\) sont respectivement l'ensemble de départ (ou de définition) et d'arrivée de \(f\).
+\end{defi}
+
+\begin{defi}
+Soient \(E,F\) deux ensembles.
+
+L'ensemble des fonctions de \(E\) dans \(F\) est noté \(\F{E}{F}\) ou \(F^E\).
+\end{defi}
+
+\begin{defi}[Ensemble image]
+Soient \(E,F\) deux ensembles et \(f\in\F{E}{F}\).
+
+On pose \(\Im f=\accol{f\paren{x}}_{x\in E}\).
+\end{defi}
+
+\begin{rem}
+Il ne faut pas confondre \(\Im f\) et \(F\) : on a \(\Im f\subset F\).
+\end{rem}
+
+\begin{defi}[Famille d'éléments d'un ensemble]
+Soient \(I,E\) deux ensembles.
+
+Une famille d'éléments de \(E\) indicée par \(I\) est un objet \(\paren{x_i}_{i\in I}\) où \(\quantifs{\forall i\in I}x_i\in E\).
+
+L'ensemble des familles d'éléments de \(E\) indicées par \(I\) est noté \(E^I\).
+\end{defi}
+
+\begin{defi}
+Soient \(E\) un ensemble et \(A\subset E\).
+
+La fonction indicatrice de \(A\) est la fonction \(\fonction{\ind{A}}{E}{\accol{0;1}}{x}{\begin{dcases}1\text{ si }x\in A \\ 0\text{ sinon}\end{dcases}}\)
+\end{defi}
+
+\begin{ex}
+\(\ind{\Rps}\) :
+
+\begin{center}
+\begin{tkz}
+\draw[gray,->] (0,-1) -- (0,2);
+\draw[gray,->] (-3,0) -- (3,0);
+\draw[{}-{Arc Barb [reversed,length=0.1cm]}] (3,1) -- (-0.1,1) node[left] {\(1\)};
+\draw (-3,0) -- (0,0) node[below left] {\(0\)};
+\filldraw (0,0) circle (3pt);
+\end{tkz}
+\end{center}
+\end{ex}
+
+\begin{defi}[Image directe, image réciproque]
+Soient \(E,F\) deux ensembles et \(f:E\to F\).
+
+Soient \(A\subset E\) et \(B\subset F\).
+
+L'image directe de \(A\) par \(f\) est \(f\paren{A}=\accol{f\paren{x}}_{x\in A}\subset F\).
+
+On a aussi \(f\paren{A}=\accol{y\in F\tq\exists x\in A,y=f\paren{x}}\).
+
+En pratique, \(f\paren{A}\subset F\) et \(\quantifs{\forall y\in F}y\in f\paren{A}\ssi\quantifs{\exists x\in A}f\paren{x}=y\).
+
+L'image réciproque de \(B\) par \(f\) est \(f^{-1}\paren{B}=\accol{x\in E\tq f\paren{x}\in B}\).
+
+En pratique, \(f^{-1}\paren{B}\subset E\) et \(\quantifs{\forall x\in E}x\in f^{-1}\paren{B}\ssi f\paren{x}\in B\).
+\end{defi}
+
+\begin{rem}
+Mêmes notations.
+
+On a \(\Im f=f\paren{E}\).
+
+Soient \(x\in E\) et \(y\in F\). Si \(y=f\paren{x}\), on dit que \(y\) est l'image de \(x\) par \(f\) et que \(x\) est un antécédent de \(y\) par \(f\).
+
+\(f\paren{A}\) est l'ensemble des images des éléments de \(A\).
+
+\(f^{-1}\paren{B}\) est l'ensemble des antécédents des éléments de \(B\).
+\end{rem}
+
+\begin{ex}
+Considérons la fonction \(\sin:\R\to\R\).
+
+On a \begin{itemize}
+\item \(\Im\sin=\sin\paren{\R}=\intervii{-1}{1}\) ;
+
+\item \(\sin\paren{\Rp}=\intervii{-1}{1}\) ;
+
+\item \(\sin\paren{\intervii{0}{\pi}}=\intervii{0}{1}\) ;
+
+\item \(\sin^{-1}\paren{\accol{0}}=\accol{k\pi}_{k\in\Z}=\pi\Z\)
+
+En effet, \(\begin{aligned}[t]
+\forall x\in\R,x\in\sin^{-1}\paren{\accol{0}}&\iff\sin x\in\accol{0} \\
+&\iff\sin x=0 \\
+&\iff x\equiv0\croch{\pi} \\
+&\iff\quantifs{\exists k\in\Z}x=k\pi
+\end{aligned}\)
+
+\item \(\sin^{-1}\paren{\intervie{2}{\pinf}}=\ensvide\).
+\end{itemize}
+\end{ex}
+
+\begin{defi}
+Soient \(E,F\) deux ensembles et \(f:E\to F\).
+
+Soit \(A\subset E\).
+
+On appelle restriction de \(f\) à \(A\) la fonction \(\fonction{\restr{f}{A}}{A}{F}{x}{f\paren{x}}\)
+\end{defi}
+
+\begin{defi}
+Soient \(E,E\prim,F\) trois ensembles tels que \(E\subset E\prim\).
+
+Soient \(f:E\to F\) et \(g:E\prim\to F\).
+
+On dit que \(g\) est un prolongement de \(f\) à \(E\prim\) si on a \(f=\restr{g}{E}\)
+\end{defi}
+
+\begin{defi}[Composition]
+Soient \(E,F,G\) trois ensembles. Soient \(f:E\to F\) et \(g:F\to G\).
+
+On définit la composée de \(f\) et \(g\) : \(\fonction{g\rond f}{E}{G}{x}{g\paren{f\paren{x}}}\)
+\end{defi}
+
+\begin{rem}
+Soient \(E,F,G,H\) quatre ensembles. Soient \(f:E\to F\), \(g:F\to G\) et \(h:G\to H\).
+
+On a \(h\rond\paren{g\rond f}=\paren{h\rond g}\rond f\).
+
+On note \(h\rond g\rond f\).
+\end{rem}
+
+\subsection{Injectivité, surjectivité, bijectivité}
+
+\subsubsection{Injectivité}
+
+\begin{defi}
+Soient \(E,F\) deux ensembles et \(f:E\to F\).
+
+On dit que \(f\) est injective ou que \(f\) est une injection si on a \(\quantifs{\forall x,y\in E}f\paren{x}=f\paren{y}\imp x=y\).
+\end{defi}
+
+\begin{ex}
+La fonction \(\exp:\R\to\R\) est injective car \(\quantifs{\forall x,y\in \R}\e{x}=\e{y}\imp x=y\).
+
+La fonction \(\sin:\R\to\R\) n'est pas injective car \(\begin{dcases}\sin0=\sin\pi \\ 0\not=\pi\end{dcases}\)
+\end{ex}
+
+\begin{rem}
+On a aussi \(f\) injective \(\iff\paren{\quantifs{\forall x,y\in E}f\paren{x}=f\paren{y}\iff x=y}\).
+\end{rem}
+
+\begin{prop}
+Soient \(I\subset\R\) et \(f:I\to\R\) une fonction strictement monotone.
+
+Alors \(f\) est injective.
+\end{prop}
+
+\begin{dem}
+Soient \(x,y\in I\) tels que \(x\not=y\). Montrons que \(f\paren{x}\not=f\paren{y}\).
+
+Si \(f\) est strictement croissante et \(x<y\) alors \(f\paren{x}<f\paren{y}\) donc \(f\paren{x}\not=f\paren{y}\).
+
+Si \(f\) est strictement croissante et \(x>y\) alors \(f\paren{x}>f\paren{y}\) donc \(f\paren{x}\not=f\paren{y}\).
+
+Si \(f\) est strictement décroissante et \(x<y\) alors \(f\paren{x}>f\paren{y}\) donc \(f\paren{x}\not=f\paren{y}\).
+
+Si \(f\) est strictement décroissante et \(x>y\) alors \(f\paren{x}<f\paren{y}\) donc \(f\paren{x}\not=f\paren{y}\).
+
+Donc \(f\paren{x}\not=f\paren{y}\).
+
+Donc \(f\) injective.
+\end{dem}
+
+\begin{prop}[Une composée d'injections est une injection]
+Soient \(E,F,G\) trois ensembles. Soient \(f:E\to F\) et \(g:F\to G\) deux injections.
+
+Alors \(g\rond f\) est une injection.
+\end{prop}
+
+\begin{dem}
+Soient \(x,y\in E\) tels que \(g\rond f\paren{x}=g\rond f\paren{y}\).
+
+Montrons que \(x=y\).
+
+Comme \(g\) injective, on a \(f\paren{x}=f\paren{y}\).
+
+Comme \(f\) injective, on a \(x=y\).
+
+Donc \(g\rond f\) est une injection.
+\end{dem}
+
+\subsubsection{Surjectivité}
+
+\begin{defi}
+Soient \(E,F\) deux ensembles et \(f:E\to F\).
+
+On dit que \(f\) est surjective ou que \(f\) est une surjection si on a \(\Im f=F\), c'est à dire si \(\quantifs{\forall y\in F;\exists x\in E}f\paren{x}=y\).
+
+Ces deux conditions sont équivalentes car on a \(\Im f\subset F\).
+
+Donc \(\begin{aligned}[t]
+\Im f=F&\iff F\subset\Im f \\
+&\iff\quantifs{\forall y\in F}y\in\Im f \\
+&\iff\quantifs{\forall y\in F;\exists x\in E}y=f\paren{x}
+\end{aligned}\)
+
+NB : quand on parle de la surjectivité d'une fonction, il faut que l'ensemble d'arrivée de la fonction soit clair.
+\end{defi}
+
+\begin{ex}
+\(\sin:\R\to\R\) n'est pas surjective car \(\Im\sin=\intervii{-1}{1}\not=\R\).
+
+\(\sin:\R\to\intervii{-1}{1}\) est une surjection car \(\sin\paren{\R}=\intervii{-1}{1}\).
+\end{ex}
+
+\begin{prop}[Une composée de surjections est une surjection]
+Soient \(E,F,G\) trois ensembles. Soient \(f:E\to F\) et \(g:F\to G\) deux surjections.
+
+Alors \(g\rond f\) est une surjection de \(E\) dans \(G\).
+\end{prop}
+
+\begin{dem}
+Montrons que \(\quantifs{\forall z\in G;\exists x\in E}g\rond f\paren{x}=z\).
+
+Soit \(z\in G\).
+
+Comme \(g\) est une surjection, il existe \(y\in F\) tel que \(g\paren{y}=z\).
+
+Comme \(f\) est une surjection, il existe \(x\in E\) tel que \(g\paren{x}=y\).
+
+On a \(z=g\paren{y}=g\paren{f\paren{x}}=g\rond f\paren{x}\).
+
+Donc \(g\rond f\) est surjective.
+\end{dem}
+
+\subsubsection{Bijectivité}
+
+\begin{defi}
+Soient \(E,F\) deux ensembles et \(f:E\to F\).
+
+On dit que \(f\) est bijective ou que \(f\) est une bijection de \(E\) dans \(F\) si elle est injective et surjective, c'est à dire si on a \(\quantifs{\forall y\in F;\exists! x\in E}f\paren{x}=y\).
+\end{defi}
+
+\begin{ex}
+\(\exp\) est une bijection de \(\R\) dans \(\Rps\).
+
+\(\ln\) est une bijection de \(\Rps\) dans \(\R\).
+
+\(\sin\) n'est pas une injection et donc pas une bijection.
+
+Mais \(\restr{\sin}{\intervii{-\nicefrac{\pi}{2}}{\nicefrac{\pi}{2}}}\) est une bijection de \(\intervii{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}\) dans \(\intervii{-1}{1}\).
+\end{ex}
+
+\begin{rem}
+Soit \(f:E\to F\) une injection avec \(E,F\) deux ensembles.
+
+Alors \(f\) est une bijection de \(E\) dans \(\Im f\).
+\end{rem}
+
+\begin{prop}[Une composée de bijections est une bijection]\thlabel{prop:composeeBijectionsEstUneBijection}
+Soient \(E,F,G\) trois ensembles. Soient \(f:E\to F\) et \(g:F\to G\) deux bijections.
+
+Alors \(g\rond f:E\to G\) est une bijection.
+\end{prop}
+
+\begin{dem}
+Comme \(g\) et \(f\) sont des injections, \(g\rond f\) est une injection.
+
+Comme \(g\) et \(f\) sont des surjections, \(g\rond f\) est une surjection.
+
+Donc \(g\rond f\) est une bijection.
+\end{dem}
+
+\begin{defprop}[Bijection réciproque]\thlabel{defprop:bijRec}
+Soient \(E,F\) deux ensembles et \(f:E\to F\) une bijection. On a \(\quantifs{\forall y\in F;\exists! x\in E}f\paren{x}=y\).
+
+Pour tout \(y\in F\), on note \(f^{-1}\paren{y}\) l'unique antécédent de \(y\) par \(f\).
+
+On obtient alors une fonction \(f^{-1}:F\to E\) appelée bijection réciproque de \(f\).
+
+La fonction \(f^{-1}:F\to E\) est une bijection et vérifie \(\begin{dcases}f\rond f^{-1}=\id{F} \\ f^{-1}\rond f=\id{E}\end{dcases}\)
+\end{defprop}
+
+\begin{oubli}
+Soit \(E\) un ensemble.
+
+On pose \(\fonction{\id{E}}{E}{E}{x}{x}\) la \guillemets{fonction identité} de \(E\).
+\end{oubli}
+
+\begin{rem}
+Soit \(E\) un ensemble.
+
+Ne pas confondre : \begin{itemize}
+\item si \(A\subset E\), \(f^{-1}\paren{A}\) est l'image réciproque de \(A\) par \(f\) ;
+
+\item si \(y\in E\) et \(f\) bijective, \(f^{-1}\paren{y}\) est l'antécédent de \(y\) par \(f\).
+\end{itemize}
+\end{rem}
+
+\begin{dem}[De la \thref{defprop:bijRec}]
+\begin{itemize}
+\item Montrons que \(f^{-1}:F\to E\) est une bijection.
+
+On a \(\begin{aligned}[t]
+f^{-1}\text{ bijection}&\ssi\quantifs{\forall x\in E;\exists! y\in F}f^{-1}\paren{y}=x \\
+&\ssi\quantifs{\forall x\in E;\exists! y\in F}f\paren{x}=y \\
+&\color{white}\iff\color{black}\text{ce qui est vrai}
+\end{aligned}\)
+
+\item Pour tout \(y\in F\), \(f^{-1}\paren{y}\) est l'antécédent de \(y\) par \(f\).
+
+Donc \(\quantifs{\forall y\in F}f\paren{f^{-1}\paren{y}}=y\).
+
+Donc \(f\rond f^{-1}=\id{F}\).
+
+De même, pour tout \(x\in E\), l'antécédent de \(f\paren{x}\) par \(f\) est \(x\).
+
+Donc \(\quantifs{\forall x\in E}f^{-1}\paren{f\paren{x}}=x\).
+
+Donc \(f^{-1}\rond f=\id{E}\).
+\end{itemize}
+\end{dem}
+
+\begin{ex}
+\begin{itemize}
+\item Déterminons la bijection réciproque de \(\fonction{f}{\R}{\R}{x}{x+1}\)
+
+On a \(\quantifs{\forall x\in\R;\forall y\in\R}\begin{aligned}[t]
+f\paren{x}=y&\iff x+1=y \\
+&\iff x=y-1
+\end{aligned}\)
+
+Comme tout \(y\) admet un unique antécédent, \(f\) est bijective.
+
+De plus, on a obtenu \(\quantifs{\forall y\in\R}f^{-1}\paren{y}=y-1\).
+
+\item Déterminons la bijection réciproque de \(\fonction{\exp}{\R}{\Rp}{x}{\e{x}}\)
+
+On remarque \(\begin{aligned}[t]
+\quantifs{\forall y\in\Rps;\forall x\in\R}\exp x=y&\iff\ln\paren{\exp x}=\ln y \\
+&\iff x=\ln y
+\end{aligned}\)
+
+Ainsi, \(\quantifs{\forall y\in\Rps;\exists! x\in\R}\exp x=y\) donc \(\exp\) est bijective.
+
+De plus, on a obtenu \(\quantifs{\forall y\in\Rps}\exp^{-1}=\ln y\).
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+Soient \(I,J\subset\R\). Soit \(f:I\to J\) bijective.
+
+Le graphe de \(f\) est l'ensemble \(\graphe{f}=\accol{\paren{x,f\paren{x}}}_{x\in I}\).
+
+Autrement dit, \(\quantifs{\forall\paren{x,y}\in\R^2}\paren{x,y}\in\graphe{f}\iff\begin{dcases}x\in I\text{ et }y\in J \\ y=f\paren{x}\end{dcases}\)
+
+De même, \(\quantifs{\forall\paren{y,x}\in\R^2}\begin{aligned}[t]
+\paren{y,x}\in\graphe{f^{-1}}&\iff\begin{dcases}y\in J\text{ et }x\in I \\ x=f^{-1}\paren{y}\end{dcases} \\
+&\iff\begin{dcases}y\in J\text{ et }x\in I \\ y=f\paren{x}\end{dcases} \\
+&\iff\paren{x,y}\in\graphe{f}
+\end{aligned}\)
+
+Donc \(\graphe{f^{-1}}\) est le symétrique de \(\graphe{f}\) par rapport à la droite \(\Delta:y=x\).
+
+En effet, la symétrie par rapport à \(\Delta\) est la fonction \(\fonctionlambda{\R^2}{\R^2}{\paren{x,y}}{\paren{y,x}}\)
+\end{rem}
+
+\begin{rem}
+Soient \(E,F\) deux ensembles. Soit \(B\subset F\). Soit \(f:E\to F\) bijective.
+
+Alors \(f^{-1}\paren{B}\) peut désigner l'image réciproque de \(B\) par \(f\) ou l'image directe de \(B\) par \(f^{-1}\).
+
+En fait, les deux ensembles sont égaux.
+\end{rem}
+
+\begin{dem}
+Notons \(X=\accol{x\in E\tq f\paren{x}\in B}\) le premier ensemble et \(Y=\accol{f^{-1}\paren{y}}_{y\in B}\) le second.
+
+On a, \(X\subset E\) et \(Y\subset E\) et \(\begin{aligned}[t]
+\forall x\in E,x\in X&\iff f\paren{x}\in B \\
+&\iff\quantifs{\exists y\in B}f\paren{x}=y \\
+&\iff\quantifs{\exists y\in B}x=f^{-1}\paren{y} \\
+&\iff x\in Y
+\end{aligned}\)
+
+Donc \(X=Y\).
+\end{dem}
+
+\begin{prop}
+Soient \(E,F,G\) des ensembles. Soient \(f:E\to F\) et \(g:F\to G\).
+
+On a \begin{enumerate}
+\item \(g\rond f\text{ injection}\imp f\text{ injection}\) ;
+
+\item \(g\rond f\text{ surjection}\imp g\text{ surjection}\) ;
+
+\item \(g\rond f\text{ bijection}\imp g\text{ surjection et }f\text{ injection}\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\begin{enumerate}
+\item Supposons \(g\rond f\) injection.
+
+Soient \(x,y\in E\). On suppose \(f\paren{x}=f\paren{y}\).
+
+Montrons que \(x=y\).
+
+On a \(g\paren{f\paren{x}}=g\paren{f\paren{y}}\).
+
+Comme \(g\rond f\) injective, on a \(x=y\).
+
+Donc \(f\) injective.
+
+\item Supposons \(g\rond f\) surjection.
+
+Montrons que \(g\) est surjective.
+
+Soit \(z\in G\). Montrons que \(\quantifs{\exists y\in F}g\paren{y}=z\).
+
+Comme \(g\rond f\) surjective, il existe \(x\in E\) tel que \(g\rond f\paren{x}=z\).
+
+On a \(g\paren{f\paren{x}}=z\).
+
+Donc \(f\paren{x}\) est un antécédent de \(z\) par \(g\), donc \(g\) est surjective.
+
+\item Découle de (1) et (2).
+\end{enumerate}
+\end{dem}
+
+\begin{oubli}
+Soient \(E,F\) deux ensembles. Soit \(f:E\to F\) bijective.
+
+On a \(\paren{f^{-1}}^{-1}=f\).
+\end{oubli}
+
+\begin{dem}
+Soit \(x\in E\).
+
+On a \(x=f^{-1}\paren{f\paren{x}}\).
+
+Donc \(f\paren{x}=\paren{f^{-1}}^{-1}\paren{x}\).
+\end{dem}
+
+\begin{prop}
+Soient \(E,F,G\) trois ensembles. Soient \(f:E\to F\) et \(g:F\to G\) bijectives.
+
+On a vu que \(g\rond f:E\to G\) est une bijection.
+
+On a \(\paren{g\rond f}^{-1}=f^{-1}\rond g^{-1}\).
+\end{prop}
+
+\begin{dem}
+Soit \(z\in G\).
+
+On a \(\begin{aligned}[t]
+z&=g\paren{g^{-1}\paren{z}} \\
+&=g\paren{f\paren{f^{-1}\paren{g^{-1}\paren{x}}}} \\
+&=g\rond f\paren{f^{-1}\rond g^{-1}\paren{x}}
+\end{aligned}\)
+
+Donc \(f^{-1}\rond g^{-1}\paren{z}=\paren{g\rond f}^{-1}\paren{z}\).
+\end{dem}
+
+\section{Relations}
+
+\subsection{Définition}
+
+\begin{defi}
+Soit \(E\) un ensemble.
+
+On appelle relation binaire sur \(E\) tout partie \(\rel\subset E\times E\).
+
+On pose alors, \(\quantifs{\forall\paren{x,y}\in E^2}x\rel y\iff\paren{x,y}\in\rel\).
+
+Ainsi, une relation binaire est une proposition qui dépend de \(\paren{x,y}\in E^2\).
+\end{defi}
+
+\begin{ex}
+Égalité : si \(\rel=\accol{\paren{x,x}}_{x\in E}\) (\guillemets{diagonale} de \(E^2\)), alors on obtient \(\quantifs{\forall\paren{x,y}\in E^2}x\rel y\iff x=y\).
+
+Si \(E=\R\) et \(\rel=\accol{\paren{x,y}\in\R^2\tq x<y}\) alors on obtient la relation binaire \(\quantifs{\forall\paren{x,y}\in\R^2}x\rel y\iff x<y\).
+\end{ex}
+
+\begin{defi}
+Soient \(E\) un ensemble et \(\rel\) une relation binaire sur \(E\).
+
+On dit que \(\rel\) est réflexive si \(\quantifs{\forall x\in E}x\rel x\).
+
+On dit que \(\rel\) est transitive si \(\quantifs{\forall x,y,z\in E}\paren{x\rel y\et y\rel z}\imp x\rel z\).
+
+On dit que \(\rel\) est symétrique si \(\quantifs{\forall x,y\in E}x\rel y\iff y\rel x\).
+
+On dit que \(\rel\) est antisymétrique si \(\quantifs{\forall x,y\in E}\paren{x\rel y\et y\rel x}\imp x=y\).
+\end{defi}
+
+\begin{ex}
+La relation \(=\) sur un ensemble \(E\) fini est réflexive, transitive, symétrique et antisymétrique.
+
+La relation \(\leq\) sur \(\R\) est réflexive, transitive et antisymétrique.
+
+La relation \(<\) sur \(\R\) est transitive et antisymétrique.
+
+Soit \(E\) un ensemble. La relation \(\subset\) sur \(\P{E}\) est réflexive, transitive et antisymétrique.
+\end{ex}
+
+\subsection{Relations d'équivalence}
+
+\begin{defi}
+Soient \(E\) un ensemble et \(\rel\) une relation binaire sur \(E\).
+
+On dit que \(\rel\) est une relation d'équivalence sur \(E\) si elle est réflexive, transitive et symétrique.
+\end{defi}
+
+\begin{ex}
+\begin{itemize}
+\item Soit \(E\) un ensemble. La relation \(=\) est une relation d'équivalence sur \(E\).
+
+\item La relation \(\leq\) n'est pas une relation d'équivalence sur \(\R\) (car elle n'est pas symétrique).
+
+\item Soit \(E\) un ensemble non-vide. La relation \(\subset\) n'est pas une relation d'équivalence sur \(\P{E}\).
+
+\item Soit \(n\in\Ns\). On définit une relation binaire \(\rel\) sur \(\Z\) en posant \(\quantifs{\forall x,y\in\Z}x\rel y\iff x\equiv y\croch{n}\). \(\rel\) est une relation d'équivalence sur \(\Z\).
+
+En effet, \(\rel\) est \begin{itemize}
+\item réflexive car \(\quantifs{\forall x\in\Z}x\equiv x\croch{n}\) ;
+
+\item symétrique car \(\quantifs{\forall x,y\in\Z}x\equiv y\croch{n}\iff y\equiv x\croch{n}\) ;
+
+\item transitive car si on a \(x,y,z\in\Z\) tels que \(x\equiv y\croch{n}\) et \(y\equiv z\croch{n}\) alors il existe \(k,l\in\Z\) tels que \(x=y+kn\) et \(y=z+ln\) donc on a \(x=z+\paren{l+k}n\) où \(l+k\in\Z\) donc \(x\equiv z\croch{n}\).
+\end{itemize}
+
+\item Idem pour la relation de congruence sur \(\R\) modulo un réel.
+
+\item Soient \(E,F\) deux ensembles et \(f:E\to F\).
+
+On définit la relation binaire \(\rel\) sur \(E\) en posant \(\quantifs{\forall x,y\in E}x\rel y\iff f\paren{x}=f\paren{y}\).
+
+Alors \(\rel\) est une relation d'équivalence sur \(E\).
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+En général, les relations d'équivalence sont notées \(\sim\), \(=\), \(\approx\), \(\equiv\), ...
+\end{rem}
+
+\begin{defprop}
+Soient \(E\) un ensemble et \(\sim\) une relation d'équivalence sur \(E\).
+
+On associe à tout élément sa classe d'équivalence \(\tilde{x}=\accol{y\in E\tq y\sim x}\).
+
+On note \(\classesdequiv{E}=\accol{\tilde{x}}_{x\in E}\) l'ensemble des classes d'équivalence de \(E\).
+
+On a \(\quantifs{\forall x_1,x_2\in E}\tilde{x_1}=\tilde{x_2}\iff x_1\sim x_2\).
+\end{defprop}
+
+\begin{dem}
+\begin{itemize}
+\item Montrons que \(\classesdequiv{E}\) est une partition de \(E\).
+
+\begin{itemize}
+\item Chaque classe d'équivalence est non-vide. En effet, \(\quantifs{\forall x\in E}x\in\tilde{x}\) car \(\sim\) est réflexive.
+
+\item On a \(\bigunion_{\theta\in\classesdequiv{E}}\theta=\bigunion_{x\in E}\tilde{x}=E\).
+
+En effet, d'une part \(\quantifs{\forall x\in E}\tilde{x}\subset E\) donc \(\bigunion_{x\in E}\tilde{x}\subset E\).
+
+Et d'autre part \(\quantifs{\forall y\in E}y\in\tilde{y}\) donc \(\forall y\in E,y\in\bigunion_{x\in E}\tilde{x}\).
+
+\item Montrons que les éléments de \(\classesdequiv{E}\) sont deux à deux disjoints.
+
+Soient \(\theta_1,\theta_2\in\classesdequiv{E}\).
+
+Supposons \(\theta_1\not=\theta_2\). Montrons que \(\theta_1\inter\theta_2=\ensvide\).
+
+Soient \(x_1,x_2\in E\) tels que \(\theta_1=\tilde{x_1}\) et \(\theta_2=\tilde{x_2}\).
+
+Par l'absurde, supposons \(\theta_1\inter\theta_2\not=\ensvide\).
+
+Soit \(x\in\theta_1\inter\theta_2\). On a \(x\in\tilde{x_1}\inter\tilde{x_2}\).
+
+Donc \(x\sim x_1\) et \(x\sim x_2\).
+
+Montrons que \(\theta_1\subset\theta_2\).
+
+Soit \(y\in\theta_1\). On a \(y\sim x_1\).
+
+Or \(x_1\sim x\) et \(x\sim x_2\).
+
+Donc \(y\sim x_2\). Donc \(y\in\theta_2\).
+
+On montre de même \(\theta_2\subset\theta_1\).
+
+Donc \(\theta_1=\theta_2\) : contradiction.
+\end{itemize}
+
+Finalement, \(\classesdequiv{E}\) est une partition de \(E\).
+
+\item Montrons que \(\tilde{x_1}=\tilde{x_2}\iff x_1\sim x_2\).
+
+\begin{itemize}
+\item[\impdir] Supposons \(\tilde{x_1}=\tilde{x_2}\).
+
+Comme \(x_1\in\tilde{x_1}\), on a \(x_1\in\tilde{x_2}\) donc \(x_1\sim x_2\).
+
+\item[\imprec] Supposons \(x_1\sim x_2\).
+
+Montrons que \(\tilde{x_1}\subset\tilde{x_2}\). Soit \(y\in\tilde{x_1}\).
+
+On a \(y\sim x_1\). Or \(x_1\sim x_2\).
+
+Donc \(y\sim x_2\). Donc \(y\in\tilde{x_2}\). Donc \(\tilde{x_1}\subset\tilde{x_2}\).
+
+On montre de même \(\tilde{x_2}\subset\tilde{x_1}\).
+
+Donc \(\tilde{x_1}=\tilde{x_2}\).
+\end{itemize}
+\end{itemize}
+\end{dem}
+
+\begin{rem}
+\(\quantifs{\forall\theta\in\classesdequiv{E};\forall x,y\in\theta}x\sim y\)
+\end{rem}
+
+\begin{rem}
+Soient \(E\) un ensemble et \(\sim\) une relation d'équivalence sur \(E\).
+
+On note \(\fonction{\pi}{E}{\classesdequiv{E}}{x}{\tilde{x}}\) la surjection canonique de \(E\) vers \(\classesdequiv{E}\).
+
+On a \(\quantifs{\forall x,y\in E}x\sim y\iff\pi\paren{x}=\pi\paren{y}\).
+\end{rem}
+
+\begin{dem}
+\(\pi\) est une surjection car tout \(\theta\in\classesdequiv{E}\) admet un antécédent : \(\quantifs{\forall\theta\in\classesdequiv{E};\exists x\in E}\theta=\tilde{x}\).
+
+Donc \(\quantifs{\forall\theta\in\classesdequiv{E};\exists x\in E}\pi\paren{x}=\theta\).
+\end{dem}
+
+\subsection{Relations d'ordre}
+
+\begin{defi}
+Soit \(E\) un ensemble.
+
+On appelle relation d'ordre (partiel) tout relation binaire \(\leq\) sur \(E\) qui est réflexive, transitive et antisymétrique.
+
+On dit alors que \(\paren{E,\leq}\) est un ensemble (partiellement) ordonné.
+
+Si la relation binaire \(\leq\) est claire, on dit parfois que \(E\) est un ensemble ordonné.
+
+Si, de plus, \(\leq\) vérifie \(\quantifs{\forall x,y\in E}x\leq y\) ou \(y\leq x\) alors on dit que \(\leq\) est une relation d'ordre total et que \(\paren{E,\leq}\) est totalement ordonné.
+\end{defi}
+
+\begin{ex}
+Soit \(E\) un ensemble. La relation \(=\) est une relation d'ordre partiel sur \(E\).
+
+\(\paren{\R,\leq}\) est un ensemble totalement ordonné.
+
+Soit \(X\) un ensemble  et \(E=\P{X}\). \(\paren{E,\subset}\) est ordonné.
+
+Posons \(\quantifs{\forall a,b\in\Z}a\divise b\iff\quantifs{\exists k\in\Z}ak=b\).
+
+La relation \(\divise\) n'est pas une relation d'ordre sur \(\Z\) car elle n'est pas antisymétrique. En effet, \(1\divise-1\) et \(-1\divise1\) mais \(-1\not=1\).
+
+En revanche, \(\divise\) est une relation d'ordre sur \(\N\).
+\end{ex}
+
+\begin{defi}
+Soient \(\paren{E,\leq}\) un ensemble ordonné et \(A\subset E\).
+
+On dit que \(M\in E\) est un majorant de \(A\) dans \(E\) si \(\quantifs{\forall x\in A}x\leq M\).
+
+On dit que \(m\in E\) est un minorant de \(A\) dans \(E\) si \(\quantifs{\forall x\in A}m\leq x\).
+
+On dit que \(A\) est majorée (dans \(E\)) si elle admet un majorant (dans \(E\)).
+
+On dit que \(A\) est minorée (dans \(E\)) si elle admet un minorant (dans \(E\)).
+
+On dit que \(A\) est bornée (dans \(E\)) si elle admet un majorant et un minorant (dans \(E\)).
+
+On dit que \(M\in E\) est le plus grand élément de \(A\) ssi on a \(M\in A\) et \(\quantifs{\forall x\in A}x\leq M\).
+
+On dit que \(m\in E\) est le plus petit élément de \(A\) ssi on a \(m\in A\) et \(\quantifs{\forall x\in A}m\leq x\).
+
+S'il existe, le plus grand élément de \(A\) est unique et est noté \(\max A\).
+
+S'il existe, le plus petit élément de \(A\) est unique et est noté \(\min A\).
+\end{defi}
+
+\begin{dem}
+Montrons l'unicité du plus grand élément de \(A\). Soient \(M_1,M_2\in E\).
+
+Supposons \(\begin{dcases}M_1\in A &(1) \\ M_2\in A &(2) \\ \forall x\in A,x\leq M_1 &(3) \\ \forall x\in A,x\leq M_2 &(4)\end{dcases}\)
+
+Montrons que \(M_1=M_2\).
+
+Selon (1) et (4), \(M_1\leq M_2\) et selon (2) et (3), \(M_2\leq M_1\).
+
+Donc \(M_1=M_2\) car \(\leq\) est antisymétrique.
+
+On montre de même l'unicité du plus petit élément.
+\end{dem}
+
+\begin{ex}
+La partie \(\Rp\) n'est pas majorée dans \(\R\). En revanche, elle est majorée dans \(\Rb\).
+
+\(\pinf\) est le plus grand élément de \(\Rb\).
+
+\(0\) est le plus grand élément de \(\intervei{\minf}{0}\).
+
+Soit \(X\) un ensemble. Dans \(\paren{\P{X},\subset}\), \(\ensvide\) est le plus petit élément et \(X\) est le plus grand élément.
+
+Dans \(\paren{\N,\divise}\), \(1\) est le plus petit élément et \(0\) est le plus grand élément.
+
+Toute partie de \(\paren{\N,\divise}\) est bornée : minorée par \(1\) et majorée par \(0\).
+
+La partie \(\Ns\) admet \(1\) comme plus petit élément mais pas de plus grand élément.
+\end{ex}
+
+\begin{defi}
+Soient \(\paren{E,\leq}\) un ensemble ordonné et \(A\subset E\).
+
+Notons \(\majo{A}\) l'ensemble des majorants de \(A\) : \(\majo{A}=\accol{M\in E\tq\quantifs{\forall x\in A}x\leq M}\) et \(\mino{A}\) l'ensemble des minorants de \(A\) : \(\mino{A}=\accol{m\in E\tq\quantifs{\forall x\in A}m\leq x}\).
+
+S'il existe, le plus petit élément de \(\majo{A}\) est appelé la borne supérieure de \(A\) et est noté \(\sup A\).
+
+S'il existe, le plus grand élément de \(\mino{A}\) est appelé la borne inférieure de \(A\) et est noté \(\inf A\).
+\end{defi}
+
+\begin{ex}
+Dans \(\paren{\R,\leq}\) : \begin{itemize}
+\item \(\majo{\intervii{0}{1}}=\intervie{1}{\pinf}\) donc \(\sup\intervii{0}{1}=1\).
+
+\item \(\majo{\intervie{0}{1}}=\intervie{1}{\pinf}\) donc \(\sup\intervie{0}{1}=1\).
+
+\item \(\majo{\ensvide}=\R\) donc \(\sup\ensvide\) n'existe pas.
+\end{itemize}
+
+Dans \(\paren{\Rb,\leq}\) : \begin{itemize}
+\item \(\majo{\R}=\accol{\pinf}\) donc \(\sup\R=\pinf\).
+
+\item \(\majo{\ensvide}=\Rb\) donc \(\sup\ensvide=\minf\).
+\end{itemize}
+
+Dans \(\paren{\N,\divise}\) : \begin{itemize}
+\item \(\majo{\Ns}=\accol{0}\) donc \(\sup\Ns=0\).
+
+\item Notons \(\mathbb{P}\) l'ensemble des nombres premiers. \(\majo{\mathbb{P}}=\accol{0}\) donc \(\sup\mathbb{P}=0\).
+\end{itemize}
+\end{ex}
+
+\begin{prop}
+Soient \(\paren{E,\leq}\) un ensemble ordonné et \(A\subset E\).
+
+\begin{enumerate}
+\item Si \(A\) admet un plus grand élément, alors \(A\) admet une borne supérieure qui est son plus grand élément : \(\sup A=\max A\).
+
+\item Pour que \(A\) admettes une borne supérieure, il faut que \(A\) soit majorée.
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\begin{enumerate}
+\item Supposons que \(A\) admet un plus grand élément \(M\) : \(\begin{dcases}M\in A \\ \quantifs{\forall x\in A}x\leq M\end{dcases}\)
+
+Alors \(M\) majore \(A\) donc \(M\in\majo{A}\).
+
+De plus, \(\quantifs{\forall M\prim\in\majo{A}}M\leq M\prim\) car \(M\in A\).
+
+Donc \(M\) est le plus petit élément de \(\majo{A}\).
+
+Donc \(M=\sup A\).
+
+\item Clair.
+\end{enumerate}
+\end{dem}
+
+\begin{prop}
+Soit \(\paren{E,\leq}\) un ensemble ordonné. Soient \(A\subset E\) et \(y\in E\).
+
+Les propositions suivantes sont équivalentes : \begin{enumerate}
+\item \(y\) est la borne supérieure de \(A\)
+
+\item \(\quantifs{\forall z\in E}z\text{ majore }A\iff y\leq z\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+Montrons que \((1)\iff(2)\).
+
+\begin{itemize}
+\item[\impdir] Supposons \(y=\sup A\). Soit \(z\in E\).
+
+Montrons que \(z\text{ majore }A\iff y\leq z\).
+
+\begin{itemize}
+\item[\impdir] Claire car \(y\) est le plus petit majorant de \(A\).
+
+\item[\imprec] Si \(y\leq z\) alors \(\quantifs{\forall x\in A}x\leq y\leq z\) donc \(z\) majore \(A\).
+\end{itemize}
+
+\item[\imprec] Supposons (2).
+
+Comme \(y\leq y\), \(y\) majore \(A\) (selon \imprec).
+
+De plus, tout majorant \(z\in A\) vérifie \(y\leq z\) (selon \impdir).
+
+Donc \(y=\sup A\).
+\end{itemize}
+\end{dem}
+
+\section{Ensemble ordonné \(\paren{\N,\leq}\)}
+
+\begin{theo}\thlabel{theo:partieNppe}
+Toute partie non-vide de \(\N\) admet un plus petit élément.
+\end{theo}
+
+\begin{dem}
+\note{ADMIS}
+\end{dem}
+
+\begin{prop}
+Toute partie finie non-vide de \(\N\) admet un plus grand élément.
+\end{prop}
+
+\begin{rem}
+Plus généralement, tout ensemble totalement ordonné fini admet un plus petit élément et un plus grand élément.
+\end{rem}
+
+\begin{theo}[Démonstration par récurrence]\thlabel{theo:demoRec}
+Soit \(P\paren{n}\) une proposition dépendant d'un entier \(n\in\N\).
+
+Supposons \(\begin{dcases}P\paren{0} \\ \quantifs{\forall n\in\N}P\paren{n}\imp P\paren{n+1}\end{dcases}\)
+
+Alors \(\quantifs{\forall n\in\N}P\paren{n}\).
+\end{theo}
+
+\begin{dem}
+On pose \(A=\accol{n\in\N\tq\non P\paren{n}}\). Montrons que \(A=\ensvide\).
+
+Supposons par l'absurde \(A\not=\ensvide\).
+
+Posons \(n_0=\min A\). \(n_0\) existe selon le \thref{theo:partieNppe}. On a \(n_0\not=0\) car \(0\not\in A\) car \(P\paren{0}\) est vraie.
+
+Donc \(n_0\geq1\).
+
+On a \(n_0-1\not\in A\) car \(n_0\) minore \(A\).
+
+Donc \(P\paren{n_0-1}\) est vraie. Donc \(P\paren{n_0}\) est vraie : contradiction.
+
+Donc \(\quantifs{\forall n\in\N}P\paren{n}\).
+\end{dem}
+
+\begin{cor}[Démonstration par récurrence forte]
+Soit \(P\paren{n}\) une proposition dépendant de \(n\in\N\).
+
+Supposons \(\begin{dcases}P\paren{0} \\ \quantifs{\forall n\in\N}\paren{P\paren{0}\et P\paren{1}\et\dots\et P\paren{n}}\imp P\paren{n+1}\end{dcases}\)
+
+Alors \(\quantifs{\forall n\in\N}P\paren{n}\).
+\end{cor}
+
+\begin{dem}
+Pour tout \(n\in\N\), on note \(Q\paren{n}\) la proposition \guillemets{\(P\paren{0}\et P\paren{1}\et\dots\et P\paren{n}\)}, c'est à dire \guillemets{\(\quantifs{\forall k\in\interventierii{0}{n}}P\paren{k}\)}.
+
+On a \(Q\paren{0}\) car \(P\paren{0}\) et \(\quantifs{\forall n\in\N}Q\paren{n}\imp P\paren{n+1}\).
+
+Donc \(\quantifs{\forall n\in\N}Q\paren{n}\imp\paren{Q\paren{n}\et P\paren{n+1}}\).
+
+Donc \(\quantifs{\forall n\in\N}Q\paren{n}\imp Q\paren{n+1}\).
+
+D'où selon le \thref{theo:demoRec} : \(\quantifs{\forall n\in\N}Q\paren{n}\) donc \(\quantifs{\forall n\in\N}P\paren{n}\).
+\end{dem}
+
+\section{Ensemble ordonné \(\paren{\R,\leq}\)}
+
+\begin{rappel}
+On appelle intervalle de \(\R\) toute partie \(I\) de \(\R\) telle que \(\quantifs{\forall x,y\in I;\forall z\in\R}x\leq z\leq y\imp z\in I\).
+\end{rappel}
+
+\begin{theo}[Caractérisation de la borne supérieure dans \(\R\)]
+Soit \(A\subset\R\). Soit \(y\in\R\).
+
+Alors \(y=\sup A\iff(S):\begin{dcases}\quantifs{\forall x\in A}y\geq x &(1) \\ \quantifs{\forall\epsilon\in\Rps;\exists x\in A}y-\epsilon\leq x &(2)\end{dcases}\)
+\end{theo}
+
+\begin{dem}
+\begin{itemize}
+\item[\impdir] Supposons \(y=\sup A\).
+
+Alors \(y\) majore \(A\) donc \(\quantifs{\forall x\in A}x\leq y\).
+
+De plus, on a \(\quantifs{\forall\epsilon\in\Rps}y-\epsilon<y\).
+
+Donc \(y-\epsilon\) n'est pas un majorant de \(A\).
+
+Donc \(\quantifs{\exists x\in A}y-\epsilon\leq x\).
+
+\item[\imprec] Supposons \((S)\).
+
+\begin{itemize}
+\item \(y\) majore \(A\) d'après (1).
+
+\item Montrons que \(y\) est le plus petit majorant de \(A\).
+
+Soit \(z\) un majorant de \(A\). Montrons que \(z\geq y\).
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(x\in A\) tel que \(y-\epsilon\leq x\).
+
+On a \(y-\epsilon\leq x\leq z\).
+
+Donc \(y-\epsilon\leq z\)
+
+Donc \(y\leq z\). En effet, supposons par l'absurde \(z<y\).
+
+Posons \(\epsilon=\dfrac{y-z}{2}\in\Rps\).
+
+On a \(y-\epsilon\leq z\).
+
+Donc \(y-\dfrac{y-z}{2}<z\).
+
+Donc \(\dfrac{y}{2}<\dfrac{z}{2}\) : contradiction.
+\end{itemize}
+
+Donc on a \(y=\sup A\).
+\end{itemize}
+\end{dem}
+
+\begin{theo}[Caractérisation de la borne inférieure dans \(\R\)]
+Soient \(A\subset\R\) et \(y\in\R\).
+
+On a \(y=\inf A\iff\begin{dcases}\quantifs{\forall x\in A}y\leq x \\ \quantifs{\forall\epsilon\in\Rps;\exists x\in A}x\leq y+\epsilon\end{dcases}\)
+\end{theo}
+
+\begin{dem}
+Idem.
+\end{dem}
+
+\begin{theo}
+Toute partie non-vide et majorée de \(\R\) admet une borne supérieure.
+
+Toute partie non-vide et minorée de \(\R\) admet une borne inférieure.
+\end{theo}
+
+\begin{dem}
+\note{ADMIS}
+\end{dem}
+
+\section{Fonctions à valeurs dans un ensemble ordonné}
+
+\begin{defi}
+Soient \(E\) un ensemble, \(\paren{F,\leq}\) un ensemble ordonné et \(f:E\to F\).
+
+On appelle majorant de \(f\) tout majorant de \(\Im f\).
+
+On appelle minorant de \(f\) tout minorant de \(\Im f\).
+
+Ainsi, \(\begin{aligned}[t]
+M\text{ majore }f&\iff\quantifs{\forall y\in\Im f}y\leq M \\
+&\iff\quantifs{\forall x\in E}f\paren{x}\leq M
+\end{aligned}\)
+
+On appelle borne supérieure de \(f\) la borne supérieure de \(\Im f\) si elle existe.
+
+On appelle borne inférieure de \(f\) la borne inférieure de \(\Im f\) si elle existe.
+\end{defi}
+
+\begin{rem}
+\(\sup f=\sup_{x\in E}f\paren{x}\)
+\end{rem}
+
+\begin{defi}
+Soient \(\paren{E,\leq}\) un ensemble ordonné, \(I\) un ensemble et \(\paren{x_i}_{i\in I}\) une famille d'éléments de \(E\).
+
+On appelle majorant de \(\paren{x_i}_{i\in I}\) tout majorant de \(\accol{x_i}_{i\in I}\).
+
+On appelle minorant de \(\paren{x_i}_{i\in I}\) tout minorant de \(\accol{x_i}_{i\in I}\).
+
+On dit que \(\paren{x_i}_{i\in I}\) est majorée si on a \(\quantifs{\exists M\in E;\forall i\in I}x_i\leq M\).
+
+On dit que \(\paren{x_i}_{i\in I}\) est minorée si on a \(\quantifs{\exists m\in E;\forall i\in I}m\leq x_i\).
+
+La borne supérieure de \(\paren{x_i}_{i\in I}\) est le plus petit majorant de la famille.
+
+La borne inférieure de \(\paren{x_i}_{i\in I}\) est le plus grand minorant de la famille.
+
+Elles sont notées \(\sup_{i\in I}x_i\) et \(\inf_{i\in I}x_i\).
+\end{defi}

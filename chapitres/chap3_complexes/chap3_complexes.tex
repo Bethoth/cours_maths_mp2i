@@ -1,0 +1,1072 @@
+\chapter{Nombres complexes}
+
+\minitoc
+
+\section{Rappels}
+
+\subsection{Point de vue algébrique}
+
+\begin{rappel}
+\begin{itemize}
+\item On note \(\C\) l'ensemble des nombres complexes et \(\i\in\C\) le nombre complexe particulier vérifiant \(\i^2=-1\).
+
+\item Tout nombre complexe \(z\in\C\) s'écrit de façon unique sous la forme \(z=a+\i b\) où \(a,b\in\R\) sont appelés respectivement partie réelle et partie imaginaire de \(z\) et notés \(a=\Re z\) et \(b=\Im z\). On dit que \(z=a+\i b\) est l'écriture algébrique de \(z\).
+
+\item Enfin, on dit que \(z\) est un imaginaire pur si \(\Re z=0\).
+
+\item Opérations sur les nombres complexes :
+
+Soient \(z_1,z_2\in\C\). Soient \(a_1,b_1,a_2,b_2\in\R\) tels que \(\begin{dcases}z_1=a_1+\i b_1 \\ z_2=a_2+\i b_2\end{dcases}\)
+
+On pose \(\begin{dcases}z_1+z_2=a_1+a_2+\i\paren{b_1+b_2} \\ z_1z_2=a_1a_2-b_1b_2+\i\paren{a_1b_2+a_2b_1} \\ \conj{z_1}=a_1-\i b_1 \\ \abs{z_1}=\sqrt{a_1^2+b_1^2}\end{dcases}\)
+
+On a alors \(\begin{dcases}\Re z_1=\dfrac{z_1+\conj{z_1}}{2}\text{ et }\Im z_1=\dfrac{z_1-\conj{z_1}}{2} \\ z_1+\conj{z_1}=2\Re z_1\text{ et }z_1\conj{z_1}=\abs{z_1}^2\end{dcases}\)
+
+Si \(z_1\not=0\) alors l'inverse de \(z_1\) est l'unique nombre complexe noté \(z_1^{-1}\) vérifiant \(z_1z_1^{-1}=1\).
+
+On remarque \(z_1^{-1}=\dfrac{\conj{z_1}}{\abs{z_1}^2}\) car \(z_1\dfrac{\conj{z_1}}{\abs{z_1}^2}=1\). Donc \(z_1^{-1}=\dfrac{a_1-\i b_1}{a_1^2+b_1^2}\).
+
+On pose \(\quantifs{\forall n\in\N}z_1^n=\underbrace{z_1\times z_1\times\dots\times z_1}_\text{$n$ facteurs}=\prod_{k=1}^nz_1\).
+
+Si \(z_1\not=0\) on pose aussi \(\quantifs{\forall n\in\N}z_1^{-n}=\dfrac{1}{z_1^n}\).
+
+\item Propriétés :
+
+Soient \(n\in\N\) et \(z_1,\dots,z_n\in\C\).
+
+On a \begin{itemize}
+\item \(\Re\paren{\sum_{k=1}^nz_k}=\sum_{k=1}^{n}\Re z_k\)
+
+\item \(\Im\paren{\sum_{k=1}^nz_k}=\sum_{k=1}^{n}\Im z_k\)
+
+\item \(\abs{\prod_{k=1}^nz_k}=\prod_{k=1}^n\abs{z_k}\)
+
+\item \(\conj{\sum_{k=1}^nz_k}=\sum_{k=1}^n\conj{z_k}\) et \(\conj{\prod_{k=1}^nz_k}=\prod_{k=1}^n\conj{z_k}\)
+
+\item \(\quantifs{\forall N\in\N}\paren{\prod_{k=1}^nz_k}^N=\prod_{k=1}^nz_k^N\)
+
+\item \(z_1,\dots,z_n\in\Cs\imp\quantifs{\forall n\in\Z}\paren{\prod_{k=1}^nz_k}^N=\prod_{k=1}^nz_k^N\)
+\end{itemize}
+
+\item Nombres complexes de module \(1\) :
+
+On pose \(\U=\accol{z\in\C\tq\abs{z}=1}\).
+
+Soit \(z\in\C\). Soient \(a,b\in\R\) tels que \(z=a+\i b\).
+
+On a \(\begin{aligned}[t]
+z\in\U&\ssi\abs{z}=1 \\
+&\ssi\sqrt{a^2+b^2}=1 \\
+&\ssi a^2+b^2=1 \\
+&\ssi\exists\theta\in\R,\begin{dcases}a=\cos\theta \\ b=\sin\theta\end{dcases}
+\end{aligned}\)
+
+Donc \(\U=\accol{\cos\theta+\i\sin\theta}_{\theta\in\R}\).
+
+On pose \(\quantifs{\forall\theta\in\R}\e{\i\theta}=\cos\theta+\i\sin\theta\).
+
+Ainsi, \(\U=\accol{\e{\i\theta}}_{\theta\in\R}\).
+\end{itemize}
+\end{rappel}
+
+\begin{rem}
+On a \(\Im z=0\ssi z\in\R\).
+\end{rem}
+
+\begin{defprop}
+Soit \(z\in\Cs\).
+
+Alors il existe \(\lambda\in\Rps\) et \(\theta\in\R\) tels que \(z=\lambda\e{\i\theta}\) (écriture trigonométrique).
+
+On a \(\lambda=\abs{z}\).
+
+On dit que \(\theta\) est un argument de \(z\).
+
+Si de plus on a \(\theta\in\intervei{-\pi}{\pi}\), on dit que \(\theta\) est l'argument (principal) de \(z\) et on note \(\theta=\arg z\).
+\end{defprop}
+
+\begin{dem}
+Montrons que \(\lambda\) et \(\theta\) existent.
+
+On a \(z\not=0\).
+
+Donc \(\dfrac{z}{\abs{z}}\) est bien défini et on a \(\abs{\dfrac{z}{\abs{z}}}=1\).
+
+Donc il existe \(\theta\in\R\) tel que \(\dfrac{z}{\abs{z}}=\e{\i\theta}\) car \(z\in\U\).
+
+On a bien \(z=\lambda\e{\i\theta}\) en posant \(\lambda=\abs{z}\).
+\end{dem}
+
+\begin{rem}
+Soient \(\lambda_1,\lambda_2\in\Rps\) et \(\theta_1,\theta_2\in\R\).
+
+On a \(\lambda_1\e{\i\theta_1}=\lambda_2\e{\i\theta_2}\ssi\begin{dcases}\lambda_1=\lambda_2 \\ \theta_1\equiv\theta_2\croch{2\pi}\end{dcases}\)
+\end{rem}
+
+\begin{dem}
+\begin{itemize}
+\item[\imprec] Claire.
+
+\item[\impdir] Supposons \(\lambda_1\e{\i\theta_1}=\lambda_2\e{\i\theta_2}\).
+
+Donc \(\abs{\lambda_1\e{\i\theta_1}}=\abs{\lambda_2\e{\i\theta_2}}\).
+
+Donc \(\lambda_1=\lambda_2\).
+
+Donc \(\e{\i\theta_1}=\e{\i\theta_2}\) car \(\lambda_1=\lambda_2\not=0\).
+
+Donc \(\cos\theta_1+\i\sin\theta_1=\cos\theta_2+\i\sin\theta_2\).
+
+Donc \(\begin{dcases}\cos\theta_1=\cos\theta_2 \\ \sin\theta_1=\sin\theta_2\end{dcases}\)
+
+Donc \(\theta_1\equiv\theta_2\croch{2\pi}\).
+\end{itemize}
+\end{dem}
+
+\begin{prop}
+Soient \(z_1,z_2\in\Cs\).
+
+On a \begin{itemize}
+\item \(\arg\paren{z_1z_2}\equiv\arg z_1+\arg z_2\croch{2\pi}\)
+
+\item \(\arg\dfrac{1}{z_1}\equiv-\arg z_1\croch{2\pi}\)
+
+\item \(\arg\conj{z_1}\equiv-\arg z_1\croch{2\pi}\)
+
+\item \(\quantifs{\forall\lambda\in\Rps}\arg\paren{\lambda z_1}=\lambda\arg z_1\)
+\end{itemize}
+\end{prop}
+
+\subsection{Point de vue géométrique}
+
+\begin{defi}[Affixe]
+Soient \(a,b\in\R\).
+
+On a \(\paren{a,b}\in\R^2\).
+
+On associe à ce point le nombre complexe \(z=a+\i b\).
+
+Ce nombre complexe est appelé l'affixe du point.
+\end{defi}
+
+\begin{ex}~ % avoids the theorem header to be centered too
+\begin{center}
+\begin{tkz}[scale=3]
+\draw[->,gray] (-1.3,0) -- (1.3,0) node[right,gray] {\(\R\)};
+\draw[->,gray] (0,-1.3) -- (0,1.3) node[above,gray] {\(\iR\)};
+
+\draw (0,0) circle (1) node[below left,gray] {\(0\)};
+\node[below left] at (-0.707106,-0.707106) {\(\U\)};
+
+\draw[fill] (1,0) circle (1pt);
+\draw[->] (1,0) -- (1.5,-0.5) node[right] {point de \(\R^2\) d'affixe \(1\)};
+
+\draw[fill] (0,1) circle (1pt);
+\draw[->] (0,1) -- (-0.5,1.5) node[left] {point de \(\R^2\) d'affixe \(\i\)};
+
+\draw[dotted] (0.5,0.866025) -- (0.5,0) node[gray,below] {\(\dfrac{1}{2}\)};
+\draw[dotted] (0.5,0.866025) -- (0,0.866025) node[gray,below left] {\(\dfrac{\sqrt{3}}{2}\)};
+
+\draw[fill] (0.5,0.866025) circle (1pt);
+\draw[->] (0.5,0.866025) -- (1,0.866025) node[right] {point de \(\R^2\) d'affixe \(\e{\i\frac{\pi}{3}}=\dfrac{1}{2}+\i\dfrac{\sqrt{3}}{2}\)};
+\end{tkz}
+\end{center}
+\end{ex}
+
+\begin{prop}
+Soit \(M\in\R^2\).
+
+On note \(z\) l'affixe de \(M\).
+
+Alors \begin{itemize}
+\item \(\abs{z}\) est la distance de \(M\) à l'origine ;
+
+\item \(\conj{z}\) est l'affixe du symétrique de \(M\) par rapport à l'axe des abscisses.
+\end{itemize}
+\end{prop}
+
+\begin{prop}
+Soient \(z,z_1\in\Cs\).
+
+On pose \(z_2=zz_1\).
+
+Considérons les écritures trigonométriques de ces trois complexes : \(\begin{dcases}z=\lambda\e{\i\theta} \\ z_1=\lambda_1\e{\i\theta_1} \\ z_2=\lambda_2\e{\i\theta_2}=\lambda\lambda_1\e{\i\paren{\theta+\theta_1}}\end{dcases}\)
+\end{prop}
+
+\begin{defi}[Affixe d'un vecteur]
+Soient \(A,B\in\R^2\) deux points du plan d'affixes respectives \(a,b\in\C\).
+
+L'affixe du vecteur \(\vec{AB}\) est le nombre complexe \(b-a\).
+
+Son module \(\abs{b-a}\) est la longueur \(AB\) et son argument est l'angle :
+
+\begin{center}
+\begin{tkz}
+\draw[->,gray] (-1,0) -- (5,0) coordinate (A);
+\draw[->,gray] (0,-1) -- (0,5);
+
+\draw[->] (1,1) node[above left] {\(A\)} -- (4,4) node[above left] {\(B\)};
+
+\draw[dashed] (-1,-1) -- (5,5) coordinate (Theta);
+
+\node[gray, above left] at (0,0) {\(0\)};
+
+\coordinate (0,0) (O);
+
+\draw pic[draw,->,"\(\theta=\arg\paren{b-a}\)"{xshift=40},angle eccentricity=1.8] {angle = A--O--Theta};
+\end{tkz}
+\end{center}
+\end{defi}
+
+\begin{prop}[Inégalité triangulaire pour les complexes]
+Soient \(z_1,z_2\in\C\).
+
+On a \(\abs{z_1+z_2}\leq\abs{z_1}+\abs{z_2}\) avec égalité ssi \(\quantifs{\exists\lambda\in\Rp}z_1=\lambda z_2\) ou \(z_2=\lambda z_1\).
+\end{prop}
+
+\begin{dem}
+On remarque qu'on a \(\quantifs{\forall z\in\C}\Re z\leq\abs{z}\) avec égalité ssi \(z\in\Rp\).
+
+En effet, soit \(z\in\C\) et \(a,b\in\R\) tels que \(z=a+\i b\).
+
+On a \(\Re z=a\leq\abs{a}=\sqrt{a^2}\leq\sqrt{a^2+b^2}=\abs{z}\).
+
+Cas d'égalité : \(\begin{aligned}[t]
+\Re z=\abs{z}&\ssi\begin{dcases}a=\abs{a} \\ \sqrt{a^2}=\sqrt{a^2+b^2}\end{dcases} \\
+&\ssi\begin{dcases}a\geq0 \\ b=0\end{dcases} \\
+&\ssi z\in\Rp
+\end{aligned}\)
+
+Montrons l'inégalité triangulaire.
+
+On a \(\begin{aligned}[t]
+\abs{z_1+z_2}\leq\abs{z_1}+\abs{z_2}&\ssi\abs{z_1+z_2}^2\leq\paren{\abs{z_1}+\abs{z_2}}^2\text{ car \(t\mapsto t^2\) strictement croissante sur \(\Rp\)} \\
+&\ssi\paren{z_1+z_2}\paren{\conj{z_1}+\conj{z_2}}\leq\paren{\abs{z_1}+\abs{z_2}}^2 \\
+&\ssi z_1\conj{z_1}+z_1\conj{z_2}+z_2\conj{z_1}+z_2\conj{z_2}\leq\abs{z_1}^2+2\abs{z_1}\abs{z_2}+\abs{z_2}^2 \\
+&\ssi2\Re\paren{z_1\conj{z_2}}\leq2\abs{z_1}\abs{z_2} \\
+&\ssi\Re\paren{z_1\conj{z_2}}\leq\abs{z_1}\abs{z_2}=\abs{z_1}\abs{\conj{z_2}}=\abs{z_1\conj{z_2}} \\
+&\color{white}\ssi\color{black}\text{ce qui est vrai (cf. ci-dessus)}
+\end{aligned}\)
+
+Cas d'égalité : montrons que \(\abs{z_1+z_2}=\abs{z_1}+\abs{z_2}\ssi\quantifs{\exists\lambda\in\Rp}z_1=\lambda z_2\) ou \(z_2=\lambda z_1\).
+
+On remarque que l'équivalence est vraie si \(z_1\) ou \(z_2\) est nul.
+
+Supposons \(z_1\) et \(z_2\) non-nuls.
+
+On a \(\begin{aligned}[t]
+\abs{z_1+z_2}=\abs{z_1}+\abs{z_2}&\ssi\Re\paren{z_1\conj{z_2}}=\abs{z_1\conj{z_2}} \\
+&\ssi z_1\conj{z_2}\in\Rp \\
+&\ssi\dfrac{z_1\conj{z_2}}{\abs{z_2}^2}\in\Rp\text{ car }z_2\not=0 \\
+&\ssi\dfrac{z_1}{z_2}\in\Rp\text{ car }\dfrac{\conj{z_2}}{\abs{z_2}}=\dfrac{\conj{z_2}}{z_2\conj{z_2}} \\
+&\ssi\quantifs{\exists\lambda\in\Rp}\dfrac{z_1}{z_2}=\lambda \\
+&\ssi\quantifs{\exists\lambda\in\Rp}z_1=\lambda z_2
+\end{aligned}\)
+
+~
+\end{dem}
+
+\begin{rem}
+Mêmes notations.
+
+Comme on l'a vu pour les réels, on déduit de l'inégalité triangulaire la minoration \(\abs{\abs{z_1}-\abs{z_2}}\leq\abs{z_1+z_2}\).
+\end{rem}
+
+\begin{cor}
+Soient \(A,B,C\in\R^2\).
+
+On a \(AC\leq AB+BC\) avec égalité ssi \(\exists\lambda\in\Rp,\vec{AB}=\lambda\vec{BC}\) ou \(\vec{BC}=\lambda\vec{AB}\), c'est à dire ssi \(\vec{AB}\) et \(\vec{BC}\) sont colinéaires et de même sens.
+\end{cor}
+
+\begin{dem}
+Découle de ce qui précède appliqué aux affixes \(z_1,z_2\) respectives de \(\vec{AB}\) et \(\vec{BC}\).
+\end{dem}
+
+\begin{prop}
+Soient \(A,B,C\in\R^2\) trois points deux à deux distincts d'affixes \(a,b,c\in\C\) respectivement.
+
+Interprétation de \(z=\dfrac{c-a}{b-a}\) : \(\abs{z}=\dfrac{AC}{AB}\) et \(\arg z\equiv\paren{\vec{AB};\vec{AC}}\croch{2\pi}\).
+\end{prop}
+
+\begin{ex}
+\begin{itemize}
+\item \(\begin{aligned}[t]
+A,B,C\text{ alignés}&\ssi\arg\dfrac{c-a}{b-a}\equiv0\croch{\pi} \\
+&\ssi\dfrac{c-a}{b-a}\in\R
+\end{aligned}\)
+
+\item \(\begin{aligned}[t]
+\text{Le triangle }ABC\text{ est rectangle en }A&\ssi\arg\dfrac{c-a}{b-a}\equiv\dfrac{\pi}{2}\croch{\pi} \\
+&\ssi\dfrac{c-a}{b-a}\in\iR
+\end{aligned}\)
+\end{itemize}
+\end{ex}
+
+\begin{defi}
+Soient \(z_0\in\C\) et \(r\in\Rp\).
+
+On définit : \begin{itemize}
+\item le cercle de centre \(z_0\) et de rayon \(r\) : \(\accol{z\in\C\tq\abs{z-z_0}=r}\) ;
+
+\item le disque ouvert de centre \(z_0\) et de rayon \(r\) : \(\accol{z\in\C\tq\abs{z-z_0}<r}\) ;
+
+\item le disque fermé de centre \(z_0\) et de rayon \(r\) : \(\accol{z\in\C\tq\abs{z-z_0}\leq r}\).
+\end{itemize}
+\end{defi}
+
+\begin{defi}[Similitude directe]
+On appelle similitude directe de \(\C\) toute fonction de la forme \(\fonctionlambda{\C}{\C}{z}{az+b}\) avec \(\begin{dcases}a\in\Cs \\ b\in\C\end{dcases}\)
+\end{defi}
+
+\begin{ex}
+\begin{itemize}
+\item \(\id{\C}:z\mapsto z\) est une similitude directe de \(\C\) (avec \(a=1\) et \(b=0\)) ;
+
+\item \(\quantifs{\forall b\in\C}z\mapsto z+b\) est une similitude directe de \(\C\) (translation) ;
+
+\item \(\quantifs{\forall a\in\Rps}z\mapsto az\) est une similitude directe de \(\C\) (homothétie de centre \(O\)), en particulier, la symétrie centrale par rapport à \(O\) est une similitude directe de \(\C\) : \(z\mapsto-z\) ;
+
+\item \(\quantifs{\forall\theta\in\R}z\mapsto\e{\i\theta}z\) est une similitude directe de \(\C\) (rotation d'angle \(\theta\) et de centre \(O\)).
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+Soient \(a\in\Cs\) et \(b\in\C\).
+
+On pose \(f:z\mapsto az+b\) une similitude directe de \(\C\).
+
+\begin{itemize}
+\item Si \(a=1\) et \(b=0\) alors \(\quantifs{\forall z\in\C}f\paren{z}=z\) (tout complexe \(z\) est un point fixe de \(f\)) ;
+
+\item si \(a=1\) et \(b\not=0\) alors \(f\) n'admet aucun point fixe : \(\quantifs{\forall z\in\C}f\paren{z}\not=z\) ;
+
+\item si \(a\not=1\) alors \(f\) admet un unique point fixe.
+
+En effet, \(\begin{aligned}[t]
+f\paren{z}=z&\ssi az+b=z \\
+&\ssi\dfrac{b}{1-a}=z
+\end{aligned}\)
+\end{itemize}
+\end{rem}
+
+\begin{rem}
+Les fonctions \(z\mapsto\conj{z}\) (symétrie par rapport à \(\R\)) et \(z\mapsto-\conj{z}\) (symétrie par rapport à \(\iR\)) ne sont pas des similitudes directes de \(\C\).
+\end{rem}
+
+\subsection{Généralisation de formules connues}
+
+La formule du binôme de Newton, la factorisation de \(a^n-b^n\) et la valeur de \(\sum_{k=a}^b z^k\) restent vraies en prenant des nombres complexes à la place des nombres réels.
+
+\section{Lien avec la trigonométrie}
+
+\subsection{Formules}
+
+On rappelle qu'on a posé \(\quantifs{\forall\theta\in\R}\e{\i\theta}=\cos\theta+\i\sin\theta\).
+
+\begin{prop}\thlabel{prop:prodExpComplexe}
+Soient \(\theta_1,\theta_2\in\R\).
+
+On a \(\e{\i\paren{\theta_1+\theta_2}}=\e{\i\theta_1}\e{\i\theta_2}\).
+\end{prop}
+
+\begin{dem}
+On a \(\begin{aligned}[t]
+\e{\i\paren{\theta_1+\theta_2}}&=\cos\paren{\theta_1+\theta_2}+\i\sin\paren{\theta_1+\theta_2} \\
+&=\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2+\i\paren{\sin\theta_1\cos\theta_2+\sin\theta_2\cos\theta_1} \\
+&=\paren{\cos\theta_1+\i\sin\theta_1}\paren{\cos\theta_2+\i\sin\theta_2} \\
+&=\e{\i\theta_1}\e{\i\theta_2}
+\end{aligned}\)
+
+~
+\end{dem}
+
+\begin{prop}[Formule de Moivre]~\\
+On a \(\quantifs{\forall n\in\N;\forall\theta\in\R}\begin{dcases}\cos\paren{n\theta}=\Re\paren{\paren{\cos\theta+\i\sin\theta}^n} \\ \sin\paren{n\theta}=\Im\paren{\paren{\cos\theta+\i\sin\theta}^n}\end{dcases}\)
+\end{prop}
+
+\begin{dem}
+Soit \(\theta\in\R\).
+
+On déduit de la \thref{prop:prodExpComplexe} que \(\quantifs{\forall n\in\N}\e{\i n\theta}=\paren{\e{\i\theta}}^n\) par récurrence sur \(n\in\N\).
+
+Soit \(n\in\N\). On a donc \(\cos\paren{n\theta}+\i\sin\paren{n\theta}=\paren{\cos\theta+\i\sin\theta}^n\).
+
+On conclut en prenant les parties réelles et imaginaires.
+\end{dem}
+
+\begin{ex}
+Soit \(\theta\in\R\). Exprimons \(\cos\paren{3\theta}\) en fonction de \(\cos\theta\).
+
+On a \(\begin{aligned}[t]
+\cos\paren{3\theta}&=\Re\paren{\paren{\cos\theta+\i\sin\theta}^3} \\
+&=\Re\paren{\sum_{k=0}^3\binom{k}{3}\paren{\i\sin\theta}^k\paren{\cos\theta}^{3-k}} \\
+&=\Re\paren{\cos^3\theta+3\i\sin\theta\cos^2\theta-3\sin^2\theta\cos\theta-\i\sin^3\theta} \\
+&=\cos^3\theta-3\sin^2\theta\cos\theta \\
+&=\cos^3\theta-3\paren{1-\cos^2\theta}\cos\theta \\
+&=\cos^3\theta-3\cos\theta+3\cos^3\theta \\
+&=4\cos^3\theta-3\cos\theta
+\end{aligned}\)
+
+Plus tard, on écrira \(\cos\paren{3\theta}=\tcheby{3}{\cos\theta}\) avec \(\tcheby{3}{X}=4X^3-3X\).
+\end{ex}
+
+\begin{prop}[Formules d'Euler]
+Soit \(\theta\in\R\).
+
+On a \(\begin{dcases}\cos\theta=\dfrac{\e{\i\theta}+\e{-\i\theta}}{2} \\ \sin\theta=\dfrac{\e{i\theta}-\e{-\i\theta}}{2\i}\end{dcases}\)
+\end{prop}
+
+\begin{rem}
+Soient \(\alpha,\beta\in\R\).
+
+Voyons comment factoriser \(\e{\i\alpha}\pm\e{\i\beta}\).
+
+On remarque \(\begin{dcases}\alpha=\dfrac{\alpha+\beta}{2}+\dfrac{\alpha-\beta}{2} \\ \beta=\dfrac{\alpha+\beta}{2}-\dfrac{\alpha-\beta}{2}\end{dcases}\)
+
+Donc \(\e{\i\alpha}+\e{\i\beta}=\e{\i\frac{\alpha+\beta}{2}}\paren{\e{\i\frac{\alpha+\beta}{2}}+\e{-\i\frac{\alpha-\beta}{2}}}=2\cos\paren{\dfrac{\alpha+\beta}{2}}\e{\i\frac{\alpha+\beta}{2}}\).
+
+Et \(\e{\i\alpha}-\e{\i\beta}=\e{\i\frac{\alpha+\beta}{2}}\paren{\e{\i\frac{\alpha+\beta}{2}}-\e{-\i\frac{\alpha-\beta}{2}}}=2\i\sin\paren{\dfrac{\alpha+\beta}{2}}\e{\i\frac{\alpha+\beta}{2}}\).
+\end{rem}
+
+\subsection{Application 1 : sommes particulières}
+
+Soit \(\theta\in\R\) et \(n\in\N\).
+
+Calculons \(S_1=\sum_{k=0}^n\cos\paren{k\theta}\) et \(S_2=\sum_{k=0}^n\sin\paren{k\theta}\).
+
+Calculons d'abord \(S=\sum_{k=0}^n\e{\i k\theta}\).
+
+On a \(S=\sum_{k=0}^n\paren{\e{\i\theta}}^k\).
+
+Si \(\theta\equiv0\croch{2\pi}\) alors \(S=\sum_{k=0}^n1^k=n+1\).
+
+Sinon, \(S=\dfrac{1-\paren{\e{\i\theta}}^{n+1}}{1-\e{\i\theta}}\).
+
+Supposons \(\theta\not\equiv0\croch{2\pi}\).
+
+On a \(\begin{aligned}[t]
+S&=\dfrac{1-\paren{\e{\i\theta\paren{n+1}}}}{1-\e{\i\theta}} \\
+&=\dfrac{\e{\i\frac{\theta\paren{n+1}}{2}}\paren{\e{-\i\frac{\theta\paren{n+1}}{2}}-\e{\i\frac{\theta\paren{n+1}}{2}}}}{\e{\i\frac{\theta}{2}}\paren{\e{-\i\frac{\theta}{2}}-\e{\i\frac{\theta}{2}}}} \\
+&=\dfrac{-2\i\e{\i\frac{\theta\paren{n+1}}{2}}\sin\paren{\frac{\theta\paren{n+1}}{2}}}{-2\i\e{\i\frac{\theta}{2}}\sin\frac{\theta}{2}} \\
+&=\dfrac{\sin\frac{\theta\paren{n+1}}{2}}{\sin\frac{\theta}{2}}\times\e{\i\theta\paren{\frac{n+1-1}{2}}} \\
+&=\e{\i n\frac{\theta}{2}}\times\dfrac{\sin\paren{\frac{n+1}{2}}\theta}{\sin\frac{\theta}{2}}
+\end{aligned}\)
+
+D'où \(S_1=\Re S=\cos\dfrac{n\theta}{2}\times\dfrac{\sin\paren{\dfrac{n+1}{2}\theta}}{\sin\dfrac{\theta}{2}}\).
+
+Et \(S_2=\Im S=\sin\dfrac{n\theta}{2}\times\dfrac{\sin\paren{\dfrac{n+1}{2}\theta}}{\sin\dfrac{\theta}{2}}\).
+
+\subsection{Application 2 : linéarisation}
+
+Soient \(a,b\in\N\) et \(\theta\in\R\).
+
+Linéariser \(\cos^a\theta\sin^b\theta\) c'est écrire cette expression sous la forme \(\sum_{i\in I}\lambda_i\cos\paren{\mu_i\theta}\) ou \(\sum_{i\in I}\lambda_i\sin\paren{\mu_i\theta}\) où \(I\) est un ensemble fini et \(\quantifs{\forall i\in I}\lambda_i,\mu_i\in\R\).
+
+\begin{ex}~\\
+On a \(\quantifs{\forall\theta\in\R}\begin{dcases}
+\cos^2\theta=\dfrac{1+\cos\paren{2\theta}}{2} \\
+\sin^2\theta=\dfrac{1-\cos\paren{2\theta}}{2} \\
+\cos^3\theta=\dfrac{\cos\paren{3\theta}+3\cos\theta}{4} \\
+\cos\theta\sin\theta=\dfrac{1}{2}\sin\paren{2\theta}
+\end{dcases}\)
+\end{ex}
+
+Application : linéariser l'expression \(\cos^a\theta\sin^b\theta\) permet de la primitiver.
+
+Méthode : remplacer \(\cos\theta\) et \(\sin\theta\) avec les formules d'Euler puis développer avec le binôme de Newton.
+
+\begin{ex}
+Soit \(\fonction{f}{\R}{\R}{\theta}{\sin^4\theta}\).
+
+Linéarisons \(f\paren{\theta}\).
+
+On a \(\begin{aligned}[t]
+\sin^4\theta&=\paren{\dfrac{\e{\i\theta}-\e{-\i\theta}}{2\i}}^4 \\
+&=\sum_{k=0}^4\binom{k}{4}\paren{\dfrac{\e{\i\theta}}{2\i}}^k\paren{\dfrac{-\e{-\i\theta}}{2\i}}^{4-k} \\
+&=1\times1\times\dfrac{\e{-4\i\theta}}{16}+4\times\dfrac{\e{\i\theta}}{2\i}\times\dfrac{-\e{-3\i\theta}}{-8\i}+6\times\dfrac{\e{2\i\theta}}{-4}\times\dfrac{\e{-2\i\theta}}{-4}+4\times\dfrac{\e{3\i\theta}}{-8\i}\times\dfrac{-\e{-\i\theta}}{2\i}+1\times\dfrac{\e{4\i\theta}}{16}\times1 \\
+&=\dfrac{\e{4\i\theta}}{16}+\dfrac{\e{-4\i\theta}}{16}+4\paren{\dfrac{-\e{-2\i\theta}}{16}+\dfrac{-\e{2\i\theta}}{16}}+\dfrac{6}{16} \\
+&=\dfrac{1}{8}\cos\paren{4\theta}-\dfrac{1}{2}\cos\paren{2\theta}+\dfrac{3}{8}
+\end{aligned}\)
+
+On en déduit la primitive \(F\paren{\theta}=\dfrac{1}{32}\sin\paren{4\theta}-\dfrac{1}{4}\sin\paren{2\theta}+\dfrac{3\theta}{8}\).
+\end{ex}
+
+\section{Équations algébriques}
+
+\subsection{Fonctions polynomiales}
+
+\begin{defi}
+On appelle fonction polynomiale de \(\C\) dans \(\C\) toute fonction de la forme \(\fonction{f}{\C}{\C}{z}{\sum_{k=0}^n\lambda_kz^k}\) où \(n\in\N\) et \(\lambda_0,\dots,\lambda_n\in\C\).
+
+Si \(\lambda_n\not=0\), on dit que la fonction polynomiale est de degré \(n\).
+
+Si \(z_0\in\C\) vérifie \(f\paren{z_0}=0\), on dit que \(z_0\) est une racine de \(f\).
+\end{defi}
+
+\begin{prop}
+Soient \(n\in\N\) et \(\lambda_0,\dots,\lambda_n\in\C\).
+
+On pose \(\fonction{f}{\C}{\C}{z}{\sum_{k=0}^n\lambda_kz^k}\).
+
+Les propositions suivantes sont équivalentes : \begin{enumerate}
+\item \(z_0\) est racine de \(f\)
+
+\item il existe une fonction polynomiale \(g:\C\to\C\) telle que \(\quantifs{\forall z\in\C}f\paren{z}=\paren{z-z_0}g\paren{z}\)
+\end{enumerate}
+\end{prop}
+
+\begin{rem}
+Cette proposition est fausse pour les fonctions continues de \(\R\) dans \(\R\).
+
+Posons par exemple \(\fonction{f}{\R}{\R}{t}{\sqrt{\abs{t}}}\).
+
+On a \(f\paren{0}=0\) donc \(0\) racine de \(f\) donc (1) est vraie.
+
+Pourtant si \(g:\R\to\R\) vérifie \(\forall t\in\R,f\paren{t}=\paren{t-0}g\paren{t}\) alors \(\forall t\in\Rps,g\paren{t}=\dfrac{f\paren{t}}{t}=\dfrac{\sqrt{\abs{t}}}{t}=\dfrac{\sqrt{t}}{t}=\dfrac{1}{\sqrt{t}}\).
+
+On a \(\lim_{t\to0^+}g\paren{t}=\pinf\) : contradiction car \(g\) est continue en \(0\).
+\end{rem}
+
+\begin{dem}
+Montrons que (1) \(\ssi\) (2).
+
+\begin{itemize}
+\item[\imprec] Claire.
+
+\item[\impdir] Supposons \(f\paren{z_0}=0\).
+
+On a \(\begin{aligned}[t]
+\quantifs{\forall z\in\C}f\paren{z}&=f\paren{z}-f\paren{z_0} \\
+&=\sum_{k=0}^n\lambda_kz^k-\sum_{k=0}^n\lambda_kz_0^k \\
+&=\sum_{k=0}^n\lambda_k\paren{z^k-z_0^k} \\
+&=\sum_{k=0}^n\paren{\lambda_k\paren{z-z_0}\sum_{l=0}^{k-1}z^lz_0^{k-1-l}} \\
+&=\paren{z-z_0}\sum_{1\leq l<k\leq n}\lambda_kz_0^{k-1-l}z^l \\
+&=\paren{z-z_0}\sum_{l=0}^{n-1}\paren{\sum_{k=l+1}^n\lambda_kz_0^{k-1-l}}z^l \\
+&=\paren{z-z_0}\sum_{l=0}^{n-1}\mu_lz^l
+\end{aligned}\)
+
+en posant \(\quantifs{\forall l\in\interventierii{0}{n-1}}\mu_l=\sum_{k=l+1}^{n}\lambda_kz^{k-1-l}\).
+
+D'où (2) en prenant \(g:z\mapsto\sum_{l=0}^{n-1}\mu_lz^l\).
+\end{itemize}
+\end{dem}
+
+\subsection{Racines nièmes}
+
+\begin{rappel}
+Si \(x\in\Rp\), on note \(\sqrt{x}\) ou \(x^{\nicefrac{1}{2}}\) l'unique réel positif de carré \(x\).
+
+On a par exemple \(\sqrt{4}=2\) ; \(\sqrt{2}\) est l'unique réel positif tel que \(\sqrt{2}^2=2\).
+
+Si \(x\in\Rp\) et \(n\in\Ns\), on note \(\sqrt[n]{x}\) ou \(x^{\nicefrac{1}{n}}\) l'unique réel positif dont la puissance nième vaut \(x\).
+\end{rappel}
+
+\begin{rem}
+On a \(\quantifs{\forall x\in\Rps}\sqrt[n]{x}=\e{\frac{1}{n}\ln x}\).
+
+En effet, \(\e{\frac{1}{n}\ln x}\geq0\) et \(\paren{\e{\frac{1}{n}\ln x}}^n=\e{\ln x}=x\).
+\end{rem}
+
+\subsubsection{Division euclidienne dans \(\Z\)}
+
+\begin{prop}
+Soient \(a\in\Z\) et \(b\in\Ns\).
+
+Alors \(\quantifs{\exists!\paren{q,r}\in\Z^2}\begin{dcases}a=qb+r \\ 0\leq r<b\end{dcases}\)
+
+\(q\) et \(r\) sont respectivement appelés le quotient et le reste de la division euclidienne de \(a\) par \(b\) .
+\end{prop}
+
+\begin{dem}\thlabel{dem:divEucli}
+\unicite
+
+Soient \(\paren{q_1,r_1},\paren{q_2,r_2}\in\Z^2\) tels que \(\begin{dcases}
+a=q_1b+r_1 \\
+a=q_2b+r_2 \\
+0\leq r_1<b \\
+0\leq r_2<b
+\end{dcases}\)
+
+On a d'une part \(q_1b+r_1=q_2b+r_2\) donc \(\paren{q_1-q_2}b=r_2-r_1\).
+
+D'autre part on a \(\begin{dcases}0\leq r_1<b\text{ donc }-b<r_1-r_2<b \\ -b<-r_2\leq0\text{ donc }\abs{r_2-r_1}<b\end{dcases}\)
+
+On en déduit que \(q_1-q_2=0\).
+
+En effet, par l'absurde, si \(q_1-q_2\not=0\) alors \(\abs{q_1-q_2}\geq1\) donc \(\abs{r_2-r_1}=\abs{q_1-q_2}b\geq b\) : contradiction.
+
+Donc \(q_1=q_2\) donc \(r_1=a-q_1b=a-q_2b=r_2\).
+
+D'où l'unicité.
+
+\existence
+
+Montrons d'abord le cas où \(a\in\N\).
+
+On pose \(A=\accol{x\in\N\tq\non\paren{\quantifs{\exists q\in\Z;\exists r\in\interventierii{0}{b-1}}x=bq+r}}\).
+
+Montrons que \(A=\ensvide\). Par l'absurde, supposons \(A\not=\ensvide\).
+
+Comme \(A\) est une partie non-vide de \(\N\), elle admet un plus petit élément \(m\in A\).
+
+\begin{itemize}
+\item On remarque que tout \(x\in\interventierii{0}{b-1}\) admet une division euclidienne par \(b\) : \(x=0\times b+x\). Donc \(x\not\in A\).
+
+Donc \(m<b\).
+
+\item Considérons \(m\prim=m-b\). On a \(m\prim<m\).
+
+Donc \(m\prim\not\in A\) et \(m\prim\in\N\) donc il existe \(q\prim\in\Z\) et \(r\prim\in\interventierii{0}{r-1}\) tels que \(m\prim=q\prim b+r\prim\).
+
+Finalement, \(m=m\prim+b=\paren{q\prim+1}b+r\prim\).
+
+Donc \(m\not\in A\) : contradiction.
+\end{itemize}
+
+Ainsi on a montré \(A=\ensvide\) donc tout \(x\in\N\) admet une division euclidienne.
+
+On montre ensuite le cas où \(a<0\).
+
+Supposons \(a<0\). On a \(-a\in\N\).
+
+Donc il existe \(q\in\Z\) et \(r\in\interventierii{0}{b-1}\) tels que \(-a=qb+r\).
+
+On a \(a=-qb-r=-qb+b-b-r=\paren{-q-1}b+b-r\) avec \(-b<-r\leq0\) donc \(0<b-r\leq b\).
+
+Donc \(a\) admet une division euclidienne par \(b\).
+\end{dem}
+
+\subsubsection{Racines nièmes d'un nombre complexe}
+
+\begin{defi}
+Soient \(z\in\C\) et \(n\in\Ns\).
+
+Tout nombre complexe \(\gamma\in\C\) tel que \(\gamma^n=z\) est appelé une racine nième de \(z\).
+
+Les racines nièmes de \(1\) sont appelées racines nièmes de l'unité.
+
+Leur ensemble est noté \(\U_n\). On a \(\U_n=\accol{\omega\in\C\tq\omega^n=1}\).
+\end{defi}
+
+\begin{ex}
+\begin{itemize}
+\item \(\i\in\U_4\) car \(\i^4=1\) ;
+
+\item \(\i\in\U_8\) car \(\i^8=1\) ;
+
+\item \(1+\i\) est une racine carrée de \(2\i\) car \(\paren{1+\i}^2=2\i\) ;
+
+\item \(-1-\i\) est aussi une racine carrée de \(2\i\) car \(\paren{-1-\i}^2=2\i\).
+\end{itemize}
+\end{ex}
+
+\begin{theo}
+Soit \(n\in\Ns\).
+
+Tout nombre complexe non-nul admet exactement \(n\) racines nièmes.
+
+Soient \(\lambda\in\Rps\) et \(\theta\in\R\).
+
+Les racines nièmes du nombre complexe \(z=\lambda\e{\i\theta}\) sont les nombres complexes de la forme \(\gamma_k=\sqrt[n]{\lambda}\e{\i\frac{\theta+2k\pi}{n}}\) avec \(k\in\interventierii{0}{n-1}\).
+\end{theo}
+
+\begin{dem}
+On rappelle \(\quantifs{\forall r_1,r_2\in\Rps;\forall\theta_1,\theta_2\in\R}r_1\e{\i\theta_1}=r_2\e{\i\theta_2}\ssi\begin{dcases}r_1=r_2 \\ \theta_1\equiv\theta_2\croch{2\pi}\end{dcases}\)
+
+Soient \(r\in\Rp\) et \(\alpha\in\R\). Posons \(\gamma=r\e{\i\alpha}\).
+
+On a \(\begin{aligned}[t]
+\gamma^n=z&\ssi r^n\e{\i n\alpha}=\lambda\e{\i\theta} \\
+&\ssi\begin{dcases}r^n=\lambda \\ n\alpha\equiv\theta\croch{2\pi}\end{dcases} \\
+&\ssi\begin{dcases}r=\sqrt[n]{\lambda} \\ \alpha\equiv\dfrac{\theta}{n}\croch{\dfrac{2\pi}{n}}\end{dcases}
+\end{aligned}\)
+
+Avec \(\begin{aligned}[t]
+\alpha\equiv\dfrac{\theta}{n}\croch{\dfrac{2\pi}{n}}&\ssi\quantifs{\exists l\in\Z}\alpha=\dfrac{\theta}{n}+\dfrac{2l\pi}{n} \\
+&\ssi\quantifs{\exists Q\in\Z;\exists R\in\interventierii{0}{n-1}}\alpha=\dfrac{\theta}{n}+\dfrac{2\paren{Qn+R}\pi}{n} \\
+&\ssi\quantifs{\exists R\in\interventierii{0}{n-1};\exists Q\in\Z}\alpha=\dfrac{\theta}{n}+\dfrac{2R\pi}{n}+2Q\pi \\
+&\ssi\quantifs{\exists R\in\interventierii{0}{n-1}}\alpha=\dfrac{\theta}{n}+\dfrac{2R\pi}{n}
+\end{aligned}\)
+
+Ainsi \(\gamma^n=z\ssi\begin{dcases}r=\sqrt[n]{\lambda} \\ \quantifs{\exists R\in\interventierii{0}{n-1}}\alpha\equiv\dfrac{\theta}{n}+\dfrac{2R\pi}{n}\croch{2\pi}\end{dcases}\)
+
+Les racines nièmes de \(z\) sont donc les complexes de la forme \(\sqrt[n]{\lambda}\e{\i\frac{\theta+2R\pi}{n}}\) où \(R\in\interventierii{0}{n-1}\).
+\end{dem}
+
+\begin{ex}
+Déterminons \(\U_2\) et \(\U_3\).
+
+\begin{itemize}
+\item Les racines carrées de \(1=1\e{0\times\i}\) sont les nombres complexes de la forme \(\sqrt{1}\e{\i\frac{0+2k\pi}{2}}\) où \(k\in\interventierii{0}{1}\), c'est à dire \(1\) et \(1\times\e{\i\frac{2\pi}{2}}=\e{i\pi}=-1\).
+
+Donc \(\U_2=\accol{-1;1}\).
+
+\item Les racines cubiques de \(1\) sont les nombres complexes de la forme \(\e{\i\frac{2k\pi}{3}}\) où \(k\in\interventierii{0}{2}\), c'est à dire \(\e{0\times\i}=1\), \(\e{\i\frac{2\pi}{3}}=j\) et \(\e{\i\frac{4\pi}{3}}=-j\).
+
+Donc \(\U_3=\accol{-;j;-j}\).
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+On a \(j=\e{\i\frac{2\pi}{3}}=\cos\dfrac{2\pi}{3}+\i\sin\dfrac{2\pi}{3}=-\dfrac{1}{2}+\i\dfrac{\sqrt{3}}{2}\).
+
+Et \(j^2=\e{\i\frac{4\pi}{3}}=\e{-\i\frac{2\pi}{3}}=j^{-1}=\conj{j}\).
+
+Et \(1+j+j^2=0\).
+\end{rem}
+
+\begin{rem}~\\
+On a \(\U_n=\accol{\e{\i\frac{2k\pi}{n}}}_{k\in\interventierii{0}{n-1}}\)
+\end{rem}
+
+\begin{rem}
+Soient \(m,n\in\Ns\).
+
+On dit que \(n\) divise \(m\) et on note \(n\divise m\) si on a \(\quantifs{\exists k\in\Z}m=kn\).
+
+On a alors \(\U_n\subset\U_m\).
+\end{rem}
+
+\begin{dem}
+Supposons \(n\divise m\). Soit \(k\in\Z\) tel que \(kn=m\).
+
+Montrons que \(\U_n\subset\U_m\).
+
+Soit \(\omega\in\U_n\). On a \(\omega^n=1\).
+
+Donc \(\omega^m=\omega^{nk}=\paren{\omega^n}^k=1^k=1\).
+
+Donc \(\omega\in\U_m\). Donc \(\U_n\subset\U_m\).
+\end{dem}
+
+\begin{prop}
+Soient \(z,\gamma\in\Cs\) tels que \(\gamma\) soit une racine nième de \(z\).
+
+Les racines nièmes de \(z\) sont les nombres complexes de la forme \(\omega\gamma\) où \(\omega\in\U_n\).
+\end{prop}
+
+\begin{dem}
+Soit \(w\in\C\).
+
+On a \(\begin{aligned}[t]
+w\text{ racine nième de }z&\ssi w^n=z \\
+&\ssi w^n=\gamma^n \\
+&\ssi\paren{\dfrac{w}{\gamma}}^n=1 \\
+&\ssi\dfrac{w}{\gamma}\in\U_n \\
+&\ssi\quantifs{\exists\omega\in\U_n}\dfrac{w}{\gamma}=\omega \\
+&\ssi\quantifs{\exists\omega\in\U_n}w=\omega\gamma
+\end{aligned}\)
+
+D'où le résultat.
+\end{dem}
+
+\begin{ex}
+Déterminons les racines quatrièmes de \(4\) et \(-4\).
+
+\begin{itemize}
+\item On a \(4=4\e{0\times\i}\) donc les racines quatrièmes de \(4\) sont de la forme \(\sqrt[4]{4}\e{\i\frac{2k\pi+0}{4}}\) avec \(k\in\interventierii{0}{3}\).
+
+C'est à dire \begin{itemize}
+\item \(\sqrt{2}\e{0\times\i}=\sqrt{2}\) ;
+
+\item \(\sqrt{2}\e{\i\frac{\pi}{2}}=\i\sqrt{2}\) ;
+
+\item \(\sqrt{2}\e{\i\pi}=-\sqrt{2}\) ;
+
+\item \(\sqrt{2}\e{\i\frac{3\pi}{2}}=-\i\sqrt{2}\).
+\end{itemize}
+
+\item On a \(-4=4\e{\i\pi}\) donc les racines quatrièmes de \(-4\) sont de la forme \(\sqrt[4]{4}\e{\i\frac{2k\pi+\pi}{4}}\) avec \(k\in\interventierii{0}{3}\).
+
+C'est à dire \begin{itemize}
+\item \(\sqrt{2}\e{\i\frac{\pi}{4}}=1+\i\) ;
+
+\item \(\sqrt{2}\e{\i\frac{3\pi}{4}}=-1+\i\) ;
+
+\item \(\sqrt{2}\e{\i\frac{5\pi}{4}}=-1-\i\) ;
+
+\item \(\sqrt{2}\e{\i\frac{7\pi}{4}}=1-\i\).
+\end{itemize}
+\end{itemize}
+\end{ex}
+
+\subsubsection{Racines carrées sous forme algébrique}
+
+\begin{meth}
+Soit \(z=a+\i b\in\Cs\) un nombre complexe non-nul écrit sous forme algébrique avec \(a,b\in\R\) tels que \(\paren{a,b}\not=\paren{0,0}\).
+
+Pour déterminer ses racines carrées sous forme algébrique, on résout l'équation \(\paren{x+\i y}^2=a+\i b\) d'inconnues \(x,y\in\R\) :
+
+\begin{align*}
+\paren{x+\i y}^2=a+\i b&\ssi\begin{dcases}\paren{x+\i y}^2=a+\i b \\ \abs{x+\i y}^2=\abs{a+\i b}\end{dcases} \\
+&\ssi\begin{dcases}x^2-y^2+2\i xy=a+\i b \\ x^2+y^2=\sqrt{a^2+b^2}\end{dcases} \\
+&\ssi\begin{dcases}x^2-y^2=a &L_1 \\ 2xy=b &L_2 \\ x^2+y^2=\sqrt{a^2+b^2} &L_3\end{dcases}
+\end{align*}
+
+On obtient \(\abs{x}\) par \(L_1+L_3\), \(\abs{y}\) par \(L_3-L_1\) et les signes par \(L_2\).
+\end{meth}
+
+\begin{ex}
+Déterminons les racines carrées de \(-5-12\i\).
+
+Soient \(x,y\in\R\). On a \(\begin{aligned}[t]
+\paren{x+\i y}^2=-5-12\i&\ssi\begin{dcases}\paren{x+\i y}^2=-5-12\i \\ \abs{x+\i y}^2=\abs{-5-12\i}\end{dcases} \\
+&\ssi\begin{dcases}x^2-y^2+2\i xy=-5-12\i \\ x^2+y^2=\sqrt{\paren{-5}^2+\paren{-12}^2}\end{dcases} \\
+&\ssi\begin{dcases}x^2-y^2=-5 \\ 2xy=-12 \\ x^2+y^2=13\end{dcases} \\
+&\ssi\begin{dcases}2x^2=8 \\ 2y^2=18 \\ xy=-6\end{dcases} \\
+&\ssi\begin{dcases}\abs{x}=2 \\ \abs{y}=3 \\ xy=-6\end{dcases} \\
+&\ssi\begin{dcases}x=2 \\ y=-3 \\ xy=-6\end{dcases}\text{ ou }\begin{dcases}x=-2 \\ y=3 \\ xy=-6\end{dcases}
+\end{aligned}\)
+
+Donc les racines carrées de \(-5-12\i\) sont \(2-3\i\) et \(-2+3\i\).
+\end{ex}
+
+\subsection{Équations polynomiales de degré 2}
+
+\subsubsection{Résolution}
+
+\begin{prop}
+Soient \(a,b,c\in\C\) avec \(a\not=0\).
+
+On associe à l'équation \(\paren{E}:az^2+bz+c=0\) d'inconnue \(z\in\C\) le discriminant \(\Delta=b^2-4ac\).
+
+Soit \(\delta\in\C\) une racine carrée de \(\Delta\).
+
+Les solutions de \(\paren{E}\) sont \(\dfrac{-b\pm\delta}{2a}\).
+
+Elles sont distinctes ssi \(\Delta\not=0\).
+\end{prop}
+
+\begin{dem}
+Soit \(z\in\C\).
+
+On a \(\begin{aligned}[t]
+\paren{E}&\ssi az^2+bz+c=0 \\
+&\ssi a\paren{z^2+\dfrac{b}{a}z+\dfrac{b^2}{4a^2}}-\dfrac{b^2}{4a}+c=0 \\
+&\ssi a\paren{\paren{z+\dfrac{b}{2a}}^2-\dfrac{b^2-4ac}{4a^2}}=0 \\
+&\ssi\paren{z+\dfrac{b}{2a}}^2-\dfrac{\Delta}{4a^2}=0 \\
+&\ssi\paren{z+\dfrac{b}{2a}}^2-\paren{\dfrac{\delta}{2a}}^2=0 \\
+&\ssi\paren{z+\dfrac{b}{2a}-\dfrac{\delta}{2a}}\paren{z+\dfrac{b}{2a}+\dfrac{\delta}{2a}}=0 \\
+&\ssi z=\dfrac{-b+\delta}{2a}\text{ ou }z=\dfrac{-b-\delta}{2a}
+\end{aligned}\)
+
+~
+\end{dem}
+
+\begin{ex}
+Résolvons les équations \(\paren{A}:z^2-\paren{3+2\i}z+1+3\i=0\) et \(\paren{B}:z^2-\paren{4+\i}z+4+2\i=0\).
+
+\begin{itemize}
+\item Résolvons \(\paren{A}\).
+
+On a \(\Delta=\paren{-3-2\i}^2-4\times1\times\paren{1+3\i}=9-2\times\paren{-3}\times2\i-4-4-12\i=1\).
+
+Donc \(\delta=1\). Donc on a \(z=\dfrac{3+2\i\pm1}{2}=2+\i\) ou \(1+\i\).
+
+\item Résolvons \(\paren{B}\).
+
+On a \(\Delta=\paren{-4-\i}^2-4\times1\times\paren{4+2\i}=16-2\times\paren{-4}\times\i-1-16-8\i=-1=\i^2\).
+
+Donc \(\delta=\i\). Donc on a \(z=\dfrac{4+\i\pm\i}{2}=2+\i\) ou \(2\).
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+Si \(\Delta\in\Rm\) alors une racine carrée de \(\Delta\) est \(\i\sqrt{-\Delta}\) donc les solutions sont \(\dfrac{-b\pm\i\sqrt{-\Delta}}{2a}\).
+\end{rem}
+
+\begin{rem}
+Si \(a,b,c\in\R\) alors \(\Delta\in\R\). On obtient \begin{itemize}
+\item deux solutions complexes (non-réelles) conjuguées si \(\Delta<0\) ;
+
+\item une solution réelle si \(\Delta=0\) ;
+
+\item deux solutions réelles distinctes si \(\Delta>0\).
+\end{itemize}
+\end{rem}
+
+\begin{prop}[Relations coefficients/racines]
+Soient \(a,b,c\in\C\) avec \(a\not=0\).
+
+On note \(z_1,z_2\in\C\) les racines de \(f:z\mapsto az^2+bz+c\) et \(\Delta\) le discriminant de \(f\).
+
+On a vu que \(\quantifs{\forall z\in\C}f\paren{z}=a\paren{z-z_1}\paren{z-z_2}\).
+
+On a \(z_1+z_2=-\dfrac{b}{a}\) et \(z_1z_2=\dfrac{c}{a}\).
+\end{prop}
+
+\begin{dem}
+On note \(\delta\) une racine carrée de \(\Delta\).
+
+On a \(z_1=\dfrac{-b-\delta}{2a}\) et \(z_2=\dfrac{-b+\delta}{2a}\).
+
+On a \(z_1+z_2=\dfrac{-b-\delta-b+\delta}{2a}=-\dfrac{2b}{2a}=-\dfrac{b}{a}\) et \(z_1z_2=\paren{\dfrac{-b-\delta}{2a}}\paren{\dfrac{-b+\delta}{2a}}=\dfrac{b^2-\delta^2}{4a^2}=\dfrac{b^2-\paren{b^2-4ac}}{4a^2}=\dfrac{c}{a}\).
+\end{dem}
+
+\begin{rem}
+Il est conseillé de vérifier au moins la somme des racines quand on les calcule.
+\end{rem}
+
+\begin{prop}
+Soient \(z_1,z_2,S,P\in\C\).
+
+Alors \(\begin{dcases}z_1+z_2=S \\ z_1z_2=P\end{dcases}\ssi z_1,z_2\) sont les racines de \(\fonctionlambda{\C}{\C}{z}{z^2-Sz+P}\)
+\end{prop}
+
+\begin{dem}
+Montrons l'équivalence :
+
+\begin{itemize}
+\item[\imprec] Déjà vue.
+
+\item[\impdir] Supposons \(z_1+z_2=S\) et \(z_1z_2=P\).
+
+Alors \(\begin{aligned}[t]
+\quantifs{\forall z\in\C}z^2-Sz+P&=z^2-\paren{z_1+z_2}z+z_1z_2 \\
+&=z^2-z_1z-z_2z+z_1z_2 \\
+&=\paren{z-z_1}\paren{z-z_2}
+\end{aligned}\)
+\end{itemize}
+
+~
+\end{dem}
+
+\begin{ex}~\\
+Résolvons le système \(\begin{dcases}a+b=4 \\ ab=5\end{dcases}\) d'inconnues \(a,b\in\C\).
+
+On a \(\begin{dcases}a+b=4 \\ ab=5\end{dcases}\ssi a,b\) sont les racines de \(\fonction{f}{\C}{\C}{z}{z^2-4z+5}\)
+
+On note \(\Delta\) le discriminant de \(f\). On a \(\Delta=\paren{-4}^2-4\times1\times5=16-20=-4\).
+
+Donc on a \(\begin{dcases}a=\dfrac{4+\i\sqrt{4}}{2}=2+\i \\ b=\dfrac{4-\i\sqrt{4}}{2}=2-\i\end{dcases}\) ou \(\begin{dcases}a=2-\i \\ b=2+\i\end{dcases}\)
+
+On a donc \(\S=\accol{\paren{2+\i;2-\i};\paren{2-\i;2+\i}}\).
+\end{ex}
+
+\section{Exponentielle complexe}
+
+\begin{defi}\thlabel{defi:expComplexe}
+Soit \(z=x+\i y\in\C\) avec \(x,y\in\R\).
+
+On pose \(\exp z=\e{z}=\e{x}\e{\i y}\).
+
+On appelle exponentielle complexe la fonction \(\fonction{\exp}{\C}{\C}{z}{\e{z}}\)
+\end{defi}
+
+\begin{prop}
+On a \begin{itemize}
+\item \(\e{0}=1\) ;
+
+\item \(\quantifs{\forall z\in\C}\abs{\e{z}}=\e{\Re z}\) ;
+
+\item \(\quantifs{\forall z,z\prim\in\C}\e{z+z\prim}=\e{z}\e{z\prim}\) ;
+
+\item \(\quantifs{\forall z\in\C}\e{z}\not=0\) et \(\dfrac{1}{\e{z}}=\e{-z}\) ;
+
+\item \(\quantifs{\forall z\in\C;\forall n\in\Z}\paren{\e{z}}^n=\e{nz}\) ;
+
+\item \(\quantifs{\forall z,z\prim\in\C}\e{z}=\e{z\prim}\ssi z\equiv z\prim\croch{2i\pi}\) ;
+
+\item \(\exp\paren{\C}=\Cs\).
+\end{itemize}
+\end{prop}
+
+\begin{dem}
+\note{EXERCICE}
+\end{dem}
+
+\begin{rem}
+La \thref{defi:expComplexe} est compatible avec les précédentes définitions de l'exponentielle.
+\end{rem}
+
+\begin{defi}
+Soient \(I\subset\R\) et \(f:I\to\C\).
+
+On appelle partie réelle de \(f\) la fonction \(\fonction{\Re\paren{f}}{I}{\R}{t}{\Re\paren{f\paren{t}}}\)
+
+On appelle partie imaginaire de \(f\) la fonction \(\fonction{\Im\paren{f}}{I}{\R}{t}{\Im\paren{f\paren{t}}}\)
+\end{defi}
+
+\begin{rem}
+De même que la donnée d'un nombre complexe revient à celle de deux réels (ses parties réelle et imaginaire), la donnée d'une fonction à valeurs complexes revient à celle de deux fonctions à valeurs réelles (ses parties réelle et imaginaire).
+
+C'est à dire \(\quantifs{\forall t\in I}f\paren{t}=\paren{\Re\paren{f}}\paren{t}+\i\paren{\Im\paren{f}}\paren{t}\).
+\end{rem}
+
+\begin{defi}
+Soient \(I\) un intervalle de \(\R\) et \(f:I\to\C\).
+
+On dit que \(f\) est continue en un point \(a\in I\) si \(\Re\paren{f}\) et \(\Im\paren{f}\) sont continues en \(a\).
+
+On dit que \(f\) est continue (sur \(I\)) si elle est continue en tout point de \(I\), c'est à dire si \(\Re\paren{f}\) et \(\Im\paren{f}\) sont continues sur \(I\).
+
+On dit que \(f\) est dérivable en un point \(a\in I\) si \(\Re\paren{f}\) et \(\Im\paren{f}\) le sont.
+
+On dit que \(f\) est dérivable (sur \(I\)) si elle est dérivable en tout point de \(I\), c'est à dire si \(\Re\paren{f}\) et \(\Im\paren{f}\) sont dérivables sur \(I\).
+
+Quand \(f\) est dérivable en un point \(a\in I\), on pose \(f\prim\paren{a}=\paren{\Re\paren{f}}\prim\paren{a}+\i\paren{\Im\paren{f}}\prim\paren{a}\).
+\end{defi}
+
+\begin{theo}\thlabel{theo:derivExpComplexe}
+Soient \(I\) un intervalle de \(\R\) et \(f:I\to\C\) une fonction dérivable sur \(I\).
+
+Alors la fonction \(\fonction{\exp\rond f}{I}{\C}{t}{\e{f\paren{t}}}\) est dérivable et \(\paren{\exp\rond f}\prim=f\prim\times\exp\paren{f}\).
+\end{theo}
+
+\begin{dem}
+Posons \(f_1=\Re\paren{f}\) et \(f_2=\Im\paren{f}\).
+
+On a \(\begin{aligned}[t]
+\quantifs{\forall t\in I}\paren{\exp\rond f}\paren{t}&=\e{f_1\paren{t}+\i f_2\paren{t}} \\
+&=\e{f_1\paren{t}}\e{\i f_2\paren{t}} \\
+&=\e{f_1\paren{t}}\paren{\cos\paren{f_2\paren{t}}+\i\sin\paren{f_2\paren{t}}} \\
+&=\underbrace{\e{f_1\paren{t}}\cos\paren{f_2\paren{t}}}_{\in\R}+\i\underbrace{\e{f_1\paren{t}}\sin\paren{f_2\paren{t}}}_{\in\R}
+\end{aligned}\)
+
+D'où \(\quantifs{\forall t\in I}\begin{dcases}\paren{\Re\paren{\exp\rond f}}\paren{t}=\e{f_1\paren{t}}\cos\paren{f_2\paren{t}} \\ \paren{\Im\paren{\exp\rond f}}\paren{t}=\e{f_1\paren{t}}\sin\paren{f_2\paren{t}}\end{dcases}\)
+
+La fonction à valeurs complexes \(\exp\rond f\) est donc dérivable (car ses parties réelle et imaginaire le sont) et on a pour tout \(t\in I\) :
+
+\begin{align*}
+\paren{\exp\rond f}\prim\paren{t}&=\paren{f_1\prim\paren{t}\e{f_1\paren{t}}\cos\paren{f_2\paren{t}}-\e{f_1\paren{t}}f_2\prim\paren{t}\sin\paren{f_2\paren{t}}}\notag\\
+&\qquad+\i\paren{f_1\prim\paren{t}\e{f_1\paren{t}}\sin\paren{f_2\paren{t}}+\e{f_1\paren{t}}f_2\prim\paren{t}\cos\paren{f_2\paren{t}}} \\
+&=\e{f_1\paren{t}}\paren{f_1\prim\paren{t}\croch{\cos\paren{f_2\paren{t}}+\i\sin\paren{f_2\paren{t}}}+f_2\prim\paren{t}\croch{-\sin\paren{f_2\paren{t}}+\i\cos\paren{f_2\paren{t}}}} \\
+&=\e{f_1\paren{t}}\paren{f_1\prim\paren{t}\e{\i f_2\paren{t}}+f_2\prim\paren{t}\i\e{\i f_2\paren{t}}} \\
+&=\e{f_1\paren{t}}\e{\i f_2\paren{t}}\paren{f_1\prim\paren{t}+\i f_2\prim\paren{t}} \\
+&=\e{f\paren{t}}\times f\prim\paren{t}
+\end{align*}
+
+~
+\end{dem}
+
+\begin{ex}
+Soit \(a\in\C\).
+
+La fonction \(\fonction{g}{\R}{\C}{t}{\e{at}}\) est dérivable sur \(\R\) et on a \(\forall t\in\R,g\prim\paren{t}=a\e{at}\).
+\end{ex}
+
+\begin{dem}
+Cela découle du \thref{theo:derivExpComplexe}, en prenant \(\fonction{f}{\R}{\C}{t}{at}\).
+\end{dem}
+
+\begin{theo}
+Soient \(f,g\) deux fonctions de \(I\) dans \(\C\), où \(I\) est un intervalle de \(\R\).
+
+Si \(f\) et \(g\) sont dérivables sur \(I\), alors \(f+g\) et \(fg\) le sont aussi et on a \[\paren{f+g}\prim=f\prim+g\prim\text{ et }\paren{fg}\prim=f\prim g+fg\prim\]
+
+Si, de plus, \(g\) ne s'annule pas sur \(I\), alors \(\dfrac{f}{g}\) est dérivable sur \(I\) et on a \[\paren{\dfrac{f}{g}}\prim=\dfrac{f\prim g-fg\prim}{g^2}\]
+\end{theo}
+
+\begin{dem}
+\note{EXERCICE}
+\end{dem}
+
+\begin{theo}
+Soient \(I,J\) deux intervalles de \(\R\) et \(f:I\to J\) et \(g:J\to\C\) deux fonctions dérivables.
+
+Alors \(g\rond f\) est dérivable et on a \(\paren{g\rond f}\prim=f\prim\times\paren{g\prim\rond f}\).
+\end{theo}
+
+\begin{dem}
+\note{EXERCICE}
+\end{dem}

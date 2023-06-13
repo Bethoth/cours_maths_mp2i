@@ -1,0 +1,219 @@
+\chapter{Matrices I}
+
+\minitoc
+
+\begin{exo}
+Soient \(a,b,c\in\K\excluant\accol{0}\).
+
+On pose \[A=\begin{pmatrix}
+a & 0 & 0 \\
+0 & b & 0 \\
+0 & 0 & c
+\end{pmatrix}\qquad\text{et}\qquad B=\begin{pmatrix}
+1 & a \\
+0 & 1
+\end{pmatrix}.\]
+
+Calculer \(A^n\) et \(B^n\) pour tout \(n\in\Z\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(n\in\Ns\).
+
+L'ensemble des matrices symétriques de \(\M{n}\) est-il stable par le produit matriciel ? Qu'en est-il de l'ensemble des matrices antisymétriques ?
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Dire pour chaque système quel est son rang et ce qu'on le peut en déduire sur l'espace \(\fami{S}\) de ses solutions. Le résoudre ensuite.
+
+\begin{enumerate}
+\item Système d'inconnue \(\paren{x,y,z}\in\R^3\) : \[\begin{dcases}
+x+2z=1 \\
+x+y+z=2
+\end{dcases}\]
+
+\item Système d'inconnue \(\paren{a,b,c,d}\in\R^4\), où \(\lambda\) est un paramètre réel fixé : \[\begin{dcases}
+a+b+c+d=0 \\
+a-b+2c-d=1 \\
+3a+b+4c+d=\lambda
+\end{dcases}\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(n,p\in\Ns\) et \(A\in\M{np}[\R]\).
+
+On considère les équations matricielles d'inconnue \(X\in\M{p1}[\R]\) : \[\paren{E_1}~AX=\begin{pmatrix}1\\0\\0\end{pmatrix}\qquad\text{et}\qquad\paren{E_2}~AX=\begin{pmatrix}0\\1\\0\end{pmatrix}.\]
+
+On suppose que \(\paren{E_1}\) n'admet aucune solution et que \(\paren{E_2}\) admet une unique solution.
+
+Quelles sont les valeurs possibles pour les entiers \(n\) et \(p\) ?
+
+Donner, pour chaque possibilité, un exemple de matrice \(A\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\paren{S}\) un système linéaire de \(n\) équations à \(p\) inconnues. On note \(r\) son rang.
+
+Justifier les propositions suivantes :
+
+\begin{enumerate}
+\item Si \(r=p\) alors \(\paren{S}\) admet au plus une solution. \\
+
+\item Si \(r=n\) alors \(\paren{S}\) admet au moins une solution.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Montrer que les matrices \(\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}\) et \(\begin{pmatrix}
+1 & 0 \\
+1 & 1
+\end{pmatrix}\) sont semblables.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Calculer les inverses des matrices suivantes : \[A=\begin{pmatrix}
+2 & 5 \\
+3 & 7
+\end{pmatrix}\qquad B=\begin{pmatrix}
+1 & 2 \\
+2 & 4
+\end{pmatrix}\qquad C=\begin{pmatrix}
+0 & 7 & 8 \\
+0 & 1 & 1 \\
+1 & 2 & 3
+\end{pmatrix}\qquad D=\begin{pmatrix}
+1 & 0 & 2 \\
+1 & 3 & 1 \\
+1 & 7 & 0
+\end{pmatrix}\qquad E=\begin{pmatrix}
+1 & 0 & 2 & 0 \\
+3 & 1 & 1 & 0 \\
+0 & 1 & 2 & 1 \\
+2 & 2 & 2 & 1
+\end{pmatrix}\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}\thlabel{exo:matrice1...n}
+Soit \(n\in\Ns\).
+
+On pose : \[A=\begin{pmatrix}
+1 & \dots & \dots & 1 \\
+0 & \ddots &  & \vdots \\
+\vdots & \ddots & \ddots & \vdots \\
+0 & \dots & 0 & 1
+\end{pmatrix}\in\M{n}\qquad\text{et}\qquad B=\begin{pmatrix}
+1 & \dots & \dots & \dots & 1 \\
+\vdots & 2 & \dots & \dots & 2 \\
+\vdots & \vdots & 3 & \dots & 3 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & 2 & 3 & \dots & n
+\end{pmatrix}\]
+
+\begin{enumerate}
+\item Déterminer l'inverse de \(A\). \\
+
+\item Calculer \(\trans{A}A\). \\
+
+\item En déduire l'inverse de \(B\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(a,b,c,d,e,f,g,h,i\in\K\) et \(\lambda\in\K\excluant\accol{0}\).
+
+Montrer que les matrices \(\begin{pmatrix}
+a & b & c \\
+d & e & f \\
+g & h & i
+\end{pmatrix}\) et \(\begin{pmatrix}
+a & b\lambda\inv & c\lambda^{-2} \\
+d\lambda & e & f\lambda\inv \\
+g\lambda^2 & h\lambda & i
+\end{pmatrix}\) sont semblables.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Montrer que l'application \[\fonction{\phi}{\M{n}[\R]}{\M{n}[\R]\etoile}{A}{B\mapsto\tr\paren{AB}}\] est un isomorphisme de l'espace vectoriel \(\M{n}[\R]\) vers son dual.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On suppose que le corps \(\K\) est fini et on note \(q\) son cardinal : \[q=\Card\K<\pinf.\]
+
+Soit \(n\in\Ns\).
+
+Déterminer le cardinal des ensembles suivants :
+
+\begin{enumerate}
+\item \(\K^n\) \\
+
+\item \(\M{n}\) \\
+
+\item \(\GL{n}\)
+\end{enumerate}
+
+\textit{Indications pour le (3) :}
+
+\begin{itemize}
+\item Commencer par \(n=2\) ou \(3\). \\
+
+\item Une matrice carrée est inversible si, et seulement si, la famille de ses vecteurs colonnes est libre. Compter les matrices inversibles de taille \(n\) revient donc à compter les familles libres de \(n\) vecteurs de \(\K^n\).
+\end{itemize}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(n\in\Ns\) et \(f:\M{n}\to\K\) une fonction non-constante telle que : \[\quantifs{\forall A,B\in\M{n}}f\paren{AB}=f\paren{A}f\paren{B}.\]
+
+Montrer que pour toute matrice \(A\in\M{n}\), on a l'équivalence : \[A\in\GL{n}\ssi f\paren{A}\not=0.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}

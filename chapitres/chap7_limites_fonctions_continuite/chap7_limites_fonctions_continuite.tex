@@ -1,0 +1,1925 @@
+\chapter{Limites de fonctions, continuité}
+
+\minitoc
+
+\section{Voisinages}
+
+\subsection{Définition}
+
+\begin{defi}
+Soit \(V\subset\R\).
+
+Soit \(a\in\R\). On dit que \(V\) est un voisinage de \(a\) dans \(\R\) si on a : \[\quantifs{\exists\epsilon\in\Rps}\intervee{a-\epsilon}{a+\epsilon}\subset V.\]
+
+On dit que \(V\) est un voisinage de \(\pinf\) dans \(\R\) si on a : \[\quantifs{\exists\alpha\in\R}\intervee{\alpha}{\pinf}\subset V.\]
+
+On dit que \(V\) est un voisinage de \(\minf\) dans \(\R\) si on a : \[\quantifs{\exists\alpha\in\R}\intervee{\minf}{\alpha}\subset V.\]
+\end{defi}
+
+\begin{ex}
+\(\R\) est un voisinage de tout point \(a\in\Rb\).
+
+\(\Rp\) est un voisinage de \(\pinf\).
+
+Si \(a\in\Rps\) alors \(\Rp\) est un voisinage de \(a\) car \(\intervee{a-\epsilon}{a+\epsilon}\subset\Rp\) avec \(\epsilon=a\).
+
+\(\Rp\) n'est pas un voisinage de \(0\) car \(\quantifs{\forall\epsilon\in\Rps}\intervee{0-\epsilon}{0+\epsilon}\not\subset\Rp\).
+
+Pour tout \(a\in\Rm\) on a : \(\quantifs{\forall\epsilon\in\Rps}\intervee{a-\epsilon}{a+\epsilon}\not\subset\Rp\) car \(a\not\in\Rp\).
+
+\(\Rp\) n'est pas un voisinage de \(\minf\).
+
+L'ensemble des points dont \(\Rp\) est un voisinage est donc \(\intervei{0}{\pinf}\).
+
+L'ensemble des points dont \(\intervii{0}{1}\) est \(\intervee{0}{1}\).
+
+Soit \(a\in\R\). On a \(\quantifs{\forall\epsilon\in\Rps}\intervee{a-\epsilon}{a+\epsilon}\inter\paren{\R\excluant\Q}\not=\ensvide\) car \(\R\excluant\Q\) est dense dans \(R\).
+
+Donc \(\quantifs{\forall\epsilon\in\Rps}\intervee{a-\epsilon}{a+\epsilon}\not\subset\Q\).
+
+Donc \(\Q\) n'est le voisinage d'aucun réel.
+
+De même, \(\Q\) n'est pas un voisinage de \(\pinf\) ni de \(\minf\).
+\end{ex}
+
+\begin{nota}
+Soit \(a\in\Rb\).
+
+Dans ce cours, on notera \(\V{a}\) l'ensemble des voisinages de \(a\) dans \(\R\).
+\end{nota}
+
+\begin{prop}\thlabel{prop:proprietesVoisinages}
+Soient \(a,b\in\Rb\).
+
+\begin{enumerate}
+\item Si \(a\in\R\) alors tout voisinage de \(a\) contient \(a\) : \[\quantifs{\forall V\in\V{a}}a\in V.\]
+
+\item L'intersection de deux voisinages de \(a\) est encore un voisinage de \(a\) : \[\quantifs{\forall V,W\in\V{a}}V\inter W\in\V{a}.\]
+
+\item Si \(a\not=b\) alors \(a\) et \(b\) admettent des voisinages respectifs disjoints : \[\quantifs{\exists V\in\V{a};\exists W\in\V{b}}V\inter W=\ensvide.\]
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\note{EXERCICE}
+\end{dem}
+
+\begin{rem}[Reformulation de la définition d'une partie dense de \(\R\) (\thref{defi:partieDenseDansR})]
+Soit \(A\subset\R\).
+
+On a : \[A\text{ dense dans }\R\ssi\quantifs{\forall x\in\R;\forall V\in\V{x}}A\inter V\not=\ensvide.\]
+\end{rem}
+
+\subsection{Vocabulaire lié aux voisinages}
+
+Si \(a\in\Rb\), on dit qu'une propriété est vraie \guillemets{au voisinage de \(a\)} si elle est vraie sur un certain voisinage de \(a\).
+
+\begin{defi}
+Soient \(a\in\Rb\), \(A\subset\R\) et \(f:A\to\R\).
+
+On dit que \(f\) est bornée au voisinage de \(a\) s'il existe un voisinage \(V\) de \(a\) tel que la restriction \(\restr{f}{A\inter V}\) soit bornée : \[\quantifs{\exists V\in\V{a};\exists M\in\Rp;\forall x\in A\inter V}\abs{f\paren{x}}\leq M.\]
+\end{defi}
+
+\begin{ex}
+La fonction \(\exp:\R\to\R\) est bornée au voisinage de tout point \(a\in\intervie{\minf}{\pinf}\).
+
+Elle n'est pas bornée au voisinage de \(\pinf\).
+\end{ex}
+
+\begin{dem}
+On a \(\quantifs{\forall x\in\intervee{a-1}{a+1}}0<\exp x<\e{a+1}\) donc \(\exp\) est bornée au voisinage de \(a\).
+
+De plus, \(\quantifs{\forall x\in\Rm}0<\exp x\leq1\) donc \(\exp\) est bornée au voisinage de \(\minf\) (car \(\Rm\in\V{\minf}\)).
+\end{dem}
+
+\begin{defi}
+Soient \(A\subset\R\), \(f,g\in\F{A}{\R}\) et \(a\in\Rb\).
+
+On dit que \(f\) et \(g\) coïncident au voisinage de \(a\) si on a : \[\quantifs{\exists V\in\V{a};\forall x\in A\inter V}f\paren{x}=g\paren{x}.\]
+\end{defi}
+
+\begin{rappel}[Extremum global]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in A\).
+
+On dit que \(f\) admet un maximum (global) en \(a\) si on a : \(\quantifs{\forall x\in A}f\paren{x}\leq f\paren{a}\).
+
+On dit que \(f\) admet un minimum (global) en \(a\) si on a : \(\quantifs{\forall x\in A}f\paren{x}\geq f\paren{a}\).
+
+On dit que \(f\) admet un extremum (global) en \(a\) si \(f\) admet un maximum ou un minimum en \(a\).
+\end{rappel}
+
+\begin{defi}[Extremum local]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in A\).
+
+On dit que \(f\) admet un maximum local en \(a\) s'il existe un voisinage \(V\) de \(a\) tel que \(\restr{f}{V\inter A}\) admette un maximum global en \(a\), \cad si on a : \[\quantifs{\exists V\in\V{a};\forall x\in V\inter A}f\paren{x}\leq f\paren{a}.\]
+
+On dit que \(f\) admet un minimum local en \(a\) s'il existe un voisinage \(V\) de \(a\) tel que \(\restr{f}{V\inter A}\) admette un minimum global en \(a\), \cad si on a : \[\quantifs{\exists V\in\V{a};\forall x\in V\inter A}f\paren{x}\geq f\paren{a}.\]
+
+On dit que \(f\) admet un extremum local en \(a\) si \(f\) admet un maximum local ou un minimum local en \(a\).
+\end{defi}
+
+\begin{ex}
+Posons \(\fonction{f}{\intervii{0}{2\pi}}{\R}{x}{\sin x}\) :
+
+\begin{center}
+\begin{tkz}
+\begin{axis}[axis lines=middle,
+xmin=-1,xmax=7,
+ymin=-1.5,ymax=1.5,
+xtick={pi/2,pi,3*pi/2,2*pi},
+xticklabels={\(\dfrac{\pi}{2}\),\(\pi\),\(\dfrac{3\pi}{2}\),\(2\pi\)},
+clip=false]
+\addplot[domain=0:2*pi,samples=1000,smooth,thick,blue] {sin(deg(x))};
+\end{axis}
+\end{tkz}
+\end{center}
+
+\(f\) admet :
+
+\begin{itemize}
+\item un maximum global en \(\dfrac{\pi}{2}\) ; \\
+
+\item un minimum global en \(\dfrac{3\pi}{2}\) ; \\
+
+\item un maximum local en \(2\pi\) ; \\
+
+\item un minimum local en \(0\).
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+Pluriel de maximum : maxima ou maximums.
+
+Pluriel de minimum : minima ou minimums.
+
+Pluriel d'extremum : extrema ou extremums.
+\end{rem}
+
+\section{Limite d'une fonction en un point de \(\Rb\)}
+
+Dans ce chapitre, on considère une fonction \(f:A\to\R\) définie sur une partie \(A\subset\R\) et on définit sa limite en un point \(a\in\Rb\).
+
+Pour cela, on suppose qu'il existe des points où la fonction \(f\) est définie et qui sont arbitrairement proches de \(a\) (autrement, la limite n'a pas de sens).
+
+Précisément, on supposera que tout voisinage de \(a\) dans \(\R\) rencontre \(A\) : \[\quantifs{\forall V\in\V{a}}V\inter A\not=\ensvide.\]
+
+Si \(a=\pinf\), cela signifie que \(A\) est une partie non-majorée de \(\R\).
+
+Si \(a=\minf\), cela signifie que \(A\) est une partie non-minorée de \(\R\).
+
+Si \(a\in\R\), cela signifie : \(\quantifs{\forall\epsilon\in\Rps;\exists a\prim\in A}\abs{a\prim-a}\leq\epsilon\).
+
+\subsection{Définition d'une limite}
+
+\begin{defprop}\thlabel{defprop:limiteDeFonctionEnUnPoint}
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a,l\in\Rb\).
+
+On suppose que tout voisinage de \(a\) dans \(\R\) rencontre \(A\) : \[\quantifs{\forall V\in\V{a}}V\inter A\not=\ensvide.\]
+
+On dit que \guillemets{\(f\paren{x}\) tend vers \(l\) quand \(x\) tend vers \(a\)} ou que \guillemets{\(f\) tend vers \(l\) en \(a\)} si on a : \[\quantifs{\forall V\in\V{l};\exists W\in\V{a};\forall x\in W\inter A}f\paren{x}\in V,\] \cad : \[\quantifs{\forall V\in\V{l};\exists W\in\V{a}}f\paren{W\inter A}\subset V.\]
+
+Unicité de la limite : il existe au plus un élément \(l\in\Rb\) tel que \(f\) tende vers \(l\) en \(a\). S'il existe, on appelle cet élément \(l\) la limite de \(f\) en \(a\) et on le note : \[\lim_af\quad\text{ou}\quad\lim_{x\to a}f\paren{x}\quad\text{ou}\quad\lim_{\substack{x\to a \\ x\in A}}f\paren{x}.\]
+\end{defprop}
+
+\begin{dem}
+Soient \(l,l\prim\in\Rb\) deux limites de \(f\) en \(a\). Montrons que \(l=l\prim\).
+
+Par l'absurde, supposons \(l\not=l\prim\).
+
+Soient \(V\in\V{l}\) et \(V\prim\in\V{l\prim}\) tels que \(V\inter V\prim=\ensvide\).
+
+Soit \(W\in\V{a}\) tel que \(f\paren{W\inter A}\subset V\).
+
+Soit \(W\prim\in\V{a}\) tel que \(f\paren{W\prim\inter A}\subset V\prim\).
+
+On pose \(W\seconde=W\inter W\prim\). On a \(W\seconde\in\V{a}\) selon la \thref{prop:proprietesVoisinages}.
+
+De plus : \[\begin{aligned}
+f\paren{W\seconde\inter A}&\subset f\paren{W\inter A}\inter f\paren{W\prim\inter A} \\
+&\subset V\inter V\prim \\
+&=\ensvide\text{ : contradiction.}
+\end{aligned}\]
+\end{dem}
+
+\begin{rem}
+Lorsqu'on utilise une notation de limite dans une formule mathématique, on prétend que la limite existe.
+
+Par exemple, la proposition \guillemets{\(\lim_{x\to a}f\paren{x}\not=0\)} signifie que la limite existe et est non-nulle (ce n'est donc pas la négation de la proposition \guillemets{\(\lim_{x\to a}f\paren{x}=0\)}).
+
+En revanche, si on écrit par exemple \guillemets{\(\lim_{x\to a}f\paren{x}\text{ existe}\ssi\dots\)}, on ne suppose pas a priori que la limite existe.
+\end{rem}
+
+\begin{rem}
+La limite d'une fonction \(f:\N\to\R\) en \(\pinf\) coïncide avec celle de la suite \(\paren{f\paren{n}}_{n\in\N}\).
+\end{rem}
+
+\begin{rem}
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a,l\in\Rb\).
+
+Si \(l\in\R\) alors on a \[\lim_{x\to a}f\paren{x}=l\ssi\lim_{x\to a}f\paren{x}-l=0.\]
+
+Si \(a\in\R\) alors on a \[\lim_{x\to a}f\paren{x}=l\ssi\lim_{h\to0}f\paren{a+h}=l.\]
+\end{rem}
+
+\begin{rem}\thlabel{rem:fonctionsQuiCoincidentSsiLimitesEgales}
+Soient \(A\subset\R\), \(f,g\in\F{A}{\R}\) et \(a\in\Rb\).
+
+Si \(f\) et \(g\) coïncident au voisinage de \(a\) alors \(f\) admet une limite en \(a\) si, et seulement si, \(g\) admet une limite en \(a\). Les deux limites sont alors égales.
+\end{rem}
+
+\begin{prop}[Reformulation de la \thref{defprop:limiteDeFonctionEnUnPoint} au cas par cas]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a,l\in\Rb\).
+
+\begin{itemize}
+\item Si \(a\in\R\) et \(l\in\R\) : on suppose \(\quantifs{\forall\delta\in\Rps;\exists x\in A}\abs{x-a}\leq\delta\). On a : \[l=\lim_{x\to a}f\paren{x}\ssi\croch{\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x\in A}\abs{x-a}\leq\delta\imp\abs{f\paren{x}-l}\leq\epsilon}.\] \\
+
+\item Si \(a\in\R\) et \(l=\pinf\) : on suppose \(\quantifs{\forall\delta\in\Rps;\exists x\in A}\abs{x-a}\leq\delta\). On a : \[l=\lim_{x\to a}f\paren{x}\ssi\croch{\quantifs{\forall\alpha\in\R;\exists\delta\in\Rps;\forall x\in A}\abs{x-a}\leq\delta\imp f\paren{x}\geq\alpha}.\] \\
+
+\item Si \(a\in\R\) et \(l=\minf\) : on suppose \(\quantifs{\forall\delta\in\Rps;\exists x\in A}\abs{x-a}\leq\delta\). On a : \[l=\lim_{x\to a}f\paren{x}\ssi\croch{\quantifs{\forall\alpha\in\R;\exists\delta\in\Rps;\forall x\in A}\abs{x-a}\leq\delta\imp f\paren{x}\leq\alpha}.\] \\
+
+\item Si \(a=\pinf\) et \(l\in\R\) : on suppose la partie \(A\) non-majorée. On a : \[l=\lim_{x\to a}f\paren{x}\ssi\croch{\quantifs{\forall\epsilon\in\Rps;\exists\beta\in\R;\forall x\in A}x\geq\beta\imp\abs{f\paren{x}-l}\leq\epsilon}.\] \\
+
+\item Si \(a=\pinf\) et \(l=\pinf\) : on suppose la partie \(A\) non-majorée. On a : \[l=\lim_{x\to a}f\paren{x}\ssi\croch{\quantifs{\forall\alpha\in\R;\exists\beta\in\R;\forall x\in A}x\geq\beta\imp f\paren{x}\geq\alpha}.\] \\
+
+\item Si \(a=\pinf\) et \(l=\minf\) : on suppose la partie \(A\) non-majorée. On a : \[l=\lim_{x\to a}f\paren{x}\ssi\croch{\quantifs{\forall\alpha\in\R;\exists\beta\in\R;\forall x\in A}x\geq\beta\imp f\paren{x}\leq\alpha}.\] \\
+
+\item Si \(a=\minf\) et \(l\in\R\) : on suppose la partie \(A\) non-minorée. On a : \[l=\lim_{x\to a}f\paren{x}\ssi\croch{\quantifs{\forall\epsilon\in\Rps;\exists\beta\in\R;\forall x\in A}x\leq\beta\imp\abs{f\paren{x}-l}\leq\epsilon}.\] \\
+
+\item Si \(a=\minf\) et \(l=\pinf\) : on suppose la partie \(A\) non-minorée. On a : \[l=\lim_{x\to a}f\paren{x}\ssi\croch{\quantifs{\forall\alpha\in\R;\exists\beta\in\R;\forall x\in A}x\leq\beta\imp f\paren{x}\geq\alpha}.\] \\
+
+\item Si \(a=\minf\) et \(l=\minf\) : on suppose la partie \(A\) non-minorée. On a : \[l=\lim_{x\to a}f\paren{x}\ssi\croch{\quantifs{\forall\alpha\in\R;\exists\beta\in\R;\forall x\in A}x\leq\beta\imp f\paren{x}\leq\alpha}.\]
+\end{itemize}
+\end{prop}
+
+\begin{rappel}[Définition de \(a^b\)]
+Soient \(a,b\in\R\).
+
+L'expression \(a^b\) est définie dans plusieurs cas :
+
+\begin{itemize}
+\item Si \(b\in\N\) alors on pose \[a^b=\underbrace{a\times\dots\times a}_{b\text{ facteurs}}.\] Autrement dit (définition par récurrence) : \[\begin{dcases}a^0=1 \\ \quantifs{\forall b\in\N}a^{b+1}=a\times a^b\end{dcases}\]
+
+\item Si \(a\not=0\) et \(b\in\Z\) : on étend la définition précédente en posant, si \(b\) est un entier strictement négatif : \[a^b=\dfrac{1}{a^{-b}}.\]
+
+\item Si \(a>0\) alors on pose \[a^b=\e{b\ln a}.\]
+
+\item Si \(a=0\) et \(b\geq0\) alors on pose : \[0^b=\begin{dcases}1 &\text{si }b=0 \\ 0 &\text{si }b>0\end{dcases}\]
+\end{itemize}
+
+Lorsque plusieurs cas s'appliquent, ils donnent le même résultat.
+\end{rappel}
+
+\begin{ex}
+Soit \(\lambda\in\R\). On a : \[\lim_{x\to\pinf}x^\lambda=\begin{dcases}\pinf &\text{si }\lambda>0 \\ 1 &\text{si }\lambda=0 \\ 0 &\text{si }\lambda<0\end{dcases}\qquad\text{et}\qquad\lim_{\substack{x\to0 \\ x\in\Rps}}x^\lambda=\begin{dcases}0 &\text{si }\lambda>0 \\ 1 &\text{si }\lambda=0 \\ \pinf &\text{si }\lambda<0\end{dcases}\]
+\end{ex}
+
+\begin{dem}
+Si \(\lambda>0\) :
+
+Montrons que \[\quantifs{\forall\alpha\in\Rps;\exists\beta\in\R;\forall x\in\Rps}x\geq\beta\imp x^\lambda\geq\alpha.\]
+
+Soit \(\alpha\in\Rps\).
+
+On a \[\begin{aligned}
+\quantifs{\forall x\in\Rps}x^\lambda\geq\alpha&\ssi\paren{x^\lambda}^{\nicefrac{1}{\lambda}}\geq\alpha^{\nicefrac{1}{\lambda}} \\
+&\ssi x\geq\alpha^{\nicefrac{1}{\lambda}}
+\end{aligned}\] car \(t\mapsto t^{\nicefrac{1}{\lambda}}=\e{\nicefrac{\ln t}{\lambda}}\) est strictement croissante sur \(\Rps\) car \(\lambda>0\).
+
+Donc le réel \(\beta=\alpha^{\nicefrac{1}{\lambda}}\) convient.
+
+Donc \(\lim_{x\to\pinf}x^\lambda=\pinf\).
+
+Montrons que \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x\in\Rps}x\leq\delta\imp\abs{x^\lambda-0}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+On a \[\begin{aligned}
+\quantifs{\forall x\in\Rps}\abs{x^\lambda-0}\leq\epsilon&\ssi x^\lambda\leq\epsilon \\
+&\ssi x\leq\epsilon^{\nicefrac{1}{\lambda}}.
+\end{aligned}\]
+
+Donc \(\delta=\epsilon^{\nicefrac{1}{\lambda}}\) convient.
+
+Donc \(\lim_{\substack{x\to0 \\ x\in\Rps}}x^\lambda=0\).
+
+Si \(\lambda=0\) :
+
+On a \(\quantifs{\forall x\in\Rps}x^\lambda=1\) donc \[\begin{dcases}\lim_{x\to\pinf}x^\lambda=1 \\ \lim_{\substack{x\to0 \\ x\in\Rps}}x^\lambda=1\end{dcases}\]
+
+Si \(\lambda<0\) :
+
+La fonction \(t\mapsto t^{\nicefrac{1}{\lambda}}=\e{\nicefrac{\ln t}{\lambda}}\) est strictement décroissante sur \(\Rps\).
+
+Montrons que \[\quantifs{\forall\epsilon\in\Rps;\exists\beta\in\R;\forall x\in\Rps}x\geq\beta\imp\abs{x^\lambda}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+Le réel \(\beta=\epsilon^{\nicefrac{1}{\lambda}}\) convient.
+
+Donc \(\lim_{n\to\pinf}x^\lambda=0\).
+
+Montrons que \[\quantifs{\forall\alpha\in\Rps;\exists\delta\in\Rps;\forall x\in\Rps}x\leq\delta\imp x^\lambda\geq\alpha.\]
+
+Soit \(\alpha\in\Rps\).
+
+Le réel \(\delta=\alpha^{\nicefrac{1}{\lambda}}\) convient car \(\quantifs{\forall x\in\Rps}x\leq\alpha^{\nicefrac{1}{\lambda}}\imp x^\lambda\geq\alpha\).
+
+Donc \(\lim_{\substack{x\to0 \\ x\in\Rps}}x^\lambda=\pinf\).
+\end{dem}
+
+\begin{rem}\thlabel{rem:limiteEnAEgaleFDeA}
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in A\).
+
+On suppose que \(f\) est définie en \(a\).
+
+Si \(f\) admet une limite en \(a\) alors cette limite est \(f\paren{a}\).
+\end{rem}
+
+\begin{dem}
+Supposons que \(f\) possède une limite \(l\) en \(a\).
+
+Montrons que \(l=f\paren{a}\).
+
+On a \[\quantifs{\forall V\in\V{l};\exists W\in\V{a};\forall x\in A\inter W}f\paren{x}\in V.\]
+
+Donc \[\quantifs{\forall V\in\V{l}}f\paren{a}\in V\] car \(\begin{dcases}\quantifs{\forall W\in\V{a}}a\in W \\ a\in A\end{dcases}\) donc \(a\in A\inter W\).
+
+Donc \(f\paren{a}=l\) car sinon il existe \(V\prim\in\V{f\paren{a}}\) tel que \(\begin{dcases}V\inter V\prim=\ensvide \\ f\paren{a}\in V\prim\end{dcases}\) donc \(f\paren{a}\not\in V\).
+\end{dem}
+
+\subsection{Limites et ordre}
+
+\begin{prop}\thlabel{prop:majorantOuMinorantStrictDeLaLimiteD'UneFonctionMajoreOuMinoreStrictementLaFonction}
+Soient \(A\subset\R\), \(f:A\to\R\), \(a,l\in\Rb\) et \(\lambda\in\R\).
+
+On suppose \[\lim_{x\to a}f\paren{x}=l.\]
+
+Si \(\lambda>l\) alors \(\lambda\) majore strictement \(f\) au voisinage de \(a\) : \[\quantifs{\exists V\in\V{a};\forall x\in V\inter A}f\paren{x}<\lambda.\]
+
+Si \(\lambda<l\) alors \(\lambda\) minore strictement \(f\) au voisinage de \(a\) : \[\quantifs{\exists V\in\V{a};\forall x\in V\inter A}f\paren{x}>\lambda.\]
+\end{prop}
+
+\begin{dem}
+Supposons \(\lambda>l\).
+
+Alors \(V=\intervee{\minf}{\lambda}\in\V{l}\).
+
+Donc il existe \(W\in\V{a}\) tel que \[\quantifs{\forall x\in A}x\in W\imp f\paren{x}\in V.\]
+
+\Cad \(\quantifs{\forall x\in A}x\in W\imp f\paren{x}<\lambda\).
+
+Si \(\lambda<l\) : idem en prenant \(V=\intervee{\lambda}{\pinf}\).
+\end{dem}
+
+\begin{cor}\thlabel{cor:limiteFinieDoncFonctionBornée}
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in\Rb\).
+
+Si \(f\) tend vers une limite finie en \(a\) alors \(f\) est bornée au voisinage de \(a\).
+
+Si \(f\) tend vers \(\pinf\) en \(a\) alors \(f\) est minorée au voisinage de \(a\).
+
+Si \(f\) tend vers \(\minf\) en \(a\) alors \(f\) est majorée au voisinage de \(a\).
+\end{cor}
+
+\begin{dem}
+Supposons que \(f\) tend vers une limite \(l\in\R\) en \(a\).
+
+On a \(l-1<l<l+1\) donc \[\begin{dcases}\quantifs{\exists V_1\in\V{a};\forall x\in A\inter V_1}l-1<f\paren{x} \\ \quantifs{\exists V_2\in\V{a};\forall x\in A\inter V_2}l+1>f\paren{x}\end{dcases}\] selon la \thref{prop:majorantOuMinorantStrictDeLaLimiteD'UneFonctionMajoreOuMinoreStrictementLaFonction}.
+
+D'où, avec \(V=V_1\inter V_2\) : \[\quantifs{\forall x\in A\inter V}l-1<f\paren{x}<l+1\] donc \(f\) est bornée au voisinage de \(a\).
+
+Supposons \(\lim_{x\to a}f\paren{x}=\pinf\).
+
+On a \(0<\pinf\). Donc \(0\) minore strictement \(f\) au voisinage de \(a\) selon la \thref{prop:majorantOuMinorantStrictDeLaLimiteD'UneFonctionMajoreOuMinoreStrictementLaFonction}.
+
+Idem si \(\lim_{x\to a}f\paren{x}=\minf\).
+\end{dem}
+
+\begin{cor}[Passage à la limite dans une inégalité, version 1]\thlabel{cor:passageALaLimiteDansUneInegalitéFonctionsV1}
+Soient \(A\subset\R\), \(f:A\to\R\), \(a\in\Rb\) et \(\lambda\in\R\).
+
+On suppose que \(f\) admet une limite en \(a\).
+
+Si \(f\) est minorée par \(\lambda\) au voisinage de \(a\), \cad \(\quantifs{\exists V\in\V{a};\forall x\in A\inter V}\lambda\leq f\paren{x}\), alors \[\lambda\leq\lim_{x\to a}f\paren{x}.\]
+
+Si \(f\) est majorée par \(\lambda\) au voisinage de \(a\), \cad \(\quantifs{\exists V\in\V{a};\forall x\in A\inter V}\lambda\geq f\paren{x}\), alors \[\lambda\geq\lim_{x\to a}f\paren{x}.\]
+\end{cor}
+
+\begin{dem}
+On suppose \(\lambda\leq f\) au voisinage de \(a\).
+
+Montrons que \(\lambda\leq\lim_{x\to a}f\paren{x}\).
+
+Par l'absurde, supposons \(\lim_{x\to a}f\paren{x}<\lambda\).
+
+Alors \(\lambda\) majore strictement \(f\) au voisinage de \(a\) : \[\quantifs{\exists V_2\in\V{a};\forall x\in A\inter V_2}f\paren{x}<\lambda.\]
+
+Or on a : \[\quantifs{\exists V_1\in\V{a};\forall x\in A\inter V_1}\lambda\leq f\paren{x}.\]
+
+Considérons de tels voisinages \(V_1,V_2\) de \(a\) et posons \(V=V_1\inter V_2\).
+
+On a \(V\in\V{a}\) et \(\quantifs{\forall x\in A\inter V}\begin{dcases}f\paren{x}\geq\lambda \\ f\paren{x}<\lambda\end{dcases}\)
+
+Donc \(A\inter V=\ensvide\) : contradiction avec l'existence de \(\lim_{x\to a}f\paren{x}\).
+
+Idem si \(\lambda\geq f\) au voisinage de \(a\).
+\end{dem}
+
+\begin{prop}[Théorème des gendarmes]
+Soient \(A\subset\R\), trois fonctions \(f,g,h\in\F{A}{\R}\) et \(a\in\Rb\).
+
+Si on a \(\quantifs{\forall x\in A}g\paren{x}\leq f\paren{x}\leq h\paren{x}\) et si \(g\) et \(h\) admettent la même limite finie \(l\) en \(a\), alors on a \[\lim_{x\to a}f\paren{x}=l.\]
+
+Si on a \(\quantifs{\forall x\in A}g\paren{x}\leq f\paren{x}\) et \(\lim_{x\to a}g\paren{x}=\pinf\), alors on a \[\lim_{x\to a}f\paren{x}=\pinf.\]
+
+Si on a \(\quantifs{\forall x\in A}f\paren{x}\leq h\paren{x}\) et \(\lim_{x\to a}h\paren{x}=\minf\), alors on a \[\lim_{x\to a}f\paren{x}=\minf.\]
+
+NB : dans les trois cas, la proposition assure l'existence de la limite de \(f\) en \(a\).
+\end{prop}
+
+\begin{dem}
+\note{Exercice} (s'inspirer de la démonstration du théorème des gendarmes pour les suites (\thref{dem:théorèmeDesGendarmesDansLeCasFiniSuites} et \thref{dem:théorèmeDesGendarmesDansLeCasInfiniSuites})).
+\end{dem}
+
+\subsection{Compléments}
+
+\subsubsection{Limites à droite/gauche}
+
+\begin{defi}[Limite à droite]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in\R\).
+
+On appelle limite à droite de \(f\) en \(a\) la limite en \(a\), si elle existe, de la restriction \(\restr{f}{A\inter\intervee{a}{\pinf}}\). On la note alors : \[\lim_{a^+}f\qquad\text{ou}\qquad\lim_{x\to a^+}f\paren{x}\qquad\text{ou}\qquad\lim_{\substack{x\to a \\ x>a}}f\paren{x}.\]
+
+NB : pour que cette limite existe, il faut en particulier que tout voisinage de \(a\) rencontre l'ensemble \(A\inter\intervee{a}{\pinf}\).
+\end{defi}
+
+\begin{defi}[Limite à gauche]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in\R\).
+
+On appelle limite à gauche de \(f\) en \(a\) la limite en \(a\), si elle existe, de la restriction \(\restr{f}{A\inter\intervee{\minf}{a}}\). On la note alors : \[\lim_{a^-}f\qquad\text{ou}\qquad\lim_{x\to a^-}f\paren{x}\qquad\text{ou}\qquad\lim_{\substack{x\to a \\ x<a}}f\paren{x}.\]
+
+NB : pour que cette limite existe, il faut en particulier que tout voisinage de \(a\) rencontre l'ensemble \(A\inter\intervee{\minf}{a}\).
+\end{defi}
+
+\begin{ex}
+On a : \[\lim_{x\to0^+}\dfrac{1}{x}=\pinf\qquad\text{et}\qquad\lim_{x\to0^-}\dfrac{1}{x}=\minf\qquad\qquad\lim_{x\to0^+}\floor{x}=0\qquad\text{et}\qquad\lim_{x\to0^-}\floor{x}=-1.\]
+\end{ex}
+
+\begin{prop}
+Soient \(A\subset\R\), \(f:A\to\R\), \(a\in\R\) et \(l\in\Rb\).
+
+On suppose que tout voisinage de \(a\) rencontre les ensembles \(A\inter\intervee{\minf}{a}\) et \(A\inter\intervee{a}{\pinf}\).
+
+Si \(f\) n'est pas définie en \(a\) alors \[\lim_af=l\ssi\lim_{a^-}f=\lim_{a^+}f=l.\]
+
+Si \(f\) est définie en \(a\) alors \[\lim_af=l\ssi\lim_{a^-}f=\lim_{a^+}f=f\paren{a}=l.\]
+\end{prop}
+
+\subsubsection{Limites par valeurs supérieures/inférieures}
+
+\begin{nota}[Limite par valeurs supérieures]
+Soient \(A\subset\R\), \(f:A\to\R\), \(a\in\Rb\) et \(l\in\R\).
+
+La notation \(\lim_af=l^+\) signifie que \(f\) tend vers \(l\) en \(a\) et qu'on a \(f>l\) au voisinage de \(a\) : \[\lim_af=l^+\ssi\begin{dcases}\lim_af=l \\ \quantifs{\exists V\in\V{a};\forall x\in A\inter V}f\paren{x}>l\end{dcases}\]
+
+On dit alors que \(f\) tend vers \(l\) en \(a\) par valeurs supérieures.
+\end{nota}
+
+\begin{nota}[Limite par valeurs inférieures]
+Soient \(A\subset\R\), \(f:A\to\R\), \(a\in\Rb\) et \(l\in\R\).
+
+La notation \(\lim_af=l^-\) signifie que \(f\) tend vers \(l\) en \(a\) et qu'on a \(f<l\) au voisinage de \(a\) : \[\lim_af=l^-\ssi\begin{dcases}\lim_af=l \\ \quantifs{\exists V\in\V{a};\forall x\in A\inter V}f\paren{x}<l\end{dcases}\]
+
+On dit alors que \(f\) tend vers \(l\) en \(a\) par valeurs inférieures.
+\end{nota}
+
+\begin{ex}
+On a : \[\lim_{x\to0^+}x=0^+\qquad\lim_{x\to0^-}x=0^-\qquad\qquad\lim_{x\to\pinf}\dfrac{1}{x}=0^+\qquad\lim_{x\to\minf}\dfrac{1}{x}=0^-.\]
+\end{ex}
+
+\subsection{Opérations sur les limites}
+
+\begin{prop}\thlabel{prop:limiteProduitOuSommeFonctionMinoréeMajoréeOuBornée}
+Soient \(A\subset\R\), \(f,g\in\F{A}{\R}\) et \(a\in\Rb\).
+
+Si \(\lim_{x\to a}f\paren{x}=0\) et \(g\) bornée au voisinage de \(a\) alors \[\lim_{x\to a}f\paren{x}g\paren{x}=0\].
+
+Si \(\lim_{x\to a}f\paren{x}=\pinf\) et \(g\) minorée au voisinage de \(a\) alors \[\lim_{x\to a}f\paren{x}+g\paren{x}=\pinf\].
+
+Si \(\lim_{x\to a}f\paren{x}=\minf\) et \(g\) majorée au voisinage de \(a\) alors \[\lim_{x\to a}f\paren{x}+g\paren{x}=\minf\].
+\end{prop}
+
+\begin{dem}
+\note{Exercice} (s'inspirer des démonstrations analogues sur les suites (\thref{dem:limiteProduitSuiteBornéeEtSuiteTendantVersZéroVautZéroSuites} et \thref{dem:limiteSommeSuiteMajoréeOuMinoréeEtSuiteDivergente})).
+\end{dem}
+
+\begin{prop}[Opérations algébriques sur les limites]\thlabel{prop:opérationsAlgébriquesSurLesLimitesFonctions}
+Soient \(A\subset\R\), \(f,g\in\F{A}{\R}\), \(a,l,l\prim\in\Rb\) et \(\lambda,\mu\in\R\).
+
+On suppose \[\lim_af=l\qquad\text{et}\qquad\lim_ag=l\prim.\]
+
+Si la somme \(l+l\prim\) est bien définie dans \(\Rb\) (\cad si \(\paren{l,l\prim}\not\in\accol{\paren{\minf,\pinf};\paren{\pinf,\minf}}\)), alors \[\lim_a\paren{f+g}=l+l\prim.\]
+
+Plus généralement, si la combinaison linéaire \(\lambda l+\mu l\prim\) est bien définie dans \(\Rb\), alors \[\lim_a\paren{\lambda f+\mu g}=\lambda l+\mu l\prim.\]
+
+Si le produit \(ll\prim\) est bien défini dans \(\Rb\) (\cad si \(\paren{l,l\prim}\not\in\accol{\paren{\minf,0};\paren{\pinf,0};\paren{0;\pinf};\paren{0;\minf}}\)), alors \[\lim_afg=ll\prim.\]
+
+Si \(\lim_af=\pinf\) alors \[\lim_a\dfrac{1}{f}=0^+.\]
+
+Si \(\lim_af=\minf\) alors \[\lim_a\dfrac{1}{f}=0^-.\]
+
+Si \(\lim_af=l\in\Rs\) alors \[\lim_a\dfrac{1}{f}=\dfrac{1}{l}.\]
+
+Si \(\lim_af=0^+\) alors \[\lim_a\dfrac{1}{f}=\pinf.\]
+
+Si \(\lim_af=0^-\) alors \[\lim_a\dfrac{1}{f}=\minf.\]
+\end{prop}
+
+\begin{dem}[Somme]
+Supposons \(l,l\prim\in\R\).
+
+Montrons que \(\lim_a\paren{f+g}=l+l\prim\), \cad : \[\quantifs{\forall\epsilon\in\Rps;\exists V\in\V{a};\forall x\in A\inter V}\abs{f\paren{x}+g\paren{x}-l-l\prim}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(V_1\in\V{a}\) tel que \(\quantifs{\forall x\in A\inter V_1}\abs{f\paren{x}-l}\leq\dfrac{\epsilon}{2}\).
+
+Soit \(V_2\in\V{a}\) tel que \(\quantifs{\forall x\in A\inter V_2}\abs{g\paren{x}-l\prim}\leq\dfrac{\epsilon}{2}\).
+
+Posons \(V=V_1\inter V_2\in\V{a}\).
+
+On a \[\begin{aligned}
+\quantifs{\forall x\in A\inter V}\abs{f\paren{x}+g\paren{x}-l-l\prim}&\leq\abs{f\paren{x}-l}+\abs{g\paren{x}-l\prim} \\
+&\leq\dfrac{\epsilon}{2}+\dfrac{\epsilon}{2} \\
+&=\epsilon
+\end{aligned}\]
+
+Donc \(V\) convient.
+
+Donc \(\lim_a\paren{f+g}=l+l\prim\).
+
+Si \(l\in\accol{\minf;\pinf}\) ou \(l\prim\in\accol{\minf;\pinf}\), alors \(\lim_a\paren{f+g}=l+l\prim\) découle de la \thref{prop:limiteProduitOuSommeFonctionMinoréeMajoréeOuBornée}.
+\end{dem}
+
+\begin{dem}[Autres opérations]
+\note{Exercice}
+\end{dem}
+
+\begin{prop}[Composition de limites]\thlabel{prop:compositionLimitesFonctions}
+Soient \(A\subset\R\), \(B\subset\R\), \(f:A\to B\), \(g:B\to\R\) et \(a,b,c\in\Rb\).
+
+On suppose \[\lim_{x\to a}f\paren{x}=b\qquad\text{et}\qquad\lim_{y\to b}g\paren{y}=c.\]
+
+Alors \[\lim_{x\to a}g\rond f\paren{x}=c.\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(\lim_ag\rond f=c\), \cad \[\quantifs{\forall V\in\V{c};\exists W\in\V{a}}g\rond f\paren{A\inter W}\subset V.\]
+
+Soit \(V\in\V{c}\).
+
+Comme \(\lim_bg=c\), il existe \(W_1\in\V{b}\) tel que \(g\paren{B\inter W_1}\subset V\).
+
+Comme \(\lim_af=b\), il existe \(W\in\V{a}\) tel que \(f\paren{A\inter W}\subset W_1\).
+
+Ainsi, on a \(f\paren{A\inter W}\subset W_1\inter B\) car \(\Im f\subset B\).
+
+Donc \(g\paren{f\paren{A\inter W}}\subset V\).
+
+\Cad \(g\rond f\paren{A\inter W}\subset V\).
+
+Donc \(W\) convient.
+
+D'où \(\lim_{x\to a}g\rond f\paren{x}=c\).
+\end{dem}
+
+\begin{rem}
+On peut également composer des limites par valeurs supérieures avec des limites à droite ou des limites par valeurs inférieures avec des limites à gauche. Voir la proposition suivante, par exemple.
+\end{rem}
+
+\begin{prop}
+Soient \(A\subset\R\), \(B\subset\R\), \(f:A\to B\), \(g:B\to\R\), \(a,c\in\Rb\) et \(b\in\R\).
+
+On suppose \[\lim_{x\to a}f\paren{x}=b^+\qquad\text{et}\qquad\lim_{y\to b^+}g\paren{y}=c.\]
+
+Alors \[\lim_{x\to a}g\rond f\paren{x}=c.\]
+\end{prop}
+
+\begin{cor}[Passage à la limite dans une inégalité, version 2]
+\textit{Version 1 : \thref{cor:passageALaLimiteDansUneInegalitéFonctionsV1}.}
+
+Soient \(A\subset\R\), \(f,g\in\F{A}{\R}\) et \(a\in\Rb\).
+
+On suppose que \(f\) et \(g\) admettent chacune une limite en \(a\) et qu'on a \(f\leq g\) au voisinage de \(a\), \cad : \[\quantifs{\exists V\in\V{a};\forall x\in A\inter V}f\paren{x}\leq g\paren{x}.\]
+
+Alors \[\lim_{x\to a}f\paren{x}\leq\lim_{x\to a}g\paren{x}.\]
+\end{cor}
+
+\begin{dem}
+Si \(\lim_af\) et \(\lim_ag\) sont finies :
+
+On a \(f\leq g\) au voisinage de \(a\).
+
+Donc \(0\leq g-f\).
+
+Donc \(0\leq\lim_ag-\lim_af\) selon le \thref{cor:passageALaLimiteDansUneInegalitéFonctionsV1}.
+
+Donc \(\lim_af\leq\lim_ag\).
+
+Si \(\lim_af=\pinf\) alors \(\lim_ag=\pinf\) par le théorème des gendarmes.
+
+Si \(\lim_af=\minf\) alors \(\lim_af\leq\lim_ag\).
+
+Idem pour \(g\).
+\end{dem}
+
+\subsection{Caractérisation séquentielle de la limite}
+
+\begin{prop}\thlabel{prop:caractérisationSéquentielleDeLaLimite}
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a,l\in\Rb\).
+
+On suppose que tout voisinage de \(a\) rencontre \(A\).
+
+On a : \[\lim_{x\to a}f\paren{x}=l\ssi\croch{\quantifs{\forall\paren{x_n}_{n\in\N}\in A^\N}\lim_{n\to\pinf}x_n=a\imp\lim_{n\to\pinf}f\paren{x_n}=l}.\]
+
+Autrement dit : \(f\) tend vers \(l\) en \(a\) si, et seulement si, pour toute suite \(\paren{x_n}_{n\in\N}\) d'éléments de \(A\) qui tend vers \(a\), la suite \(\paren{f\paren{x_n}}_{n\in\N}\) tend vers \(l\).
+\end{prop}
+
+\begin{dem}
+\impdir
+
+Supposons \(\lim_af=l\).
+
+Soit \(\paren{x_n}_n\in A^\N\) de limite \(a\).
+
+On a \(\begin{dcases}\lim_{n\to\pinf}x_n=a \\ \lim_{x\to a}f\paren{x}=l\end{dcases}\) donc \[\lim_{n\to\pinf}f\paren{x_n}=l.\]
+
+\imprec
+
+Par contraposée :
+
+Supposons que \(f\) ne tende pas vers \(l\) en \(a\).
+
+On a \[\non\croch{\quantifs{\forall V\in\V{l};\exists W\in\V{a};\forall x\in A\inter W}f\paren{x}\in V}.\]
+
+\Cad \[\quantifs{\exists V\in\V{l};\forall W\in\V{a};\exists x\in A\inter W}f\paren{x}\not\in V.\]
+
+Soit \(V\) un tel voisinage.
+
+Supposons \(a\in\R\).
+
+On a \[\quantifs{\forall n\in\Ns;\exists x_n\in A\inter\intervee{a-\dfrac{1}{n}}{a+\dfrac{1}{n}}}f\paren{x_n}\not\in V.\]
+
+En considérant pour tout \(n\in\Ns\) un tel \(x_n\), on obtient une suite \(\paren{x_n}_{n\in\Ns}\in A^{\Ns}\) telle que \[\quantifs{\forall n\in\Ns}\begin{dcases}f\paren{x_n}\not\in V \\ \abs{x_n-a}\leq\dfrac{1}{n}\end{dcases}\]
+
+On en déduit \(\lim_nx_n=a\) par le théorème des gendarmes.
+
+Enfin, \(\paren{f\paren{x_n}}_n\) ne tend pas vers \(l\) car \(\quantifs{\forall n\in\Ns}f\paren{x_n}\not\in V\).
+
+Supposons \(a=\pinf\).
+
+On prend cette fois \(W=\intervie{n}{\pinf}\) et on conclut de la même façon.
+
+Si \(a=\minf\), idem avec \(W=\intervei{\minf}{n}\).
+\end{dem}
+
+\begin{ex}
+Montrons que \(\sin\) n'admet pas de limite en \(\pinf\).
+
+Par l'absurde, supposons que \(\sin\) admet une limite \(l\in\Rb\) en \(\pinf\).
+
+En prenant \(\quantifs{\forall n\in\N}x_n=n\pi\), on obtient une suite \(\paren{x_n}_n\in\R^\N\) qui tend vers \(\pinf\).
+
+On a donc \(\lim_n\sin x_n=l\).
+
+Or \(\quantifs{\forall n\in\N}\sin x_n=0\).
+
+Donc \(l=0\).
+
+En prenant \(\quantifs{\forall n\in\N}y_n=\dfrac{\pi}{2}+2n\pi\), on obtient une suite \(\paren{y_n}_n\in\R^\N\) qui tend vers \(\pinf\).
+
+On a donc \(\lim_n\sin y_n=l\).
+
+Or \(\quantifs{\forall n\in\N}\sin y_n=1\).
+
+Donc \(l=1\) : contradiction.
+
+Donc \(\sin\) n'admet pas de limite en \(\pinf\).
+\end{ex}
+
+\subsection{Théorème de la limite monotone}
+
+\begin{theo}[Théorème de la limite monotone en \(\pinf\)]
+Soient \(A\subset\R\) et \(f:A\to\R\).
+
+On suppose que \(f\) est monotone et que \(A\) est une partie de \(\R\) non-majorée.
+
+Alors \(f\) admet une limite en \(\pinf\) : \[\lim_{x\to\pinf}f\paren{x}=\begin{dcases}
+\pinf &\text{si \(f\) est croissante et non-majorée} \\
+\sup_Af &\text{si \(f\) est croissante et majorée} \\
+\minf &\text{si \(f\) est décroissante et non-minorée} \\
+\inf_Af &\text{si \(f\) est décroissante et minorée}
+\end{dcases}\]
+\end{theo}
+
+\begin{dem}
+Supposons \(f\) croissante.
+
+Si \(f\) est non-majorée :
+
+Montrons que \(\lim_{\pinf} f=\pinf\), \cad \[\quantifs{\forall\alpha\in\R;\exists\beta\in\R;\forall x\in A}x\geq\beta\imp f\paren{x}\geq\alpha.\]
+
+Soit \(\alpha\in\R\).
+
+Comme \(f\) n'est pas majorée, il existe \(\beta\in A\) tel que \(f\paren{\beta}>\alpha\).
+
+Comme \(f\) est croissante, on a \[\quantifs{\forall x\in A}x\geq\beta\imp f\paren{x}\geq f\paren{\beta}\geq\alpha.\]
+
+Donc \(\beta\) convient et \(\lim_{\pinf}f=\pinf\).
+
+Si \(f\) est majorée :
+
+La partie \(\Im f\) de \(\R\) est non-vide car \(A\) est non-vide (car \(A\) est non-majorée) et majorée car \(f\) est majorée.
+
+Donc \(f\) admet une borne supérieure \(\lambda\in\R\).
+
+Montrons que \(\lim_{\pinf}f=\lambda\), \cad \[\quantifs{\forall\epsilon\in\Rps;\exists\beta\in\R;\forall x\in A}x\geq\beta\imp\abs{f\paren{x}-\lambda}\leq\epsilon.\]
+
+Rappel : \(\lambda\) est caractérisée par \(\begin{dcases}\quantifs{\forall x\in A}f\paren{x}\leq\lambda \\ \quantifs{\forall\epsilon\in\Rps;\exists x\in A}\lambda-\epsilon<f\paren{x}\end{dcases}\)
+
+Soit \(\epsilon\in\Rps\).
+
+D'après la caractérisation de \(\lambda\), il existe un point \(\beta\in A\) tel que \(\lambda-\epsilon<f\paren{\beta}\).
+
+On a \[\quantifs{\forall x\in A}x\geq\beta\imp\lambda-\epsilon<f\paren{\beta}\leq f\paren{x}\leq\lambda.\]
+
+Donc \[\quantifs{\forall x\in A}x\geq\beta\imp\lambda-\epsilon\leq f\paren{x}\leq\lambda+\epsilon.\]
+
+Donc \[\quantifs{\forall x\in A}x\geq\beta\imp\abs{f\paren{x}-\lambda}\leq\epsilon.\]
+
+D'où \(\lim_{\pinf}f=\lambda\).
+
+Idem si \(f\) est décroissante.
+\end{dem}
+
+\begin{theo}[Théorème de la limite monotone en \(\minf\)]
+Soient \(A\subset\R\) et \(f:A\to\R\).
+
+On suppose que \(f\) est monotone et que \(A\) est une partie de \(\R\) non-minorée.
+
+Alors \(f\) admet une limite en \(\minf\) : \[\lim_{x\to\minf}f\paren{x}=\begin{dcases}
+\minf &\text{si \(f\) est croissante et non-minorée} \\
+\inf_Af &\text{si \(f\) est croissante et minorée} \\
+\pinf &\text{si \(f\) est décroissante et non-majorée} \\
+\sup_Af &\text{si \(f\) est décroissante et majorée}
+\end{dcases}\]
+\end{theo}
+
+\begin{theo}[Théorème de la limite monotone en à gauche d'un réel]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in\R\).
+
+On suppose que \(f\) est monotone et que tout voisinage de \(a\) rencontre l'ensemble \(B=A\inter\intervee{\minf}{a}\).
+
+Alors \(f\) admet une limite à gauche en \(a\) : \[\lim_{x\to a^-}f\paren{x}=\begin{dcases}
+\pinf &\text{si \(f\) est croissante et non-majorée sur \(B\)} \\
+\sup_Bf &\text{si \(f\) est croissante et majorée sur \(B\)} \\
+\minf &\text{si \(f\) est décroissante et non-minorée sur \(B\)} \\
+\inf_Bf &\text{si \(f\) est décroissante et minorée sur \(B\)}
+\end{dcases}\]
+\end{theo}
+
+\begin{dem}[Si \(f\) est croissante et non-majorée sur \(B\)]
+Comme \(f\) n'est pas majorée sur \(B\), on a \[\quantifs{\forall\alpha\in\R;\exists b\in B}f\paren{b}>\alpha.\]
+
+Donc, comme \(f\) est croissante, on a \[\quantifs{\forall\alpha\in\R;\exists b\in B;\forall x\in A\inter\intervie{b}{a}}f\paren{x}>\alpha.\]
+
+Donc \[\quantifs{\forall\alpha\in\R;\exists\delta\in\Rps;\forall x\in A\inter\intervie{a-\delta}{a}}f\paren{x}>\alpha\] en prenant \(\delta=a-b\).
+
+Finalement : \[\quantifs{\forall\alpha\in\R;\exists\delta\in\Rps;\forall x\in B}\abs{x-a}\leq\delta\imp f\paren{x}\geq\alpha.\]
+
+Donc \(\lim_{a^-}f=\pinf\).
+\end{dem}
+
+\begin{dem}[Autres cas]
+\note{Exercice}
+\end{dem}
+
+\begin{theo}[Théorème de la limite monotone en à droite d'un réel]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in\R\).
+
+On suppose que \(f\) est monotone et que tout voisinage de \(a\) rencontre l'ensemble \(B=A\inter\intervee{a}{\pinf}\).
+
+Alors \(f\) admet une limite à droite en \(a\) : \[\lim_{x\to a^+}f\paren{x}=\begin{dcases}
+\minf &\text{si \(f\) est croissante et non-minorée sur \(B\)} \\
+\inf_Bf &\text{si \(f\) est croissante et minorée sur \(B\)} \\
+\pinf &\text{si \(f\) est décroissante et non-majorée sur \(B\)} \\
+\sup_Bf &\text{si \(f\) est décroissante et majorée sur \(B\)}
+\end{dcases}\]
+\end{theo}
+
+\begin{bilan}
+Une fonction monotone admet une limite à droite et une limite à gauche partout où son ensemble de définition le permet.
+\end{bilan}
+
+\begin{ex}
+Étudions les limites de la fonction \guillemets{partie entière} : \[\fonction{f}{\R}{\R}{x}{\floor{x}}\]
+
+Comme \(f\) est croissante sur \(\R\), selon le théorème de la limite monotone, elle admet une limite en \(\pinf\), en \(\minf\) et à droite et à gauche en tout point \(a\in\R\).
+
+On a \(\lim_{\pinf}f=\pinf\).
+
+En effet, cette limite existe et en posant \(\quantifs{\forall n\in\N}x_n=n\), on obtient une suite \(\paren{x_n}_n\) qui tend vers \(\pinf\) et on a \(\lim_{\pinf}f=\lim_nf\paren{x_n}=\pinf\).
+
+On a de même \(\lim_{\minf}f=\minf\) en prenant \(\quantifs{\forall n\in\N}x_n=-n\).
+
+Soit \(a\in\R\).
+
+On a \[\begin{dcases}\lim_{a^+}f=\floor{a} \\ \lim_{a^-}f=\begin{dcases}a-1 &\text{si \(a\in\Z\)} \\ \floor{a} &\text{sinon}\end{dcases}\end{dcases}\]
+
+En effet :
+
+Si \(a\not\in\Z\), on a \[\quantifs{\forall x\in\underbrace{\intervie{\floor{a}}{\floor{a}+1}}_{\text{voisinage de \(a\)}}}f\paren{x}=\floor{a}.\]
+
+Donc au voisinage de \(a\), \(f\) est constante et égale à \(\floor{a}\).
+
+Donc \(\lim_{a^+}f=\lim_{a^-}f=\floor{a}\).
+
+Sinon, on a \[\quantifs{\forall x\in\intervie{a}{a+1}}f\paren{x}=a\] donc \(\lim_{a^+}f=a=\floor{a}\) et \[\quantifs{\forall x\in\intervie{a-1}{a}}f\paren{x}=a-1\] donc \(\lim_{a^-}f=a-1\).
+\end{ex}
+
+\section{Continuité}
+
+\subsection{Fonctions continues en un point}
+
+\subsubsection{Définitions}
+
+\begin{defi}[Continuité en un point]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in A\).
+
+On suppose que \(f\) est définie en \(a\).
+
+On dit que \(f\) est continue en \(a\) si \(f\) admet une limite en \(a\), \cad, selon la \thref{rem:limiteEnAEgaleFDeA} si \[\lim_{x\to a}f\paren{x}=f\paren{a}.\]
+\end{defi}
+
+\begin{rem}
+Pour qu'une fonction soit continue en un point, il faut qu'elle soit définie en ce point.
+
+Si une fonction est continue en un point, elle est bornée au voisinage de ce point (selon le \thref{cor:limiteFinieDoncFonctionBornée}).
+\end{rem}
+
+\begin{rem}\thlabel{rem:deuxFonctionsQuiCoincidentAuVoisinageD'unPointSontContinuesEnCePointSsiL'autreAussi}
+Soient \(A\subset\R\), \(f,g\in\F{A}{\R}\) et \(a\in A\).
+
+Si \(f\) et \(g\) coïncident au voisinage de \(a\), alors \(f\) est continue en \(a\) si, et seulement si, \(g\) est continue en \(a\).
+\end{rem}
+
+\begin{dem}
+Découle de la \thref{rem:fonctionsQuiCoincidentSsiLimitesEgales}.
+\end{dem}
+
+\begin{ex}
+Montrons que la fonction \(\sin:\R\to\R\) est continue en \(0\).
+
+On a \[\sin\text{ continu en }0\ssi\lim_{x\to0}\sin x=0.\]
+
+Or on a vu \(\quantifs{\forall x\in\R}\abs{\sin x}\leq\abs{x}\) donc d'après le théorème des gendarmes : \[\lim_{x\to0}\sin x=0.\]
+
+Donc \(\sin\) est continu en \(0\).
+\end{ex}
+
+\begin{defi}[Continuité à droite d'un point]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in A\).
+
+On dit que \(f\) est continue à droite de \(a\) si on a \[\lim_{x\to a^+}f\paren{x}=f\paren{a}.\]
+\end{defi}
+
+\begin{rem}[Reformulation]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in A\).
+
+Alors \(f\) est continue à droite en \(a\) si, et seulement si, on a :
+
+\begin{enumerate}
+\item Tout voisinage de \(a\) rencontre l'ensemble \(A\inter\intervee{a}{\pinf}\). \\
+
+\item La restriction \(\restr{f}{A\inter\intervee{a}{\pinf}}\) est continue en \(a\).
+\end{enumerate}
+\end{rem}
+
+\begin{defi}[Continuité à gauche d'un point]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in A\).
+
+On dit que \(f\) est continue à droite de \(a\) si on a \[\lim_{x\to a^-}f\paren{x}=f\paren{a}.\]
+\end{defi}
+
+\begin{rem}[Reformulation]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in A\).
+
+Alors \(f\) est continue à gauche en \(a\) si, et seulement si, on a :
+
+\begin{enumerate}
+\item Tout voisinage de \(a\) rencontre l'ensemble \(A\inter\intervee{\minf}{a}\). \\
+
+\item La restriction \(\restr{f}{A\inter\intervee{\minf}{a}}\) est continue en \(a\).
+\end{enumerate}
+\end{rem}
+
+\begin{ex}
+La fonction \guillemets{partie entière} : \(\fonctionlambda{\R}{\R}{x}{\floor{x}}\) est \[\begin{dcases}\text{continue en tout point }a\in\R\excluant\Z \\ \text{continue à droite en tout point} \\ \text{non-continue à gauche}\end{dcases}\]
+\end{ex}
+
+\begin{defi}[Prolongement par continuité en un point]
+Soient \(A\subset\R\) et \(f:A\to\R\).
+
+Soit \(a\in\R\excluant A\) tel que tout voisinage de \(a\) rencontre \(A\) : \[\quantifs{\forall V\in\V{a}}V\inter A\not=\ensvide.\]
+
+On appelle prolongement par continuité de \(f\) en \(a\) toute fonction \(g:A\union\accol{a}\to\R\) vérifiant : \[\begin{dcases}\restr{g}{A}=f \\ g\text{ est continue en }a\end{dcases}\]
+\end{defi}
+
+\begin{prop}
+Soient \(A\subset\R\) et \(f:A\to\R\).
+
+Soit \(a\in\R\excluant A\) tel que tout voisinage de \(a\) rencontre \(A\).
+
+Le prolongement par continuité de \(f\) en \(a\) est unique.
+
+Il existe si, et seulement si, la fonction \(f\) admet une limite finie \(l\) en \(a\).
+
+L'unique prolongement par continuité de \(f\) en \(a\) est alors : \[\fonction{g}{A\union\accol{a}}{\R}{x}{\begin{dcases}f\paren{x} &\text{si }x\in A \\ l &\text{si }x=a\end{dcases}}\]
+\end{prop}
+
+\begin{dem}
+\unicite
+
+Soit \(g:A\union\accol{a}\to\R\) telle que \(\begin{dcases}\restr{g}{A}=f \\ g\text{ continue en }a\end{dcases}\)
+
+On a \[\begin{dcases}\quantifs{\forall x\in A}g\paren{x}=f\paren{x} \\ g\paren{a}=\lim_{x\to a}g\paren{x}=\lim_{x\to a}f\paren{x}\end{dcases}\]
+
+Donc \(g\) est unique et pour que \(g\) existe, il faut que \(f\) admette une limite finie en \(a\).
+
+\existence
+
+Montrons que \[f\text{ prolongeable par continuité}\ssi f\text{ admet une limite finie en }a.\]
+
+\impdir Déjà vu.
+
+\imprec
+
+Supposons \(\lim_af=l\in\R\).
+
+Posons \(\fonction{g}{A\union\accol{a}}{\R}{x}{\begin{dcases}f\paren{x} &\text{si }x\in A \\ l &\text{si }x=a\end{dcases}}\)
+
+On a \[\begin{dcases}\restr{g}{A}=f \\ \lim_{x\to a}g\paren{x}=l=g\paren{a}\end{dcases}\]
+
+Donc \(f\) est prolongeable par continuité, de prolongement \(g\).
+\end{dem}
+
+\begin{ex}
+Montrons que les fonctions \[\fonction{f}{\Rs}{\R}{x}{x\sin\dfrac{1}{x}}\qquad\text{et}\qquad\fonction{g}{\Rs}{\R}{x}{\sin\dfrac{1}{x}}\] sont respectivement prolongeable par continuité en \(0\) et non-prolongeable par continuité en \(0\).
+
+On remarque \(\quantifs{\forall x\in\Rs}\abs{x\sin\dfrac{1}{x}}\leq\abs{x}\).
+
+Or \(\lim_{x\to0}\abs{x}=0\).
+
+Donc d'après le théorème des gendarmes, \(\lim_{x\to0}x\sin\dfrac{1}{x}=0\in\R\).
+
+Donc \(f\) est prolongeable par continuité en \(0\).
+
+Montrons que \(g\) n'admet aucune limite finie en \(0\).
+
+Supposons par l'absurde \(\lim_{x\to0}g\paren{x}=l\in\R\).
+
+Posons \[\quantifs{\forall n\in\Ns}\begin{dcases}x_n=\dfrac{1}{n\pi} \\ y_n=\dfrac{1}{2n\pi+\nicefrac{\pi}{2}}\end{dcases}\]
+
+On a \(\lim_nx_n=\lim_ny_n=0\) donc \[\lim_ng\paren{x_n}=\lim_ng\paren{y_n}=l.\]
+
+Or on a \(\begin{dcases}\lim_ng\paren{x_n}=0 \\ \lim_ng\paren{y_n}=1\end{dcases}\) donc \(0=1\) : contradiction.
+
+Donc \(g\) n'admet aucune limite finie en \(0\).
+
+Donc \(g\) n'est pas prolongeable par continuité en \(0\).
+\end{ex}
+
+\subsubsection{Propriétés}
+
+\begin{prop}[Opérations algébriques]\thlabel{prop:opérationsAlgébriquesSurLesFonctionsContinuesEnUnPoint}
+Soient \(A\subset\R\), \(a\in A\), \(\lambda,\mu\in\R\) et \(f,g\in\F{A}{\R}\) continues en \(a\).
+
+La fonction \(f+g\) est continue en \(a\).
+
+La fonction \(\lambda f+\mu g\) est continue en \(a\).
+
+La fonction \(fg\) est continue en \(a\).
+
+Si \(f\paren{a}\not=0\) alors la fonction \(\dfrac{1}{f}\) est continue en \(a\).
+
+Si \(g\paren{a}\not=0\) alors la fonction \(\dfrac{f}{g}\) est continue en \(a\).
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:opérationsAlgébriquesSurLesLimitesFonctions}.
+\end{dem}
+
+\begin{prop}[Composition]\thlabel{prop:compositionDeFonctionsContinuesEnUnPoint}
+Soient \(A\subset\R\), \(B\subset\R\), \(f:A\to\R\), \(g:B\to\R\) et \(a\in A\).
+
+On suppose que \(f\) est continue en \(a\) et que \(g\) est continue en \(f\paren{a}\).
+
+Alors \(g\rond f\) est continue en \(a\).
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:compositionLimitesFonctions}.
+\end{dem}
+
+\subsubsection{Caractérisation séquentielle}
+
+\begin{prop}[Caractérisation séquentielle de la continuité en un point]\thlabel{prop:caractérisationSéquentielleDeLaContinuitéEnUnPoint}
+Soient \(A\subset\R\), \(f:A\to\R\) et \(a\in A\).
+
+On a : \[f\text{ continue en }a\ssi\croch{\quantifs{\forall\paren{x_n}_{n\in\N}\in A^\N}\lim_{n\to\pinf}x_n=a\imp\lim_{n\to\pinf}f\paren{x_n}=f\paren{a}}.\]
+
+Autrement dit : \(f\) est continue en \(a\) si, et seulement si, pour toute suite \(\paren{x_n}_{n\in\N}\) d'éléments de \(A\) qui tend vers \(a\), la suite \(\paren{f\paren{x_n}}_{n\in\N}\) tend vers \(f\paren{a}\).
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:caractérisationSéquentielleDeLaLimite}.
+\end{dem}
+
+\subsection{Fonctions continues}
+
+\subsubsection{Définition}
+
+\begin{defi}[Continuité]
+Soient \(A\subset\R\) et \(f:A\to\R\).
+
+On dit que \(f\) est continue si \(f\) est continue en tout point de \(A\) : \[\quantifs{\forall a\in A}\lim_{x\to a}f\paren{x}=f\paren{a}.\]
+\end{defi}
+
+\begin{ex}
+Les fonctions \[\fonctionlambda{\R}{\R}{x}{\floor{x}}\qquad\text{et}\qquad\fonctionlambda{\Rs}{\R}{x}{\dfrac{1}{x}}\] sont continues.
+\end{ex}
+
+\subsubsection{Propriétés}
+
+\begin{prop}[Restriction]
+Soient \(A\subset\R\), \(B\subset A\) et \(f:A\to\R\).
+
+Alors la restriction \(\restr{f}{B}\) est continue.
+\end{prop}
+
+\begin{prop}[Opérations algébriques]
+Soient \(A\subset\R\), \(f,g\in\F{A}{\R}\) continues et \(\lambda,\mu\in\R\).
+
+La fonction \(f+g\) est continue.
+
+La fonction \(\lambda f+\mu g\) est continue.
+
+La fonction \(fg\) est continue.
+
+Si \(\quantifs{\forall a\in A}f\paren{a}\not=0\) alors la fonction \(\dfrac{1}{f}\) est continue.
+
+Si \(\quantifs{\forall a\in A}g\paren{a}\not=0\) alors la fonction \(\dfrac{f}{g}\) est continue.
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:opérationsAlgébriquesSurLesFonctionsContinuesEnUnPoint}.
+\end{dem}
+
+\begin{prop}[Composition]
+Soient \(A\subset\R\), \(B\subset\R\), \(f:A\to\R\) et \(g:B\to\R\).
+
+On suppose que \(f\) est continue (sur \(A\)) et que \(g\) est continue (sur \(B\)).
+
+Alors \(g\rond f\) est continue (sur \(A\)).
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:compositionDeFonctionsContinuesEnUnPoint}.
+\end{dem}
+
+\subsubsection{Caractérisation séquentielle}
+
+\begin{prop}[Caractérisation séquentielle de la continuité]
+Soient \(A\subset\R\) et \(f:A\to\R\).
+
+On a : \[f\text{ est continue}\ssi\croch{\quantifs{\forall\paren{x_n}_{n\in\N}\in A^\N}\lim_{n\to\pinf}x_n\in A\imp\lim_{n\to\pinf}f\paren{x_n}=f\paren{\lim_{n\to\pinf}x_n}}.\]
+
+Autrement dit : \(f\) est continue si, et seulement si, pour toute suite convergente \(\paren{x_n}_{n\in\N}\) d'éléments de \(A\) dont la limite \(l\) appartient à \(A\), la suite \(\paren{f\paren{x_n}}_{n\in\N}\) converge vers \(f\paren{l}\).
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:caractérisationSéquentielleDeLaContinuitéEnUnPoint}.
+\end{dem}
+
+\subsubsection{Exemples usuels}
+
+\begin{prop}
+Les fonctions \[\exp:\R\to\R\quad\ln:\Rps\to\R\quad\sin:\R\to\R\quad\cos:\R\to\R\quad\tan:\bigunion_{k\in\Z}\intervee{-\dfrac{\pi}{2}+k\pi}{\dfrac{\pi}{2}+k\pi}\to\R\] et, pour tout \(\alpha\in\R\), \[\fonctionlambda{\Rps}{\R}{x}{x^\alpha}\] sont continues.
+\end{prop}
+
+\begin{dem}
+\note{Admis}
+\end{dem}
+
+\subsubsection{Remarque}
+
+\begin{rem}
+Soient \(A\subset\R\), \(B\subset\R\) et \(f:A\to\R\).
+
+Ne pas confondre :
+
+\begin{enumerate}
+\item La restriction \(\restr{f}{B}\) est continue. \\
+
+\item La fonction \(f\) est continue en tout point de \(B\).
+\end{enumerate}
+
+On a (1) \(\imp\) (2) mais l'implication réciproque est fausse en général.
+
+Cela dit, dans le cas particulier où \(B\) est un voisinage d'un réel \(x\), la continuité de \(\restr{f}{B}\) implique la continuité de \(f\) en \(x\) (selon la \thref{rem:deuxFonctionsQuiCoincidentAuVoisinageD'unPointSontContinuesEnCePointSsiL'autreAussi}).
+\end{rem}
+
+\begin{ex}
+La fonction \guillemets{partie entière} : \[\fonction{f}{\R}{\R}{x}{\floor{x}}.\]
+
+\(\restr{f}{\intervie{0}{1}}\) est continue mais la proposition \[\quantifs{\forall x\in\intervie{0}{1}}f\text{ est continue en }x\] est fausse.
+\end{ex}
+
+\subsection{Fonctions continues sur un intervalle}
+
+\subsubsection{Intervalles}
+
+\begin{rappel}
+On appelle intervalle de \(\R\) toute partie \(I\subset\R\) telle que : \[\quantifs{\forall a,b\in I;\forall x\in\R}a<x<b\imp x\in I.\]
+\end{rappel}
+
+\begin{theo}[Description des intervalles de \(\R\)]\thlabel{theo:descriptionDesIntervallesDeR}
+Les intervalles de \(\R\) sont les parties de \(\R\) de la forme :
+
+\begin{itemize}
+\item \(\intervii{a}{b}=\accol{x\in\R\tq a\leq x\leq b}\) avec \(a,b\in\R\) \\
+
+\item \(\intervie{a}{b}=\accol{x\in\R\tq a\leq x<b}\) avec \(a\in\R\) et \(b\in\R\union\accol{\pinf}\). \\
+
+\item \(\intervei{a}{b}=\accol{x\in\R\tq a<x\leq b}\) avec \(a\in\R\union\accol{\minf}\) et \(b\in\R\). \\
+
+\item \(\intervee{a}{b}=\accol{x\in\R\tq a<x<b}\) avec \(a\in\R\union\accol{\minf}\) et \(b\in\R\union\accol{\pinf}\).
+\end{itemize}
+
+NB : l'ensemble vide est bien un intervalle, on l'obtient en prenant \(a>b\).
+\end{theo}
+
+\begin{dem}
+\note{Exercice} (\cf \thref{exo:7.17}).
+\end{dem}
+
+\begin{defi}[Segment]
+On appelle segment tout intervalle de la forme \(\intervii{a}{b}\) où \(a,b\in\R\) tels que \(a\leq b\).
+\end{defi}
+
+\begin{rem}
+L'ensemble vide est un intervalle mais pas un segment.
+\end{rem}
+
+\subsubsection{Théorème des valeurs intermédiaires}
+
+\begin{theo}[Théorème des valeurs intermédiaires]
+Soient \(I\) un intervalle de \(\R\), \(f:I\to\R\) continue et \(x_1,x_2\in I\).
+
+Tout réel compris entre \(f\paren{x_1}\) et \(f\paren{x_2}\) admet un antécédent par \(f\) : \[\quantifs{\forall y\in\R}f\paren{x_1}<y<f\paren{x_2}\imp\croch{\quantifs{\exists x\in I}f\paren{x}=y}.\]
+\end{theo}
+
+\begin{dem}~\\
+On pose \(\begin{dcases}a_0=\min\accol{x_1;x_2} \\ b_0=\max\accol{x_1;x_2}\end{dcases}\)
+
+Quitte à remplacer \(f\) par \(-f\), on suppose \(f\paren{a_0}<f\paren{b_0}\).
+
+Soit \(y\in\intervee{f\paren{a_0}}{f\paren{b_0}}\).
+
+Montrons que \(y\in\Im f\).
+
+On construit par récurrence la suite croissante \(\paren{a_n}_n\) et la suite décroissante \(\paren{b_n}_n\) telles que \[\quantifs{\forall n\in\N}\begin{dcases}f\paren{a_n}\leq y\leq f\paren{b_n} \\ b_n-a_n=\dfrac{b_0-a_0}{2^n}\end{dcases}\]
+
+Soit \(n\in\N\) tel que \(\begin{dcases}f\paren{a_n}\leq y\leq f\paren{b_n} \\ b_n-a_n=\dfrac{b_0-a_0}{2^n}\end{dcases}\)
+
+Si \(f\paren{\dfrac{b_n+a_n}{2}}\leq y\) on pose \(\begin{dcases}a_{n+1}=\dfrac{a_n+b_n}{2} \\ b_{n+1}=b_n\end{dcases}\)
+
+Sinon, on pose \(\begin{dcases}a_{n+1}=a_n \\ b_{n+1}=\dfrac{a_n+b_n}{2}\end{dcases}\)
+
+D'où les deux suites.
+
+\(\paren{a_n}_n\) et \(\paren{b_n}_n\) sont adjacentes donc convergentes et de même limite \(l\).
+
+De plus, on a \(a_0\leq l\leq b_0\) et \(a_0,b_0\in I\) donc \(l\in I\).
+
+On a \(\begin{dcases}\lim_na_n=\lim_nb_n=l\in I \\ f\text{ continue en }l\end{dcases}\) donc \[\lim_nf\paren{a_n}=\lim_nf\paren{b_n}=f\paren{l}.\]
+
+Enfin, on a \(\quantifs{\forall n\in\N}f\paren{a_n}\leq y\leq f\paren{b_n}\) donc par passage à la limite : \[f\paren{l}\leq y\leq f\paren{l}.\]
+
+Donc \(y=f\paren{l}\).
+
+Donc \(y\in\Im f\).
+\end{dem}
+
+\begin{cor}[L'image continue d'un intervalle est un intervalle]
+Soient \(I\) un intervalle de \(\R\) et \(f:I\to\R\) continue.
+
+Alors l'image directe \(f\paren{I}\) est un intervalle de \(\R\).
+\end{cor}
+
+\begin{dem}
+Soient \(y_1,y_2\in f\paren{I}\) et \(y\in\R\).
+
+Supposons \(y_1\leq y\leq y_2\).
+
+Montrons que \(y\in f\paren{I}\).
+
+Soient \(x_1,x_2\in I\) tels que \(\begin{dcases}y_1=f\paren{x_1} \\ y_2=f\paren{x_2}\end{dcases}\)
+
+On a \(f\paren{x_1}\leq y\leq f\paren{x_2}\), \(f\) est continue et \(I\) est un intervalle donc selon le théorèmes des valeurs intermédiaires, il existe \(x\in I\) tel que \[f\paren{x}=y.\]
+
+Donc \(y\in f\paren{I}\).
+\end{dem}
+
+\begin{rem}
+Le corollaire précédent est lui aussi appelé \guillemets{théorèmes des valeurs intermédiaires}.
+\end{rem}
+
+\begin{ex}
+Montrons par des exemples que :
+
+\begin{itemize}
+\item l'image d'un intervalle borné par une fonction continue peut être un intervalle non-borné ; \\
+
+\item l'image d'un intervalle non-borné par une fonction continue peut être un intervalle borné ; \\
+
+\item l'image d'un intervalle ouvert par une fonction continue peut être un segment.
+\end{itemize}
+
+Soit \(f:x\mapsto\dfrac{1}{x}\). On a \(f\paren{\intervei{0}{1}}=\intervie{1}{\pinf}\).
+
+On a \(\sin\paren{\R}=\intervii{-1}{1}\).
+
+On a \(\sin\paren{\intervee{0}{4\pi}}=\intervii{-1}{1}\).
+\end{ex}
+
+\begin{cor}[TVI appliqué aux fonctions strictement monotones]\thlabel{cor:TVIAppliquéAuxFonctionsStrictementMonotones}
+Soient \(a,b\in\Rb\) tels que \(a<b\), \(I\) un intervalle de \(\R\) de bornes \(a\) et \(b\) et \(f:I\to\R\) continue et strictement monotone.
+
+Alors \(f\) est bijective de l'intervalle \(I\) vers l'intervalle \(f\paren{I}\).
+
+On a :
+
+Si \(f\) est croissante et \(I=\intervii{a}{b}\) alors \(f\paren{I}=\intervii{f\paren{a}}{f\paren{b}}\).
+
+Si \(f\) est décroissante et \(I=\intervii{a}{b}\) alors \(f\paren{I}=\intervii{f\paren{b}}{f\paren{a}}\).
+
+Si \(f\) est croissante et \(I=\intervie{a}{b}\) alors \(f\paren{I}=\intervie{f\paren{a}}{\lim_bf}\).
+
+Si \(f\) est décroissante et \(I=\intervie{a}{b}\) alors \(f\paren{I}=\intervei{\lim_bf}{f\paren{a}}\).
+
+Si \(f\) est croissante et \(I=\intervei{a}{b}\) alors \(f\paren{I}=\intervei{\lim_af}{f\paren{b}}\).
+
+Si \(f\) est décroissante et \(I=\intervei{a}{b}\) alors \(f\paren{I}=\intervie{f\paren{b}}{\lim_af}\).
+
+Si \(f\) est croissante et \(I=\intervee{a}{b}\) alors \(f\paren{I}=\intervee{\lim_af}{\lim_bf}\).
+
+Si \(f\) est décroissante et \(I=\intervee{a}{b}\) alors \(f\paren{I}=\intervee{\lim_bf}{\lim_af}\).
+
+{
+\small Pour ne pas allonger inutilement l'énoncé, on a supposé implicitement :
+
+\begin{itemize}
+\item que \(a\) n'est pas égal à \(\pinf\) (car \(a<b\)), ni à \(\minf\) si \(a\in I\) (car \(I\subset\R\)) ; \\
+
+\item que \(b\) n'est pas égal à \(\minf\) (car \(a<b\)), ni à \(\pinf\) si \(b\in I\) (car \(I\subset\R\)).
+\end{itemize}
+}
+\end{cor}
+
+\begin{dem}[Cas où \(f\) est croissante et \(I=\intervii{a}{b}\)]
+\(f\) est continue et \(I\) est un intervalle donc \(f\paren{I}\) est un intervalle selon le théorème des valeurs intermédiaires.
+
+\(f\) est strictement monotone donc c'est une injection et donc une bijection de \(I\) vers \(f\paren{I}\).
+
+Déterminons \(f\paren{I}\) :
+
+Supposons \(f\) croissante et \(I=\intervii{a}{b}\).
+
+On a \(\quantifs{\forall x\in I}a\leq x\leq b\) donc \(\quantifs{\forall x\in I}f\paren{a}\leq f\paren{x}\leq f\paren{b}\).
+
+Donc \(f\paren{I}=\intervii{f\paren{a}}{f\paren{b}}\).
+\end{dem}
+
+\begin{dem}[Cas où \(f\) est croissante et \(I=\intervie{a}{b}\)]
+\(f\) est continue et \(I\) est un intervalle donc \(f\paren{I}\) est un intervalle selon le théorème des valeurs intermédiaires.
+
+\(f\) est strictement monotone donc c'est une injection et donc une bijection de \(I\) vers \(f\paren{I}\).
+
+Déterminons \(f\paren{I}\) :
+
+Supposons \(f\) croissante et \(I=\intervie{a}{b}\).
+
+On a \(\quantifs{\forall x\in I}f\paren{a}\leq f\paren{x}\) donc \(\min f\paren{I}=f\paren{a}\).
+
+Supposons \(f\) non-majorée, \cad \(f\paren{I}\) non-majoré.
+
+Comme \(f\) est croissante et non-majorée, d'après le théorème de la limite monotone, on a \(f\paren{I}=\intervie{f\paren{a}}{\pinf}=\intervie{f\paren{a}}{\lim_bf}\).
+
+Supposons \(f\) majorée.
+
+D'après le théorème de la limite monotone, on a \(\lim_bf=\sup_If=\sup f\paren{I}\).
+
+Donc \(f\paren{I}=\intervie{f\paren{a}}{\lim_bf}\) ou \(f\paren{I}=\intervii{f\paren{a}}{\lim_bf}\) car \(f\paren{I}\) est un intervalle, \(\min f\paren{I}=f\paren{a}\) et \(\sup f\paren{I}=\lim_bf\).
+
+Montrons que \(\lim_bf\not\in f\paren{I}\).
+
+Par l'absurde, supposons \(\lim_bf\in f\paren{I}\).
+
+Soit \(c\in I\) tel que \(f\paren{c}=\lim_bf\).
+
+On a \[\quantifs{\forall x\in\intervie{c}{b}}f\paren{c}\leq f\paren{x}\leq\sup_If=f\paren{c}.\]
+
+Donc \(f\) est constante sur \(\intervie{c}{b}\) : contradiction.
+
+Donc \(\lim_bf\not\in f\paren{I}\).
+
+Donc \(f\paren{I}=\intervie{f\paren{a}}{\lim_bf}\).
+\end{dem}
+
+\begin{dem}[Autres cas]
+\note{Exercice}
+\end{dem}
+
+\subsection{Fonctions continues sur un segment}
+
+\begin{theo}[Théorème des bornes atteintes]
+Soit \(f:\intervii{a}{b}\to\R\) une fonction continue sur un segment \(\intervii{a}{b}\) de \(\R\).
+
+Alors \(f\) admet un minimum et un maximum.
+\end{theo}
+
+\begin{rappel}[\Cf \thref{exo:5.15}]
+Soit \(A\subset\R\).
+
+Si \(A\) est non-majorée alors il existe une suite d'éléments de \(A\) qui tend vers \(\pinf\).
+
+Si \(\lambda=\sup A\) alors il existe une suite d'éléments de \(A\) qui tend vers \(\lambda\).
+\end{rappel}
+
+\begin{dem}
+Montrons que \(f\) est majorée :
+
+Par l'absurde, supposons \(f\) non-majorée, \cad \(\Im f\) non-majoré.
+
+Soit \(\paren{y_n}_n\in\paren{\Im f}^\N\) telle que \(\lim_ny_n=\pinf\).
+
+Soit \(\paren{x_n}_n\in\intervii{a}{b}^\N\) telle que \(\quantifs{\forall n\in\N}f\paren{x_n}=y_n\).
+
+On a \(\lim_nf\paren{x_n}=\pinf\).
+
+Comme \(\paren{x_n}_n\) est bornée, d'après le théorème de Bolzano-Weierstrass, il existe \(\phi:\N\to\N\) strictement croissante telle que \(\paren{x_{\phi\paren{n}}}_n\) soit convergente.
+
+On pose \(l=\lim_nx_{\phi\paren{n}}\).
+
+On a \(\quantifs{\forall n\in\N}a\leq x\leq b\) donc par passage à la limite : \(a\leq l\leq b\). Donc \(l\in\intervii{a}{b}\).
+
+Donc \(f\) est continue en \(l\).
+
+Donc \(f\paren{l}=\lim_nf\paren{x_{\phi\paren{n}}}\).
+
+Or \(\paren{f\paren{x_{\phi\paren{n}}}}_n\) tend vers \(\pinf\) car c'est une suite extraite de \(\paren{f\paren{x_n}}_n\) : contradiction.
+
+Donc \(f\) est majorée.
+
+Donc \(f\paren{\intervii{a}{b}}\) est une partie non-vide et majorée de \(\R\), qui admet donc une borne supérieure.
+
+Donc \(\sup_{\intervii{a}{b}}f\) existe.
+
+Comme précédemment, on construit \(\paren{x_n}_n\in\intervii{a}{b}^\N\) telle que \(\lim_nf\paren{x_n}=\sup_{\intervii{a}{b}}f\).
+
+Selon le théorème de Bolzano-Weierstrass, il existe \(\phi:\N\to\N\) strictement croissante telle que \(\paren{x_{\phi\paren{n}}}_n\) soit convergente vers \(l\in\R\).
+
+Comme précédemment, on montre que \(l\in\intervii{a}{b}\).
+
+On a \(\begin{dcases}\lim_nx_{\phi\paren{n}}=l \\ f\text{ continue en }l\end{dcases}\)
+
+Donc \(\lim_nf\paren{x_{\phi\paren{n}}}=f\paren{l}\).
+
+Donc \(\sup_{\intervii{a}{b}}f=f\paren{l}\).
+
+Donc \(\max_{\intervii{a}{b}}f=f\paren{l}\).
+
+On montre de même le minimum.
+\end{dem}
+
+\begin{rem}
+On énonce parfois ainsi le théorème des bornes atteintes : \guillemets{toute fonction continue sur un segment est bornée et atteint ses bornes}.
+\end{rem}
+
+\begin{cor}[L'image continue d'un segment est un segment]
+Soit \(f:\intervii{a}{b}:\to\R\) une fonction continue sur un segment \(\intervii{a}{b}\) de \(\R\).
+
+Alors l'image directe \(f\paren{\intervii{a}{b}}\) est un segment de \(\R\).
+\end{cor}
+
+\begin{dem}
+\(f\paren{\intervii{a}{b}}\) :
+
+\begin{itemize}
+\item est un intervalle d'après le théorème des valeurs intermédiaires car \(f\) est continue et \(\intervii{a}{b}\) est un intervalle ; \\
+
+\item admet un maximum et un minimum d'après le théorème des bornes atteintes car \(f\) est continue et \(\intervii{a}{b}\) est un segment.
+\end{itemize}
+
+Donc \(f\paren{\intervii{a}{b}}\) est un segment.
+\end{dem}
+
+\subsection{Fonctions continues injectives sur un intervalle}
+
+\begin{theo}\thlabel{theo:fonctionContinueEtInjectiveSurUnIntervalleEstMonotone}
+Soient \(I\) un intervalle de \(\R\) et \(f:I\to\R\) continue et injective.
+
+Alors \(f\) est monotone.
+\end{theo}
+
+\begin{dem}
+\note{Exercice} \Cf \thref{exo:7.31}.
+\end{dem}
+
+\begin{cor}[Reformulation du \thref{theo:fonctionContinueEtInjectiveSurUnIntervalleEstMonotone}]
+Soient \(I\) un intervalle de \(\R\) et \(f:I\to\R\) continue.
+
+Alors \[f\text{ est strictement monotone}\ssi f\text{ est injective.}\]
+\end{cor}
+
+\begin{dem}
+\impdir Évident.
+
+\imprec \thref{theo:fonctionContinueEtInjectiveSurUnIntervalleEstMonotone}.
+\end{dem}
+
+\begin{theo}\thlabel{theo:bijectionReciproqueDeFonctionContinueEtStrictementMonotoneEstContinueEtStrictementDeMêmeMonotonie}
+Soient \(I\) un intervalle de \(\R\) et \(f:I\to\R\) continue et strictement monotone.
+
+Alors \(f\) est une injection et donc une bijection de \(I\) vers \(\Im f\).
+
+Sa bijection réciproque \(f\inv:\Im f\to I\) est continue et strictement monotone.
+
+Précisément : \(f\inv\) est strictement croissante si \(f\) est strictement croissante et strictement décroissante si \(f\) est strictement décroissante.
+\end{theo}
+
+\begin{dem}
+Montrons que \(f\inv\) est strictement monotone.
+
+Supposons \(f\) strictement croissante.
+
+Soient \(y_1,y_2\in\Im f\) tels que \(y_1<y_2\).
+
+On a \(\begin{dcases}f\paren{f\inv\paren{y_1}}<f\paren{f\inv\paren{y_2}} \\ f\text{ strictement croissante}\end{dcases}\)
+
+Donc \(f\inv\paren{y_1}<f\inv\paren{y_2}\).
+
+Donc \(f\inv\) est strictement croissante.
+
+Idem si \(f\) est strictement décroissante.
+
+Montrons que \(f\inv\) est continue.
+
+Supposons \(f\) strictement croissante.
+
+Soit \(y_0\in\Im f\).
+
+Montrons que \(f\inv\) est continue en \(y_0\).
+
+On pose \(x_0=f\inv\paren{y_0}\). Montrons que \(\lim_{y_0}f\inv=x_0\), \cad \[\quantifs{\forall\epsilon\in\Rps;\exists W\in\V{y_0};\forall y\in\Im f\inter W}\abs{f\inv\paren{y}-x_0}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+Si \(x_0-\epsilon,x_0+\epsilon\in I\) alors on pose \(W=\intervee{f\paren{x_0-\epsilon}}{f\paren{x_0+\epsilon}}\) un voisinage de \(y_0\) car \(f\) est strictement croissante.
+
+On a \(\quantifs{\forall y\in W}x_0-\epsilon<f\inv\paren{y}<x_0+\epsilon\).
+
+Donc \(W\) convient.
+
+Si \(x_0-\epsilon\in I\) et \(x_0+\epsilon\not\in I\) : idem avec \(W=\intervee{f\paren{x_0-\epsilon}}{\pinf}\).
+
+Etc.
+
+Donc \(f\inv\) continue.
+\end{dem}
+
+\begin{ex}[Continuité de la fonction racine carrée]
+La bijection \(\fonction{f}{\Rp}{\Rp}{x}{x^2}\) est continue et strictement monotone sur l'intervalle \(\Rp\).
+
+Sa bijection réciproque \(\fonction{f\inv}{\Rp}{\Rp}{x}{\sqrt{x}}\) est donc continue.
+\end{ex}
+
+\begin{ex}
+Soient \(A=\intervie{0}{1}\union\intervie{2}{3}\) et \(B=\intervie{0}{2}\).
+
+On a \[\fonction{f}{A}{B}{x}{\begin{dcases}x &\text{si }x\in\intervie{0}{1} \\ x-1 &\text{si }x\in\intervie{2}{3}\end{dcases}}\] strictement croissante et continue mais \[\fonction{f\inv}{B}{A}{y}{\begin{dcases}y &\text{si }y\in\intervie{0}{1} \\ y+1 &\text{sinon}\end{dcases}}\] n'est pas continue.
+
+D'où l'importance d'avoir un intervalle.
+\end{ex}
+
+\subsection{Fonctions circulaires réciproques}
+
+\subsubsection{\(\Arcsin\)}
+
+\begin{defprop}[Fonction \(\Arcsin\)]
+La fonction \[\fonctionlambda{\intervii{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}}{\R}{\theta}{\sin\theta}\] est continue et strictement croissante sur l'intervalle \(\intervii{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}\).
+
+Elle est donc bijective de l'intervalle \(\intervii{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}\) vers l'intervalle \(\intervii{\sin\dfrac{-\pi}{2}}{\sin\dfrac{\pi}{2}}=\intervii{-1}{1}\) (selon le \thref{cor:TVIAppliquéAuxFonctionsStrictementMonotones}).
+
+Sa bijection réciproque est appelée la fonction arcsinus est est notée \(\Arcsin\) : \[\Arcsin:\intervii{-1}{1}\to\intervii{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}.\]
+
+Elle est continue et strictement croissante (selon le \thref{theo:bijectionReciproqueDeFonctionContinueEtStrictementMonotoneEstContinueEtStrictementDeMêmeMonotonie}).
+
+Allure du graphe :
+
+\begin{center}
+\begin{tkz}[scale=1.4]
+\begin{axis}[axis lines=middle,
+xmin=-pi/2-0.2,xmax=pi/2+0.2,
+ymin=-pi/2-0.2,ymax=pi/2+0.2,
+xtick={-pi/2,-1,1,pi/2},
+ytick={-pi/2,-1,1,pi/2},
+xticklabels={\(\dfrac{-\pi}{2}\),\(-1\),\(1\),\(\dfrac{\pi}{2}\)},
+yticklabels={\(\dfrac{-\pi}{2}\),\(-1\),\(1\),\(\dfrac{\pi}{2}\)},
+legend entries={\(\sin\),\(\Arcsin\)},
+legend pos=north west,
+legend style={font=\footnotesize},
+clip=false]
+\addplot[domain=-pi/2:pi/2,samples=1000,smooth,thick,blue] {sin(deg(x))};
+\addplot[domain=-1:1,samples=1000,smooth,thick,orange] {asin(x)/180*pi};
+\addplot[domain=-pi/2:pi/2,samples=1000,smooth,gray] {x};
+\draw[->,green] (axis cs:1,pi/2) -- (axis cs:1,pi/2-0.5);
+\draw[->,green] (axis cs:-1,-pi/2) -- (axis cs:-1,-pi/2+0.5);
+\draw[->,green] (axis cs:-pi/2,-1) -- (axis cs:-pi/2+0.5,-1);
+\draw[->,green] (axis cs:pi/2,1) -- (axis cs:pi/2-0.5,1);
+\draw[<->,green] (axis cs:-0.35355,-0.35355) -- (axis cs:0.35355,0.35355);
+\end{axis}
+\end{tkz}
+\end{center}
+\end{defprop}
+
+\begin{prop}[Caractérisation]
+Si \(x\in\intervii{-1}{1}\), l'angle \(\Arcsin x\) est l'unique angle \(\theta\in\intervii{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}\) dont le sinus est \(x\).
+
+On a donc : \[\quantifs{\forall x\in\intervii{-1}{1};\forall\theta\in\R}\theta=\Arcsin x\ssi\begin{dcases}\sin\theta=x \\ \dfrac{-\pi}{2}\leq\theta\leq\dfrac{\pi}{2}\end{dcases}\]
+\end{prop}
+
+\begin{ex}[Valeurs à connaître]
+\[\begin{array}{c|ccccccccc}
+x & -1 & \dfrac{-\sqrt{3}}{2} & \dfrac{-1}{\sqrt{2}} & \dfrac{-1}{2} & 0 & \dfrac{1}{2} & \dfrac{1}{\sqrt{2}} & \dfrac{\sqrt{3}}{2} & 1 \\[1em]
+\hline \\
+\Arcsin x & \dfrac{-\pi}{2} & \dfrac{-\pi}{3} & \dfrac{-\pi}{4} & \dfrac{-\pi}{6} & 0 & \dfrac{\pi}{6} & \dfrac{\pi}{4} & \dfrac{\pi}{3} & \dfrac{\pi}{2}
+\end{array}\]
+\end{ex}
+
+\begin{prop}
+La fonction \(\Arcsin\) est impaire.
+\end{prop}
+
+\begin{rem}
+On a \[\quantifs{\forall x\in\intervii{-1}{1}}\sin\paren{\Arcsin x}=x\] mais \[\quantifs{\forall\theta\in\R}\Arcsin\paren{\sin x}=\theta\ssi\dfrac{-\pi}{2}\leq\theta\leq\dfrac{\pi}{2}.\]
+\end{rem}
+
+\subsubsection{\(\Arccos\)}
+
+\begin{defprop}[Fonction \(\Arccos\)]
+La fonction \[\fonctionlambda{\intervii{0}{\pi}}{\R}{\theta}{\cos\theta}\] est continue et strictement décroissante sur l'intervalle \(\intervii{0}{\pi}\).
+
+Elle est donc bijective de l'intervalle \(\intervii{0}{\pi}\) vers l'intervalle \(\intervii{\cos\pi}{\cos0}=\intervii{-1}{1}\) (selon le \thref{cor:TVIAppliquéAuxFonctionsStrictementMonotones}).
+
+Sa bijection réciproque est appelée la fonction arccosinus et est notée \(\Arccos\) : \[\Arccos:\intervii{-1}{1}\to\intervii{0}{\pi}.\]
+
+Elle est continue et strictement décroissante (selon le \thref{theo:bijectionReciproqueDeFonctionContinueEtStrictementMonotoneEstContinueEtStrictementDeMêmeMonotonie}).
+
+Allure du graphe :
+
+\begin{center}
+\begin{tkz}[scale=1.4]
+\begin{axis}[axis lines=middle,
+xmin=-1.2,xmax=1.2,
+ymin=-0.2,ymax=pi+0.2,
+xtick={-1,1},
+ytick={pi},
+xticklabels={\(-1\),\(1\)},
+yticklabels={\(\pi\)},
+legend entries={\(\Arccos\)},
+legend pos=north east,
+legend style={font=\footnotesize},
+clip=false]
+\addplot[domain=-1:1,samples=1000,smooth,thick,orange] {acos(x)/180*pi};
+\node[above right] at (axis cs:0,pi/2) {\(\dfrac{\pi}{2}\)};
+\draw[->,green] (axis cs:-1,pi) -- (axis cs:-1,pi-0.5);
+\draw[->,green] (axis cs:1,0) -- (axis cs:1,0.5);
+\draw[<->,green] (axis cs:-0.35355,pi/2+0.35355) -- (axis cs:0.35355,pi/2-0.35355);
+\end{axis}
+\end{tkz}
+\end{center}
+\end{defprop}
+
+\begin{prop}[Caractérisation]
+Si \(x\in\intervii{-1}{1}\), l'angle \(\Arccos x\) est l'unique angle \(\theta\in\intervii{0}{\pi}\) dont le cosinus est \(x\).
+
+On a donc : \[\quantifs{\forall x\in\intervii{-1}{1};\forall\theta\in\R}\theta=\Arccos x\ssi\begin{dcases}\cos\theta=x \\ 0\leq\theta\leq\pi\end{dcases}\]
+\end{prop}
+
+\begin{ex}[Valeurs à connaître]
+\[\begin{array}{c|ccccccccc}
+x & -1 & \dfrac{-\sqrt{3}}{2} & \dfrac{-1}{\sqrt{2}} & \dfrac{-1}{2} & 0 & \dfrac{1}{2} & \dfrac{1}{\sqrt{2}} & \dfrac{\sqrt{3}}{2} & 1 \\[1em]
+\hline \\
+\Arccos x & \pi & \dfrac{5\pi}{6} & \dfrac{3\pi}{4} & \dfrac{2\pi}{3} & \dfrac{\pi}{2} & \dfrac{\pi}{3} & \dfrac{\pi}{4} & \dfrac{\pi}{6} & 0
+\end{array}\]
+\end{ex}
+
+\begin{prop}
+La fonction \(\Arccos\) n'est ni paire ni impaire.
+\end{prop}
+
+\subsubsection{\(\Arctan\)}
+
+\begin{defprop}[Fonction \(\Arctan\)]
+La fonction \[\fonctionlambda{\intervee{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}}{\R}{\theta}{\tan\theta}\] est continue et strictement croissante sur l'intervalle \(\intervee{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}\).
+
+Elle est donc bijective de l'intervalle \(\intervee{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}\) vers l'intervalle \(\intervee{\lim_{\paren{\nicefrac{-\pi}{2}}^+}\tan}{\lim_{\paren{\nicefrac{\pi}{2}}^-}\tan}=\R\) (selon le \thref{cor:TVIAppliquéAuxFonctionsStrictementMonotones}).
+
+Sa bijection réciproque est appelée la fonction arctangente est est notée \(\Arctan\) : \[\Arctan:\R\to\intervee{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}.\]
+
+Elle est continue et strictement croissante (selon le \thref{theo:bijectionReciproqueDeFonctionContinueEtStrictementMonotoneEstContinueEtStrictementDeMêmeMonotonie}).
+
+Allure du graphe :
+
+\begin{center}
+\begin{tkz}[scale=1.4]
+\begin{axis}[axis lines=middle,
+xmin=-13,xmax=13,
+ymin=-pi/2-0.2,ymax=pi/2+0.2,
+xtick={0},
+ytick={-pi/2,pi/2},
+yticklabels={\(\dfrac{-\pi}{2}\),\(\dfrac{\pi}{2}\)},
+legend entries={\(\Arctan\)},
+legend pos=north west,
+legend style={font=\footnotesize},
+clip=false]
+\addplot[domain=-13:13,samples=1000,smooth,thick,orange] {atan(x)/180*pi};
+\draw[<->,green] (axis cs:-0.35355,-0.35355) -- (axis cs:0.35355,0.35355);
+\draw[dashed,green] (axis cs:0,pi/2) -- (axis cs:13,pi/2);
+\draw[dashed,green] (axis cs:0,-pi/2) -- (axis cs:-13,-pi/2);
+\end{axis}
+\end{tkz}
+\end{center}
+\end{defprop}
+
+\begin{prop}[Caractérisation]
+Si \(x\in\R\), l'angle \(\Arctan x\) est l'unique angle \(\theta\in\intervee{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}\) dont le tangente est \(x\).
+
+On a donc : \[\quantifs{\forall x\in\R;\forall\theta\in\R}\theta=\Arctan x\ssi\begin{dcases}\tan\theta=x \\ \dfrac{-\pi}{2}<\theta<\dfrac{\pi}{2}\end{dcases}\]
+\end{prop}
+
+\begin{ex}[Valeurs à connaître]
+\[\begin{array}{c|ccccccc}
+x & -\sqrt{3} & -1 & \dfrac{-1}{\sqrt{3}} & 0 & \dfrac{1}{\sqrt{3}} & 1 & \sqrt{3} \\[1em]
+\hline \\
+\Arctan x & \dfrac{-\pi}{3} & \dfrac{-\pi}{4} & \dfrac{-\pi}{6} & 0 & \dfrac{\pi}{6} & \dfrac{\pi}{4} & \dfrac{\pi}{3}
+\end{array}\]
+\end{ex}
+
+\begin{prop}
+La fonction \(\Arctan\) est impaire.
+\end{prop}
+
+\subsubsection{Relations à connaître}
+
+\begin{prop}
+On a :
+
+\begin{enumerate}
+\item \(\quantifs{\forall x\in\intervii{-1}{1}}\Arcsin x+\Arccos x=\dfrac{\pi}{2}\) \\
+
+\item \(\quantifs{\forall x\in\intervii{-1}{1}}\cos\paren{\Arcsin x}=\sin\paren{\Arccos x}=\sqrt{1-x^2}\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+Soit \(x\in\intervii{-1}{1}\).
+
+Montrons que \(\Arcsin x=\dfrac{\pi}{2}-\Arccos x\).
+
+On a \[\sin\paren{\dfrac{\pi}{2}-\Arccos x}=\cos\paren{\Arccos x}=x.\]
+
+De plus, on a \(0\leq\Arccos x\leq\pi\) donc \[\dfrac{-\pi}{2}\leq\dfrac{\pi}{2}-\Arccos x\leq\dfrac{\pi}{2}.\]
+
+Donc \(\dfrac{\pi}{2}-\Arccos x=\Arcsin x\).
+
+D'où l'égalité.
+\end{dem}
+
+\begin{dem}[2]
+Soit \(x\in\intervii{-1}{1}\).
+
+Montrons que \(\cos\paren{\Arcsin x}=\sqrt{1-x^2}\).
+
+On a \(\cos^2\paren{\Arcsin x}+\sin^2\paren{\Arcsin x}=1\) donc \[\cos^2\paren{\Arcsin x}=1-\sin^2\paren{\Arcsin x}=1-x^2.\]
+
+De plus, on a \(\dfrac{-\pi}{2}\leq\Arcsin x\leq\dfrac{\pi}{2}\) donc \[\cos\paren{\Arcsin x}\geq0.\]
+
+Donc \(\cos\paren{\Arcsin x}=\sqrt{1-x^2}\).
+
+Idem pour \(\sin\paren{\Arccos x}\).
+\end{dem}
+
+\section{Propriétés plus fortes que la continuité}
+
+\subsection{Continuité uniforme}
+
+\begin{defi}[Continuité uniforme]
+Soient \(A\subset\R\) et \(f:A\to\R\).
+
+On dit que \(f\) est uniformément continue si on a : \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x,y\in A}\abs{x-y}\leq\delta\imp\abs{f\paren{x}-f\paren{y}}\leq\epsilon.\]
+\end{defi}
+
+\begin{rem}
+Ne pas confondre la continuité et la continuité uniforme.
+
+Soient \(A\subset\R\) et \(f:A\to\R\).
+
+La fonction \(f\) est continue si, et seulement si, on a : \[\quantifs{\forall x\in A;\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall y\in A}\abs{x-y}\leq\delta\imp\abs{f\paren{x}-f\paren{y}}\leq\epsilon.\]
+\end{rem}
+
+\begin{prop}
+Toute fonction uniformément continue est continue.
+\end{prop}
+
+\begin{dem}
+Si \(f\) est uniformément continue, on a : \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x,y\in A}\abs{x-y}\leq\delta\imp\abs{f\paren{x}-f\paren{y}}\leq\epsilon\] où \(\delta\) est indépendant de \(x\).
+
+Cela implique \[\quantifs{\forall x\in A;\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall y\in A}\abs{x-y}\leq\delta\imp\abs{f\paren{x}-f\paren{y}}\leq\epsilon\] où \(\delta\) dépend de \(x\).
+\end{dem}
+
+\begin{exo}
+Les fonctions suivantes sont-elles uniformément continues ? \[\fonction{f}{\R}{\R}{x}{x^2}\qquad\fonction{g}{\intervii{0}{1}}{\R}{x}{x^2}\qquad\fonction{h}{\Rp}{\R}{x}{\sqrt{x}}\]
+
+\textit{Indication :} pour l'étude de \(h\), on pourra montrer que \[\quantifs{\forall x,y\in\Rp}\sqrt{x+y}\leq\sqrt{x}+\sqrt{y}.\]
+\end{exo}
+
+\begin{corr}[\(f\)]\thlabel{corr:fonctionCarréePasUniformémentContinue}
+Posons \(\epsilon=1\).
+
+On a \[\quantifs{\forall x,y\in\R}\abs{f\paren{x}-f\paren{y}}=\abs{x^2-y^2}=\abs{x-y}\abs{x+y}.\]
+
+Soit \(\delta\in\Rps\).
+
+On remarque \[\quantifs{\forall x\in\R}\abs{f\paren{x}-f\paren{x+\delta}}=\abs{2x+\delta}\delta.\]
+
+Donc \(\lim_{x\to\pinf}\abs{f\paren{x}-f\paren{x+\delta}}>1\).
+
+Donc \(f\) n'est pas uniformément continue.
+\end{corr}
+
+\begin{corr}[\(g\)]
+Montrons que \(g\) est uniformément continue, \cad \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x,y\in\intervii{0}{1}}\abs{x-y}\leq\delta\imp\abs{g\paren{x}-g\paren{y}}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+On a \[\quantifs{\forall x,y\in\intervii{0}{1}}\abs{g\paren{x}-g\paren{y}}=\abs{x+y}\abs{x-y}\leq2\abs{x-y}.\]
+
+Donc \(\delta=\dfrac{\epsilon}{2}\) convient car on a \[\quantifs{\forall x,y\in\intervii{0}{1}}\abs{x-y}\leq\delta\imp\abs{g\paren{x}-g\paren{y}}\leq2\times\dfrac{\epsilon}{2}=\epsilon.\]
+
+Donc \(g\) est uniformément continue.
+\end{corr}
+
+\begin{corr}[\(h\)]
+On a \(\quantifs{\forall x,y\in\Rp}\sqrt{x+y}\leq\sqrt{x}+\sqrt{y}\).
+
+En effet : \[\begin{aligned}
+\quantifs{\forall x,y\in\Rp}\sqrt{x+y}\leq\sqrt{x}+\sqrt{y}&\ssi x+y\leq x+y+2\sqrt{xy} \\
+&\ssi0\leq2\sqrt{xy} \\
+&\color{white}\ssi\color{black}\text{ce qui est vrai}
+\end{aligned}\]
+
+Soient \(a,b\in\Rp\).
+
+Si \(a\leq b\) alors \(0\leq\sqrt{b}-\sqrt{a}=\sqrt{a+b-a}-\sqrt{a}\) donc \(\abs{\sqrt{b}-\sqrt{a}}\leq\sqrt{b-a}\).
+
+Si \(a\geq b\), de même, on a \(\abs{\sqrt{b}-\sqrt{a}}\leq\sqrt{a-b}\).
+
+Donc \(\quantifs{\forall a,b\in\Rp}\abs{\sqrt{a}-\sqrt{b}}\leq\sqrt{\abs{a-b}}\).
+
+Montrons que \(h\) est uniformément continue, \cad \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x,y\in\Rp}\abs{x-y}\leq\delta\imp\abs{h\paren{x}-h\paren{y}}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\). Posons \(\delta=\epsilon^2\).
+
+On a : \[\quantifs{\forall x,y\in\Rp}\abs{x-y}\leq\delta\imp\abs{h\paren{x}-h\paren{y}}\leq\sqrt{\delta}=\epsilon.\]
+
+Donc \(\delta\) convient.
+
+Donc \(h\) est uniformément continue.
+\end{corr}
+
+\begin{theo}[Théorème de Heine]
+Soient \(a,b\in\R\) tels que \(a<b\). Soit \(f:\intervii{a}{b}\to\R\) continue.
+
+Alors \(f\) est uniformément continue.
+\end{theo}
+
+\begin{dem}
+Par l'absurde, supposons \[\quantifs{\exists\epsilon\in\Rps;\forall\delta\in\Rps;\exists x,y\in\intervii{a}{b}}\begin{dcases}\abs{x-y}\leq\delta \\ \abs{f\paren{x}-f\paren{y}}>\epsilon\end{dcases}\]
+
+Soit un tel \(\epsilon\in\Rps\).
+
+On a en particulier \[\quantifs{\forall n\in\Ns;\exists x_n,y_n\in\intervii{a}{b}}\begin{dcases}\abs{x_n-y_n}\leq\dfrac{1}{n} \\ \abs{f\paren{x_n}-f\paren{y_n}}>\epsilon\end{dcases}\]
+
+En considérant de tels \(x_n,y_n\) pour tout \(n\in\Ns\), on obtient deux suites \(\paren{x_n}_n,\paren{y_n}_n\in\intervii{a}{b}^{\Ns}\) telles que \[\quantifs{\forall n\in\Ns}\begin{dcases}\abs{x_n-y_n}\leq\dfrac{1}{n} \\ \abs{f\paren{x_n}-f\paren{y_n}}>\epsilon\end{dcases}\]
+
+Comme \(\paren{x_n}_n\) est bornée, d'après le théorème de Bolzano-Weierstrass, il existe \(\phi:\Ns\to\Ns\) strictement croissante telle que \(\paren{x_{\phi\paren{n}}}_n\) soit convergente.
+
+Comme \(\paren{y_{\phi\paren{n}}}_n\) est bornée, d'après le théorème de Bolzano-Weierstrass, il existe \(\psi:\Ns\to\Ns\) strictement croissante telle que \(\paren{y_{\phi\rond\psi\paren{n}}}\) soit convergente.
+
+Ainsi, \(\paren{x_{\phi\rond\psi\paren{n}}}_n\) converge car c'est une suite extraite d'une suite convergente.
+
+On pose \(x=\lim_nx_{\phi\rond\psi\paren{n}}\) et \(y=\lim_ny_{\phi\rond\psi\paren{n}}\).
+
+On a \[\quantifs{\forall n\in\Ns}\abs{x_{\phi\rond\psi\paren{n}}-y_{\phi\rond\psi\paren{n}}}\leq\dfrac{1}{\phi\rond\psi\paren{n}}.\]
+
+D'où, par passage à la limite : \(\abs{x-y}\leq0\) donc \(x=y\).
+
+D'autre part, on a : \[\quantifs{\forall n\in\Ns}\abs{f\paren{x_{\phi\rond\psi\paren{n}}}-f\paren{y_{\phi\rond\psi\paren{n}}}}\geq\epsilon.\]
+
+D'où, par passage à la limite : \(\abs{f\paren{x}-f\paren{y}}\geq\epsilon\) : contradiction car \(x=y\).
+\end{dem}
+
+\subsection{Fonctions lipschitziennes}
+
+\begin{defi}[Fonction lipschitzienne]
+Soient \(A\subset\R\), \(f:A\to\R\) et \(k\in\Rp\).
+
+On dit que \(f\) est \(k\)-lipschitzienne si on a : \[\quantifs{\forall x,y\in A}\abs{f\paren{x}-f\paren{y}}\leq k\abs{x-y}.\]
+
+On dit que \(f\) est lipschitzienne si elle est \(K\)-lipschitzienne pour un certain \(K\in\Rp\) : \[\quantifs{\exists K\in\Rp;\forall x,y\in A}\abs{f\paren{x}-f\paren{y}}\leq K\abs{x-y}.\]
+\end{defi}
+
+\begin{prop}
+Toute fonction lipschitzienne est uniformément continue.
+\end{prop}
+
+\begin{dem}
+Soient \(A\subset\R\), \(f:A\to\R\) et \(k\in\Rp\).
+
+On suppose que \(f\) est \(k\)-lipschitzienne.
+
+Montrons que \(f\) est uniformément continue, \cad \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x,y\in A}\abs{x-y}\leq\delta\imp\abs{f\paren{x}-f\paren{y}}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\). On pose \(\delta=\dfrac{\epsilon}{k}\).
+
+On a \[\quantifs{\forall x,y\in A}\abs{x-y}\leq\delta\imp\abs{f\paren{x}-f\paren{y}}\leq k\delta=\epsilon.\]
+
+Donc \(\delta\) convient.
+
+Donc \(f\) est uniformément continue.
+\end{dem}
+
+\begin{bilan}
+Soient \(A\subset\R\) et \(f:A\to\R\).
+
+On a : \[f\text{ lipschitzienne}\imp f\text{ uniformément continue}\imp f\text{ continue}.\]
+\end{bilan}
+
+\begin{exo}
+Les fonctions suivantes sont-elles lipschitziennes ? \[\fonction{f}{\R}{\R}{x}{x^2}\qquad\fonction{g}{\intervii{0}{1}}{\R}{x}{x^2}\qquad\fonction{h}{\Rp}{\R}{x}{\sqrt{x}}\]
+\end{exo}
+
+\begin{corr}[\(f\)]
+On a vu que \(f\) n'est pas uniformément continue donc par contraposée, \(f\) n'est pas lipschitzienne (\cf \thref{corr:fonctionCarréePasUniformémentContinue}).
+\end{corr}
+
+\begin{corr}[\(g\)]
+Montrons que \(g\) est lipschitzienne, \cad \[\quantifs{\exists k\in\Rp;\forall x,y\in\intervii{0}{1}}\abs{g\paren{x}-g\paren{y}}\leq k\abs{x-y}.\]
+
+On a : \[\begin{aligned}
+\quantifs{\forall x,y\in\intervii{0}{1}}\abs{g\paren{x}-g\paren{y}}&=\abs{x^2-y^2} \\
+&=\abs{x-y}\abs{x+y} \\
+&\leq2\abs{x-y}
+\end{aligned}\]
+
+Donc \(g\) est \(2\)-lipschitzienne.
+
+Donc \(g\) est lipschitzienne.
+\end{corr}
+
+\begin{corr}[\(h\)]
+Montrons que \(h\) n'est pas lipschitzienne.
+
+Par l'absurde, supposons \(h\) lipschitzienne, \cad : \[\quantifs{\exists k\in\Rp;\forall x,y\in\Rp}\abs{\sqrt{x}-\sqrt{y}}\leq k\abs{x-y}.\]
+
+En particulier, on a \[\quantifs{\forall n\in\Ns}\abs{\sqrt{\dfrac{1}{n}}-\sqrt{0}}\leq k\abs{\dfrac{1}{n}-0}.\]
+
+Donc \[\quantifs{\forall n\in\Ns}\dfrac{1}{\sqrt{n}}\leq\dfrac{k}{n}.\]
+
+Donc \(\quantifs{\forall n\in\Ns}\sqrt{n}\leq k\) : contradiction.
+
+Donc \(h\) n'est pas lipschitzienne.
+\end{corr}

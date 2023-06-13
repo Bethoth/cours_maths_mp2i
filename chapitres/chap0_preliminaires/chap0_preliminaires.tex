@@ -1,0 +1,291 @@
+\chapter{Préliminaires}
+
+\minitoc
+
+\section{Logique}
+
+\begin{defi}
+Une proposition est une affirmation qui peut être vraie ou fausse.
+
+Exemples : \(1+1=2\) est une proposition vraie ; \(0>1\) est une proposition fausse.
+\end{defi}
+
+\begin{defi}
+Soient \(P\) et \(Q\) deux propositions. On définit :
+
+\begin{itemize}
+\item la proposition \guillemets{\(P\) et \(Q\)} (notée aussi \(P\et Q\)) de table de vérité : \begin{tabular}{c|c||c}
+\(P\) & \(Q\) & \(P\et Q\) \\
+\hline
+V & V & V \\
+V & F & F \\
+F & V & F \\
+F & F & F
+\end{tabular}
+
+\item la proposition \guillemets{\(P\) ou \(Q\)} (notée aussi \(P\ou Q\)) de table de vérité : \begin{tabular}{c|c||c}
+\(P\) & \(Q\) & \(P\ou Q\) \\
+\hline
+V & V & V \\
+V & F & V \\
+F & V & V \\
+F & F & F
+\end{tabular}
+
+\item la proposition \guillemets{\(P\) implique \(Q\)} (notée aussi \(P\imp Q\)) de table de vérité : \begin{tabular}{c|c||c}
+\(P\) & \(Q\) & \(P\imp Q\) \\
+\hline
+V & V & V \\
+V & F & F \\
+F & V & V \\
+F & F & V
+\end{tabular}
+
+Exemple : Soit \(x\) un nombre réel. La proposition \(x\geq0\imp x^2\geq0\) est vraie. La proposition \(x=4\imp x=5\) est fausse si \(x=4\) et vraie sinon.
+
+\item la proposition \guillemets{\(P\) équivaut à \(Q\)} (notée aussi \(P\ssi Q\)) de table de vérité \begin{tabular}{c|c||c}
+\(P\) & \(Q\) & \(P\ssi Q\) \\
+\hline
+V & V & V \\
+V & F & F \\
+F & V & F \\
+F & F & V
+\end{tabular}
+
+\item la proposition \guillemets{non \(P\)} (notée aussi \(\non P\)) de table de vérité \begin{tabular}{c||c}
+\(P\) & \(\non P\) \\
+\hline
+V & F \\
+F & V
+\end{tabular}
+\end{itemize}
+\end{defi}
+
+\begin{rem}[Contraposition]
+Soient \(P\) et \(Q\) deux propositions. Les propositions \(P\imp Q\) et \(\non Q\imp\non P\) sont équivalentes.
+\end{rem}
+
+\begin{dem}[Méthode 1]
+Il suffit de remarquer que les deux propositions ont la même table de vérité :
+
+\begin{tabular}{c|c||c||c|c||c}
+\(P\) & \(Q\) & \(P\imp Q\) & \(\non Q\) & \(\non P\) & \(\non Q\imp\non Q\) \\
+\hline
+V & V & V & F & F & V \\
+V & F & F & V & F & F \\
+F & V & V & F & V & V \\
+F & F & V & V & V & V
+\end{tabular}
+
+~
+\end{dem}
+
+\begin{dem}[Méthode 2]
+Montrons que \(\paren{P\imp Q}\ssi\paren{\non Q\imp\non P}\) :
+\begin{itemize}
+\item[\impdir] Supposons \(P\imp Q\). Montrons que \(\non Q\imp\non P\).
+
+Supposons \(\non Q\).
+
+Si \(P\) était vraie, \(Q\) serait vraie aussi. Donc \(P\) est fausse. Donc \(\non P\).
+
+D'où \(\non Q\imp\non P\).
+
+\item[\imprec] Supposons \(\non Q\imp\non P\).
+
+D'après \impdir on a \(\non\paren{\non P}\imp\non\paren{\non Q}\), c'est à dire \(P\imp Q\).
+\end{itemize}
+\end{dem}
+
+\begin{defi}
+Soient \(P\) et \(Q\) deux propositions. Démontrer l'implication \(P\imp Q\) par contraposition, c'est démontrer l'implication contraposée \(\non Q\imp\non P\), c'est à dire supposer \(\non Q\) et montrer \(\non P\).
+\end{defi}
+
+\begin{defi}
+CS : condition suffisante ; CN : condition nécessaire ; CNS : condition nécessaire et suffisante.
+\end{defi}
+
+\begin{ex}
+CS pour avoir \(x\geq0\) : \(x=10\) ; CN pour avoir \(x\geq\) : \(x\geq-1\) ; CNS pour avoir \(x\geq0\) : \(x+1\geq1\).
+\end{ex}
+
+\begin{rem}
+Ne pas utiliser les symboles \(\imp\) et \(\ssi\) comme des abréviations dans du texte en français.
+\end{rem}
+
+\begin{ex}
+Soit \(x\in\Rp\). Montrons que \(x+1\geq1\).
+
+Écrire \guillemets{On a \(x\geq0\ssi x+1\geq1\)} est faux.
+
+Écrire \guillemets{On a \(x\geq0\) donc \(x+1\geq1\)} est correct.
+\end{ex}
+
+\begin{rem}
+Abréviations autorisées : CS, CN, CNS et ssi.
+\end{rem}
+
+\section{Quantificateurs}
+
+\begin{nota}
+\(\in\) : \guillemets{appartient}
+
+\(\exists\) : \guillemets{il existe ... tel que} (quantificateur existentiel)
+
+\(\forall\) : \guillemets{pour tout} (quantificateur universel)
+
+\(\exists!\) : \guillemets{il existe un unique ... tel que}
+\end{nota}
+
+\begin{ex}
+\(\quantifs{\forall a,b\in\R}\paren{a+b}^2=a^2+2ab+b^2\)
+
+\(\quantifs{\forall x\in\Rp;\exists y\in\R}x=y^2\)
+
+\(\quantifs{\forall x\in\Rp;\exists!y\in\Rp}x=y^2\)
+\end{ex}
+
+\begin{rem}
+Les quantificateurs se lisent de gauche à droite et leur ordre est important.
+\end{rem}
+
+\begin{ex}
+On associe à tous réels \(x,y\) une proposition \(P\paren{x,y}\).
+
+Alors \(\quantifs{\exists x\in\R;\forall y\in\R}P\paren{x,y}\imp\quantifs{\forall y\in\R;\exists x\in\R}P\paren{x,y}\).
+
+Dans la proposition de gauche, le \(x\) est valable pour tout \(y\). Dans la proposition de droite, le \(x\) dépend du \(y\).
+
+L'implication réciproque est généralement fausse.
+
+Par exemple, la proposition \(\quantifs{\exists x\in\R;\forall y\in\R}y=x+1\) est fausse mais la proposition \(\quantifs{\forall y\in\R;\exists x\in\R}y=x+1\) est vraie.
+\end{ex}
+
+\begin{defi}[Produit cartésien d'ensembles]
+Soient \(A,B\) deux ensembles. On note \(A\times B\) l'ensemble des couples de la forme \(\paren{x,y}\) où \(x\in A\) et \(y\in B\).
+
+Plus généralement, soient \(A_1,\dots,A_n\) des ensembles avec \(n\in\Ns\). \(A_1\times\dots\times A_n\) est l'ensemble des n-uplets de la forme \(\paren{x_1,\dots,x_n}\) où \(x_1\in A_1,\dots,x_n\in A_n\).
+
+Soient \(C\) un ensemble et \(m\in\Ns\). On pose \(C^m=\underbrace{C\times\dots\times C}_\text{\(m\) facteurs}\).
+
+On s'autorise alors les identifications suivantes : \(A\times B\times C=A\times\paren{B\times C}=\paren{A\times B}\times C\) et \(\paren{x,y,z}=\paren{x,\paren{y,z}}=\paren{\paren{x,y},z}\).
+\end{defi}
+
+\begin{ex}
+Dessiner les ensembles \(A=\intervii{1}{2}\times\Rp\), \(B=\N\times\R\) et \(C=\paren{\intervii{0}{1}\cup\accol{2}}\times\Z\).
+
+On a \(\quantifs{\forall\paren{x,y}\in\R^2}\paren{x,y}\in A\ssi\begin{dcases}x\in\intervii{1}{2} \\ y\in\Rp\end{dcases}\) donc :
+
+\begin{center}
+\begin{tkz}
+\draw[->,gray] (-1,0) -- (3,0);
+\draw[->,gray] (0,-1) -- (0,3);
+\node[below left] at (0,0) {\(0\)};
+\node[below] at (1,0) {\(1\)};
+\node[below] at (2,0) {\(2\)};
+\draw[blue] (1,0) -- (1,3);
+\draw[blue] (2,0) -- (2,3);
+\fill[pattern=north east lines,pattern color=blue] (1,0) -- (1,3) -- (2,3) node[below right,blue] {\(A\)} -- (2,0);
+\end{tkz}
+\end{center}
+
+De même, on a \(\quantifs{\forall\paren{x,y}\in\R^2}\paren{x,y}\in B\ssi\begin{dcases}x\in\N \\ y\in\R\end{dcases}\) donc :
+
+\begin{center}
+\begin{tkz}
+\draw[->,gray] (-1,0) -- (3,0);
+\draw[->,gray] (0,-3) -- (0,3);
+\node[below left] at (0,0) {\(0\)};
+\node[below left] at (1,0) {\(1\)};
+\node[below left] at (2,0) {\(2\)};
+\draw[blue] (0,-3) -- (0,3);
+\draw[blue] (1,-3) -- (1,3) node[above right] {\(B\)};
+\draw[blue] (2,-3) -- (2,3);
+\draw[blue] (3,-3) -- (3,3);
+\end{tkz}
+\end{center}
+
+Enfin, on a \(\quantifs{\forall\paren{x,y}\in\R^2}\paren{x,y}\in C\ssi\begin{dcases}x\in\intervii{0}{1}\cup\accol{2} \\ y\in\Z\end{dcases}\) donc :
+
+\begin{center}
+\begin{tkz}
+\draw[->,gray] (-1,0) -- (3,0);
+\draw[->,gray] (0,-3) -- (0,3);
+\node[below left] at (0,0) {\(0\)};
+\node[below] at (1,0) {\(1\)};
+\node[below] at (2,0) {\(2\)};
+\draw[blue] (0,3) -- (1,3);
+\draw[blue] (0,2) -- (1,2);
+\draw[blue] (0,1) -- (1,1);
+\draw[blue] (0,0) -- (1,0);
+\draw[blue] (0,-1) -- (1,-1);
+\draw[blue] (0,-2) -- (1,-2);
+\draw[blue] (0,-3) -- (1,-3);
+\filldraw[blue] (2,3) circle (3pt) node[above left,blue] {\(C\)};
+\filldraw[blue] (2,2) circle (3pt);
+\filldraw[blue] (2,1) circle (3pt);
+\filldraw[blue] (2,0) circle (3pt);
+\filldraw[blue] (2,-1) circle (3pt);
+\filldraw[blue] (2,-2) circle (3pt);
+\filldraw[blue] (2,-3) circle (3pt);
+\end{tkz}
+\end{center}
+\end{ex}
+
+\begin{rem}
+Les notations \guillemets{\(\forall x,y\in\R\)} et \guillemets{\(\forall\paren{x,y}\in\R^2\)} sont équivalentes.
+
+En revanche, les produits cartésiens sont nécessaires pour le quantificateur \(\exists!\). En effet, on a \(\quantifs{\exists!\paren{x,y}\in\R^2}P\paren{x,y}\imp\quantifs{\exists! x\in\R;\exists! y\in\R}P\paren{x,y}\).
+\end{rem}
+
+\section{Raisonnements par analyse-synthèse}
+
+Ils sont utiles pour trouver toutes les solutions à un problème.
+
+\begin{ex}
+Soit \(f:\R\to\R\). Montrons que \(f\) s'écrit de façon unique comme la somme d'une fonction paire et d'une fonction impaire. Autrement dit, en notant \(E_0\) l'ensemble des fonctions paires de \(\R\) dans \(\R\) et \(E_1\) l'ensemble des fonctions impaires de \(\R\) dans \(\R\), on a \(\quantifs{\exists!\paren{g,h}\in E_0\times E_1}f=g+h\).
+
+\analyse
+
+Soit \(\paren{g,h}\in E_0\times E_1\) tel que \(f=g+h\).
+
+On a \(\quantifs{\forall x\in\R}\begin{dcases}f\paren{x}=g\paren{x}+h\paren{x} \\ f\paren{-x}=g\paren{x}-h\paren{x}\end{dcases}\)
+
+Donc par somme et différence, \(\quantifs{\forall x\in\R}\begin{dcases}f\paren{x}+f\paren{-x}=2g\paren{x} \\ f\paren{x}-f\paren{-x}=2h\paren{x}\end{dcases}\)
+
+Donc \(\quantifs{\forall x\in\R}\begin{dcases}g\paren{x}=\dfrac{f\paren{x}+f\paren{-x}}{2} \\ h\paren{x}=\dfrac{f\paren{x}-f\paren{-x}}{2}\end{dcases}\)
+
+\synthese
+
+On définit les fonctions \(\fonction{g}{\R}{\R}{x}{\dfrac{f\paren{x}+f\paren{-x}}{2}}\) et \(\fonction{h}{\R}{\R}{x}{\dfrac{f\paren{x}-f\paren{-x}}{2}}\).
+
+On remarque \(\quantifs{\forall x\in\R}\begin{dcases}g\paren{-x}=\dfrac{f\paren{-x}+f\paren{-\paren{-x}}}{2}=\dfrac{f\paren{-x}+f\paren{x}}{2}=g\paren{x} \\ h\paren{-x}=\dfrac{f\paren{-x}-f\paren{-\paren{-x}}}{2}=\dfrac{f\paren{-x}-f\paren{x}}{2}=-h\paren{x}\end{dcases}\)
+
+Donc \(g\) est paire et \(h\) est impaire.
+
+Et \(\quantifs{\forall x\in\R}g\paren{x}+h\paren{x}=\dfrac{f\paren{x}+f\paren{-x}}{2}+\dfrac{f\paren{x}-f\paren{-x}}{2}=f\paren{x}\).
+
+\conclusion
+
+Le seul couple \(\paren{g,h}\in E_0\times E_1\) est \(\paren{\fonctionlambda{\R}{\R}{x}{\dfrac{f\paren{x}+f\paren{-x}}{2}},\fonctionlambda{\R}{\R}{x}{\dfrac{f\paren{x}-f\paren{-x}}{2}}}\).
+\end{ex}
+
+\section{Congruences}
+
+\begin{defi}
+Soient \(x,y\in\R\) et \(T\in\Rps\).
+
+On dit que \(x\) et \(y\) sont congrus modulo \(T\) si on a \(\quantifs{\exists k\in\Z}x=y+kT\).
+
+On note alors \(x\equiv y\croch{T}\).
+\end{defi}
+
+\begin{rem}
+Soient \(x,y,z\in\R\) et \(T\in\Rps\). On a \begin{itemize}
+\item \(x\equiv y\croch{T}\ssi y\equiv x\croch{T}\) : symétrie
+
+\item \(x\equiv x\croch{T}\) : réflexivité
+
+\item \(\begin{dcases}x\equiv y\croch{T} \\ y\equiv z\croch{T}\end{dcases}\imp x\equiv z\croch{T}\) : transitivité
+\end{itemize}
+\end{rem}

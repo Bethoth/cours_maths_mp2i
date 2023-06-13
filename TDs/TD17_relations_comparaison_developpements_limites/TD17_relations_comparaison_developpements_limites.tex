@@ -1,0 +1,311 @@
+\chapter{Relations de comparaison, développements limités}
+
+\minitoc
+
+\begin{exo}
+Classer les expressions suivantes de la plus \guillemets{petite} à la plus \guillemets{grande} quand \(x\) tend vers \(\pinf\) (on pourra exprimer la réponse à l'aide des notations de Hardy) : \[x^2\ln x\qquad\dfrac{x^3}{\ln x}\qquad x\ln^7x\qquad\dfrac{\e{x}}{x\ln x}\qquad\dfrac{\e{x^2}}{x^7\ln x}\qquad\dfrac{\e{2x}}{x\ln x}\qquad\e{\sqrt{x}}\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}
+\item Simplifier les expressions suivantes : \[A\underset{x\to\pinf}{=}\paren{x\ln x+\sqrt{x}\ln^2x+O\paren{x}+\sin x+\sqrt{x}}x+o\paren{x^2\ln x}\] et \[B\underset{x\to0}{=}O\paren{x^3\ln x}+x^3\ln^2x+2x^3+\dfrac{x\ln^2x}{1-x}+o\paren{x^3}+O\paren{x^3}\] en utilisant pour \(B\) le développement limité en \(0\) de \(x\mapsto\dfrac{1}{1-x}\). \\
+
+\item Donner un équivalent de \(A\) et \(B\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Donner un équivalent des fonctions suivantes :
+
+\begin{enumerate}
+\item \(f:x\mapsto\floor{x}\) quand \(x\) tend vers \(\pinf\). \\
+
+\item \(g:x\mapsto\dfrac{x^{\alpha}}{1+x^{\beta}}\) quand \(x\) tend vers \(\pinf\) et quand \(x\) tend vers \(0^+\). \\
+
+\item \(h:x\mapsto\int_0^x\floor{t}\odif{t}\) quand \(x\) tend vers \(\pinf\). \\
+
+\item \(k:x\mapsto\int_x^{x+1}\e{t}\ln t\odif{t}\) quand \(x\) tend vers \(\pinf\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Pour tout \(n\in\N\), on note \(u_n\) le nombre de zéros consécutifs situés à droite de l'écriture en base 10 de \(n!\).
+
+Par exemple, l'entier \(20!=2432902008176640000\) se termine par quatre zéros donc \(u_{20}=4\).
+
+Donner un équivalent de \(u_n\) quand \(n\) tend vers \(\pinf\).
+\end{exo}
+
+\begin{corr}
+Si \(N\in\Ns\), le nombre de zéros à droite de \(N\) est \[\min\accol{\valp{2}{n};\valp{5}{n}}.\]
+
+Soit \(p\in\prem\).
+
+Calculons \[\begin{aligned}
+\valp{p}{n!}&=\floor{\dfrac{n}{p}}+\floor{\dfrac{n}{p^2}}+\floor{\dfrac{n}{p^3}}+\dots \\
+&=\sum_{\alpha=1}^{\pinf}\floor{\dfrac{n}{p^{\alpha}}}
+\end{aligned}\]
+
+Donc \(\valp{2}{n!}\geq\valp{5}{n!}\).
+
+Donc \(u_n=\valp{5}{n!}=\sum_{\alpha=1}^{\pinf}\floor{\dfrac{n}{5^{\alpha}}}\).
+
+On a \[\begin{aligned}
+\quantifs{\forall\alpha\in\Ns}\floor{\dfrac{n}{5^{\alpha}}}=0&\ssi\dfrac{n}{5^{\alpha}}<1 \\
+&\ssi n<5^{\alpha} \\
+&\ssi\alpha>\log_5n \\
+&\ssi\alpha>\floor{\log_5n}
+\end{aligned}\]
+
+Donc \[\begin{aligned}
+u_n&=\sum_{\alpha=1}^{\floor{\log_5n}}\floor{\dfrac{n}{5^{\alpha}}} \\
+&\leq\sum_{\alpha=1}^{\floor{\log_5n}}\dfrac{n}{5^{\alpha}} \\
+&=n\dfrac{\frac{1}{5}-\frac{1}{5^{\floor{\log_5n}+1}}}{1-\frac{1}{5}} \\
+&\leq\dfrac{n}{4}
+\end{aligned}\]
+
+De plus, on a \[\begin{WithArrows}
+u_n&\geq\sum_{\alpha=1}^{\floor{\log_5n}}\paren{\dfrac{n}{5^{\alpha}}-1} \\
+&=n\dfrac{\frac{1}{5}-\frac{1}{5^{\floor{\log_5n}+1}}}{1-\frac{1}{5}}-\floor{\log_5n} \\
+&=\dfrac{n}{4}\paren{1-\dfrac{1}{5^{\floor{\log_5n}+1}}}-\floor{\log_5n} \\
+&\geq\dfrac{n}{4}\paren{1-\dfrac{1}{5^{\floor{\log_5n}+1}}}-\log_5n \Arrow{\(n\dfrac{1+o\paren{1}}{4}+o\paren{n}=\dfrac{n}{4}+o\paren{n}\)} \\
+&\underset{n\to\pinf}{\sim}\dfrac{n}{4}
+\end{WithArrows}\]
+
+Donc \(u_n\sim\dfrac{n}{4}\).
+\end{corr}
+
+\begin{exo}\thlabel{exo:fonctionPaireDLAvecTermesPairs}
+Soient \(I\) un intervalle de \(\R\) centré en \(0\), \(f:I\to\R\) et \(n\in\N\).
+
+On suppose que \(f\) admet un développement limité à l'ordre \(n\) en \(0\) : \[f\paren{x}\underset{x\to0}{=}a_0+a_1x+a_2x^2+\dots+a_nx^n+o\paren{x^n}.\]
+
+\begin{enumerate}
+\item Montrer que si la fonction \(f\) est paire, alors les termes de degré impair de son développement limité sont tous nuls : \[0=a_1=a_3=a_5=\dots\]
+
+\item Montrer que si la fonction \(f\) est impaire, alors les termes de degré pair de son développement limité sont tous nuls : \[0=a_0=a_2=a_4=\dots\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Calculer les développements limités des fonctions suivantes en \(0\) :
+
+\begin{enumerate}
+\item \(x\mapsto\sqrt{1+\sin x}\) à l'ordre 4. \\
+
+\item \(x\mapsto\sqrt{1+\cos x}\) à l'ordre 4. \\
+
+\item \(x\mapsto\ln\paren{\e{x}+\cos x}\) à l'ordre 3. \\
+
+\item \(x\mapsto\ln\paren{\cos\paren{2x}}\) à l'ordre 7. \\
+
+\item \(x\mapsto\dfrac{1}{\sqrt{1-x^2}}\) à l'ordre \(n\in\N\). \\
+
+\item \(\Arcsin\) à l'ordre \(n\in\N\). \\
+
+\item \(\Arccos\) à l'ordre \(n\in\N\).
+\end{enumerate}
+
+\textit{Indication :} pour le (5), exprimer pour tout \(k\in\N\) le quotient \(\dfrac{\alpha\paren{\alpha-1}\dots\paren{\alpha-k+1}}{k!}\) avec \(\alpha=\dfrac{-1}{2}\) à l'aide de factorielles.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Calculer les développements limités des fonctions suivantes :
+
+\begin{enumerate}
+\item \(x\mapsto\ln\paren{1+x^2}\) à l'ordre 3 en \(2\). \\
+
+\item \(x\mapsto\sin x\cos\paren{3x}\) à l'ordre 2 en \(\dfrac{\pi}{3}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Calculer les limites suivantes :
+
+\begin{enumerate}
+\item \[\lim_{\substack{x\to0 \\ x\not=0}}\dfrac{\Arctan\paren{2x}-2\Arctan x}{x^3}\]
+
+\item \[\lim_{x\to\pinf}\paren{\dfrac{\ln\paren{1+x}}{\ln x}}^{x\ln x}\]
+
+\item \[\lim_{n\to\pinf}\paren{1+\dfrac{\lambda}{n}}^n\text{ où \(\lambda\) est un réel fixé}\]
+
+\item \[\lim_{n\to\pinf}\paren{3\sqrt[n]{2}-2\sqrt[n]{3}}^n\]
+
+\item \[\lim_{\substack{x\to0 \\ x\not=0}}\dfrac{\Arctan\paren{x^2-x^2\cos x}}{\paren{1-\sqrt{\cos x}}\ln\frac{\sin x}{x}}\]
+
+\item \[\lim_{\substack{x\to0 \\ x\not=0}}\dfrac{x\cos x-\sin x}{\cos x-1}\]
+
+\item \[\lim_{x\to0^+}\paren{\dfrac{x\cos x-\sin x}{\cos x-1}}^x\]
+
+\item \[\lim_{\substack{x\to0 \\ x\not=0}}\paren{\dfrac{2^x+3^x}{2}}^{\frac{1}{x}}\]
+
+\item \[\lim_{\substack{x\to\frac{\pi}{3} \\ x\not=\frac{\pi}{3}}}\dfrac{3\cos^2x-\sin^2\paren{2x}}{\tan\paren{4x}-\sqrt{3}}\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}
+\item Montrer que l'application \[\fonction{f}{\R}{\R}{x}{x\e{x^2}}\] est une bijection de \(\R\) vers \(\R\). On note \(f\inv\) sa bijection réciproque. \\
+
+\item Montrer que les fonctions \(f\) et \(f\inv\) sont impaires. \\
+
+\item Déterminer le développement limité à l'ordre 5 de \(f\inv\) en \(0\).
+
+On pensera à utiliser l'\thref{exo:fonctionPaireDLAvecTermesPairs} pour alléger les calculs.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On pose \[\fonction{f}{\R}{\R}{x}{\begin{dcases}
+0 &\text{si }x=0 \\
+\dfrac{x^2}{\e{x}-\e{-x}} &\text{sinon}
+\end{dcases}}\]
+
+\begin{enumerate}
+\item Déterminer le développement limité de \(f\) à l'ordre 3 en \(0\). \\
+
+\item Montrer que \(f\) est dérivable en \(0\) et calculer \(f\prim\paren{0}\). \\
+
+\item Déterminer la position relative du graphe de \(f\) par rapport à sa tangente en \(0\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\lambda\in\R\).
+
+Déterminer un développement asymptotique de la suite de terme général \[u_n=\paren{1+\dfrac{\lambda}{n}}^n\] à la précision \(\dfrac{1}{n^2}\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On pose : \[\fonction{f}{\Rs}{\R}{x}{\paren{x+1}\exp\paren{\dfrac{1}{x}}}\]
+
+Déterminer un développement asymptotique de \(f\) en \(\pinf\) à la précision \(\dfrac{1}{x}\).
+
+En déduire que le graphe de \(f\) admet une asymptote en \(\pinf\) et sa position par rapport à son asymptote (au voisinage de \(\pinf\)).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Trouver un équivalent, quand \(x\) tend vers \(0^+\), de : \[x^{\sin x}-\sin^xx.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Montrer qu'on a, quand \(x\) tend vers \(1\) : \[\Arccos x\sim\sqrt{2\paren{1-x}}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}
+\item Montrer : \[\quantifs{\forall n\in\N;\exists!u_n\in\R}u_n\e{nu_n}=1.\] On obtient ainsi une suite de réels \(\paren{u_n}_{n\in\N}\), que l'on étudie dans la suite. \\
+
+\item Étudier la limite de la suite \(\paren{u_n}_n\). \\
+
+\item Donner un équivalent de \(u_n\) quand \(n\) tend vers \(\pinf\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Oral 2016]
+\begin{enumerate}
+\item Montrer, pour tout \(n\in\N\), l'existence et l'unicité d'un réel \(x_n\) tel que : \[x_n-\e{-x_n}=n.\]
+
+\item Montrer : \[\quantifs{\forall n\in\N}n\leq x_n\leq n+1.\]
+
+\item En déduire un équivalent de \(x_n\), puis un développement asymptotique à deux termes de \(x_n\) quand \(n\) tend vers \(\pinf\). \\
+
+\item Donner un développement asymptotique à 5 termes de \(x_n\) quand \(n\) tend vers \(\pinf\).
+\end{enumerate}
+
+NB : la question (4) est ajoutée, elle n'a pas été posée à l'oral dont provient l'exercice.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On rappelle la formule du multinôme\footnote{La formule est énoncée ici pour les nombres complexes ; elle est en fait valable dans tout anneau si les éléments \(z_1,\dots,z_r\) commutent deux à deux.}, qui généralise la formule du binôme de Newton (obtenue quand \(r=2\)) : \[\quantifs{\forall n,r\in\N;\forall z_1,\dots,z_r\in\C}\paren{z_1+\dots+z_r}^n=\sum_{\alpha_1+\dots+\alpha_r=n}\dfrac{n!}{\alpha_1!\dots\alpha_r!}z_1^{\alpha_1}\dots z_r^{\alpha_r}\] (on sous-entend pour alléger la formule que les \(\alpha_i\) sont des entiers naturels).
+
+Soient \(I\) et \(J\) des intervalles de \(\R\) contenant au moins deux points, \(f\in\ensclasse{n}{I}{J}\), \(g\in\ensclasse{n}{J}{\R}\) et \(a\in I\).
+
+Montrer la formule de Faà di Bruno : \[\paren{g\rond f}\deriv{n}\paren{a}=\sum_{\alpha_1+2\alpha_2+\dots+n\alpha_n=n}\dfrac{n!}{\paren{1!}^{\alpha_1}\dots\paren{n!}^{\alpha_n}\alpha_1!\dots\alpha_n!}g\deriv{\alpha_1+\dots+\alpha_n}\paren{f\paren{a}}f\deriv{1}\paren{a}^{\alpha_1}\dots f\deriv{n}\paren{a}^{\alpha_n}\] qui donne la dérivée \(n\)-ème de \(g\rond f\) en fonction des dérivées successives de \(f\) et \(g\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{rem}
+Les deux derniers exercices sont assez calculatoires ; on pourra s'aider d'une calculatrice ou d'un ordinateur pour obtenir les développements limités utiles.
+\end{rem}
+
+\begin{exo}
+On considère le \(\R\)-espace vectoriel \(\ensclasse{\infty}{\R}{\R}\) et le vecteur \(f=\sin\).
+
+La famille \(\paren{f,f\rond f,f\rond f\rond f}\) est-elle libre ?
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Trouver un équivalent simple quand \(x\) tend vers \(0\) de la fonction : \[x\mapsto\tan\paren{\sin x}-\sin\paren{\tan x}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}

@@ -1,0 +1,1619 @@
+\chapter{Algèbre générale}
+
+\minitoc
+
+\section{Lois de composition internes}
+
+\subsection{Définition}
+
+\begin{defi}[Loi de composition interne]
+Soit \(E\) un ensemble.
+
+On appelle loi de composition interne sur \(E\) toute application de \(E\times E\) dans \(E\).
+\end{defi}
+
+\begin{rem}
+Les lois de composition internes sont en général notées avec des symboles tels que : \[+\quad\times\quad\cdot\quad\land\quad\rond\quad*\quad\oplus\quad\otimes.\]
+
+Si \(*\) est une loi de composition interne sur un ensemble \(E\) et \(x,y\) sont deux éléments de \(E\), on préfère noter \(x*y\) plutôt que \(*\paren{x,y}\) l'image du couple \(\paren{x,y}\) par \(*\).
+\end{rem}
+
+\begin{ex}\thlabel{ex:loisDeCompositionInternes}
+\begin{enumerate}
+\item L'addition et la multiplication sont des lois de composition internes sur \(\N\), sur \(\Z\), sur \(\Q\), sur \(\R\), sur \(\C\), sur \(\R^\N\), sur \(\C^\N\)... \\
+
+\item Si \(E\) est un ensemble, alors : \begin{itemize}
+\item L'intersection est une loi de composition interne sur \(\P{E}\). \\
+
+\item La réunion est une loi de composition interne sur \(\P{E}\). \\
+
+\item La composition est une loi de composition interne sur \(\F{E}{E}\). \\
+\end{itemize}
+
+\item Le produit vectoriel est une loi de composition interne sur l'ensemble des vecteurs d'un espace euclidien orienté de dimension 3. \\
+\end{enumerate}
+\end{ex}
+
+\subsection{Associativité, commutativité}
+
+\begin{defi}
+Soit \(E\) un ensemble et \(*\) une loi de composition interne sur \(E\).
+
+On dit que \(*\) est associative si on a : \[\quantifs{\forall x,y,z\in E}x*\paren{y*z}=\paren{x*y}*z.\]
+\end{defi}
+
+\begin{ex}
+Parmi les lois de composition internes données à l'\thref{ex:loisDeCompositionInternes}, toutes sont associatives, excepté le produit vectoriel.
+
+Par exemple, on a bien \[\quantifs{\forall x,y,z\in\N}\paren{x+y}+z=x+\paren{y+z}.\]
+
+En revanche, si l'on considère une base orthonormée directe \(\paren{i,j,k}\), on a : \[\begin{dcases}\paren{i\vecto j}\vecto j=k\vecto j=-i \\ i\vecto\paren{j\vecto j}=i\vecto0=0\end{dcases}\]
+\end{ex}
+
+\begin{defi}
+Soient \(E\) un ensemble et \(*\) une loi de composition interne sur \(E\).
+
+On dit que \(*\) est commutative si on a : \[\quantifs{\forall x,y\in E}x*y=y*x.\]
+\end{defi}
+
+\begin{ex}
+Parmi les lois de composition internes données à l'\thref{ex:loisDeCompositionInternes}, toutes sont commutatives, exceptés le produit vectoriel et la composition.
+\end{ex}
+
+\subsection{Élément neutre, inverse}
+
+\begin{defi}[Élément neutre]
+Soient \(E\) un ensemble, \(*\) une loi de composition interne sur \(E\) et \(e\) un élément de \(E\).
+
+On dit que \(e\) est un élément neutre pour \(*\) si on a : \[\quantifs{\forall x\in E}e*x=x*e=x.\]
+
+On dit alors que la loi \(*\) admet un élément neutre (ou, par abus, que \(E\) admet un élément neutre).
+\end{defi}
+
+\begin{ex}
+Parmi les lois de composition internes données à l'\thref{ex:loisDeCompositionInternes}, toutes admettent un élément neutre, excepté le produit vectoriel :
+
+\begin{enumerate}
+\item \begin{itemize}
+\item La loi \(+\) admet \(0\) (ou \(\paren{0}_n\)) comme neutre. \\
+
+\item La loi \(\times\) admet \(1\) (ou \(\paren{1}_n\)) comme neutre. \\
+\end{itemize}
+
+\item \begin{itemize}
+\item La loi \(\inter\) admet \(E\) comme neutre. \\
+
+\item La loi \(\union\) admet \(\ensvide\) comme neutre. \\
+
+\item La loi \(\rond\) admet \(\id{E}\) comme neutre. \\
+\end{itemize}
+
+\item La loi \(\vecto\) n'admet pas de neutre. Par l'absurde, soit \(v\) un élément neutre. On a \(\quantifs{\forall w\text{ vecteur}}w\vecto v=v\vecto w=w\). D'où, en prenant \(w=v\), \(0=v\). D'où \(\quantifs{\forall w\text{ vecteur}}w=w\vecto0=0\) : contradiction. \\
+\end{enumerate}
+\end{ex}
+
+\begin{rem}
+Soient \(E\) un ensemble, \(*\) une loi de composition interne sur \(E\) et \(e\) un élément de \(E\).
+
+On dit que \(e\) est un élément neutre à droite pour \(*\) si on a : \[\quantifs{\forall x\in E}x*e=x.\]
+
+Il n'est généralement pas suffisant que \(e\) soit un élément neutre à droite pour que \(e\) soit un élément neutre (cela suffit si \(*\) est commutative), comme le montre l'exemple suivant :
+
+\begin{center}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0 & 1\\
+     0 & 0 & 1\\
+     1 & 0 & 0\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(\oplus\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\end{center}
+
+\(\oplus\) est bien une loi de composition interne sur \(\accol{0;1}\) et \(0\) est neutre à gauche mais pas à droite.
+\end{rem}
+
+\begin{prop}[Unicité de l'élément neutre]
+Soient \(E\) un ensemble et \(*\) une loi de composition interne sur \(E\).
+
+Alors il existe au plus un élément neutre pour \(*\).
+\end{prop}
+
+\begin{dem}
+Soient \(e,e\prim\in E\) deux éléments neutres pour \(*\). On a : \[\quantifs{\forall x\in E}x*e=e*x=x=e\prim*x=x*e\prim.\]
+
+Montrons que \(e=e\prim\).
+
+On a : \[\begin{aligned}
+e&=e*e\prim&\text{car }e\prim\text{ neutre} \\
+&=e\prim&\text{car }e\text{ neutre}
+\end{aligned}\]
+\end{dem}
+
+\begin{defprop}[Inverse d'un élément]
+Soient \(E\) un ensemble et \(*\) une loi de composition interne sur \(E\).
+
+On suppose que la loi \(*\) est associative et qu'elle admet un élément neutre noté \(e\).
+
+Soit \(x\) un élément de \(E\).
+
+On appelle inverse de \(x\) tout élément \(y\in E\) tel que : \[y*x=x*y=e.\]
+
+Il existe au plus un tel élément \(y\).
+
+S'il existe, on l'appelle donc l'inverse de \(x\) et on le note \(x\inv\).
+
+On dit alors que \(x\) est inversible.
+\end{defprop}
+
+\begin{dem}
+Soient \(y_1,y_2\in E\) tels que \(\begin{dcases}y_1*x=x*y_1=e \\ y_2*x=x*y_2=e\end{dcases}\)
+
+Montrons que \(y_1=y_2\).
+
+On a \[\begin{aligned}
+\paren{y_1*x}*y_2&=y_1*\paren{x*y_2} \\
+e*y_2&=y_1*e \\
+y_2&=y_1.
+\end{aligned}\]
+\end{dem}
+
+\begin{ex}\thlabel{ex:inverseElementNeutreEgalElementNeutre}
+Soient \(E\) un ensemble et \(*\) une loi de composition interne associative sur \(E\) et admettant un élément neutre \(e\).
+
+Alors \(e\) est inversible, d'inverse lui-même : \[e\inv=e.\]
+\end{ex}
+
+\begin{dem}
+On a \(e*e=e*e=e\). Donc \(e\) inversible, d'inverse \(e\).
+\end{dem}
+
+\begin{ex}\thlabel{ex:inverseInverseEgalElement}
+Soient \(E\) un ensemble et \(*\) une loi de composition interne associative sur \(E\) admettant un élément neutre \(e\).
+
+Soit \(a\) un élément inversible de \(E\).
+
+Alors l'inverse \(a\inv\) de \(a\) est inversible, d'inverse \(a\) : \[\paren{a\inv}\inv=a.\]
+\end{ex}
+
+\begin{dem}
+On a \(a*a\inv=a\inv*a=e\). Donc \(a\inv\) est inversible, d'inverse \(a\).
+\end{dem}
+
+\begin{ex}
+Étudions les éléments inversibles des lois de composition internes associatives de l'\thref{ex:loisDeCompositionInternes} qui admettent un élément neutre :
+
+\begin{itemize}
+\item Pour \(\paren{\N,+}\), le neutre est \(0\) et il est le seul inversible. \\
+
+\item Pour \(\paren{\N,\times}\), le neutre est \(1\) et il est le seul inversible. \\
+
+\item Pour \(\paren{\Z,+}\), le neutre est \(0\) et tout élément admet un opposé. \\
+
+\item Pour \(\paren{\Z,\times}\), le neutre est \(1\) et \(1\) et \(-1\) sont les seuls éléments inversibles. \\
+
+\item Tout élément admet un opposé dans \(\paren{\Q,+}\), \(\paren{\R,+}\), \(\paren{\C,+}\), \(\paren{\R^\N,+}\) et \(\paren{\C^\N,+}\). \\
+
+\item \(0\) n'est pas inversible par \(\times\) dans \(\Q\), \(\R\), \(\C\), \(\R^\N\) et \(\C^\N\). \\
+
+\item Pour \(\paren{\P{E},\inter}\), le neutre est \(E\). Soit \(A\in\P{E}\). On a \[\begin{aligned}
+A\text{ inversible par }\inter&\ssi\quantifs{\exists B\in\P{E}}A\inter B=B\inter A=E \\
+&\ssi A=E
+\end{aligned}\] donc \(E\) est le seul inversible. \\
+
+\item Pour \(\paren{\P{E},\union}\), de même, \(\ensvide\) est le seul inversible. \\
+
+\item Pour \(\paren{\F{E}{E},\rond}\), le neutre est \(\id{E}\). Soit \(f\in\F{E}{E}\). On a \[\begin{aligned}
+f\text{ inversible par }\rond&\ssi\quantifs{\exists g\in\F{E}{E}}f\rond g=g\rond f=\id{E} \\
+&\ssi f\text{ est bijective}
+\end{aligned}\] donc l'inverse de \(f\) est sa bijection réciproque \(f\inv\). \\
+\end{itemize}
+\end{ex}
+
+\begin{prop}\thlabel{prop:inverseProduitEgalProduitInversesInverse}
+Soient \(E\) un ensemble et \(*\) une loi de composition interne associative sur \(E\) admettant un élément neutre \(e\).
+
+Si \(x\) et \(y\) sont inversibles, alors \(x*y\) est aussi inversible, d'inverse : \[\paren{x*y}\inv=y\inv*x\inv.\]
+\end{prop}
+
+\begin{dem}
+On a : \[\begin{aligned}
+\paren{x*y}*\paren{y\inv*x\inv}&=x*\paren{y*y\inv}*x\inv \\
+&=x*e*x\inv \\
+&=x*x\inv \\
+&=e
+\end{aligned}\]
+
+De même : \[\begin{aligned}
+y\inv*x\inv*x*y&=y\inv*y \\
+&=e
+\end{aligned}\]
+
+Donc \(x*y\) est inversible, d'inverse \(y\inv*x\inv\).
+\end{dem}
+
+\begin{prop}[Inversible \(\imp\) régulier]
+Soit \(E\) un ensemble muni d'une loi de composition interne associative \(*\) et admettant un élément neutre \(e\).
+
+Soient \(x,y,z\in E\). On suppose que \(x\) est inversible.
+
+Alors les conditions suivantes sont équivalentes :
+
+\begin{enumerate}
+\item \(y=z\) \\
+
+\item \(xy=xz\) \\
+
+\item \(yx=zx\)
+\end{enumerate}
+
+On dit que \(x\) est un élément régulier ou simplifiable.
+\end{prop}
+
+\begin{dem}
+(1) \(\imp\) (2) et (1) \(\imp\) (3) : Clair.
+
+(2) \(\imp\) (1) : on multiplie à gauche par \(x\inv\).
+
+(3) \(\imp\) (1) : on multiplie à droite par \(x\inv\).
+\end{dem}
+
+\begin{nota}
+Lorsqu'une loi de composition interne est notée \(*\), \(\times\), \(\cdot\), \(\otimes\) ou \(\rond\), on dit qu'on utilise une notation multiplicative.
+
+Au contraire, les notations telles que \(+\) ou \(\oplus\) sont dites additives.
+
+L'usage est de n'employer des notations additives que pour des lois de composition commutatives.
+
+L'usage est également :
+
+\begin{itemize}
+\item de réserver les notations \(1\) ou \(1_E\) pour l'élément neutre aux lois notées multiplicativement. Dans le cas d'une loi notée additivement, on préfère noter l'élément neutre \(0\) ou \(0_E\). \\
+
+\item de réserver la notation \(x\inv\) pour l'inverse d'un élément \(x\) aux lois notées multiplicativement. Dans le cas d'une loi notée additivement, on préfère noter \(-x\) l'inverse de \(x\) et on l'appelle alors plutôt l'opposé de \(x\).
+\end{itemize}
+
+Soit \(E\) un ensemble muni d'une loi de composition interne associative notée multiplicativement, par exemple \(*\). Soient \(x\in E\) et \(n\in\Ns\).
+
+Le produit \(x*\dots*x\) de \(n\) facteurs tous égaux à \(x\) est noté \(x^n\).
+
+Si, de plus, \(*\) admet un élément neutre \(1_E\), on pose \(x^0=1_E\).
+
+Enfin, si \(x\) est inversible, on pose \(x^{-n}=\paren{x\inv}^n\).
+
+On fait de même pour les lois notées additivement, mais en utilisant encore des notations différentes :
+
+Soit \(E\) un ensemble muni d'une loi de composition interne associative notée additivement, par exemple \(+\). Soient \(x\in E\) et \(n\in\Ns\).
+
+La somme \(x+\dots+x\) de \(n\) termes tous égaux à \(x\) est notée \(nx\) (ou \(n\cdot x\)).
+
+Si, de plus, \(+\) admet un élément neutre \(0_E\), on pose \(0x=0_E\).
+
+Enfin, si \(x\) est \guillemets{inversible}, on pose \(\paren{-n}x=n\paren{-x}\).
+
+Enfin, on utilisera pour une loi additive la notation \(\sum\) pour une somme et pour une loi multiplicative la notation \(\prod\) pour un produit.
+
+Toutes ces différences entre lois notées multiplicativement et lois notées additivement ne reposent que dans la manière de noter les objets. Il n'y a aucune différence dans les concepts.
+\end{nota}
+
+\begin{rem}
+Soit \(E\) un ensemble muni d'une loi de composition interne associative \(*\).
+
+Soient \(x,y\in E\) et \(n\in\N\).
+
+Attention à ne pas écrire en général \(\paren{xy}^n=x^ny^n\).
+
+Cette formule n'est vraie que si \(x\) et \(y\) commutent.
+\end{rem}
+
+\subsection{Distributivité}
+
+\begin{defi}[Distributivité]
+Soit \(E\) un ensemble muni de deux lois de composition internes \(\oplus\) et \(\otimes\).
+
+On dit que la loi \(\otimes\) est distributive par rapport à la loi \(\oplus\) si on a : \[\quantifs{\forall x,y,z\in E}\begin{dcases}x\otimes\paren{y\oplus z}=x\otimes y\oplus x\otimes z \\ \paren{y\oplus z}\otimes x=y\otimes x\oplus z\otimes x\end{dcases}\]
+\end{defi}
+
+\begin{rem}
+Soit \(E\) un ensemble muni de deux lois de composition internes \(\oplus\) et \(\otimes\).
+
+Si la loi \(\otimes\) est commutative, alors : \[\otimes\text{ est distributive par rapport à }\oplus\ssi\quantifs{\forall x,y,z\in E}x\otimes\paren{y\oplus z}=x\otimes y\oplus x\otimes z.\]
+\end{rem}
+
+\begin{dem}
+\impdir Claire.
+
+\imprec
+
+Soient \(x,y,z\in E\).
+
+On a \[\begin{aligned}
+\paren{y\oplus z}\otimes x&=x\otimes\paren{y\oplus z} \\
+&=x\otimes y\oplus x\otimes z \\
+&=y\otimes x\oplus z\otimes x
+\end{aligned}\]
+\end{dem}
+
+\begin{ex}
+\begin{itemize}
+\item Dans \(\C\), \(\times\) est distributif par rapport à \(+\). \\
+
+\item Dans \(\P{E}\) : \(\quantifs{\forall A,B,C\in\P{E}}\begin{dcases}A\union\paren{B\inter C}=\paren{A\union B}\inter\paren{A\union C} \\ A\inter\paren{B\union C}=\paren{A\inter B}\union\paren{A\inter C}\end{dcases}\)
+
+Donc \(\inter\) est distributive par rapport à \(\union\) et \(\union\) est distributive par rapport à \(\inter\). \\
+
+\item Dans \(\N\), \(+\) n'est pas distributive par rapport à \(\times\) : \[1+\paren{2\times3}\not=\paren{1+2}\times\paren{1+3}.\]
+\end{itemize}
+\end{ex}
+
+\subsection{Parties stables}
+
+\begin{defi}[Partie stable]
+Soient \(E\) un ensemble et \(*\) une loi de composition interne sur \(E\).
+
+On dit qu'un partie \(A\subset E\) est stable par la loi \(*\) si on a : \[\quantifs{\forall x,y\in A}x*y\in A.\]
+
+On peut alors définir une loi de composition interne sur \(A\) : \[\fonctionlambda{A\times A}{A}{\paren{x,y}}{x*y}\] qui est appelée la loi de composition interne induite par \(*\) sur \(A\).
+
+Cette loi est souvent encore notée \(*\) (abusivement).
+\end{defi}
+
+\begin{ex}
+\begin{itemize}
+\item \(\Z\) est une partie stable de \(\R\) par \(+\) et \(\times\). \\
+
+\item Soit \(E\prim\in\P{E}\). Alors \(\P{E\prim}\in\P{\P{E}}\) est stable par \(\union\) et \(\inter\). \\
+
+\item Notons \(\mathscr{P}_p\paren{\interventierii{1}{10}}\) les parties de \(\interventierii{1}{10}\) de cardinal pair. Ce n'est une partie stable de \(\P{\interventierii{1}{10}}\) ni pour \(\union\) ni pour \(\inter\). En effet, on a : \[\accol{1;2}\union\accol{1;3}=\accol{1;2;3}\not\in\mathscr{P}_p\paren{\interventierii{1}{10}}\quad\text{et}\quad\accol{1;2}\inter\accol{1;3}=\accol{1}\not\in\mathscr{P}_p\paren{\interventierii{1}{10}}.\]
+\end{itemize}
+\end{ex}
+
+\section{Groupes}
+
+\subsection{Définition}
+
+\begin{defi}[Groupe]
+Un groupe est un couple \(\groupe{G}[*]\) où \(G\) est un ensemble et \(*\) une loi de composition interne sur \(G\) respectant les conditions suivantes :
+
+\begin{enumerate}
+\item La loi \(*\) est associative. \\
+
+\item La loi \(*\) admet un élément neutre. \\
+
+\item Tout élément de \(G\) possède un inverse.
+\end{enumerate}
+
+On dit aussi que \(G\) est muni d'une structure de groupe, ou, par abus, que \(G\) est un groupe.
+
+Si, de plus, la loi \(*\) est commutative, on dit que le groupe est abélien ou commutatif.
+\end{defi}
+
+\begin{ex}[Groupes abéliens]
+\[\groupe{\Qs}[\times]\quad\groupe{\Rs}[\times]\quad\groupe{\Cs}[\times]\quad\groupe{\paren{\Rs}^\N}[\times]\quad\groupe{\paren{\Cs}^\N}[\times]\]
+\end{ex}
+
+\begin{ex}
+Il existe une unique structure de groupe sur \(\accol{0}\) :
+
+\begin{center}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0 \\
+     0 & 0 \\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(+\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\end{center}
+
+En effet, on a \(0+\paren{0+0}=\paren{0+0}+0=0\) donc \(+\) est une loi de groupe. On a aussi \(0\) neutre et \(0\) opposé de \(0\).
+
+Sur \(\accol{0;1}\), il existe deux structures de groupe :
+
+Si \(0\) neutre :
+
+\begin{center}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0 & 1\\
+     0 & 0 & 1\\
+     1 & 1 & 0\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(\oplus\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\end{center}
+
+Si \(1\) neutre :
+
+\begin{center}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0 & 1\\
+     0 & 1 & 0\\
+     1 & 0 & 1\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(\otimes\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\end{center}
+\end{ex}
+
+\begin{ex}
+Structure de groupe sur \(\accol{0;1;2}\) dont \(0\) est le neutre :
+
+\begin{center}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0 & 1 & 2\\
+     0 & 0 & 1 & 2\\
+     1 & 1 & 2 & 0\\
+     2 & 2 & 0 & 1\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(\oplus\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\end{center}
+
+On remarque que cette loi est commutative.
+\end{ex}
+
+\begin{ex}[Produit de deux groupes]
+Soient \(\groupe{G_1}[*_1]\) et \(\groupe{G_2}[*_2]\) deux groupes.
+
+L'ensemble \(G_1\times G_2\) est naturellement muni d'une structure de groupe, de loi : \[\fonctionlambda{\paren{G_1\times G_2}\times\paren{G_1\times G_2}}{G_1\times G_2}{\paren{\paren{g_1,g_2},\paren{g_1\prim,g_2\prim}}}{\paren{g_1*_1g_1\prim,g_2*_2g_2\prim}}\]
+
+Déterminons son neutre et l'inverse d'un élément \(\paren{g_1,g_2}\) donné.
+\end{ex}
+
+\begin{dem}
+On note \(*\) la loi.
+
+Montrons que \(*\) est associative :
+
+Soient \(\paren{g_1,g_2},\paren{g_1\prim,g_2\prim},\paren{g_1\seconde,g_2\seconde}\in G_1\times G_2\).
+
+On a : \[\begin{aligned}
+\paren{g_1,g_2}*\paren{\paren{g_1\prim,g_2\prim}*\paren{g_1\seconde,g_2\seconde}}&=\paren{g_1,g_2}*\paren{g_1\prim*_1g_1\seconde,g_2\prim*_2g_2\seconde} \\
+&=\paren{g_1*_1\paren{g_1\prim*_1g_1\seconde},g_2*_2\paren{g_2\prim*_2g_2\seconde}} \\
+&=\paren{\paren{g_1*_1g_1\prim}*_1g_1\seconde,\paren{g_2*_2g_2\prim}*_2g_2\seconde} \\
+&=\paren{g_1*_1g_1\prim,g_2*_2g_2\prim}*\paren{g_1\seconde,g_2\seconde} \\
+&=\paren{\paren{g_1,g_2}*\paren{g_1\prim,g_2\prim}}*\paren{g_1\seconde,g_2\seconde}
+\end{aligned}\]
+
+Montrons que \(*\) admet un neutre :
+
+On note \(e_1\) le neutre de \(G_1\) et \(e_2\) le neutre de \(G_2\).
+
+On remarque : \[\quantifs{\forall\paren{g_1,g_2}\in G_1\times G_2}\begin{dcases}\paren{g_1,g_2}*\paren{e_1,e_2}=\paren{g_1*_1e_1,g_2*_2e_2}=\paren{g_1,g_2} \\ \paren{e_1,e_2}*\paren{g_1,g_2}=\paren{e_1*_1g_1,e_2*_2g_2}=\paren{g_1,g_2}\end{dcases}\]
+
+Donc \(\paren{e_1,e_2}\) est le neutre de \(*\).
+
+Montrons que tout élément admet un inverse :
+
+Soit \(\paren{g_1,g_2}\in G_1\times G_2\).
+
+On remarque : \[\begin{dcases}\paren{g_1,g_2}*\paren{g_1\inv,g_2\inv}=\paren{g_1*_1g_1\inv,g_2*_2g_2\inv}=\paren{e_1,e_2} \\ \paren{g_1\inv,g_2\inv}*\paren{g_1,g_2}=\paren{g_1\inv*_1g_1,g_2\inv*_2g_2}=\paren{e_1,e_2}\end{dcases}\]
+
+Donc \(\paren{g_1,g_2}\) est inversible, d'inverse \(\paren{g_1\inv,g_2\inv}\).
+\end{dem}
+
+\begin{rem}
+On a : \[G_1\times G_2\text{ abélien}\ssi\begin{dcases}G_1\text{ abélien} \\ G_2\text{ abélien}\end{dcases}\]
+\end{rem}
+
+\begin{ex}[Produit de groupes]
+Soient \(\groupe{G_1}[*_1],\dots,\groupe{G_n}[*_n]\) des groupes.
+
+Le produit cartésien \(G_1\times\dots\times G_n\) est naturellement muni d'une structure de groupe, de loi : \[\fonctionlambda{\paren{G_1\times\dots\times G_n}\times\paren{G_1\times\dots\times G_n}}{G_1\times\dots\times G_n}{\paren{\paren{g_1,\dots,g_n},\paren{g_1\prim,\dots,g_n\prim}}}{\paren{g_1*_1g_1\prim,\dots,g_n*_ng_n\prim}}\]
+
+Son neutre est \(\paren{e_1,\dots,e_n}\) où \(\quantifs{\forall i\in\interventierii{1}{n}}e_i\text{ neutre de }G_i\).
+
+L'inverse d'un élément \(\paren{g_1,\dots,g_n}\) est \(\paren{g_1,\dots,g_n}\inv=\paren{g_1\inv,\dots,g_n\inv}\).
+\end{ex}
+
+\begin{dem}
+Idem.
+\end{dem}
+
+\begin{ex}\thlabel{ex:fonctionsDeIDansGroupeEstUnGroupe}
+Soit \(I\) un ensemble et \(G\) un groupe.
+
+L'ensemble \(\F{I}{G}\) est naturellement muni d'une structure de groupe.
+
+Notons \(\times\) la loi de \(G\) et \(e\) son neutre.
+
+On pose \[\fonction{*}{\F{I}{G}^2}{\F{I}{G}}{\paren{f,g}}{\fonctionlambda{I}{G}{t}{f\paren{t}\times g\paren{t}}}\]
+
+Montrons que \(*\) est associative :
+
+Soient \(f,g,h\in\F{I}{G}\).
+
+On a : \[\begin{WithArrows}
+\quantifs{\forall t\in I}f*\paren{g*h}\paren{t}&=f\paren{t}\times\paren{g*h}\paren{t} \\
+&=f\paren{t}\times\paren{g\paren{t}\times h\paren{t}}\Arrow{car \(\times\) est associative} \\
+&=\paren{f\paren{t}\times g\paren{t}}\times h\paren{t} \\
+&=\paren{f*g}\paren{t}\times h\paren{t} \\
+&=\paren{f*g}*h\paren{t}
+\end{WithArrows}\]
+
+Donc \(*\) est associative.
+
+Montrons que \(*\) admet un élément neutre :
+
+On pose \(\fonction{f_1}{I}{G}{t}{e}\). Montrons que \(f_1\) est l'élément neutre de \(*\).
+
+Soit \(f\in\F{I}{G}\). Montrons que \(f_1*f=f*f_1=f\).
+
+On a \[\quantifs{\forall t\in I}\begin{dcases}\paren{f_1*f}\paren{t}=f_1\paren{t}\times f\paren{t}=e\times f\paren{t}=f\paren{t} \\ \paren{f*f_1}\paren{t}=f\paren{t}\times f_1\paren{t}=f\paren{t}\times e=f\paren{t}\end{dcases}\]
+
+Donc \(f_1\) est l'élément neutre de \(*\).
+
+Montrons que tout élément de \(\F{I}{G}\) est inversible.
+
+Soit \(f\in\F{I}{G}\). On pose \(\fonction{g}{I}{G}{t}{f\paren{t}\inv}\).
+
+Montrons que \(f*g=g*f=f_1\).
+
+On a : \[\quantifs{\forall t\in I}\begin{dcases}\paren{f*g}\paren{t}=f\paren{t}\times g\paren{t}=f\paren{t}\times f\paren{t}\inv=e=f_1\paren{t} \\ \paren{g*f}\paren{t}=g\paren{t}\times f\paren{t}=f\paren{t}\inv\times f\paren{t}=e=f_1\paren{t}\end{dcases}\]
+
+Donc tout élément de \(\F{I}{G}\) est inversible, d'inverse \(g\).
+\end{ex}
+
+\begin{rem}
+On a : \[\F{I}{G}\text{ abélien}\ssi\orenv{G\text{ abélien} \\ I=\ensvide}\]
+\end{rem}
+
+\subsection{Sous-groupes}
+
+\begin{defi}[Sous-groupe]
+Soit \(\groupe{G}[*]\) un groupe. On note \(e\) son élément neutre.
+
+Un sous-groupe de \(\groupe{G}[*]\) (ou, par abus, de \(G\)) est une partie \(H\) de \(G\) telle que :
+
+\begin{enumerate}
+\item L'élément neutre \(e\) appartient à \(H\). \\
+
+\item La partie \(H\) est stable par produit : \(\quantifs{\forall h_1,h_2\in H}h_1*h_2\in H\). \\
+
+\item La partie \(H\) est stable par passage à l'inverse : \(\quantifs{\forall h\in H}h\inv\in H\).
+\end{enumerate}
+\end{defi}
+
+\begin{prop}
+Tout sous-groupe d'un groupe \(G\) est naturellement un groupe. Sa loi est la loi induite par celle de \(G\).
+\end{prop}
+
+\begin{dem}
+On note \(*\) la loi de \(G\).
+
+Soit \(H\) un sous-groupe de \(G\).
+
+Comme \(H\) est stable par \(*\), on peut définir : \(\fonction{*_H}{H^2}{H}{\paren{h_1,h_2}}{h_1*h_2}\)
+
+Montrons que \(*_H\) est associative :
+
+On a bien \[\quantifs{\forall h_1,h_2,h_3\in H}h_1*_H\paren{h_2*_Hh_3}=h_1*\paren{h_2*h_3}=\paren{h_1*h_2}*h_3=\paren{h_1*_Hh_2}*_Hh_3.\]
+
+Montrons que \(*_H\) admet un élément neutre :
+
+On a \(e\in H\) et \[\quantifs{\forall h\in H}\begin{dcases}e*_Hh=e*h=h \\ h*_He=h*e=h\end{dcases}\] donc \(e\) est le neutre de \(*_H\).
+
+Montrons que tout élément de \(H\) est inversible par \(*_H\) :
+
+Soit \(h\in H\). On note \(h\inv\) son inverse dans \(G\).
+
+On a \[\begin{dcases}h\inv\in H \\ h*_Hh\inv=h\inv*_Hh=e\end{dcases}\]
+
+Donc \(\groupe{H}[*_H]\) est un groupe.
+\end{dem}
+
+\begin{rem}
+On a \[H\text{ abélien}\impr G\text{ abélien}\]
+\end{rem}
+
+\begin{rem}
+En pratique, on note également \(*\) la loi \(*_H\) de \(H\).
+\end{rem}
+
+\begin{prop}
+Soit \(\groupe{G}[*]\) un groupe. On note \(e\) son élément neutre.
+
+Soit \(H\) une partie de \(G\).
+
+Alors \(H\) est un sous-groupe de \(G\) si, et seulement si, les conditions suivantes sont vérifiées :
+
+\begin{enumerate}\setcounter{enumi}{3}
+\item \(e\in H\) \\
+
+\item \(\quantifs{\forall h_1,h_2\in H}h_1*h_2\inv\in H\) \\
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\impdir
+
+Supposons \(H\) sous-groupe de \(G\).
+
+On a clairement (4) selon (1).
+
+Montrons (5).
+
+Soient \(h_1,h_2\in H\).
+
+On a \(h_2\inv\in H\) selon (3) donc \(h_1*h_2\inv\in H\) selon (2).
+
+\imprec
+
+Supposons (4) et (5).
+
+On a (1) selon (4).
+
+Montrons (3).
+
+Soit \(h\in H\).
+
+On a \(e\in H\) selon (4) donc selon (5), \(e*h\inv\in H\) donc \(h\inv\in H\).
+
+Montrons (2).
+
+Soient \(h_1,h_2\in H\).
+
+On a \(h_2\inv\in H\) selon (3) donc \(h_1*\paren{h_2\inv}\inv\in H\) donc \(h_1*h_2\in H\).
+\end{dem}
+
+\begin{ex}
+Soit \(n\in\Ns\).
+
+L'ensemble \(\U\) des nombres complexes de module \(1\) est un sous-groupe de \(\Cs\).
+
+L'ensemble \(\U_n\) des racines \(n\)-ièmes de l'unité est un sous-groupe de \(\U\).
+\end{ex}
+
+\begin{dem}
+On sait que \(\groupe{\Cs}[\times]\) est un groupe. Montrons que \(\U\) est un sous-groupe de \(\Cs\).
+
+On a \(1\in\U\) et \(\quantifs{\forall z_1,z_2\in\U}z_1\times z_2\inv\in\U\) (car \(\abs{z_1\times z_2\inv}=\dfrac{\abs{z_1}}{\abs{z_2}}=\dfrac{1}{1}=1\)).
+
+Donc \(\U\) est un sous-groupe de \(\Cs\). Donc \(\U\) est un groupe.
+
+Montrons que \(\U_n\) est un sous-groupe de \(\U\).
+
+On a \(\U_n\subset\U\) et \(1\in\U_n\) et \(\quantifs{\forall z_1,z_2\in\U_n}z_1\times z_2\inv\in\U_n\) car \(\paren{\dfrac{z_1}{z_2}}^n=\dfrac{z_1^n}{z_2^n}=\dfrac{1}{1}=1\).
+
+Donc \(\U_n\) est un sous-groupe de \(\U\). Donc c'est un groupe.
+\end{dem}
+
+\subsection{Morphismes de groupe}
+
+\begin{defi}[Morphisme de groupes]
+Soient \(\groupe{G_1}[*_1]\) et \(\groupe{G_2}[*_2]\) deux groupes.
+
+On appelle morphisme de groupes de \(\groupe{G_1}[*_1]\) vers \(\groupe{G_2}[*_2]\) (ou, par abus, de \(G_1\) vers \(G_2\)) toute application \(\phi:G_1\to G_2\) telle que : \[\quantifs{\forall g,g\prim\in G_1}\phi\paren{g*_1g\prim}=\phi\paren{g}*_2\phi\paren{g\prim}.\]
+
+L'ensemble des morphismes de groupes de \(G_1\) vers \(G_2\) est noté : \[\Hom{G_1}{G_2}.\]
+\end{defi}
+
+\begin{prop}\thlabel{prop:neutreEtInverseParUnMorphismeDeGroupes}
+Soient \(\groupe{G_1}[*_1]\) et \(\groupe{G_2}[*_2]\) deux groupes et \(\phi:G_1\to G_2\) un morphisme de groupes de \(\groupe{G_1}[*_1]\) vers \(\groupe{G_2}[*_2]\). On note \(e_1\) et \(e_2\) les éléments neutres respectifs de \(G_1\) et \(G_2\).
+
+On a alors : \[\phi\paren{e_1}=e_2\] et : \[\quantifs{\forall g\in G}\phi\paren{g\inv}=\phi\paren{g}\inv.\]
+\end{prop}
+
+\begin{dem}
+On a \(e_1*_1e_1=e_1\) donc : \[\begin{aligned}
+\phi\paren{e_1*_1e_1}&=\phi\paren{e_1} \\
+\phi\paren{e_1}*_2\phi\paren{e_1}&=\phi\paren{e_1} \\
+\phi\paren{e_1}\inv*_2\phi\paren{e_1}*_2\phi\paren{e_1}&=\phi\paren{e_1}\inv*_2\phi\paren{e_1} \\
+e_2*_2\phi\paren{e_1}&=e_2 \\
+\phi\paren{e_1}&=e_2
+\end{aligned}\]
+
+Soit \(g\in G_1\).
+
+On a \(g*_1g\inv=e_1\) donc : \[\begin{aligned}
+\phi\paren{g*_1g\inv}&=\phi\paren{e_1} \\
+\phi\paren{g}*_2\phi\paren{g\inv}&=e_2 \\
+\phi\paren{g}\inv*_2\phi\paren{g}*_2\phi\paren{g\inv}&=\phi\paren{g}\inv*_2e_2 \\
+\phi\paren{g\inv}&=\phi\paren{g}\inv
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}\thlabel{prop:imagesDirectesEtReciproquesMorphismeSousGroupes}
+Soient \(\groupe{G_1}[*_1]\) et \(\groupe{G_2}[*_2]\) deux groupes et \(\phi:G_1\to G_2\) un morphisme de groupes de \(\groupe{G_1}[*_1]\) vers \(\groupe{G_2}[*_2]\).
+
+Soient \(H_1\) un sous-groupe de \(G_1\) et \(H_2\) un sous-groupe de \(G_2\).
+
+Alors :
+
+\begin{enumerate}
+\item L'image directe \(\phi\paren{H_1}\) est un sous-groupe de \(G_2\). \\
+
+\item L'image réciproque \(\phi\inv\paren{H_2}\) est un sous-groupe de \(G_1\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+Montrons que \(\phi\paren{H_1}\) est un sous-groupe de \(G_2\).
+
+On a \(\phi\paren{H_1}\subset G_2\).
+
+On note \(e_1\) l'élément neutre de \(G_1\) et \(e_2\) l'élément neutre de \(G_2\).
+
+On a \(e_1\in H_1\) donc \(\phi\paren{e_1}\in\phi\paren{H_1}\) donc \(e_2\in\phi\paren{H_1}\).
+
+Montrons que \(\quantifs{\forall y_1,y_2\in\phi\paren{H_1}}y_1*_2y_2\inv\in\phi\paren{H_1}\).
+
+Soient \(y_1,y_2\in\phi\paren{H_1}\). Soient \(x_1,x_2\in H_1\) tels que \(\begin{dcases}\phi\paren{x_1}=y_1 \\ \phi\paren{x_2}=y_2\end{dcases}\)
+
+On a \(x_1*_1x_2\inv\in H_1\) donc \(\phi\paren{x_1*_1x_2\inv}\in\phi\paren{H_1}\).
+
+Or \(\phi\paren{x_1*_1x_2\inv}=\phi\paren{x_1}*_2\phi\paren{x_2\inv}=\phi\paren{x_1}*_2\phi\paren{x_2}\inv=y_1*_2y_2\inv\).
+
+Donc \(y_1*_2y_2\inv\in\phi\paren{H_1}\).
+
+Donc \(\phi\paren{H_1}\) est un sous-groupe de \(G_2\).
+\end{dem}
+
+\begin{dem}[2]
+Montrons que \(\phi\inv\paren{H_2}\) est un sous-groupe de \(G_1\).
+
+On a \(\phi\inv\paren{H_2}\subset G_1\).
+
+On note \(e_1\) l'élément neutre de \(G_1\) et \(e_2\) l'élément neutre de \(G_2\).
+
+On a \(e_1\in\phi\inv\paren{H_2}\) car \(\phi\paren{e_1}=e_2\in H_2\).
+
+Enfin, on a \(\quantifs{\forall x_1,x_2\in\phi\inv\paren{H_2}}\phi\paren{x_1*_1x_2\inv}=\phi\paren{x_1}*_2\phi\paren{x_2\inv}=\phi\paren{x_1}*_2\phi\paren{x_2}\inv\in H_2\) car \(H_2\) est un groupe.
+
+Donc \(\quantifs{\forall x_1,x_2\in\phi\inv\paren{H_2}}x_1*_1x_2\inv\in\phi\inv\paren{H_2}\).
+
+Donc \(\phi\inv\paren{H_2}\) est un sous-groupe de \(G_1\).
+\end{dem}
+
+\begin{prop}
+Soit \(G\) un groupe et \(H\) un sous-groupe de \(G\).
+
+L'application \[\fonction{i}{H}{G}{h}{h}\] est un morphisme de groupes.
+\end{prop}
+
+\begin{dem}
+On note \(*\) la loi de \(G\) et \(*_H\) la loi de \(H\) (induite).
+
+On remarque : \[\quantifs{\forall h_1,h_2\in H}i\paren{h_1*_Hh_2}=h_1*_Hh_2=h_1*h_2.\]
+\end{dem}
+
+\begin{ex}
+Soit \(I\) un ensemble, \(J\) une partie de \(I\) et \(G\) un groupe.
+
+Alors l'application de restriction \[\fonctionlambda{\F{I}{G}}{\F{J}{G}}{f}{\restr{f}{J}}\] est un morphisme de groupes.
+\end{ex}
+
+\begin{ex}
+La fonction \(\fonction{\phi}{\R}{\U}{\theta}{\e{\i\theta}}\) est un morphisme de groupes de \(\groupe{\R}\) vers \(\groupe{\U}[\times]\).
+\end{ex}
+
+\begin{dem}
+On a : \[\quantifs{\forall\theta_1,\theta_2\in\R}\phi\paren{\theta_1+\theta_2}=\e{\i\paren{\theta_1+\theta_2}}=\e{\i\theta_1}\e{\i\theta_2}=\phi\paren{\theta_1}\phi\paren{\theta_2}.\]
+\end{dem}
+
+\begin{prop}[Composition de morphismes de groupes]\thlabel{prop:composeeMorphismesEstUnMorphisme}
+Soient \(G_1\), \(G_2\) et \(G_3\) des groupes et \(\phi:G_1\to G_2\) et \(\psi:G_2\to G_3\) des morphismes de groupes.
+
+Alors \[\psi\rond\phi:G_1\to G_3\] est un morphisme de groupes.
+\end{prop}
+
+\begin{dem}
+On note \(*_1\) la loi de \(G_1\), \(*_2\) la loi de \(G_2\) et \(*_3\) la loi de \(G_3\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall g,g\prim\in G_1}\psi\rond\phi\paren{g*_1g\prim}&=\psi\paren{\phi\paren{g*_1g\prim}} \\
+&=\psi\paren{\phi\paren{g}*_2\phi\paren{g\prim}} \\
+&=\psi\paren{\phi\paren{g}}*_3\psi\paren{\phi\paren{g\prim}} \\
+&=\psi\rond\phi\paren{g}*_3\psi\rond\phi\paren{g\prim}
+\end{aligned}\]
+
+Donc \(\psi\rond\phi\) est un morphisme de groupes.
+\end{dem}
+
+\begin{defi}[Noyau et image d'un morphisme]
+Soient \(G_1\) et \(G_2\) deux groupes et \(\phi:G_1\to G_2\) un morphisme de groupes.
+
+On note \(e_2\) le neutre de \(G_2\).
+
+L'image du morphisme \(\phi\) est l'ensemble image de l'application \(\phi\) : \[\Im\phi=\accol{\phi\paren{g_1}}_{g_1\in G_1}=\accol{g_2\in G_2\tq\quantifs{\exists g_1\in G_1}\phi\paren{g_1}=g_2}.\]
+
+Le noyau du morphisme \(\phi\) est l'ensemble des éléments de \(G_1\) dont l'image par \(\phi\) est le neutre de \(G_2\) : \[\ker\phi=\phi\inv\paren{\accol{e_2}}=\accol{g_1\in G_1\tq\phi\paren{g_1}=e_2}.\]
+\end{defi}
+
+\begin{prop}
+Soient \(G_1\) et \(G_2\) deux groupes et \(\phi:G_1\to G_2\) un morphisme de groupes.
+
+Alors \(\ker\phi\) est un sous-groupe de \(G_1\) et \(\Im\phi\) est un sous-groupe de \(G_2\).
+\end{prop}
+
+\begin{dem}
+On a \(\Im\phi=\phi\paren{G_1}\) donc \(\Im\phi\) est l'image directe de \(G_2\) par \(\phi\).
+
+Donc \(\Im\phi\) est un sous-groupe de \(G_2\) selon la \thref{prop:imagesDirectesEtReciproquesMorphismeSousGroupes} car \(\phi\) est un morphisme de groupes et \(G_1\) est un sous-groupe de \(G_1\).
+
+\(\ker\phi\) est l'image réciproque de \(\accol{e_2}\) par \(\phi\).
+
+Donc \(\ker\phi\) est un sous-groupe de \(G_1\) selon la \thref{prop:imagesDirectesEtReciproquesMorphismeSousGroupes} car \(\phi\) est un morphisme de groupes et \(\accol{e_2}\) est un sous-groupe de \(G_2\).
+\end{dem}
+
+\begin{theo}\thlabel{theo:morphismeDeGroupeInjectifSsiNoyauNul}
+Soit \(\phi:G_1\to G_2\) un morphisme de groupes.
+
+On note \(e_1\) le neutre de \(G_1\).
+
+Alors \(\phi\) est une application injective si, et seulement si, son noyau est \guillemets{nul}, \cad : \[\ker\phi=\accol{e_1}.\]
+\end{theo}
+
+\begin{dem}
+On note \(e_2\) le neutre de \(G_2\).
+
+\impdir
+
+Supposons \(\phi\) injectif.
+
+Montrons que \(\ker\phi=\accol{e_1}\).
+
+\increc On a \(\phi\paren{e_1}=e_2\) donc \(e_1\in\phi\inv\paren{\accol{e_2}}\) donc \(\accol{e_1}\subset\ker\phi\).
+
+\incdir Soit \(x\in\ker\phi\). On a \(\phi\paren{x}=e_2=\phi\paren{e_1}\). Donc \(x=e_1\) car \(\phi\) est injectif. Donc \(\ker\phi\subset\accol{e_1}\).
+
+Finalement, on a \(\ker\phi=\accol{e_1}\).
+
+\imprec
+
+Supposons \(\ker\phi=\accol{e_1}\).
+
+Montrons que \(\phi\) est injectif.
+
+Soient \(x,y\in G_1\) tels que \(\phi\paren{x}=\phi\paren{y}\). Montrons que \(x=y\).
+
+On a : \[\begin{aligned}
+\phi\paren{x}&=\phi\paren{y} \\
+\phi\paren{x}\phi\paren{y}\inv&=e_2 \\
+\phi\paren{x}\phi\paren{y\inv}&=e_2 \\
+\phi\paren{xy\inv}&=e_2
+\end{aligned}\]
+
+Donc \(xy\inv\in\ker\phi\) donc \(xy\inv=e_1\) car \(\ker\phi=\accol{e_1}\).
+
+Donc \(x=y\).
+
+Donc \(\phi\) est injectif.
+\end{dem}
+
+\subsection{Isomorphismes, endomorphismes, automorphismes}
+
+\begin{defi}[Isomorphisme]
+Soient \(G_1\) et \(G_2\) deux groupes.
+
+Un isomorphisme de groupes de \(G_1\) vers \(G_2\) est un morphisme de groupes \(\phi:G_1\to G_2\) bijectif.
+\end{defi}
+
+\begin{theo}
+Soient \(G_1\), \(G_2\) et \(G_3\) des groupes.
+
+Soient \(\phi:G_1\to G_2\) et \(\phi:G_2\to G_3\) deux isomorphismes de groupes.
+
+Alors \(\psi\rond\phi:G_1\to G_3\) est un isomorphisme de groupes.
+\end{theo}
+
+\begin{dem}
+Comme \(\psi\) et \(\phi\) sont des morphismes de groupes, d'après la \thref{prop:composeeMorphismesEstUnMorphisme}, \(\psi\rond\phi\) est un morphisme de groupes.
+
+Comme \(\psi\) et \(\phi\) sont des bijections, d'après la \thref{prop:composeeBijectionsEstUneBijection}, \(\psi\rond\phi\) est une bijection.
+
+Donc \(\psi\rond\phi\) est un isomorphisme de groupes.
+\end{dem}
+
+\begin{theo}
+Soit \(\phi:G_1\to G_2\) un isomorphisme de groupes.
+
+Alors la bijection réciproque \(\phi\inv:G_2\to G_1\) est un isomorphisme de groupes.
+\end{theo}
+
+\begin{dem}
+On note \(*_1\) la loi de \(G_1\) et \(*_2\) la loi de \(G_2\).
+
+On sait déjà que \(\phi\inv\) est une bijection (\thref{defprop:bijRec}).
+
+Montrons que \(\phi\inv:G_2\to G_1\) est un morphisme de groupes.
+
+Soient \(y,y\prim\in G_2\).
+
+On a \(\phi\rond\phi\inv\paren{y}=y\) et \(\phi\rond\phi\inv\paren{y\prim}=y\prim\).
+
+Donc, comme \(\phi\) est un morphisme de groupes, on a \(\phi\paren{\phi\inv\paren{y}*_1\phi\inv\paren{y\prim}}=y*_2y\prim\).
+
+Donc \(\phi\inv\paren{y}*_1\phi\inv\paren{y\prim}\) est l'antécédent de \(y*_2y\prim\) par \(\phi\), \cad \(\phi\inv\paren{y}*_1\phi\inv\paren{y\prim}=\phi\inv\paren{y*_2y\prim}\).
+
+Donc \(\phi\inv\) est un morphisme de groupes.
+
+Donc \(\phi\inv\) est un isomorphisme de groupes.
+\end{dem}
+
+\begin{defi}[Endomorphisme]
+Soit \(G\) un groupe.
+
+Un endomorphisme de groupe de \(G\) est un morphisme de groupes \(\phi:G\to G\).
+\end{defi}
+
+\begin{defi}[Automorphisme]
+Soit \(G\) un groupe.
+
+Un automorphisme de groupe de \(G\) est un isomorphisme de groupes \(\phi:G\to G\), \cad un endomorphisme de \(G\) bijectif.
+
+L'ensemble des automorphismes de groupe de \(G\) est noté \(\Aut{G}\).
+\end{defi}
+
+\begin{ex}
+Soit \(G\) un groupe.
+
+Alors \(\groupe{\Aut{G}}[\rond]\) est un groupe appelé le groupe des automorphismes de \(G\).
+\end{ex}
+
+\begin{dem}
+\note{EXERCICE}
+\end{dem}
+
+\section{Anneaux}
+
+\subsection{Définition}
+
+\begin{defi}[Anneau]
+Un anneau est un triplet \(\anneau{A}\) où \(A\) est un ensemble et \(+\) et \(\times\) sont deux lois de composition internes sur \(A\) tels que les conditions suivantes soient vérifiées :
+
+\begin{enumerate}
+\item \(\groupe{A}\) est un groupe commutatif. \\
+
+\item La loi \(\times\) est associative et admet un élément neutre. \\
+
+\item La loi \(\times\) est distributive par rapport à la loi \(+\), \cad : \[\quantifs{\forall a,b,c\in A}a\times\paren{b+c}=a\times b+a\times c\quad\text{et}\quad\paren{b+c}\times a=b\times a+c\times a.\]
+\end{enumerate}
+
+On dit aussi que \(A\) est muni d'une structure d'anneau, ou, par abus, que \(A\) est un anneau.
+
+Si, de plus, la loi \(\times\) est commutative, on dit que \(A\) est un anneau commutatif.
+\end{defi}
+
+\begin{rem}
+La loi \(+\) est appelée l'addition de l'anneau.
+
+La loi \(\times\) est appelée sa multiplication. On s'autorise à ne pas écrire son symbole (\cad écrire \(ab\) au lieu de \(a\times b\)).
+
+L'élément neutre de \(+\) est généralement noté \(0\) ou \(0_A\) ; celui de \(\times\) est noté \(1\) ou \(1_A\).
+
+Si \(a\) est un élément de \(A\), son \guillemets{élément inverse} pour \(+\) est appelé son opposé et est noté \(-a\) (il existe car \(\groupe{A}\) est un groupe commutatif) ; son élément inverse pour \(\times\) est appelé son inverse et est noté \(a\inv\) (s'il existe.)
+\end{rem}
+
+\begin{ex}
+On vérifie facilement que \(\anneau{\Z}\), \(\anneau{\Q}\), \(\anneau{\R}\), \(\anneau{\C}\), \(\anneau{\R^\N}\) et \(\anneau{\C^\N}\) sont des anneaux commutatifs.
+\end{ex}
+
+\begin{ex}\thlabel{ex:produitD'anneauxEstUnAnneau}
+Soient \(\anneau{A_1}[+_1][\times_1]\) et \(\anneau{A_2}[+_2][\times_2]\) deux anneaux de neutres \(0_1,1_1\) et \(0_2,1_2\) respectivement.
+
+L'ensemble \(A_1\times A_2\) est naturellement muni d'une structure d'anneau, de lois \[\fonctionlambda{\paren{A_1\times A_2}\times\paren{A_1\times A_2}}{A_1\times A_2}{\paren{\paren{a_1,a_2},\paren{a_1\prim,a_2\prim}}}{\paren{a_1+_1a_1\prim,a_2+_2a_2\prim}}\] et \[\fonctionlambda{\paren{A_1\times A_2}\times\paren{A_1\times A_2}}{A_1\times A_2}{\paren{\paren{a_1,a_2},\paren{a_1\prim,a_2\prim}}}{\paren{a_1\times_1a_1\prim,a_2\times_2a_2\prim}}\]
+
+Ses éléments neutres sont \(\paren{0_1,0_2}\) et \(\paren{1_1,1_2}\).
+\end{ex}
+
+\begin{ex}\thlabel{ex:fonctionsD'unEnsembleDansUnAnneauEstUnAnneau}
+Soient \(I\) un ensemble et \(A\) un anneau.
+
+\(\F{I}{A}\) est naturellement muni d'une structure d'anneau.
+
+On note \(\begin{dcases}+\text{ et }\times\text{ les lois de }A \\ 0\text{ et }1\text{ les lois de }A\end{dcases}\)
+
+Comme \(\groupe{A}\) est un groupe commutatif, on sait que \(\F{I}{A}\) est un groupe commutatif pour la loi \[\fonction{\oplus}{\F{I}{A}^2}{\F{I}{A}}{\paren{f,g}}{\fonctionlambda{I}{A}{x}{f\paren{x}+g\paren{x}}}\] dont le neutre est \(\fonctionlambda{I}{A}{x}{0}\) (\cf \thref{ex:fonctionsDeIDansGroupeEstUnGroupe}).
+
+On pose d'autre part \[\fonction{\otimes}{\F{I}{A}^2}{\F{I}{A}}{\paren{f,g}}{\fonctionlambda{I}{A}{x}{f\paren{x}\times g\paren{x}}}\]
+
+On vérifie facilement que \(\otimes\) est associative et qu'elle admet pour neutre \(\fonctionlambda{I}{A}{x}{1}\).
+
+Vérifions maintenant que \(\otimes\) est distributive par rapport à \(\oplus\).
+
+Soient \(f,g,h\in\F{I}{A}\).
+
+Montrons que \(\begin{dcases}f\otimes\paren{g\oplus h}=f\otimes g\oplus f\otimes h &\text{(1)} \\ \paren{g\oplus h}\otimes f=g\otimes f\oplus h\otimes f &\text{(2)}\end{dcases}\)
+
+Soit \(x\in I\).
+
+On a : \[\begin{WithArrows}
+\croch{f\otimes\paren{g\oplus h}}\paren{x}&=f\paren{x}\times\paren{g\oplus h}\paren{x} \Arrow{par définition de \(\oplus\)} \\
+&=f\paren{x}\times\paren{g\paren{x}+h\paren{x}} \Arrow{car \(A\) est un anneau} \\
+&=f\paren{x}\times g\paren{x}+f\paren{x}\times h\paren{x} \Arrow{par définition de \(\otimes\)} \\
+&=\croch{f\otimes g}\paren{x}+\croch{f\otimes h}\paren{x} \Arrow{par définition de \(\oplus\)} \\
+&=\croch{\paren{f\otimes g}\oplus\paren{f\otimes h}}\paren{x}
+\end{WithArrows}\]
+
+D'où (1).
+
+On montre de même (2).
+
+Donc \(\otimes\) est distributive par rapport à \(\oplus\).
+
+Donc \(\anneau{\F{I}{A}}\) est un anneau.
+\end{ex}
+
+\subsection{Calculs dans un anneau}
+
+\begin{prop}
+Soit \(\anneau{A}\) un anneau.
+
+On note \(0\) son neutre pour \(+\).
+
+On a, pour tout élément \(a\) de \(A\) : \[0\times a=a\times 0=0.\]
+
+On dit que l'élément \(0\) est absorbant pour le produit.
+\end{prop}
+
+\begin{dem}
+Soit \(a\in A\).
+
+On a : \[\begin{WithArrows}
+1+0&=1 \Arrow{on multiplie à gauche par \(a\)} \\
+a\paren{1+0}&=a\times1 \Arrow{car \(\times\) est distributive par rapport à \(+\)} \\
+a\times1+a\times0&=a\times1 \\
+a+a\times0&=a \Arrow{on ajoute \(-a\) de chaque côté} \\
+a\times0&=0
+\end{WithArrows}\]
+\end{dem}
+
+\begin{prop}
+Soit \(\anneau{A}\) un anneau.
+
+On a : \[\quantifs{\forall a,b\in A}-\paren{a\times b}=\paren{-a}\times b=a\times\paren{-b}\quad\text{et}\quad\paren{-a}\times\paren{-b}=ab.\]
+\end{prop}
+
+\begin{dem}
+Soient \(a,b\in A\).
+
+On a d'une part \(a\paren{b-b}=a\times0=0\) et d'autre part \(a\paren{b-b}=ab+a\paren{-b}\).
+
+Ainsi, on a \(ab+a\paren{-b}=0\).
+
+D'où, en ajoutant l'opposé de \(ab\) de chaque côté : \(a\paren{-b}=-ab\).
+
+De même, on a : \(\paren{-a}b+ab=\paren{-a+a}b=0\times b=0\) donc \(\paren{-a}b=-ab\).
+
+Enfin, selon ce qui précède : \(\paren{-a}\paren{-b}=-a\paren{-b}=-\paren{-ab}=ab\).
+\end{dem}
+
+\begin{defi}[Anneau nul]
+Un anneau \(\anneau{A}\) est dit nul si \(A\) est un singleton.
+\end{defi}
+
+\begin{prop}
+Un anneau \(\anneau{A}\) d'éléments neutres \(0\) et \(1\) est nul si, et seulement si, on a : \(0=1\).
+\end{prop}
+
+\begin{dem}
+\impdir Si \(A\) est nul alors \(0=1\).
+
+\imprec
+
+Supposons \(0=1\). Montrons que \(A\) est nul.
+
+On a \(\quantifs{\forall a\in A}a=a\times1=a\times0=0\).
+
+Donc \(\Card A=1\).
+\end{dem}
+
+\begin{prop}
+Soit \(n\in\Ns\). Soient \(A\) un anneau et \(a\) et \(b\) deux éléments de \(A\) tels que : \[ab=ba\] (on dit que les éléments \(a\) et \(b\) commutent).
+
+On a :
+
+\begin{enumerate}
+\item La formule du binôme de Newton : \[\paren{a+b}^n=\sum_{k=0}^{n}\binom{k}{n}a^kb^{n-k}\]
+
+\item La factorisation de \(a^n-b^n\) : \[a^n-b^n=\paren{a-b}\sum_{k=0}^{n-1}a^kb^{n-k-1}\]
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+Pour tout \(n\in\N\) on pose \(\P{n}:\paren{a+b}^n=\sum_{k=0}^{n}\binom{k}{n}a^kb^{n-k}\).
+
+Si \(n=0\), on a : \(\paren{a+b}^0=1\) et \(\sum_{k=0}^{0}=\binom{k}{0}a^kb^{0-k}=\binom{0}{0}a^0b^0=1\) donc \(\P{0}\) est vraie.
+
+Soit \(n\in\N\) tel que \(\P{n}\). Montrons \(\P{n+1}\) :
+
+On a : \[\begin{WithArrows}
+\paren{a+b}^{n+1}&=\paren{a+b}\paren{a+b}^n \Arrow{selon \(\P{n}\)} \\
+&=\paren{a+b}\sum_{k=0}^{n}\binom{k}{n}a^kb^{n-k} \\
+&=\sum_{k=0}^{n}\binom{k}{n}a^{k+1}b^{n-k}+\sum_{k=0}^{n}\binom{k}{n}ba^kb^{n-k} \Arrow{car \(ba=ab\)} \\
+&=\sum_{k=1}^{n+1}\binom{k-1}{n}a^kb^{n-k+1}+\sum_{k=0}^{n}\binom{k}{n}a^kb^{n-k+1} \Arrow{car \(\binom{-1}{n}=\binom{n+1}{n}=0\)} \\
+&=\sum_{k=1}^{n+1}\binom{k-1}{n}a^kb^{n-k+1}+\sum_{k=0}^{n+1}\binom{k}{n}a^kb^{n-k+1} \\
+&=\sum_{k=0}^{n+1}\paren{\binom{k-1}{n}+\binom{k}{n}}a^kb^{n-k+1} \\
+&=\sum_{k=0}^{n+1}\binom{k}{n+1}a^kb^{n-k+1}
+\end{WithArrows}\]
+
+D'où \(\P{n+1}\).
+
+Donc pour tout \(n\in\N\), on a \(\P{n}\) par récurrence.
+\end{dem}
+
+\begin{dem}[2]
+On a : \[\begin{WithArrows}
+\paren{a-b}\sum_{k=0}^{n-1}a^kb^{n-k-1}&=\sum_{k=0}^{n-1}\paren{a^{k+1}b^{n-k-1}-ba^kb^{n-k-1}} \Arrow{car \(ba=ab\)} \\
+&=\sum_{k=0}^{n-1}\paren{a^{k+1}b^{n-k-1}-a^kb^{n-k}} \Arrow{somme téléscopique} \\
+&=a^nb^0-a^0b^n \\
+&=a^n-b^n
+\end{WithArrows}\]
+\end{dem}
+
+\begin{ex}
+Déterminons toutes les structures d'anneau sur \(\accol{0}\), puis sur \(\accol{0;1}\).
+
+L'unique structure d'anneau sur \(\accol{0}\) est la suivante :
+
+\begin{center}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0\\
+     0 & 0\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(+\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0\\
+     0 & 0\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(\times\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\end{center}
+
+On obtient bien une structure d'anneau :
+
+\begin{itemize}
+\item \(\groupe{\accol{0}}\) est bien un groupe commutatif (le groupe nul). \\
+
+\item \(\times\) est associative et possède un neutre. \\
+
+\item \(\times\) est bien distributive par rapport à \(+\) car \[\quantifs{\forall a,b,c\in\accol{0}}a\paren{b+c}=0=0+0=ab+ac.\]
+\end{itemize}
+
+Déterminons maintenant les structures d'anneau sur \(A=\accol{0;1}\).
+
+\analyse
+
+Comme \(\Card A=2\), les lois \(+\) et \(\times\) n'admettent pas le même élément neutre.
+
+Si le neutre de \(+\) est \(0\) et celui de \(\times\) est \(1\) :
+
+\begin{center}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0 & 1\\
+     0 & 0 & 1\\
+	 1 & 1 & 0\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(+\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0 & 1\\
+     0 & 0 & 0\\
+	 1 & 0 & 1\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(\times\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\end{center}
+
+Si le neutre de \(+\) est \(1\) et celui de \(\times\) est \(0\) :
+
+\begin{center}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0 & 1\\
+     0 & 1 & 0\\
+	 1 & 0 & 1\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(+\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 0 & 1\\
+     0 & 0 & 1\\
+	 1 & 1 & 1\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(\times\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\end{center}
+
+\synthese
+
+On admet qu'on obtient bien deux structures d'anneau (on obtient deux anneaux isomorphes à \(\nicefrac{\Z}{2\Z}\)).
+\end{ex}
+
+\begin{defi}[Élément inversible d'un anneau]
+Soient \(\anneau{A}\) un anneau et \(a\) un élément de \(A\).
+
+On dit que \(a\) est inversible dans l'anneau \(A\) s'il est inversible pour la loi \(\times\).
+
+L'ensemble des éléments inversibles est souvent noté \(A\croix\).
+\end{defi}
+
+\begin{defprop}[Groupe des inversibles d'un anneau]\thlabel{defprop:groupeDesInversiblesD'UnAnneau}
+Soit \(\anneau{A}\) un anneau.
+
+On appelle groupe des inversibles de l'anneau \(A\) l'ensemble des éléments inversibles de \(A\), muni de la loi \(\times\).
+
+C'est un groupe commutatif si l'anneau \(A\) est commutatif.
+\end{defprop}
+
+\begin{dem}
+Montrons que l'application \(\fonctionlambda{A\croix\times A\croix}{A\croix}{\paren{a,b}}{ab}\) est bien définie, \cad que \(A\croix\) est une partie de \(A\) stable par \(\times\).
+
+Soient \(a,b\in A\croix\). On sait que \(ab\) est inversible, d'inverse \(\paren{ab}\inv=b\inv a\inv\) (\cf \thref{prop:inverseProduitEgalProduitInversesInverse}).
+
+Donc \(ab\in A\croix\) donc \(A\croix\) est stable par \(\times\).
+
+On a \(\quantifs{\forall a,b,c\in A\croix}a\paren{bc}=\paren{ab}c\) donc \(\times\) est associative.
+
+La loi \(\times\) admet \(1\) comme élément neutre dans \(A\croix\) car \(1\in A\croix\) (\cf \thref{ex:inverseElementNeutreEgalElementNeutre}).
+
+Tout élément de \(A\croix\) est inversible dans \(A\croix\) (\cf \thref{ex:inverseInverseEgalElement}).
+
+Donc \(A\croix\) est un groupe.
+\end{dem}
+
+\begin{ex}
+Déterminons \(\Z\croix\), \(\R\croix\), \(\C\croix\) et \(\paren{\R^\N}\croix\).
+
+Dans \(\anneau{\Z}\) (anneau de neutres \(0\) et \(1\)), les seuls éléments inversibles sont \(1\) et \(-1\) donc \(\Z\croix=\accol{-1;1}\). Sa loi de groupe est :
+
+\begin{center}
+\begin{tikzpicture}
+\matrix (mymatrix) [matrix of nodes, nodes={draw, minimum size=6mm, outer sep=0pt}, column sep=-\pgflinewidth, row sep=-\pgflinewidth]
+    {  & 1 & -1\\
+     1 & 1 & -1\\
+	 -1 & -1 & 1\\};
+\draw[->, shorten <=1mm, shorten >=1mm, looseness=1.2]
+    (mymatrix-2-1.north west)to[out=90, in=180]node[below right=-3pt]{\(\times\)}(mymatrix-1-2.north west);
+\end{tikzpicture}
+\end{center}
+
+Dans \(\anneau{\Q}\) (anneau de neutres \(0\) et \(1\)), tous les éléments sont inversibles sauf \(0\) donc \(\Q\croix=\Q\excluant\accol{0}\).
+
+Idem dans \(\anneau{\R}\) et \(\anneau{\C}\) : \(\R\croix=\R\excluant\accol{0}\) et \(\C\croix=\C\excluant\accol{0}\).
+
+Dans \(\anneau{\R^\N}\) (anneau de neutres \(\paren{0}_{n\in\N}\) et \(\paren{1}_{n\in\N}\)), tous les éléments sont inversibles sauf les suites dont au moins un terme est nul donc \(\paren{\R^\N}\croix=\paren{\Rs}^\N\).
+\end{ex}
+
+\subsection{Sous-anneaux}
+
+\begin{defi}[Sous-anneau]
+Soit \(\anneau{A}\) un anneau. On note \(0\) et \(1\) ses neutres.
+
+Un sous-anneau de \(\anneau{A}\) (ou, par abus, de \(A\)) est une partie \(B\) de \(A\) telle que :
+
+\begin{enumerate}[series=sousanneau]
+\item Les éléments neutres \(0\) et \(1\) appartiennent à \(B\). \\
+
+\item La partie \(B\) est stable par somme : \[\quantifs{\forall b_1,b_2\in B}b_1+b_2\in B.\]
+
+\item La partie \(B\) est stable par produit : \[\quantifs{\forall b_1,b_2\in B}b_1\times b_2\in B.\]
+
+\item La partie \(B\) est stable par passage à l'opposé : \[\quantifs{\forall b\in B}-b\in B.\]
+\end{enumerate}
+\end{defi}
+
+\begin{prop}
+Tout sous-anneau d'un anneau \(\anneau{A}\) d'éléments neutres \(0\) et \(1\) est naturellement un anneau dont les lois sont celles induites par celles de \(A\).
+\end{prop}
+
+\begin{dem}
+Soit \(B\) un sous-anneau de \(A\).
+
+Selon (2) et (3), \(B\) est une partie de \(A\) stable par \(+\) et \(\times\) donc \(+\) et \(\times\) induisent des lois \(\oplus\) et \(\otimes\) sur \(B\).
+
+Montrons que \(\groupe{B}[\oplus]\) est un groupe abélien.
+
+On remarque que \(\groupe{B}[\oplus]\) est un sous-groupe de \(\groupe{A}\) selon (1), (2) et (4) donc \(\groupe{B}[\oplus]\) est un groupe abélien.
+
+Montrons que \(\otimes\) est associative et possède un élément neutre :
+
+\(\otimes\) est associative car \(\times\) est associative et \(\otimes\) possède un neutre car \(1\in B\) et \(\quantifs{\forall b\in B}\begin{dcases}1\otimes b=1\times b=b \\ b\otimes1=b\times1=b\end{dcases}\)
+
+\(\otimes\) est distributive par rapport à \(\oplus\) car \(\times\) est distributive par rapport à \(+\).
+
+Donc \(\anneau{B}[\oplus][\otimes]\) est un anneau.
+\end{dem}
+
+\begin{prop}
+Soient \(\anneau{A}\) d'éléments neutres \(0\) et \(1\) et \(B\) une partie de \(A\).
+
+Alors \(B\) est un sous-anneau de \(A\) si, et seulement si, les conditions suivantes sont vérifiées :
+
+\begin{enumerate}[resume=sousanneau]
+\item \(1\in B\) \\
+
+\item \(\quantifs{\forall b_1,b_2\in B}b_1-b_2\in B\) \\
+
+\item \(\quantifs{\forall b_1,b_2\in B}b_1\times b_2\in B\) \\
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\impdir
+
+Supposons (1), (2), (3) et (4).
+
+On a clairement (5) et (7) selon (1) et (3).
+
+Montrons (6) :
+
+Soient \(b_1,b_2\in B\). On a \(-b_2\in B\) selon (4) puis \(b_1-b_2=b_1+\paren{-b_2}\in B\) selon (2).
+
+D'où (6).
+
+\imprec
+
+Supposons (5), (6) et (7).
+
+On a clairement (3) selon (7).
+
+On a \(1\in B\) selon (5) donc \(1-1\in B\) selon (6), \cad \(0\in B\). D'où (1).
+
+Montrons (4) :
+
+Soit \(b\in B\). On a \(0-b\in B\) selon (6) donc \(-b\in B\). D'où (4).
+
+Montrons (2) :
+
+Soient \(b_1,b_2\in B\). On a \(-b_2\in B\) selon (4). Donc \(b_1-\paren{-b_2}\in B\) selon (6). Donc \(b_1+b_2\in B\). D'où (2).
+\end{dem}
+
+\begin{ex}
+On vérifie facilement que \(\Z\) est un sous-anneau de \(\Q\) et de \(\R\), que \(\Q\) est un sous-anneau de \(\R\), que \(\R\) est un sous-anneau de \(\C\), que \(\R^\N\) est un sous-anneau de \(\C^\N\), ...
+\end{ex}
+
+\subsection{Morphismes d'anneaux}
+
+\begin{defi}[Morphisme d'anneaux]
+Soient \(\anneau{A_1}[+_1][\times_1]\) et \(\anneau{A_2}[+_2][\times_2]\) deux anneaux d'éléments neutres respectifs \(0_1\) et \(1_1\) et \(0_2\) et \(1_2\).
+
+On appelle morphisme d'anneaux de \(\anneau{A_1}[+_1][\times_1]\) vers \(\anneau{A_2}[+_2][\times_2]\) (ou, par abus, de \(A_1\) vers \(A_2\)) toute application \(\phi:A_1\to A_2\) telle que les conditions suivantes sont vérifiées :
+
+\begin{enumerate}
+\item \(\phi\paren{1_1}=1_2\) \\
+
+\item \(\quantifs{\forall a,a\prim\in A_1}\phi\paren{a+_1a\prim}=\phi\paren{a}+_2\phi\paren{a\prim}\) \\
+
+\item \(\quantifs{\forall a,a\prim\in A_1}\phi\paren{a\times_1a\prim}=\phi\paren{a}\times_2\phi\paren{a\prim}\) \\
+\end{enumerate}
+\end{defi}
+
+\begin{prop}
+Soient \(\anneau{A_1}[+_1][\times_1]\) et \(\anneau{A_2}[+_2][\times_2]\) deux anneaux d'éléments neutres pour l'addition respectifs \(0_1\) et \(0_2\).
+
+Soit \(\phi:A_1\to A_2\) un morphisme d'anneaux.
+
+Alors on a : \[\phi\paren{0_1}=0_2\] et \[\quantifs{\forall a\in A_1}\phi\paren{-a}=-\phi\paren{a}.\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(\phi\paren{0_1}=0_2\). Comme \(\phi\) est un morphisme d'anneaux de \(A_1\) vers \(A_2\), c'est un morphisme de groupes de \(\groupe{A_1}[+_1]\) vers \(\groupe{A_2}[+_2]\). On a alors \(\phi\paren{0_1}=0_2\) (\cf \thref{prop:neutreEtInverseParUnMorphismeDeGroupes}).
+
+De même, on a \(\quantifs{\forall a\in A_1}\phi\paren{-a}=-\phi\paren{a}\) car \(\phi\) est un morphisme de groupes de \(\groupe{A_1}[+_1]\) vers \(\groupe{A_2}[+_2]\) (\cf \thref{prop:neutreEtInverseParUnMorphismeDeGroupes}).
+\end{dem}
+
+\begin{prop}
+Soit \(\anneau{A}\) un anneau dont on note l'élément neutre pour la multiplication \(1\) et \(B\) un sous-anneau de \(A\).
+
+L'application \[\fonction{i}{B}{A}{b}{b}\] est un morphisme d'anneaux.
+\end{prop}
+
+\begin{dem}
+On a \(i\paren{1}=1\) et \[\quantifs{\forall b_1,b_2\in B}\begin{dcases}i\paren{b_1+b_2}=b_1+b_2=i\paren{b_1}+i\paren{b_2} \\ i\paren{b_1b_2}=b_1b_2=i\paren{b_1}i\paren{b_2}\end{dcases}\]
+\end{dem}
+
+\begin{ex}
+Soient \(\anneau{A_1}[+_1][\times_1]\) et \(\anneau{A_2}[+_2][\times_2]\) deux anneaux.
+
+Les projections \(p_1:A_1\times A_2\to A_1\) et \(p_2:A_1\times A_2\to A_2\) sont des morphismes d'anneaux.
+\end{ex}
+
+\begin{ex}
+Soit \(I\) un ensemble, \(J\) une partie de \(I\) et \(A\) un anneau.
+
+Alors l'application de restriction \[\fonctionlambda{\F{I}{A}}{\F{J}{A}}{f}{\restr{f}{J}}\] est un morphisme d'anneaux.
+\end{ex}
+
+\begin{prop}[Composition de morphismes d'anneaux]
+Soient \(A_1\), \(A_2\) et \(A_3\) des anneaux et \(\phi:A_1\to A_2\) et \(\psi:A_2\to A_3\) des morphismes d'anneaux.
+
+Alors \[\psi\rond\phi:A_1\to A_3\] est un morphisme d'anneaux.
+\end{prop}
+
+\begin{dem}
+On note \(1_1\), \(1_2\) et \(1_3\) les neutres respectifs de \(A_1\), \(A_2\) et \(A_3\) pour la multiplication et \(+_i\) et \(\times_i\) les lois de \(A_i\) pour tout \(i\in\interventierii{1}{3}\).
+
+On a \(\psi\rond\phi\paren{1_1}=\psi\paren{\phi\paren{1_1}}=\psi\paren{1_2}=1_3\).
+
+Soient \(a,b\in A_1\).
+
+On a : \[\begin{dcases}\psi\rond\phi\paren{a+_1b}=\psi\paren{\phi\paren{a+_1b}}=\psi\paren{\phi\paren{a}+_2\phi\paren{b}}=\psi\paren{\phi\paren{a}}+_3\psi\paren{\phi\paren{b}} \\ \psi\rond\phi\paren{a\times_1b}=\psi\paren{\phi\paren{a}\times_2\phi\paren{b}}=\psi\paren{\phi\paren{a}}\times_3\psi\paren{\phi\paren{b}}\end{dcases}\]
+
+Donc \(\psi\rond\phi\) est un morphisme d'anneaux de \(A_1\) vers \(A_3\).
+\end{dem}
+
+\subsection{Isomorphismes, endomorphismes, automorphismes}
+
+\begin{defi}[Isomorphisme]
+Soient \(A_1\) et \(A_2\) deux anneaux.
+
+Un isomorphisme d'anneaux de \(A_1\) vers \(A_2\) est un morphisme d'anneaux \(\phi:A_1\to A_2\) bijectif.
+\end{defi}
+
+\begin{oubli}
+Un composée d'isomorphismes d'anneaux est un isomorphisme d'anneaux.
+\end{oubli}
+
+\begin{theo}
+Soit un isomorphisme d'anneaux \(\phi:A_1\to A_2\). Alors la bijection réciproque \(\phi\inv:A_2\to A_1\) est un isomorphisme d'anneaux.
+\end{theo}
+
+\begin{dem}
+On note \(+_1\) et \(\times_1\) les lois de \(A_1\) et \(+_2\) et \(\times_2\) les lois de \(A_2\). On note \(1_1\) et \(1_2\) les neutres de \(\times_1\) et \(\times_2\).
+
+On sait que \(\phi\inv\) est une bijection de \(A_2\) vers \(A_1\).
+
+Montrons que \(\phi\inv\) est un morphisme d'anneaux.
+
+On a \(\phi\paren{1_1}=1_2\) donc \(\phi\inv\paren{1_2}=1_1\).
+
+Soient \(y,y\prim\in A_2\). On a \[\phi\paren{\phi\inv\paren{y}+_1\phi\inv\paren{y\prim}}=\phi\paren{\phi\inv\paren{y}}+_2\phi\paren{\phi\inv\paren{y\prim}}=y+_2y\prim\] donc \(\phi\inv\paren{y}+_1\phi\inv\paren{y\prim}\) est l'antécédent de \(y+_2y\prim\) par \(\phi\), \cad \[\phi\inv\paren{y}+_1\phi\inv\paren{y\prim}=\phi\inv\paren{y+_2y\prim}.\]
+
+On montre de même \(\phi\inv\paren{y}\times_1\phi\inv\paren{y\prim}=\phi\inv\paren{y\times_2y\prim}\).
+
+Donc \(\phi\inv\) est un morphisme d'anneaux.
+
+Donc \(\phi\inv\) est un isomorphisme d'anneaux.
+\end{dem}
+
+\begin{defi}[Endomorphisme]
+Soit \(A\) un anneau.
+
+Un endomorphisme d'anneau de \(A\) est un morphisme d'anneaux \(\phi:A\to A\).
+\end{defi}
+
+\begin{defi}[Automorphisme]
+Soit \(A\) un anneau.
+
+Un automorphisme de \(A\) est un isomorphisme d'anneaux \(\phi:A\to A\), \cad un endomorphisme de \(A\) bijectif.
+
+L'ensemble des automorphismes d'anneau de \(A\) est noté \(\Aut{A}\).
+\end{defi}
+
+\begin{ex}
+Soit \(A\) un anneau.
+
+Alors \(\groupe{\Aut{A}}[\rond]\) est un groupe, appelé le groupe des automorphismes de \(A\).
+\end{ex}
+
+\begin{dem}
+\note{EXERCICE}
+\end{dem}
+
+\subsection{Anneaux intègres}
+
+\begin{defi}[Anneau intègre]
+Soit \(\anneau{A}\) un anneau. On note \(0\) son élément neutre pour \(+\).
+
+On dit que \(\anneau{A}\) est un anneau intègre s'il est non-nul, commutatif et \guillemets{sans diviseurs de \(0\)} : \[\begin{dcases}0\not=1 \\ \quantifs{\forall a,b\in A}ab=ba \\ \quantifs{\forall a,b\in A}ab=0\ssi\orenv{a=0 \\ b=0}\end{dcases}\]
+\end{defi}
+
+\begin{ex}
+Si \(A=\Z^2\) alors \(\paren{1,0}\times\paren{0,1}=\paren{0,0}\) donc \(A\) est un anneau non-intègre.
+
+Si \(A=\F{\R}{\R}\) alors \(\ind{\Rps}\times\ind{\Rms}=0\) donc \(A\) est un anneau non-intègre.
+
+Les anneaux usuels \(\Z\), \(\Q\), \(\R\) et \(\C\) sont intègres.
+\end{ex}
+
+\begin{rem}
+Un anneau est intègre si, et seulement si, \(\paren{S}:\begin{dcases}\text{il est non-nul} \\ \text{il est commutatif} \\ \text{tout élément non-nul est régulier pour le produit}\end{dcases}\)
+\end{rem}
+
+\begin{dem}
+\impdir
+
+Soit \(\anneau{A}\) un anneau intègre.
+
+Soit \(a\in A\excluant\accol{0}\). Montrons que \(a\) est régulier pour \(\times\).
+
+Soient \(b,c\in A\) tels que \(ab=ac\).
+
+On a : \[\begin{WithArrows}
+ab-ac&=0 \\
+a\paren{b-c}&=0 \Arrow{car \(A\) est intègre et \(a\not=0\)} \\
+b-c&=0 \\
+b&=c
+\end{WithArrows}\]
+
+\imprec
+
+Soit \(A\) un anneau tel que \(\paren{S}\) soit vérifié.
+
+Montrons que \(A\) est intègre.
+
+Soient \(a,b\in A\) tels que \(ab=0\). Montrons que \(a=0\) ou \(b=0\).
+
+Si \(a=0\) : OK.
+
+Si \(a\not=0\) alors \(ab=a\times0\) donc \(b=0\) car \(a\) est régulier et non-nul.
+
+Donc \(A\) est intègre.
+\end{dem}
+
+\section{Corps}
+
+\begin{defi}[Corps]
+Un corps est un anneau non-nul, commutatif et dont tout élément non-nul est inversible, \cad un anneau \(\anneau{K}\) tel que les conditions suivantes soient satisfaites :
+
+\begin{enumerate}
+\item \(K\) n'est pas un singleton, \cad \(0\not=1\). \\
+
+\item \(K\) est un anneau commutatif. \\
+
+\item \(K\croix=K\excluant\accol{0}\).
+\end{enumerate}
+
+On dit aussi que \(K\) est muni d'une structure de corps, ou, par abus, que \(K\) est un corps.
+\end{defi}
+
+\begin{prop}
+Si \(K\) est un corps alors \(K\excluant\accol{0}\) est un groupe commutatif.
+\end{prop}
+
+\begin{dem}
+On sait que le groupe des inversibles d'un anneau est un groupe pour la loi \(\times\) donc \(\groupe{K\croix}[\times]\) est un groupe (\cf \thref{defprop:groupeDesInversiblesD'UnAnneau}).
+
+De plus, on a \(K\croix=K\excluant\accol{0}\) et \(\times\) est commutative.
+
+Donc \(\groupe{K\excluant\accol{0}}[\times]\) est commutatif.
+\end{dem}
+
+\begin{prop}
+Tout corps est un anneau intègre.
+\end{prop}
+
+\begin{dem}
+C'est clair car le fait que tous les éléments non-nuls soient inversibles implique le fait que tous les éléments non-nuls soient réguliers.
+\end{dem}
+
+\begin{ex}
+On vérifie facilement que \(\corps{\Q}\), \(\corps{\R}\) et \(\corps{\C}\) sont des corps.
+\end{ex}
+
+\begin{ex}
+Soient \(\corps{K_1}[+_1][\times_1]\) et \(\corps{K_2}[+_2][\times_2]\) deux corps (donc deux anneaux dont on note \(0_1\) et \(1_1\) et \(0_2\) et \(1_2\) les neutres).
+
+On a vu que \(K_1\times K_2\) est naturellement muni d'une structure d'anneau (\cf \thref{ex:produitD'anneauxEstUnAnneau}).
+
+Cependant, ce n'est pas un corps.
+
+En effet, il n'est pas intègre : \(\paren{1_1,0_2}\paren{0_1,1_2}=\paren{0_1,0_2}\).
+\end{ex}
+
+\begin{ex}
+Soit \(I\) un ensemble et \(K\) un corps.
+
+On a vu que \(\F{I}{K}\) est naturellement muni d'une structure d'anneau (\cf \thref{ex:fonctionsD'unEnsembleDansUnAnneauEstUnAnneau}).
+
+Si \(I=\ensvide\) alors \(\F{I}{K}\) n'est pas un corps car c'est l'anneau nul.
+
+Si \(I=\accol{x}\) est un singleton alors \(\fonction{\phi}{K}{\F{\accol{x}}{K}}{\lambda}{\fonctionlambda{\accol{x}}{K}{x}{\lambda}}\) est un isomorphisme d'anneaux. Or \(K\) est un corps donc \(\F{I}{K}\) est un corps.
+
+Si \(I\) contient au moins deux élément \(x\) et \(y\) avec \(x\not=y\) alors \(\F{I}{K}\) est un anneau non-intègre car \(\fonction{f}{I}{K}{z}{\begin{dcases}1&\text{si }z=x \\ 0&\text{sinon}\end{dcases}}\) et \(\fonction{g}{I}{K}{z}{\begin{dcases}1&\text{si }z=y \\ 0&\text{sinon}\end{dcases}}\) vérifient \(f\not=0\), \(g\not=0\) et \(fg=0\).
+
+Donc \(\F{I}{K}\) n'est pas un corps.
+\end{ex}

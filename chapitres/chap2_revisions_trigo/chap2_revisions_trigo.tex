@@ -1,0 +1,335 @@
+\chapter{Révisions de trigonométrie}
+
+\minitoc
+
+\section{Formules}
+
+\subsection{Propriétés fondamentales}
+
+Les fonctions \(\cos\) et \(\sin\) sont définies sur \(\R\) et vérifient \(\cos^2+\sin^2=1\).
+
+La fonctions \(\tan\) est définie en tout réel \(x\) tel que \(x\not\equiv\dfrac{\pi}{2}\croch{\pi}\).
+
+Ces trois fonctions sont dérivables et on a : \(\cos\prim=-\sin\) ; \(\sin\prim=\cos\) ; \(\tan\prim=1+\tan^2=\dfrac{1}{\cos^2}\).
+
+\(\quantifs{\forall a,b\in\R}\cos\paren{a+b}=\cos a\cos b-\sin a\sin b\)
+
+\(\quantifs{\forall a,b\in\R}\sin\paren{a+b}=\sin a\cos b+\sin b\cos a\)
+
+\subsection{Conséquences}
+
+\(\quantifs{\forall a,b\in\R}\begin{dcases}a\not\equiv\dfrac{\pi}{2}\croch{\pi} \\ b\not\equiv\dfrac{\pi}{2}\croch{\pi} \\ a+b\not\equiv\dfrac{\pi}{2}\croch{\pi}\end{dcases}\imp\tan\paren{a+b}=\dfrac{\tan a+\tan b}{1-\tan a\tan b}\)
+
+\(\quantifs{\forall a\in\R}\cos\paren{2a}=2\cos^2a-1\) et \(\cos^2a=\dfrac{1+\cos\paren{2a}}{2}\) et \(\sin^2a=\dfrac{1-\cos\paren{2a}}{2}\)
+
+\(\quantifs{\forall a\in\R}\sin\paren{2a}=2\sin a\cos a\)
+
+\(\quantifs{\forall a\in\R}\begin{dcases}a\not\equiv\dfrac{\pi}{2}\croch{\pi} \\ a\not\equiv\dfrac{\pi}{4}\croch{\dfrac{\pi}{2}}\end{dcases}\imp\tan\paren{2a}=\dfrac{2\tan a}{1-\tan^2a}\)
+
+\(\quantifs{\forall a,b\in\R}\cos a\cos b=\dfrac{\cos\paren{a+b}+\cos\paren{a-b}}{2}\)
+
+\(\quantifs{\forall a,b\in\R}\sin a\sin b=\dfrac{-\cos\paren{a+b}+\cos\paren{a-b}}{2}\)
+
+\(\quantifs{\forall a,b\in\R}\sin a\cos b=\dfrac{\sin\paren{a+b}+\sin\paren{a-b}}{2}\)
+
+\(\quantifs{\forall p,q\in\R}\cos p+\cos q=2\cos\dfrac{p+q}{2}\cos\dfrac{p-q}{2}\)
+
+\(\quantifs{\forall p,q\in\R}\sin p+\sin q=2\sin\dfrac{p+q}{2}\cos\dfrac{p-q}{2}\)
+
+\(\quantifs{\forall p,q\in\R}\cos p-\cos q=-2\sin\dfrac{p+q}{2}\sin\dfrac{p-q}{2}\)
+
+Soit \(\theta\in\R\) tel que \(\theta\not\equiv\pi\croch{2\pi}\). On pose \(t=\tan\dfrac{\theta}{2}\). On a \(\begin{dcases}\cos\theta=\dfrac{1-t^2}{1+t^2} \\ \sin\theta=\dfrac{2t}{1+t^2}\end{dcases}\)
+
+\subsection{Lien avec les nombres complexes}
+
+\(\quantifs{\forall\theta\in\R}\e{\i\theta}=\cos\theta+\i\sin\theta\)
+
+\(\quantifs{\forall\theta\in\R}\cos\theta=\dfrac{\e{\i\theta}+\e{-\i\theta}}{2}\) et \(\sin\theta=\dfrac{\e{\i\theta}-\e{-\i\theta}}{2}\) (formules d'Euler)
+
+\section{Démonstrations et compléments}
+
+Cercle trigonométrique : \(\accol{\paren{x,y}\in\R^2\tq x^2+y^2=1}=\accol{\paren{\cos\theta,\sin\theta}}_{\theta\in\R}\).
+
+\begin{rem}
+L'égalité des ensembles signifie :
+
+\begin{itemize}
+\item[\increc] \(\quantifs{\forall\theta\in\R}\cos^2\theta+\sin^2\theta=1\)
+
+\item[\incdir] \(\quantifs{\forall\paren{x,y}\in\R^2}x^2+y^2=1\imp\quantifs{\exists\theta\in\R}\paren{x,y}=\paren{\cos\theta,\sin\theta}\)
+\end{itemize}
+\end{rem}
+
+On a le cercle trigonométrique suivant :
+
+\begin{center}
+\begin{tkz}[scale=2]
+\draw[->,gray] (0,-1.5) -- (0,1.5);
+\draw[->,gray] (-1.5,0) -- (1.5,0) coordinate (A);
+\node[below left] at (0,0) {\(0\)};
+\draw (0,0) circle (1);
+\draw (1,-1.5) node[right] {droite verticale tangente au cercle} -- (1,1.5);
+\draw (0,0) coordinate (O) -- (0.707,0.707) coordinate (Theta);
+\draw[dotted] (0.707,0.707) -- (0.707,0) node[below] {\(\cos\theta\)};
+\draw[dotted] (0.707,0.707) -- (0,0.707) node[left] {\(\sin\theta\)};
+\pic[draw,->,"\(\theta\)",angle eccentricity=1.5] {angle = A--O--Theta};
+\draw[dotted] (0.707,0.707) -- (1,1) node[right] {\(\tan\theta\)};
+\end{tkz}
+\end{center}
+
+On a \(\dfrac{\tan\theta}{1}=\dfrac{\sin\theta}{\cos\theta}\) par le théorème de Thalès.
+
+Valeurs remarquables :
+
+\begin{align*}
+\begin{array}{cccccc}
+\theta & 0 & \dfrac{\pi}{6} & \dfrac{\pi}{4} & \dfrac{\pi}{3} & \dfrac{\pi}{2} \\[1em]
+\hline \\
+\sin\theta & 0 & \dfrac{1}{2} & \dfrac{\sqrt{2}}{2} & \dfrac{\sqrt{3}}{2} & 1 \\[1em]
+\hline \\
+\cos\theta & 1 & \dfrac{\sqrt{3}}{2} & \dfrac{\sqrt{2}}{2} & \dfrac{1}{2} & 0 \\[1em]
+\hline \\
+\tan\theta & 0 & \dfrac{1}{\sqrt{3}} & 1 & \sqrt{3} & \text{indéfini}
+\end{array}
+\end{align*}
+
+On a \(\quantifs{\forall k\in\Z}\begin{dcases}\cos\paren{\theta+k\pi}=\paren{-1}^k\cos\theta \\ \sin\paren{\theta+k\pi}=\paren{-1}^k\sin\theta\end{dcases}\) et \(\cos\paren{\dfrac{\pi}{2}-\theta}=\sin\theta\) et \(\sin\paren{\dfrac{\pi}{2}-\theta}=\cos\theta\).
+
+Soient \(a,b\in\R\).
+
+\begin{itemize}
+\item On a \(\begin{array}[t]{lll}
+\tan\paren{a+b} & \text{bien défini ssi} & a+b\not\equiv\dfrac{\pi}{2}\croch{\pi} \\
+\tan a & \text{bien défini ssi} & a\not\equiv\dfrac{\pi}{2}\croch{\pi} \\[1em]
+\tan b & \text{bien défini ssi} & b\not\equiv\dfrac{\pi}{2}\croch{\pi}
+\end{array}\)
+
+On a alors \(\tan\paren{a+b}=\dfrac{\sin\paren{a+b}}{\cos\paren{a+b}}=\dfrac{\sin a\cos b+\sin b\cos a}{\cos a\cos b-\sin a\sin b}=\dfrac{\dfrac{\sin a}{\cos a}+\dfrac{\sin b}{\cos b}}{1-\dfrac{\sin a\sin b}{\cos a\cos b}}=\dfrac{\tan a+\tan b}{1-\tan a\tan b}\).
+
+\item On a \(\begin{array}[t]{lll}
+\tan a & \text{bien défini ssi} & a\not\equiv\dfrac{\pi}{2}\croch{\pi} \\
+\tan2a & \text{bien défini ssi} & 2a\not\equiv\dfrac{\pi}{2}\croch{\pi}\text{ ssi }a\not\equiv\dfrac{\pi}{4}\croch{\pi}
+\end{array}\)
+
+On a alors \(\tan2a=\dfrac{\tan a+\tan a}{1-\tan a\tan a}=\dfrac{2\tan a}{1-\tan^2a}\).
+
+\item \(\cos2a=\cos a\cos a-\sin a\sin a=\cos^2a-\paren{1-\cos^2a}=2\cos^2a-1\)
+
+Donc \(\cos^2a=\dfrac{\cos2a+1}{2}\).
+
+D'où \(\sin^2a=1-\dfrac{\cos2a+1}{2}=\dfrac{1-\cos2a}{2}\).
+
+\item \(\sin2a=\sin a\cos a+\sin a\cos a=2\sin a\cos a\)
+
+\item On a \begin{enumerate}
+\item \(\cos\paren{a+b}=\cos a\cos b-\sin a\sin b\)
+
+\item \(\cos\paren{a-b}=\cos a\cos b+\sin a\sin b\)
+
+\item \(\sin\paren{a+b}=\sin a\cos b+\sin b\cos a\)
+
+\item \(\sin\paren{a-b}=\sin a\cos b-\sin b\cos a\)
+\end{enumerate}
+
+D'où \begin{itemize}
+\item \(\cos a\cos b=\dfrac{\cos\paren{a+b}+\cos\paren{a-b}}{2}\) selon \(\dfrac{(1)+(2)}{2}\).
+
+\item \(\sin a\sin b=\dfrac{\cos\paren{a-b}-\cos\paren{a+b}}{2}\) selon \(\dfrac{(2)-(1)}{2}\).
+
+\item \(\sin a\cos b=\dfrac{\sin\paren{a+b}+\sin\paren{a-b}}{2}\) selon \(\dfrac{(3)+(4)}{2}\).
+\end{itemize}
+
+\item Soient \(p,q\in\R\).
+
+On remarque \(\begin{dcases}p=\dfrac{p+q}{2}+\dfrac{p-q}{2} \\ q=\dfrac{p+q}{2}-\dfrac{p-q}{2}\end{dcases}\)
+
+D'où \(\begin{aligned}[t]
+\cos p+\cos q&=\cos\paren{\dfrac{p+q}{2}+\dfrac{p-q}{2}}+\cos\paren{\dfrac{p+q}{2}-\dfrac{p-q}{2}} \\
+&=\cos\paren{\dfrac{p+q}{2}}\cos\paren{\dfrac{p-q}{2}}-\sin\paren{\dfrac{p+q}{2}}\sin\paren{\dfrac{p-q}{2}}+\cos\paren{\dfrac{p+q}{2}}\cos\paren{\dfrac{p-q}{2}}\notag \\
+&\qquad+\sin\paren{\dfrac{p+q}{2}}\sin\paren{\dfrac{p-q}{2}} \\
+&=2\cos\paren{\dfrac{p+q}{2}}\cos\paren{\dfrac{p-q}{2}}
+\end{aligned}\)
+
+De même, \(\cos p-\cos q=-2\sin\paren{\dfrac{p+q}{2}}\sin\paren{\dfrac{p-q}{2}}\)
+
+Et \(\begin{aligned}[t]
+\sin p+\sin q&=\sin\paren{\dfrac{p+q}{2}+\dfrac{p-q}{2}}+\sin\paren{\dfrac{p+q}{2}-\dfrac{p-q}{2}} \\
+&=\sin\paren{\dfrac{p+q}{2}}\cos\paren{\dfrac{p-q}{2}}+\sin\paren{\dfrac{p-q}{2}}\cos\paren{\dfrac{p+q}{2}}+\sin\paren{\dfrac{p+q}{2}}\cos\paren{\dfrac{p-q}{2}}\notag \\
+&\qquad-\sin\paren{\dfrac{p-q}{2}}\cos\paren{\dfrac{p+q}{2}} \\
+&=2\sin\paren{\dfrac{p+q}{2}}\cos\paren{\dfrac{p-q}{2}}
+\end{aligned}\)
+
+\item On a \(\theta\not\equiv\pi\croch{2\pi}\) donc \(\dfrac{\theta}{2}\not\equiv\dfrac{\pi}{2}\croch{\pi}\) donc \(t=\tan\dfrac{\theta}{2}\) est bien défini.
+
+On a \(\begin{aligned}[t]
+\cos\theta&=\cos\paren{\dfrac{\theta}{2}+\dfrac{\theta}{2}} \\
+&=\cos\paren{\dfrac{\theta}{2}}\cos\paren{\dfrac{\theta}{2}}-\sin\paren{\dfrac{\theta}{2}}\sin\paren{\dfrac{\theta}{2}} \\
+&=\cos^2\dfrac{\theta}{2}-\sin^2\dfrac{\theta}{2} \\
+&=\cos^2\dfrac{\theta}{2}\paren{1-\dfrac{\sin^2\dfrac{\theta}{2}}{\cos^2\dfrac{\theta}{2}}} \\
+&=\cos^2\dfrac{\theta}{2}\paren{1-\tan^2\dfrac{\theta}{2}}
+\end{aligned}\)
+
+Or \(1+\tan^2=\dfrac{1}{\cos^2}\) donc \(\cos^2=\dfrac{1}{1+\tan^2}\).
+
+Donc \(\cos\theta=\dfrac{1}{1+\tan^2\dfrac{\theta}{2}}\paren{1-\tan^2\dfrac{\theta}{2}}=\dfrac{1-t^2}{1+t^2}\).
+
+De même, \(\begin{aligned}[t]
+\sin\theta&=\sin\paren{\dfrac{2\theta}{2}} \\
+&=2\sin\paren{\dfrac{\theta}{2}}\cos\paren{\dfrac{\theta}{2}} \\
+&=2\dfrac{\sin\dfrac{\theta}{2}}{\cos\dfrac{\theta}{2}}\cos^2\dfrac{\theta}{2} \\
+&=2\tan\dfrac{\theta}{2}\times\dfrac{1}{1+\tan^2\dfrac{\theta}{2}} \\
+&=\dfrac{2t}{1+t^2}
+\end{aligned}\)
+\end{itemize}
+
+\begin{rappel}
+On a les courbes suivantes :
+
+\(\cos\) (\(2\pi\)-périodique)
+
+\begin{center}
+\begin{tkz}
+\draw[gray,->] (0,-2) -- (0,2);
+\draw[gray,->] (-2*pi,0) -- (2*pi,0);
+
+\draw[domain=-2*pi:2*pi,smooth] plot (\x,{cos(\x r)});
+
+\node[above left,gray] at (0,1) {\(1\)};
+\draw[gray] (-0.1,1) -- (0.1,1);
+
+\node[below left,gray] at (0,0) {\(0\)};
+
+\node[left,gray] at (0,-1) {\(-1\)};
+\draw[gray] (-0.1,-1) -- (0.1,-1);
+
+\node[below left,gray] at (pi/2,0) {\(\dfrac{\pi}{2}\)};
+\draw[gray] (pi/2,-0.1) -- (pi/2,0.1);
+
+\node[below,gray] at (pi,0) {\(\pi\)};
+\draw[gray] (pi,-0.1) -- (pi,0.1);
+
+\node[below right,gray] at (3*pi/2,0) {\(\dfrac{3\pi}{2}\)};
+\draw[gray] (3*pi/2,-0.1) -- (3*pi/2,0.1);
+
+\node[below right,gray] at (-pi/2,0) {\(-\dfrac{\pi}{2}\)};
+\draw[gray] (-pi/2,-0.1) -- (-pi/2,0.1);
+
+\node[below,gray] at (-pi,0) {\(-\pi\)};
+\draw[gray] (-pi,-0.1) -- (-pi,0.1);
+
+\node[below left,gray] at (-3*pi/2,0) {\(-\dfrac{3\pi}{2}\)};
+\draw[gray] (-3*pi/2,-0.1) -- (-3*pi/2,0.1);
+
+\draw[<->,dotted,blue] (-pi,-1) -- (pi,-1);
+\node[below right,blue] at (0,-1) {\(2\pi\)};
+\end{tkz}
+\end{center}
+
+\(\sin\) (\(2\pi\)-périodique) :
+
+\begin{center}
+\begin{tkz}
+\draw[gray,->] (0,-2) -- (0,2);
+\draw[gray,->] (-2*pi,0) -- (2*pi,0);
+
+\draw[domain=-2*pi:2*pi,smooth] plot (\x,{sin(\x r)});
+
+\node[above left,gray] at (0,1) {\(1\)};
+\draw[gray] (-0.1,1) -- (0.1,1);
+
+\node[below left,gray] at (0,0) {\(0\)};
+
+\node[left,gray] at (0,-1) {\(-1\)};
+\draw[gray] (-0.1,-1) -- (0.1,-1);
+
+\node[below,gray] at (pi/2,0) {\(\dfrac{\pi}{2}\)};
+\draw[gray] (pi/2,-0.1) -- (pi/2,0.1);
+
+\node[below left,gray] at (pi,0) {\(\pi\)};
+\draw[gray] (pi,-0.1) -- (pi,0.1);
+
+\node[below,gray] at (3*pi/2,0) {\(\dfrac{3\pi}{2}\)};
+\draw[gray] (3*pi/2,-0.1) -- (3*pi/2,0.1);
+
+\node[below,gray] at (-pi/2,0) {\(-\dfrac{\pi}{2}\)};
+\draw[gray] (-pi/2,-0.1) -- (-pi/2,0.1);
+
+\node[below left,gray] at (-pi,0) {\(-\pi\)};
+\draw[gray] (-pi,-0.1) -- (-pi,0.1);
+
+\node[below,gray] at (-3*pi/2,0) {\(-\dfrac{3\pi}{2}\)};
+\draw[gray] (-3*pi/2,-0.1) -- (-3*pi/2,0.1);
+
+\draw[<->,dotted,blue] (-3*pi/2,1) -- (pi/2,1);
+\node[above,blue] at (-pi/2,1) {\(2\pi\)};
+\end{tkz}
+\end{center}
+
+\(\tan\) (\(\pi\)-périodique) :
+
+\begin{center}
+\begin{tkz}
+\draw[gray,->] (0,-3) -- (0,3);
+\draw[gray,->] (-3*pi/2,0) -- (3*pi/2,0);
+
+\foreach \ind in {-1,0,1} {
+\pgfmathsetmacro{\starti}{\ind*pi-1.3}
+\pgfmathsetmacro{\lefti}{(\ind-0.5)*pi}
+\pgfmathsetmacro{\endi}{\ind*pi+1.3}
+\draw[dashed,gray] (\lefti,-3) -- (\lefti,3);
+\draw[domain=\starti:\endi,smooth] plot (\x,{tan(\x r)});
+}
+
+\node[above left,gray] at (0,0) {\(0\)};
+
+\node[below left,gray] at (pi/2,0) {\(\dfrac{\pi}{2}\)};
+\draw[gray] (pi/2,-0.1) -- (pi/2,0.1);
+
+\node[below right,gray] at (pi,0) {\(\pi\)};
+\draw[gray] (pi,-0.1) -- (pi,0.1);
+
+\node[below left,gray] at (-pi/2,0) {\(-\dfrac{\pi}{2}\)};
+\draw[gray] (-pi/2,-0.1) -- (-pi/2,0.1);
+
+\node[below right,gray] at (-pi,0) {\(-\pi\)};
+\draw[gray] (-pi,-0.1) -- (-pi,0.1);
+\end{tkz}
+\end{center}
+\end{rappel}
+
+\begin{prop}
+On a \(\quantifs{\forall x\in\R}\abs{\sin x}\leq\abs{x}\).
+\end{prop}
+
+\begin{dem}
+Comme les fonctions \(x\mapsto\abs{\sin x}\) et \(x\mapsto\abs{x}\) sont paires, il suffit de montrer l'inégalité sur \(\Rp\).
+
+C'est à dire \(\quantifs{\forall x\in\Rp}\begin{dcases}\sin x\leq x \\ -\sin x\leq x\end{dcases}\)
+
+Posons \(f:x\mapsto x-\sin x\) et \(g:x\mapsto x+\sin x\).
+
+On a \(\quantifs{\forall x\in\Rp}\begin{dcases}f\prim\paren{x}=1-\cos x\geq0 \\ g\prim\paren{x}=1+\cos x\geq0\end{dcases}\) car \(\quantifs{\forall x\in\Rp}-1\leq\cos x\leq1\).
+
+Donc \(f\) et \(g\) sont croissantes sur \(\Rp\). Donc \(\quantifs{\forall x\in\Rp}f\paren{x}\geq f\paren{0}=0\) et \(\quantifs{\forall x\in\Rp}g\paren{x}\geq g\paren{0}=0\).
+
+Donc \(\quantifs{\forall x\in\Rp}\begin{dcases}x-\sin x\geq0 \\ x+\sin x\geq0\end{dcases}\)
+
+D'où le résultat.
+\end{dem}
+
+\begin{rem}
+Soient \(a,b\in\R\). On considère la fonction \(f:\theta\mapsto a\cos\theta+b\sin\theta\).
+
+Supposons \(\paren{a,b}\not=\paren{0,0}\).
+
+On a \(\quantifs{\forall\theta\in\R}f\paren{\theta}=\sqrt{a^2+b^2}\paren{\dfrac{a}{\sqrt{a^2+b^2}}\cos\theta+\dfrac{b}{\sqrt{a^2+b^2}}\sin\theta}\).
+
+On remarque \(\paren{\dfrac{a}{\sqrt{a^2+b^2}}}^2+\paren{\dfrac{b}{\sqrt{a^2+b^2}}}^2=1\).
+
+Donc il existe \(\alpha\in\R\) tel que \(\begin{dcases}\dfrac{a}{\sqrt{a^2+b^2}}=\sin\alpha \\ \dfrac{b}{\sqrt{a^2+b^2}}=\cos\alpha\end{dcases}\)
+
+On a alors \(\quantifs{\forall\theta\in\R}\begin{aligned}[t]
+f\paren{\theta}&=\sqrt{a^2+b^2}\paren{\sin\alpha\cos\theta+\cos\alpha\sin\theta} \\
+&=\sqrt{a^2+b^2}\sin\paren{\theta+\alpha}
+\end{aligned}\)
+\end{rem}

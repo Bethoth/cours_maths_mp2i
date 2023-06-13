@@ -1,0 +1,315 @@
+\chapter{Algèbre générale}
+
+\minitoc
+
+\section{Lois de composition internes}
+
+\begin{exo}
+On considère la loi de composition interne \(*\) sur \(\R\) définie par : \[\quantifs{\forall x,y\in\R}x*y=\ln\paren{\e{x}+\e{y}}.\]
+
+Est-elle associative ? commutative ? Possède-t-elle un élément neutre ?
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(E\) un ensemble muni d'une loi \(*\).
+
+On suppose que la loi \(*\) est associative et qu'elle possède un élément neutre \(e\).
+
+Un élément \(x\in E\) est dit idempotent s'il vérifie \(x*x=x\).
+
+\begin{enumerate}
+\item Soient \(x,y\in E\). On suppose que \(x\) et \(y\) sont idempotents et qu'ils commutent. Montrer que \(x*y\) est idempotent. \\
+
+\item Soit \(x\in E\) un élément inversible et idempotent. Montrer que son inverse \(x\inv\) est idempotent.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}[Plus difficile]
+Soient \(E\) un ensemble fini et \(*\) une loi de composition interne associative sur \(E\).
+
+Soit \(x\in E\). On suppose que \(x\) est régulier pour la loi \(*\).
+
+\begin{enumerate}
+\item Montrer que toute puissance de \(x\) est régulière : \[\quantifs{\forall n\in\Ns}x^n\text{ est régulier}.\] \\
+
+\item Montrer que la loi \(*\) admet un élément neutre. \\
+
+\item Montrer que \(x\) est inversible.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\section{Groupes}
+
+\begin{exo}[Exemple important]
+Soit \(E\) un ensemble.
+
+On appelle permutation de \(E\) toute bijection \(f:E\to E\).
+
+On note \(S_E\) l'ensemble des permutations de \(E\).
+
+Montrer que \(\groupe{S_E}[\rond]\) est un groupe. Est-il commutatif ?
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Montrer que l'ensemble des applications de la forme \[\fonction{f_{ab}}{\C}{\C}{z}{az+b}\] avec \(\paren{a,b}\in\Cs\times\C\) est un groupe pour la composition.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+On pose \(E=\accol{0;1;2}\).
+
+\begin{enumerate}
+\item Combien y a-t-il de lois de composition internes sur \(E\) ? \\
+
+\item Combien y a-t-il de lois de composition internes commutatives sur \(E\) ? \\
+
+\item Combien y a-t-il de lois de composition internes admettant \(0\) comme élément neutre sur \(E\) ? \\
+
+\item Combien y a-t-il de lois de composition internes \guillemets{unitaires} (\cad admettant un élément neutre) sur \(E\) ? \\
+
+\item Combien y a-t-il de structures de groupe pour lesquelles \(0\) est l'élément neutre sur \(E\) ? \\
+
+\item Combien y a-t-il de structures de groupe sur \(E\) ? \\
+
+\item Ces dernières sont-elles commutatives ? \\
+
+\item On munit \(E\) de sa structure de groupe telle que \(0\) soit l'élément neutre. Quels sont les sous-groupes de \(E\) ? Déterminer \(\Aut{E}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+On note \(\U\) l'ensemble des nombres complexes de module \(1\).
+
+Rappeler les structures naturelles de groupe de \(\Cs\) et \(\U\) et montrer que la fonction \[\fonction{f}{\Cs}{\U}{z}{\dfrac{z}{\abs{z}}}\] est un morphisme de groupes.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}[Intersection de sous-groupes]\thlabel{exo:6.15}
+Soient \(G\) un groupe et \(\paren{H_i}_{i\in I}\) une famille de sous-groupes de \(G\).
+
+Montrer que l'intersection \(\biginter_{i\in I}H_i\) est un sous-groupe de \(G\).
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\groupe{G}[*]\) un groupe d'élément neutre \(e\) tel que \[\quantifs{\forall g\in G}g*g=e.\]
+
+Montrer que \(G\) est abélien.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\groupe{G}[*]\) un groupe de cardinal pair et d'élément neutre \(e\).
+
+\begin{enumerate}
+\item Vérifier que la relation \(\rel\) sur \(G\) définie par \[\quantifs{\forall g,h\in G}g\rel h\ssi\orenv{g=h \\ g=h\inv}\] est une relation d'équivalence. \\
+
+\item En déduire que \(G\) possède un élément \(g\) tel que \(g\not=e\) et \(g*g=e\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(G\) un groupe et \(g\) un élément de \(G\).
+
+\begin{enumerate}
+\item Montrer qu'il existe un unique morphisme de groupes \(\phi:\Z\to G\) tel que \[\phi\paren{1}=g.\] \\
+
+Que vient-on de montrer à propos de l'application \[\fonction{f}{\Hom{\Z}{G}}{G}{\phi}{\phi\paren{1}}\text{ ?}\] \\
+
+\item Montrer par des exemples que l'image d'un morphisme de groupes \(\phi:\Z\to G\) peut être finie ou infinie.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\section{Anneaux}
+
+\begin{exo}
+Quels sont les sous-anneaux de \(\Z\) ?
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Montrer que toute structure d'anneau sur un ensemble à trois éléments est une structure d'anneau commutatif.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Montrer que l'ensemble des suites réelles convergentes (indicées par \(\N\)) est un sous-anneau de \(\R^\N\).
+
+Que dire des suites complexes convergentes ?
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}
+\item Les anneaux \(\anneau{\Z}\) et \(\anneau{\Q}\) sont-ils isomorphes ? \\
+
+\item Les anneaux \(\anneau{\R}\) et \(\anneau{\Q}\) sont-ils isomorphes ? \\
+
+\item Les anneaux \(\anneau{\R}\) et \(\anneau{\C}\) sont-ils isomorphes ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+On pose : \[\Z\croch{\sqrt{2}}=\accol{x+\sqrt{2}y}_{\paren{x,y}\in\Z^2}=\accol{a\in\R\tq\quantifs{\exists x,y\in\Z}a=x+\sqrt{2}y}.\]
+
+\begin{enumerate}
+\item Montrer que \(\Z\croch{\sqrt{2}}\) est un anneau commutatif. \\
+
+\item On pose : \[\quantifs{\forall x,y\in\Z}N\paren{x+\sqrt{2}y}=x^2-2y^2.\] \\
+
+Montrer que cela définit une application \(N:\Z\croch{\sqrt{2}}\to\Z\). \\
+
+\item Montrer que si \(a\) et \(b\) sont des éléments de \(\Z\croch{\sqrt{2}}\) alors \[N\paren{ab}=N\paren{a}N\paren{b}.\] \\
+
+\item Montrer que \[\quantifs{\forall a\in\Z\croch{\sqrt{2}}}a=0\ssi N\paren{a}=0.\] \\
+
+\item Montrer que \[\quantifs{\forall a\in\Z\croch{\sqrt{2}}}a\in\Z\croch{\sqrt{2}}\croix\ssi N\paren{a}\in\Z\croix.\] \\
+
+\item On pose \[\begin{dcases}u_0=1 \\ v_0=0\end{dcases}\qquad\text{et}\qquad\begin{dcases}u_{n+1}=u_n+2v_n \\ v_{n+1}=u_n+v_n\end{dcases}\] \\
+
+Montrer que pour tout entier naturel \(n\), l'élément \(u_n+\sqrt{2}v_n\) est inversible dans \(\Z\croch{\sqrt{2}}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soient \(\anneau{A}\) un anneau intègre et \(a,b\in A\).
+
+On dit que \(a\) divise \(b\) et on note \(a\divise b\) si on a : \[\quantifs{\exists c\in A}ac=b.\]
+
+Montrer : \[\paren{\quantifs{\exists\lambda\in A\croix}a=\lambda b}\ssi\begin{dcases}a\divise b \\ b\divise a\end{dcases}\]
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+On note \(\D\) l'ensemble des nombres décimaux : \[\D=\accol{x\in\R\tq\quantifs{\exists\alpha\in\N;\exists\lambda\in\Z}x=\dfrac{\lambda}{10^\alpha}}.\]
+
+\begin{enumerate}
+\item Montrer que \(\D\) est naturellement muni d'une structure d'anneau. \\
+
+\item Quels sont ses éléments inversibles ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\anneau{A}\) un anneau. On note \(0\) et \(1\) ses éléments neutres.
+
+Un élément \(a\in A\) est dit nilpotent s'il vérifie : \[\quantifs{\exists n\in\Ns}a^n=0.\]
+
+\begin{enumerate}
+\item Si \(A\) est intègre, quels sont ses éléments nilpotents ? \\
+
+\item Soient \(a,b\in A\). On suppose que \(a\) et \(b\) sont nilpotents et qu'ils commutent. \\
+
+Montrer que \(a+b\) et \(ab\) sont nilpotents. \\
+
+\item Soit \(a\in A\) un élément nilpotent. \\
+
+Montrer que \(1+a\) est inversible et déterminer son inverse.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\section{Corps}
+
+\begin{exo}
+Quels sont les sous-corps de \(\Q\) ?
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+On pose : \[\Q\croch{\sqrt{2}}=\accol{x+\sqrt{2}y}_{\paren{x,y}\in\Q^2}=\accol{a\in\R\tq\quantifs{\exists x,y\in\Q}a=x+\sqrt{2}y}.\]
+
+Montrer que \(\Q\croch{\sqrt{2}}\) est un corps. Quels sont ses sous-corps ?
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soient \(K\) un corps et \(A\) un anneau non-nul.
+
+Montrer que tout morphisme d'anneaux \(\phi:F\to A\) est injectif.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Montrer que tout anneau intègre fini est un corps.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}

@@ -1,0 +1,227 @@
+\chapter{Suites}
+
+\begin{exo}[Exemples fondamentaux]
+Soit \(\lambda\in\R\).
+
+Étudier la limite des suites suivantes en fonction de \(\lambda\) : \[\paren{n^\lambda}_{n\in\Ns}\qquad\paren{\ln^\lambda n}_{n\in\interventierie{2}{\pinf}}\qquad\paren{\lambda^n}_{n\in\N}\qquad\paren{n!}_{n\in\N}\]
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Étudier la convergence (et déterminer la limite éventuelle) des suites de terme général :
+
+\begin{enumerate}
+\item \(u_n=\dfrac{n!+\paren{-1}^n\cos n}{n!+\cos n}\) \\
+
+\item \(v_n=\dfrac{\paren{-1}^nn!+\cos n}{n!+\cos n}\) \\
+
+\item \(w_n=\dfrac{\paren{-1}^nn!+\cos n}{\paren{n+1}!+\cos\paren{n+1}}\) \\
+
+\item \(x_n=\int_{-1}^1t^n\sin t\odif{t}\)
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}[Moyennes]
+On définit, pour tous réels strictement positifs \(a\) et \(b\) :
+
+\begin{itemize}
+\item leur moyenne arithmétique : \(m_a\paren{a,b}=\dfrac{a+b}{2}\) ; \\
+
+\item leur moyenne géométrique : \(m_g\paren{a,b}=\sqrt{ab}\) ; \\
+
+\item leur moyenne harmonique : \(m_h\paren{a,b}=\dfrac{2ab}{a+b}\).
+\end{itemize}
+
+\begin{enumerate}[series=exmoyennes]
+\item Soient \(a,b\in\Rps\). Montrer qu'on a \[m_g\paren{a\inv,b\inv}\inv=m_g\paren{a,b}\qquad\text{et}\qquad m_a\paren{a\inv,b\inv}\inv=m_h\paren{a,b}\] et \[m_h\paren{a,b}\leq m_g\paren{a,b}\leq m_a\paren{a,b}\qquad\text{et}\qquad m_g\paren{m_h\paren{a,b},m_a\paren{a,b}}=m_g\paren{a,b}.\]
+\end{enumerate}
+
+On se fixe pour la suite deux réels \(x\) et \(y\) tels que \(0<x<y\).
+
+\begin{enumerate}[resume=exmoyennes]
+\item On pose \[\begin{dcases}x_0=x \\ y_0=y\end{dcases}\qquad\text{et}\qquad\quantifs{\forall n\in\N}\begin{dcases}x_{n+1}=m_g\paren{x_n,y_n} \\ y_{n+1}=m_a\paren{x_n,y_n}\end{dcases}\] \\
+
+Montrer que \(\paren{x_n}_{n\in\N}\) et \(\paren{y_n}_{n\in\N}\) sont convergentes et de même limite. \\
+
+\item On pose \[\begin{dcases}u_0=x \\ v_0=y\end{dcases}\qquad\text{et}\qquad\quantifs{\forall n\in\N}\begin{dcases}u_{n+1}=m_h\paren{u_n,v_n} \\ v_{n+1}=m_a\paren{u_n,v_n}\end{dcases}\] \\
+
+Montrer que \(\paren{u_n}_{n\in\N}\) et \(\paren{v_n}_{n\in\N}\) sont convergentes et de même limite. Quelle est cette limite ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}[Série harmonique]
+On pose \[\quantifs{\forall n\in\N}H_n=\sum_{k=1}^{n}\dfrac{1}{k}.\]
+
+\begin{enumerate}
+\item Montrer que la suite \(\paren{H_n}_{n\in\N}\) admet une limite. \\
+
+\item Montrer : \[\quantifs{\forall n\in\N}H_{2n}-H_n\geq\dfrac{1}{2}.\] \\
+
+\item En déduire la limite de la suite \(\paren{H_n}_{n\in\N}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\paren{u_n}_{n\in\N}\) une suite réelle.
+
+Quelles implications sont vraies entre les propositions suivantes ?
+
+\begin{enumerate}
+\item La suite \(\paren{u_n}_{n\in\N}\) est convergente. \\
+
+\item \(\lim_{n\to\pinf}u_{n+1}-u_n=0\)
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\paren{z_n}_{n\in\N}\) une suite complexe telle que \[\quantifs{\forall n\in\N}z_{n+1}=\dfrac{z_n+\abs{z_n}}{2}.\]
+
+Montrer que \(\paren{z_n}_{n\in\N}\) est convergente et que sa limite est réelle.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\paren{u_n}_{n\in\N}\) une suite réelle.
+
+\begin{enumerate}
+\item Montrer que si \(\paren{u_n}_n\) est décroissante et si on a \(\quantifs{\forall n\in\N}u_n\in\N\) alors \(\paren{u_n}_n\) est stationnaire. \\
+
+\item Montrer que si \(\paren{u_n}_n\) est convergente et si on a \(\quantifs{\forall n\in\N}u_n\in\Z\) alors \(\paren{u_n}_n\) est stationnaire.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}\thlabel{exo:5.15}
+Soit \(A\subset\R\).
+
+\begin{enumerate}
+\item Montrer que si \(A\) n'est pas majorée, alors il existe une suite d'élément de \(A\) qui tend vers \(\pinf\). \\
+
+\item Montrer que si \(A\) est majorée, alors il existe une suite d'éléments de \(A\) qui tend vers \(\sup A\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\paren{u_n}_{n\in\N}\) une suite réelle.
+
+Montrer que \(\paren{u_n}_n\) ne tend pas vers \(\pinf\) si, et seulement si, elle admet une suite extraite majorée.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soient \(\paren{u_n}_{n\in\N}\in\R^\N\) et \(l\in\Rb\).
+
+Montrer que \(\paren{u_n}_n\) tend vers \(l\) si, et seulement si, de toute suite extraite de \(\paren{u_n}_n\) on peut extraire une suite qui tend vers \(l\).
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}[Théorème des segments emboîtés]
+Soient \(\paren{a_n}_{n\in\N},\paren{b_n}_{n\in\N}\in\R^\N\) deux suites réelles telles que \[\quantifs{\forall n\in\N}a_n\leq b_n.\]
+
+On suppose que la suite des segments \(\paren{\intervii{a_n}{b_n}}_{n\in\N}\) est décroissante pour l'inclusion, \cad : \[\quantifs{\forall n\in\N}\intervii{a_{n+1}}{b_{n+1}}\subset\intervii{a_n}{b_n}\] et que la suite des longueurs des segments tend vers \(0\), \cad : \[\lim_{n\to\pinf}b_n-a_n=0.\]
+
+Montrer que \(\biginter_{n\in\N}\intervii{a_n}{b_n}\) est un singleton.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}
+\item Soit \(A\) une partie de \(\R\) telle que \[\quantifs{\forall x\in\R;\exists a,b\in A}a<x<b\qquad\text{et}\qquad\quantifs{\forall a,b\in A}\dfrac{a+b}{2}\in A.\] \\
+
+Montrer que \(A\) est dense dans \(\R\). \\
+
+\item Retrouver le fait que \(\Q\) est dense dans \(\R\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}[Moyenne de Cesàro d'une suite]\thlabel{exo:moyenneDeCesàroD'UneSuite}
+Soient \(\paren{u_n}_{n\in\N}\) et \(\paren{v_n}_{n\in\N}\) deux suites réelles et \(l\) un réel.
+
+On considère la suite \(\paren{U_n}_{n\in\N}\) définie par : \[\quantifs{\forall n\in\N}U_n=\dfrac{1}{n+1}\sum_{k=0}^{n}u_k.\]
+
+\begin{enumerate}
+\item Montrer que si \(\paren{u_n}_n\) diverge vers \(\pinf\), alors \(\paren{U_n}_n\) diverge vers \(\pinf\). \\
+
+\item Montrer que si \(\paren{u_n}_n\) converge vers \(l\), alors \(\paren{U_n}_n\) converge vers \(l\). \\
+
+\item Montrer que les implications réciproques des propositions ci-dessus ne sont pas toujours vraies. \\
+
+\item Montrer que si la suite \(\paren{v_{n+1}-v_n}_n\) converge vers \(l\), alors \(\lim_{n\to\pinf}\dfrac{v_n}{n}=l\). \\
+
+\item On suppose qu'on a : \[\quantifs{\forall n\in\N}v_n\in\Rps\qquad\text{et}\qquad\lim_{n\to\pinf}\dfrac{v_{n+1}}{v_n}=\pinf.\] \\
+
+Montrer : \[\lim_{n\to\pinf}\sqrt[n]{v_n}=\pinf.\] \\
+
+\item On suppose qu'on a : \[\quantifs{\forall n\in\N}v_n\in\Rps\qquad\text{et}\qquad\lim_{n\to\pinf}\dfrac{v_{n+1}}{v_n}=l.\] \\
+
+Montrer : \[\lim_{n\to\pinf}\sqrt[n]{v_n}=l.\] \\
+
+\item Calculer \(\lim_{n\to\pinf}\sqrt[n]{n!}\). \\
+
+\item Calculer \(\lim_{n\to\pinf}\sqrt[n]{n^2}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}[series=ex14suites]
+\item Montrer que pour tout entier \(n\in\Ns\), l'équation d'inconnue \(x\in\Rps\) : \[x+\ln x=n\] admet une unique solution.
+\end{enumerate}
+
+Dans la suite, on note \(u_n\) cette unique solution et on s'intéresse à la suite \(\paren{u_n}_{n\in\Ns}\).
+
+\begin{enumerate}[resume=ex14suites]
+\item Montrer que \(\paren{u_n}_{n\in\Ns}\) est croissante. \\
+
+\item Déterminer sa limite.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}

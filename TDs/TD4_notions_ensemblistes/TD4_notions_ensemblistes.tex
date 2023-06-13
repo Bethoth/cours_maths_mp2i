@@ -1,0 +1,285 @@
+\chapter{Notions ensemblistes}
+
+\minitoc
+
+\section{Ensembles}
+
+\begin{exo}
+Soient \(A\), \(B\) et \(C\) des ensembles.
+
+Montrer les propositions suivantes :
+
+\begin{enumerate}
+\item \(\paren{A\union B}\inter C=\paren{A\inter C}\union\paren{B\inter C}\) \\
+
+\item \(\paren{A\inter B}\union C=\paren{A\union C}\inter\paren{B\union C}\) \\
+
+\item \(C\excluant\paren{A\union B}=\paren{C\excluant A}\inter\paren{C\excluant B}\) \\
+
+\item \(\paren{A\union B}\excluant\paren{A\inter B}=\paren{A\excluant B}\union\paren{B\excluant A}\)
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) et \(F\) deux ensembles.
+
+\begin{enumerate}
+\item Montrer l'équivalence \[E\subset F\ssi\P{E}\subset\P{F}\] \\
+
+\item La proposition suivante est-elle vraie ? \[\P{E\union F}=\P{E}\union\P{F}\] \\
+
+\item La proposition suivante est-elle vraie ? \[\P{E\inter F}=\P{E}\inter\P{F}\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+On pose \(\classe{}=\accol{\paren{x,y}\in\R^2\tq x^2+y^2=1}\).
+
+Existe-t-il deux parties \(A,B\subset\R\) telles que \(\classe{}=A\times B\) ?
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}[Pas d'\guillemets{ensemble de tous les ensembles}]
+Montrer qu'il n'existe pas d'ensemble dont les éléments sont les ensembles.
+
+Pour cela, on pourra supposer par l'absurde qu'un tel ensemble \(E\) existe, considérer l'ensemble \[A=\accol{X\in E\tq X\not\in X}\] et aboutir à une contradiction.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\section{Fonctions}
+
+\begin{exo}
+Soient \(E\) et \(F\) deux ensembles et deux fonctions \(f:E\to F\) et \(g:F\to E\).
+
+On suppose que la fonction \(f\rond g\rond f\) est une bijection de \(E\) dans \(F\).
+
+Montrer que \(f\) et \(g\) sont des bijections.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}[Images directes, images réciproques]
+Soient \(E\) et \(F\) deux ensembles, la fonction \(f:E\to F\), la partie \(A\subset E\) et la partie \(B\subset F\).
+
+\begin{enumerate}
+\item Montrer l'équivalence \[A\subset f\inv\paren{B}\ssi f\paren{A}\subset B.\] \\
+
+\item Quelle inclusion est toujours vraie entre \(A\) et \(f\inv\paren{f\paren{A}}\) ? Donner un contre-exemple pour l'autre inclusion. \\
+
+\item Même chose entre \(B\) et \(f\paren{f\inv\paren{B}}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soient \(a\) et \(b\) des réels.
+
+Donner une CNS sur \(a\) et \(b\) pour que la fonction \[\fonction{f}{\R}{\R}{x}{ax+b}\] soit une bijection.
+
+Déterminer alors sa bijection réciproque.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Montrer que la fonction \guillemets{sinus hyperbolique} : \[\fonction{\sh}{\R}{\R}{x}{\dfrac{\e{x}-\e{-x}}{2}}\] est bijective et déterminer sa bijection réciproque.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(E\) un ensemble non-vide et \(A\subset E\) une partie de \(E\).
+
+Montrer que la fonction \[\fonction{f}{\P{E}}{\P{E}^2}{X}{\paren{X\inter A,X\union A}}\] est une injection.
+
+Est-ce une surjection ?
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) et \(F\) deux ensembles et deux fonctions \(f:E\to F\) et \(g:F\to E\).
+
+On suppose \[g\rond f=\id{E}\qquad\text{et}\qquad f\rond g=\id{F}.\]
+
+Montrer que \(f\) et \(g\) sont des bijections, réciproques l'une de l'autre.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}[Fonctions indicatrices]
+Soient \(E\) un ensemble et \(A,B,C\in\P{E}\).
+
+\begin{enumerate}
+\item Montrer que la fonction \[\fonction{\Phi}{\P{E}}{\accol{0;1}^E}{A}{\ind{A}}\] est une bijection et déterminer sa bijection réciproque. \\
+
+\item Déterminer, en fonction de \(\ind{A}\) et \(\ind{B}\), les fonctions indicatrices des parties suivantes : \[A\inter B\qquad A\union B\qquad E\excluant A.\] \\
+
+\item Utiliser ce qui précède pour montrer l'égalité : \[A\inter\paren{B\union C}=\paren{A\inter B}\union\paren{A\inter C}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) et \(F\) deux ensembles non-vides.
+
+Montrer que les deux propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+\item Il existe une injection \(f:E\to F\). \\
+
+\item Il existe une surjection \(g:F\to E\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(E\) un ensemble.
+
+Montrer qu'il n'existe pas de surjection \(f:E\to\P{E}\).
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\), \(E\prim\), \(F\) et \(F\prim\) des ensembles et \(f:E\to F\).
+
+On suppose que l'ensemble \(E\prim\) est non-vide et que l'ensemble \(F\prim\) possède au moins deux éléments distincts.
+
+On définit les fonctions : \[\fonction{F_1}{\F{E\prim}{E}}{\F{E\prim}{F}}{\phi}{f\rond\phi}\qquad\text{et}\qquad\fonction{F_2}{\F{F}{F\prim}}{\F{E}{F\prim}}{\phi}{\phi\rond f}\]
+
+\begin{enumerate}
+\item Donner une CNS sur \(f\) pour que \(F_1\) soit injective. \\
+
+\item Donner une CNS sur \(f\) pour que \(F_1\) soit surjective. \\
+
+\item Donner une CNS sur \(f\) pour que \(F_2\) soit injective. \\
+
+\item Donner une CNS sur \(f\) pour que \(F_2\) soit surjective.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\section{Ensembles ordonnés}
+
+\begin{exo}[Ordre produit sur \(E\times F\)]
+Soient \(\groupe{E}[\leq_E]\) et \(\groupe{F}[\leq_F]\) deux ensembles ordonnés.
+
+On définit une relation binaire sur \(E\times F\) en posant : \[\quantifs{\forall\paren{x_1,y_1},\paren{x_2,y_2}\in E\times F}\paren{x_1,y_1}\leq\paren{x_2,y_2}\ssi\begin{dcases}x_1\leq_Ex_2 \\ y_1\leq_Fy_2\end{dcases}\]
+
+Montrer que \(\leq\) est une relation d'ordre sur \(E\times F\).
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}[Ordre lexicographique sur \(\R^2\)]
+On définit une relation binaire \(\sqsubseteq\) sur \(\R^2\) en posant : \[\quantifs{\forall\paren{x_1,y_1},\paren{x_2,y_2}\in\R^2}\paren{x_1,y_1}\sqsubseteq\paren{x_2,y_2}\ssi\orenv{x_1<x_2 \\ x_1=x_2\quad\text{et}\quad y_1\leq y_2}\]
+
+Montrer que \(\sqsubseteq\) est une relation d'ordre sur \(\R^2\) et que cet ordre est total.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soient \(A,B\in\P{\R}\) deux parties de \(\R\) admettant chacune une borne supérieure.
+
+\begin{enumerate}
+\item Montrer que \(A\union B\) admet une borne supérieure, et déterminer cette borne supérieure en fonction de \(\sup A\) et \(\sup B\). \\
+
+\item Montrer que la partie \[A+B=\accol{a+b}_{\paren{a,b}\in A\times B}\] admet une borne supérieure, et déterminer cette borne supérieure en fonction de \(\sup A\) et \(\sup B\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+Soit \(X\) un ensemble.
+
+On considère l'ensemble \(E=\P{X}\), ordonné par la relation d'inclusion \(\subset\).
+
+\begin{enumerate}
+\item Soient \(A,B\in E\). La partie \(\accol{A;B}\subset E\) admet-elle une borne supérieure dans \(E\) ? une borne inférieure dans \(E\) ? \\
+
+\item Soit \(\paren{A_i}_{i\in I}\in E^I\) une famille d'éléments de \(E\). Cette famille admet-elle une borne supérieure dans \(E\) ? une borne inférieure dans \(E\) ? \\
+
+\textit{NB : dans le cas présent, où tous les ensembles \(A_i\) sont des parties de \(E\), on convient que l'intersection \(\biginter_{i\in I}A_i\) vaut \(E\) si \(I\) est vide.}
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+On considère la droite réelle achevée \(\Rb\), munie de sa relation d'ordre usuelle.
+
+Montrer que toute partie de \(\Rb\) admet une borne supérieure et une borne inférieure dans \(\Rb\).
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\section{Entiers naturels}
+
+\begin{exo}[Descente infinie de Fermat]
+Montrer qu'il n'existe pas de suite \(\paren{u_n}_{n\in\N}\in\N^\N\) d'entiers naturels strictement décroissante.
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}
+
+\begin{exo}
+On considère la suite \(\paren{u_n}_{n\in\N}\in\R^\N\) définie par : \[\begin{dcases}u_0=1 \\ \quantifs{\forall n\in\N}u_{n+1}=\sum_{k=0}^{n}u_k\end{dcases}\]
+
+Montrer la proposition suivante : \[\quantifs{\forall n\in\Ns}u_n=2^{n-1}.\]
+\end{exo}
+
+\begin{corr}
+\note{à venir}
+\end{corr}

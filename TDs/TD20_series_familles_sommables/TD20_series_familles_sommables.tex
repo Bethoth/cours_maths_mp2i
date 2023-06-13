@@ -1,0 +1,331 @@
+\chapter{Séries, familles sommables}
+
+\minitoc
+
+Dans tout le TD, on admet \(\sum_{n=1}^{\pinf}\dfrac{1}{n^2}=\dfrac{\pi^2}{6}\) et \(\sum_{n=1}^{\pinf}\dfrac{1}{n^4}=\dfrac{\pi^4}{90}\).
+
+\begin{exo}[Exercice 1]
+Soient \(a,b,c\in\R\).
+
+Déterminer la nature des séries suivantes, dont on notera \(x_n\) les termes généraux :
+
+\begin{enumerate}
+\item \(\sum_n\dfrac{1}{n\sqrt[n]{n}}\). \\
+
+\item \(\sum_n\paren{\exp\dfrac{1}{n}-\exp\dfrac{1}{n+1}}\). \\
+
+\item \(\sum_n\paren{\e{}-\paren{1+\dfrac{1}{n}}^n}\). \\
+
+\item \(\sum_n\ln\dfrac{n^2+n+1}{n^2+n-1}\). \\
+
+\item \(\sum_n\dfrac{1}{n^a4^n}\binom{n}{2n}\). \\
+
+\item \(\sum_n\paren{a\sqrt{n}+b\sqrt{n+1}+c\sqrt{n+2}}\). \\
+
+\item \(\sum_n\dfrac{1}{\ln^nn}\). \\
+
+\item \(\sum_n\dfrac{n!^a}{\paren{2n}!}\). \\
+
+\item \(\sum_n\dfrac{\sqrt{n}\ln n}{\e{n}}\). \\
+
+\item \(\sum_n\dfrac{1}{\paren{\ln\paren{\ln n}}^n}\). \\
+
+\item \(\sum_n\int_0^1\tan^nt\odif{t}\). \\
+
+\item \(\sum_n\int_0^{\frac{\pi}{4}}\tan^{n^2}t\odif{t}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 2]
+Déterminer si les séries suivantes sont convergentes et calculer alors leur somme : \[\sum_{n\geq1}\dfrac{1}{n\paren{n+1}\paren{n+2}}\qquad\text{et}\qquad\sum_{n\geq0}\ln\paren{\cos\dfrac{x}{2^n}}\text{ où }x\in\intervee{0}{\dfrac{\pi}{2}}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 3, classique]
+\begin{enumerate}
+\item Soit \(\sum_nu_n\) une série à termes positifs.
+
+On suppose la série \(\sum_nu_n\) convergente. La série \(\sum_nu_n^2\) est-elle convergente ?
+
+Inversement, si l'on suppose \(\sum_nu_n^2\) convergente, la série \(\sum_nu_n\) est-elle convergente ? \\
+
+\item L'implication montrée ci-dessus reste-t-elle vraie si l'on ne suppose pas que les termes de la suite \(\paren{u_n}_n\) sont positifs ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 4, TPE]
+On pose : \[\quantifs{\forall n\in\Ns}u_n=\paren{n\sin\dfrac{1}{n}}^{n^2}.\]
+
+\begin{enumerate}
+\item Déterminer \(l=\lim_{n\to\pinf}u_n\). \\
+
+\item Déterminer la nature de la série \(\sum_n\paren{u_n-l}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 5, ENSEA]
+\begin{enumerate}
+\item Montrer qu'on a, quand \(x\) tend vers \(1\) : \[\Arccos x\sim\sqrt{2\paren{1-x}}.\]
+
+\item Donner la nature de la série \[\sum_n\Arccos\dfrac{n^2+n+1}{n^2+n+3}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 6, séries de Bertrand]\thlabel{exo:sériesDeBertrand}
+Donner une CNS sur \(\paren{\alpha,\beta}\in\R^2\) pour que la série \[\sum_n\dfrac{1}{n^{\alpha}\ln^\beta n}\] soit convergente.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 7]
+\begin{enumerate}
+\item Montrer que la série \(\sum_{n\geq1}\sin\paren{\pi n+\dfrac{\pi}{n}}\) est convergente.
+
+On note \(S=\sum_{n=1}^{\pinf}\sin\paren{\pi n+\dfrac{\pi}{n}}\) la somme de cette série. \\
+
+\item Donner un rang \(N\in\Ns\) tel que : \[\abs{S-\sum_{n+1}^N\sin\paren{\pi n+\dfrac{\pi}{n}}}\leq10^{-3}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 8]
+Montrer que la somme \[\sum_{n=0}^{\pinf}\dfrac{\paren{-8}^n}{\paren{2n}!}\] est bien définie et donner sa partie entière.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 9, Mines]
+La série \[\sum_n\ln\paren{1+\dfrac{\paren{-1}^n}{\sqrt{n}}}\] est-elle convergente ?
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 10]
+Donner une CNS sur \(x\in\R\) pour que la série suivante converge : \[\sum_n\dfrac{x^n}{1+x^{2n}}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 11]
+Donner une CNS sur \(\alpha\in\Rps\) pour que la série suivante converge : \[\sum_{n\geq2}\dfrac{\paren{-1}^n}{n^{\alpha}+\paren{-1}^n}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 12]
+Soit \(\paren{u_n}_n\) une suite telle que : \[\quantifs{\forall n\in\N}u_{n+1}=\dfrac{\e{-u_n}}{n+1}.\]
+
+\begin{enumerate}
+\item Déterminer la nature de la série \(\sum_nu_n\). \\
+
+\item Déterminer la nature de la série \(\sum_n\paren{-1}^nu_n\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 13]
+Soit \(n\in\N\).
+
+On pose : \[a_n=n!\sum_{k=0}^n\dfrac{\paren{-1}^k}{k!}.\]
+
+\begin{enumerate}
+\item Justifier que \(a_n\) est un entier relatif. \\
+
+\item Montrer que la série \(\sum_{k\geq n+1}\dfrac{\paren{-1}^k}{k!}\) converge. On note \(R_n\) sa somme. \\
+
+\item Donner le signe de \(R_n\) en fonction de \(n\). \\
+
+\item On suppose \(n\geq2\). Montrer que \(a_n\) est l'entier relatif le plus proche de \(\dfrac{n!}{\e{}}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 14]
+On pose : \[\quantifs{\forall n\in\N}R_n=\sum_{k=n+1}^{\pinf}\dfrac{1}{k!}.\]
+
+\begin{enumerate}
+\item Quelle est la limite de la suite \(\paren{R_n}_n\) ? \\
+
+\item Montrer : \[\quantifs{\forall n\in\N}0\leq R_n\leq\dfrac{1}{nn!}.\]
+
+\item En déduire un équivalent de \(R_{n-1}\) quand \(n\) tend vers \(\pinf\). \\
+
+\item Déterminer la nature des séries \[\sum_n\sin\paren{2\e{}\pi n!}\qquad\text{et}\qquad\sum_n\sin\paren{\e{}\pi n!}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 15, CCP]
+On pose : \[\quantifs{\forall n\in\interventierie{2}{\pinf}}u_n=\paren{\dfrac{\ln\paren{n+1}}{\ln n}}^n.\]
+
+\begin{enumerate}
+\item Déterminer la limite de la suite \(\paren{u_n}_n\). \\
+
+\item Déterminer la nature de la série \(\sum_n\dfrac{u_n-1}{n}\).
+
+\textit{On admet\footnote{\Cf \thref{exo:sériesDeBertrand}.} que la série de Bertrand \(\sum_{n\geq2}\dfrac{1}{n\ln n}\) diverge.}
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 16]
+On considère une suite \(\paren{u_n}_n\) telle que : \[u_0\in\intervee{0}{\pi}\qquad\text{et}\qquad\quantifs{\forall n\in\N}u_{n+1}=\sin u_n.\]
+
+\begin{enumerate}
+\item Montrer : \[\quantifs{\forall n\in\N}0<u_n<\pi.\]
+
+\item Étudier la croissance de la suite \(\paren{u_n}_n\) puis sa limite. \\
+
+\item Montrer : \[\lim_{n\to\pinf}\dfrac{1}{u_{n+1}^2}-\dfrac{1}{u_n^2}=\dfrac{1}{3}.\]
+
+\item En déduire un équivalent de \(u_n\) quand \(n\) tend vers \(\pinf\).
+
+\textit{On admet\footnote{\Cf \thref{exo:moyenneDeCesàroD'UneSuite}.} que si \(\paren{a_n}_n\in\R^\N\) converge vers \(l\in\R\) alors sa \guillemets{moyenne de Cesàro} converge aussi vers \(l\) :} \[\lim_{n\to\pinf}\dfrac{1}{n}\sum_{k=1}^na_k=l.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 17]
+Soit \(\paren{u_n}_n\) une suite décroissante de réels positifs.
+
+On suppose que la série \(\sum_nu_n\) est convergente.
+
+Montrer : \[u_n\underset{n\to\pinf}{\sim}o\paren{\dfrac{1}{n}}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 18, astuces à retenir]
+Calculer : \[S_2=\sum_{k=0}^{\pinf}\dfrac{1}{\paren{2k+1}^2}\qquad S_2\prim=\sum_{n=1}^{\pinf}\dfrac{\paren{-1}^{n-1}}{n^2}\qquad S_4=\sum_{k=0}^{\pinf}\dfrac{1}{\paren{2k+1}^4}\qquad S_4\prim=\sum_{n=1}^{\pinf}\dfrac{\paren{-1}^{n-1}}{n^4}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 19]
+Calculer \[S=\sum_{a=1}^{\pinf}\sum_{b=a}^{\pinf}\dfrac{1}{b^3}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 20]
+On pose : \[I=\accol{\paren{k,n}\in\N^2\tq1\leq k\leq n}\qquad I\prim=\accol{\paren{k,n}\in\N^2\tq1\leq n\leq k}\qquad I\seconde=\paren{\Ns}^2.\]
+
+Les familles suivantes sont-elles sommables ? Le cas échéant, calculer leur somme : \[\paren{\dfrac{\paren{-1}^{n-1}}{nk\paren{k+1}}}_{\paren{k,n}\in I}\qquad\paren{\dfrac{\paren{-1}^{n-1}}{nk\paren{k+1}}}_{\paren{k,n}\in I\prim}\qquad\paren{\dfrac{\paren{-1}^{n-1}}{nk\paren{k+1}}}_{\paren{k,n}\in I\seconde}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice supplémentaire]
+On pose : \[I=\accol{\paren{k,n}\in\N^2\tq0<k<n}.\]
+
+La famille suivante est-elle sommable ? Le cas échéant, calculer sa somme : \[\fami{G}=\paren{\dfrac{1}{2^n}\exp\dfrac{2\i k\pi}{n}}_{\paren{k,n}\in I}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 21]
+Déterminer si la série de terme général \(u_n\) est convergente et calculer alors sa somme dans les cas suivants :
+
+\begin{enumerate}
+\item \(\quantifs{\forall n\in\interventierie{2}{\pinf}}u_n=\sum_{p=1}^{n-1}\dfrac{1}{p^2\paren{n-p}^2}\). \\
+
+\item \(\quantifs{\forall n\in\N}u_n=\sum_{k=0}^n\dfrac{1}{2^{n-k}k!}\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 22]
+\begin{enumerate}
+\item Calculer \[S=\sum_{\paren{a,b}\in\Ns\times\N}\dfrac{1}{\paren{a^2+b}\paren{a^2+b+1}}.\]
+
+\item En déduire : \[S\prim=\sum_{n\in\Ns}\dfrac{\floor{\sqrt{n}}}{n\paren{n+1}}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 23, X MP]
+On note \(I\) l'ensemble des entiers naturels non-nuls dont l'écriture décimale ne comporte pas le chiffre \(9\).
+
+La famille \(\paren{\dfrac{1}{n}}_{n\in I}\) est-elle sommable ?
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 24]
+On note \(P\) (comme \guillemets{puissances}) l'ensemble des entiers qui s'écrivent sous la forme \(a^b\) où \(a,b\in\interventierie{2}{\pinf}\).
+
+\begin{enumerate}
+\item Calculer \(\sum_{a=2}^{\pinf}\sum_{b=2}^{\pinf}\dfrac{1}{a^b}\). \\
+
+\item En déduire \(\sum_{m\in P}\dfrac{1}{m-1}\) (formule due à Euler).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}

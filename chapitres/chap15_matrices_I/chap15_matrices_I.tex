@@ -1,0 +1,2005 @@
+\chapter{Matrices I}
+
+\minitoc
+
+On considère un corps \(\K\) (en pratique, \(\K=\R\) ou \(\C\)).
+
+\section{Matrices}
+
+\begin{defi}[Matrice]
+On appelle matrice toute famille de scalaires de la forme \[A=\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{n}\times\interventierii{1}{p}}\in\K^{\interventierii{1}{n}\times\interventierii{1}{p}}\] avec \(n,p\in\Ns\).
+
+On représente aussi une telle matrice sous la forme d'un tableau : \[A=\begin{pmatrix}
+a_{11} & a_{12} & \dots & a_{1p} \\
+a_{21} &  &  & \vdots \\
+\vdots &  &  & \vdots \\
+a_{n1} & \dots & \dots & a_{np}
+\end{pmatrix}\] et on dit que \(A\) est une matrice à \(n\) lignes et \(p\) colonnes ou que \(A\) est de taille \(\paren{n,p}\) ou encore que \(A\) est une matrice \(n\times p\).
+
+Son coefficient \(a_{ij}\) est appelé coefficient de \(A\) en position \(\paren{i,j}\).
+
+Si \(n=1\), on dit que \(A\) est une matrice-ligne.
+
+Si \(p=1\), on dit que \(A\) est une matrice-colonne.
+
+L'ensemble des matrices de taille \(\paren{n,p}\) à coefficients dans \(\K\) est noté \[\M{np}=\K^{\interventierii{1}{n}\times\interventierii{1}{p}}.\]
+
+On pose enfin, si \(n=p\) : \[\M{n}=\M{nn}=\K^{\interventierii{1}{n}^2}.\]
+
+Une matrice de taille \(\paren{n,n}\) est appelée matrice carrée de taille \(n\).
+\end{defi}
+
+\begin{ex}
+On a : \[\paren{100i+j}_{\paren{i,j}\in\interventierii{1}{2}\times\interventierii{1}{4}}=\begin{pmatrix}
+101 & 102 & 103 & 104 \\
+201 & 202 & 203 & 204
+\end{pmatrix}\in\M{24}[\R].\]
+\end{ex}
+
+\begin{nota}
+Soit \(n\in\Ns\).
+
+On appelle matrice identité de taille \(n\) la matrice carrée \[I_n=\paren{\delta_{ij}}_{\paren{i,j}\in\interventierii{1}{n}^2}=\begin{pmatrix}
+1 & 0 & \dots & 0 \\
+0 & \ddots & \ddots & \vdots \\
+\vdots & \ddots & \ddots & 0 \\
+0 & \dots & 0 & 1
+\end{pmatrix}\in\M{n}.\]
+\end{nota}
+
+\begin{nota}[Non-officielle]
+Soient \(n,p\in\Ns\).
+
+On appelle matrice nulle de taille \(\paren{n,p}\) la matrice de taille \(\paren{n,p}\) dont tous les coefficients sont nuls et on la note parfois \(0_{np}\) : \[0_{np}=\paren{0}_{\paren{i,j}\in\interventierii{1}{n}\times\interventierii{1}{p}}=\begin{pmatrix}
+0 & \dots & 0 \\
+\vdots & & \vdots \\
+0 & \dots & 0
+\end{pmatrix}\in\M{np}.\]
+
+Enfin, on pose : \(0_n=0_{nn}\in\M{n}\).
+\end{nota}
+
+\section{Combinaisons linéaires de matrices}
+
+\begin{prop}
+Soient \(n,p\in\Ns\).
+
+L'ensemble \(\M{np}\) des matrices à \(n\) lignes et \(p\) colonnes est naturellement un espace vectoriel.
+\end{prop}
+
+\begin{nota}[Matrices élémentaires]
+Soient \(n,p\in\Ns\).
+
+On définit pour tout \(\paren{i_0,j_0}\in\interventierii{1}{n}\times\interventierii{1}{p}\) la matrice élémentaire \[E_{i_0j_0}=\paren{\delta_{ii_0}\delta_{jj_0}}_{\paren{i,j}\in\interventierii{1}{n}\times\interventierii{1}{p}}\in\M{np}.\]
+
+Tous ses coefficients sont nuls, sauf celui en position \(\paren{i_0,j_0}\) qui vaut \(1\).
+\end{nota}
+
+\begin{ex}
+Les matrices élémentaires de \(\M{2}\) sont : \[E_{11}=\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}\qquad E_{12}=\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}\qquad E_{21}=\begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}\qquad E_{22}=\begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}\]
+\end{ex}
+
+\begin{prop}
+Soient \(n,p\in\Ns\).
+
+La famille des matrices élémentaires de \(\M{np}\) \[\paren{E_{ij}}_{\paren{i,j}\in\interventierii{1}{n}\times\interventierii{1}{p}}\in\M{np}^{\interventierii{1}{n}\times\interventierii{1}{p}}\] est une base de \(\M{np}\) appelée base canonique de \(\M{np}\).
+
+Les coordonnées d'une matrice dans cette base sont ses coefficients.
+\end{prop}
+
+\begin{dem}
+On note \(\fami{B}\) la famille des matrices élémentaires de \(\M{np}\).
+
+Montrons que \(\fami{B}\) est libre.
+
+Soit \(\paren{\lambda_{ij}}_{\paren{i,j}}\in\K^{\interventierii{1}{n}\times\interventierii{1}{p}}\) telle que \[\sum_{i=1}^n\sum_{j=1}^p\lambda_{ij}E_{ij}=0_{np}.\]
+
+On a \(\begin{pmatrix}
+\lambda_{11} & \dots & \lambda_{1p} \\
+\vdots &  & \vdots \\
+\lambda_{n1} & \dots & \lambda_{np}
+\end{pmatrix}=0_{np}\).
+
+Donc \[\quantifs{\forall i\in\interventierii{1}{n};\forall j\in\interventierii{1}{p}}\lambda_{ij}=0.\]
+
+Donc \(\fami{B}\) est libre.
+
+Montrons que \(\fami{B}\) est génératrice de \(\M{np}\).
+
+Soit \(A=\begin{pmatrix}
+a_{11} & \dots & a_{1p} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{np}
+\end{pmatrix}\in\M{np}\).
+
+On remarque \[A=\sum_{i=1}^n\sum_{j=1}^pa_{ij}E_{ij}.\]
+
+Donc \(\fami{B}\) est génératrice de \(\M{np}\).
+
+Donc \(\fami{B}\) est une base de \(\M{np}\).
+\end{dem}
+
+\begin{ex}
+On a : \[\quantifs{\forall a,b,c,d\in\K}\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}=a E_{11}+b E_{12}+c E_{21}+d E_{22}.\]
+\end{ex}
+
+\begin{cor}
+On a : \[\quantifs{\forall n,p\in\Ns}\dim\M{np}=np.\]
+\end{cor}
+
+\section{Produit matriciel}
+
+\subsection{Produits de matrices}
+
+\begin{defi}[Produit matriciel]
+Soient \(m,n,p\in\Ns\), \(A=\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{m}\times\interventierii{1}{n}}\in\M{mn}\) et \(B=\paren{b_{jk}}_{\paren{j,k}\in\interventierii{1}{n}\times\interventierii{1}{p}}\in\M{np}\).
+
+On appelle produit des matrices \(A\) et \(B\) la matrice \(C\) de taille \(\paren{m,p}\) : \[C=\paren{c_{ik}}_{\paren{i,k}\in\interventierii{1}{m}\times\interventierii{1}{p}}=A\times B=AB\in\M{mp}\] définie par : \[\quantifs{\forall\paren{i,k}\in\interventierii{1}{m}\times\interventierii{1}{p}}c_{ik}=\sum_{j=1}^na_{ij}b_{jk}.\]
+
+L'application ainsi définie \[\M{mn}\times\M{np}\to\M{mp}\] est appelée le produit matriciel.
+\end{defi}
+
+\begin{prop}[Bilinéarité du produit matriciel]\thlabel{prop:bilinéaritéDuProduitMatriciel}
+Soient \(m,n,p\in\Ns\).
+
+Le produit matriciel \(\fonctionlambda{\M{mn}\times\M{np}}{\M{mp}}{\paren{A,B}}{AB}\) est bilinéaire, \cad qu'on a : \[\begin{dcases}
+\quantifs{\forall\lambda_1,\lambda_2\in\K;\forall A_1,A_2\in\M{mn};\forall B\in\M{np}}\paren{\lambda_1A_1+\lambda_2A_2}B=\lambda_1A_1B+\lambda_2A_2B \\
+\quantifs{\forall\mu_1,\mu_2\in\K;\forall A\in\M{mn};\forall B_1,B_2\in\M{np}}A\paren{\mu_1B_1+\mu_2B_2}=\mu_1AB_1+\mu_2AB_2
+\end{dcases}\]
+
+Cela équivaut à : \[\begin{aligned}
+\quantifs{\forall\lambda_1,\lambda_2,\mu_1,\mu_2\in\K;\forall A_1,A_2\in\M{mn};\forall B_1,B_2\in\M{np}}\paren{\lambda_1A_1+\lambda_2A_2}\paren{\mu_1B_1+\mu_2B_2}&=\lambda_1\mu_1A_1B_1 \\
+&\color{white}=\color{black}+\lambda_1\mu_2A_1B_2 \\
+&\color{white}=\color{black}+\lambda_2\mu_1A_2B_1 \\
+&\color{white}=\color{black}+\lambda_2\mu_2A_2B_2
+\end{aligned}\]
+\end{prop}
+
+\begin{prop}[Matrices nulles, matrices identités]\thlabel{prop:produitMatricielMatricesNullesEtMatricesIdentités}
+Soient \(n,p\in\Ns\).
+
+On a : \[0_n\times A=A\times0_p=0_{np}\qquad\text{et}\qquad I_n\times A=A\times I_p=A.\]
+\end{prop}
+
+\begin{dem}
+Les égalités sont claires pour les produits avec les matrices nulles.
+
+On pose \(C=\paren{c_{ik}}_{\paren{i,k}}=I_nA\).
+
+Montrons que \(C=A\).
+
+On a \(C\in\M{np}\) et \(\quantifs{\forall i\in\interventierii{1}{n};\forall k\in\interventierii{1}{p}}c_{ik}=\sum_{j=1}^n\delta_{ij}a_{jk}=a_{ik}\).
+
+Donc \(C=A\).
+
+On montre de même \(AI_p=A\).
+\end{dem}
+
+\begin{rem}[Matrices \guillemets{scalaires}]
+Soient \(m,n,p\in\Ns\).
+
+On a, selon la \thref{prop:bilinéaritéDuProduitMatriciel} : \[\quantifs{\forall\lambda\in\K;\forall A\in\M{mn};\forall B\in\M{np}}\paren{\lambda A}B=A\paren{\lambda B}=\lambda AB.\]
+
+D'où, selon la \thref{prop:produitMatricielMatricesNullesEtMatricesIdentités} : \[\quantifs{\forall\lambda\in\K;\forall A\in\M{np}}\lambda A=\paren{\lambda I_n}A=A\paren{\lambda I_p}.\]
+
+En particulier, les matrices de la forme \(\lambda I_n\) où \(\lambda\in\K\) (qu'on appelle parfois \guillemets{matrices scalaires}) commutent avec toute matrice carrée de taille \(n\) : \[\quantifs{\forall\lambda\in\K;\forall A\in\M{n}}\lambda A=\paren{\lambda I_n}A=A\paren{\lambda I_n}.\]
+\end{rem}
+
+\begin{exoex}
+Compléter la table de multiplication (ne rien mettre dans la case quand le produit n'est pas défini) :
+
+\begin{center}
+\large
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\(\times\) & \(\begin{pmatrix}1\\2\\3\end{pmatrix}\) & \(\begin{pmatrix}0&0&7\end{pmatrix}\) & \(\begin{pmatrix}-1&2\\-1&3\\-1&0\end{pmatrix}\) & \(\begin{pmatrix}2&4\end{pmatrix}\) & \(\begin{pmatrix}9\end{pmatrix}\) & \(\begin{pmatrix}1&0\\0&1\end{pmatrix}\) & \(\begin{pmatrix}2\\0\end{pmatrix}\)\\
+\hline
+\(\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}\) &&&&&&&\\
+\hline
+\(\begin{pmatrix}1&2&3&4\end{pmatrix}\) &&&&&&&\\
+\hline
+\(\begin{pmatrix}1\\2\\3\\4\end{pmatrix}\) &&&&&&&\\
+\hline
+\(\begin{pmatrix}7\end{pmatrix}\) &&&&&&&\\
+\hline
+\(\begin{pmatrix}1&1\\0&0\\1&1\end{pmatrix}\) &&&&&&&\\
+\hline
+\(\begin{pmatrix}3&-3\end{pmatrix}\) &&&&&&&\\
+\hline
+\(\begin{pmatrix}1\\0\end{pmatrix}\)&&&&&&&\\
+\hline
+\end{tabular}
+\end{center}
+\end{exoex}
+
+\begin{corr}~\\
+\begin{center}
+\large
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\(\times\) & \(\begin{pmatrix}1\\2\\3\end{pmatrix}\) & \(\begin{pmatrix}0&0&7\end{pmatrix}\) & \(\begin{pmatrix}-1&2\\-1&3\\-1&0\end{pmatrix}\) & \(\begin{pmatrix}2&4\end{pmatrix}\) & \(\begin{pmatrix}9\end{pmatrix}\) & \(\begin{pmatrix}1&0\\0&1\end{pmatrix}\) & \(\begin{pmatrix}2\\0\end{pmatrix}\)\\
+\hline
+\(\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}\) & \(\begin{pmatrix}1\\2\\3\end{pmatrix}\) && \(\begin{pmatrix}-1&2\\-1&3\\-1&0\end{pmatrix}\) &&&&\\
+\hline
+\(\begin{pmatrix}1&2&3&4\end{pmatrix}\) &&&&&&&\\
+\hline
+\(\begin{pmatrix}1\\2\\3\\4\end{pmatrix}\) && \(\begin{pmatrix}0&0&7\\0&0&14\\0&0&21\\0&0&28\end{pmatrix}\) && \(\begin{pmatrix}2&4\\4&8\\6&12\\8&16\end{pmatrix}\) & \(\begin{pmatrix}9\\18\\27\\36\end{pmatrix}\) &&\\
+\hline
+\(\begin{pmatrix}7\end{pmatrix}\) && \(\begin{pmatrix}0&0&49\end{pmatrix}\) && \(\begin{pmatrix}14&28\end{pmatrix}\) & \(\begin{pmatrix}63\end{pmatrix}\) &&\\
+\hline
+\(\begin{pmatrix}1&1\\0&0\\1&1\end{pmatrix}\) &&&&&& \(\begin{pmatrix}1&1\\0&0\\1&1\end{pmatrix}\) & \(\begin{pmatrix}2\\0\\2\end{pmatrix}\)\\
+\hline
+\(\begin{pmatrix}3&-3\end{pmatrix}\) &&&&&& \(\begin{pmatrix}3&-3\end{pmatrix}\) & \(\begin{pmatrix}6\end{pmatrix}\)\\
+\hline
+\(\begin{pmatrix}1\\0\end{pmatrix}\) && \(\begin{pmatrix}0&0&7\\0&0&0\end{pmatrix}\) && \(\begin{pmatrix}2&4\\0&0\end{pmatrix}\) & \(\begin{pmatrix}9\\0\end{pmatrix}\) &&\\
+\hline
+\end{tabular}
+\end{center}
+\end{corr}
+
+\begin{prop}[Associativité du produit matriciel]\thlabel{prop:associativitéDuProduitMatriciel}
+Soient \(m,n,p,q\in\Ns\).
+
+On a : \[\quantifs{\forall A\in\M{mn};\forall B\in\M{np};\forall C\in\M{pq}}\paren{AB}C=A\paren{BC}.\]
+
+En pratique, on n'écrit pas les parenthèses.
+\end{prop}
+
+\begin{dem}
+On a \[\begin{dcases}
+AB\in\M{mp}\text{ donc }\paren{AB}C\in\M{mq} \\
+BC\in\M{nq}\text{ donc }A\paren{BC}\in\M{mq}
+\end{dcases}\]
+
+Posons \(D=AB\) ; \(E=BC\) ; \(F=DC\) et \(G=AE\).
+
+Montrons que \(F=G\).
+
+On a vu que \(F,G\in\M{mq}\).
+
+Par définition du produit matriciel, on a \(\quantifs{\forall i\in\interventierii{1}{m};\forall k\in\interventierii{1}{p}}d_{ik}=\sum_{j=1}^na_{ij}b_{jk}\) donc \[\quantifs{\forall i\in\interventierii{1}{m};\forall l\in\interventierii{1}{q}}f_{il}=\sum_{k=1}^pd_{ik}c_{kl}=\sum_{j=1}^n\sum_{k=1}^pa_{ij}b_{jk}c_{kl}.\]
+
+De même, on a \(\quantifs{\forall j\in\interventierii{1}{n};\forall l\in\interventierii{1}{q}}e_{jl}=\sum_{k=1}^pb_{jk}c_{kl}\) donc \[\quantifs{\forall i\in\interventierii{1}{m};\forall l\in\interventierii{1}{q}}g_{il}=\sum_{j=1}^na_{ij}e_{jl}=\sum_{j=1}^n\sum_{k=1}^pa_{ij}b_{jk}c_{kl}.\]
+
+D'où \(F=G\).
+\end{dem}
+
+\begin{prop}[Produit de matrices élémentaires]
+Soient \(m,n,p\in\Ns\).
+
+Considérons deux matrices élémentaires \[E_{ij}\in\M{mn}\qquad\text{et}\qquad E_{kl}\in\M{np}\] avec \(i\in\interventierii{1}{m}\), \(j,k\in\interventierii{1}{n}\) et \(l\in\interventierii{1}{p}\).
+
+Alors on a : \[E_{ij}E_{kl}=\delta_{jk}E_{il}=\begin{dcases}
+E_{il} &\text{si }j=k \\
+0_{mp} &\text{sinon}
+\end{dcases}\]
+\end{prop}
+
+\begin{dem}
+On a \(E_{ij}\in\M{mn}\) et \(E_{kl}\in\M{np}\) donc \[E_{ij}E_{kl}\in\M{mp}.\]
+
+Posons \(A=\paren{a_{xz}}_{\paren{x,z}}=E_{ij}\times E_{kl}\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall x\in\interventierii{1}{m};\forall z\in\interventierii{1}{p}}a_{xz}&=\sum_{y=1}^n\underbrace{\delta_{xi}\delta_{yj}}_{\substack{\text{coefficient de}\\E_{ij}\text{ en }\paren{x,y}}}\times\underbrace{\delta_{yk}\delta_{zl}}_{\substack{\text{coefficient de}\\E_{kl}\text{ en }\paren{y,z}}} \\
+&=\begin{dcases}
+1 &\text{si }\paren{x,z}=\paren{i,l}\text{ et }j=k \\
+0 &\text{sinon}
+\end{dcases}
+\end{aligned}\]
+
+D'où le résultat.
+\end{dem}
+
+\subsection{Produits de matrices carrées}
+
+\begin{prop}[Anneau des matrices carrées]
+Soit \(n\in\Ns\).
+
+Alors \(\anneau{\M{n}}\) est un anneau.
+
+Son élément neutre pour \(+\) est la matrice nulle \(0_n\).
+
+Son élément neutre pour \(\times\) est la matrice identité \(I_n\).
+
+C'est un anneau non-commutatif si \(n\geq2\).
+\end{prop}
+
+\begin{dem}
+\(\groupe{\M{n}}\) est clairement un groupe abélien car \(\anneau{\M{n}}[+][\cdot]\) est un \(\K\)-espace vectoriel.
+
+\(\times\) est une loi de composition interne sur \(\M{n}\) : on a \[\quantifs{\forall A,B\in\M{n}}AB\in\M{n},\] c'est une loi associative selon la \thref{prop:associativitéDuProduitMatriciel} et elle admet \(I_n\) comme élément neutre selon la \thref{prop:produitMatricielMatricesNullesEtMatricesIdentités}.
+
+De plus, elle est distributive par rapport à \(+\) car le produit matriciel est bilinéaire.
+
+Donc \(\anneau{\M{n}}\) est un anneau.
+
+Enfin, si \(n\geq2\), l'anneau est non-commutatif : \[\begin{dcases}
+E_{12}E_{21}=E_{11} \\
+E_{21}E_{12}=E_{22}\not=E_{11}
+\end{dcases}\]
+\end{dem}
+
+\begin{rem}
+Tout ce qu'on a vu sur les anneaux s'applique donc à l'anneau des matrices carrées.
+
+Par exemple, on note \(A^k\) la puissance k-ème d'une matrice si \(k\in\N\), voire si \(k\in\Z\) dans le cas où \(A\) est inversible.
+
+La proposition suivante s'applique aussi :
+\end{rem}
+
+\begin{prop}
+Soit \(n\in\Ns\).
+
+Si \(A\) et \(B\) sont deux éléments de \(\M{n}\) qui commutent (\cad tels que \(AB=BA\)), alors on a la formule du binôme de Newton : \[\quantifs{\forall m\in\N}\paren{A+B}^m=\sum_{k=0}^m\binom{k}{m}A^kB^{m-k}\] et la formule : \[\quantifs{\forall m\in\N}A^m-B^m=\paren{A-B}\sum_{k=0}^{m-1}A^kB^{m-1-k}=\paren{\sum_{k=0}^{m-1}A^kB^{m-1-k}}\paren{A-B}.\]
+\end{prop}
+
+\begin{rem}[\guillemets{Diviseurs de zéro}]
+Soit \(n\in\interventierie{2}{\pinf}\).
+
+On a : \[\quantifs{\exists A,B\in\M{n}}\begin{dcases}
+A\not=0 \\
+B\not=0 \\
+AB=0
+\end{dcases}\]
+\end{rem}
+
+\begin{dem}
+On a : \[\begin{dcases}
+E_{11}E_{22}=0 \\
+E_{11}\not=0 \\
+E_{22}\not=0
+\end{dcases}\]
+\end{dem}
+
+\begin{rem}[Matrices nilpotentes]
+Soit \(n\in\interventierie{2}{\pinf}\).
+
+On a : \[\quantifs{\exists A\in\M{n};\exists k\in\Ns}\begin{dcases}
+A\not=0 \\
+A^k=0
+\end{dcases}\]
+
+Une telle matrice \(A\) est appelée matrice nilpotente.
+\end{rem}
+
+\begin{dem}
+On a : \[\begin{dcases}
+E_{12}^2=0 \\
+E_{12}\not=0
+\end{dcases}\]
+\end{dem}
+
+\subsection{Matrices inversibles, groupe linéaire}
+
+\begin{defi}[Matrice inversible]
+Soit \(n\in\Ns\).
+
+On dit qu'une matrice carrée \(A\in\M{n}\) est inversible si elle est inversible dans l'anneau \(\anneau{\M{n}}\).
+
+On rappelle que cela signifie qu'elle admet un inverse à gauche et à droite pour le produit matriciel : \[\quantifs{\exists B\in\M{n}}AB=BA=I_n.\]
+
+On sait que la matrice \(B\) est alors unique, on l'appelle l'inverse de \(A\) et on la note \(A\inv\).
+\end{defi}
+
+\begin{ex}
+On a : \[\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}\inv=\begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix}.\]
+
+En effet, on a bien : \[\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}\begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix}=I_2=\begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}.\]
+\end{ex}
+
+\begin{rem}
+On verra (\cf \thref{bilan:matriceInversible}) que pour qu'un matrice \(A\in\M{n}\) soit inversible, il suffit qu'elle soit \guillemets{inversible à gauche} ou \guillemets{inversible à droite} : \[\croch{\quantifs{\exists B\in\M{n}}BA=I_n}\qquad\text{ou}\qquad\croch{\quantifs{\exists B\in\M{n}}AB=I_n}.\]
+
+La matrice \(B\) est alors automatiquement l'inverse de \(A\) (à gauche et à droite).
+\end{rem}
+
+\begin{defprop}[Groupe linéaire]
+Soit \(n\in\Ns\).
+
+L'ensemble des matrices carrées de taille \(n\) qui sont inversibles est appelé le groupe linéaire d'ordre \(n\) et est noté \(\GL{n}\).
+
+On a donc : \[\GL{n}=\accol{A\in\M{n}\tq\quantifs{\exists B\in\M{n}}AB=BA=I_n}.\]
+
+Le groupe linéaire est un groupe pour le produit matriciel.
+
+Son élément neutre est la matrice identité \(I_n\).
+
+Le produit de deux matrices inversibles est une matrice inversible et on a : \[\quantifs{\forall P,Q\in\GL{n}}\paren{PQ}\inv=Q\inv P\inv.\]
+\end{defprop}
+
+\begin{dem}
+On a vu que \(\anneau{\M{n}}\) est un anneau d'élément neutre \(I_n\) pour \(\times\).
+
+On sait que l'ensemble de ses éléments inversibles est un groupe pour \(\times\), d'élément neutre \(I_n\).
+\end{dem}
+
+\section{Matrices diagonales, matrices triangulaires}
+
+\begin{defi}[Matrice diagonale]
+Soit \(n\in\Ns\).
+
+Une matrice carrée \(A=\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{n}^2}\in\M{n}\) est dite diagonale si : \[\quantifs{\forall i,j\in\interventierii{1}{n}}\croch{i\not=j\imp a_{ij}=0},\] \cad si \(A\) s'écrit : \[A=\begin{pmatrix}
+a_{11} & 0 & \dots & 0 \\
+0 & \ddots & \ddots & \vdots \\
+\vdots & \ddots & \ddots & 0 \\
+0 & \dots & 0 & a_{nn}
+\end{pmatrix}.\]
+\end{defi}
+
+\begin{nota}
+Soient \(n\in\Ns\) et \(\lambda_1,\dots,\lambda_n\in\K\).
+
+La matrice diagonale de taille \(n\) et de coefficients diagonaux \(\lambda_1,\dots,\lambda_n\) est parfois notée \[\diag{\lambda_1,\dots,\lambda_n}.\]
+\end{nota}
+
+\begin{prop}
+Soit \(n\in\Ns\).
+
+L'ensemble des matrices diagonales de \(\M{n}\) est :
+
+\begin{itemize}
+\item un \(\K\)-espace vectoriel de dimension \(n\) (sous-espace vectoriel de \(\M{n}\)) ; \\
+
+\item un anneau commutatif (sous-anneau de \(\anneau{\M{n}}\)).
+\end{itemize}
+\end{prop}
+
+\begin{dem}
+Notons \(F\) l'ensemble des matrices diagonales de \(\M{n}\).
+
+On remarque \(F=\Vect{E_{11},E_{22}\dots,E_{nn}}\) donc \(F\) est un sous-espace vectoriel de \(\M{n}\).
+
+De plus, \(\paren{E_{11},E_{22},\dots,E_{nn}}\) est génératrice de \(F\) et libre (sous-famille de famille libre (base canonique de \(\M{n}\))) donc c'est une base de \(F\) et on a \(\dim F=n\).
+
+Montrons que \(F\) est un sous-anneau de \(\M{n}\).
+
+On a \(I_n\in F\), on sait que \(F\) est un sous-espace vectoriel de \(\M{n}\) et on a : \[\begin{aligned}
+\quantifs{\forall\lambda_1,\dots,\lambda_n,\mu_1,\dots,\mu_n\in\K}\diag{\lambda_1,\dots,\lambda_n}\diag{\mu_1,\dots,\mu_n}&=\paren{\lambda_1E_{11}+\dots+\lambda_nE_{nn}}\paren{\mu_1E_{11}+\dots+\mu_nE_{nn}} \\
+&=\lambda_1\mu_1E_{11}+\dots+\lambda_n\mu_nE_{nn} \\
+&=\diag{\lambda_1\mu_1,\dots,\lambda_n\mu_n}
+\end{aligned}\]
+
+Donc \(F\) est stable par produit et deux matrices diagonales commutent toujours.
+
+Donc \(F\) est un sous-anneau de \(\M{n}\).
+\end{dem}
+
+\begin{defi}[Matrice triangulaire]
+Soit \(n\in\Ns\).
+
+Une matrice carrée \(A=\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{n}^2}\in\M{n}\) est dite triangulaire supérieure si : \[\quantifs{\forall i,j\in\interventierii{1}{n}}\croch{i>j\imp a_{ij}=0},\] \cad si \(A\) s'écrit : \[A=\begin{pmatrix}
+a_{11} & \dots & \dots & a_{1n} \\
+0 & \ddots & & \vdots \\
+\vdots & \ddots & \ddots & \vdots \\
+0 & \dots & 0 & a_{nn}
+\end{pmatrix}.\]
+
+La matrice \(A\) est dite triangulaire inférieure si : \[\quantifs{\forall i,j\in\interventierii{1}{n}}\croch{i<j\imp a_{ij}=0},\] \cad si \(A\) s'écrit : \[A=\begin{pmatrix}
+a_{11} & 0 & \dots & 0 \\
+\vdots & \ddots & \ddots & \vdots \\
+\vdots & & \ddots & 0 \\
+a_{n1} & \dots & \dots & a_{nn}
+\end{pmatrix}.\]
+
+Cela revient à dire que sa transposée \(\trans{A}\) est triangulaire supérieure.
+
+On appelle matrice triangulaire toute matrice triangulaire supérieure ou triangulaire inférieure.
+\end{defi}
+
+\begin{prop}
+Soit \(n\in\Ns\).
+
+L'ensemble des matrices triangulaires supérieures de \(\M{n}\) est :
+
+\begin{itemize}
+\item un \(\K\)-espace vectoriel de dimension \(\dfrac{n\paren{n+1}}{2}\) (sous-espace vectoriel de \(\M{n}\)) ; \\
+
+\item un sous-anneau de \(\anneau{\M{n}}\).
+\end{itemize}
+
+Même chose pour l'ensemble des matrices triangulaires inférieures.
+\end{prop}
+
+\begin{dem}
+Notons \(F\) l'ensemble des matrices triangulaires supérieures.
+
+On pose \(I=\accol{\paren{i,j}\in\interventierii{1}{n}^2\tq i\leq j}\).
+
+Alors \(F=\Vect{\paren{E_{ij}}_{\paren{i,j}\in I}}\).
+
+Donc \(F\) est un sous-espace vectoriel de \(\M{n}\).
+
+De plus, \(\paren{E_{ij}}_{\paren{i,j}\in I}\) est une famille génératrice de \(F\) et libre (car c'est une sous-famille de la base canonique de \(\M{n}\)) donc c'est une base de \(F\) et \(\dim F=\Card I=\sum_{k=1}^nk=\dfrac{n\paren{n+1}}{2}\).
+
+Montrons que \(F\) est un sous-anneau de \(\anneau{\M{n}}\).
+
+On a \(I_n\in F\) et \(\quantifs{\forall A,B\in F}A-B\in F\).
+
+Soient \(A=\paren{a_{ij}}_{\paren{i,j}},B=\paren{b_{jk}}_{\paren{j,k}}\in F\).
+
+Posons \(C=\paren{c_{ik}}_{\paren{i,k}}=AB\).
+
+Montrons que \(C\in F\), \cad \[\quantifs{\forall\paren{i,k}\in\interventierii{1}{n}^2}\croch{i>k\imp c_{ik}=0}.\]
+
+Soit \(\paren{i,k}\in\interventierii{1}{n}^2\) tel que \(i>k\).
+
+On a \[\begin{aligned}
+c_{ik}&=\sum_{j=1}^n\underbrace{a_{ij}}_{\substack{=0\text{ si} \\ i>j}}\underbrace{b_{jk}}_{\substack{=0\text{ si} \\ j>k}} \\
+&=\sum_{j=1}^{i-1}\underbrace{a_{ij}}_{\substack{=0 \\ \text{car }j<i}}b_{jk}+\sum_{j=i}^{n}a_{ij}\underbrace{b_{jk}}_{\substack{=0 \\ \text{car }j\geq i>k}}
+\end{aligned}\]
+
+Donc \(F\) est un sous-anneau de \(\M{n}\).
+\end{dem}
+
+\section{Transposition}
+
+\begin{defi}[Transposée d'une matrice]
+Soient \(n,p\in\Ns\) et \(A=\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{n}\times\interventierii{1}{p}}\in\M{np}\) une matrice de taille \(\paren{n,p}\).
+
+On appelle transposée de \(A\) et on note \(\trans{A}\) ou \(A^T\) la matrice de taille \(\paren{p,n}\) suivante : \[\trans{A}=\paren{a_{ij}}_{\paren{j,i}\in\interventierii{1}{p}\times\interventierii{1}{n}}\in\M{pn}.\]
+
+On a donc : \[\trans{\begin{pmatrix}
+a_{11} & a_{12} & \dots & a_{1p} \\
+a_{21} &  &  & \vdots \\
+\vdots &  &  & \vdots \\
+a_{n1} & \dots & \dots & a_{np}
+\end{pmatrix}}=\begin{pmatrix}
+a_{11} & a_{21} & \dots & a_{n1} \\
+a_{12} &  &  & \vdots \\
+\vdots &  &  & \vdots \\
+a_{1p} & \dots & \dots & a_{np}
+\end{pmatrix}\in\M{pn}.\]
+\end{defi}
+
+\begin{ex}
+On a : \[\trans{\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{pmatrix}}=\begin{pmatrix}
+1 & 4 \\
+2 & 5 \\
+3 & 6
+\end{pmatrix}.\]
+\end{ex}
+
+\begin{prop}[Linéarité de la transposition]
+Soient \(n,p\in\Ns\).
+
+L'application \[\fonctionlambda{\M{np}}{\M{pn}}{A}{\trans{A}}\] est linéaire.
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}[Transposée d'un produit]
+Soient \(m,n,p\in\Ns\).
+
+On a : \[\quantifs{\forall A\in\M{mn};\forall B\in\M{np}}\trans{\paren{AB}}=\trans{B}\trans{A}\in\M{pm}.\]
+\end{prop}
+
+\begin{dem}
+On a \(AB\in\M{mp}\) donc \(\trans{\paren{AB}}\in\M{pm}\) et \(\begin{dcases}
+\trans{B}\in\M{pn} \\
+\trans{A}\in\M{nm}
+\end{dcases}\) donc \(\trans{B}\trans{A}\in\M{pm}\).
+
+On pose \(C=AB\) ; \(D=\trans{C}\) et \(F=\trans{B}\trans{A}\).
+
+On a : \[\quantifs{\forall i\in\interventierii{1}{m};\forall k\in\interventierii{1}{p}}\begin{dcases}
+c_{ik}=\sum_{j=1}^na_{ij}b_{jk} \\
+d_{ki}=c_{ik}=\sum_{j=1}^na_{ij}b_{jk} \\
+f_{ki}=\sum_{j=1}^nb_{jk}a_{ij}=d_{ki}
+\end{dcases}\]
+
+D'où l'égalité.
+\end{dem}
+
+\begin{cor}
+Soit \(n\in\Ns\).
+
+On a : \[\quantifs{\forall A\in\M{n};\forall k\in\N}\trans{\paren{A^k}}=\paren{\trans{A}}^k.\]
+
+On écrit donc simplement \guillemets{\(\trans{A}^k\)}.
+\end{cor}
+
+\begin{prop}[Transposition et inversibilité]
+Soit \(n\in\Ns\).
+
+On a : \[\quantifs{\forall A\in\M{n}}A\in\GL{n}\ssi\trans{A}\in\GL{n}.\]
+
+Les matrices \(\trans{\paren{A\inv}}\) et \(\paren{\trans{A}}\inv\) sont donc égales et notées \(\trans{A}\inv\).
+\end{prop}
+
+\begin{dem}
+Soit \(A\in\M{n}\).
+
+\impdir
+
+Supposons \(A\in\GL{n}\).
+
+On a \(\begin{dcases}
+AA\inv=I_n \\
+A\inv A=I_n
+\end{dcases}\) donc \(\begin{dcases}
+\trans{\paren{A\inv}}\trans{A}=\trans{I_n} \\
+\trans{A}\trans{\paren{A\inv}}=\trans{I_n}
+\end{dcases}\)
+
+Or \(\trans{I_n}=I_n\) donc \(\trans{A}\) est inversible, d'inverse \(\paren{\trans{A}}\inv=\trans{\paren{A\inv}}\).
+
+\imprec
+
+Supposons \(\trans{A}\in\GL{n}\).
+
+Alors \(\trans{\paren{\trans{A}}}\in\GL{n}\) selon \impdir
+
+Donc \(A\in\GL{n}\).
+\end{dem}
+
+\section{Matrices symétriques, matrices antisymétriques}
+
+\begin{defi}
+Soit \(n\in\Ns\).
+
+Une matrice \(A\in\M{n}\) est dite \(\begin{dcases}
+\text{symétrique} &\text{si }\trans{A}=A \\
+\text{antisymétrique} &\text{si }\trans{A}=-A
+\end{dcases}\)
+\end{defi}
+
+\begin{prop}
+On suppose ici que \(\K\) est un sous-corps de \(\C\).
+
+On note \(\sym{n}\) (respectivement \(\antisym{n}\)) l'ensemble des matrices symétriques (respectivement antisymétriques) de \(\M{n}\).
+
+Alors \(\sym{n}\) et \(\antisym{n}\) sont deux sous-espaces vectoriels supplémentaires dans \(\M{n}\) : \[\M{n}=\sym{n}\oplus\antisym{n}.\]
+
+On a : \[\dim\sym{n}=\dfrac{n\paren{n+1}}{2}\qquad\text{et}\qquad\dim\antisym{n}=\dfrac{n\paren{n-1}}{2}.\]
+\end{prop}
+
+\begin{dem}
+Posons \(I=\accol{\paren{i,j}\in\interventierii{1}{n}^2\tq i<j}\).
+
+On a \(\antisym{n}=\Vect{\paren{E_{ij}-E_{ji}}_{\paren{i,j}\in I}}\) donc \(\antisym{n}\) est un sous-espace vectoriel de \(\M{n}\) de dimension \[\begin{aligned}
+\dim\antisym{n}&=\Card I \\
+&=\sum_{k=1}^{n-1}k \\
+&=\dfrac{n\paren{n-1}}{2}.
+\end{aligned}\]
+
+Notons \(\fami{B}\) la famille obtenue en juxtaposant les familles \(\paren{E_{ii}}_{i\in\interventierii{1}{n}}\) et \(\paren{E_{ij}+E_{ji}}_{\paren{i,j}\in I}\).
+
+\(\fami{B}\) est clairement libre et on a \(\sym{n}=\Vect{\fami{B}}\).
+
+Donc \(\sym{n}\) est un sous-espace vectoriel de \(\M{n}\) de dimension \[\begin{aligned}
+\dim\sym{n}&=n+\Card I \\
+&=n+\sum_{k=1}^{n-1}k \\
+&=\dfrac{n\paren{n+1}}{2}.
+\end{aligned}\]
+
+Montrons que \(\M{n}=\sym{n}\oplus\antisym{n}\).
+
+On note \(u\) la transposition : \(\fonction{u}{\M{n}}{\M{n}}{M}{\trans{M}}\).
+
+On a \(\begin{dcases}
+u\in\Lendo{\M{n}} \\
+u^2=\id{\M{n}}
+\end{dcases}\) donc \(u\) est une symétrie de \(\M{n}\).
+
+Donc \[\M{n}=\underbrace{\ker\paren{u-\id{\M{n}}}}_{=\sym{n}}\oplus\underbrace{\ker\paren{u+\id{\M{n}}}}_{=\antisym{n}}.\]
+\end{dem}
+
+\section{Lignes et colonnes d'une matrice}
+
+\subsection{Abus autorisés}
+
+\begin{abus}[Matrice-colonne \(=\) vecteur]
+Soit \(n\in\Ns\).
+
+L'application \[\fonctionlambda{\K^n}{\M{n1}}{\paren{a_1,\dots,a_n}}{\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix}}\] est un isomorphisme d'espaces vectoriels.
+
+On s'autorise (abusivement) à identifier les espaces vectoriels \(\K^n\) et \(\M{n1}\) : \[\K^n=\M{n1}.\]
+
+On identifie donc les \(n\)-uplets de scalaires et les matrices-colonne : \[\quantifs{\forall a_1,\dots,a_n}\paren{a_1,\dots,a_n}=\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix}.\]
+
+En particulier, si \(n=1\), on identifie matrice de taille \(\paren{1,1}\) et scalaire : \[\K=\M{1}\qquad\text{et}\qquad\quantifs{\forall\lambda\in\K}\lambda=\begin{pmatrix}
+\lambda
+\end{pmatrix}.\]
+\end{abus}
+
+\begin{defi}
+Soient \(n,p\in\Ns\) et \(A=\paren{a_{ij}}_{\paren{i,j}}\in\M{np}\).
+
+On appelle famille des vecteurs-colonne de \(A\) la famille \(\paren{C_1,\dots,C_p}\in\paren{\K^n}^p\) définie par : \[\quantifs{\forall j\in\interventierii{1}{p}}C_j=\begin{pmatrix}
+a_{1j} \\
+\vdots \\
+a_{nj}
+\end{pmatrix}\in\K^n.\]
+
+On s'autorise à noter la matrice \(A\) \guillemets{par colonnes} : \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1p} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{np}
+\end{pmatrix}=\begin{pmatrix}
+C_1 & \dots & C_p
+\end{pmatrix}.\]
+\end{defi}
+
+\begin{rappel}
+Soit \(n\in\Ns\).
+
+Les formes linéaires sur \(\K^n\) sont les fonctions de la forme \[\fonction{l_{b_1,\dots,b_n}}{\K^n}{\K}{\paren{a_1,\dots,a_n}}{b_1a_1+\dots+b_na_n}\] où \(b_1,\dots,b_n\in\K\).
+
+De plus, la fonction \[\fonctionlambda{\K^n}{\paren{\K^n}\etoile}{\paren{b_1,\dots,b_n}}{l_{b_1,\dots,b_n}}\] est un isomorphisme.
+\end{rappel}
+
+\begin{abus}[Matrice-ligne \(=\) forme linéaire]
+Soit \(n\in\Ns\).
+
+L'application \[\fonctionlambda{\M{1n}}{\paren{\K^n}\etoile}{L}{\croch{C\mapsto LC}}\] \cad \[\fonctionlambda{\M{1n}}{\L{\K^n}{\K}}{\begin{pmatrix}
+b_1 & \dots & b_n
+\end{pmatrix}}{\croch{\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix}\mapsto\begin{pmatrix}
+b_1 & \dots & b_n
+\end{pmatrix}\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix}=b_1a_1+\dots+b_na_n}}\] est un isomorphisme d'espaces vectoriels.
+
+On s'autorise (abusivement) à identifier les espaces vectoriels \(\paren{\K^n}\etoile\) et \(\M{1n}\) : \[\paren{\K^n}\etoile=\M{1n}.\]
+
+On identifie donc les formes linéaires sur \(\K^n\) et les matrices-ligne : \[\quantifs{\forall b_1,\dots,b_n\in\K}l_{b_1,\dots,b_n}=\begin{pmatrix}
+b_1 & \dots & b_n
+\end{pmatrix}.\]
+\end{abus}
+
+\begin{defi}
+Soient \(n,p\in\Ns\) et \(A=\paren{a_{ij}}_{\paren{i,j}}\in\M{np}\).
+
+On appelle famille des lignes de \(A\) la famille \(\paren{L_1,\dots,L_n}\in\M{1p}^n\) définie par : \[\quantifs{\forall i\in\interventierii{1}{n}}L_i=\begin{pmatrix}
+a_{i1} & \dots & a_{ip}
+\end{pmatrix}\in\M{1p}.\]
+
+On s'autorise à noter la matrice \(A\) \guillemets{par lignes} : \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1p} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{np}
+\end{pmatrix}=\begin{pmatrix}
+L_1 \\
+\vdots \\
+L_n
+\end{pmatrix}.\]
+\end{defi}
+
+\subsection{Produits matriciels}
+
+\begin{rem}[Produit avec une matrice-colonne ou une matrice-ligne]\thlabel{rem:produitAvecUneMatriceColonneOuUneMatriceLigne}
+Soient \(n,p\in\Ns\) et \(M=\paren{m_{ij}}_{\paren{i,j}}\in\M{np}\).
+
+On note \(\paren{L_1,\dots,L_n}\in\M{1p}^n\) la famille des lignes de \(M\) et \(\paren{C_1,\dots,C_p}\in\paren{\K^n}^p\) la famille des colonnes de \(M\).
+
+On peut donc écrire : \[M=\begin{pmatrix}
+m_{11} & \dots & m_{1p} \\
+\vdots &  & \vdots \\
+m_{n1} & \dots & m_{np}
+\end{pmatrix}=\begin{pmatrix}
+C_1 & \dots & C_p
+\end{pmatrix}=\begin{pmatrix}
+L_1 \\
+\vdots \\
+L_n
+\end{pmatrix}.\]
+
+Soient enfin une matrice-ligne \(L=\begin{pmatrix}
+b_1 & \dots & b_n
+\end{pmatrix}\) et une matrice-colonne \(C=\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_p
+\end{pmatrix}\).
+
+Alors on a : \[LM=\begin{pmatrix}
+b_1 & \dots & b_n
+\end{pmatrix}\begin{pmatrix}
+L_1 \\
+\vdots \\
+L_n
+\end{pmatrix}=b_1L_1+\dots+b_nL_n\] et : \[MC=\begin{pmatrix}
+C_1 & \dots & C_p
+\end{pmatrix}\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix}=a_1C_1+\dots+a_pC_p.\]
+\end{rem}
+
+\begin{ex}
+On a : \[\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+5 & 6 & 7 & 8 \\
+9 & 10 & 11 & 12
+\end{pmatrix}\begin{pmatrix}
+1 \\
+0 \\
+-1 \\
+0
+\end{pmatrix}=\begin{pmatrix}
+-2 \\
+-2 \\
+-2
+\end{pmatrix}.\]
+\end{ex}
+
+\begin{cor}
+Soient \(n,p\in\Ns\) et \(M=\paren{m_{ij}}_{\paren{i,j}}\in\M{np}\).
+
+On note \(\paren{L_1,\dots,L_n}\in\M{1p}^n\) la famille des lignes de \(M\) et \(\paren{C_1,\dots,C_p}\in\paren{\K^n}^p\) la famille des colonnes de \(M\) : \[M=\begin{pmatrix}
+m_{11} & \dots & m_{1p} \\
+\vdots &  & \vdots \\
+m_{n1} & \dots & m_{np}
+\end{pmatrix}=\begin{pmatrix}
+C_1 & \dots & C_p
+\end{pmatrix}=\begin{pmatrix}
+L_1 \\
+\vdots \\
+L_n
+\end{pmatrix}.\]
+
+De plus, on note \(\paren{e_1,\dots,e_p}\) la base canonique de \(\K^p\) et \(\paren{e_1\prim,\dots,e_n\prim}\) la base canonique de \(\K^n\).
+
+Alors on a : \[\quantifs{\forall j\in\interventierii{1}{p}}M\times e_j=C_j\] et : \[\quantifs{\forall i\in\interventierii{1}{n}}\trans{e_i\prim}\times M=L_i.\]
+\end{cor}
+
+\begin{rem}\thlabel{rem:produitMatricielLignesADroiteOuColonnesAGauche}
+Soient \(m,n,p\in\Ns\), \(B=\paren{b_{ij}}_{\paren{i,j}}\in\M{mn}\) et \(A=\paren{a_{jk}}_{\paren{j,k}}\in\M{np}\).
+
+On note \(\paren{L_1,\dots,L_m}\in\M{1n}^m\) la famille des lignes de \(B\) et \(\paren{C_1,\dots,C_p}\in\paren{\K^n}^p\) la famille des colonnes de \(A\) : \[B=\begin{pmatrix}
+b_{11} & \dots & b_{1n} \\
+\vdots &  & \vdots \\
+b_{m1} & \dots & b_{mn}
+\end{pmatrix}=\begin{pmatrix}
+L_1 \\
+\vdots \\
+L_m
+\end{pmatrix}\qquad\text{et}\qquad A=\begin{pmatrix}
+a_{11} & \dots & a_{1p} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{np}
+\end{pmatrix}=\begin{pmatrix}
+C_1 & \dots & C_p
+\end{pmatrix}.\]
+
+Alors on a, par définition du produit matriciel : \[BA=\paren{L_iC_k}_{\paren{i,k}}\in\M{mp}.\]
+
+On a aussi : \[BA=\begin{pmatrix}
+L_1 \\
+\vdots \\
+L_m
+\end{pmatrix}A=\begin{pmatrix}
+L_1A \\
+\vdots \\
+L_mA
+\end{pmatrix}\] et : \[BA=B\begin{pmatrix}
+C_1 & \dots & C_p
+\end{pmatrix}=\begin{pmatrix}
+BC_1 & \dots & BC_p
+\end{pmatrix}.\]
+
+Ainsi, calculer le produit matriciel \(BA\) revient à multiplier chaque ligne de \(B\) par \(A\) (à droite) ou chaque colonne de \(A\) par \(B\) (à gauche).
+\end{rem}
+
+\begin{ex}
+En utilisant la \thref{rem:produitAvecUneMatriceColonneOuUneMatriceLigne} et la \thref{rem:produitMatricielLignesADroiteOuColonnesAGauche}, on calcule les produits matriciels suivants : \[\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}\begin{pmatrix}
+a & 0 & 0 \\
+0 & b & 0 \\
+0 & 0 & c
+\end{pmatrix}=\begin{pmatrix}
+a & 2b & 3c \\
+4a & 5b & 6c \\
+7a & 8b & 9c
+\end{pmatrix}\] et \[\begin{pmatrix}
+a & 0 & 0 \\
+0 & b & 0 \\
+0 & 0 & c
+\end{pmatrix}\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}=\begin{pmatrix}
+a & 2a & 3a \\
+4b & 5b & 6b \\
+7c & 8c & 9c
+\end{pmatrix}.\]
+\end{ex}
+
+\subsection{Opérations élémentaires sur les matrices}
+
+\begin{defi}[Opérations élémentaires sur une matrice]
+On appelle opérations élémentaires sur une matrice les opérations suivantes :
+
+\begin{itemize}
+\item Opérations élémentaires sur les lignes : \[\begin{aligned}
+L_i\echange L_j &\qquad\text{échange des lignes }L_i\text{ et }L_j \\
+L_i\gets\lambda L_i &\qquad\text{multiplication de la ligne }L_i\text{ par }\lambda\in\K\excluant\accol{0} \\
+L_i\gets L_i+\lambda L_j &\qquad\text{ajout à }L_i\text{ de }\lambda L_j\text{ où }\lambda\in\K\excluant\accol{0}
+\end{aligned}\]
+
+\item Opérations élémentaires sur les colonnes : \[\begin{aligned}
+C_i\echange C_j &\qquad\text{échange des colonnes }C_i\text{ et }C_j \\
+C_i\gets\lambda C_i &\qquad\text{multiplication de la colonne }C_i\text{ par }\lambda\in\K\excluant\accol{0} \\
+C_i\gets C_i+\lambda C_j &\qquad\text{ajout à }C_i\text{ de }\lambda C_j\text{ où }\lambda\in\K\excluant\accol{0}
+\end{aligned}\]
+\end{itemize}
+\end{defi}
+
+\begin{exoex}
+Soit \(M\in\M{32}\).
+
+Donner les produits matriciels ayant même effet que les opérations élémentaires suivantes : \[L_1\echange L_3\qquad L_2\gets\lambda L_2\qquad L_1\gets L_1+\lambda L_3\qquad C_1\echange C_2\qquad C_2\gets\lambda C_2\qquad C_2\gets C_2+\lambda C_1.\]
+\end{exoex}
+
+\begin{corr}~\\
+\(L_1\echange L_3\) : \(\begin{pmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0
+\end{pmatrix}M\).
+
+\(L_2\gets\lambda L_2\) : \(\begin{pmatrix}
+1 & 0 & 0 \\
+0 & \lambda & 0 \\
+0 & 0 & 1
+\end{pmatrix}M\).
+
+\(L_1\gets L_1+\lambda L_3\) : \(\begin{pmatrix}
+1 & 0 & \lambda \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}M\).
+
+\(C_1\echange C_2\) : \(M\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}\).
+
+\(C_2\gets\lambda C_2\) : \(M\begin{pmatrix}
+1 & 0 \\
+0 & \lambda
+\end{pmatrix}\).
+
+\(C_2\gets C_2+\lambda C_1\) : \(M\begin{pmatrix}
+1 & \lambda \\
+0 & 1
+\end{pmatrix}\).
+\end{corr}
+
+\begin{bilan}\thlabel{bilan:opérationsÉlémentairesÉquivalentesÀDesMultiplications}
+Appliquer une opération élémentaire aux lignes d'une matrice \(M\) revient à multiplier \(M\) à gauche par une matrice \(G\) qui ne dépend que de l'opération élémentaire et du nombre de lignes de \(M\).
+
+Appliquer une opération élémentaire aux colonnes d'une matrice \(M\) revient à multiplier \(M\) à droite par une matrice \(D\) qui ne dépend que de l'opération élémentaire et du nombre de colonnes de \(M\).
+
+Les matrices \(G\) et \(D\) sont faciles à déterminer : il suffit de prendre comme matrice \(M\) une matrice identité.
+\end{bilan}
+
+\section{Rang d'une matrice}
+
+\begin{defi}
+Soient \(n,p\in\Ns\).
+
+Le rang d'une matrice \(A\in\M{np}\) est le rang de la famille de ses vecteurs-colonne (famille de \(p\) vecteurs de \(\K^n\)).
+\end{defi}
+
+\begin{rem}
+Soient \(n,p\in\Ns\) et \(A\in\M{np}\).
+
+On note \(\paren{C_1,\dots,C_p}\) la famille des vecteurs-colonne de \(A\).
+
+On a : \[0\leq\rg A\leq\min\accol{n;p}.\]
+
+Cas d'égalité :
+
+\begin{enumerate}
+\item \(\rg A=0\ssi A=0_{np}\) ; \\
+
+\item \(\rg A=n\ssi\paren{C_1,\dots,C_p}\) est génératrice de \(\K^n\) ; \\
+
+\item \(\rg A=p\ssi\paren{C_1,\dots,C_p}\) est libre.
+\end{enumerate}
+\end{rem}
+
+\begin{dem}[1]
+On a : \[\begin{aligned}
+A=0&\ssi\quantifs{\forall j\in\interventierii{1}{p}}C_j=0 \\
+&\ssi\rg\paren{C_1,\dots,C_p}=0.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[2]
+On a : \[\begin{aligned}
+\rg A=n&\ssi\rg\paren{C_1,\dots,C_p}=n \\
+&\ssi\dim\Vect{C_1,\dots,C_p}=n \\
+&\ssi\Vect{C_1,\dots,C_p}=\K^n \\
+&\ssi\paren{C_1,\dots,C_p}\text{ est génératrice de }\K^n.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[3]
+On a : \[\begin{aligned}
+\rg A=p&\ssi\rg\paren{C_1,\dots,C_p}=p \\
+&\ssi\paren{C_1,\dots,C_p}\text{ est libre}.
+\end{aligned}\]
+\end{dem}
+
+\section{Application linéaire canoniquement associée à une matrice}
+
+\subsection{Définition}
+
+\begin{defi}[Application linéaire canoniquement associée à une matrice]
+Soient \(n,p\in\Ns\) et \(A\in\M{np}\).
+
+On appelle application linéaire canoniquement associée à \(A\) le \guillemets{produit à gauche par \(A\)} : \[\fonction{u_A}{\K^p}{\K^n}{X}{AX}\]
+
+C'est l'unique application linéaire \(u_A\in\L{\K^p}{\K^n}\) telle que : \[\quantifs{\forall i\in\interventierii{1}{p}}u_A\paren{e_i}=C_i\] en notant \(e_1,\dots,e_p\) les vecteurs de la base canonique de \(\K^p\) et \(\paren{C_1,\dots,C_p}\) la famille des vecteurs-colonne de \(A\).
+\end{defi}
+
+\begin{defi}[Endomorphisme canoniquement associé à une matrice]
+Soient \(n\in\Ns\) et \(A\in\M{n}\).
+
+On appelle endomorphisme de \(\K^n\) canoniquement associé à \(A\) le \guillemets{produit à gauche par \(A\)} : \[\fonction{u_A}{\K^n}{\K^n}{X}{AX}\]
+
+C'est l'unique endomorphisme \(u_A\in\Lendo{\K^n}\) tel que : \[\quantifs{\forall i\in\interventierii{1}{n}}u_A\paren{e_i}=C_i\] en notant \(e_1,\dots,e_n\) les vecteurs de la base canonique de \(\K^n\) et \(\paren{C_1,\dots,C_n}\) la famille des vecteurs-colonne de \(A\).
+\end{defi}
+
+\begin{exoex}
+Que dire des endomorphismes canoniquement associés aux matrices suivantes (savoir lire ces matrices colonne par colonne et ligne par ligne) : \[M_1=\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{pmatrix}\qquad\text{et}\qquad M_2=\begin{pmatrix}
+0 & -1 \\
+1 & 0
+\end{pmatrix}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\quantifs{\forall\tcoords{x}{y}{z}\in\R^3}u_{M_1}\paren{\tcoords{x}{y}{z}}=\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{pmatrix}\tcoords{x}{y}{z}=\tcoords{x}{y}{0}\] et \[\begin{dcases}
+u_{M_1}\paren{\tcoords{1}{0}{0}}=\tcoords{1}{0}{0} \\
+u_{M_1}\paren{\tcoords{0}{1}{0}}=\tcoords{0}{1}{0} \\
+u_{M_1}\paren{\tcoords{0}{0}{1}}=\tcoords{0}{0}{0}
+\end{dcases}\]
+
+On reconnaît le projecteur sur \(\Vect{\tcoords{1}{0}{0},\tcoords{0}{1}{0}}\) parallèlement à \(\Vect{\tcoords{0}{0}{1}}\).
+
+De même, on a : \[\quantifs{\forall\dcoords{x}{y}\in\R^2}u_{M_2}\paren{\dcoords{x}{y}}=\begin{pmatrix}
+0 & -1 \\
+1 & 0
+\end{pmatrix}\dcoords{x}{y}=\dcoords{-y}{x}\] et \[\begin{dcases}
+u_{M_2}\paren{\dcoords{1}{0}}=\dcoords{0}{1} \\
+u_{M_2}\paren{\dcoords{0}{1}}=\dcoords{-1}{0}
+\end{dcases}\]
+\end{corr}
+
+\begin{rem}\thlabel{rem:liensEntreMatriceEtApplicationLinéaireCanoniquementAssociée}
+Soient \(n,p\in\Ns\) et \(A\in\M{np}\).
+
+On note \(u_A\in\L{\K^p}{\K^n}\) l'application linéaire canoniquement associée à \(A\), \(\paren{L_1,\dots,L_n}\in\M{1p}^n\) la famille des lignes de \(A\) et \(\paren{C_1,\dots,C_p}\in\paren{\K^n}^p\) la famille des colonnes de \(A\) : \[A=\begin{pmatrix}
+C_1 & \dots & C_p
+\end{pmatrix}=\tcoords{L_1}{\vdots}{L_n}.\]
+
+Alors :
+
+\begin{enumerate}
+\item L'ensemble image de \(u_A\) est le sous-espace vectoriel engendré par les colonnes de \(A\), vues comme des vecteurs de \(\K^n\) : \[\Im u_A=\Vect{C_1,\dots,C_p}.\]
+
+\item Le noyau de \(u_A\) est l'intersection des noyaux des lignes de \(A\), vues comme des formes linéaires : \[\ker u_A=\accol{X\in\K^p\tq L_1X=\dots=L_nX=0_{n1}}.\]
+
+\item On a : \[\begin{aligned}
+u_A\text{ est injective}&\ssi\paren{C_1,\dots,C_p}\text{ est libre} \\
+&\ssi\rg A=p.
+\end{aligned}\]
+
+\item On a : \[\begin{aligned}
+u_A\text{ est surjective}&\ssi\paren{C_1,\dots,C_p}\text{ est génératrice de }\K^n \\
+&\ssi\rg A=n.
+\end{aligned}\]
+
+\item On a : \[\begin{aligned}
+u_A\text{ est bijective}&\ssi\begin{dcases}
+n=p \\
+\paren{C_1,\dots,C_p}\text{ est une base de }\K^n
+\end{dcases} \\
+&\ssi\rg A=n=p.
+\end{aligned}\]
+
+\item On a : \[\rg A=\rg u_A.\]
+\end{enumerate}
+\end{rem}
+
+\begin{dem}[1]
+\(\Im u_A\) est l'ensemble des vecteurs de \(\K^n\) de la forme \(u_A\paren{\tcoords{x_1}{\vdots}{x_p}}=A\tcoords{x_1}{\vdots}{x_p}=x_1C_1+\dots+x_pC_p\) où \(x_1,\dots,x_p\in\K\).
+
+D'où \(\Im u_A=\Vect{C_1,\dots,C_p}\).
+\end{dem}
+
+\begin{dem}[2]~\\
+Soit \(X=\tcoords{x_1}{\vdots}{x_p}\in\K^p\).
+
+On a : \[\begin{aligned}
+X\in\ker u_A&\ssi u_A\paren{X}=0_{\K^n} \\
+&\ssi AX=0_{n1} \\
+&\ssi\quantifs{\forall i\in\interventierii{1}{n}}L_iX=0.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}
+On a : \[\begin{aligned}
+u_A\text{ est injective}&\ssi\ker u_A=\accol{0} \\
+&\ssi\croch{\quantifs{\forall X\in\K^p}AX=0\ssi X=0} \\
+&\ssi\croch{\quantifs{\forall x_1,\dots,x_p\in\K}x_1C_1+\dots+x_pC_p=0\imp x_1=\dots=x_p=0} \\
+&\ssi\paren{C_1,\dots,C_p}\text{ est libre}.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[4]
+On a : \[\begin{aligned}
+u_A\text{ est surjective}&\ssi\Im u_A=\K^n \\
+&\ssi\Vect{C_1,\dots,C_p}=\K^n \\
+&\ssi\paren{C_1,\dots,C_p}\text{ est génératrice de }\K^n.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[5]
+Découle de (3) et (4).
+\end{dem}
+
+\begin{dem}[6]
+On a : \[\begin{aligned}
+\rg u_A&=\dim\Im u_A \\
+&=\dim\Vect{C_1,\dots,C_p} \\
+&=\rg\paren{C_1,\dots,C_p} \\
+&=\rg A.
+\end{aligned}\]
+\end{dem}
+
+\subsection{Propriétés}
+
+Dans ce paragraphe, on note \(u_A\in\L{\K^p}{\K^n}\) l'application linéaire canoniquement associée à la matrice \(A\in\M{np}\).
+
+\begin{prop}[Matrices quelconques]\thlabel{prop:applicationQuiAssocieAUneMatriceSonApplicationLinéaireCanoniquementAssociéeEstUnIsomorphismeD'EspacesVectoriels}
+Soient \(n,p\in\Ns\).
+
+L'application \[\fonction{\phi}{\M{np}}{\L{\K^p}{\K^n}}{A}{u_A}\] est un isomorphisme d'espaces vectoriels.
+\end{prop}
+
+\begin{dem}
+Montrons que \(\phi\) est linéaire.
+
+Soient \(\lambda,\mu\in\K\) et \(A,B\in\M{np}\).
+
+Montrons que \(u_{\lambda A+\mu B}=\lambda u_A+\mu u_B\).
+
+On a : \[\begin{WithArrows}
+\quantifs{\forall X\in\K^p}u_{\lambda A+\mu B}\paren{X}&=\paren{\lambda A+\mu B}X \Arrow[tikz={text width=4cm}]{par bilinéarité du produit matriciel} \\
+&=\lambda AX+\mu BX \\
+&=\lambda u_A\paren{X}+\mu u_B\paren{X}.
+\end{WithArrows}\]
+
+Donc \(\phi\) est linéaire.
+
+Montrons que \(\phi\) est injective.
+
+Soit \(A\in\ker\phi\).
+
+On a \(\phi\paren{A}=u_A=0\).
+
+Donc les colonnes \(C_1,\dots,C_p\) de \(A\) sont nulles car \(\quantifs{\forall j\in\interventierii{1}{p}}C_j=u_A\paren{e_j}\) en notant \(\paren{e_1,\dots,e_p}\) la base canonique de \(\K^p\).
+
+Donc \(A=0\).
+
+Donc \(\ker\phi=\accol{0_{np}}\).
+
+Donc \(\phi\) est injective.
+
+Finalement, on a \(\dim\M{np}=\dim\L{\K^p}{\K^n}=np<\pinf\).
+
+Donc \(\phi\) est un isomorphisme d'espaces vectoriels.
+\end{dem}
+
+\begin{prop}\thlabel{prop:applicationLinéaireCanoniquementAssociéeAUnProduitDeMatriceEgaleALaComposéeDesApplicationsLinéairesCanoniquementAssociéesAuxMatrices}
+Soient \(m,n,p\in\Ns\), \(A\in\M{mn}\) et \(B\in\M{np}\).
+
+On a : \[u_{AB}=u_A\rond u_B.\]
+\end{prop}
+
+\begin{dem}
+On a \(u_A\rond u_B,u_{AB}\in\L{\K^p}{\K^m}\) et \[\begin{aligned}
+\quantifs{\forall X\in\K^p}u_A\rond u_B\paren{X}&=u_A\paren{u_B\paren{X}} \\
+&=A\paren{BX} \\
+&=\paren{AB}X \\
+&=u_{AB}\paren{X}.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}[Matrices carrées]
+Soit \(n\in\Ns\).
+
+L'application \[\fonction{\phi}{\M{n}}{\Lendo{\K^n}}{A}{u_A}\] est un isomorphisme d'anneaux de \(\anneau{\M{n}}\) vers \(\anneau{\Lendo{\K^n}}[+][\rond]\)
+\end{prop}
+
+\begin{dem}
+Montrons que \(\phi\) est un morphisme d'anneaux.
+
+On a \(\phi\paren{I_n}=\id{\K^n}\). En effet : \(\quantifs{\forall X\in\K^n}u_{I_n}\paren{X}=I_nX=X\).
+
+De plus, selon la \thref{prop:applicationQuiAssocieAUneMatriceSonApplicationLinéaireCanoniquementAssociéeEstUnIsomorphismeD'EspacesVectoriels}, on a : \[\quantifs{\forall A,B\in\M{n}}\begin{dcases}
+\phi\paren{A+B}=\phi\paren{A}+\phi\paren{B} \\
+\phi\paren{AB}=\phi\paren{A}\rond\phi\paren{B}
+\end{dcases}\]
+
+Donc \(\phi\) est un morphisme d'anneaux.
+
+De plus, d'après la même proposition, \(\phi\) est une bijection.
+
+Donc \(\phi\) est un isomorphisme d'anneaux.
+\end{dem}
+
+\begin{prop}
+Soient \(n\in\Ns\) et \(A\in\M{n}\).
+
+La matrice \(A\) est inversible dans l'anneau \(\anneau{\M{n}}\) si, et seulement si, l'endomorphisme \(u_A\) est inversible dans l'anneau \(\anneau{\Lendo{\K^n}}[+][\rond]\) : \[A\in\GL{n}\ssi u_A\in\GL{}[\K^n].\]
+\end{prop}
+
+\begin{dem}
+Cela découle de la proposition précédente car un isomorphisme d'anneaux conserve les éléments inversibles.
+\end{dem}
+
+\begin{prop}\thlabel{prop:rangInchangéQuandOnMultiplieLaMatriceParUneMatriceInversible}
+Soient \(n,p\in\Ns\) et \(A\in\M{np}\).
+
+On ne change pas le rang de \(A\) en la multipliant à gauche ou à droite par une matrice inversible : \[\quantifs{\forall P\in\GL{n};\forall Q\in\GL{p}}\rg PAQ=\rg A.\]
+\end{prop}
+
+\begin{dem}
+On sait qu'on ne change pas le rang d'une application linéaire quand on la compose à gauche ou à droite par un isomorphisme.
+
+Donc si \(P\in\GL{n}\) et \(Q\in\GL{p}\) alors \[\rg u_P\rond u_A\rond u_Q=\rg u_A\] car \(u_P\) et \(u_Q\) sont des isomorphismes selon la proposition précédente.
+
+Donc selon la \thref{prop:applicationLinéaireCanoniquementAssociéeAUnProduitDeMatriceEgaleALaComposéeDesApplicationsLinéairesCanoniquementAssociéesAuxMatrices} : \(\rg u_{PAQ}=\rg u_A\).
+
+Donc selon la \thref{rem:liensEntreMatriceEtApplicationLinéaireCanoniquementAssociée} : \[\rg PAQ=\rg A.\]
+\end{dem}
+
+\subsection{Conséquences sur l'inversibilité des matrices}
+
+\begin{bilan}\thlabel{bilan:matriceInversible}
+Soient \(n\in\Ns\) et \(A\in\M{n}\).
+
+On note \(u_A\in\Lendo{\K^n}\) l'endomorphisme canoniquement associé à \(A\), \(\paren{C_1,\dots,C_n}\) la famille des vecteurs-colonne de \(A\) et \(\paren{L_1,\dots,L_n}\) la famille des lignes de \(A\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+\item \(A\) est une matrice inversible \\
+
+\item \(A\) est \guillemets{inversible à droite} dans l'anneau \(\anneau{\M{n}}\) : \[\quantifs{\exists B\in\M{n}}AB=I_n\]
+
+\item \(A\) est \guillemets{inversible à gauche} dans l'anneau \(\anneau{\M{n}}\) : \[\quantifs{\exists B\in\M{n}}BA=I_n\]
+
+\item \(u_A:\K^n\to\K^n\) est un automorphisme de \(\K^n\) \\
+
+\item \(u_A:\K^n\to\K^n\) est une injection \\
+
+\item \(u_A:\K^n\to\K^n\) est une surjection \\
+
+\item \(\rg u_A=n\) \\
+
+\item \(\rg A=n\) \\
+
+\item \(\paren{C_1,\dots,C_n}\) est une famille génératrice de \(\K^n\) \\
+
+\item \(\paren{C_1,\dots,C_n}\) est une famille libre \\
+
+\item \(\paren{C_1,\dots,C_n}\) est une base de \(\K^n\) \\
+
+\item \(\trans{A}\) est une matrice inversible \\
+
+\item \(\paren{L_1,\dots,L_n}\) est une famille génératrice de \(\M{1n}\) \\
+
+\item \(\paren{L_1,\dots,L_n}\) est une famille libre \\
+
+\item \(\paren{L_1,\dots,L_n}\) est une base de \(\M{1n}\).
+\end{enumerate}
+\end{bilan}
+
+\subsection{Remarque}
+
+\begin{abus}
+Soient \(n,p\in\Ns\).
+
+Le programme de MP2I autorise à confondre une matrice \(A\in\M{np}\) et l'application linéaire qui lui est canoniquement associée.
+
+On peut donc écrire, par exemple : \guillemets{\(\ker A\)} ou \guillemets{\(\Im A\)}.
+
+Nous ne ferons jamais cet abus (sauf parfois, dans le cas où \(A\) est une matrice-ligne) car il rend les choses un peu confuses.
+\end{abus}
+
+\section{Matrices équivalentes}
+
+\begin{defi}
+Soient \(n,p\in\Ns\) et \(A,B\in\M{np}\).
+
+On dit que la matrice \(B\) est équivalente à la matrice \(A\) si on a : \[\quantifs{\exists P\in\GL{n};\exists Q\in\GL{p}}B=PAQ.\]
+\end{defi}
+
+\begin{prop}
+Soit \(n,p\in\Ns\).
+
+La relation \guillemets{être équivalente à} est une relation d'équivalence sur \(\M{np}\).
+\end{prop}
+
+\begin{dem}
+Notons \(\sim\) la relation \guillemets{être équivalente à} : \[\quantifs{\forall A,B\in\M{np}}B\sim A\ssi\croch{\quantifs{\exists P\in\GL{n};\exists Q\in\GL{p}}B=PAQ}.\]
+
+On a \(\quantifs{\forall A\in\M{np}}A=I_nAI_p\) donc \(\quantifs{\forall A\in\M{np}}A\sim A\) donc \(\sim\) est réflexive.
+
+Soient \(A,B\in\M{np}\) telles que \(B\sim A\).
+
+Il existe \(P\in\GL{n}\) et \(Q\in\GL{p}\) telles que \(B=PAQ\).
+
+D'où \(P\inv BQ\inv=P\inv PAQQ\inv\) donc \(P\inv BQ\inv=A\) avec \(\begin{dcases}
+P\inv\in\GL{n} \\
+Q\inv\in\GL{p}
+\end{dcases}\)
+
+D'où \(A\sim B\) donc \(\sim\) est symétrique.
+
+Soient \(A,B,C\in\M{np}\) telles que \(C\sim B\) et \(B\sim A\).
+
+Il existe \(P_1,P_2\in\GL{n}\) et \(Q_1,Q_2\in\GL{p}\) telles que \(C=P_1BQ_1\) et \(B=P_2AQ_2\).
+
+Donc \(C=P_1P_2AQ_2Q_1\) avec \(\begin{dcases}
+P_1P_2\in\GL{n} \\
+Q_2Q_1\in\GL{p}
+\end{dcases}\)
+
+Donc \(C\sim A\) donc \(\sim\) est transitive.
+
+Finalement, \(\sim\) est une relation d'équivalence.
+\end{dem}
+
+\begin{exoex}~\\
+Montrer que les matrices \(\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}\) et \(\begin{pmatrix}
+1 & 0 \\
+0 & 2
+\end{pmatrix}\) sont équivalentes.
+\end{exoex}
+
+\begin{corr}~\\
+On remarque \(\begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}=\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}\) donc : \[\underbrace{\begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix}}_{\in\GL{2}}\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}\underbrace{\begin{pmatrix}
+1 & 0 \\
+0 & 2
+\end{pmatrix}}_{\in\GL{2}}=\begin{pmatrix}
+1 & 0 \\
+0 & 2
+\end{pmatrix}.\]
+\end{corr}
+
+\begin{rem}
+Soient \(n\in\Ns\) et \(A,B\in\M{n}\).
+
+On suppose que \(A\) et \(B\) sont équivalentes.
+
+Alors \(A\) est inversible si, et seulement si, \(B\) est inversible.
+
+De plus, \(\rg A=\rg B\).
+\end{rem}
+
+\begin{prop}\thlabel{prop:existenceDePetQPourQueTouteMatriceSoitEquivalenteAJr}
+Soient \(n,p\in\Ns\), \(A\in\M{np}\) et \(r\in\N\).
+
+Alors : \[\rg A=r\ssi\quantifs{\exists P\in\GL{n};\exists Q\in\GL{p}}A=PJ_rQ,\] en posant \[J_r=\begin{pNiceMatrix}[first-col,last-row]
+1 & 1 & 0 & \dots & 0 & \Block{4-4}<\Huge>{0} \\
+& 0 & \ddots & \ddots & \vdots & & & & \\
+& \vdots & \ddots & \ddots & 0 & & & & \\
+r & 0 & \dots & 0 & 1 & & & & \\
+& \Block{4-4}<\Huge>{0} & & & & \Block{4-4}<\Huge>{0} \\
+&&&&&&&&& \\
+&&&&&&&&& \\
+&&&&&&&&& \\
+n &&&&&&&&& \\
+& 1 &  &  & r & & & & n
+\end{pNiceMatrix}.\]
+\end{prop}
+
+\begin{dem}
+\impdir Admise provisoirement. On verra dans le chapitre suivant que cette proposition découle naturellement de la forme géométrique du théorème du rang.
+
+\imprec Découle de la \thref{prop:rangInchangéQuandOnMultiplieLaMatriceParUneMatriceInversible}.
+\end{dem}
+
+\begin{cor}
+Soient \(n,p\in\Ns\) et \(A,B\in\M{np}\).
+
+Alors : \[A\text{ et }B\text{ sont équivalentes}\ssi\rg A=\rg B.\]
+\end{cor}
+
+\begin{dem}
+\impdir Claire car on ne change pas le rang d'une matrice en la multipliant à gauche et à droite par des matrices inversibles.
+
+\imprec
+
+Supposons \(\rg A=\rg B\).
+
+Selon la proposition précédente, \(A\) et \(B\) sont équivalentes à \(J_r\) en posant \(r=\rg A\).
+
+Donc \(A\) est équivalente à \(B\).
+\end{dem}
+
+\section{Matrices semblables}
+
+\begin{defi}
+Soient \(n\in\Ns\) et \(A,B\in\M{n}\).
+
+On dit que la matrice \(B\) est semblable à la matrice \(A\) si : \[\quantifs{\exists P\in\GL{n}}B=PAP\inv.\]
+\end{defi}
+
+\begin{prop}
+Soit \(n\in\Ns\).
+
+La relation \guillemets{être semblable à} est une relation d'équivalence sur \(\M{n}\).
+\end{prop}
+
+\begin{dem}
+On pose la relation binaire \(\rel\) sur \(\M{n}\) telle que : \[\quantifs{\forall A,B\in\M{n}}A\rel B\ssi\croch{\quantifs{\exists P\in\GL{n}}B=PAP\inv}.\]
+
+Soient \(A,B,C\in\M{n}\).
+
+Montrons que \(\rel\) est réflexive.
+
+On a \(A=I_nAI_n\inv\) donc \(A\rel A\).
+
+Montrons que \(\rel\) est symétrique.
+
+Supposons \(A\rel B\).
+
+Il existe \(P\in\GL{n}\) telle que \(B=PAP\inv\).
+
+On a \(P\inv BP=P\inv PAP\inv P\) donc \(P\inv B\paren{P\inv}\inv=A\).
+
+Donc \(B\rel A\).
+
+Montrons que \(\rel\) est transitive.
+
+Supposons \(A\rel B\) et \(B\rel C\).
+
+Il existe \(P,Q\in\GL{n}\) telles que \(\begin{dcases}
+B=PAP\inv \\
+C=QBQ\inv
+\end{dcases}\)
+
+Donc \(C=QPAP\inv Q\inv=QPA\paren{QP}\inv\).
+
+Donc \(A\rel C\).
+
+Donc \(\rel\) est une relation d'équivalence sur \(\M{n}\).
+\end{dem}
+
+\begin{exoex}~\\
+Montrer que les matrices \(\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}\) et \(\begin{pmatrix}
+1 & 2 \\
+0 & 1
+\end{pmatrix}\) sont semblables.
+\end{exoex}
+
+\begin{corr}
+L'idée est qu'on a : \[\begin{pmatrix}
+\lambda & 0 \\
+0 & 1
+\end{pmatrix}\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}=\begin{pmatrix}
+\lambda a & \lambda b \\
+c & d
+\end{pmatrix}\qquad\text{et}\qquad\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}\begin{pmatrix}
+\lambda\inv & 0 \\
+0 & 1
+\end{pmatrix}=\begin{pmatrix}
+a \lambda\inv & b \\
+c \lambda\inv & d
+\end{pmatrix}.\]
+
+On remarque : \[\begin{pmatrix}
+1 & 2 \\
+0 & 1
+\end{pmatrix}=\begin{pmatrix}
+2 & 0 \\
+0 & 1
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+1 & 0
+\end{pmatrix}\begin{pmatrix}
+2 & 0 \\
+0 & 1
+\end{pmatrix}\inv.\]
+\end{corr}
+
+\begin{rem}
+Soient \(n\in\Ns\) et \(P\in\GL{n}\).
+
+L'application \[\fonctionlambda{\M{n}}{\M{n}}{M}{PMP\inv}\] est un automorphisme de \(\M{n}\) en tant qu'espace vectoriel et en tant qu'anneau (elle conserve les combinaisons linéaires et les produits).
+\end{rem}
+
+\begin{rem}
+Soient \(n\in\Ns\), \(A,B\in\M{n}\) et \(P\in\GL{n}\) tels que \(B=PAP\inv\).
+
+Alors on a : \[\quantifs{\forall k\in\N}B^k=PA^kP\inv.\]
+
+De plus, si \(A\) est inversible, alors \(B\) aussi et on a : \[\quantifs{\forall k\in\Z}B^k=PA^kP\inv.\]
+\end{rem}
+
+\begin{rem}
+Si deux matrices sont semblables, elles ont même rang.
+
+On retrouve en particulier que l'une est inversible si, et seulement si, l'autre est inversible.
+\end{rem}
+
+\begin{dem}
+On ne change pas le rang d'une matrice en la multipliant à gauche ou à droite par une matrice inversible (\cf \thref{prop:rangInchangéQuandOnMultiplieLaMatriceParUneMatriceInversible}).
+\end{dem}
+
+\section{Rang d'une matrice (suite)}
+
+\begin{prop}
+Soient \(n,p\in\Ns\) et \(A\in\M{np}\).
+
+On note \(u_A\in\L{\K^p}{\K^n}\) l'application linéaire canoniquement associée à \(A\), \(\paren{C_1,\dots,C_p}\) la famille des vecteurs-colonne de \(A\) et \(\paren{L_1,\dots,L_n}\) la famille des lignes de \(A\).
+
+Alors : \[\rg A=\rg u_A=\rg\paren{C_1,\dots,C_p}=\rg\paren{L_1,\dots,L_n}=\rg\paren{\trans{A}}.\]
+\end{prop}
+
+\begin{dem}
+Il s'agit de montrer \(\rg A=\rg\paren{\trans{A}}\).
+
+\underline{Méthode 1 :}
+
+Posons \(r=\rg A\).
+
+Selon la \thref{prop:existenceDePetQPourQueTouteMatriceSoitEquivalenteAJr}, il existe \(P\in\GL{n}\) et \(Q\in\GL{p}\) telles que \(A=PJ_rQ\) où \(J_r\in\M{np}\).
+
+On a \(\trans{A}=\trans{Q}\trans{J_r}\trans{P}\).
+
+Donc, comme \(\trans{Q}\) et \(\trans{P}\) sont inversibles, on a : \[\rg\paren{\trans{A}}=\rg\paren{\trans{J_r}}=r.\]
+
+\underline{Méthode 2 :}
+
+On a vu que \(\fonction{u_A}{\K^p}{\K^n}{x}{\paren{l_1\paren{x},\dots,l_n\paren{x}}}\) est de rang \(\rg u_A=\rg\paren{l_1,\dots,l_n}\) (en notant \(l_i\) la forme linéaire canoniquement associée à \(L_i\) pour tout \(i\in\interventierii{1}{n}\)).
+
+Donc \[\rg A=\rg\paren{L_1,\dots,L_n}=\rg\paren{\trans{A}}.\]
+\end{dem}
+
+\begin{lem}
+On ne change pas le rang d'une matrice en appliquant des opérations élémentaires à ses lignes ou à ses colonnes.
+\end{lem}
+
+\begin{dem}
+Découle de la \thref{prop:rangInchangéQuandOnMultiplieLaMatriceParUneMatriceInversible} et du \thref{bilan:opérationsÉlémentairesÉquivalentesÀDesMultiplications}.
+\end{dem}
+
+\begin{algo}[Calcul du rang d'une matrice]
+Pour calculer le rang d'une matrice, il suffit d'appliquer des opérations élémentaires à ses lignes et ses colonnes jusqu'à obtenir une matrice de rang évident.
+
+NB : on peut opérer tantôt sur les lignes, tantôt sur les colonnes, ce qui rend le calcul facile et rapide.
+\end{algo}
+
+\begin{ex}
+On a : \[\begin{aligned}
+\rg\begin{pmatrix}
+1 & 1 & 0 & 1 \\
+1 & 2 & 1 & 0 \\
+1 & 3 & 2 & 5
+\end{pmatrix}&=\rg\begin{pNiceMatrix}[last-col]
+1 & 1 & 0 & 1 &  \\
+0 & 1 & 1 & -1 & L_2\gets L_2-L_1 \\
+0 & 2 & 2 & 4 & L_3\gets L_3-L_1
+\end{pNiceMatrix} \\
+&=\rg\begin{pNiceMatrix}[last-col]
+1 & 0 & 0 & 1 & C_2\gets C_2-C_1-C_3 \\
+0 & 0 & 1 & -1 & \\
+0 & 0 & 2 & 4 &
+\CodeAfter
+\begin{tikzpicture}
+\draw[ultra thick,blue] (1-2.north) -- (3-2.south);
+\end{tikzpicture}
+\end{pNiceMatrix} \\
+&=\rg\begin{pNiceMatrix}[last-col]
+1 & 0 & 0 & C_3\gets C_3-C_1-2C_2 \\
+0 & 1 & -3 & \\
+0 & 2 & 0 &
+\end{pNiceMatrix} \\
+&=\rg\begin{pNiceMatrix}[last-col]
+1 & 0 & 0 & \\
+0 & 0 & -3 & L_2\gets L_2-\frac{1}{2}L_3 \\
+0 & 2 & 0
+\end{pNiceMatrix} \\
+&=3
+\end{aligned}\] et : \[\begin{WithArrows}
+\rg\begin{pmatrix}
+1 & 3 & 2 \\
+2 & 2 & 2 \\
+3 & 1 & 2
+\end{pmatrix}&=\rg\begin{pNiceMatrix}[last-col]
+1 & 3 & 2 & \\
+0 & -4 & -2 & L_2\gets L_2-2L_1 \\
+0 & -8 & -4 & L_3\gets L_3-3L_1
+\end{pNiceMatrix} \\
+&=\rg\begin{pNiceMatrix}[last-col]
+1 & 3 & 2 & \\
+0 & -4 & -2 & \\
+0 & 0 & 0 & L_3\gets L_3-2L_2
+\CodeAfter
+\begin{tikzpicture}
+\draw[ultra thick,blue] (3-1.west) -- (3-3.east);
+\end{tikzpicture}
+\end{pNiceMatrix} \\
+&=\rg\begin{pNiceMatrix}[last-col]
+1 & 3 & 2 & \\
+0 & 2 & 1 & L_2\gets\frac{-1}{2}L_2
+\end{pNiceMatrix}\Arrow[tikz={text width=4cm}]{car \(\paren{1,3,2}\) et \(\paren{0,2,1}\) ne sont pas colinéaires} \\
+&=2.
+\end{WithArrows}\]
+\end{ex}
+
+\begin{defi}[Matrice extraite]~\\
+Soient \(n,p\in\Ns\) et \(A=\begin{pmatrix}
+a_{11} & \dots & a_{1p} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{np}
+\end{pmatrix}\in\M{np}\).
+
+On appelle matrice extraite de \(A\) toute matrice de la forme \[M=\begin{pmatrix}
+a_{i_1j_1} & \dots & a_{i_1j_s} \\
+\vdots &  & \vdots \\
+a_{i_rj_1} & \dots & a_{i_rj_s}
+\end{pmatrix}\in\M{rs}\qquad\text{où }\begin{dcases}
+r\in\interventierii{1}{n} \\
+s\in\interventierii{1}{p} \\
+1\leq i_1<i_2<\dots<i_r\leq n \\
+1\leq j_1<j_2<\dots<j_s\leq p
+\end{dcases}\]
+
+Concrètement, cela signifie qu'on obtient \(M\) à partir de \(A\) en supprimant quelques lignes et quelques colonnes.
+\end{defi}
+
+\begin{prop}
+Le rang d'une matrice \(A\) est la taille de la plus grande matrice inversible extraite de \(A\).
+\end{prop}
+
+\begin{dem}
+On note \(\paren{C_1,\dots,C_p}\) la famille des vecteurs-colonne de \(A\) et on pose \(r=\rg A\).
+
+On a \(\rg A=\rg\paren{C_1,\dots,C_p}=\dim\Vect{C_1,\dots,C_p}\).
+
+Selon le théorème de la base extraite, il existe \(j_1,\dots,j_r\in\N\) tels que \(1\leq j_1<\dots<j_r\leq p\) et \(\paren{C_{j_1},\dots,C_{j_r}}\) est une base de \(\Vect{C_1,\dots,C_p}\).
+
+Posons \(B=\begin{pmatrix}
+C_{j_1} & \dots & C_{j_r}
+\end{pmatrix}\in\M{nr}\) (matrice extraite de \(A\)).
+
+On note \(\paren{L_1,\dots,L_n}\) la famille des lignes de \(B\).
+
+On a \(r=\rg B=\rg\paren{L_1,\dots,L_n}=\dim\Vect{L_1,\dots,L_n}\).
+
+Selon le théorème de la base extraite, il existe \(i_1,\dots,i_r\in\N\) tels que \(1\leq i_1<\dots<i_r\leq n\) et \(\paren{L_{i_1},\dots,L_{i_r}}\) est une base de \(\Vect{L_1,\dots,L_n}\).
+
+Posons \(C=\tcoords{L_{i_1}}{\vdots}{L_{i_r}}\in\M{r}\).
+
+\(C\) est extraite de \(A\) et on a \(\rg C=r\) donc \(C\in\GL{r}\).
+
+Ainsi, il existe une matrice inversible de taille \(r\) extraite de \(A\).
+
+Enfin, toute matrice extraite de \(A\) est de rang inférieur à \(r\).
+
+Donc il n'existe aucune matrice inversible de taille supérieure à \(r+1\) extraite de \(A\).
+\end{dem}
+
+\section{Trace d'une matrice carrée}
+
+\begin{defi}
+On appelle trace d'une matrice carrée la somme de ses coefficients diagonaux.
+
+Ainsi, si \(n\in\Ns\) et \(A=\paren{a_{ij}}_{\paren{i,j}}\in\M{n}\), on appelle trace de \(A\) le scalaire : \[\tr A=\sum_{i=1}^na_{ii}.\]
+\end{defi}
+
+\begin{ex}
+\begin{enumerate}
+\item On a : \[\quantifs{\forall a,b,c,d\in\K}\tr\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}=a+d.\]
+
+\item La trace d'une matrice antisymétrique est toujours nulle.
+\end{enumerate}
+\end{ex}
+
+\begin{rem}
+Soit \(n\in\Ns\).
+
+On a clairement : \[\quantifs{\forall A\in\M{n}}\tr\paren{\trans{A}}=\tr A.\]
+\end{rem}
+
+\begin{prop}
+Soit \(n\in\Ns\).
+
+L'application \(\tr:\M{n}\to\K\) est une forme linéaire sur \(\M{n}\).
+\end{prop}
+
+\begin{prop}
+Soit \(n\in\Ns\).
+
+On a : \[\quantifs{\forall A,B\in\M{n}}\tr\paren{AB}=\tr\paren{BA}.\]
+\end{prop}
+
+\begin{dem}
+On pose \(C=\paren{c_{ik}}_{\paren{i,k}}=AB\) et \(D=\paren{d_{ik}}_{\paren{i,k}}=BA\).
+
+Montrons que \(\tr C=\tr D\).
+
+On a : \[\quantifs{\forall\paren{i,k}\in\interventierii{1}{n}^2}\begin{dcases}
+c_{ik}=\sum_{j=1}^na_{ij}b_{jk} \\
+d_{ik}=\sum_{j=1}^nb_{ij}a_{jk}
+\end{dcases}\]
+
+D'où : \[\begin{dcases}
+\tr C=\sum_{i=1}^nc_{ii}=\sum_{i=1}^n\sum_{j=1}^na_{ij}b_{ji} \\
+\tr D=\sum_{i=1}^nd_{ii}=\sum_{i=1}^n\sum_{j=1}^nb_{ij}a_{ji}
+\end{dcases}\]
+
+Donc \(\tr C=\tr D\) (changement d'indice \(\paren{i\prim,j}=\paren{j,i}\)).
+\end{dem}
+
+\begin{ex}~\\
+On pose \(A=\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}\) et \(B=\begin{pmatrix}
+a\prim & b\prim \\
+c\prim & d\prim
+\end{pmatrix}\).
+
+On a : \[\tr\paren{AB}=aa\prim+bc\prim+cb\prim+dd\prim\qquad\text{et}\qquad\tr\paren{\trans{A}A}=a^2+b^2+c^2+d^2.\]
+\end{ex}
+
+\begin{cor}
+Soit \(n\in\Ns\).
+
+Deux matrices semblables ont même trace : \[\quantifs{\forall A\in\M{n};\forall P\in\GL{n}}\tr\paren{PAP\inv}=\tr A.\]
+\end{cor}
+
+\begin{dem}
+Soient \(A\in\M{n}\) et \(P\in\GL{n}\).
+
+On a : \[\tr\paren{PAP\inv}=\tr\paren{APP\inv}=\tr A.\]
+\end{dem}
+
+\section{Matrices et systèmes linéaires}
+
+Dans cette section, on utilise les notations suivantes :
+
+Soient \(n,p\in\Ns\) et deux matrices : \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1p} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{np}
+\end{pmatrix}=\begin{pmatrix}
+C_1 & \dots & C_p
+\end{pmatrix}\in\M{np}\qquad\text{et}\qquad B=\tcoords{b_1}{\vdots}{b_n}\in\M{n1}\] (en notant \(\paren{C_1,\dots,C_p}\) la famille des vecteurs-colonne de \(A\)).
+
+Le système linéaire de \(n\) équations à \(p\) inconnues \[\paren{S}~\begin{dcases}
+a_{11}x_1+\dots+a_{1p}x_p=b_1 \\
+\vdots \\
+a_{n1}x_1+\dots+a_{np}x_p=b_n
+\end{dcases}\] d'inconnue \(\paren{x_1,\dots,x_p}\in\K^p\) peut se réécrire \guillemets{matriciellement} ou \guillemets{vectoriellement}.
+
+Écriture matricielle de \(\paren{S}\) : \[\paren{S}~AX=B\qquad\text{équation matricielle d'inconnue }X=\tcoords{x_1}{\vdots}{x_p}\in\M{p1}.\]
+
+Écriture vectorielle de \(\paren{S}\) : \[\paren{S}~x_1C_1+\dots+x_pC_p=B\qquad\text{équation vectorielle d'inconnue }X=\tcoords{x_1}{\vdots}{x_p}\in\K^p.\]
+
+\begin{rem}
+\begin{enumerate}
+\item Notons \(\paren{S_0}\) le système homogène associé à \(\paren{S}\) (\cad celui obtenu en \guillemets{remplaçant \(B\) par \(0_{n1}\)}). L'écriture matricielle de \(\paren{S_0}\) montre que son espace vectoriel solution \(\fami{S}_0\) est le noyau de l'application linéaire canoniquement associée à \(A\) : \[\ker u_A=\fami{S}_0\subset\K^p.\]
+
+\item L'écriture vectorielle de \(\paren{S}\) montre que \(\paren{S}\) possède au moins une solution\footnote{Si le système \(\paren{S}\) possède au moins une solution, on dit que \(\paren{S}\) est compatible.} si, et seulement si, le second membre \(B\) est combinaison linéaire des vecteurs-colonne de \(A\) : \[\fami{S}\not=\ensvide\ssi B\in\Vect{C_1,\dots,C_p}.\]
+
+\item Cette solution est alors unique si, et seulement si, la famille \(\paren{C_1,\dots,C_p}\) des vecteurs-colonne de \(A\) est libre.
+\end{enumerate}
+\end{rem}
+
+\begin{exoex}
+Écrire matriciellement et vectoriellement le système linéaire suivant : \[\paren{S}~\begin{dcases}
+a+2b+c+3d=0 \\
+3a+7b+3c+6d=0 \\
+a+3b+c=7
+\end{dcases}\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\paren{S}~\begin{pmatrix}
+1 & 2 & 1 & 3 \\
+3 & 7 & 3 & 6 \\
+1 & 3 & 1 & 0
+\end{pmatrix}\begin{pmatrix}
+a \\
+b \\
+c \\
+d
+\end{pmatrix}=\tcoords{0}{0}{7}\qquad\text{ou}\qquad\paren{S}~a\tcoords{1}{3}{1}+b\tcoords{2}{7}{3}+c\tcoords{1}{3}{1}+d\tcoords{3}{6}{0}=\tcoords{0}{0}{7}.\]
+\end{corr}
+
+\begin{defi}
+On appelle rang du système linéaire \(\paren{S}\) le rang de la matrice \(A\) (dans l'écriture matricielle), \cad le rang de la famille de vecteurs \(\paren{C_1,\dots,C_p}\) (dans l'écriture vectorielle).
+\end{defi}
+
+\begin{prop}
+Notons \(r\) le rang du système \(\paren{S}\).
+
+L'ensemble solution \(\fami{S}\) du système \(\paren{S}\) est soit l'ensemble vide, soit un sous-espace affine de \(\K^p\) de dimension \(p-r\).
+\end{prop}
+
+\begin{dem}
+Supposons \(\fami{S}\not=\ensvide\).
+
+On a vu que \(\fami{S}\) est un sous-espace affine de \(\K^p\) dirigé par \(\fami{S}_0=\ker u_A\).
+
+Selon le théorème du rang appliqué à \(u_A\in\L{\K^p}{\K^n}\), on a : \[\begin{aligned}
+\dim\K^p&=\rg u_A+\dim\ker u_A \\
+p&=r+\dim\fami{S}_0.
+\end{aligned}\]
+
+Donc \(\fami{S}_0\) est un espace vectoriel de dimension \(p-r\) et \(\fami{S}\) est un sous-espace affine de \(\K^p\) dirigé par \(\fami{S}_0\).
+\end{dem}
+
+\begin{defi}[Système de Cramer]
+On dit que \(\paren{S}\) est un système de Cramer si \(n=p\) et si la matrice \(A\) est inversible.
+\end{defi}
+
+\begin{prop}
+Tout système de Cramer admet une unique solution.
+\end{prop}
+
+\begin{dem}
+C'est clair avec l'écriture matricielle : \[\quantifs{\forall X\in\K^p}AX=B\ssi X=A\inv B.\]
+\end{dem}
+
+\section{Calculer l'inverse d'une matrice}
+
+\begin{algo}
+Soient \(n\in\Ns\) et \(A\in\M{n}\).
+
+En appliquant l'algorithme du pivot de Gauss aux lignes de \(A\), on arrive à \(I_n\) si \(A\) est inversible ou à une matrice simple de même rang que \(A\) si \(A\) n'est pas inversible.
+\end{algo}
+
+\begin{exoex}~\\
+Décider si \(\begin{pmatrix}
+2 & 1 \\
+1 & 1
+\end{pmatrix}\) est inversible et calculer son inverse.
+\end{exoex}
+
+\begin{corr}
+On applique l'algorithme : \[\begin{aligned}
+&\begin{pNiceArray}{cc|cc}
+2 & 1 & 1 & 0 \\
+1 & 1 & 0 & 1
+\end{pNiceArray} \\
+&\begin{pNiceArray}{cc|cc}[last-col]
+1 & 1 & 0 & 1 & L_1\echange L_2 \\
+2 & 1 & 1 & 0 &
+\end{pNiceArray} \\
+&\begin{pNiceArray}{cc|cc}[last-col]
+1 & 1 & 0 & 1 & \\
+0 & -1 & 1 & -2 & L_2\gets L_2-2L_1
+\end{pNiceArray} \\
+&\begin{pNiceArray}{cc|cc}[last-col]
+1 & 1 & 0 & 1 & \\
+0 & 1 & -1 & 2 & L_2\gets-L_2
+\end{pNiceArray} \\
+&\begin{pNiceArray}{cc|cc}[last-col]
+1 & 0 & 1 & -1 & L_1\gets L_1-L_2 \\
+0 & 1 & -1 & 2
+\end{pNiceArray}
+\end{aligned}\]
+
+Donc \(\begin{pmatrix}
+2 & 1 \\
+1 & 1
+\end{pmatrix}\) est inversible, d'inverse \(\begin{pmatrix}
+1 & -1 \\
+-1 & 2
+\end{pmatrix}\).
+
+Vérification : on a bien \(\begin{pmatrix}
+2 & 1 \\
+1 & 1
+\end{pmatrix}\begin{pmatrix}
+1 & -1 \\
+-1 & 2
+\end{pmatrix}=I_2\).
+\end{corr}

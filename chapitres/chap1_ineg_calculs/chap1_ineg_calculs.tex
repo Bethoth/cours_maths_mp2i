@@ -1,0 +1,657 @@
+\chapter{Inégalités, calculs}
+
+\minitoc
+
+\section{Inégalités dans \(\R\)}
+
+\subsection{Parties de \(\R\)}
+
+\begin{defi}
+Soient \(A\subset\R\) et \(m,M\in\R\).
+
+On dit que \(M\) est un majorant de \(A\) et que \(M\) majore \(A\) si on a \(\quantifs{\forall x\in A}x\leq M\).
+
+On dit que \(m\) est un minorant de \(A\) et que \(m\) minore \(A\) si on a \(\quantifs{\forall x\in A}m\leq x\).
+
+On dit que la partie \(A\) est majorée si elle admet un majorant.
+
+On dit que la partie \(A\) est minorée si elle admet un minorant.
+
+On dit que la partie \(A\) est bornée si elle admet un majorant et un minorant.
+
+Ainsi, \begin{itemize}
+\item \(A\) est majorée \(\ssi\quantifs{\exists\lambda\in\R;\forall x\in A}x\leq\lambda\)
+\item \(A\) est minorée \(\ssi\quantifs{\exists\mu\in\R;\forall x\in A}\mu\leq x\)
+\item \(A\) est bornée \(\ssi\quantifs{\exists\lambda,\mu\in\R;\forall x\in A}\mu\leq x\leq\lambda\ssi\quantifs{\exists\lambda\in\Rp;\forall x\in A}\abs{x}\leq x\)
+\end{itemize}
+\end{defi}
+
+\begin{ex}
+\begin{itemize}
+\item \(\intervii{0}{1}\) est bornée (majorants possibles : \(1\), \(\pi\), ... et minorants possibles : \(0\), \(-10\), ...).
+
+\item \(\N\) est minorée par \(0\) mais non-majorée et donc non-bornée.
+
+\item \(\Z\) n'est ni majorée ni minorée et donc non-bornée.
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+Il n'y a jamais unicité du majorant ou du minorant.
+\end{rem}
+
+\begin{defi}
+Soient \(A\subset\R\) et \(a\in A\).
+
+On dit que \(a\) est le plus grand élément de \(A\) (ou maximum de \(A\)) si on a \(\quantifs{\forall b\in A}b\leq a\).
+
+On dit que \(a\) est le plus petit élément de \(A\) (ou minimum de \(A\)) si on a \(\quantifs{\forall b\in A}a\leq b\).
+\end{defi}
+
+\begin{prop}
+S'il existe, le plus grand élément de \(A\) est unique et est noté \(\max A\).
+
+S'il existe, le plus petit élément de \(A\) est unique et est noté \(\min A\).
+\end{prop}
+
+\begin{dem}
+Montrons l'unicité du plus grand élément de \(A\).
+
+Soient \(a_1,a_2\in A\) tels que \(\quantifs{\forall b\in A}\begin{dcases}b\leq a_1 \\ b\leq a_2\end{dcases}\)
+
+On a en particulier \(\begin{dcases}a_1\leq a_2\text{ avec \(b=a_1\)} \\ a_2\leq a_1\text{ avec \(b=a_2\)}\end{dcases}\)
+
+Donc \(a_1=a_2\). Donc le plus grand élément est unique.
+
+On montre de même l'unicité du plus petit élément.
+\end{dem}
+
+\begin{rem}[Plus grand élément \(\imp\) majorant]
+Soient \(A\subset\R\) et \(x\in\R\).
+
+\(x\) est le plus grand élément de \(A\) ssi \(\begin{dcases}x\in A \\ x\text{ majore \(A\)}\end{dcases}\)
+
+En particulier, pour que \(A\) admette un plus grand élément, il faut que \(A\) soit majorée.
+\end{rem}
+
+\begin{ex}
+\begin{itemize}
+\item \(\intervii{0}{1}\) admet \(1\) comme plus grand élément et \(0\) comme plus petit élément.
+
+\item \(\Rp\) admet \(0\) comme plus petit élément mais n'admet pas de plus grand élément (car \(\Rp\) n'est pas majorée).
+
+\item \(\intervie{0}{1}\) admet \(0\) comme plus petit élément et est majorée (par \(1\)) mais n'admet pas de plus grand élément.
+
+En effet, par l'absurde :
+
+Soit \(a\in\intervie{0}{1}\). Supposons que \(a\) est le plus grand élément de \(\intervie{0}{1}\).
+
+Comme \(a\in\intervie{0}{1}\), on a \(0\leq a<1\).
+
+Posons \(b=\dfrac{a+1}{2}\).
+
+On a d'une part \(0\leq a+1<2\) donc \(0\leq\dfrac{a+1}{2}<1\) donc \(0\leq b<1\) donc \(b\in\intervie{0}{1}\).
+
+D'autre part, \(a+a<a+1\) donc \(\dfrac{a+a}{2}<\dfrac{a+1}{2}\) donc \(a<b\).
+
+Donc \(a\) ne majore pas \(\intervie{0}{1}\) : contradiction.
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+Toute partie finie admet un plus grand élément.
+\end{rem}
+
+\begin{theo}
+Toute partie non-vide de \(\N\) admet un plus petit élément.
+\end{theo}
+
+\begin{dem}
+\note{ADMIS} (fait partie de la définition de \(\N\), hors programme).
+\end{dem}
+
+\begin{cor}
+Toute partie non-vide de \(\Z\) minorée admet un plus petit élément.
+
+Toute partie non-vide de \(\Z\) majorée admet un plus grand élément.
+\end{cor}
+
+\begin{dem}
+Soit \(A\subset\Z\) non-vide et minorée.
+
+Soit \(m\in\R\) un minorant de \(A\).
+
+Soit \(m\prim\in\Z\) tel que \(m\prim\leq m\).
+
+On a \(\quantifs{\forall x\in A}m\prim\leq m\leq x\).
+
+Donc \(m\prim\) minore \(A\).
+
+Posons \(B=\accol{x-m\prim}_{x\in A}\).
+
+On remarque \(B\not=\ensvide\) car \(A\not=\ensvide\) et \(B\subset\N\) car \(\quantifs{\forall x\in A}\begin{dcases}x-m\prim\in\Z\text{ car \(x,m\prim\in\Z\)} \\ x-m\prim\geq0\text{ car \(m\prim\leq x\)}\end{dcases}\)
+
+Ainsi, \(B\) est une partie non-vide de \(\N\).
+
+Donc \(B\) admet un plus petit élément \(b_0\in B\) : \(\quantifs{\forall b\in B}b_0\leq b\).
+
+Cet élément \(b_0\) s'écrit \(b_0=a_0-m\prim\) par définition de \(B\).
+
+On a \(\quantifs{\forall x\in A}a_0-m\prim\leq x-m\prim\) donc \(\quantifs{\forall x\in A}a_0\leq x\).
+
+Donc \(a_0=\min A\).
+
+On montre de même que toute partie \(C\) majorée non-vide de \(\Z\) admet un maximum, en considérant un majorant \(M\in\Z\) de \(C\) puis l'ensemble \(D=\accol{M-x}_{x\in C}\).
+\end{dem}
+
+\begin{defi}[Intervalle]
+Soit \(I\subset\R\).
+
+On dit que \(I\) est un intervalle de \(\R\) si on a \(\quantifs{\forall x,y\in I;\forall z\in\R}x\leq z\leq y\imp z\in I\).
+
+Ie : \(\quantifs{\forall x,y\in I}\intervii{x}{y}\subset I\), en notant \(\intervii{x}{y}=\accol{z\in\R\tq x\leq z\leq y}\) avec donc \(\intervii{x}{y}=\ensvide\) si \(x>y\).
+\end{defi}
+
+\begin{ex}
+\begin{itemize}
+\item \(\ensvide\) et \(\R\) sont des intervalles de \(\R\).
+
+\item \(\intervii{a}{b}\), \(\intervie{a}{b}\), \(\intervee{a}{+\infty}\), ... sont des intervalles de \(\R\) pour tous \(a,b\in\R\).
+
+\item \(\N\), \(\Z\), \(\Q\), ... ne sont pas des intervalles de \(\R\). Par exemple, on a \(0\leq\dfrac{1}{2}\leq1\) mais \(\dfrac{1}{2}\not\in\N\).
+\end{itemize}
+\end{ex}
+
+\subsection{Manipulation d'inégalités, fonctions}
+
+\begin{prop}
+Soit \(I\) un intervalle de \(\R\).
+
+Soit \(f:I\to\R\) dérivable.
+
+\begin{itemize}
+\item \(f\) est constante \(\ssi\quantifs{\forall x\in I}f\prim\paren{x}=0\)
+
+\item \(f\) est croissante \(\ssi\quantifs{\forall x\in I}f\prim\paren{x}\geq0\)
+
+\item \(f\) est strictement croissante \(\impr\quantifs{\forall x\in I}f\prim\paren{x}>0\)
+
+\(f\) est strictement croissante \(\ssi\begin{dcases}\quantifs{\forall x\in I}f\prim\paren{x}\geq0 \\ \quantifs{\forall x,y\in I}x<y\imp\quantifs{\exists z\in\intervii{x}{y}}f\prim\paren{z}>0\end{dcases}\)
+\end{itemize}
+\end{prop}
+
+\begin{dem}
+\note{ADMIS} temporairement.
+\end{dem}
+
+\begin{rem}
+Il ne faut pas oublier l'hypothèse selon laquelle \(I\) est un intervalle.
+
+Par exemple, si \(I=\Rs\) alors \(I\) n'est pas un intervalle de \(\R\) (on a par exemple \(-1\leq0\leq1\) mais \(0\not\in\Rs\)) et les fonctions \(\fonction{f}{\Rs}{\R}{x}{\begin{dcases}1&\text{ si \(x>0\)} \\ -1&\text{ si \(x<0\)}\end{dcases}}\) et \(\fonction{g}{\Rs}{\R}{x}{\dfrac{1}{x}}\) vérifient : \begin{itemize}
+\item \(f\prim=0\) mais \(f\) non-constante
+
+\item \(\quantifs{\forall x\in\Rs}g\prim\paren{x}=\dfrac{-1}{x^2}<0\) mais \(g\) n'est pas strictement décroissante.
+\end{itemize}
+\end{rem}
+
+\begin{rem}
+Soient \(A\subset\R\) et \(f:A\to\R\). On considère les propositions suivantes :
+
+\begin{enumerate}
+\item \(f\) croissante
+
+\item \(f\) strictement croissante
+
+\item \(\quantifs{\forall x,y\in A}x\leq y\imp f\paren{x}\leq f\paren{y}\)
+
+\item \(\quantifs{\forall x,y\in A}x<y\imp f\paren{x}<f\paren{y}\)
+
+\item \(\quantifs{\forall x,y\in A}x\leq y\ssi f\paren{x}\leq f\paren{y}\)
+
+\item \(\quantifs{\forall x,y\in A}x<y\ssi f\paren{x}<f\paren{y}\)
+\end{enumerate}
+
+Les propositions (1) et (3) sont équivalentes.
+
+Les propositions (2), (4), (5) et (6) sont équivalentes.
+\end{rem}
+
+\begin{rem}
+Quand on rédige un raisonnement par équivalences, la façon correcte d'écrire est la suivante : \guillemets{\(x\leq y\ssi f\paren{x}\leq f\paren{y}\) car \(f\) est strictement croissante}.
+\end{rem}
+
+\begin{dem}
+\begin{itemize}
+\item (1) \(\ssi\) (3) : par définition
+
+\item (2) \(\ssi\) (4) : par définition
+
+\item (6) \(\ssi\) (5) : par contraposition
+
+\item (6) \(\imp\) (4) : clair
+
+\item Il ne reste plus qu'à montrer que (4) \(\imp\) (6).
+
+Supposons (4), montrons (6).
+
+Soient \(x,y\in A\). Montrons que \(x<y\ssi f\paren{x}<f\paren{y}\).
+
+\begin{itemize}
+\item[\impdir] Ok selon (4)
+
+\item[\imprec] Supposons \(f\paren{x}<f\paren{y}\). Montrons que \(x<y\).
+
+Si \(x=y\) alors \(f\paren{x}=f\paren{y}\) : impossible.
+
+Si \(x>y\) alors \(f\paren{x}>f\paren{y}\) selon (4) : impossible.
+
+Donc \(x<y\), d'où (6).
+\end{itemize}
+\end{itemize}
+\end{dem}
+
+\begin{prop}
+Soient \(a,b,c,d,\lambda\in\R\).
+
+On a \begin{enumerate}
+\item \(\begin{dcases}a\leq b \\ c\leq d\end{dcases}\imp a+c\leq b+d\)
+
+\item \(\begin{dcases}a\leq b \\ \lambda\geq0\end{dcases}\imp\lambda a\leq\lambda b\)
+
+\item \(\begin{dcases}a\leq b \\ \lambda\leq0\end{dcases}\imp\lambda a\geq\lambda b\)
+
+\item \(\begin{dcases}0\leq a\leq b \\ 0\leq c\leq d\end{dcases}\imp ac\leq bd\)
+
+\item \(\begin{dcases}a\leq b \\ ab>0\end{dcases}\imp\dfrac{1}{a}\geq\dfrac{1}{b}\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\begin{enumerate}
+\item Supposons \(a\leq b\) et \(c\leq d\).
+
+On a \(a+c\leq b+c\) car \(x\mapsto x+c\) croissante.
+
+Donc \(a+c\leq b+d\) car \(c\leq d\).
+
+\item Supposons \(\lambda\geq0\).
+
+La fonction \(x\mapsto\lambda x\) est de dérivée positive sur l'intervalle \(\R\) donc elle est croissante.
+
+\item Idem.
+
+\item Idem.
+
+\item C'est la décroissance de la fonction inverse sur les intervalles \(\Rps\) et \(\Rms\) (en effet, \(ab>0\ssi\paren{a,b\in\Rps\text{ ou }a,b\in\Rms}\)).
+\end{enumerate}
+\end{dem}
+
+\subsection{Valeur absolue}
+
+\begin{nota}
+On pose \(\quantifs{\forall x\in\R}\abs{x}=\max\accol{x;-x}=\begin{dcases}x&\text{ si \(x\geq0\)} \\ -x&\text{ si \(x<0\)}\end{dcases}\)
+\end{nota}
+
+\begin{rem}
+On a \(\quantifs{\forall x\in\Rp}\sqrt{x}^2=x\) et \(\quantifs{\forall x\in\R}\sqrt{x^2}=\abs{x}\).
+
+Ainsi, on a \(\quantifs{\forall x,y\in\R}\begin{dcases}x^2=y^2\ssi\abs{x}=\abs{y} \\ x^2\leq y^2\ssi\abs{x}\leq\abs{y}\text{ car \(x\mapsto\sqrt{x}\) strictement croissante}\end{dcases}\)
+\end{rem}
+
+\begin{prop}[Inégalité triangulaire]
+Soient \(x,y\in\R\).
+
+On a \(\abs{\abs{x}-\abs{y}}\leq\abs{x+y}\leq\abs{x}+\abs{y}\).
+
+Et donc \(\abs{\abs{x}-\abs{y}}\leq\abs{x-y}\leq\abs{x}+\abs{y}\) en remplaçant \(y\) par \(-y\).
+\end{prop}
+
+\begin{dem}
+\begin{enumerate}
+\item Montrons que \(\abs{x+y}\leq\abs{x}+\abs{y}\).
+
+Si \(x\geq0\) et \(y\geq0\) alors \(x+y\geq0\) donc \(\abs{x+y}=x+y=\abs{x}+\abs{y}\).
+
+Si \(x<0\) et \(y<0\) alors \(x+y<0\) donc \(\abs{x+y}=-x-y=\abs{x}+\abs{y}\).
+
+Si \(x\geq0\) et \(y<0\) alors \(\begin{dcases}x+y\leq x-y=\abs{x}+\abs{y}\text{ car \(y<0\)} \\ -x-y\leq x-y=\abs{x}+\abs{y}\text{ car \(x\geq0\)}\end{dcases}\) donc \(\abs{x+y}=\max\accol{x+y;-x-y}\leq\abs{x}+\abs{y}\).
+
+Si \(x<0\) et \(y\geq0\) : idem en échangeant \(x\) et \(y\).
+
+\item On remarque \(\begin{aligned}[t]
+\abs{x} &= \abs{x+y-y} \\
+&\leq \abs{x+y}+\abs{-y}\text{ selon (1)} \\
+&= \abs{x+y}+\abs{y}
+\end{aligned}\)
+
+Donc \(\abs{x}-\abs{y}\leq\abs{x+y}\).
+
+De même, \(\abs{y}=\abs{y+x-x}\leq\abs{y+x}+\abs{x}\).
+
+Donc \(\abs{y}-\abs{x}\leq\abs{y+x}\).
+
+Finalement, \(\abs{\abs{x}-\abs{y}}=\max\accol{\abs{x}-\abs{y};\abs{y}-\abs{x}}\leq\abs{x+y}\).
+\end{enumerate}
+\end{dem}
+
+\begin{prop}
+Soient \(x,y\in\R\).
+
+On a \(\abs{xy}\leq\dfrac{x^2+y^2}{2}\).
+\end{prop}
+
+\begin{dem}
+On a \(\paren{x-y}^2\geq0\) et \(\paren{x+y}^2\geq0\).
+
+Donc \(\begin{dcases}xy\leq\dfrac{x^2+y^2}{2} \\ -xy\leq\dfrac{x^2+y^2}{2}\end{dcases}\)
+
+D'où \(\abs{xy}=\max\accol{xy;-xy}\leq\dfrac{x^2+y^2}{2}\).
+\end{dem}
+
+\subsection{Partie entière d'un réel}
+
+\begin{defi}
+Soit \(x\in\R\).
+
+On appelle partie entière de \(x\) et on note \(\floor{x}\) le plus grand entier relatif \(n\in\Z\) tel que \(n\leq x\).
+
+Un tel entier existe car \(\accol{n\in\Z\tq n\leq x}\) est une partie non-vide et majorée de \(\Z\).
+\end{defi}
+
+\begin{ex}
+\(\quantifs{\forall n\in\Z}\floor{n}=n\) ; \(\floor{\dfrac{1}{2}}=1\) ; \(\floor{-\dfrac{1}{2}}=-2\).
+\end{ex}
+
+\begin{prop}
+Soit \(x\in\R\).
+
+On a \begin{enumerate}
+\item \(\floor{x}\leq x<\floor{x}+1\)
+
+\item \(\quantifs{\forall n\in\Z}n\leq x\ssi n\leq\floor{x}\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\begin{enumerate}
+\item On a \(\floor{x}\leq x\) par définition.
+
+De plus, \(\floor{x}\) est le plus grand entier inférieur à \(x\) donc \(\floor{x}+1\) n'est pas un entier inférieur à \(x\).
+
+\item Soit \(n\in\Z\).
+
+\begin{itemize}
+\item[\imprec] Claire car \(\floor{x}\leq x\).
+
+\item[\impdir] Si \(n\leq x\) alors \(n\) est plus petit que le plus grand entier inférieur à \(x\).
+
+Donc \(n\leq\floor{x}\).
+\end{itemize}
+\end{enumerate}
+\end{dem}
+
+\section{Sommes et produits}
+
+\begin{nota}
+On pose \(\quantifs{\forall a,b\in\Z}\interventierii{a}{b}=\accol{n\in\Z\tq a\leq n\leq b}\).
+\end{nota}
+
+\begin{nota}
+Soient \(a,b\in\Z\) et \(f:\Z\to\R\).
+
+\begin{itemize}
+\item On pose \(\sum_{k=a}^b f\paren{k}=\begin{dcases}f\paren{a}+f\paren{a+1}+\dots+f\paren{b}&\text{ si \(a\leq b\)} \\ 0&\text{ si \(a>b\)}\end{dcases}\)
+
+\item On pose \(\prod_{k=a}^b f\paren{k}=\begin{dcases}f\paren{a}\times f\paren{a+1}\times\dots\times f\paren{b}&\text{ si \(a\leq b\)} \\ 1&\text{ si \(a>b\)}\end{dcases}\)
+
+\item Soit \(E\) un ensemble fini et \(f:E\to\R\).
+
+On note \(\sum_{x\in E}f\paren{x}\) la somme des \(f\paren{x}\) pour \(x\in E\) (\(0\) si \(E=\ensvide\)).
+
+Et \(\prod_{x\in E}f\paren{x}\) le produit des \(f\paren{x}\) pour \(x\in E\) (\(1\) si \(E=\ensvide\)).
+\end{itemize}
+\end{nota}
+
+\begin{rem}
+Les indices \(k\) et \(x\) sont des \guillemets{variables locales}, non définies en dehors des \(\sum\) et \(\prod\).
+
+Ce sont aussi des \guillemets{variables muettes}, la somme ou le produit ne dépend pas du nom de la variable : \(\sum_{k=a}^b f\paren{k}=\sum_{l=a}^b f\paren{l}\).
+\end{rem}
+
+\begin{rem}[Changements d'indice]
+\begin{itemize}
+\item Soit \(n\in\interventierie{2}{\pinf}\).
+
+On a \(\sum_{k=2}^n2^{k-2}\ln\paren{k+1}=\sum_{k=0}^{n-2}2^k\ln\paren{k+3}\).
+
+\item Soit \(\paren{u_k}_{k\in\N}\) une suite de réels.
+
+On a \(\sum_{k=0}^{n-1}u_{1-k}=\sum_{k=1}^n u_k\).
+\end{itemize}
+\end{rem}
+
+\begin{prop}
+Soient \(E\) et \(F\) deux ensembles finis. On suppose que \(E\) et \(F\) sont disjoints (ie \(E\cap F=\ensvide\)).
+
+Soit \(f:E\cup F\to\R\).
+
+Alors \(\sum_{x\in E\cup F}f\paren{x}=\sum_{x\in E}f\paren{x}+\sum_{x\in F}f\paren{x}\).
+
+Et \(\prod_{x\in E\cup F}f\paren{x}=\prod_{x\in E}f\paren{x}\times\prod_{x\in F}f\paren{x}\).
+\end{prop}
+
+\begin{prop}[Sommes télescopiques]
+Soient \(a,b\in\Z\) tels que \(a\leq b\) et \(\paren{u_n}_{n\in\N}\) une suite de réels.
+
+On a \(\sum_{k=a}^b\paren{u_{k+1}-u_k}=u_{b+1}-u_a\).
+\end{prop}
+
+\begin{dem}~\\
+On a \(\sum_{k=a}^b\paren{u_{k+1}-u_k}=\sum_{k=a}^b u_{k+1}-\sum_{k=a}^b u_k=\sum_{k=a+1}^{b+1}u_k-\sum_{k=a}^b u_k=u_{b+1}-u_a\).
+\end{dem}
+
+\begin{ex}
+Soit \(n\in\Ns\). Calculer \(\sum_{k=1}^n\ln\paren{1+\dfrac{1}{k}}\) et \(\sum_{k=1}^n\dfrac{1}{k\paren{k+1}}\).
+
+\begin{itemize}
+\item On a \(\begin{aligned}[t]
+\sum_{k=1}^n\ln\paren{1+\dfrac{1}{k}}&=\sum_{k=1}^n\ln\dfrac{k+1}{k} \\
+&=\sum_{k=1}^n\paren{\ln\paren{k+1}-\ln k} \\
+&=\sum_{k=1}^n\ln\paren{k+1}-\sum_{k=1}^n\ln k \\
+&=\sum_{k=2}^{n+1}\ln k-\sum_{k=1}^n\ln k \\
+&=\ln\paren{n+1}-\ln1 \\
+&=\ln\paren{n+1}
+\end{aligned}\)
+
+\item On a \(\begin{aligned}[t]
+\sum_{k=1}^n\dfrac{1}{k\paren{k+1}}&=\sum_{k=1}^n\dfrac{1+k-k}{k\paren{k+1}} \\
+&=\sum_{k=1}^n\paren{\dfrac{1+k}{k\paren{k+1}}-\dfrac{k}{k\paren{k+1}}} \\
+&=\sum_{k=1}^n\paren{\dfrac{1}{k}-\dfrac{1}{k+1}} \\
+&=\sum_{k=1}^n\dfrac{1}{k}-\sum_{k=1}^n\dfrac{1}{k+1} \\
+&=\sum_{k=1}^n\dfrac{1}{k}-\sum_{k=2}^{n+1}\dfrac{1}{k} \\
+&=1-\dfrac{1}{n+1} \\
+&=\dfrac{n}{n+1}
+\end{aligned}\)
+\end{itemize}
+\end{ex}
+
+\begin{prop}[Produits télescopiques]
+Soient \(a,b\in\N\) tels que \(a\leq b\) et \(\paren{u_n}_{n\in\N}\) une suite de réels non-nuls.
+
+Alors, \(\prod_{k=a}^b\dfrac{u_{k+1}}{u_k}=\dfrac{u_{b+1}}{u_a}\).
+\end{prop}
+
+\begin{prop}[Doubles sommes]
+Soient \(a,b,c,d\in\Z\) et \(f:\Z^2\to\R\).
+
+Alors, \(\sum_{i=a}^b\sum_{j=c}^d f\paren{i,j}=\sum_{\paren{i,j}\in\interventierii{a}{b}\times\interventierii{c}{d}}f\paren{i,j}=\sum_{j=c}^d\sum_{i=a}^b f\paren{i,j}\).
+
+On appelle interversion le passage du membre de gauche au membre de droite.
+\end{prop}
+
+\begin{prop}[Produits doubles]
+Soient \(a,b,c,d\in\Z\) et \(f:\Z^2\to\R\).
+
+Alors, \(\prod_{i=a}^b\prod_{j=c}^d f\paren{i,j}=\prod_{j=c}^d\prod_{i=a}^b f\paren{i,j}\) (interversion).
+\end{prop}
+
+\begin{ex}~\\
+On a \(\sum_{i=0}^1\sum_{j=0}^2 j^i=\paren{1+1+1}+\paren{0+1+2}=6\) et \(\sum_{j=0}^2\sum_{i=0}^1 j^i=\paren{1+0}+\paren{1+1}+\paren{1+2}=6\).
+\end{ex}
+
+\begin{prop}
+Soient \(E\) et \(F\) deux ensembles finis et \(f:E\to\R\) et \(g:F\to\R\).
+
+On a \(\sum_{x\in E}f\paren{x}\times\sum_{y\in F}g\paren{y}=\sum_{x\in E}\sum_{y\in F}f\paren{x}g\paren{y}\).
+\end{prop}
+
+\begin{ex}
+Soient \(n\in\N\) et \(x_1,\dots,x_n\in\R\).
+
+On a \(\paren{\sum_{k=1}^n x_k}^2=\sum_{k=1}^n x_k^2+2\sum_{1\leq k<l\leq n}x_kx_l\).
+\end{ex}
+
+\begin{rem}
+La dernière somme pourrait s'écrire \(\sum_{\paren{k,l}\in E}\dots\ \) où \(E=\accol{\paren{k,l}\in\N^2\tq1\leq k<l\leq n}\) ou encore \(\sum_{k=1}^n\sum_{l=k+1}^n\dots\).
+\end{rem}
+
+\begin{dem}~\\
+On a \(\begin{aligned}[t]
+\paren{\sum_{k=1}^n x_k}^2&=\sum_{k=1}^n x_k\times\sum_{l=1}^n x_l \\
+&=\sum_{k=1}^n\sum_{l=1}^n x_kx_l \\
+&=\sum_{1\leq k=l\leq n}x_kx_l+\sum_{1\leq k<l\leq n}x_kx_l+\sum_{1\leq l<k\leq n}x_kx_l \\
+&=\sum_{k=1}^n x_k^2+2\sum_{1\leq k<l\leq n}x_kx_l
+\end{aligned}\)
+
+~
+\end{dem}
+
+\section{Factorielle, coefficients binomiaux}
+
+\begin{defi}[Factorielle]
+Soit \(n\in\N\).
+
+On pose \(n!=\prod_{k=1}^n k\).
+\end{defi}
+
+\begin{defi}[Coefficient binomial]
+Soient \(n\in\N\) et \(p\in\Z\).
+
+On pose \(\binom{p}{n}=\begin{dcases}\dfrac{n!}{p!\,\paren{n-p}!}&\text{ si \(0\leq p\leq n\)} \\ 0&\text{ si \(0>p\) ou \(p>n\)}\end{dcases}\)
+
+\(\binom{p}{n}\) est le nombre de parties de cardinal \(p\) contenues dans un ensemble de cardinal \(n\).
+
+Supposons \(0\leq p\leq n\). On a \(\dfrac{n!}{\paren{n-p}!}=n\paren{n-1}\dots\paren{n-p+1}\).
+
+Donc \(\binom{p}{n}=\dfrac{n\paren{n-1}\dots\paren{n-p+1}}{p!}\).
+
+On a \(\binom{0}{n}=\dfrac{1}{1}=1\) ; \(\binom{1}{n}=\dfrac{n}{1}=n\) ; \(\binom{2}{n}=\dfrac{n\paren{n-1}}{1\times2}=\dfrac{n\paren{n-1}}{2}\).
+\end{defi}
+
+\begin{prop}
+Soient \(n\in\N\) et \(p\in\Z\).
+
+On a \begin{enumerate}
+\item \(\binom{p}{n}=\binom{n-p}{n}\)
+
+\item \(\binom{p}{n}+\binom{p+1}{n}=\binom{p+1}{n+1}\)
+
+\item Si \(p\not=0\) alors \(\binom{p}{n}=\dfrac{n}{p}\binom{p-1}{n-1}\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+\begin{enumerate}
+\item On a \(0\leq p\leq n\ssi0\leq n-p\leq n\).
+
+Si \(p<0\) ou \(n<p\), les deux coefficients binomiaux sont nuls.
+
+Sinon, \(\binom{n-p}{n}=\dfrac{n!}{\paren{n-p}!\,\paren{n-\paren{n-p}}!}=\dfrac{n!}{\paren{n-p}!\,p!}=\binom{p}{n}\).
+
+\item Si \(p<-1\), les trois coefficients binomiaux sont nuls.
+
+Si \(p=-1\), on a bien \(0+1=1\).
+
+Si \(p>n\), les trois coefficients binomiaux sont nuls.
+
+Si \(p=n\), on a bien \(1+0=1\).
+
+Supposons désormais \(0\leq p\leq n-1\).
+
+Les trois coefficients binomiaux sont non-nuls et on a :
+
+\(\begin{aligned}[t]
+\binom{p}{n}+\binom{p+1}{n}&=\dfrac{n!}{p!\,\paren{n-p}!}+\dfrac{n!}{\paren{p+1}!\,\paren{n-p+1}!} \\
+&=\dfrac{\paren{p+1}n!+\paren{n-p}n!}{\paren{n-p}!\,\paren{p+1}!} \\
+&=\dfrac{\paren{n+1}n!}{\paren{n-p}!\,\paren{p+1}!} \\
+&=\dfrac{\paren{n+1}!}{\paren{\paren{n+1}-\paren{p+1}}!\,\paren{p+1}!} \\
+&=\binom{p+1}{n+1}
+\end{aligned}\)
+
+\item Si \(p<0\), on a bien \(0=0\).
+
+Si \(p>n\), idem.
+
+Supposons \(1\leq p\leq n\).
+
+On a \(\binom{p}{n}=\dfrac{n\paren{n-1}\dots\paren{n-p+1}}{p!}=\dfrac{n}{p}\times\dfrac{\paren{n-1}\dots\paren{n-p+1}}{\paren{p-1}!}=\dfrac{n}{p}\binom{p-1}{n-1}\).
+\end{enumerate}
+\end{dem}
+
+\begin{rem}
+Le triangle de Pascal est complété à l'aide de (2) :
+
+\(\begin{array}{c|ccccc}
+&0&1&2&3&4 \\
+\hline
+0&\binom{0}{0}&&&& \\[1em]
+1&\binom{0}{1}&\binom{1}{1}&&& \\[1em]
+2&\binom{0}{2}&\binom{1}{2}&\binom{2}{2}&& \\[1em]
+3&\binom{0}{3}&\binom{1}{3}&\binom{2}{3}&\binom{3}{3}&
+\end{array}\) donnant \(\begin{array}{c|ccccc}
+&0&1&2&3&4 \\
+\hline
+0&1&0&0&0&0 \\
+1&1&1&0&0&0 \\
+2&1&2&1&0&0 \\
+3&1&3&3&1&0
+\end{array}\)
+\end{rem}
+
+\begin{prop}[Formule du binôme de Newton]
+Soient \(x,y\in\R\) et \(n\in\N\).
+
+On a \(\paren{x+y}^n=\sum_{k=0}^n\binom{k}{n}x^ky^{n-k}=\sum_{k=0}^n\binom{k}{n}y^kx^{n-k}\)
+\end{prop}
+
+\begin{dem}
+Par récurrence sur \(n\in\N\).
+
+Pour tout \(n\in\N\), on note \(P\paren{n}\) la proposition \guillemets{\(\paren{x+y}^n=\sum_{k=0}^n\binom{k}{n}x^ky^{n-k}\)}.
+
+\underline{Initialisation :}
+
+On a bien \(\paren{x+y}^0=1\) et \(\sum_{k=0}^0\binom{k}{0}x^ky^{0-k}=\binom{0}{0}x^0y^0=1\).
+
+D'où \(P\paren{0}\).
+
+\underline{Hérédité :}
+
+Soit \(n\in\N\) tel que \(P\paren{n}\). Montrons \(P\paren{n+1}\). On a :
+
+\(\begin{aligned}[t]
+\paren{x+y}^{n+1}&=\paren{x+y}\paren{x+y}^n \\
+&=\paren{x+y}\sum_{k=0}^n\binom{k}{n}x^ky^{n-k}\text{ selon \(P\paren{n}\)} \\
+&=\sum_{k=0}^n\binom{k}{n}x^{k+1}y^{n-k}+\sum_{k=0}^n\binom{k}{n}x^ky^{n-k+1} \\
+&=\sum_{k=1}^{n+1}\binom{k-1}{n}x^ky^{n-k+1}+\sum_{k=0}^n\binom{k}{n}x^ky^{n-k+1} \\
+&=\sum_{k=0}^{n+1}\binom{k-1}{n}x^ky^{n-k+1}+\sum_{k=0}^{n+1}\binom{k}{n}x^ky^{n-k+1}\text{ car \(\binom{-1}{n}=\binom{n+1}{n}=0\)} \\
+&=\sum_{k=0}^{n+1}\paren{\binom{k-1}{n}+\binom{k}{n}}x^ky^{n-k+1} \\
+&=\sum_{k=0}^{n+1}\binom{k}{n+1}x^ky^{n-k+1}
+\end{aligned}\)
+
+D'où \(P\paren{n+1}\).
+
+\underline{Conclusion :}
+
+On a \(\quantifs{\forall n\in\N}P\paren{n}\).
+\end{dem}

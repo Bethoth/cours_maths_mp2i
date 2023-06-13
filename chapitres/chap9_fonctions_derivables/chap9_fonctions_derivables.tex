@@ -1,0 +1,1351 @@
+\chapter{Fonctions dérivables}
+
+\minitoc
+
+Dans tout ce chapitre, on note \(I\) un intervalle de \(\R\) qui contient au moins deux points (\cad un intervalle qui n'est ni l'ensemble vide, ni un singleton).
+
+\section{Étude locale}
+
+\subsection{Définitions}
+
+\begin{defi}[Dérivée]
+Soient \(f:I\to\R\) et \(a\in I\).
+
+On dit que \(f\) est dérivable en \(a\) si la limite \[\lim_{\substack{x\to a \\ x\not=a}}\dfrac{f\paren{x}-f\paren{a}}{x-a}\] existe et est finie.
+
+Elle est alors notée \(f\prim\paren{a}\), \(D f\paren{a}\), \(\odv{f}{x}\paren{a}\) ou \(\odv{f}{t}\paren{a}\).
+
+Notons \(J\) l'ensemble des points (de \(I\)) où \(f\) est dérivable.
+
+On appelle dérivée de \(f\) la fonction \[\fonctionlambda{J}{\R}{x}{f\prim\paren{x}}\]
+
+On dit que \(f\) est dérivable (sur \(I\)) si \(f\) est dérivable en tout point de \(I\) (\cad \(J=I\)).
+\end{defi}
+
+\begin{defi}[Dérivée à droite, à gauche]
+Soient \(f:I\to\R\) et \(a\in I\).
+
+On dit que \(f\) est dérivable à droite en \(a\) si la limite \[\lim_{x\to a^+}\dfrac{f\paren{x}-f\paren{a}}{x-a}\] existe et est finie (il faut donc que l'intervalle \(I\inter\intervee{a}{\pinf}\) soit non vide).
+
+Cette limite est alors notée \(f_d\prim\paren{a}\).
+
+On dit que \(f\) est dérivable à gauche en \(a\) si la limite \[\lim_{x\to a^-}\dfrac{f\paren{x}-f\paren{a}}{x-a}\] existe et est finie (il faut donc que l'intervalle \(I\inter\intervee{\minf}{a}\) soit non vide).
+
+Cette limite est alors notée \(f_g\prim\paren{a}\).
+\end{defi}
+
+\begin{rem}
+Si \(I=\intervii{a}{b}\), où \(a\) et \(b\) sont deux réels tels que \(a<b\), alors :
+
+La fonction \(f\) est dérivable en \(a\) si, et seulement si, elle est dérivable à droite en \(a\).
+
+La fonction \(f\) est dérivable en \(b\) si, et seulement si, elle est dérivable à gauche en \(b\).
+
+Soit \(c\in\intervee{a}{b}\). La fonction \(f\) est dérivable en \(c\) si, et seulement si, elle est dérivable à droite et à gauche en \(c\) et \(f_d\prim\paren{c}=f_g\prim\paren{c}\).
+\end{rem}
+
+\begin{ex}
+La fonction \guillemets{carré} \(x\mapsto x^2\) est dérivable sur \(\R\).
+
+En \(0\), la fonction \guillemets{valeur absolue} \(x\mapsto\abs{x}\) est dérivable à droite et à gauche, mais n'est pas dérivable.
+\end{ex}
+
+\begin{prop}[Dérivable \(\imp\) continue]
+Soient \(f:I\to\R\) et \(a\in I\).
+
+Si \(f\) est dérivable en \(a\), alors \(f\) est continue en \(a\).
+
+Si \(f\) est dérivable, alors \(f\) est continue.
+\end{prop}
+
+\begin{dem}
+Supposons \(f\) dérivable en \(a\).
+
+Alors \(\lim_{\substack{x\to a \\ x\not=a}}\dfrac{f\paren{x}-f\paren{a}}{x-a}\) existe et est finie et \(\lim_{\substack{x\to a \\ x\not=a}}x-a=0\) donc par produit, \(\lim_{\substack{x\to a \\ x\not=a}}f\paren{x}-f\paren{a}=0\).
+
+Enfin, \(f\paren{x}-f\paren{a}=0\) si \(x=a\).
+
+Donc \(\lim_{x\to a}f\paren{x}=f\paren{a}\).
+
+Donc \(f\) est continue.
+\end{dem}
+
+\begin{rem}
+Soient \(f:I\to\R\) et \(a\in I\).
+
+Si \(f\) est dérivable à droite en \(a\), alors \(f\) est continue à droite en \(a\).
+
+Si \(f\) est dérivable à gauche en \(a\), alors \(f\) est continue à gauche en \(a\).
+\end{rem}
+
+\subsection{Opérations sur les dérivées}
+
+\begin{prop}
+Soient \(f,g\in\F{I}{\R}\) et \(a\in I\).
+
+On suppose que \(f\) et \(g\) sont dérivables en \(a\).
+
+Alors :
+
+\begin{enumerate}
+\item \(f+g\) est dérivable en \(a\) et on a : \[\paren{f+g}\prim\paren{a}=f\prim\paren{a}+g\prim\paren{a}.\] \\
+
+\item Plus généralement, si \(\lambda,\mu\in\R\) alors \(\lambda f+\mu g\) est dérivable en \(a\) et on a : \[\paren{\lambda f+\mu g}\prim\paren{a}=\lambda f\prim\paren{a}+\mu g\prim\paren{a}.\] \\
+
+\item \(fg\) est dérivable en \(a\) et on a : \[\paren{fg}\prim\paren{a}=f\prim\paren{a}g\paren{a}+f\paren{a}g\prim\paren{a}.\] \\
+
+\item Si \(g\paren{a}\not=0\) alors \(\dfrac{1}{g}\) est dérivable en \(a\) et on a : \[\paren{\dfrac{1}{g}}\prim\paren{a}=\dfrac{-g\prim\paren{a}}{g^2\paren{a}}.\] \\
+
+\item Si \(g\paren{a}\not=0\) alors \(\dfrac{f}{g}\) est dérivable en \(a\) et on a : \[\paren{\dfrac{f}{g}}\prim\paren{a}=\dfrac{f\prim\paren{a}g\paren{a}-f\paren{a}g\prim\paren{a}}{g^2\paren{a}}.\]
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1 et 2]
+Clair.
+\end{dem}
+
+\begin{dem}[3]
+On a : \[\begin{aligned}
+\quantifs{\forall x\in\R\excluant\accol{a}}\dfrac{f\paren{x}g\paren{x}-f\paren{a}g\paren{a}}{x-a}&=\dfrac{f\paren{x}g\paren{x}-f\paren{x}g\paren{a}+f\paren{x}g\paren{a}-f\paren{a}g\paren{a}}{x-a} \\
+&=f\paren{x}\dfrac{g\paren{x}-g\paren{a}}{x-a}+\dfrac{f\paren{x}-f\paren{a}}{x-a}g\paren{a} \\
+&\xrightarrow[x\to a]{}f\paren{a}g\prim\paren{a}+f\prim\paren{a}g\paren{a}.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[4]
+On a : \[\begin{aligned}
+\quantifs{\forall x\in\R\excluant\accol{a}}\dfrac{\frac{1}{g\paren{x}}-\frac{1}{g\paren{a}}}{x-a}&=\dfrac{1}{g\paren{x}}\times\dfrac{1}{g\paren{a}}\times\dfrac{g\paren{a}-g\paren{x}}{x-a} \\
+&\xrightarrow[x\to a]{}\dfrac{-g\prim\paren{a}}{g^2\paren{a}}.
+\end{aligned}\]
+
+\(g\) est non-nulle au voisinage de \(a\) car \(g\paren{a}\not=0\) et \(g\) est continue en \(a\).
+\end{dem}
+
+\begin{dem}[5]~\\
+\(f\) et \(\dfrac{1}{g}\) sont dérivables en \(a\) donc leur produit aussi.
+
+On a : \[\begin{aligned}
+\paren{f\times\dfrac{1}{g}}\prim\paren{a}&=f\prim\paren{a}\times\dfrac{1}{g\paren{a}}+f\paren{a}\times\paren{\dfrac{1}{g}}\prim\paren{a} \\
+&=\dfrac{f\prim\paren{a}}{g\paren{a}}-\dfrac{f\paren{a}g\prim\paren{a}}{g^2\paren{a}} \\
+&=\dfrac{f\prim\paren{a}g\paren{a}-f\paren{a}g\prim\paren{a}}{g^2\paren{a}}.
+\end{aligned}\]
+\end{dem}
+
+\begin{cor}
+Soient \(f,g\in\F{I}{\R}\) dérivables.
+
+Alors les fonctions \(f+g\) et \(fg\) sont dérivables sur \(I\) et, si \(g\) ne s'annule pas, les fonctions \(\dfrac{1}{g}\) et \(\dfrac{f}{g}\) sont dérivables sur \(I\).
+\end{cor}
+
+\begin{prop}
+Soient \(J\) un intervalle de \(\R\) contenant au moins deux points, \(f:I\to J\), \(g:J\to\R\) et \(a\in I\).
+
+On suppose \(f\) dérivable en \(a\) et \(g\) dérivable en \(f\paren{a}\).
+
+Alors \(g\rond f\) est dérivable en \(a\) et on a : \[\paren{g\rond f}\prim\paren{a}=f\prim\paren{a}g\prim\paren{f\paren{a}}.\]
+\end{prop}
+
+\begin{dem}
+\note{Admis provisoirement} (\cf chapitre \guillemets{Relations de comparaison}).
+\end{dem}
+
+\begin{cor}
+Soient \(J\) un intervalle de \(\R\) contenant au moins deux points, \(f:I\to J\) et \(g:J\to\R\) dérivables.
+
+Alors \(g\rond f\) est dérivable et on a : \[\quantifs{\forall x\in I}\paren{g\rond f}\prim\paren{x}=f\prim\paren{x}g\prim\paren{f\paren{x}}.\]
+\end{cor}
+
+\begin{ex}
+Étudions la fonction \(f:x\mapsto\sqrt{1+\ln x}\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall x\in\R}f\paren{x}\text{ bien défini}&\ssi1+\ln x\geq0 \\
+&\ssi\ln x\geq-1 \\
+&\ssi x\geq\dfrac{1}{\e{}}.
+\end{aligned}\]
+
+Donc \(\quantifs{\forall x\in\intervee{\dfrac{1}{\e{}}}{\pinf}}f\prim\paren{x}=\dfrac{1}{x}\times\dfrac{1}{2\sqrt{1+\ln x}}=\dfrac{1}{2x\sqrt{1+\ln x}}\).
+\end{ex}
+
+\begin{theo}[Dérivée de la bijection réciproque]
+Soit \(f:I\to\R\) dérivable et strictement monotone.
+
+La fonction \(f:I\to f\paren{I}\) est bijective ; on note \(f\inv:f\paren{I}\to I\) sa bijection réciproque.
+
+Soit \(y\in f\paren{I}\).
+
+Si \(f\prim\paren{f\inv\paren{y}}\not=0\) alors \(f\inv\) est dérivable en \(y\) et on a : \[\paren{f\inv}\prim\paren{y}=\dfrac{1}{f\prim\paren{f\inv\paren{y}}}.\]
+
+Si \(f\prim\paren{f\inv\paren{y}}=0\) alors \(f\inv\) n'est pas dérivable en \(y\). Son graphe admet une tangente verticale au point \(\paren{y,f\inv\paren{y}}\).
+\end{theo}
+
+\begin{dem}
+\Cf TD.
+\end{dem}
+
+\subsection{Fonctions de classe \(\classe{k}\)}
+
+\begin{defi}[Fonction de classe \(\classe{k}\)]
+Soient \(f:I\to\R\) et \(k\in\N\).
+
+On dit que \(f\) est de classe \(\classe{k}\) sur \(I\) si elle est \(k\) fois dérivable sur \(I\) et si sa dérivée \(k\)-ème est continue.
+
+On dit que \(f\) est de classe \(\classe{\infty}\) sur \(I\) si elle est de classe \(\classe{n}\) sur \(I\) pour tout \(n\in\N\).
+\end{defi}
+
+\begin{nota}
+Soit \(n\in\N\).
+
+L'ensemble des fonctions de classe \(\classe{n}\) (respectivement \(\classe{\infty}\)) de \(I\) dans \(\R\) est noté : \[\ensclasse{n}{I}{\R}\text{ (respectivement \(\ensclasse{\infty}{I}{\R}\))}.\]
+
+Si \(f\) est de classe \(\classe{n}\) sur \(I\), les dérivées successives de \(f\) sont notées : \[f\deriv{0}=f\qquad f\deriv{1}=f\prim\qquad f\deriv{2}=f\seconde\qquad f\deriv{3}\qquad\dots\qquad f\deriv{n}.\]
+
+Elles vérifient la relation de récurrence : \[\quantifs{\forall k\in\interventierii{0}{n-1}}\paren{f\deriv{k}}\prim=\paren{f\prim}\deriv{k}=f\deriv{k+1}.\]
+\end{nota}
+
+\begin{rem}
+La suite d'ensembles \(\paren{\ensclasse{n}{I}{\R}}_{n\in\N}\) peut être définie par récurrence par : \[\begin{dcases}\ensclasse{0}{I}{\R}\text{ est l'ensemble des fonctions continues de \(I\) dans \(\R\)} \\ \quantifs{\forall n\in\N}\ensclasse{n+1}{I}{\R}=\accol{f\in\F{I}{\R}\tq f\text{ est dérivable et }f\prim\in\ensclasse{n}{I}{\R}}\end{dcases}\]
+
+Enfin, on peut poser : \[\ensclasse{\infty}{I}{\R}=\biginter_{n\in\N}\ensclasse{n}{I}{\R}.\]
+
+On a \[\ensclasse{\infty}{I}{\R}\subset\dots\subset\ensclasse{2}{I}{\R}\subset\ensclasse{1}{I}{\R}\subset\ensclasse{0}{I}{\R}\subset\F{I}{\R}.\]
+\end{rem}
+
+\begin{prop}
+Soient \(n\in\N\) et \(f,g\in\ensclasse{n}{I}{\R}\).
+
+Alors leur somme \(f+g\) est de classe \(\classe{n}\) et on a : \[\paren{f+g}\deriv{n}=f\deriv{n}+g\deriv{n}.\]
+
+Plus généralement, si \(\lambda,\mu\in\R\), alors \(\lambda f+\mu g\) est de classe \(\classe{n}\) et on a : \[\paren{\lambda f+\mu g}\deriv{n}=\lambda f\deriv{n}+\mu g\deriv{n}.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}[Formule de Leibniz]
+Soit \(n\in\N\) et \(f,g\in\ensclasse{n}{I}{\R}\).
+
+Alors leur produit \(fg\) est de classe \(\classe{n}\) et on a : \[\paren{fg}\deriv{n}=\sum_{k=0}^n\binom{k}{n}f\deriv{k}g\deriv{n-k}.\]
+\end{prop}
+
+\begin{dem}
+Pour tout \(n\in\N\), on note \(\P{n}\) la proposition : \[\quantifs{\forall f,g\in\ensclasse{n}{I}{\R}}fg\in\ensclasse{n}{I}{\R}\text{ et }\paren{fg}\deriv{n}=\sum_{k=0}^n\binom{k}{n}f\deriv{k}g\deriv{n-k}.\]
+
+Si \(f\) et \(g\) sont continues, alors \(fg\) est continue et on a \(\paren{fg}\deriv{0}=fg=\binom{0}{0}f\deriv{0}g\deriv{0}=\sum_{k=0}^0\binom{k}{0}f\deriv{k}g\deriv{n-k}\).
+
+D'où \(\P{0}\).
+
+Soit \(n\in\N\) tel que \(\P{n}\). Montrons \(\P{n+1}\).
+
+Soient \(f,g\in\ensclasse{n+1}{I}{\R}\).
+
+Alors on a \(f,g\in\ensclasse{n}{I}{\R}\) donc selon \(\P{n}\), on a : \(\paren{fg}\deriv{n}=\sum_{k=0}^n\binom{k}{n}f\deriv{k}g\deriv{n-k}\).
+
+Les fonctions \(f\deriv{k}\) et \(g\deriv{n-k}\) sont dérivables pour tout \(k\in\interventierii{0}{n}\).
+
+On a donc : \[\begin{WithArrows}
+\paren{\paren{fg}\deriv{n}}\prim&=\sum_{k=0}^n\binom{k}{n}\paren{f\deriv{k+1}g\deriv{n-k}+f\deriv{k}g\deriv{n-k+1}} \\
+&=\sum_{k=0}^n\binom{k}{n}f\deriv{k+1}g\deriv{n-k}+\sum_{k=0}^n\binom{k}{n}f\deriv{k}g\deriv{n-k+1} \\
+&=\sum_{k=1}^{n+1}\binom{k-1}{n}f\deriv{k}g\deriv{n-k+1}+\sum_{k=0}^n\binom{k}{n}f\deriv{k}g\deriv{n-k+1} \Arrow{car \(\binom{-1}{n}=\binom{n+1}{n}=0\)} \\
+&=\sum_{k=0}^{n+1}\binom{k-1}{n}f\deriv{k}g\deriv{n-k+1}+\sum_{k=0}^{n+1}\binom{k}{n}f\deriv{k}g\deriv{n-k+1} \\
+&=\sum_{k=0}^{n+1}\binom{k}{n}f\deriv{k}g\deriv{n-k+1}.
+\end{WithArrows}\]
+
+De plus, \(f\deriv{k}\) et \(g\deriv{n-k+1}\) sont continues pour tout \(k\in\interventierii{0}{n+1}\) donc \(\paren{fg}\deriv{n+1}\) est continue.
+
+Donc \(fg\) est de classe \(\classe{n+1}\).
+
+D'où \(\P{n+1}\).
+
+Donc \(\quantifs{\forall n\in\N}\P{n}\).
+\end{dem}
+
+\begin{rem}
+Soit \(n\in\N\).
+
+Les ensembles \(\ensclasse{n}{I}{\R}\) et \(\ensclasse{\infty}{I}{\R}\) sont des sous-anneaux de \(\anneau{\F{I}{\R}}\).
+\end{rem}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}[Autres opérations]
+Soient \(n\in\N\).
+
+Soient \(f,g\in\ensclasse{n}{I}{\R}\). Si \(g\) ne s'annule pas, alors les fonctions \(\dfrac{1}{g}\) et \(\dfrac{f}{g}\) sont de classe \(\classe{n}\).
+
+Soient \(J\) un intervalle de \(\R\) contenant au moins deux points, \(f\in\ensclasse{n}{I}{J}\) et \(g\in\ensclasse{n}{J}{\R}\). Alors \(g\rond f\) est de classe \(\classe{n}\).
+
+Soient \(J\) un intervalle de \(\R\) contenant au moins deux points et \(f\in\ensclasse{n}{I}{J}\) telle que \[\quantifs{\forall x\in I}f\prim\paren{x}\not=0.\] Alors la bijection réciproque de \(f\) est de classe \(\classe{n}\) sur \(J\).
+\end{prop}
+
+\begin{dem}[Composition et bijection réciproque]
+\note{Admis}
+\end{dem}
+
+\begin{dem}[Quotient, non-exigible]
+Pour tout \(n\in\N\), on note \(\P{n}\) la proposition \[\quantifs{\forall f,g\in\ensclasse{n}{I}{\R}}\croch{\quantifs{\forall x\in I}g\paren{x}\not=0}\imp\dfrac{f}{g}\in\ensclasse{n}{I}{\R}.\]
+
+Le quotient de deux fonctions continues est continu donc on a \(\P{0}\).
+
+Soit \(n\in\N\) tel que \(\P{n}\). Montrons \(\P{n+1}\).
+
+Soient \(f,g\in\ensclasse{n+1}{I}{\R}\).
+
+On a \(\paren{\dfrac{f}{g}}\prim=\dfrac{f\prim g-fg\prim}{g^2}\).
+
+Or \(f\prim\) et \(g\prim\) sont de classe \(\classe{n}\) car \(f\) et \(g\) sont de classe \(\classe{n+1}\) et donc de classe \(\classe{n}\).
+
+Donc \(f\prim g-fg\prim\) et \(g^2\) sont de classe \(\classe{n}\).
+
+Donc selon \(\P{n}\), \(\dfrac{f\prim g-fg\prim}{g^2}\) est de classe \(\classe{n}\).
+
+Donc \(\paren{\dfrac{f}{g}}\prim\) est de classe \(\classe{n}\).
+
+Donc \(\dfrac{f}{g}\) est de classe \(\classe{n+1}\).
+
+D'où \(\P{n+1}\).
+
+Donc \(\quantifs{\forall n\in\N}\P{n}\).
+\end{dem}
+
+\subsection{Extrema locaux}
+
+\begin{theo}
+Soient \(f:I\to\R\) et \(a\in I\).
+
+On suppose que \(f\) admet un extremum local en \(a\), que \(f\) est dérivable en \(a\) et que \(I\) est un voisinage de \(a\) (\cad : \(\quantifs{\exists\epsilon\in\Rps}\intervee{a-\epsilon}{a+\epsilon}\subset I\)).
+
+Alors on a : \[f\prim\paren{a}=0.\]
+\end{theo}
+
+\begin{dem}
+Soit \(\epsilon\in\Rps\) tel que \(\intervee{a-\epsilon}{a+\epsilon}\subset I\).
+
+Quitte à remplacer \(f\) par \(-f\), on suppose que \(f\) admet un minimum local en \(a\).
+
+Soit \(\delta\in\intervee{0}{\epsilon}\) tel que \(\quantifs{\forall x\in\intervee{a-\delta}{a+\delta}}f\paren{a}\leq f\paren{x}\).
+
+On a donc \(\begin{dcases}\quantifs{\forall x\in\intervee{a}{a+\delta}}\dfrac{f\paren{x}-f\paren{a}}{x-a}\geq0 \\ \quantifs{\forall x\in\intervee{a-\delta}{a}}\dfrac{f\paren{x}-f\paren{a}}{x-a}\leq0\end{dcases}\)
+
+D'où, par passage à la limite quand \(x\to a\) : \(\begin{dcases}f\prim\paren{a}\geq0 \\ f\prim\paren{a}\leq0\end{dcases}\)
+
+Donc \(f\prim\paren{a}=0\).
+\end{dem}
+
+\begin{rem}
+Ainsi, si \(I\) est un intervalle ouvert et si la fonction \(f:I\to\R\) est dérivable, on a, pour tout \(a\in I\) : \[f\text{ admet un extremum local en }a\imp f\prim\paren{a}=0.\]
+
+L'implication réciproque est généralement fausse, comme le montre l'exemple de la fonction \guillemets{cube} \(f:x\mapsto x^3\). En effet, on a \(f\prim\paren{0}=0\) mais \(f\) n'admet ni minimum local, ni maximum local en \(0\) (car \(\quantifs{\forall x\in\Rms}f\paren{x}<f\paren{0}\) et \(\quantifs{\forall x\in\Rps}f\paren{x}>f\paren{0}\)).
+\end{rem}
+
+\section{Étude globale}
+
+\subsection{Égalité des accroissements finis}
+
+\begin{theo}[Théorème de Rolle]
+Soient \(a,b\in\R\) tels que \(a<b\) et \(f:\intervii{a}{b}\to\R\).
+
+On suppose que \(\begin{dcases}f\text{ est continue sur }\intervii{a}{b} \\ f\text{ est dérivable sur }\intervee{a}{b} \\ f\paren{a}=f\paren{b}\end{dcases}\)
+
+Alors on a \[\quantifs{\exists c\in\intervee{a}{b}}f\prim\paren{c}=0.\]
+\end{theo}
+
+\begin{dem}
+Comme \(f\) est continue sur un segment, elle admet un minimum \(m\in\R\) et un maximum \(M\in\R\).
+
+Si \(M=m\) alors \(f\) est constante donc \(f\prim=0\) sur \(\intervee{a}{b}\) donc \(c=\dfrac{a+b}{2}\) convient.
+
+Supposons \(M\not=m\).
+
+Si \(f\paren{a}=m\) alors \(f\paren{a}\not=M\).
+
+Soit \(c\in\intervii{a}{b}\) tel que \(f\paren{c}=M\).
+
+On a \(c\not=a\) et \(c\not=b\).
+
+Donc \(\begin{dcases}f\text{ est dérivable en }c \\ f\text{ admet un extremum (local) en }c \\ \intervee{a}{b}\text{ est un voisinage de }c\end{dcases}\)
+
+Donc \(f\prim\paren{c}=0\), donc \(c\) convient.
+
+Si \(f\paren{a}\not=m\) : idem en considérant \(c\in\intervii{a}{b}\) tel que \(f\paren{c}=m\).
+\end{dem}
+
+\begin{cor}[Égalité des accroissements finis]
+Soient \(a,b\in\R\) tels que \(a<b\) et \(f:\intervii{a}{b}\to\R\).
+
+On suppose que \(\begin{dcases}f\text{ est continue sur }\intervii{a}{b} \\ f\text{ est dérivable sur }\intervee{a}{b}\end{dcases}\)
+
+Alors on a \[\quantifs{\exists c\in\intervee{a}{b}}f\prim\paren{c}=\dfrac{f\paren{b}-f\paren{a}}{b-a}.\]
+\end{cor}
+
+\begin{dem}
+Posons \(\fonction{g}{\intervii{a}{b}}{\R}{x}{f\paren{x}-\dfrac{f\paren{b}-f\paren{a}}{b-a}x}\)
+
+On remarque que \(\begin{dcases}g\text{ est continue sur }\intervii{a}{b} \\ g\text{ est dérivable sur }\intervee{a}{b} \\ g\paren{b}=g\paren{a}\end{dcases}\)
+
+Donc selon le théorème de Rolle, il existe \(c\in\intervee{a}{b}\) tel que \(g\prim\paren{c}=0\).
+
+Donc \(f\prim\paren{c}-\dfrac{f\paren{b}-f\paren{a}}{b-a}=0\).
+
+D'où \(f\paren{c}=\dfrac{f\paren{b}-f\paren{a}}{b-a}\).
+\end{dem}
+
+\subsection{Inégalité des accroissements finis}
+
+\begin{theo}[Inégalité des accroissements finis]
+Soient \(a,b\in\R\) tels que \(a<b\), \(f:\intervii{a}{b}\to\R\) et \(m,M\in\R\).
+
+On suppose que \(\begin{dcases}f\text{ est continue sur }\intervii{a}{b} \\ f\text{ est dérivable sur }\intervee{a}{b} \\ \quantifs{\forall x\in\intervee{a}{b}}m\leq f\prim\paren{x}\leq M\end{dcases}\)
+
+Alors on a \[m\paren{b-a}\leq f\paren{b}-f\paren{a}\leq M\paren{b-a}.\]
+\end{theo}
+
+\begin{dem}
+Selon l'égalité des accroissements finis, il existe \(c\in\intervee{a}{b}\) tel que \(f\prim\paren{c}=\dfrac{f\paren{b}-f\paren{a}}{b-a}\).
+
+Or \(m\leq f\prim\paren{c}\leq M\) donc \(m\leq\dfrac{f\paren{b}-f\paren{a}}{b-a}\leq M\).
+
+D'où \(m\paren{b-a}\leq f\paren{b}-f\paren{a}\leq M\paren{b-a}\).
+\end{dem}
+
+\begin{rem}
+En supposant seulement \(\quantifs{\forall x\in\intervee{a}{b}}f\prim\paren{x}\leq M\), on obtient seulement \[f\paren{b}-f\paren{a}\leq M\paren{b-a}\].
+
+De même, en supposant seulement \(\quantifs{\forall x\in\intervee{a}{b}}m\leq f\prim\paren{x}\), on obtient seulement \[m\paren{b-a}\leq f\paren{b}-f\paren{a}\].
+\end{rem}
+
+\begin{cor}
+Soient \(f:I\to\R\) dérivable et \(k\in\Rp\).
+
+On a \[f\text{ \(k\)-lipschitzienne}\ssi\quantifs{\forall x\in I}\abs{f\prim\paren{x}}\leq k.\]
+\end{cor}
+
+\begin{dem}
+\impdir
+
+Supposons \(f\) \(k\)-lipschitzienne.
+
+Montrons que \(\quantifs{\forall x\in I}\abs{f\prim\paren{x}}\leq k\).
+
+Soit \(x\in I\).
+
+On a \(\quantifs{\forall y\in I}\abs{f\paren{y}-f\paren{x}}\leq k\abs{y-x}\).
+
+Donc \(\quantifs{\forall y\in I\excluant\accol{x}}\abs{\dfrac{f\paren{y}-f\paren{x}}{y-x}}\leq k\).
+
+D'où, par passage à la limite quand \(y\to x\) : \(\abs{f\prim\paren{x}}\leq k\).
+
+\imprec
+
+Supposons \(\quantifs{\forall x\in I}\abs{f\prim\paren{x}}\leq k\).
+
+Montrons que \(\quantifs{\forall a,b\in I}\abs{f\paren{b}-f\paren{a}}\leq k\abs{b-a}\).
+
+Soient \(a,b\in I\).
+
+Si \(a=b\), on a le résultat.
+
+Si \(a<b\), on a \(\begin{dcases}f\text{ continue sur }\intervii{a}{b} \\ f\text{ dérivable sur }\intervee{a}{b} \\ \quantifs{\forall x\in\intervee{a}{b}}-k\leq f\prim\paren{x}\leq k\end{dcases}\)
+
+Donc selon l'inégalité des accroissements finis, on a \[-k\paren{b-a}\leq f\paren{b}-f\paren{a}\leq k\paren{b-a}.\]
+
+Donc \(\abs{f\paren{b}-f\paren{a}}\leq k\abs{b-a}\).
+
+Si \(a>b\) : idem en échangeant \(a\) et \(b\).
+\end{dem}
+
+\begin{cor}
+Soit \(f:I\to\R\) dérivable.
+
+Alors \[f\text{ lipschitzienne}\ssi f\prim\text{ bornée}.\]
+\end{cor}
+
+\begin{ex}
+La fonction \(\sin:\R\to\R\) est \(1\)-lipschitzienne.
+
+En effet, on a \(\begin{dcases}\R\text{ est un intervalle} \\ \sin\text{ est dérivable sur }\R \\ \quantifs{\forall x\in\R}\abs{\sin\prim x}=\abs{\cos x}\leq1\end{dcases}\)
+
+Donc \(\sin\) est \(1\)-lipschitzienne.
+\end{ex}
+
+\begin{ex}
+Les fonctions \(\exp\), \(\ln\) et \(\fonctionlambda{\Rps}{\R}{x}{\sqrt{x}}\) en sont pas lipschitziennes car leurs dérivées ne sont pas bornées.
+\end{ex}
+
+\begin{ex}
+On retrouve \(\quantifs{\forall x\in\R}\abs{\sin x}\leq\abs{x}\).
+\end{ex}
+
+\begin{ex}
+La fonction \(\fonction{f}{\Rm}{\R}{x}{\e{x}}\) est \(1\)-lipschitzienne car \(\R\) est un intervalle et \[\quantifs{\forall x\in\Rm}\abs{f\prim\paren{x}}=\abs{\e{x}}\leq1.\]
+\end{ex}
+
+\begin{ex}
+La fonction \(f=\restr{\sg}{\Rs}\), \cad \(\fonction{f}{\Rs}{\R}{x}{\begin{dcases}-1 &\text{si }x<0 \\ 1 &\text{si }x>0\end{dcases}}\) est dérivable, de dérivée nulle.
+
+Cependant, on ne peut pas en déduire qu'elle est lipschitzienne car \(\Rs\) n'est pas un intervalle.
+
+Montrons que \(f\) n'est pas lipschitzienne.
+
+Par l'absurde, supposons que \(f\) est lipschitzienne.
+
+Soit \(k\in\Rp\) tel que \(\quantifs{\forall x,y\in\Rs}\abs{\sg x-\sg y}\leq k\abs{x-y}\).
+
+On a \(\quantifs{\forall n\in\Ns}\abs{\sg\dfrac{1}{n}-\sg\dfrac{-1}{n}}\leq k\abs{\dfrac{1}{n}-\dfrac{-1}{n}}\).
+
+Donc \(\quantifs{\forall n\in\Ns}2\leq\dfrac{2k}{n}\).
+
+D'où \(\quantifs{\forall n\in\Ns}n\leq k\).
+
+Donc \(k\) majore \(\Ns\) : contradiction.
+
+Donc \(f\) n'est pas lipschitzienne.
+\end{ex}
+
+\subsection{Fonctions croissantes}
+
+\begin{theo}
+Soit \(f:I\to\R\) dérivable.
+
+On a :
+
+\begin{enumerate}
+\item \(f\text{ constante}\ssi\quantifs{\forall x\in I}f\prim\paren{x}=0\) \\
+
+\item \(f\text{ croissante}\ssi\quantifs{\forall x\in I}f\prim\paren{x}\geq0\) \\
+
+\item \(f\text{ décroissante}\ssi\quantifs{\forall x\in I}f\prim\paren{x}\leq0\) \\
+
+\item \(f\text{ strictement croissante}\ssi\begin{dcases}\quantifs{\forall x\in I}f\prim\paren{x}\geq0 \\ \quantifs{\forall a,b\in I}a<b\imp\croch{\quantifs{\exists x\in\intervee{a}{b}}f\prim\paren{x}>0}\end{dcases}\) \\
+
+\item \(f\text{ strictement croissante}\impr\begin{dcases}\quantifs{\forall x\in I}f\prim\paren{x}\geq0 \\ f\prim\text{ ne s'annule qu'en un nombre fini de points}\end{dcases}\) \\
+
+\item \(f\text{ strictement décroissante}\ssi\begin{dcases}\quantifs{\forall x\in I}f\prim\paren{x}\leq0 \\ \quantifs{\forall a,b\in I}a<b\imp\croch{\quantifs{\exists x\in\intervee{a}{b}}f\prim\paren{x}<0}\end{dcases}\) \\
+
+\item \(f\text{ strictement décroissante}\impr\begin{dcases}\quantifs{\forall x\in I}f\prim\paren{x}\leq0 \\ f\prim\text{ ne s'annule qu'en un nombre fini de points}\end{dcases}\)
+\end{enumerate}
+\end{theo}
+
+\begin{dem}[2]
+\impdir
+
+Supposons \(f\) croissante.
+
+Soit \(x\in I\).
+
+Montrons que \(f\prim\paren{x}\geq0\).
+
+On remarque \(\quantifs{\forall y\in I\excluant\accol{x}}\dfrac{f\paren{y}-f\paren{x}}{y-x}\geq0\).
+
+D'où, par passage à la limite quand \(y\to x\) : \(f\prim\paren{x}\geq0\).
+
+\imprec
+
+Supposons \(\quantifs{\forall x\in I}f\prim\paren{x}\geq0\).
+
+Montrons que \(f\) est croissante, \cad \(\quantifs{\forall a,b\in I}a\leq b\imp f\paren{a}\leq f\paren{b}\).
+
+Soient \(a,b\in I\) tels que \(a\leq b\).
+
+Si \(a=b\) : on a le résultat.
+
+Si \(a<b\) :
+
+On a \(\begin{dcases}f\text{ continue sur }\intervii{a}{b} \\ f\text{ dérivable sur }\intervee{a}{b} \\ \quantifs{\forall x\in\intervee{a}{b}}0\leq f\prim\paren{x}\end{dcases}\)
+
+D'où, selon l'inégalité des accroissements finis : \(0\paren{b-a}\leq f\paren{b}-f\paren{a}\).
+
+Donc \(f\paren{a}\leq f\paren{b}\).
+\end{dem}
+
+\begin{dem}[3]
+Idem.
+\end{dem}
+
+\begin{dem}[1]
+Découle de (2) et (3).
+\end{dem}
+
+\begin{dem}[4]
+\impdir
+
+Supposons \(f\) strictement croissante.
+
+On a \(f\) croissante donc \(f\prim\geq0\) selon (2).
+
+Montrons que \(\quantifs{\forall a,b\in I}a<b\imp\croch{\quantifs{\exists c\in\intervee{a}{b}}f\prim\paren{c}>0}\).
+
+Par l'absurde, soient \(a,b\in I\) tels que \(\begin{dcases}a<b \\ \quantifs{\forall c\in\intervee{a}{b}}f\prim\paren{c}\leq0\end{dcases}\)
+
+On a \(\begin{dcases}a<b \\ f\text{ continue sur }\intervii{a}{b} \\ f\text{ dérivable sur }\intervee{a}{b} \\ f\prim=0\end{dcases}\)
+
+Donc \(f\paren{a}=f\paren{b}\) : contradiction.
+
+\imprec
+
+Supposons \(\begin{dcases}f\prim\geq0 \\ \quantifs{\forall a,b\in I}a<b\imp\croch{\quantifs{\exists c\in\intervee{a}{b}}f\prim\paren{c}>0}\end{dcases}\)
+
+Montrons que \(f\) est strictement croissante.
+
+On a \(f\) croissante car \(f\prim\geq0\) selon (2).
+
+Soient \(a,b\in I\) tels que \(a<b\).
+
+Montrons que \(f\paren{a}<f\paren{b}\).
+
+Si \(f\paren{a}>f\paren{b}\) : impossible car \(f\) est croissante.
+
+Si \(f\paren{a}=f\paren{b}\) alors on a \(\quantifs{\forall c\in\intervii{a}{b}}f\paren{a}\leq f\paren{c}\leq f\paren{b}=f\paren{a}\).
+
+Donc \(f\) est constante sur \(\intervii{a}{b}\).
+
+Donc \(\quantifs{\forall c\in\intervii{a}{b}}f\prim\paren{c}=0\) : impossible.
+
+Donc \(f\paren{a}<f\paren{b}\).
+
+Donc \(f\) est strictement croissante.
+\end{dem}
+
+\begin{dem}[5]
+Découle de (4).
+\end{dem}
+
+\begin{dem}[6 et 7]
+Idem que (4) et (5).
+\end{dem}
+
+\subsection{Théorème de la limite de la dérivée}
+
+\begin{theo}[Théorème de la limite de la dérivée]
+Soient \(f:I\to\R\) et \(a\in I\).
+
+On suppose \(\begin{dcases}f\text{ continue sur }I \\ f\text{ dérivable sur }I\excluant\accol{a} \\ l=\lim_{\substack{x\to a \\ x\not=a}}f\prim\paren{x}\text{ existe}\end{dcases}\)
+
+Si \(l\) est finie alors \(f\) est dérivable en \(a\), de dérivée \(f\prim\paren{a}=l\).
+
+Si \(l\) est infinie alors \(f\) n'est pas dérivable en \(a\). Son graphe admet une tangente verticale.
+\end{theo}
+
+\begin{rem}
+On a \[f\text{ dérivable en }a\ssi\lim_{\substack{x\to a \\ x\not=a}}\dfrac{f\paren{x}-f\paren{a}}{x-a}\text{ existe et est finie}.\]
+\end{rem}
+
+\begin{dem}
+Supposons \(l\) finie.
+
+Montrons que \(\lim_{\substack{x\to a \\ x\not=a}}\dfrac{f\paren{x}-f\paren{a}}{x-a}=l\), \cad \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x\in I\excluant\accol{a}}\abs{x-a}\leq\delta\imp\abs{\dfrac{f\paren{x}-f\paren{a}}{x-a}-l}\leq\epsilon.\]
+
+Soit \(\epsilon\in\Rps\).
+
+Soit \(\delta\in\Rps\) tel que \(\quantifs{\forall c\in I\excluant\accol{a}}\abs{c-a}\leq\delta\imp\abs{f\prim\paren{c}-l}\leq\epsilon\).
+
+Un tel \(\delta\) existe car on a \(\lim_{\substack{x\to a \\ x\not=a}}f\prim\paren{x}=l\).
+
+Montrons que \(\delta\) convient, \cad \[\quantifs{\forall x\in I\excluant\accol{a}}\abs{x-a}\leq\delta\imp\abs{\dfrac{f\paren{x}-f\paren{a}}{x-a}-l}\leq\epsilon.\]
+
+Soit \(x\in I\excluant\accol{a}\) tel que \(\abs{x-a}\leq\delta\).
+
+Si \(a<x\) :
+
+On a \(\begin{dcases}f\text{ continue sur }\intervii{a}{x}\text{ (car \(I\) est un intervalle)} \\ f\text{ dérivable sur }\intervee{a}{x}\end{dcases}\)
+
+Donc selon l'égalité des accroissements finis, il existe \(c_x\in\intervee{a}{x}\) tel que \(\dfrac{f\paren{x}-f\paren{a}}{x-a}=f\prim\paren{c_x}\).
+
+On a \(\abs{c_x-a}\leq\delta\) car \(a<c_x<x<a+\delta\).
+
+Donc \(\abs{f\prim\paren{c_x}-l}\leq\epsilon\) (par définition de \(\delta\)).
+
+Donc \(\abs{\dfrac{f\paren{x}-f\paren{a}}{x-a}-l}\leq\epsilon\).
+
+Si \(x<a\) : idem en appliquant l'égalité des accroissements finis sur \(\intervii{x}{a}\).
+
+Donc \(\delta\) convient.
+
+Donc \(\lim_{\substack{x\to a \\ x\not=a}}\dfrac{f\paren{x}-f\paren{a}}{x-a}=l=\lim_{\substack{x\to a \\ x\not=a}}f\prim\paren{x}\).
+
+Si \(l=\pm\infty\), on montre de la même façon que \(\lim_{\substack{x\to a \\ x\not=a}}\dfrac{f\paren{x}-f\paren{a}}{x-a}=l\).
+\end{dem}
+
+\begin{exo}
+Soit \(\alpha\in\Rps\).
+
+On pose \[\fonction{f}{\Rp}{\R}{x}{x^\alpha=\begin{dcases}\e{\alpha\ln x} &\text{si }x>0 \\ 0 &\text{sinon}\end{dcases}}\]
+
+\begin{enumerate}
+\item Montrer que \(f\) est continue en \(0\). \\
+
+\item Donner une CNS sur \(\alpha\) pour que \(f\) soit dérivable en \(0\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}[1]
+On a \(\lim_{x\to0^+}f\paren{x}=\lim_{x\to0^+}\e{\alpha\ln x}=0\).
+
+Donc \(f\) est continue en \(0\).
+\end{corr}
+
+\begin{corr}[2]
+On a \(f\) continue sur \(\Rp\) et \(f\) dérivable sur \(\Rps\).
+
+On a \(\quantifs{\forall x\in\Rps}f\prim\paren{x}=\dfrac{\alpha}{x}\e{\alpha\ln x}=\dfrac{\alpha}{x}x^\alpha=\alpha x^{\alpha-1}\).
+
+Donc \(\lim_{x\to0^+}f\prim\paren{x}=\begin{dcases}0 &\text{si }\alpha-1>0 \\ \pinf &\text{si }\alpha-1<0 \\ 1 &\text{sinon}\end{dcases}\)
+
+Donc d'après le théorème de la limite de la dérivée : \[\begin{aligned}
+f\text{ dérivable en }0&\ssi\lim_{x\to0^+}f\prim\paren{x}\text{ finie} \\
+&\ssi\alpha-1\geq0 \\
+&\ssi\alpha\geq1.
+\end{aligned}\]
+\end{corr}
+
+\subsection{Fonctions usuelles}
+
+Les fonctions suivantes sont dérivables sur leur ensemble de définition :
+
+\begin{center}
+\large
+\begin{tabular}{|c|c|c|}
+\hline
+La fonction : & définie sur : & est dérivable, de dérivée : \\
+\hline
+\(\exp\) & \(\R\) & \(\exp\) \\[1em]
+\(\ln\) & \(\Rps\) & \(x\mapsto\dfrac{1}{x}\) \\[1em]
+\(\sh\) & \(\R\) & \(\ch\) \\[1em]
+\(\ch\) & \(\R\) & \(\sh\) \\[1em]
+\(\sin\) & \(\R\) & \(\cos\) \\[1em]
+\(\cos\) & \(\R\) & \(-\sin\) \\[1em]
+\(\tan\) & \(\R\excluant\paren{\dfrac{\pi}{2}+\pi\Z}\) & \(1+\tan^2=\dfrac{1}{\cos^2}\) \\[1em]
+\(\Arctan\) & \(\R\) & \(x\mapsto\dfrac{1}{1+x^2}\) \\[1em]
+\(x\mapsto x^n\) avec \(n\in\Ns\) & \(\R\) & \(x\mapsto nx^{n-1}\) \\[1em]
+\(x\mapsto x^n\) avec \(n\in-\Ns\) & \(\Rs\) & \(x\mapsto nx^{n-1}\) \\[1em]
+\(x\mapsto x^\alpha\) avec \(\alpha\in\intervee{1}{\pinf}\excluant\Z\) & \(\Rp\) & \(x\mapsto\alpha x^{\alpha-1}\) \\[1em]
+\(x\mapsto x^\alpha\) avec \(\alpha\in\intervee{\minf}{0}\excluant\Z\) & \(\Rps\) & \(x\mapsto\alpha x^{\alpha-1}\) \\[1em]
+\(x\mapsto a^x\) avec \(a\in\Rps\) & \(\Rps\) & \(x\mapsto \paren{\ln a}a^x\) \\[1em]
+\hline
+\end{tabular}
+\end{center}
+
+Les fonctions suivantes sont continues sur leur ensemble de définition, mais ne sont pas dérivables en tout point :
+
+\begin{center}
+\large
+\begin{tabular}{|c|c|c|}
+\hline
+La fonction : & est dérivable sur : & de dérivée : \\
+\hline
+\(\fonctionlambda{\R}{\R}{x}{\abs{x}}\) & \(\Rs\) & \(x\mapsto\begin{dcases}1 &\text{si }x>0 \\ -1 &\text{si }x<0\end{dcases}\) \\[1em]
+\(\Arcsin\) (définie sur \(\intervii{-1}{1}\)) & \(\intervee{-1}{1}\) & \(x\mapsto\dfrac{1}{\sqrt{1-x^2}}\) \\[1em]
+\(\Arccos\) (définie sur \(\intervii{-1}{1}\)) & \(\intervee{-1}{1}\) & \(x\mapsto\dfrac{-1}{\sqrt{1-x^2}}\) \\[1em]
+\(\fonctionlambda{\Rp}{\R}{x}{x^\alpha}\) avec \(\alpha\in\intervee{0}{1}\) & \(\Rps\) & \(x\mapsto\alpha x^{\alpha-1}\) \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{\(\exp\)}
+
+La fonction \(\exp\) est dérivable, de dérivée \(\exp\) (admis) et de classe \(\classe{\infty}\).
+
+\subsubsection{\(\ln\)}
+
+La fonction \(\exp\) est continue et strictement croissante sur l'intervalle \(\R\).
+
+Elle est donc bijective de \(\R\) vers \(\intervee{\lim_{\minf}\exp}{\lim_{\pinf}\exp}=\intervee{0}{\pinf}=\Rps\).
+
+On appelle \(\ln:\Rps\to\R\) sa bijection réciproque :
+
+\begin{center}
+\begin{tkz}[scale=1.4]
+\begin{axis}[axis lines=middle,
+xmin=-5,xmax=5,
+ymin=-5,ymax=5,
+xtick={1,4},
+ytick={1,4},
+xticklabels={\(1\),\(y\)},
+yticklabels={\(1\),\(y\)},
+legend entries={\(\exp\),\(\ln\)},
+legend pos=north west,
+legend style={font=\footnotesize},
+clip=false]
+\addplot[domain=-5:1.7,samples=1000,smooth,thick,blue] {exp(x)};
+\addplot[domain=0:5,samples=1000,smooth,thick,orange] {ln(x)};
+\addplot[domain=-5:5,samples=1000,smooth,gray] {x};
+\draw[<->,green] (axis cs:1-0.7071,-0.7071) -- (axis cs:1+0.7071,0.7071);
+\draw[<->,green] (axis cs:-0.7071,1-0.7071) -- (axis cs:0.7071,1+0.7071);
+\draw[dashed,gray] (axis cs:4,0) -- (axis cs:4,1.38629);
+\draw[dashed,gray] (axis cs:0,4) -- (axis cs:1.38629,4);
+\end{axis}
+\end{tkz}
+\end{center}
+
+La bijection \(\exp\) est de classe \(\classe{\infty}\) et sa dérivée ne s'annule jamais.
+
+Donc \(\ln\) est de classe \(\classe{\infty}\) et, selon le théorème de dérivation de la bijection réciproque, on a : \[\begin{aligned}
+\quantifs{\forall y\in\Rps}\ln\prim y&=\dfrac{1}{\exp\prim\paren{\ln y}} \\
+&=\dfrac{1}{\exp\paren{\ln y}} \\
+&=\dfrac{1}{y}.
+\end{aligned}\]
+
+\subsubsection{\(\sh\) \& \(\ch\)}
+
+On pose : \[\quantifs{\forall x\in\R}\begin{dcases}\sh x=\dfrac{\e{x}-\e{-x}}{2} &\text{(sinus hyperbolique)} \\ \ch x=\dfrac{\e{x}+\e{-x}}{2} &\text{(cosinus hyperbolique)}\end{dcases}\]
+
+On a \(\quantifs{\forall x\in\R}\ch^2x-\sh^2x=1\).
+
+Graphes :
+
+\begin{center}
+\begin{tkz}[scale=1.2]
+\begin{axis}[axis lines=middle,
+xmin=-4,xmax=4,
+ymin=0,ymax=5,
+xtick={0},
+ytick={1},
+yticklabels={\(1\)},
+legend entries={\(\ch\)},
+legend pos=south west,
+legend style={font=\footnotesize},
+clip=false]
+\addplot[domain=-2.2:2.2,samples=1000,smooth,thick,blue] {cosh(x)};
+\end{axis}
+\end{tkz}
+\end{center}
+
+\begin{center}
+\begin{tkz}[scale=1.2]
+\begin{axis}[axis lines=middle,
+xmin=-3,xmax=3,
+ymin=-4,ymax=4,
+xtick={0},
+ytick={0},
+legend entries={\(\sh\)},
+legend pos=north west,
+legend style={font=\footnotesize},
+clip=false]
+\addplot[domain=-2:2,samples=1000,smooth,thick,blue] {sinh(x)};
+\end{axis}
+\end{tkz}
+\end{center}
+
+La fonction \(\ch\) est paire et on a \(\ch\prim=\sh\).
+
+La fonction \(\sh\) est impaire et on a \(\sh\prim=\ch\).
+
+\subsubsection{\(\sin\) \& \(\cos\)}
+
+Les fonctions \(\sin\) et \(\cos\) sont de classe \(\classe{\infty}\) et on a \(\sin\prim=\cos\) et \(\cos\prim=-\sin\) (admis).
+
+\subsubsection{\(\tan\)}
+
+La fonction \(\tan\) est de classe \(\classe{\infty}\) et on a \(\tan\prim=1+\tan^2=\dfrac{1}{\cos^2}\) (admis).
+
+\subsubsection{\(\Arctan\)}
+
+On sait que la fonction \(\Arctan:\R\to\intervee{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}\) est la bijection réciproque de \(f=\restr{\tan}{\intervee{\nicefrac{-\pi}{2}}{\nicefrac{\pi}{2}}}\).
+
+Comme \(f\) est de classe \(\classe{\infty}\) et sa dérivée ne s'annule pas, on sait que \(f\inv=\Arctan\) est de classe \(\classe{\infty}\) et qu'on a : \[\begin{aligned}
+\quantifs{\forall y\in\R}\Arctan\prim y&=\dfrac{1}{f\prim\paren{\Arctan y}} \\
+&=\dfrac{1}{\tan\prim\paren{\Arctan y}} \\
+&=\dfrac{1}{1+\tan^2\paren{\Arctan y}} \\
+&=\dfrac{1}{1+y^2}.
+\end{aligned}\]
+
+\subsubsection{Fonctions puissance}
+
+La fonction \(x\mapsto x^{\alpha}\), où \(\alpha\in\R\excluant\Z\), est définie sur \(\begin{dcases}\Rps &\text{si }\alpha<0 \\ \Rp &\text{si }\alpha\geq0\end{dcases}\)
+
+La fonction \(x\mapsto x^{n}\), où \(n\in\Z\), est définie sur \(\begin{dcases}\Rs &\text{si }n<0 \\ \R &\text{si }n\geq0\end{dcases}\)
+
+Les fonctions sont de classe \(\classe{\infty}\) sur \(\Rps\).
+
+\subsubsection{\(x\mapsto a^x\)}
+
+Soit \(a\in\Rps\).
+
+On remarque que \(a^x=\e{x\ln a}\) donc sa dérivée est \(x\mapsto\paren{\ln a}\e{x\ln a}=\paren{\ln a}a^x\).
+
+\subsubsection{\(\Arcsin\)}
+
+La fonction \[\fonction{f}{\intervii{\dfrac{-\pi}{2}}{\dfrac{\pi}{2}}}{\intervii{-1}{1}}{\theta}{\sin\theta}\] est dérivable et bijective.
+
+Sa bijection réciproque est \(\Arcsin\).
+
+On a \[\begin{aligned}
+\quantifs{\forall t\in\intervii{-1}{1}}\Arcsin\text{ est dérivable en }t&\ssi f\prim\paren{\Arcsin t}\not=0 \\
+&\ssi\cos\paren{\Arcsin t}\not=0 \\
+&\ssi\sqrt{1-t^2}\not=0 \\
+&\ssi t\not=\pm1.
+\end{aligned}\]
+
+On en déduit : \[\begin{aligned}
+\quantifs{\forall t\in\intervee{-1}{1}}\Arcsin\prim t&=\dfrac{1}{f\prim\paren{\Arcsin t}} \\
+&=\dfrac{1}{\sqrt{1-t^2}}
+\end{aligned}\]
+
+En \(t=\pm1\), la fonction \(\Arcsin\) n'est pas dérivable et son graphe admet une tangente verticale.
+
+\subsubsection{\(\Arccos\)}
+
+On sait qu'on a \(\quantifs{\forall t\in\intervii{-1}{1}}\Arccos t=\dfrac{\pi}{2}-\Arcsin t\).
+
+Donc \(\Arccos\) est dérivable sur \(\intervee{-1}{1}\), de dérivée \(t\mapsto\dfrac{-1}{\sqrt{1-t^2}}\) et son graphe admet une tangente verticale en \(t=\pm1\).
+
+\section{Fonctions convexes}
+
+\subsection{Préliminaires}
+
+\begin{rem}[Paramétrage d'un segment de \(\R\)]
+Soient \(a,b\in\R\).
+
+L'ensemble image de la fonction \[\fonction{f}{\intervii{0}{1}}{\R}{t}{\paren{1-t}a+tb}\] est le segment de \(\R\) d'extrémités \(a\) et \(b\), \cad \(\begin{dcases}\intervii{a}{b} &\text{si }a\leq b \\ \intervii{b}{a} &\text{sinon}\end{dcases}\)
+\end{rem}
+
+\begin{rem}[Paramétrage d'un segment de droite dans \(\R^2\)]
+Soient \(A=\paren{x_A,y_A},B=\paren{x_B,y_B}\in\R^2\).
+
+L'ensemble image de la fonction \[\fonction{F}{\intervii{0}{1}}{\R^2}{t}{\paren{1-t}A+tB=\paren{\paren{1-t}x_A+tx_B,\paren{1-t}y_A+ty_B}}\] est le segment de droite \(\intervii{A}{B}\).
+\end{rem}
+
+\begin{defi}[Vocabulaire : graphe, corde, sécante]
+Soit \(f:I\to\R\).
+
+On rappelle que le graphe de \(f\) est l'ensemble : \[\graphe{f}=\accol{\paren{x,y}\in I\times\R\tq f\paren{x}=y}\subset\R^2.\]
+
+Soient \(x_1,x_2\in I\) tels que \(x_1\not=x_2\).
+
+Notons \(M_1\) et \(M_2\) les points du graphe de \(f\) d'abscisses respectives \(x_1\) et \(x_2\) : \[M_1=\paren{x_1,f\paren{x_1}}\qquad\text{et}\qquad M_2=\paren{x_2,f\paren{x_2}}.\]
+
+Le segment de droite \(\intervii{M_1}{M_2}\) est appelé la corde de \(\graphe{f}\) en \(x_1\) et \(x_2\).
+
+La droite \(\paren{M_1M_2}\) est appelée la sécante à \(\graphe{f}\) en \(x_1\) et \(x_2\).
+\end{defi}
+
+\subsection{Définition}
+
+\begin{defi}[Fonction convexe, fonction concave]
+Soit \(f:I\to\R\).
+
+On dit que \(f\) est une fonction convexe si elle vérifie : \[\quantifs{\forall x,y\in I;\forall t\in\intervii{0}{1}}f\paren{\paren{1-t}x+ty}\leq\paren{1-t}f\paren{x}+tf\paren{y}.\]
+
+On dit que \(f\) est une fonction concave si elle vérifie : \[\quantifs{\forall x,y\in I;\forall t\in\intervii{0}{1}}f\paren{\paren{1-t}x+ty}\geq\paren{1-t}f\paren{x}+tf\paren{y}.\]
+\end{defi}
+
+\begin{rem}
+Pour qu'une fonction soit convexe ou concave, il faut que son ensemble de définition soit un intervalle.
+\end{rem}
+
+\begin{ex}
+Les fonctions \(\exp\) et \(x\mapsto x^2\) sont convexes.
+
+La fonction \(\ln\) est concave.
+
+La fonction \(\sin\) n'est ni convexe ni concave.
+\end{ex}
+
+\begin{rem}
+Soit \(f:I\to\R\).
+
+On a : \[f\text{ concave}\ssi-f\text{ convexe}.\]
+
+Dans la suite de ce cours, on se concentrera sur les fonctions convexes.
+\end{rem}
+
+\begin{prop}[Inégalité de Jensen]
+Soient \(f:I\to\R\), \(n\in\Ns\), \(\lambda_1,\dots,\lambda_n\in\Rp\) et \(x_1,\dots,x_n\in I\).
+
+On suppose que \(f\) est convexe et qu'on a \(\lambda_1+\dots+\lambda_n=1\).
+
+Alors : \[f\paren{\lambda_1x_1+\dots+\lambda_nx_n}\leq\lambda_1f\paren{x_1}+\dots+\lambda_nf\paren{x_n}.\]
+\end{prop}
+
+\begin{dem}
+Pour tout \(n\in\Ns\), on note \(\P{n}\) la proposition : \[\quantifs{\forall\lambda_1,\dots,\lambda_n\in\Rp;\forall x_1,\dots,x_n\in I}\lambda_1+\dots+\lambda_n=1\imp f\paren{\lambda_1x_1+\dots+\lambda_nx_n}\leq\lambda_1f\paren{x_1}+\dots+\lambda_nf\paren{x_n}.\]
+
+On a \(\P{1}\).
+
+Soit \(n\in\Ns\) tel que \(\P{n}\). Montrons \(\P{n+1}\).
+
+Soient \(\lambda_1,\dots,\lambda_{n+1}\in\Rp\) et \(x_1,\dots,x_{n+1}\in I\) tels que \(\lambda_1+\dots+\lambda_{n+1}=1\).
+
+Si \(\lambda_1+\dots+\lambda_n=0\) et \(\lambda_{n+1}=1\) alors on a \(f\paren{\sum_{i=1}^{n+1}\lambda_ix_i}\leq\sum_{i=1}^{n+1}\lambda_if\paren{x_i}\). Donc on a \(\P{n+1}\).
+
+Supposons \(\lambda_1+\dots+\lambda_n\not=0\).
+
+On a : \[\begin{WithArrows}
+f\paren{\sum_{i=1}^{n+1}\lambda_ix_i}&=f\paren{\paren{\lambda_1+\dots+\lambda_n}\sum_{i=1}^n\dfrac{\lambda_i}{\lambda_1+\dots+\lambda_n}x_i+\lambda_{n+1}x_{n+1}} \Arrow{car \(f\) est convexe} \\
+&\leq\paren{\lambda_1+\dots+\lambda_n}f\paren{\sum_{i=1}^n\dfrac{\lambda_i}{\lambda_1+\dots+\lambda_n}x_i}+\lambda_{n+1}f\paren{x_{n+1}} \Arrow{selon \(\P{n}\)} \\
+&\leq\paren{\lambda_1+\dots+\lambda_n}\sum_{i=1}^n\dfrac{\lambda_i}{\lambda_1+\dots+\lambda_n}f\paren{x_i}+\lambda_{n+1}f\paren{x_{n+1}} \\
+&=\sum_{i=1}^{n+1}\lambda_if\paren{x_i}.
+\end{WithArrows}\]
+
+D'où \(\P{n+1}\).
+
+Donc par récurrence sur \(n\in\Ns\), on a \(\quantifs{\forall n\in\Ns}\P{n}\).
+\end{dem}
+
+\subsection{Propriétés}
+
+Par définition, une fonction convexe est une fonction qui est définie sur un intervalle et dont le graphe est situé en dessous de ses cordes. La proposition suivante précise la position du graphe par rapport à ses sécantes.
+
+\begin{prop}[Position du graphe par rapport à ses sécantes]
+Soient \(f:I\to\R\) et \(a,b\in I\) tels que \(a<b\).
+
+On considère la sécante \(\Delta\) au graphe \(\graphe{f}\) en \(a\) et \(b\).
+
+Le graphe de \(f\) est situé :
+
+\begin{itemize}
+\item en dessous de sa sécante \(\Delta\) sur \(\intervii{a}{b}\) ; \\
+
+\item au dessus de sa sécante \(\Delta\) sur \(I\inter\paren{\intervei{\minf}{a}\union\intervie{b}{\pinf}}\).
+\end{itemize}
+\end{prop}
+
+\begin{dem}
+Soit \(s\in\intervee{\minf}{0}\union\intervee{1}{\pinf}\).
+
+Supposons \(\paren{1-s}a+sb\in I\).
+
+Il s'agit de montrer \(\paren{1-s}f\paren{a}+sf\paren{b}\leq f\paren{\paren{1-s}a+sb}\).
+
+Posons \(c=\paren{1-s}a+sb=a+s\paren{b-a}\).
+
+Supposons \(s>1\) (\cad \(a<b<c\)).
+
+On a \(\paren{1-\dfrac{1}{s}}a+\dfrac{1}{s}c=b\) avec \(\dfrac{1}{s}\in\intervii{0}{1}\).
+
+D'où, comme \(f\) est convexe : \(f\paren{b}\leq\paren{1-\dfrac{1}{s}}f\paren{a}+\dfrac{1}{s}f\paren{c}\).
+
+D'où, en multipliant par \(s\) : \(\paren{1-s}f\paren{a}+sf\paren{b}\leq f\paren{c}\).
+
+Supposons \(s<0\) (\cad \(c<a<b\)).
+
+On a \(\dfrac{1}{1-s}c-\dfrac{s}{1-s}b=a\), \cad \(\paren{1-\dfrac{1}{1-s}}b+\dfrac{1}{1-s}c=a\).
+
+D'où, comme \(f\) est convexe : \(f\paren{a}\leq\paren{1-\dfrac{1}{1-s}}f\paren{b}+\dfrac{1}{1-s}f\paren{c}\).
+
+D'où, en multipliant par \(s\) : \(f\paren{c}\geq\paren{1-s}f\paren{a}+sf\paren{b}\).
+\end{dem}
+
+\begin{prop}[Inégalité des pentes]\thlabel{prop:inégalitéDesPentes}
+Soit \(f:I\to\R\).
+
+Pour tous \(a,b\in I\) tels que \(a\not=b\), on note \(\tau\paren{a,b}\) le taux d'accroissement de \(f\) entre \(a\) et \(b\) : \[\tau\paren{a,b}=\dfrac{f\paren{b}-f\paren{a}}{b-a}.\]
+
+NB : cette notation n'est pas officielle.
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+\item La fonction \(f\) est convexe \\
+
+\item \(\quantifs{\forall a,b,c\in I}a<b<c\imp\tau\paren{a,b}\leq\tau\paren{a,c}\leq\tau\paren{b,c}\) \\
+
+\item \(\quantifs{\forall a,b,c\in I}a<b<c\imp\tau\paren{a,b}\leq\tau\paren{b,c}\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[(1) \(\imp\) (2)]
+Soient \(a,b,c\in I\) tels que \(a<b<c\).
+
+On suppose \(f\) convexe.
+
+Posons \(t=\dfrac{b-a}{c-a}\).
+
+On a \(0\leq t\leq1\) et \(t\paren{c-a}=b-a\) donc \(\paren{1-t}a+tc=b\).
+
+Donc, comme \(f\) est convexe, on a \(f\paren{b}\leq\paren{1-t}f\paren{a}+tf\paren{c}\).
+
+Donc \(f\paren{b}-f\paren{a}\leq t\paren{f\paren{c}-f\paren{a}}\).
+
+Donc \(\dfrac{f\paren{b}-f\paren{a}}{b-a}\leq\dfrac{t\paren{f\paren{c}-f\paren{a}}}{b-a}\).
+
+Donc \(\tau\paren{a,b}\leq\tau\paren{a,c}\).
+
+De même, comme \(t\paren{c-a}=b-a\), on a \(\paren{1-t}\paren{c-a}=\paren{c-a}-\paren{b-a}=c-b\).
+
+Et comme \(t\paren{f\paren{c}-f\paren{a}}\geq f\paren{b}-f\paren{a}\), on a : \[\paren{1-t}\paren{f\paren{c}-f\paren{a}}\leq f\paren{a}-f\paren{b}+f\paren{c}-f\paren{a}=f\paren{c}-f\paren{b}.\]
+
+D'où \(\dfrac{\paren{1-t}\paren{f\paren{c}-f\paren{a}}}{c-b}\leq\dfrac{f\paren{c}-f\paren{b}}{c-b}\).
+
+Donc \(\tau\paren{a,c}\leq\tau\paren{b,c}\).
+\end{dem}
+
+\begin{dem}[(2) \(\imp\) (3)]
+Clair.
+\end{dem}
+
+\begin{dem}[(3) \(\imp\) (1)]
+Supposons (3).
+
+Montrons que \(f\) est convexe.
+
+Soient \(a,c\in I\) et \(t\in\intervii{0}{1}\).
+
+Montrons qu'on a \[f\paren{\paren{1-t}a+tc}\leq\paren{1-t}f\paren{a}+tf\paren{c}\quad(*)\]
+
+Quitte à remplacer \(a,c,t\) par \(c,a,1-t\), on peut supposer \(a\leq c\).
+
+Posons \(b=\paren{1-t}a+tc\).
+
+On a \(a\leq b\leq c\).
+
+Si \(a=c\), \(t=0\) ou \(t=1\), alors \((*)\) est claire.
+
+On suppose \(a\not=c\), \(t\not=0\) et \(t\not=1\).
+
+D'où \(a<b<c\).
+
+Il s'agit de montrer \(f\paren{b}\leq\paren{1-t}f\paren{a}+tf\paren{c}\).
+
+On a \(\dfrac{f\paren{b}-f\paren{a}}{b-a}\leq\dfrac{f\paren{c}-f\paren{b}}{c-b}\).
+
+Or \(b-a=t\paren{c-a}\) et \(c-b=\paren{1-t}\paren{c-a}\).
+
+D'où \(\dfrac{f\paren{b}-f\paren{a}}{t\paren{c-a}}\leq\dfrac{f\paren{c}-f\paren{b}}{\paren{1-t}\paren{c-a}}\).
+
+D'où, en multipliant par \(t\paren{1-t}\paren{c-a}>0\) : \(\paren{1-t}\paren{f\paren{b}-f\paren{a}}\leq t\paren{f\paren{c}-f\paren{b}}\).
+
+Donc \(f\paren{b}\leq\paren{1-t}f\paren{a}+tf\paren{c}\).
+
+Donc \(f\) est convexe.
+\end{dem}
+
+La proposition suivante est une simple reformulation de la proposition précédente :
+
+\begin{prop}[Croissance des pentes]
+Soit \(f:I\to\R\).
+
+On pose \[\quantifs{\forall a\in I}\fonction{g_a}{I\excluant\accol{a}}{\R}{x}{\dfrac{f\paren{x}-f\paren{a}}{x-a}}\]
+
+On a alors : \[f\text{ est convexe}\ssi\quantifs{\forall a\in I}g_a\text{ est croissante}.\]
+\end{prop}
+
+\begin{dem}
+\impdir
+
+Supposons \(f\) convexe.
+
+Soit \(a\in I\).
+
+Montrons que \(g_a\) est croissante.
+
+Soient \(x,y\in I\) tels que \(x<y\).
+
+Montrons que \(g_a\paren{x}\leq g_a\paren{y}\).
+
+Selon la \thref{prop:inégalitéDesPentes}, on a :
+
+\begin{itemize}
+\item Si \(a<x<y\) : on a \(\tau\paren{a,x}\leq\tau\paren{a,y}\). Donc \(g_a\paren{x}\leq g_a\paren{y}\). \\
+
+\item Si \(x<a<y\) : on a \(\tau\paren{x,a}\leq\tau\paren{a,y}\). Donc \(g_a\paren{x}\leq g_a\paren{y}\). \\
+
+\item Si \(x<y<a\) : on a \(\tau\paren{x,a}\leq\tau\paren{y,a}\). Donc \(g_a\paren{x}\leq g_a\paren{y}\).
+\end{itemize}
+
+\imprec
+
+Supposons \(\quantifs{\forall a\in I}g_a\text{ est croissante}\).
+
+Montrons que \(f\) est convexe.
+
+Soient \(a,b,c\in I\) tels que \(a<b<c\).
+
+Comme \(g_a\) est croissante, on a \(g_a\paren{a}\leq g_a\paren{b}\).
+
+Donc \(\tau\paren{a,b}\leq\tau\paren{b,c}\).
+
+Donc d'après la \thref{prop:inégalitéDesPentes}, \(f\) est convexe.
+\end{dem}
+
+\subsection{Fonctions convexes dérivables}
+
+\begin{prop}
+Soit \(f:I\to\R\) dérivable.
+
+On a \[f\text{ est convexe}\ssi f\prim\text{ est croissante}.\]
+\end{prop}
+
+\begin{dem}
+\impdir
+
+Supposons \(f\) convexe.
+
+Montrons que \(f\prim\) est croissante.
+
+Soient \(x,y\in I\) tels que \(x<y\).
+
+Montrons que \(f\prim\paren{x}\leq f\prim\paren{y}\).
+
+On a, selon la \thref{prop:inégalitéDesPentes} :
+
+\begin{itemize}
+\item \(\quantifs{\forall z\in\intervee{x}{y}}\tau\paren{x,z}\leq\tau\paren{x,y}\) \\
+
+\item \(\quantifs{\forall z\in\intervee{x}{y}}\tau\paren{x,y}\leq\tau\paren{z,y}\).
+\end{itemize}
+
+D'où, par passage à la limite quand \(z\to x^+\) : \(f\prim\paren{x}\leq\tau\paren{x,y}\).
+
+Et, par passage à la limite quand \(z\to y^-\) : \(\tau\paren{x,y}\leq f\prim\paren{y}\).
+
+Finalement, on a \(f\prim\paren{x}\leq f\prim\paren{y}\).
+
+Donc \(f\prim\) est croissante.
+
+\imprec
+
+Supposons \(f\prim\) croissante.
+
+Montrons que \(f\) est convexe.
+
+Soient \(a,b,c\in I\) tels que \(a<b<c\).
+
+Montrons que \(\tau\paren{a,b}\leq\tau\paren{b,c}\).
+
+La fonction \(f\) est \(\begin{dcases}\text{continue sur }\intervii{a}{b} \\ \text{dérivable sur }\intervee{a}{b}\end{dcases}\) et \(\begin{dcases}\text{continue sur }\intervii{b}{c} \\ \text{dérivable sur }\intervee{b}{c}\end{dcases}\)
+
+Selon l'égalité des accroissements finis, il existe \(x,y\in I\) tels que \(a<x<b<y<c\) et \[\tau\paren{a,b}=f\prim\paren{x}\qquad\text{et}\qquad\tau\paren{b,c}=f\prim\paren{y}.\]
+
+Or \(f\prim\) est croissante donc \(f\prim\paren{x}\leq f\prim\paren{y}\).
+
+Donc \(\tau\paren{a,b}\leq\tau\paren{b,c}\).
+
+Donc \(f\) est convexe.
+\end{dem}
+
+\begin{cor}
+Soit \(f:I\to\R\).
+
+On a : \[f\text{ est convexe}\ssi f\seconde\geq0.\]
+\end{cor}
+
+\begin{ex}
+On en déduit facilement la convexité (\ie le caractère convexe ou concave) des fonctions usuelles :
+
+\begin{itemize}
+\item \(\exp\) est convexe car \(\exp\seconde=\exp\geq0\).
+
+\item \(\ln\) est concave car \(\quantifs{\forall x\in\Rps}\ln\seconde x=\dfrac{-1}{x^2}\leq0\).
+
+\item \(\cos\) n'est ni convexe ni concave sur \(\R\) (car \(\cos\seconde0=-1<0\) et \(\cos\seconde\pi=1>0\)).
+
+\item \(\Arccos\) est concave sur \(\intervii{0}{1}\) et convexe sur \(\intervii{-1}{0}\) car \(t\mapsto\dfrac{-1}{\sqrt{1-t^2}}\) est décroissante sur \(\intervii{0}{1}\) et croissante sur \(\intervii{-1}{0}\).
+
+\item \(\Arctan\) est concave sur \(\Rp\) et convexe sur \(\Rm\) car \(t\mapsto\dfrac{1}{1+t^2}\) est décroissante sur \(\Rp\) et croissante sur \(\Rm\).
+
+\item \(\tan\) est convexe sur \(\intervii{0}{\dfrac{\pi}{2}}\) et concave sur \(\intervii{\dfrac{-\pi}{2}}{0}\) car \(1+\tan^2\) est croissante sur \(\intervii{0}{\dfrac{\pi}{2}}\) et décroissante sur \(\intervii{\dfrac{-\pi}{2}}{0}\).
+\end{itemize}
+\end{ex}
+
+\begin{exo}
+Étudier la convexité de la fonction \(\fonction{f}{\R}{\R}{x}{\ln\paren{1+x^2}}\).
+\end{exo}
+
+\begin{corr}
+On a \(\quantifs{\forall x\in\R}f\prim\paren{x}=2x\times\dfrac{1}{1+x^2}=\dfrac{2x}{1+x^2}\).
+
+Donc \(\quantifs{\forall x\in\R}f\seconde\paren{x}=\dfrac{2\paren{1+x^2}-2x\times2x}{\paren{1+x^2}^2}=\dfrac{2\paren{1-x^2}}{\paren{1+x^2}^2}\).
+
+Donc \[\begin{aligned}
+f\seconde\paren{x}\geq0&\ssi x^2\leq1 \\
+&\ssi\abs{x}\leq1 \\
+&\ssi x\in\intervii{-1}{1}.
+\end{aligned}\]
+
+Donc \(f\) est convexe sur \(\intervii{-1}{1}\) et concave sur \(\intervei{\minf}{-1}\) et sur \(\intervie{1}{\pinf}\).
+\end{corr}
+
+\begin{exo}[Inégalité arithmético-géométrique]
+Soient \(n\in\Ns\) et \(x_1,\dots,x_n\in\Rp\).
+
+Montrer : \[\sqrt[n]{x_1\dots x_n}\leq\dfrac{x_1+\dots+x_n}{n}.\]
+\end{exo}
+
+\begin{corr}
+Si l'un des réels \(x_1,\dots,x_n\) est nul, l'inégalité est claire.
+
+Supposons \(x_1,\dots,x_n\in\Rps\).
+
+On a \(\exp\) convexe sur \(\R\).
+
+On considère les points \(\ln x_1,\dots,\ln x_n\in\R\).
+
+D'après l'inégalité de Jensen, on a : \[\exp\paren{\dfrac{\ln x_1+\dots+\ln x_n}{n}}\leq\dfrac{\exp\paren{\ln x_1}+\dots+\exp\paren{\ln x_n}}{n}.\]
+
+Donc \(\paren{\exp\paren{\ln x_1+\dots+\ln x_n}}^{\nicefrac{1}{n}}\leq\dfrac{x_1+\dots+x_n}{n}\).
+
+D'où \(\paren{x_1\dots x_n}^{\nicefrac{1}{n}}\leq\dfrac{x_1+\dots+x_n}{n}\).
+\end{corr}
+
+\begin{prop}
+Soit \(f:I\to\R\) convexe et dérivable.
+
+Le graphe de \(f\) est situé au dessus de ses tangentes.
+\end{prop}
+
+\begin{dem}
+Soit \(a\in I\).
+
+On note \(\graphe{f}\) le graphe de \(f\) et \(T\) sa tangente en \(a\).
+
+On a \[\graphe{f}:y=f\paren{x}\qquad\text{et}\qquad T:y=f\prim\paren{a}\paren{x-a}+f\paren{a}.\]
+
+Posons \(\fonction{\delta}{I}{\R}{x}{f\paren{x}-\paren{f\prim\paren{a}\paren{x-a}+f\paren{a}}}\)
+
+Il s'agit de montrer que \(\quantifs{\forall x\in I}\delta\paren{x}\geq0\).
+
+On a \(\quantifs{\forall x\in I}\delta\prim\paren{x}=f\prim\paren{x}-f\prim\paren{a}\).
+
+Or \(f\) est convexe donc \(f\prim\) est croissante donc \(\quantifs{\forall x\in I}\begin{dcases}\delta\prim\paren{x}\geq0 &\text{si }x\geq a \\ \delta\prim\paren{x}\leq0 &\text{si }x\leq a\end{dcases}\)
+
+On a donc le tableau de variations suivant :
+
+\begin{center}
+\begin{tkz}
+\tableauinit{\(x\)/1,\(\delta\)/2}{,\(a\),}
+\tableauvariations{+/,-/\(0\),+/}
+\end{tkz}
+\end{center}
+
+D'où \(\quantifs{\forall x\in I}\delta\paren{x}\geq0\).
+
+Donc \(\graphe{f}\) est situé au dessus de \(T\).
+\end{dem}
+
+\begin{exo}
+Montrer les encadrements suivants :
+
+\begin{enumerate}
+\item \(\quantifs{\forall\theta\in\intervii{0}{\dfrac{\pi}{4}}}\theta\leq\tan\theta\leq\dfrac{4}{\pi}\theta\) \\
+
+\item \(\quantifs{\forall\theta\in\intervii{0}{\dfrac{\pi}{2}}}\dfrac{2}{\pi}\theta\leq\sin\theta\leq\theta\)
+\end{enumerate}
+\end{exo}
+
+\begin{corr}[1]
+La fonction \(\tan\) est convexe sur \(\intervii{0}{\dfrac{\pi}{4}}\) car sa dérivée \(\tan\prim=1+\tan^2\) est croissante sur \(\intervii{0}{\dfrac{\pi}{4}}\).
+
+On en déduit d'une part que son graphe est situé au dessus de sa tangente en \(\theta=0\), \cad \(y=\tan\prim\paren{0}\paren{\theta-0}+\tan\paren{0}=\theta\).
+
+Donc \(\quantifs{\forall\theta\in\intervii{0}{\dfrac{\pi}{4}}}\theta\leq\tan\theta\).
+
+On en déduit d'autre part que son graphe est situé en dessous de sa corde entre \(0\) et \(\dfrac{\pi}{4}\), \cad \(\quantifs{\forall\theta\in\intervii{0}{\dfrac{\pi}{4}}}\tan\theta\leq\dfrac{4}{\pi}\theta\).
+
+D'où l'encadrement.
+\end{corr}
+
+\begin{corr}[2]
+La fonction \(\sin\) est concave sur \(\intervii{0}{\dfrac{\pi}{2}}\) car sa dérivée \(\sin\prim=\cos\) est décroissante sur \(\intervii{0}{\dfrac{\pi}{2}}\).
+
+On en déduit d'une part que son graphe est situé en dessous de sa tangente en \(0\), \cad \(y=\sin\prim\paren{0}\paren{\theta-0}+\sin\paren{0}=\theta\).
+
+Donc \(\quantifs{\forall\theta\in\intervii{0}{\dfrac{\pi}{2}}}\sin\theta\leq\theta\).
+
+On en déduit d'autre part que son graphe est situé au dessus de sa corde entre \(0\) et \(\dfrac{\pi}{2}\), \cad \(\quantifs{\forall\theta\in\intervii{0}{\dfrac{\pi}{2}}}\dfrac{2}{\pi}\theta\leq\sin\theta\).
+
+D'où l'encadrement.
+\end{corr}

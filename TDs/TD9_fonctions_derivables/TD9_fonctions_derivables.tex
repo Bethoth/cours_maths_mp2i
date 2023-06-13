@@ -1,0 +1,331 @@
+\chapter{Fonctions dérivables}
+
+\minitoc
+
+\section{Étude locale}
+
+\begin{exo}
+Étudier la dérivabilité des fonctions suivantes (en précisant leurs ensembles de définition) :
+
+\begin{enumerate}
+\item \(f:x\mapsto\cos\sqrt{x}\) \\
+
+\item \(f:x\mapsto\sin\abs{x}\) \\
+
+\item \(f:x\mapsto\ln\paren{1+\sqrt{x}}\) \\
+
+\item \(f:x\mapsto x\abs{x}\) \\
+
+\item \(f:x\mapsto\sqrt{x^2-x^3}\) \\
+
+\item \(f:x\mapsto\paren{1-x}\Arccos x\)
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Montrer que la fonction \[f:x\mapsto\ln\paren{\dfrac{\e{x}-1}{x}}\] est définie sur \(\Rs\) et se prolonge en une fonction de classe \(\classe{1}\) sur \(\R\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(f:\R\to\R\) et \(a\in\R\).
+
+On suppose que \(f\) est dérivable en \(a\).
+
+Déterminer \(\lim_{\substack{h\to0 \\ h\not=0}}\dfrac{f\paren{a+2h}-f\paren{a-h}}{h}\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Pour tout \(k\in\N\), calculer la dérivée \(k\)-ème des fonctions suivantes :
+
+\begin{enumerate}
+\item \(f:x\mapsto\ln x\) \\
+
+\item \(f:x\mapsto x^2\ln x\) \\
+
+\item \(f:x\mapsto\cos^4x\) \\
+
+\item \(f:x\mapsto\dfrac{1}{\sqrt{x}}\) \\
+
+\item \(f:x\mapsto\dfrac{x-1}{x+1}\)
+\end{enumerate}
+
+On simplifiera les résultats en utilisant des factorielles si c'est utile.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(n\in\N\).
+
+\begin{enumerate}
+\item Pour tout \(k\in\N\), calculer la dérivée \(k\)-ème de \(f:x\mapsto x^n\). \\
+
+\item En calculant de deux façons la dérivée \(n\)-ème de \(g:x\mapsto x^{2n}\), calculer : \[S=\sum_{k=0}^n\binom{k}{n}^2.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\section{Étude globale}
+
+\begin{exo}
+Étudier la fonction \(f:x\mapsto\Arccos\paren{\dfrac{1-x^2}{1+x^2}}\).
+
+On précisera l'ensemble de définition de \(f\), en quels points \(f\) est continue, en quels points \(f\) est dérivable, les variations de \(f\) (avec ses limites), et le graphe de \(f\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Dessiner le graphe de la fonction : \[f:x\mapsto\Arccos\sqrt{\dfrac{1+\sin x}{2}}-\Arcsin\sqrt{\dfrac{1+\cos x}{2}}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Montrer \[\quantifs{\forall x\in\Rps}\Arcsin\paren{\dfrac{1-x}{1+x}}=\Arctan\paren{\dfrac{1-x}{2\sqrt{x}}}\] de deux façons :
+
+\begin{enumerate}
+\item En calculant \(\tan\paren{\Arcsin\paren{\dfrac{1-x}{1+x}}}\). \\
+
+\item En dérivant.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\alpha\in\intervee{1}{\pinf}\).
+
+\begin{enumerate}
+\item Déterminer toutes les foncions \(f:\R\to\R\) telles que : \[\quantifs{\forall x,y\in\R}\abs{f\paren{x}-f\paren{y}}\leq\abs{x-y}^{\alpha}.\]
+
+\textit{Indication :} montrer qu'une telle fonction est nécessairement dérivable. \\
+
+\item Déterminer toutes les fonctions \(f:\Rs\to\R\) telles que : \[\quantifs{\forall x,y\in\Rs}\abs{f\paren{x}-f\paren{y}}\leq\abs{x-y}^{\alpha}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(f:\Rp\to\R\) une fonction dérivable telle que : \[f\paren{0}=0\qquad\text{et}\qquad\lim_{x\to\pinf}f\paren{x}=0.\]
+
+\begin{enumerate}
+\item Montrer que \(f\) est bornée. \\
+
+\item À l'aide du théorème de Rolle, montrer : \[\quantifs{\exists c\in\Rps}f\prim\paren{c}=0.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(a,b\in\R\) tels que \(a<b\) et \(f,g\in\F{\intervii{a}{b}}{\R}\) continues.
+
+On suppose que \(f\) et \(g\) sont  dérivables sur \(\intervee{a}{b}\).
+
+Montrer : \[\quantifs{\exists c\in\intervee{a}{b}}f\prim\paren{c}\paren{g\paren{b}-g\paren{a}}=g\prim\paren{c}\paren{f\paren{b}-f\paren{a}}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On pose : \[\fonction{f}{\intervii{0}{1}}{\R}{x}{\dfrac{\e{x}}{x+2}}\]
+
+\begin{enumerate}
+\item Soit \(a\in\intervii{0}{1}\). Montrer que l'on définit une suite \(\paren{u_n}_{n\in\N}\in\intervii{0}{1}^\N\) en posant : \[u_0=a\qquad\text{et}\qquad\quantifs{\forall n\in\N}u_{n+1}=f\paren{u_n}.\]
+
+\item Montrer que \(f\) est \(\dfrac{2\e{}}{9}\)-lipschitzienne. \\
+
+\item Montrer que \(f\) admet un unique point fixe \(\alpha\) dans \(\intervii{0}{1}\). \\
+
+\item Montrer que la suite \(\paren{u_n}_n\) converge vers \(\alpha\) et que l'on a : \[\quantifs{\forall n\in\N}\abs{u_n-\alpha}\leq\paren{\dfrac{2\e{}}{9}}^n.\]
+
+\item Donner un rang \(n\in\N\) tel que \(u_n\) soit une approximation de \(\alpha\) à \(10^{-3}\) près.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\section{Convexité}
+
+\begin{exo}
+Soient \(a,b,c\in\R\).
+
+Donner une CNS pour que la fonction \[\fonction{f}{\R}{\R}{x}{ax^2+bx+c}\] soit convexe.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\alpha\in\Rps\).
+
+On pose : \[\fonction{f_\alpha}{\R}{\R}{x}{\exp\paren{\dfrac{-x^2}{2\alpha^2}}}\]
+
+Étudier la convexité de \(f_\alpha\) en fonction de \(\alpha\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(x\in\intervii{0}{1}\).
+
+Montrer : \[\dfrac{\pi}{4}x\leq\Arctan x\leq x\leq\Arcsin x\leq\dfrac{\pi}{2}x.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Montrer : \[\quantifs{\forall x_1,\dots,x_n\in\Rp}\sqrt{x_1+\dots+x_n}\leq\sqrt{x_1}+\dots+\sqrt{x_n}\leq\sqrt{n\paren{x_1+\dots+x_n}}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}
+\item Donner un exemple de fonction dérivable de \(\Rp\) dans \(\R\) qui soit convexe, majorée et non-constante. \\
+
+\item Soit \(f:\R\to\R\) une fonction dérivable, convexe et majorée. Montrer que \(f\) est constante. \\
+
+\item Soit \(f:\R\to\R\) une fonction convexe et majorée. Montrer que \(f\) est constante.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(f:\intervii{0}{1}\to\R\) convexe.
+
+\begin{enumerate}
+\item Montrer que \(f\) est dérivable à droite et à gauche en tout point de \(\intervee{0}{1}\). \\
+
+\item La fonction \(f\) est-elle nécessairement dérivable en \(0\) ? en \(1\) ? en \(\dfrac{1}{2}\) ? \\
+
+\item La fonction \(f\) est-elle nécessairement continue en \(0\) ? en \(1\) ? en \(\dfrac{1}{2}\) ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(f:\Rp\to\R\) convexe.
+
+\begin{enumerate}
+\item Montrer que \(\lim_{x\to\pinf}\dfrac{f\paren{x}}{x}\) existe. On la note \(l\). \\
+
+\item Montrer que si \(l\leq0\) alors \(f\) est décroissante sur \(\Rp\).
+
+\textit{Indication :} raisonner par l'absurde. \\
+
+\item Montrer que \(f\) admet une limite en \(\pinf\). \\
+
+\item Établir, pour chaque valeur de \(l\), quelles sont les différentes limites possibles pour \(f\) en \(\pinf\), en illustrant chaque possibilité par un exemple.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}
+\item Montrer que la fonction \(\fonction{f}{\R}{\R}{x}{\ln\paren{1+\e{x}}}\) est convexe. \\
+
+\item En déduire : \[\quantifs{\forall x_1,\dots,x_n\in\Rps}1+\paren{\prod_{k=1}^nx_k}^{\nicefrac{1}{n}}\leq\paren{\prod_{k=1}^n\paren{1+x_k}}^{\nicefrac{1}{n}}\] puis : \[\quantifs{\forall a_1,\dots,a_n,b_1,\dots,b_n\in\Rps}\paren{\prod_{k=1}^na_k}^{\nicefrac{1}{n}}+\paren{\prod_{k=1}^nb_k}^{\nicefrac{1}{n}}\leq\paren{\prod_{k=1}^n\paren{a_k+b_k}}^{\nicefrac{1}{n}}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(n\in\Ns\) et \(x\in\intervie{1}{\pinf}\).
+
+Montrer : \[n\paren{x^{\nicefrac{n+1}{2}}-x^{\nicefrac{n-1}{2}}}\leq x^n-1.\]
+
+\textit{Indication :} factoriser par \(x-1\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(a,b\in\R\) tels que \(a<b\) et \(f\in\ensclasse{2}{\intervii{a}{b}}{\R}\) telle que \(f\paren{a}=f\paren{b}=0\).
+
+\begin{enumerate}
+\item Justifier que \[M=\max_{\intervii{a}{b}}\abs{f\seconde}\] est bien défini. \\
+
+\item Étudier la convexité des fonctions \[\fonction{g}{\intervii{a}{b}}{\R}{x}{f\paren{x}+M\dfrac{\paren{x-a}\paren{b-x}}{2}}\quad\text{et}\quad\fonction{h}{\intervii{a}{b}}{\R}{x}{f\paren{x}-M\dfrac{\paren{x-a}\paren{b-x}}{2}}\]
+
+\item En déduire : \[\quantifs{\forall x\in\intervii{a}{b}}\abs{f\paren{x}}\leq M\dfrac{\paren{x-a}\paren{b-x}}{2}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Inégalités de Hölder et de Minkowski]
+Soient \(p,q\in\intervee{1}{\pinf}\) tels que : \[\dfrac{1}{p}+\dfrac{1}{q}=1.\]
+
+\begin{enumerate}
+\item Montrer : \[\quantifs{\forall x,y\in\Rps}xy\leq\dfrac{1}{p}x^p+\dfrac{1}{q}y^q.\]
+
+\item Soient \(x_1,\dots,x_n,y_1,\dots,y_n\in\Rps\) tels que \(\sum_{k=1}^nx_k^p=\sum_{k=1}^ny_k^q=1\).
+
+Montrer : \[\sum_{k=1}^nx_ky_k\leq1.\]
+
+\item En déduire l'inégalité de Hölder : \[\quantifs{\forall a_1,\dots,a_n,b_1,\dots,b_n\in\Rp}\sum_{k=1}^na_kb_k\leq\paren{\sum_{k=1}^na_k^p}^{\nicefrac{1}{p}}\paren{\sum_{k=1}^nb_k^q}^{\nicefrac{1}{q}}.\]
+
+\item En déduire l'inégalité de Minkowski : \[\quantifs{\forall a_1,\dots,a_n,b_1,\dots,b_n\in\Rp}\paren{\sum_{k=1}^n\paren{a_k+b_k}^p}^{\nicefrac{1}{p}}\leq\paren{\sum_{k=1}^na_k^p}^{\nicefrac{1}{p}}+\paren{\sum_{k=1}^nb_k^p}^{\nicefrac{1}{p}}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}

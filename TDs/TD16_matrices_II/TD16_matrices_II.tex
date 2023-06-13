@@ -1,0 +1,212 @@
+\chapter{Matrices II}
+
+\minitoc
+
+\begin{exo}
+On note \(E\) un espace vectoriel, \(\fami{B}\) une base de \(E\) et \(u\) un endomorphisme de \(E\).
+
+Donner, dans chaque cas, la matrice \(\Mat{u}\) de \(u\) dans \(\fami{B}\).
+
+\begin{enumerate}
+\item \(E=\C\), vu comme un \(\R\)-espace vectoriel ; \(\fami{B}=\paren{1,\i}\)
+
+\(\fonction{u}{\C}{\C}{z}{\paren{a+\i b}z}\) où \(a,b\in\R\). \\
+
+\item \(E=\C\), vu comme un \(\R\)-espace vectoriel ; \(\fami{B}=\paren{1,\i}\)
+
+\(\fonction{u}{\C}{\C}{z}{\i\lambda z+2\conj{z}}\) où \(\lambda\in\R\). \\
+
+\item \(E=\C\), vu comme un \(\C\)-espace vectoriel ; \(\fami{B}=\paren{1}\)
+
+\(\fonction{u}{\C}{\C}{z}{\paren{a+\i b}z}\) où \(a,b\in\R\). \\
+
+\item \(E=\C\), vu comme un \(\C\)-espace vectoriel ; \(\fami{B}=\paren{1}\)
+
+\(\fonction{u}{\C}{\C}{z}{\i\lambda z+2\conj{z}}\) où \(\lambda\in\R\). \\
+
+\item \(E=\Vect{\cos,\sin}\), sous-espace vectoriel de \(\ensclasse{\infty}{\R}{\R}\) ; \(\fami{B}=\paren{\cos,\sin}\)
+
+\(\fonction{u}{E}{E}{f}{2f+f\prim}\) \\
+
+\item \(E=\M{2}\) ; \(\fami{B}=\paren{E_{11},E_{21},E_{12},E_{22}}\)
+
+\(\fonction{u}{E}{E}{M}{AM}\) où \(A=\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}\in E\) est une matrice fixée. \\
+
+\item \(E=\M{2}\) ; \(\fami{B}=\paren{E_{11},E_{21},E_{12},E_{22}}\)
+
+\(\fonction{u}{E}{E}{M}{MA}\) où \(A=\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}\in E\) est une matrice fixée. \\
+
+\item \(E=\M{2}\) ; \(\fami{B}=\paren{E_{11},E_{12},E_{21},E_{22}}\)
+
+\(\fonction{u}{E}{E}{M}{MA}\) où \(A=\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}\in E\) est une matrice fixée. \\
+
+\item \(E=\M{n}\) ; \(\fami{B}\) à choisir (judicieusement)
+
+\(\fonction{u}{E}{E}{M}{AM}\) où \(A\in E\) est une matrice fixée. \\
+
+\item \(E=\M{n}\) ; \(\fami{B}\) à choisir (judicieusement)
+
+\(\fonction{u}{E}{E}{M}{MA}\) où \(A\in E\) est une matrice fixée.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On pose \[\fonction{u}{\polydeg[\R]{n}}{\polydeg[\R]{n}}{P}{X^2P\seconde-6P}\]
+
+Calculer le rang et la trace de \(u\) :
+
+\begin{enumerate}
+\item si \(n=3\). \\
+
+\item si \(n\geq3\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On pose \[\fonction{u}{\M{n}[\R]}{\M{n}[\R]}{A}{\trans{A}}\]
+
+Calculer le rang et la trace de \(u\) :
+
+\begin{enumerate}
+\item si \(n=2\). \\
+
+\item si \(n\in\Ns\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un espace vectoriel de dimension finie non-nulle et \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\).
+
+Quelle est la relation entre la matrice de passage \(\pass{\fami{B}}{\fami{B}\prim}\) et la matrice \(\Mat[\fami{B},\fami{B}\prim]{\id{E}}\) de l'application linéaire \(\id{E}\) dans les bases \(\fami{B}\) et \(\fami{B}\prim\) ?
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) et \(F\) deux espaces vectoriels de dimension finie et \(u\in\L{E}{F}\) une application linéaire de rang \(r\in\N\).
+
+Montrer que \(u\) est la somme de \(r\) applications linéaires de rang 1.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un espace vectoriel de dimension finie non-nulle et \(u\in\Lendo{E}\) tel que \(u^2=0\).
+
+\begin{enumerate}
+\item Quelle inclusion est vraie entre \(\ker u\) et \(\Im u\) ? \\
+
+\item Montrer que \(u\) est de trace nulle.
+
+\textit{Indication :} construire une base de \(E\) adaptée à la situation.
+
+\textit{Remarque :} vous montrerez en deuxième année que tout endomorphisme nilpotent de \(E\) est de trace nulle.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Méthode à retenir]
+On pose : \[H=\accol{\tcoords{x_1}{x_2}{x_3}\in\C^3\tq x_1+2x_3=0}\qquad\text{et}\qquad D=\Vect{\tcoords{1}{-1}{0}}.\]
+
+\begin{enumerate}
+\item Justifier que \(H\) et \(D\) sont deux sous-espaces vectoriels supplémentaires dans \(\C^3\). \\
+
+\item On note \(p_H\) la projection sur \(H\) parallèlement à \(D\) et \(p_D\) la projection sur \(D\) parallèlement à \(H\).
+
+Déterminer les matrices de \(p_H\) et \(p_D\) dans la base canonique.
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Méthode également à retenir]
+On pose \(E=\R^4\).
+
+On note \(F\) et \(G\) les ensembles solutions respectifs des systèmes \[\begin{dcases}
+a+b=0 \\
+b+c=0
+\end{dcases}\qquad\text{et}\qquad\begin{dcases}
+a+b+c=0 \\
+b+c+d=0
+\end{dcases}\]
+
+\begin{enumerate}[series=mat2]
+\item Montrer que \(F\) et \(G\) sont supplémentaires dans \(\R^4\). \\
+
+\item Déterminer une base \(\fami{B}_F\) de \(F\) et une base \(\fami{B}_G\) de \(G\).
+\end{enumerate}
+
+On note \(\fami{B}_0\) la base canonique de \(\R^4\), \(\fami{B}\) la base de \(\R^4\) obtenue en juxtaposant \(\fami{B}_F\) et \(\fami{B}_G\), \(p\) la projection sur \(F\) parallèlement à \(G\) et \(s\) la symétrie par rapport à \(F\) parallèlement à \(G\).
+
+\begin{enumerate}[resume=mat2]
+\item Donner la matrice de \(p\) dans la base \(\fami{B}\). \\
+
+\item En déduire la matrice de \(p\) dans la base \(\fami{B}_0\). \\
+
+\item En déduire la matrice de \(s\) dans la base \(\fami{B}_0\).
+\end{enumerate}
+
+NB : il faut savoir refaire parfaitement la question (4) sans les questions intermédiaires (2) et (3).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(M\in\M{n}[\R]\) une matrice de trace différente de \(2\).
+
+On pose : \[E=\accol{X\in\M{n}[\R]\tq X+\trans{X}=\paren{\tr X}M}.\]
+
+\begin{enumerate}
+\item Montrer que \(E\) est un \(\R\)-espace vectoriel et déterminer sa dimension. \\
+
+\item Que se passe-t-il si \(\tr M=2\) ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(E\) un \(\R\)-espace vectoriel de dimension finie, \(\lambda\in\Rs\) et \(u\in\Lendo{E}\).
+
+On suppose \(u^2=\lambda u\).
+
+Donner une relation entre \(\tr u\) et \(\rg u\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}

@@ -1,0 +1,736 @@
+% Set up the document's format to A4 and the font's size to 12pt.
+\documentclass[a4paper,12pt]{report}
+
+% Set up the document's title, author and date.
+\title{Maths -- MP2I}
+\author{Romain Bricout}
+\date{\today}
+
+% Set up the input's encoding to UTF-8, the document's font and language to T1 (adapted to french) and french (the grammar linter uses this parameter).
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\usepackage[dvipsnames]{xcolor}
+
+% Set up the document's margins.
+\usepackage{geometry}
+\geometry{hmargin=1.5cm,vmargin=1.5cm}
+
+% The three main maths packages. They are used for a lot of things.
+\usepackage{amssymb,amsmath}
+\usepackage{mathtools}
+
+% Useful to create nice and easy signs or variations tables.
+\usepackage{tkz-tab}
+
+% Useful to create any kind of visual representation (graph functions, illustrate geometry problems, etc)
+\usepackage{tikz}
+\usetikzlibrary{patterns,angles,quotes,arrows,arrows.meta,bending,matrix,calc}
+
+% Allows to edit the itemize environment's default item document-wide.
+\usepackage{enumitem}
+
+% Allows to define \notfoo or \nfoo (not recommended) in order for \not\foo to work as wished.
+\usepackage{newtxmath}
+\DeclareSymbolFont{CMletters}{OML}{cmm}{m}{it}
+\DeclareMathSymbol{\nu}{\mathord}{CMletters}{23}
+
+% Makes the table of contents clickable and gives useful commands for links in general.
+\usepackage[hypertexnames=false]{hyperref}
+\hypersetup{colorlinks=false,linktoc=all}
+
+% Gives the llbracket and rrbracket commands for integer intervals.
+\usepackage{stmaryrd}
+
+% Useful to insert nice-looking quotes.
+\usepackage{epigraph}
+
+% Allows to insert chapter-specific table of contents.
+\usepackage{minitoc}
+\mtcselectlanguage{french}
+\setcounter{minitocdepth}{6}
+
+% Useful when units are needed.
+\usepackage{siunitx}
+\sisetup{
+locale=FR,
+detect-all,
+inter-unit-product=\ensuremath{\cdot},
+list-final-separator={et},
+list-pair-separator={et},
+range-phrase={\ensuremath{\xleftrightarrow{}}},
+exponent-product=\ensuremath{\cdot},
+per-mode=power-positive-first
+}
+
+\usepackage[thmmarks,hyperref]{ntheorem}
+\makeatletter
+\let\old@thm\@thm
+\usepackage[lowercase]{theoremref}
+\def\@thm#1#2#3{\def\thmref@currname{#3}\old@thm{#1}{#2}{#3}}
+\makeatother
+
+% Allows whiteboard digits with \mathds
+\usepackage{dsfont}
+
+\usepackage{needspace}
+
+% Useful for better-looking oneline fractions
+\usepackage{nicefrac}
+
+% Set up the horizontal space before the first line of a new paragraph to 2em and the vertical space between two paragraphs to 1em.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+% Adds 0.5em to the vertical space between two lines in an align environment. It looks better.
+\addtolength{\jot}{0.5em}
+
+% Allows align environment to break if it's too long to fit in the page where it began.
+\allowdisplaybreaks[1]
+
+% Trick to make semicolons considered like relation operators (such as =) and therefore being equidistantly spaced from the two numbers around it.
+\mathcode`;=\numexpr\mathcode`;-"3000
+
+% Commands for size-adaptative parentheses, brackets, curly brackets, absolute value and magnitude.
+\newcommand{\paren}[1]{\left(#1\right)} % (x)
+\newcommand{\croch}[1]{\left[#1\right]} % [x]
+\newcommand{\accol}[1]{\left\lbrace#1\right\rbrace} % {x}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} % |x|
+\newcommand{\norme}[1]{\left\|#1\right\|} % ||x||
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor} % ⌊x⌋
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil} % ⌈x⌉
+
+% Commands for size-adaptative intervals and integer intervals. The commands' roots are "interv" and "interventier" and the added e or i at the end mean "excluded" and "included" respectively.
+\newcommand{\intervii}[2]{\left[#1;#2\right]} % [a;b]
+\newcommand{\intervee}[2]{\left]#1;#2\right[} % ]a;b[
+\newcommand{\intervie}[2]{\left[#1;#2\right[} % [a;b[
+\newcommand{\intervei}[2]{\left]#1;#2\right]} % ]a;b]
+\newcommand{\interventierii}[2]{\left\llbracket#1;#2\right\rrbracket} % non-ASCII characters needed
+\newcommand{\interventieree}[2]{\left\rrbracket#1;#2\right\llbracket} % non-ASCII characters needed
+\newcommand{\interventierie}[2]{\left\llbracket#1;#2\right\llbracket} % non-ASCII characters needed
+\newcommand{\interventierei}[2]{\left\rrbracket#1;#2\right\rrbracket} % non-ASCII characters needed
+
+% Commands for usually used sets.
+\newcommand{\N}{\mathbb{N}} % natural integers
+\newcommand{\Ns}{\mathbb{N}^*}
+
+\newcommand{\Z}{\mathbb{Z}} % relative integers
+\newcommand{\Zp}{\mathbb{Z}_+}
+\newcommand{\Zs}{\mathbb{Z}^*}
+\newcommand{\Zps}{\mathbb{Z}_+^*}
+
+\newcommand{\D}{\mathbb{D}} % decimal numbers
+\newcommand{\Dp}{\mathbb{D}_+}
+\newcommand{\Dm}{\mathbb{D}_-}
+\newcommand{\Ds}{\mathbb{D}^*}
+\newcommand{\Dps}{\mathbb{D}_+^*}
+\newcommand{\Dms}{\mathbb{D}_-^*}
+
+\newcommand{\Q}{\mathbb{Q}} % rational numbers
+\newcommand{\Qp}{\mathbb{Q}_+}
+\newcommand{\Qm}{\mathbb{Q}_-}
+\newcommand{\Qs}{\mathbb{Q}^*}
+\newcommand{\Qps}{\mathbb{Q}_+^*}
+\newcommand{\Qms}{\mathbb{Q}_-^*}
+
+\newcommand{\R}{\mathbb{R}} % real numbers
+\newcommand{\Rp}{\mathbb{R}_+}
+\newcommand{\Rm}{\mathbb{R}_-}
+\newcommand{\Rs}{\mathbb{R}^*}
+\newcommand{\Rps}{\mathbb{R}_+^*}
+\newcommand{\Rms}{\mathbb{R}_-^*}
+\newcommand{\Rb}{\overline{\mathbb{R}}}
+
+\newcommand{\C}{\mathbb{C}} % complex numbers
+\newcommand{\Cs}{\mathbb{C}^*}
+
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Ks}{\mathbb{K}^*}
+
+\newcommand{\A}{\mathbb{A}}
+\renewcommand{\L}[2]{\mathscr{L}\paren{#1,#2}}
+\newcommand{\Lendo}[1]{\mathscr{L}\paren{#1}}
+
+\newcommand{\prem}{\mathbb{P}}
+
+\newcommand{\U}{\mathbb{U}} % complex numbers whose modulus is 1
+\renewcommand{\H}{\mathbb{H}} % quaternions (\H normally prints slanted quotation marks)
+\renewcommand{\O}{\mathbb{O}} % octonions (\O normally prints a slashed capital o : Ø)
+
+\renewcommand{\P}[1]{\mathscr{P}\paren{#1}} % subsets of a set
+\newcommand{\F}[2]{\mathscr{F}\paren{#1,#2}} % functions from 1 to 2
+\newcommand{\V}[1]{\mathscr{V}\paren{#1}} % neighborhood of a number
+
+% Redefines \Re and \Im to print Re and Im (the same way as ln or lim) instead of fraktur R and I which don't look nice and are less readable.
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Card}{\operatorname{Card}}
+
+% Command to print an upright e for the exponential instead of a slanted e and put the exponent.
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+
+% Command to print the imaginary i with a little space on the right. This way, the exponents don't look confusing. \i normally prints a dotless i.
+\renewcommand{\i}{i\mkern1mu}
+
+% Redefines \vec such that the arrow covers the whole name of the vector.
+%\renewcommand{\vec}[1]{\overrightarrow{#1}}
+
+% Commands for 2D and 3D vectors' coordinates
+\newcommand{\dcoords}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
+\newcommand{\tcoords}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+
+% Redefines binom to print nicer parentheses around the numbers.
+\renewcommand{\binom}[2]{\begin{pmatrix}#2\\#1\end{pmatrix}}
+
+% Command for a QED black square. It automatically prints a whitespace before the square such that it looks nice.
+\newcommand{\cqfd}{\text{ }\blacksquare}
+
+% Commands with more explicit names for the best way to express divisibility (mid and nmid).
+\newcommand{\divise}{\mid}
+\newcommand{\notdivise}{\nmid}
+
+% Commands that do the exact same thing but with explicit names for a complex number's conjugate and an event's negation in probability.
+\newcommand{\conj}[1]{\overline{#1}}
+
+% Command for a size-adaptative middle bar meaning "such that" (with spacing around it in order to look nice).
+\newcommand{\tq}{\;\middle|\;}
+
+% Command with an explicit name for the scalar product.
+\newcommand{\scal}{\cdot}
+\newcommand{\vecto}{\operatorname{_\wedge}}
+
+% Shortcut for forcing displaystyle in inline mode.
+\newcommand{\ds}{\displaystyle}
+
+% Make the not version of implies, impliedby and iff look nice.
+\newcommand{\notimp}{\centernot{\imp}}
+\newcommand{\notimpr}{\centernot{\impr}}
+\newcommand{\notssi}{\centernot{\ssi}}
+
+\renewcommand{\subset}{\subseteq}
+\renewcommand{\supset}{\supseteq}
+\newcommand{\notsubset}{\centernot{\subset}}
+\newcommand{\notsupset}{\centernot{\supset}}
+
+% Shortcut for P(event).
+\newcommand{\proba}[1]{P\paren{#1}}
+
+% More explicit names for land (logical and) and lor (logical or).
+\newcommand{\et}{\land}
+\newcommand{\ou}{\lor}
+\newcommand{\non}{\lnot}
+
+% Explicitly named environment for tkz-tab tables. Automatically centers the table and handles the tikzpicture environment.
+\newenvironment{tkz}
+{
+\begin{tikzpicture}
+}
+{
+\end{tikzpicture}
+}
+
+% More explicitly named commands for the creation of tkz-tab tables.
+\newcommand{\tableauinit}[2]{\tkzTabInit{#1}{#2}}
+\newcommand{\tableausignes}[1]{\tkzTabLine{#1}}
+\newcommand{\tableauvariations}[1]{\tkzTabVar{#1}}
+
+% Shortcut for the curve and the domain of the given function.
+\newcommand{\graphe}[1]{\Gamma_{#1}}
+\newcommand{\ensembledef}[1]{\mathcal{D}_{#1}}
+
+\renewcommand{\S}[1]{\frak{S}_{#1}}
+\newcommand{\frakA}[1]{\frak{A}_{#1}}
+
+\newcommand{\semihrule}{\rule{256.074815pt}{0.4pt}}
+
+% Various environments that create boxes. Each one is one type of thing (example, proof, etc). Each type has its own automatic counter.
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\itshape}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{green}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{rem}{Remarque}[chapter]
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\itshape}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{green}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{ex}[rem]{Exemple}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\itshape}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{green}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{rappel}[rem]{Rappel}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\itshape}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{brown}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{oubli}[rem]{Oubli}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{blue}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{defi}[rem]{Définition}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{blue}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{reform}[rem]{Reformulation}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{magenta}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{exo}[rem]{Exercice}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{magenta}\semihrule\color{green}\semihrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{exoex}[rem]{Exercice/Exemple}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{blue}\semihrule\color{red}\semihrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{defprop}[rem]{Définition/Proposition}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{blue}\semihrule\color{red}\semihrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{deftheo}[rem]{Définition/Théorème}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{blue}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{nota}[rem]{Notation}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\itshape}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{blue}\hrule}
+\theorempostwork{\hrule\color{black}\needspace{\baselineskip}\bigskip}
+\newtheorem*{brouill}{Brouillon}
+
+\theoremstyle{break}
+\theorembodyfont{\itshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{red}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{theo}[rem]{Théorème}
+
+\theoremstyle{break}
+\theorembodyfont{\itshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{red}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{prop}[rem]{Proposition}
+
+\theoremstyle{break}
+\theorembodyfont{\itshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{red}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{cor}[rem]{Corollaire}
+
+\theoremstyle{break}
+\theorembodyfont{\itshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{red}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{lem}[rem]{Lemme}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{violet}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{meth}[rem]{Méthode}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{violet}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{abus}[rem]{Abus}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{violet}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{algo}[rem]{Algorithme}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{violet}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{bilan}[rem]{Bilan}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\itshape}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{BurntOrange}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{corr}[rem]{Correction}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\itshape}
+\theoremsymbol{\ensuremath{\cqfd}}
+\theoremprework{\bigskip\needspace{\baselineskip}\color{yellow}\hrule\color{black}}
+\theorempostwork{\bigskip}
+\newtheorem{dem}[rem]{Démonstration}
+
+% Trick to make chapter numbering start from 0
+\setcounter{chapter}{-1}
+
+% Commands to make proofs easier to write
+\newcommand{\impdir}{\fbox{\(\imp\)}~}
+\newcommand{\imprec}{\fbox{\(\impr\)}~}
+\newcommand{\incdir}{\fbox{\(\subset\)}~}
+\newcommand{\increc}{\fbox{\(\supset\)}~}
+\newcommand{\leqbox}{\fbox{\(\leq\)}~}
+\newcommand{\geqbox}{\fbox{\(\geq\)}~}
+\newcommand{\unicite}{\fbox{unicité}~}
+\newcommand{\existence}{\fbox{existence}~}
+\newcommand{\analyse}{\fbox{analyse}~}
+\newcommand{\synthese}{\fbox{synthèse}~}
+\newcommand{\conclusion}{\fbox{conclusion}~}
+
+\renewcommand{\to}{\longrightarrow}
+\renewcommand{\mapsto}{\longmapsto}
+
+\newcommand{\fonction}[5]{\begin{array}[t]{cccc}#1 : & #2 & \to & #3 \\ & #4 & \mapsto & #5\end{array}}
+\newcommand{\fonctionlambda}[4]{\begin{array}[t]{ccc}#1 & \to & #2 \\ #3 & \mapsto & #4\end{array}}
+
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+\newcommand{\pinf}{+\infty}
+\newcommand{\minf}{-\infty}
+
+\newcommand{\id}[1]{\mathrm{id}_{#1}}
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\ind}[1]{\mathds{1}_{#1}}
+
+\newcommand{\iR}{\i\R}
+
+\newcommand{\tcheby}[2]{T_{#1}\paren{#2}}
+\newcommand{\utcheby}[2]{U_{#1}\paren{#2}}
+
+\mathcode`l="8000
+\begingroup
+\makeatletter
+\lccode`\~=`\l
+\DeclareMathSymbol{\lsb@l}{\mathalpha}{letters}{`l}
+\lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \ell \else \lsb@l \fi}}%
+\endgroup
+
+\newcommand{\ensvide}{\varnothing}
+
+\newcommand{\rond}{\circ}
+
+\newcommand{\union}{\cup}
+\newcommand{\inter}{\cap}
+\newcommand{\bigunion}{\bigcup}
+\newcommand{\biginter}{\bigcap}
+
+\newcommand{\ssi}{\iff}
+\newcommand{\imp}{\implies}
+\newcommand{\impr}{\impliedby}
+
+\newcommand{\excluant}{\setminus}
+
+\newcommand{\littletaller}{\mathchoice{\vphantom{\big|}}{}{}{}}
+\newcommand{\restr}[2]{{
+\left.\kern-\nulldelimiterspace#1\littletaller\right|_{#2}
+}}
+\newcommand{\corestr}[2]{{
+\left.\kern-\nulldelimiterspace#1\littletaller\right|^{#2}
+}}
+\newcommand{\restrbar}[1]{{
+\left.\kern-\nulldelimiterspace#1\littletaller\right|
+}}
+
+\newcommand{\rel}{\mathscr{R}}
+
+\newcommand{\classesdequiv}[1]{\nicefrac{#1}{\sim}}
+
+\newcommand{\majo}[1]{\mathrm{majorants}\paren{#1}}
+\newcommand{\mino}[1]{\mathrm{minorants}\paren{#1}}
+
+\newcommand{\ensdiv}[1]{\operatorname{div}\paren{#1}}
+
+\newcommand{\E}[1]{\times 10^{#1}}
+
+\setcounter{secnumdepth}{3}
+
+\newcommand{\guillemets}[1]{\og #1 \fg{}}
+
+\newcommand{\prim}{^{\,\prime}}
+\newcommand{\seconde}{^{\,\prime\prime}}
+
+\newcommand{\note}[1]{\textbf{\(\star\star\) #1 \(\star\star\)}}
+\newcommand{\cad}{c'est-à-dire }
+\newcommand{\Cad}{C'est-à-dire }
+\newcommand{\ie}{\textit{i.e.} }
+\newcommand{\cf}{\textit{cf.} }
+\newcommand{\Cf}{\textit{Cf.} }
+
+\usepackage{xparse}
+
+\NewDocumentCommand{\quantifs}{>{\SplitList{;}}m}{\ProcessList{#1}{\insertquantif}}
+\newcommand{\insertquantif}[1]{#1,\;\:}
+
+\DeclareDocumentCommand{\groupe}{m O{+}}{\paren{#1,#2}}
+\DeclareDocumentCommand{\anneau}{m O{+} O{\times}}{\paren{#1,#2,#3}}
+\DeclareDocumentCommand{\corps}{m O{+} O{\times}}{\paren{#1,#2,#3}}
+
+\DeclareDocumentCommand{\poly}{O{\K} O{X}}{#1\croch{#2}}
+\DeclareDocumentCommand{\polydeg}{O{\K} m O{X}}{#1_{#2}\croch{#3}}
+\DeclareDocumentCommand{\fracrat}{O{\K} O{X}}{#1\paren{#2}}
+
+\DeclareDocumentCommand{\M}{m O{\K}}{\mathscr{M}_{#1}\paren{#2}}
+\DeclareDocumentCommand{\sym}{m O{\K}}{\mathscr{S}_{#1}\paren{#2}}
+\DeclareDocumentCommand{\antisym}{m O{\K}}{\mathscr{A}_{#1}\paren{#2}}
+\DeclareDocumentCommand{\GL}{m O{\K}}{\operatorname{GL}_{#1}\paren{#2}}
+\DeclareDocumentCommand{\Mat}{O{\fami{B}} m}{\operatorname{Mat}_{#1}\paren{#2}}
+\newcommand{\pass}[2]{\mathscr{P}_{#1\to#2}}
+
+\DeclareDocumentCommand{\contm}{O{\intervii{a}{b}} O{\K}}{\classe{0}_m\paren{#1,#2}}
+\DeclareDocumentCommand{\Esc}{O{\intervii{a}{b}} O{\K}}{\operatorname{Esc}\paren{#1,#2}}
+
+\usepackage{witharrows}
+
+\newcommand{\croix}{^{\times}}
+
+\usepackage{polynom}
+
+\newcommand{\classe}[1]{\mathscr{C}^{#1}}
+\newcommand{\ensclasse}[3]{\classe{#1}\paren{#2,#3}}
+
+\newcommand{\deriv}[1]{^{\paren{#1}}}
+
+\usepackage{derivative}
+\derivset{\pdv}[delims-eval=.)]
+
+\DeclareMathOperator{\Arctan}{Arctan}
+\DeclareMathOperator{\Arcsin}{Arcsin}
+\DeclareMathOperator{\Arccos}{Arccos}
+\DeclareMathOperator{\cotan}{cotan}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\sg}{sg}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\Hom}[2]{\operatorname{Hom}\paren{#1,#2}}
+\newcommand{\Pol}[2]{\operatorname{Pol}\paren{#1,#2}}
+\newcommand{\Aut}[1]{\operatorname{Aut}\paren{#1}}
+\DeclareDocumentCommand{\Vect}{O{} m}{\operatorname{Vect}_{#1}\paren{#2}}
+
+\newcommand{\diag}[1]{\operatorname{diag}\paren{#1}}
+
+\usepackage{abstract}
+\addto\captionsfrench{\renewcommand{\abstractname}{\Large Introduction}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\etoile}{^{*}}
+
+\newcounter{orcounter}
+
+\newenvironment{orlist}
+{
+\begin{array}{|l}
+\setcounter{orcounter}{0}
+}
+{
+\end{array}
+}
+
+\newcommand{\oritem}[1]{%
+\ifthenelse{\theorcounter<1}{}{\\ \text{ou} \\}#1\stepcounter{orcounter}
+}
+
+\NewDocumentCommand{\orenv}{>{\SplitList{\\}}m}{%
+\begin{orlist}\ProcessList{#1}{\oritem}\end{orlist}}
+
+\usepackage{pgfplots}
+
+\DeclareDocumentCommand{\pgcd}{o o}{
+\IfNoValueTF{#1}{\operatorname{pgcd}}{\operatorname{pgcd}\paren{#1,#2}}
+}
+
+\DeclareDocumentCommand{\bezout}{o o}{
+\IfNoValueTF{#1}{\operatorname{bezout}}{\operatorname{bezout}\paren{#1,#2}}
+}
+
+\usepackage{minted}
+\newminted{python}{linenos, breaklines, breakanywhere, breakautoindent,tabsize=4,obeytabs}
+\newenvironment{code}{\VerbatimEnvironment\begin{pythoncode}}{\end{pythoncode}}
+
+\newcommand{\valp}[2]{v_{#1}\paren{#2}}
+
+\newcommand{\fami}[1]{\mathscr{#1}}
+
+\newcommand{\echange}{\leftrightarrow}
+
+\newcommand{\trans}[1]{\prescript{t}{}{#1}}
+
+\usepackage{mathdots}
+
+\newcommand{\detb}[1]{{\det}_{#1}}
+
+\usepackage{cancel}
+
+\usepackage{nicematrix}
+
+\newcommand{\ps}[2]{\left\langle#1\tq#2\right\rangle}
+\newcommand{\ortho}{^{\perp}}
+
+\newcommand{\operp}{\oplus_{\perp}}
+
+\usepackage{titletoc}
+\dottedcontents{section}[5.5em]{}{3.2em}{1pc}
+
+\begin{document}
+\renewcommand{\labelitemi}{\(\bullet\)}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+
+\everymath{\ds}
+
+\maketitle
+
+\begin{abstract}
+Ce document réunit l'ensemble de mes cours de Mathématiques de MP2I, ainsi que les TDs (travaux dirigés) les accompagnant. Le professeur était M. Jansou. J'ai adapté certaines formulations me paraissant floues ou ne me plaisant pas mais le contenu pur des cours est strictement équivalent. Le document est organisé selon la hiérarchie suivante : chapitre, I), 1), a).
+
+Les éléments des tables des matières initiale et présentes au début de chaque chapitre sont cliquables (amenant directement à la partie cliquée). C'est également le cas des références à des éléments antérieurs de la forme, par exemple, \guillemets{Démonstration 5.22}.
+
+Dernier chapitre terminé : Chapitre 15 -- Matrices I.
+
+Dernier TD terminé : Chapitre 21 -- Espaces préhilbertiens (à jour).
+
+Dernier TD corrigé : aucun.
+\end{abstract}
+
+\dominitoc\tableofcontents
+
+\part{Cours}
+
+\include{chapitres/chap0_preliminaires/chap0_preliminaires.tex}
+
+\include{chapitres/chap1_ineg_calculs/chap1_ineg_calculs.tex}
+
+\include{chapitres/chap2_revisions_trigo/chap2_revisions_trigo.tex}
+
+\include{chapitres/chap3_complexes/chap3_complexes.tex}
+
+\include{chapitres/chap4_notions_ensemblistes/chap4_notions_ensemblistes.tex}
+
+\include{chapitres/chap5_suites/chap5_suites.tex}
+
+\include{chapitres/chap6_algebre_gen/chap6_algebre_gen.tex}
+
+\include{chapitres/chap7_limites_fonctions_continuite/chap7_limites_fonctions_continuite.tex}
+
+\include{chapitres/chap8_arithmetique/chap8_arithmetique.tex}
+
+\include{chapitres/chap9_fonctions_derivables/chap9_fonctions_derivables.tex}
+
+\include{chapitres/chap10_polynomes/chap10_polynomes.tex}
+
+\include{chapitres/chap11_integrales/chap11_integrales.tex}
+
+\include{chapitres/chap12_espaces_vectoriels/chap12_espaces_vectoriels.tex}
+
+\include{chapitres/chap13_equations_differentielles/chap13_equations_differentielles.tex}
+
+\include{chapitres/chap14_espaces_vectoriels_dimension_finie/chap14_espaces_vectoriels_dimension_finie.tex}
+
+\include{chapitres/chap15_matrices_I/chap15_matrices_I.tex}
+
+\include{chapitres/chap16_matrices_II/chap16_matrices_II.tex}
+
+\include{chapitres/chap17_relations_comparaison_developpements_limites/chap17_relations_comparaison_developpements_limites.tex}
+
+\include{chapitres/chap18_groupe_symetrique/chap18_groupe_symetrique.tex}
+
+\include{chapitres/chap19_determinants/chap19_determinants.tex}
+
+\include{chapitres/chap20_series_familles_sommables/chap20_series_familles_sommables.tex}
+
+\include{chapitres/chap21_espaces_prehilbertiens/chap21_espaces_prehilbertiens.tex}
+
+\part{TDs}
+
+% Trick to make chapter numbering start from 0
+\setcounter{chapter}{-1}
+
+\include{TDs/TD0_preliminaires/TD0_preliminaires.tex}
+
+\include{TDs/TD1_inegs_calculs/TD1_inegs_calculs.tex}
+
+\include{TDs/TD2_revisions_trigo/TD2_revisions_trigo.tex}
+
+\include{TDs/TD3_complexes/TD3_complexes.tex}
+
+\include{TDs/TD4_notions_ensemblistes/TD4_notions_ensemblistes.tex}
+
+\include{TDs/TD5_suites/TD5_suites.tex}
+
+\include{TDs/TD6_algebre_gen/TD6_algebre_gen.tex}
+
+\include{TDs/TD7_limites_fonctions_continuite/TD7_limites_fonctions_continuite.tex}
+
+\include{TDs/TD8_arithmetique/TD8_arithmetique.tex}
+
+\include{TDs/TD9_fonctions_derivables/TD9_fonctions_derivables.tex}
+
+\include{TDs/TD10_polynomes/TD10_polynomes.tex}
+
+\include{TDs/TD11_integrales/TD11_integrales.tex}
+
+\include{TDs/TD12_espaces_vectoriels/TD12_espaces_vectoriels.tex}
+
+\include{TDs/TD13_equations_differentielles/TD13_equations_differentielles.tex}
+
+\include{TDs/TD14_espaces_vectoriels_dimension_finie/TD14_espaces_vectoriels_dimension_finie.tex}
+
+\include{TDs/TD15_matrices_I/TD15_matrices_I.tex}
+
+\include{TDs/TD16_matrices_II/TD16_matrices_II.tex}
+
+\include{TDs/TD17_relations_comparaison_developpements_limites/TD17_relations_comparaison_developpements_limites.tex}
+
+\include{TDs/TD18_groupe_symetrique/TD18_groupe_symetrique.tex}
+
+\include{TDs/TD19_determinants/TD19_determinants.tex}
+
+\include{TDs/TD20_series_familles_sommables/TD20_series_familles_sommables.tex}
+
+\include{TDs/TD21_espaces_prehilbertiens/TD21_espaces_prehilbertiens.tex}
+\end{document}

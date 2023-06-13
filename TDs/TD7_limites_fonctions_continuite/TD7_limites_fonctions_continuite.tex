@@ -1,0 +1,337 @@
+\chapter{Limites de fonctions, continuité}
+
+\minitoc
+
+\section{Limites \& continuité}
+
+\begin{exo}
+On admet \(\lim_{t\to0^+}t\ln t=0\).
+
+Déterminer, lorsqu'elle existent, les limites suivantes :
+
+\begin{enumerate}
+\item \(\lim_{x\to\pinf}x^2-2x+x\ln x\) \\
+
+\item \(\lim_{x\to a}\dfrac{x^2+x}{x^6+2x^5-2x^3-x^2}\) avec \(a\) valant \(\pinf\), puis \(\minf\), puis \(0\), puis \(1\), puis \(-1\). \\
+
+On commencera par déterminer l'ensemble de définition du quotient. \\
+
+\item \(\lim_{x\to0^+}x^x\) \\
+
+\item \(\lim_{x\to\pinf}x^{\nicefrac{-1}{\ln x}}\) \\
+
+\item \(\lim_{x\to\pinf}\sqrt{x+1}-\sqrt{x-1}\) \\
+
+\item \(\lim_{x\to1^+}\ln x\times\ln\paren{\ln x}\)
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+\begin{enumerate}
+\item Quel est l'ensemble de définition de la fonction \(f:x\mapsto\dfrac{x\ln x}{x-1}\) ? \\
+
+\item En quels points peut-on prolonger \(f\) par continuité ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(T\in\Rps\) et \(f:\R\to\R\) une fonction \(T\)-périodique.
+
+\begin{enumerate}
+\item Montrer que \(f\) est continue si,et seulement si, sa restriction \(\restr{f}{\intervii{0}{T}}\) est continue. \\
+
+\item Montrer que \(f\) admet une limite en \(\pinf\) si, et seulement si, elle est constante. \\
+
+\item Soit \(f\) la fonction \(2\)-périodique telle que \[\quantifs{\forall x\in\intervie{0}{1}}f\paren{x}=1-x\qquad\text{et}\qquad\quantifs{\forall x\in\intervie{1}{2}}f\paren{x}=x-1.\] Que dire de \(f\) (continuité, limite en \(\pinf\), en \(\minf\)) ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\alpha\in\R\). On pose \[\fonction{f_\alpha}{\Rps}{\R}{x}{x^\alpha\floor{\dfrac{1}{x}}}\]
+
+\begin{enumerate}
+\item On suppose dans cette question que \(\alpha=0\). Déterminer en quels points \(f_0\) est continue, continue à droite, continue à gauche. \\
+
+\item Faire la même chose pour \(f_\alpha\) (où \(\alpha\) est un réel quelconque). \\
+
+\item Étudier la limite de \(f_\alpha\) en \(0\) et en \(\pinf\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+On pose \[\fonction{f}{\Q}{\R}{x}{\cos x}\]
+
+Déterminer les prolongements continus de \(f\) à \(\R\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[CCP MPI 2023]
+Soit \(x_0\in\R\). On définit la suite \(\paren{u_n}_n\) en posant : \[\begin{dcases}u_0=x_0 \\ \quantifs{\forall n\in\N}u_{n+1}=\Arctan u_n\end{dcases}\]
+
+\begin{enumerate}
+\item Démontrer que la suite \(\paren{u_n}_n\) est monotone et déterminer, en fonction de la valeur de \(x_0\), le sens de variation de \(\paren{u_n}_n\). \\
+
+\item Montrer que \(\paren{u_n}_n\) converge et déterminer sa limite. \\
+
+\item Déterminer l'ensemble des fonctions continues \(h:\R\to\R\) telles que \[\quantifs{\forall x\in\R}h\paren{x}=h\paren{\Arctan x}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(\phi:\R\to\R\) un endomorphisme de groupe (la loi étant l'addition usuelle).
+
+On pose \(\alpha=\phi\paren{1}\).
+
+\begin{enumerate}
+\item Déterminer, en fonction de \(\alpha\), la restriction de \(\phi\) à \(\Z\). \\
+
+\item Déterminer, en fonction de \(\alpha\), la restriction de \(\phi\) à \(\Q\). \\
+
+\item On suppose \(\phi\) continu. Déterminer \(\phi\) en fonction de \(\alpha\). \\
+
+\item Quels sont les endomorphismes continus du groupe \(\R\) ?
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(a,b\in\R\) tels que \(a<b\). Soient \(f:\intervii{a}{b}\to\intervii{a}{b}\) continue et \(\paren{u_n}_n\) une suite d'éléments de \(\intervii{a}{b}\) telle que \[\quantifs{\forall n\in\N}u_{n+1}=f\paren{u_n}.\]
+
+On suppose que \(\paren{u_n}_n\) est convergente.
+
+Montrer que sa limite \(l\) est un point fixe de \(f\) (on n'oubliera pas de justifier que \(f\) est bien définie en \(l\)).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\section{Principaux théorèmes}
+
+\begin{exo}\thlabel{exo:7.17}
+Démontrer le \thref{theo:descriptionDesIntervallesDeR} (inutile de traiter tous les cas).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Très classique]
+Soit \(f:\intervii{0}{1}\to\intervii{0}{1}\) continue.
+
+Montrer que \(f\) admet un point fixe, \cad : \[\quantifs{\exists x\in\intervii{0}{1}}f\paren{x}=x.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(f:\R\to\R\) continue et décroissante.
+
+Montrer que \(f\) admet un unique point fixe.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Montrer que la fonction tangente admet une infinité de points fixes, \cad qu'il existe une infinité de réels \(x\) tels que \(\tan x=x\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(f:\R\to\R\) continue et périodique.
+
+Montrer que \(f\) est bornée.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(f:\R\to\R\) continue.
+
+On suppose : \[\lim_{x\to\pinf}f\paren{x}=\pinf\qquad\text{et}\lim_{x\to\minf}f\paren{x}=\pinf.\]
+
+Montrer que \(f\) admet un minimum (global).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(f,g\in\F{\R}{\R}\).
+
+On suppose \(f\) continue et \(g\) bornée.
+
+Montrer que \(g\rond f\) et \(f\rond g\) sont bornées.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Démonstration du \thref{theo:fonctionContinueEtInjectiveSurUnIntervalleEstMonotone}]\thlabel{exo:7.31}
+Soient \(I\) un intervalle de \(\R\) et \(f:I\to\R\) injective et continue.
+
+On veut montrer dans les questions (1) à (3) que \(f\) est monotone en raisonnant par l'absurde. Pour cela, on suppose \(f\) non-monotone.
+
+\begin{enumerate}
+\item Montrer qu'il existe des éléments \(a,b,c,d\in I\) tels que \[\begin{dcases}a<b \\ c<d \\ f\paren{a}<f\paren{b} \\ f\paren{c}>f\paren{d}.\end{dcases}\] \\
+
+\item On pose \[\fonction{g}{\intervii{0}{1}}{\R}{t}{f\paren{ta+\paren{1-t}c}-f\paren{tb+\paren{1-t}d}}\] Montrer : \[\quantifs{\exists t_0\in\intervii{0}{1}}g\paren{t_0}=0.\] \\
+
+\item Conclure. \\
+
+\item Montrer par un exemple qu'on ne pourrait conclure sans supposer que \(f\) est définie sur un intervalle (\cad donner une fonction \(f_1:J\to\R\) injective, continue et non-monotone, où \(J\) est une partie quelconque de \(\R\)). \\
+
+\item Montrer par un exemple qu'on ne pourrait pas conclure sans l'hypothèse de continuité de \(f\) (\cad donner une fonction \(f_2:K\to\R\) injective et non-monotone, où \(K\) est un intervalle de \(\R\)).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(a,b\in\Rb\) tels que \(a<b\). Soit \(f:\intervee{a}{b}\to\R\) continue.
+
+On suppose que \(f\) possède la même limite en \(a\) et en \(b\).
+
+Montrer que \(f\) n'est pas injective.
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(\lambda\in\Rps\) et \(f:\R\to\R\) continue et telle que \[\quantifs{\forall x,y\in\R}\abs{f\paren{x}-f\paren{y}}\geq\lambda\abs{x-y}.\]
+
+Montrer que \(f\) est une bijection de \(\R\) dans \(\R\).
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\section{Fonctions circulaires réciproques}
+
+\begin{exo}
+Montrer \[\quantifs{\forall x\in\Rs}\Arctan x+\Arctan\dfrac{1}{x}=\begin{dcases}\dfrac{\pi}{2} &\text{si }x>0 \\ \dfrac{-\pi}{2} &\text{si }x<0\end{dcases}\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(x,y\in\intervee{-1}{1}\).
+
+\begin{enumerate}
+\item Montrer \[\Arctan x+\Arctan y=\Arctan\dfrac{x+y}{1-xy}.\] \\
+
+\item Montrer \[\Arctan\dfrac{1}{2}+\Arctan\dfrac{1}{3}=\dfrac{\pi}{4}.\]
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soit \(x\in\R\).
+
+Dire pour quelles valeurs de \(x\) les expressions suivantes sont bien définies et simplifier ces expressions :
+
+\begin{enumerate}
+\item \(\cos\paren{\Arctan x}\) \\
+
+\textit{Indication :} utiliser la relation entre \(\tan^2\) et \(\cos^2\). \\
+
+\item \(\sin\paren{\Arctan x}\) \\
+
+\item \(\sin\paren{2\Arctan x}\) \\
+
+Quelle formule reconnaît-on ? \\
+
+\item \(\cos\paren{2\Arctan x}\) \\
+
+Quelle formule reconnaît-on ? \\
+
+\item \(\Arctan\sqrt{\dfrac{1-\cos x}{1+\cos x}}\)
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\section{Fonctions lipschitziennes}
+
+\begin{exo}
+Soient \(k\in\intervie{0}{1}\) et \(f:\R\to\R\) \(k\)-lipschitzienne.
+
+\begin{enumerate}
+\item Montrer que \(f\) admet un point fixe. \\
+
+\item Montrer que ce point fixe est unique. \\
+
+\item Soit \(\paren{u_n}_n\in\R^\N\). On suppose \[\quantifs{\forall n\in\N}u_{n+1}=f\paren{u_n}.\] Montrer que \(\paren{u_n}_n\) converge vers le point fixe de \(f\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}
+Soient \(a,b,\lambda\in\R\) tels que \(a\leq\lambda\leq b\). Soit \(f:\intervii{a}{b}\to\intervii{a}{b}\) \(1\)-lipschitzienne.
+
+On considère la suite \(\paren{u_n}_n\) définie par : \(\begin{dcases}u_0=\lambda \\ \quantifs{\forall n\in\N}u_{n+1}=\dfrac{u_n+f\paren{u_n}}{2}\end{dcases}\)
+
+\begin{enumerate}
+\item Justifier que la suite \(\paren{u_n}_n\) est bien définie. \\
+
+\item Soit \(n\in\N\). Montrer que \(u_{n+2}-u_{n+1}\) est de même signe (au sens large) que \(u_{n+1}-u_n\). \\
+
+\item Montrer que la suite \(\paren{u_n}_n\) converge vers un point fixe de \(f\).
+\end{enumerate}
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
