@@ -211,7 +211,7 @@ Son module \(\abs{b-a}\) est la longueur \(AB\) et son argument est l'angle :
 
 \node[gray, above left] at (0,0) {\(0\)};
 
-\coordinate (0,0) (O);
+\draw (0,0) -- (0,0) coordinate (O);
 
 \draw pic[draw,->,"\(\theta=\arg\paren{b-a}\)"{xshift=40},angle eccentricity=1.8] {angle = A--O--Theta};
 \end{tkz}
@@ -685,7 +685,7 @@ Avec \(\begin{aligned}[t]
 \alpha\equiv\dfrac{\theta}{n}\croch{\dfrac{2\pi}{n}}&\ssi\quantifs{\exists l\in\Z}\alpha=\dfrac{\theta}{n}+\dfrac{2l\pi}{n} \\
 &\ssi\quantifs{\exists Q\in\Z;\exists R\in\interventierii{0}{n-1}}\alpha=\dfrac{\theta}{n}+\dfrac{2\paren{Qn+R}\pi}{n} \\
 &\ssi\quantifs{\exists R\in\interventierii{0}{n-1};\exists Q\in\Z}\alpha=\dfrac{\theta}{n}+\dfrac{2R\pi}{n}+2Q\pi \\
-&\ssi\quantifs{\exists R\in\interventierii{0}{n-1}}\alpha=\dfrac{\theta}{n}+\dfrac{2R\pi}{n}
+&\ssi\quantifs{\exists R\in\interventierii{0}{n-1}}\alpha\equiv\dfrac{\theta}{n}+\dfrac{2R\pi}{n}\croch{2\pi}
 \end{aligned}\)
 
 Ainsi \(\gamma^n=z\ssi\begin{dcases}r=\sqrt[n]{\lambda} \\ \quantifs{\exists R\in\interventierii{0}{n-1}}\alpha\equiv\dfrac{\theta}{n}+\dfrac{2R\pi}{n}\croch{2\pi}\end{dcases}\)
