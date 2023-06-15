@@ -123,3 +123,21 @@ Donc \(\paren{x,y}\mapsto\dfrac{y}{x}\) est continue sur \(\Rs\times\R\).
 
 Or \(\Arctan:\R\to\R\) est continue donc \(g\) est continue par composition.
 \end{corr}
+
+\section{Fonctions de classe \(\classe{1}\)}
+
+\subsection{Développement limité d'ordre 1}
+
+\begin{nota}
+Soient \(\Omega\) un ouvert de \(\R^2\) contenant \(\paren{0,0}\) et \(g:\Omega\to\R\).
+
+On dit que \(g\paren{x}\) est négligeable devant \(\norme{x}\) et on note \(g\paren{x}\underset{x\to\paren{0,0}}{=}o\paren{\norme{x}}\) si on a : \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x\in\Omega}\norme{x}\leq\delta\imp\abs{g\paren{x}}\leq\epsilon\norme{x}.\]
+\end{nota}
+
+\begin{defi}
+Soient \(\Omega\) un ouvert de \(\R^2\), \(f:\Omega\to\R\) et \(a=\paren{a_1,a_2}\in\Omega\).
+
+On dit que \(f\) admet un développement limité à l'ordre 1 en \(a\) s'il existe \(\lambda,\mu\in\R\) tels que : \[f\paren{a_1+h_1,a_2+h_2}\underset{h=\paren{h_1,h_2}\to\paren{0,0}}{=}f\paren{a_1,a_2}+\lambda h_1+\mu h_2+o\paren{\norme{h}}.\]
+
+Les réels \(\lambda\) et \(\mu\) sont alors uniques.
+\end{defi}
