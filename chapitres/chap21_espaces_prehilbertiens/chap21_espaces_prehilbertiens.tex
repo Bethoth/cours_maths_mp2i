@@ -764,4 +764,147 @@ On a la distance de \(x\) à \(H\) : \[\begin{WithArrows}
 \end{WithArrows}\]
 \end{corr}
 
+\subsection{Procédé d'orthonormalisation de Gram-Schmidt}
+
+\begin{theo}
+Soient \(E\) un espace euclidien et \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+Alors il existe une base orthonormale \(\fami{B}\prim=\paren{e_1\prim,\dots,e_n\prim}\) de \(E\) telle que : \[\quantifs{\forall j\in\interventierii{1}{n}}e_j\prim\in\Vect{e_1,\dots,e_j},\] \cad telle que la matrice de passage \(\pass{\fami{B}}{\fami{B}\prim}\) soit triangulaire supérieure.
+\end{theo}
+
+\begin{dem}
+On calcule successivement : \[e_1\prim=\dfrac{e_1}{\norme{e_1}}\qquad e_2\prim=\dfrac{e_2-\ps{e_1\prim}{e_2}e_1\prim}{\norme{e_2-\ps{e_1\prim}{e_2}e_1\prim}}\qquad e_3\prim=\dfrac{e_3-\ps{e_1\prim}{e_3}e_1\prim-\ps{e_2\prim}{e_3}e_2\prim}{\norme{e_3-\ps{e_1\prim}{e_3}e_1\prim-\ps{e_2\prim}{e_3}e_2\prim}}\qquad\text{...}\]
+
+Formule générale : \(\quantifs{\forall k\in\interventierii{1}{n}}e_k\prim=\dfrac{e_k-\ds\sum_{j=1}^{k-1}\ps{e_j\prim}{e_k}e_j\prim}{\norme{e_k-\ds\sum_{j=1}^{k-1}\ps{e_j\prim}{e_k}e_j\prim}}\).
+\end{dem}
+
+\begin{cor}
+Tout espace euclidien admet une base orthonormale.
+\end{cor}
+
+\begin{dem}
+Soit \(E\) un espace euclidien.
+
+Il existe une base \(\fami{B}\) de \(E\) car \(\dim E<\pinf\).
+
+On en déduit une base orthonormale de \(E\) en appliquant à \(\fami{B}\) l'algorithme de Gram-Schmidt.
+\end{dem}
+
+\begin{theo}[Théorème de la base orthonormée incomplète]
+Soient \(E\) un espace euclidien et \(\paren{e_1,\dots,e_r}\) une famille orthonormale de vecteurs de \(E\).
+
+Alors on peut compléter \(\paren{e_1,\dots,e_r}\) en une base orthonormale de \(E\).
+\end{theo}
+
+\begin{dem}
+La famille \(\paren{e_1,\dots,e_r}\) est une famille libre de vecteurs de \(E\).
+
+Selon le théorème de la base incomplète, on peut la compléter en une base \(\paren{e_1,\dots,e_n}\) de \(E\).
+
+En appliquant l'algorithme de Gram-Schmidt à cette base, on obtient une base orthonormale \(\paren{e_1\prim,\dots,e_n\prim}\) de \(E\).
+
+On remarque \(\quantifs{\forall k\in\interventierii{1}{r}}e_k\prim=e_k\) donc on a complété \(\paren{e_1,\dots,e_r}\) en la base orthonormale \[\paren{e_1,\dots,e_r,e_{r+1}\prim,\dots,e_n\prim}.\]
+\end{dem}
+
+\begin{exoex}
+On munit \(\R^4\) de son produit scalaire canonique et on pose : \[e_1=\begin{pmatrix}
+1 \\ 1 \\ 0 \\ 0
+\end{pmatrix}\qquad e_2=\begin{pmatrix}
+1 \\ 1 \\ 1 \\ 1
+\end{pmatrix}\qquad e_3=\begin{pmatrix}
+1 \\ 2 \\ 3 \\ 4
+\end{pmatrix}\qquad v=\begin{pmatrix}
+1 \\ 0 \\ 0 \\ 0
+\end{pmatrix}\]
+
+\begin{enumerate}
+    \item Déterminer une base orthonormale de \(F=\Vect{e_1,e_2,e_3}\). \\
+    \item Calculer le projeté orthogonal de \(v\) sur \(F\) et la distance de \(v\) à \(F\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On sait que \(\paren{e_1,e_2,e_3}\) est une base de \(F\). Orthonormalisons cette base.
+
+On pose : \[e_1\prim=\dfrac{e_1}{\norme{e_1}}\qquad e_2\prim=\dfrac{e_2-\ps{e_1\prim}{e_2}e_1\prim}{\norme{e_2-\ps{e_1\prim}{e_2}e_1\prim}}\qquad e_3\prim=\dfrac{e_3-\ps{e_1\prim}{e_3}e_1\prim-\ps{e_2\prim}{e_3}e_2\prim}{\norme{e_3-\ps{e_1\prim}{e_3}e_1\prim-\ps{e_2\prim}{e_3}e_2\prim}}\]
+
+On a \(\norme{e_1}=\sqrt{2}\) donc \(e_1\prim=\dfrac{1}{\sqrt{2}}\begin{pmatrix}
+1 \\ 1 \\ 0 \\ 0
+\end{pmatrix}\).
+
+De plus, on a \(\ps{e_1\prim}{e_2}=\ps{\dfrac{1}{\sqrt{2}}\begin{pmatrix}
+1 \\ 1 \\ 0 \\ 0
+\end{pmatrix}}{\begin{pmatrix}
+1 \\ 1 \\ 1 \\ 1
+\end{pmatrix}}=\dfrac{2}{\sqrt{2}}=\sqrt{2}\) et \(e_2-\sqrt{2}e_1\prim=\begin{pmatrix}
+0 \\ 0 \\ 1 \\ 1
+\end{pmatrix}\) et \(\norme{\begin{pmatrix}
+0 \\ 0 \\ 1 \\ 1
+\end{pmatrix}}=\sqrt{2}\).
+
+Donc \(e_2\prim=\dfrac{1}{\sqrt{2}}\begin{pmatrix}
+0 \\ 0 \\ 1 \\ 1
+\end{pmatrix}\).
+
+De plus, on a \(\ps{e_1\prim}{e_3}=\ps{\dfrac{1}{\sqrt{2}}\begin{pmatrix}
+1 \\ 1 \\ 0 \\ 0
+\end{pmatrix}}{\begin{pmatrix}
+1 \\ 2 \\ 3 \\ 4
+\end{pmatrix}}=\dfrac{3}{\sqrt{2}}\) et \(\ps{e_2\prim}{e_3}=\ps{\dfrac{1}{\sqrt{2}}\begin{pmatrix}
+0 \\ 0 \\ 1 \\ 1
+\end{pmatrix}}{\begin{pmatrix}
+1 \\ 2 \\ 3 \\ 4
+\end{pmatrix}}=\dfrac{7}{\sqrt{2}}\) et \(e_3-\dfrac{3}{2}\begin{pmatrix}
+1 \\ 1 \\ 0 \\ 0
+\end{pmatrix}-\dfrac{7}{2}\begin{pmatrix}
+0 \\ 0 \\ 1 \\ 1
+\end{pmatrix}=\dfrac{1}{2}\begin{pmatrix}
+-1 \\ 1 \\ -1 \\ 1
+\end{pmatrix}\) et \(\norme{\dfrac{1}{2}\begin{pmatrix}
+-1 \\ 1 \\ -1 \\ 1
+\end{pmatrix}}=\dfrac{1}{2}\times2=1\).
+
+Donc \(e_3\prim=\dfrac{1}{2}\begin{pmatrix}
+-1 \\ 1 \\ -1 \\ 1
+\end{pmatrix}\).
+
+Finalement, \(\paren{e_1\prim,e_2\prim,e_3\prim}\) est une base orthonormale de \(F\).
+\end{corr}
+
+\begin{corr}[2]
+On a : \[p_F\paren{v}=\ps{e_1\prim}{v}e_1\prim+\ps{e_2\prim}{v}e_2\prim+\ps{e_3\prim}{v}e_3\prim.\]
+
+Or, on a : \[\ps{e_1\prim}{v}=\dfrac{1}{\sqrt{2}}\qquad\ps{e_2\prim}{v}=0\qquad\ps{e_3\prim}{v}=\dfrac{-1}{2}\]
+
+D'où : \[\begin{aligned}
+p_F\paren{v}&=\dfrac{1}{\sqrt{2}}\times\dfrac{1}{\sqrt{2}}\begin{pmatrix}
+1 \\ 1 \\ 0 \\ 0
+\end{pmatrix}-\dfrac{1}{2}\times\dfrac{1}{2}\begin{pmatrix}
+-1 \\ 1 \\ -1 \\ 1
+\end{pmatrix} \\
+&=\dfrac{1}{2}\begin{pmatrix}
+1 \\ 1 \\ 0 \\ 0
+\end{pmatrix}-\dfrac{1}{4}\begin{pmatrix}
+-1 \\ 1 \\ -1 \\ 1
+\end{pmatrix} \\
+&=\dfrac{1}{4}\begin{pmatrix}
+3 \\ 1 \\ 1 \\ -1
+\end{pmatrix}
+\end{aligned}\]
+
+D'où : \[\begin{aligned}
+d\paren{v,F}&=\norme{v-p_F\paren{v}} \\
+&=\norme{\begin{pmatrix}
+1 \\ 0 \\ 0 \\ 0
+\end{pmatrix}-\dfrac{1}{4}\begin{pmatrix}
+3 \\ 1 \\ 1 \\ -1
+\end{pmatrix}} \\
+&=\norme{\dfrac{1}{4}\begin{pmatrix}
+1 \\ -1 \\ -1 \\ 1
+\end{pmatrix}} \\
+&=\dfrac{1}{4}\times2 \\
+&=\dfrac{1}{2}.
+\end{aligned}\]
+\end{corr}
+
 \note{À FINIR}
