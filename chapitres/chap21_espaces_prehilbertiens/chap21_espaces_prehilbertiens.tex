@@ -612,7 +612,7 @@ Soient \(E\) un espace préhilbertien et \(F\) un sous-espace vectoriel de \(E\)
 D'après la proposition précédente, \(F\) admet un supplémentaire orthogonal si, et seulement si, \(F\ortho\) est un supplémentaire de \(F\) : \(F+F\ortho=E\).
 \end{rem}
 
-\begin{exo}
+\begin{exo}\thlabel{exo:orthogonalD'OrthogonalEgalALuiMême}
 Soient \(E\) un espace préhilbertien et \(F\) un sous-espace vectoriel de \(E\).
 
 On suppose que \(F\) admet un supplémentaire orthogonal dans \(E\).
@@ -806,7 +806,7 @@ En appliquant l'algorithme de Gram-Schmidt à cette base, on obtient une base or
 On remarque \(\quantifs{\forall k\in\interventierii{1}{r}}e_k\prim=e_k\) donc on a complété \(\paren{e_1,\dots,e_r}\) en la base orthonormale \[\paren{e_1,\dots,e_r,e_{r+1}\prim,\dots,e_n\prim}.\]
 \end{dem}
 
-\begin{exoex}
+\begin{exoex}\thlabel{exoex:orthonormalisationEtProjetéOrthogonalEtDistanceDansR4}
 On munit \(\R^4\) de son produit scalaire canonique et on pose : \[e_1=\begin{pmatrix}
 1 \\ 1 \\ 0 \\ 0
 \end{pmatrix}\qquad e_2=\begin{pmatrix}
@@ -906,5 +906,100 @@ d\paren{v,F}&=\norme{v-p_F\paren{v}} \\
 &=\dfrac{1}{2}.
 \end{aligned}\]
 \end{corr}
+
+\subsection{Hyperplans d'un espace euclidien}
+
+\begin{defprop}
+Soient \(E\) un espace euclidien et \(H\) un hyperplan de \(E\).
+
+On appelle vecteur normal à \(H\) tout vecteur \(v\) non-nul et orthogonal à tout vecteur de \(H\) : \[v\in H\ortho\excluant\accol{0_E}.\]
+
+Il vérifie : \[\quantifs{\forall x\in E}x\in H\ssi v\perp x.\]
+\end{defprop}
+
+\begin{dem}
+On a \(\dim E<\pinf\) donc \(\dim H\ortho=\dim E-\dim H=1\) donc il existe \(v\in H\ortho\excluant\accol{0_E}\) donc \(H\) admet un vecteur normal.
+
+Posons \(D=\Vect{v}\).
+
+On a \(D=H\ortho\) donc \(H=D\ortho\) selon l'\thref{exo:orthogonalD'OrthogonalEgalALuiMême}.
+
+Donc : \[\begin{aligned}
+\quantifs{\forall x\in E}x\in H&\ssi x\in D\ortho \\
+&\ssi x\perp v \\
+&\ssi\ps{x}{v}=0\qquad\text{(équation cartésienne de \(H\)).}
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}[Isomorphisme canonique entre un espace euclidien et son dual]
+Soient \(E\) un espace euclidien et \(l\in E\etoile\) une forme linéaire sur \(E\).
+
+Il existe un unique vecteur \(v\in E\) tel que : \[\quantifs{\forall x\in E}l\paren{x}=\ps{v}{x}.\]
+\end{prop}
+
+\begin{dem}
+Posons \(\fonction{\phi}{E}{E\etoile}{v}{\fonctionlambda{E}{\R}{x}{\ps{v}{x}}}\)
+
+On a \(\phi\in\L{E}{E\etoile}\).
+
+Montrons que \(\phi\) est une injection.
+
+Soit \(v\in\ker\phi\).
+
+On a \(\phi\paren{v}=0\) donc \(\quantifs{\forall x\in E}\ps{v}{x}=0\).
+
+Donc \(\ps{v}{v}=0\).
+
+Donc \(v=0\).
+
+Donc \(\ker\phi=\accol{0}\) donc \(\phi\) est une injection.
+
+De plus, \(\dim E=\dim E\etoile<\pinf\) donc \(\phi\) est une surjection.
+
+Donc \(\phi\) est un isomorphisme : \(\quantifs{\forall l\in E\etoile;\exists!v\in E}l=\phi\paren{v}\).
+
+Donc : \[\quantifs{\forall l\in E\etoile;\exists!v\in E;\forall x\in E}l\paren{x}=\ps{v}{x}.\]
+\end{dem}
+
+\begin{exoex}
+On a vu dans l'\thref{exoex:orthonormalisationEtProjetéOrthogonalEtDistanceDansR4} un hyperplan \(F\) de \(\R^4\).
+
+Donner un vecteur normal à \(F\).
+\end{exoex}
+
+\begin{corr}
+On a \(v-p_F\paren{v}\in F\ortho\) et \(v-p_F\paren{v}\not=0_{\R^4}\) donc \(v=\dfrac{1}{4}\begin{pmatrix}
+1 \\ -1 \\ -1 \\ 1
+\end{pmatrix}\) est un vecteur normal à \(F\) et donc \(\begin{pmatrix}
+1 \\ -1 \\ -1 \\ 1
+\end{pmatrix}\) aussi.
+
+Ainsi : \[\begin{aligned}
+\quantifs{\forall\begin{pmatrix}a \\ b \\ c \\ d\end{pmatrix}\in\R^4}\begin{pmatrix}a \\ b \\ c \\ d\end{pmatrix}\in F&\ssi\ps{\begin{pmatrix}a \\ b \\ c \\ d\end{pmatrix}}{\begin{pmatrix}
+1 \\ -1 \\ -1 \\ 1
+\end{pmatrix}}=0 \\
+&\ssi a-b-c+d=0\qquad\text{(équation cartésienne de \(F\)).}
+\end{aligned}\]
+\end{corr}
+
+\begin{rem}
+Soit \(E\) un espace euclidien.
+
+On retrouve que les hyperplans de \(E\) sont les noyaux des formes linéaires non-nulles de \(E\).
+\end{rem}
+
+\begin{dem}
+Soient \(\fami{B}=\paren{e_1,\dots,e_n}\) une base orthonormale de \(E\), \(H\) un hyperplan de \(E\) et \(v\) un vecteur normal à \(H\) de coordonnées \(\paren{a_1,\dots,a_n}\) dans \(\fami{B}\).
+
+On a : \[\begin{aligned}
+\quantifs{\forall\tcoords{x_1}{\vdots}{x_n}\in\R^n}\sum_{k=1}^{n}x_ke_k\in H&\ssi\sum_{k=1}^{n}x_ke_k\perp\sum_{k=1}^{n}a_ke_k \\
+&\ssi\sum_{k=1}^{n}a_kx_k=0 \\
+&\ssi\tcoords{x_1}{\vdots}{x_n}\in\ker l
+\end{aligned}\] avec \(l:\begin{dcases}
+e_1\mapsto a_1 \\
+\vdots \\
+e_n\mapsto a_n
+\end{dcases}\)
+\end{dem}
 
 \note{À FINIR}
