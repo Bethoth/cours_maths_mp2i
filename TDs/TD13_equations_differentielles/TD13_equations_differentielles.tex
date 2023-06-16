@@ -1,22 +1,56 @@
-\chapter{Espaces vectoriels}
+\chapter{Équations différentielles}
 
-\minitoc
+\section{Équations différentielles linéaires d'ordre 1}
 
-Soit \(\K\) un corps.
+\begin{exo}[Exercice 1]
+Résoudre l'équation différentielle : \[\paren{E}~y\prim+y=\sin t.\]
+\end{exo}
 
-\section{Espaces vectoriels}
+\begin{corr}
+\note{À venir}
+\end{corr}
 
-\begin{exo}
-Les ensembles suivants sont-ils (naturellement) des \(\R\)-espaces vectoriels ?
+\begin{exo}[Exercice 2]
+Résoudre l'équation différentielle : \[\paren{E}~y\prim+\dfrac{\sin t}{\cos t-2}y=\dfrac{2\sin t}{\cos t-2}.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 3]
+Résoudre le problème de Cauchy : \[\begin{dcases}
+y\prim-\dfrac{t^3+t+1}{t^2+1}y=\dfrac{t^4+t-1}{t^2+1} \\
+y\paren{0}=1
+\end{dcases}\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 4]
+Résoudre l'équation différentielle suivante sur l'intervalle \(\intervee{0}{1}\) : \[\paren{E}~t\ln ty\prim-y=2t^2\ln^2t.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 5]
+Résoudre l'équation différentielle suivante sur l'intervalle \(\intervee{-1}{1}\) : \[\paren{E}~\sqrt{1-t^2}y\prim-y=1.\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 6]
+On considère l'équation différentielle : \[\paren{E}~ty\prim+y=\cos t.\]
 
 \begin{enumerate}
-\item \(\accol{\paren{a,b,c,d}\in\R^4\tq a+2b-c-d=\lambda}\) où \(\lambda\) est un réel fixé. \\
-
-\item \(\accol{y\in\ensclasse{2}{\R}{\R}\tq y\seconde+2y\prim+fy=g}\) où \(f\) et \(g\) sont deux fonctions fixées. \\
-
-\item \(\accol{y\in\ensclasse{\infty}{\R}{\R}\tq y\text{ est croissante sur }\R}\). \\
-
-\item \(\accol{y\in\ensclasse{\infty}{\R}{\R}\tq y\text{ est monotone sur }\R}\).
+    \item Déterminer les solutions de \(\paren{E}\) sur \(\Rps\) (respectivement \(\Rms\)). \\
+    \item En déduire les solutions définies sur \(\R\).
 \end{enumerate}
 \end{exo}
 
@@ -24,37 +58,33 @@ Les ensembles suivants sont-ils (naturellement) des \(\R\)-espaces vectoriels ?
 \note{À venir}
 \end{corr}
 
-\begin{exo}[Mines-Telecom PSI 2016]
-Soient \(E\) un espace vectoriel et \(F\) et \(G\) deux sous-espaces vectoriels de \(E\).
-
-Montrer : \[F\union G\text{ est un sous-espace vectoriel de }E\ssi\orenv{F\subset G \\ G\subset F}\]
+\begin{exo}[Exercice 7, Mines MP 2006]
+Résoudre l'équation différentielle suivante sur l'intervalle \(\intervee{0}{\pinf}\) : \[\paren{E}~t\ln ty\prim-\paren{3\ln t+1}y=0.\]
 \end{exo}
 
 \begin{corr}
 \note{À venir}
 \end{corr}
 
-\section{Applications linéaires}
+\begin{exo}[Exercice 8]
+Trouver les solutions réelles sur \(\R\) à l'équation différentielle : \[\paren{E}~ty\prim-\paren{2t+1}y=2t+1.\]
 
-\begin{exo}
-Les applications suivantes sont-elles des applications linéaires (pour les structures naturelles d'espaces vectoriels) ?
-
-\[\fonction{u_1}{\R}{\R}{x}{x^2}\qquad\fonction{u_2}{\ensclasse{\infty}{\R}{\R}}{\R\times\ensclasse{\infty}{\R}{\R}}{f}{\paren{f\prim\paren{1},f\seconde}}\qquad\fonction{u_3}{\poly[\R]}{\poly[\R]}{P}{P\paren{X^2}}\]
+Quelles sont les solutions vérifiant \(y\paren{0}=0\) ? celles vérifiant \(y\paren{0}=-1\) ?
 \end{exo}
 
 \begin{corr}
 \note{À venir}
 \end{corr}
 
-\begin{exo}
-On note \(B\) l'ensemble des suites réelles bornées et \(C\) l'ensemble des suites réelles convergentes.
+\section{Équations différentielles linéaires d'ordre 2}
+
+\begin{exo}[Exercice 9]
+Résoudre les équations différentielles suivantes :
 
 \begin{enumerate}
-\item Montrer que \(B\) et \(C\) sont naturellement des \(\R\)-espaces vectoriels. \\
-
-\item L'application \[\fonction{u}{B}{\R}{\paren{u_n}_{n\in\N}}{\sup_{n\in\N}u_n}\] est-elle une forme linéaire ? \\
-
-\item L'application \[\fonction{v}{C}{\R}{\paren{u_n}_{n\in\N}}{\lim_{n\to\pinf}u_n}\] est-elle une forme linéaire ?
+    \item \(y\seconde-2y\prim+y=\e{3t}+3t\e{t}\) \\
+    \item \(y\seconde+4y\prim-5y=\sh t\) \\
+    \item \(y\seconde+4y=t\sin t\).
 \end{enumerate}
 \end{exo}
 
@@ -62,183 +92,61 @@ On note \(B\) l'ensemble des suites réelles bornées et \(C\) l'ensemble des su
 \note{À venir}
 \end{corr}
 
-\begin{exo}
-Soient \(E\) un \(\K\)-espace vectoriel et \(u,v\in\Lendo{E}\).
-
-On suppose que les endomorphismes \(u\) et \(v\) commutent.
-
-Montrer que \(u\) stabilise \(\ker v\) et \(\Im v\), \cad : \[u\paren{\ker v}\subset\ker v\qquad\text{et}\qquad u\paren{\Im v}\subset\Im v.\]
+\begin{exo}[Exercice 10]
+Résoudre sur l'intervalle \(\Rps\) l'équation différentielle : \[\paren{E}~t^2y\seconde+3ty\prim+y=\paren{t+1}^2\] en faisant le changement de variable \(s=\ln t\).
 \end{exo}
 
 \begin{corr}
 \note{À venir}
 \end{corr}
 
-\begin{exo}[Résultats à bien connaître]
-Soient \(E\) un \(\K\)-espace vectoriel et \(u,v\in\Lendo{E}\).
-
-\begin{enumerate}
-\item Montrer : \[v\rond u=0\ssi\Im u\subset\ker v.\]
-
-\item Donner les inclusions qui sont vraies entre les sous-espaces vectoriels de \(E\) suivants :
-
-\begin{enumerate}
-\item \(\Im\paren{v\rond u}\) et \(\Im v\). \\
-
-\item \(\ker\paren{v\rond u}\) et \(\ker u\). \\
-
-\item \(\Im\paren{u+v}\) et \(\Im u+\Im v\). \\
-
-\item \(\ker\paren{u+v}\) et \(\ker u\inter\ker v\). \\
-\end{enumerate}
-
-\item Que peut-on en déduire pour les suites de sous-espaces vectoriels de \(E\) : \[\paren{\Im u^k}_{k\in\N}\qquad\text{et}\qquad\paren{\ker u^k}_{k\in\N}\text{ ?}\]
-\end{enumerate}
+\begin{exo}[Exercice 11]
+Résoudre l'équation différentielle : \[\paren{E}~\paren{1+t^2}^2y\seconde+2t\paren{1+t^2}y\prim+y=\Arctan t\] en faisant le changement de variable \(x=\Arctan t\).
 \end{exo}
 
 \begin{corr}
 \note{À venir}
 \end{corr}
 
-\begin{exo}[Classique]
-Soient \(E\) un \(\K\)-espace vectoriel et \(u\in\Lendo{E}\).
-
-On suppose que pour tout vecteur \(x\in E\), le vecteur \(u\paren{x}\) est colinéaire à \(x\).
-
-\begin{enumerate}
-\item Justifier que \(u\) vérifie : \[\quantifs{\forall x\in E;\exists\lambda_x\in\K}u\paren{x}=\lambda_xx.\]
-
-\item Montrer que \(u\) est une homothétie.
-\end{enumerate}
+\begin{exo}[Exercice 12]
+Résoudre sur l'intervalle \(\Rps\) l'équation différentielle : \[\paren{E}~t^2y\seconde+ty\prim-y=t^2\] en faisant le changement de variable \(x=\ln t\).
 \end{exo}
 
 \begin{corr}
 \note{À venir}
 \end{corr}
 
-\begin{exo}[Arts \& Métiers PSI 2016]
-On pose \[E=\accol{f\in\ensclasse{\infty}{\R}{\R}\tq\quantifs{\forall x\in\R}f\paren{x+2\pi}=f\paren{x}}\qquad\text{et}\qquad\quantifs{\forall f\in E}u\paren{f}=f\seconde.\]
+\begin{exo}[Exercice 13, Mines-Ponts PSI 2017]
+Soit \(a\) un réel non-nul.
 
-\begin{enumerate}
-\item Montrer que \(E\) est un espace vectoriel et que \(u\in\Lendo{E}\). \\
-
-\item Déterminer \(\ker u\). \\
-
-\item Déterminer les vecteurs \(f\in E\) tels que \(u\paren{f}=\sin\) et les vecteurs \(f\in E\) tels que \(u\paren{f}=\sin^2\). \\
-
-\item Déterminer \(\Im u\). \\
-
-\item Montrer \(\ker u\oplus\Im u=E\).
-\end{enumerate}
+Résoudre \[\paren{E}~\paren{1+x^2}^2y\seconde+2x\paren{1+x^2}y\prim+a^2y=0\] en faisant le changement de variable \(\theta=\Arctan x\).
 \end{exo}
 
 \begin{corr}
 \note{À venir}
 \end{corr}
 
-\begin{exo}
-Soient \(E\), \(F\) et \(G\) des \(\K\)-espaces vectoriels et \(f:E\to F\) et \(g:F\to G\) des applications linéaires.
+\begin{exo}[Exercice 14]
+Résoudre sur \(\R\) l'équation différentielle réelle : \[\paren{E}~ty\seconde+2\paren{t+1}y\prim+\paren{t+2}y=0.\]
 
-\begin{enumerate}
-\item Montrer : \[f\paren{\ker\paren{g\rond f}}=\Im f\inter\ker g.\]
-
-\item Montrer : \[\ker\paren{g\rond f}=\ker f\ssi\Im f\inter\ker g=\accol{0_F}.\]
-\end{enumerate}
+\textit{Indication :} on pourra considérer la fonction \(z:t\mapsto ty\paren{t}\).
 \end{exo}
 
 \begin{corr}
 \note{À venir}
 \end{corr}
 
-\section{Sommes directes, projecteurs}
+\section{Applications}
 
-\begin{exo}
-Soient \(E\) un espace vectoriel et \(p,q\in\Lendo{E}\) des projecteurs.
-
-Montrer que les propositions suivantes sont équivalentes :
-
-\begin{enumerate}
-\item \(p+q\) est un projecteur \\
-
-\item \(pq+qp=0\) \\
-
-\item \(pq=qp=0\)
-\end{enumerate}
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\begin{exo}
-Soient \(E\) un espace vectoriel et \(f,g\in\Lendo{E}\) tels que \(f\rond g=\id{E}\).
-
-Montrer que \(g\rond f\) est un projecteur. Déterminer son image et son noyau.
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\begin{exo}
-Soient \(E\) un \(\K\)-espace vectoriel et \(p\) et \(q\) des projecteurs de \(E\) qui commutent.
-
-\begin{enumerate}
-\item Montrer que \(pq\) est un projecteur. \\
-
-\item Montrer \(\Im\paren{pq}=\Im p\inter\Im q\). \\
-
-\item Montrer \(\ker\paren{pq}=\ker p+\ker q\).
-\end{enumerate}
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\begin{exo}[Polynômes interpolateurs de Lagrange]
-Soient \(x_0,\dots,x_n\in\K\) deux à deux distincts.
-
-On note \(L_0,\dots,L_n\in\polydeg{n}\) les polynômes définis par : \[\quantifs{\forall j\in\interventierii{0}{n}}L_j=\prod_{k\in\interventierii{0}{n}\excluant\accol{j}}\dfrac{X-x_k}{x_j-x_k}.\]
-
-\begin{enumerate}
-\item Montrer que \(\paren{L_0,\dots,L_n}\) est une base de \(\polydeg{n}\). \\
-
-\item Montrer que l'application \[\fonction{u}{\poly}{\poly}{P}{P\paren{x_0}L_0+\dots+P\paren{x_n}L_n}\] est un projecteur. \\
-
-\item Déterminer l'image et le noyau de \(u\).
-\end{enumerate}
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\begin{exo}
-Donner un supplémentaire de \(\poly\) dans \(\fracrat\).
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\section{Familles libres / génératrices}
-
-\begin{exo}
-On considère le système linéaire homogène : \[\paren{S}\begin{dcases}
-a+\i b+c+\i d=0 \\
-\i a-b+\i c-d=0 \\
-\paren{1-\i}a+\paren{1+\i}b+\paren{1+\i}c-\paren{1-\i}d=0
+\begin{exo}[Exercice 15]
+Résoudre\footnote{\Cad déterminer les couples \(\paren{y_1,y_2}\in\ensclasse{1}{\R}{\R}^2\) qui sont solution} de deux façons le système linéaire : \[\paren{E}~\begin{dcases}
+y_1\prim=-y_2 \\
+y_2\prim=y_1
 \end{dcases}\]
 
-On note \(\fami{S}\subset\C^4\) son ensemble solution.
-
-C'est un \(\C\)-espace vectoriel et donc également un \(\R\)-espace vectoriel.
-
 \begin{enumerate}
-\item Donner une base du \(\C\)-espace vectoriel \(\fami{S}\). \\
-
-\item Donner une base du \(\R\)-espace vectoriel \(\fami{S}\).
+    \item À l'aide d'une équation différentielle d'ordre 1 vérifiée par la fonction complexe \(y_1+\i y_2\). \\
+    \item À l'aide d'une équation différentielle d'ordre 2 vérifée par la fonction réelle \(y_1\).
 \end{enumerate}
 \end{exo}
 
@@ -246,114 +154,25 @@ C'est un \(\C\)-espace vectoriel et donc également un \(\R\)-espace vectoriel.
 \note{À venir}
 \end{corr}
 
-\begin{exo}
-On pose \[\quantifs{\forall\lambda\in\R}\fonction{f_\lambda}{\R}{\R}{t}{\e{\lambda t}}\]
-
-On considère la famille \(\fami{F}=\paren{f_\lambda}_{\lambda\in\R}\) de vecteurs de \(\F{\R}{\R}\).
-
-\begin{enumerate}
-\item La famille \(\fami{F}\) est-elle une base de \(\F{\R}{\R}\) ? \\
-
-\item La famille \(\fami{F}\) est-elle une base de \(\ensclasse{\infty}{\R}{\R}\) ? \\
-
-\item Montrer que la famille \(\fami{F}\) n'est pas libre
-
-\begin{enumerate}
-\item en utilisant des limites en \(\pinf\). \\
-
-\item en utilisant des polynômes interpolateurs de Lagrange.
-\end{enumerate}
-\end{enumerate}
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\begin{exo}
-On se place dans le \(\R\)-espace vectoriel \(\F{\R}{\R}\).
-
-On définit les vecteurs suivants : \[\quantifs{\forall\lambda\in\R}\fonction{f_\lambda}{\R}{\R}{t}{\sin\paren{\lambda t}}\]
-
-Les familles suivantes sont-elles libres ?
-
-\begin{enumerate}
-\item \(\paren{f_\lambda}_{\lambda\in\R}\) \\
-
-\item \(\paren{f_\lambda}_{\lambda\in\Rs}\) \\
-
-\item \(\paren{f_\lambda}_{\lambda\in\Rps}\)
-\end{enumerate}
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\begin{exo}
-Donner une base de l'image et du noyau des endomorphismes suivants :
-
-\begin{enumerate}
-\item \[\fonction{u}{\R^3}{\R^3}{\paren{a,b,c}}{\paren{a-b,b-c,c-a}}\]
-
-\item \[\fonction{u}{\polydeg[\R]{3}}{\polydeg[\R]{3}}{P}{P\paren{X+1}-P}\]
-\end{enumerate}
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\begin{exo}[Base duale]\thlabel{exo:baseDuale}
-Soient \(E\) un \(\K\)-espace vectoriel et \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
-
-Pour tout \(k\in\interventierii{1}{n}\), on note \(e_k\etoile:E\to\K\) l'application qui associe à tout vecteur de \(E\) sa \(k\)-ème coordonnée dans la base \(\fami{B}\).
-
-Les applications \(e_1\etoile,\dots,e_n\etoile\) sont donc caractérisées par : \[\quantifs{\forall x\in E}x=\sum_{k=1}^ne_k\etoile\paren{x}e_k.\]
-
-Montrer que la famille \(\fami{B}\etoile=\paren{e_1\etoile,\dots,e_n\etoile}\) est une base de \(E\etoile\) (appelée base duale de \(\fami{B}\)).
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\begin{exo}
-Montrer que la famille infinie \(\paren{\ln p}_{p\in\prem}\) est une famille libre du \(\Q\)-espace vectoriel \(\R\).
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\begin{exo}
-On se place dans le \(\Q\)-espace vectoriel \(\R\).
-
-\begin{enumerate}
-\item Soit \(p\in\prem\). Montrer que la famille \(\paren{1,\sqrt{p}}\) est libre sur \(\Q\). \\
-
-\item En déduire que la famille \(\paren{1,\sqrt{2},\sqrt{3},\sqrt{6}}\) est libre sur \(\Q\).
-\end{enumerate}
-\end{exo}
-
-\begin{corr}
-\note{À venir}
-\end{corr}
-
-\begin{exo}
-Résoudre les systèmes linéaires suivants en appliquant l'algorithme du pivot de Gauss.
-
-Lorsque l'ensemble solution est un espace affine, on précisera une base de sa direction.
-
-\[\paren{S_1}\begin{dcases}
-a+b+2c+d=7 \\
-4a+5b+3c+4d=17 \\
-a+2b-3c+d=-4
-\end{dcases}\qquad\paren{S_2}\begin{dcases}
-a+b+2c=7 \\
-4a+5b+3c=17 \\
-a+2b-3c=7
+\begin{exo}[Exercice 16]
+Résoudre le système linéaire : \[\paren{E}~\begin{dcases}
+y_1\prim=2y_1-y_2+\cos t \\
+y_2\prim=y_1+2y_2+\sin t
 \end{dcases}\]
+\end{exo}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{exo}[Exercice 17]
+Si \(f:\R\to\R\) est une fonction dérivable, on note \(\P{f}\) la propriété : \[\quantifs{\forall x\in\R}f\prim\paren{x}=2f\paren{-x}+x.\]
+
+\begin{enumerate}
+    \item Soit \(f:\R\to\R\) une fonction dérivable. Montrer que si \(\P{f}\) est vraie, alors \(f\) est deux fois dérivable et satisfait une certaine équation différentielle linéaire d'ordre 2. \\
+    \item Résoudre l'équation différentielle obtenue. \\
+    \item Déterminer l'ensemble des fonctions dérivables \(f:\R\to\R\) telles que \(\P{f}\) soit vraie.
+\end{enumerate}
 \end{exo}
 
 \begin{corr}
