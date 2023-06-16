@@ -242,6 +242,70 @@ Calculer le gradient des fonctions \[\fonction{f}{\R^2\excluant\accol{\paren{0,0
 On a : \[\quantifs{\forall\paren{x,y}\in\R^2\excluant\accol{\paren{0,0}}}\nabla f\paren{x,y}=\paren{\dfrac{x}{\sqrt{x^2+y^2}},\dfrac{y}{\sqrt{x^2+y^2}}}=\dfrac{1}{\sqrt{x^2+y^2}}\paren{x,y}\] et : \[\quantifs{\forall\paren{x,y}\in\Rps\times\R}\nabla g\paren{x,y}=\paren{\dfrac{-y}{x^2+y^2},\dfrac{x}{x^2+y^2}}=\dfrac{1}{x^2+y^2}\paren{-y,x}.\]
 \end{corr}
 
+\subsection{Règle de la chaîne}
+
+\begin{prop}
+Soient \(\Omega\) un ouvert de \(\R^2\), \(f\in\ensclasse{1}{\Omega}{\R}\) et \(I\) un intervalle de \(\R\) tel que \(\Card I\geq2\).
+
+Soit \(\fonction{\gamma}{I}{\Omega}{t}{\paren{\gamma_1\paren{t},\gamma_2\paren{t}}}\)
+
+On suppose que \(\gamma_1\) et \(\gamma_2\) sont de classe \(\classe{1}\).
+
+Alors \(\fonction{g}{I}{\R}{t}{f\paren{\gamma\paren{t}}}\) est de classe \(\classe{1}\) et sa dérivée est : \[\quantifs{\forall t\in I}g\prim\paren{t}=\pdv{f}{x}\paren{\gamma\paren{t}}\gamma_1\prim\paren{t}+\pdv{f}{y}\paren{\gamma\paren{t}}\gamma_2\prim\paren{t}.\]
+\end{prop}
+
+\begin{dem}
+Soit \(t\in I\).
+
+On a, quand \(h\to0\) : \(\begin{dcases}
+\gamma_1\paren{t+h}=\gamma_1\paren{t}+\gamma_1\prim\paren{t}h+o\paren{h} \\
+\gamma_2\paren{t+h}=\gamma_2\paren{t}+\gamma_2\prim\paren{t}h+o\paren{h}
+\end{dcases}\)
+
+Donc : \[\begin{aligned}
+g\paren{t+h}&=f\paren{\gamma_1\paren{t}+\underbrace{\gamma_1\prim\paren{t}h+o\paren{h}}_{\to0},\gamma_2\paren{t}+\underbrace{\gamma_2\prim\paren{t}h+o\paren{h}}_{\to0}} \\
+&=f\paren{\gamma\paren{t}}+\pdv{f}{x}\paren{\gamma\paren{t}}\paren{\gamma_1\prim\paren{t}h+o\paren{h}}+\pdv{f}{y}\paren{\gamma\paren{t}}\paren{\gamma_2\prim\paren{t}h+o\paren{h}} \\
+&\color{white}=\color{black}+\underbrace{o\paren{\norme{\paren{\underbrace{\gamma_1\prim\paren{t}h+o\paren{h}}_{O\paren{h}},\underbrace{\gamma_2\prim\paren{t}h+o\paren{h}}_{O\paren{h}}}}}}_{o\paren{h}} \\
+&=g\paren{t}+\paren{\pdv{f}{x}\paren{\gamma\paren{t}}\gamma_1\prim\paren{t}+\pdv{f}{y}\paren{\gamma\paren{t}}\gamma_2\prim\paren{t}}h+o\paren{h}
+\end{aligned}\]
+
+Donc \(g\) est dérivable, de dérivée \(\pdv{f}{x}\paren{\gamma\paren{t}}\gamma_1\prim\paren{t}+\pdv{f}{y}\paren{\gamma\paren{t}}\gamma_2\prim\paren{t}\).
+\end{dem}
+
+\begin{defprop}[Dérivée selon un vecteur]
+Soient \(\Omega\) un ouvert de \(\R^2\), \(f:\Omega\to\R\), \(a\in\Omega\) et \(v\in\R^2\).
+
+On appelle dérivée de \(f\) en \(a\) selon \(v\) la dérivée en \(0\) (si elle existe) de \(t\mapsto f\paren{a+tv}\).
+
+On la note \(\vdv{v}{f}\paren{a}\).
+
+Si \(f\) est de classe \(\classe{1}\) alors \(\vdv{v}{f}\paren{a}\) existe et vaut \[\vdv{v}{f}\paren{a}=\ps{\nabla f\paren{a}}{v}.\]
+\end{defprop}
+
+\begin{dem}
+Notons \(v=\paren{v_1,v_2}\).
+
+On a, pour tout \(t\) suffisamment petit : \[f\paren{a+tv}=f\paren{a_1+tv_1,a_2+tv_2}.\]
+
+Donc selon la règle de la chaîne : \[\begin{aligned}
+\vdv{v}{f}\paren{a}&=v_1\pdv{f}{x}\paren{a}+v_2\pdv{f}{y}\paren{a} \\
+&=\ps{\dcoords{v_1}{v_2}}{\nabla f\paren{a}}.
+\end{aligned}\]
+\end{dem}
+
+\begin{cor}
+Soient \(\Omega,\Omega\prim\) deux ouverts de \(\R^2\), \(f\in\ensclasse{1}{\Omega}{\R}\) et \(\phi,\psi\in\ensclasse{1}{\Omega\prim}{\R^2}\).
+
+On suppose \(\quantifs{\forall u,v\in\Omega\prim}\paren{\phi\paren{u,v},\psi\paren{u,v}}\in\Omega\).
+
+On pose \(\fonction{g}{\Omega\prim}{\R}{\paren{u,v}}{f\paren{\phi\paren{u,v},\psi\paren{u,v}}}\)
+
+Alors \(g\) est de classe \(\classe{1}\) et on a : \[\quantifs{\forall a\in\Omega\prim}\begin{dcases}
+\pdv{g}{u}\paren{a}=\pdv{f}{x}\paren{\phi\paren{a},\psi\paren{a}}\pdv{\phi}{u}\paren{u,v}+\pdv{f}{y}\paren{\phi\paren{a},\psi\paren{a}}\pdv{\psi}{u}\paren{u,v} \\
+\pdv{g}{v}\paren{a}=\pdv{f}{x}\paren{\phi\paren{a},\psi\paren{a}}\pdv{\phi}{v}\paren{u,v}+\pdv{f}{v}\paren{\phi\paren{a},\psi\paren{a}}\pdv{\psi}{v}\paren{u,v}
+\end{dcases}\]
+\end{cor}
+
 \subsection{Équations aux dérivées partielles}
 
 \begin{ex}
