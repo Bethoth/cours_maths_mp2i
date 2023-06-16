@@ -141,3 +141,38 @@ On dit que \(f\) admet un développement limité à l'ordre 1 en \(a\) s'il exis
 
 Les réels \(\lambda\) et \(\mu\) sont alors uniques.
 \end{defi}
+
+\subsection{Dérivées partielles}
+
+\begin{defi}
+Soient \(\Omega\) un ouvert de \(\R^2\), \(f:\Omega\to\R\) et \(a=\paren{a_1,a_2}\in\Omega\).
+
+On dit que \(f\) admet une dérivée partielle par rapport à \(x\) en \(a\) si la fonction \(\gamma:t\mapsto f\paren{t,a_2}\) est dérivable en \(a_1\).
+
+On pose alors : \[\pdv{f}{x}\paren{a}=\gamma\prim\paren{a_1}.\]
+
+On définit de même \(\pdv{f}{y}\).
+\end{defi}
+
+
+\begin{exoex}
+Calculer les dérivées partielles de \[f:\paren{x,y}\mapsto x^3y^2+x+1\qquad\text{et}\qquad g:\paren{x,y}\mapsto\Arctan\dfrac{y}{x}.\]
+\end{exoex}
+
+
+\begin{corr}
+On a : \[\quantifs{\forall\paren{x,y}\in\R^2}\begin{dcases}
+\pdv{f}{x}\paren{x,y}=3x^2y^2+1 \\
+\pdv{f}{y}\paren{x,y}=2x^3y
+\end{dcases}\] et : \[\quantifs{\forall\paren{x,y}\in\Rs\times\R}\begin{dcases}
+\pdv{g}{x}\paren{x,y}=\dfrac{-y}{x^2}\times\dfrac{1}{1+\paren{\frac{y}{x}}^2}=\dfrac{-y}{x^2+y^2} \\
+\pdv{g}{y}\paren{x,y}=\dfrac{1}{x}\times\dfrac{1}{1+\paren{\frac{y}{x}}^2}=\dfrac{x}{x^2+y^2}
+\end{dcases}\]
+\end{corr}
+
+
+\begin{rem}
+Soient \(\Omega\) un ouvert de \(\R^2\), \(f:\Omega\to\R\) et \(a\in\Omega\).
+
+Le fait que \(f\) admette des dérivées partielles en \(a\) n'implique pas la continuité de \(f\) en \(a\).
+\end{rem}
