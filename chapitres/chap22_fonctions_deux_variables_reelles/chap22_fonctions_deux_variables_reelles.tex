@@ -176,3 +176,68 @@ Soient \(\Omega\) un ouvert de \(\R^2\), \(f:\Omega\to\R\) et \(a\in\Omega\).
 
 Le fait que \(f\) admette des dérivées partielles en \(a\) n'implique pas la continuité de \(f\) en \(a\).
 \end{rem}
+
+\subsection{Fonctions de classe \(\classe{1}\)}
+
+
+\begin{defi}
+Soit \(\Omega\) un ouvert de \(\R^2\).
+
+On dit qu'une fonction \(f:\Omega\to\R\) est de classe \(\classe{1}\) si ses dérivées partielles \(\pdv{f}{x}\) et \(\pdv{f}{y}\) sont définies et continues.
+\end{defi}
+
+
+\begin{theo}
+Soient \(\Omega\) un ouvert de \(\R^2\) et \(f:\Omega\to\R\) de classe \(\classe{1}\).
+
+Alors \(f\) admet un développement limité à l'ordre 1 en tout point de \(\Omega\).
+
+Soit \(\paren{x_0,y_0}\in\Omega\).
+
+Alors on a : \[f\paren{x_1,y_1}\underset{\paren{x_1,y_1}\to\paren{x_0,y_0}}{=}f\paren{x_0,y_0}+\paren{x_1-x_0}\pdv{f}{x}\paren{x_0,y_0}+\paren{y_1-y_0}\pdv{f}{y}\paren{x_0,y_0}+o\paren{\norme{\paren{x_1-x_0,y_1-y_0}}}\]
+\end{theo}
+
+\begin{dem}
+On a : \[\begin{aligned}
+f\paren{x_1,y_1}-f\paren{x_0,y_0}&=f\paren{x_1,y_1}-f\paren{x_1,y_0}+f\paren{x_1,y_0}-f\paren{x_0,y_0} \\
+&=\int_{y_0}^{y_1}\pdv{f}{y}\paren{x_1,t}\odif{t}+\int_{x_0}^{x_1}\pdv{f}{x}\paren{t,y_0}\odif{t} \\
+&=\int_{y_0}^{y_1}\paren{\pdv{f}{y}\paren{x_1,t}-\pdv{f}{y}\paren{x_0,y_0}}\odif{t}+\int_{y_0}^{y_1}\pdv{f}{y}\paren{x_0,y_0}\odif{t} \\
+&\color{white}=\color{black}+\int_{x_0}^{x_1}\paren{\pdv{f}{x}\paren{t,y_0}-\pdv{f}{x}\paren{x_0,y_0}}\odif{t}+\int_{x_0}^{x_1}\pdv{f}{x}\paren{x_0,y_0}\odif{t}
+\end{aligned}\]
+
+Soient \(\epsilon,\delta\in\Rps\) tels que \(\begin{dcases}
+\bouleo{\paren{x_0,y_0}}{\delta}\subset\Omega \\
+\quantifs{\forall a\in\bouleo{\paren{x_0,y_0}}{\delta}}\begin{dcases}
+\abs{\pdv{f}{x}\paren{a}-\pdv{f}{x}\paren{x_0,y_0}}\leq\epsilon \\
+\abs{\pdv{f}{y}\paren{a}-\pdv{f}{y}\paren{x_0,y_0}}\leq\epsilon
+\end{dcases}
+\end{dcases}\)
+
+On a : \[\begin{aligned}
+f\paren{x_1,y_1}-f\paren{x_0,y_0}&=\underbrace{\int_{y_0}^{y_1}\underbrace{\paren{\pdv{f}{y}\paren{x_1,t}-\pdv{f}{y}\paren{x_0,y_0}}}_{\abs{\cdot}\leq\epsilon}\odif{t}}_{\leq\abs{y_1-y_0}\epsilon}+\underbrace{\int_{y_0}^{y_1}\pdv{f}{y}\paren{x_0,y_0}\odif{t}}_{=\paren{y_1-y_0}\pdv{f}{y}\paren{x_0,y_0}} \\
+&\color{white}=\color{black}+\underbrace{\int_{x_0}^{x_1}\underbrace{\paren{\pdv{f}{x}\paren{t,y_0}-\pdv{f}{x}\paren{x_0,y_0}}}_{\abs{\cdot}\leq\epsilon}\odif{t}}_{\leq\abs{x_1-x_0}\epsilon}+\underbrace{\int_{x_0}^{x_1}\pdv{f}{x}\paren{x_0,y_0}\odif{t}}_{=\paren{x_1-x_0}\pdv{f}{x}\paren{x_0,y_0}}
+\end{aligned}\]
+
+Donc \[\begin{aligned}
+\int_{y_0}^{y_1}\paren{\pdv{f}{y}\paren{x_1,t}-\pdv{f}{y}\paren{x_0,y_0}}\odif{t}+\int_{x_0}^{x_1}\paren{\pdv{f}{x}\paren{t,y_0}-\pdv{f}{x}\paren{x_0,y_0}}\odif{t}&\leq2\epsilon\norme{\paren{x_1,y_1}-\paren{x_0,y_0}} \\
+&=o\paren{\norme{\paren{x_1-x_0,y_1-y_0}}}.
+\end{aligned}\]
+
+D'où le résultat.
+\end{dem}
+
+\begin{defi}[Gradient]
+Soient \(\Omega\) un ouvert de \(\R^2\), \(f\in\ensclasse{1}{\Omega}{\R}\) et \(a\in\Omega\).
+
+On appelle gradient de \(f\) en \(a\) le vecteur \[\nabla f\paren{a}=\paren{\pdv{f}{x}\paren{a},\pdv{f}{y}\paren{a}}.\]
+
+Selon le théorème précédent, il vérifie : \[f\paren{a+h}\underset{h\to\paren{0,0}}{=}f\paren{a}+\ps{\nabla f\paren{a}}{h}+o\paren{\norme{h}}.\]
+\end{defi}
+
+\begin{exoex}
+Calculer le gradient des fonctions \[\fonction{f}{\R^2\excluant\accol{\paren{0,0}}}{\R}{\paren{x,y}}{\sqrt{x^2+y^2}}\qquad\text{et}\qquad\fonction{g}{\Rps\times\R}{\R}{\paren{x,y}}{\Arctan\dfrac{y}{x}}\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\quantifs{\forall\paren{x,y}\in\R^2\excluant\accol{\paren{0,0}}}\nabla f\paren{x,y}=\paren{\dfrac{x}{\sqrt{x^2+y^2}},\dfrac{y}{\sqrt{x^2+y^2}}}=\dfrac{1}{\sqrt{x^2+y^2}}\paren{x,y}\] et : \[\quantifs{\forall\paren{x,y}\in\Rps\times\R}\nabla g\paren{x,y}=\paren{\dfrac{-y}{x^2+y^2},\dfrac{x}{x^2+y^2}}=\dfrac{1}{x^2+y^2}\paren{-y,x}.\]
+\end{corr}
