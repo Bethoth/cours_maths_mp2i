@@ -241,3 +241,28 @@ Calculer le gradient des fonctions \[\fonction{f}{\R^2\excluant\accol{\paren{0,0
 \begin{corr}
 On a : \[\quantifs{\forall\paren{x,y}\in\R^2\excluant\accol{\paren{0,0}}}\nabla f\paren{x,y}=\paren{\dfrac{x}{\sqrt{x^2+y^2}},\dfrac{y}{\sqrt{x^2+y^2}}}=\dfrac{1}{\sqrt{x^2+y^2}}\paren{x,y}\] et : \[\quantifs{\forall\paren{x,y}\in\Rps\times\R}\nabla g\paren{x,y}=\paren{\dfrac{-y}{x^2+y^2},\dfrac{x}{x^2+y^2}}=\dfrac{1}{x^2+y^2}\paren{-y,x}.\]
 \end{corr}
+
+\subsection{Équations aux dérivées partielles}
+
+\begin{ex}
+Résolvons sur \(\R^2\) l'équation aux dérivées partielles \(\paren{E}~\pdv{f}{x}\paren{x,y}=x^2y^2\).
+
+Soit \(f\in\ensclasse{1}{\R^2}{\R}\).
+
+On a : \[f\text{ est solution de }\paren{E}\ssi\quantifs{\exists g\in\ensclasse{1}{\R}{\R};\forall\paren{x,y}\in\R^2}f\paren{x,y}=\dfrac{1}{3}x^3y^2+g\paren{y}.\]
+\end{ex}
+
+\begin{ex}
+Résolvons sur \(\R^2\) l'équation aux dérivées partielles \(\paren{E}~\pdv[order=2]{f}{x}\paren{x,y}=\cos x+\sin y+\exp\paren{x\e{y}}\).
+
+Soit \(f\in\ensclasse{2}{\R^2}{\R}\) (\cad \(\pdv{f}{x},\pdv{f}{y}\in\ensclasse{1}{\R^2}{\R}\)).
+
+On a : \[\begin{aligned}
+f\text{ est solution de }\paren{E}&\ssi\quantifs{\exists g\in\F{\R}{\R};\forall\paren{x,y}\in\R^2}\pdv{f}{x}\paren{x,y}=\sin x+x\sin y \\
+&\color{white}\ssi\quantifs{\exists g\in\F{\R}{\R};\forall\paren{x,y}\in\R^2}\pdv{f}{x}\paren{x,y}=\color{black}+\e{-y}\exp\paren{x\e{y}}+g\paren{y} \\
+&\ssi\quantifs{\exists g,h\in\F{\R}{\R};\forall\paren{x,y}\in\R^2}f\paren{x,y}=-\cos x+\dfrac{1}{2}x^2\sin y \\
+&\color{white}\ssi\quantifs{\exists g,h\in\F{\R}{\R};\forall\paren{x,y}\in\R^2}f\paren{x,y}=\color{black}+\e{-2y}\exp\paren{x\e{y}}+xg\paren{y}+h\paren{y}
+\end{aligned}\] où \(g,h\in\ensclasse{2}{\R}{\R}\).
+\end{ex}
+
+% le cours en est là pour le moment
