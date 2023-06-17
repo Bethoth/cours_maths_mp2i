@@ -131,13 +131,13 @@ Or \(\Arctan:\R\to\R\) est continue donc \(g\) est continue par composition.
 \begin{nota}
 Soient \(\Omega\) un ouvert de \(\R^2\) contenant \(\paren{0,0}\) et \(g:\Omega\to\R\).
 
-On dit que \(g\paren{x}\) est négligeable devant \(\norme{x}\) et on note \(g\paren{x}\underset{x\to\paren{0,0}}{=}o\paren{\norme{x}}\) si on a : \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x\in\Omega}\norme{x}\leq\delta\imp\abs{g\paren{x}}\leq\epsilon\norme{x}.\]
+On dit que \(g\paren{x}\) est négligeable devant \(\norme{x}\) et on note \(g\paren{x}\egqd{x\to\paren{0,0}}o\paren{\norme{x}}\) si on a : \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x\in\Omega}\norme{x}\leq\delta\imp\abs{g\paren{x}}\leq\epsilon\norme{x}.\]
 \end{nota}
 
 \begin{defi}
 Soient \(\Omega\) un ouvert de \(\R^2\), \(f:\Omega\to\R\) et \(a=\paren{a_1,a_2}\in\Omega\).
 
-On dit que \(f\) admet un développement limité à l'ordre 1 en \(a\) s'il existe \(\lambda,\mu\in\R\) tels que : \[f\paren{a_1+h_1,a_2+h_2}\underset{h=\paren{h_1,h_2}\to\paren{0,0}}{=}f\paren{a_1,a_2}+\lambda h_1+\mu h_2+o\paren{\norme{h}}.\]
+On dit que \(f\) admet un développement limité à l'ordre 1 en \(a\) s'il existe \(\lambda,\mu\in\R\) tels que : \[f\paren{a_1+h_1,a_2+h_2}\egqd{h=\paren{h_1,h_2}\to\paren{0,0}}f\paren{a_1,a_2}+\lambda h_1+\mu h_2+o\paren{\norme{h}}.\]
 
 Les réels \(\lambda\) et \(\mu\) sont alors uniques.
 \end{defi}
@@ -194,7 +194,7 @@ Alors \(f\) admet un développement limité à l'ordre 1 en tout point de \(\Ome
 
 Soit \(\paren{x_0,y_0}\in\Omega\).
 
-Alors on a : \[f\paren{x_1,y_1}\underset{\paren{x_1,y_1}\to\paren{x_0,y_0}}{=}f\paren{x_0,y_0}+\paren{x_1-x_0}\pdv{f}{x}\paren{x_0,y_0}+\paren{y_1-y_0}\pdv{f}{y}\paren{x_0,y_0}+o\paren{\norme{\paren{x_1-x_0,y_1-y_0}}}\]
+Alors on a : \[f\paren{x_1,y_1}\egqd{\paren{x_1,y_1}\to\paren{x_0,y_0}}f\paren{x_0,y_0}+\paren{x_1-x_0}\pdv{f}{x}\paren{x_0,y_0}+\paren{y_1-y_0}\pdv{f}{y}\paren{x_0,y_0}+o\paren{\norme{\paren{x_1-x_0,y_1-y_0}}}\]
 \end{theo}
 
 \begin{dem}
@@ -231,7 +231,7 @@ Soient \(\Omega\) un ouvert de \(\R^2\), \(f\in\ensclasse{1}{\Omega}{\R}\) et \(
 
 On appelle gradient de \(f\) en \(a\) le vecteur \[\nabla f\paren{a}=\paren{\pdv{f}{x}\paren{a},\pdv{f}{y}\paren{a}}.\]
 
-Selon le théorème précédent, il vérifie : \[f\paren{a+h}\underset{h\to\paren{0,0}}{=}f\paren{a}+\ps{\nabla f\paren{a}}{h}+o\paren{\norme{h}}.\]
+Selon le théorème précédent, il vérifie : \[f\paren{a+h}\egqd{h\to\paren{0,0}}f\paren{a}+\ps{\nabla f\paren{a}}{h}+o\paren{\norme{h}}.\]
 \end{defi}
 
 \begin{exoex}
