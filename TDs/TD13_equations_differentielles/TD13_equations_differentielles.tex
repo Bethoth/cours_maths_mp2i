@@ -54,8 +54,83 @@ On considère l'équation différentielle : \[\paren{E}~ty\prim+y=\cos t.\]
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]
+On pose \(I=\Rps\) ou \(\Rms\).
+
+Résolvons \(\paren{E}\) sur \(I\).
+
+Résolvons \(\paren{E_0}~y\prim+\dfrac{1}{t}y=0\).
+
+Une primitive de \(t\mapsto\dfrac{1}{t}\) est \(t\mapsto\ln\abs{t}\).
+
+Donc les solutions de \(\paren{E_0}\) sont les fonctions de la forme \(t\mapsto\lambda\e{-\ln\abs{t}}=\dfrac{\lambda}{\abs{t}}\) avec \(\lambda\in\R\), \cad de la forme : \[t\mapsto\dfrac{\lambda}{t}\] avec \(\lambda\in\R\).
+
+Déterminons une solution de \(\paren{E}\).
+
+Soit \(\lambda\in\ensclasse{1}{I}{\R}\).
+
+On pose \(y_1:t\mapsto\dfrac{\lambda\paren{t}}{t}=\lambda\paren{t}t\inv\).
+
+On a : \[\begin{aligned}
+y_1\text{ est solution de }\paren{E}&\ssi\quantifs{\forall t\in I}t\paren{\lambda\prim\paren{t}t\inv-\lambda\paren{t}t^2}+\lambda\paren{t}t\inv=\cos t \\
+&\ssi\quantifs{\forall t\in I}\lambda\prim\paren{t}=\cos t \\
+&\impr\lambda=\sin.
+\end{aligned}\]
+
+Donc \(y_1:t\mapsto\dfrac{\sin t}{t}\) est solution de \(\paren{E}\).
+
+Finalement, les solutions de \(\paren{E}\) sur \(I\) sont les fonctions de la forme : \[t\mapsto\dfrac{\lambda}{t}+\dfrac{\sin t}{t}=\dfrac{\lambda+\sin t}{t}\] où \(\lambda,\mu\in\R\).
+\end{corr}
+
+\begin{corr}[2]
+\analyse
+
+Soit \(y\in\ensclasse{1}{\R}{\R}\) telle que \(\quantifs{\forall t\in\R}ty\prim\paren{t}+y\paren{t}=\cos t\).
+
+Comme \(y\) est solution de \(\paren{E}\) sur \(\Rps\), il existe \(\lambda\in\R\) tel que \[\quantifs{\forall t\in\Rps}y\paren{t}=\dfrac{\lambda}{t}+\dfrac{\sin t}{t}.\]
+
+Comme \(y\) est solution de \(\paren{E}\) sur \(\Rms\), il existe \(\mu\in\R\) tel que \[\quantifs{\forall t\in\Rms}y\paren{t}=\dfrac{\mu}{t}+\dfrac{\sin t}{t}.\]
+
+De plus, en \(t=0\), on a \(0+y\paren{0}=1\).
+
+D'où : \[\fonction{y}{\R}{\R}{t}{\begin{dcases}
+\dfrac{\lambda}{t}+\dfrac{\sin t}{t} &\text{si }t>0 \\
+\dfrac{\mu}{t}+\dfrac{\sin t}{t} &\text{si }t<0 \\
+1 &\text{si }t=0
+\end{dcases}}\]
+
+Comme \(y\) est continue en \(0\), on a \(\lim_{0^+}y=1\).
+
+Or \(\lim_{0^+}y=\begin{dcases}
+\pinf &\text{si }\lambda>0 \\
+\minf &\text{si }\lambda<0 \\
+1 &\text{si }\lambda=0
+\end{dcases}\)
+
+Donc \(\lambda=0\).
+
+De même, comme \(\lim_{0^-}y=1\), on a \(\mu=0\).
+
+Donc : \[\fonction{y}{\R}{\R}{t}{\begin{dcases}
+\dfrac{\sin t}{t} &\text{si }t\not=0 \\
+1 &\text{sinon}
+\end{dcases}}\]
+
+\synthese
+
+Posons \(\fonction{y}{\R}{\R}{t}{\begin{dcases}
+\dfrac{\sin t}{t} &\text{si }t\not=0 \\
+1 &\text{sinon}
+\end{dcases}}\)
+
+On a \(y\in\ensclasse{1}{\R}{\R}\) selon le théorème de la limite de la dérivée et \(y\) est solution de \(\paren{E}\).
+
+\conclusion
+
+La fonction \[\fonction{y}{\R}{\R}{t}{\begin{dcases}
+\dfrac{\sin t}{t} &\text{si }t\not=0 \\
+1 &\text{sinon}
+\end{dcases}}\] est l'unique solution de \(\paren{E}\).
 \end{corr}
 
 \begin{exo}[Exercice 7, Mines MP 2006]
