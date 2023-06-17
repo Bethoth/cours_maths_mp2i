@@ -96,8 +96,92 @@ Résoudre les équations différentielles suivantes :
 Résoudre sur l'intervalle \(\Rps\) l'équation différentielle : \[\paren{E}~t^2y\seconde+3ty\prim+y=\paren{t+1}^2\] en faisant le changement de variable \(s=\ln t\).
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}~\\
+\begin{brouill}
+On a \(s=\ln t\ssi t=\e{s}\) et \(y\paren{t}=y\paren{\e{s}}=z\paren{s}=z\paren{\ln t}\).
+\end{brouill}
+
+Soit \(y\in\ensclasse{2}{\Rps}{\R}\).
+
+On pose \(\fonction{z}{\R}{\R}{s}{y\paren{\e{s}}}\)
+
+On a \(\quantifs{\forall t\in\Rps}\begin{dcases}
+y\paren{t}=z\paren{\ln t} \\
+y\prim\paren{t}=\dfrac{1}{t}z\prim\paren{\ln t} \\
+y\seconde\paren{t}=\dfrac{1}{t^2}z\seconde\paren{t}-\dfrac{1}{t^2}z\prim\paren{\ln t}
+\end{dcases}\)
+
+Donc : \[\begin{aligned}
+y\text{ est solution de }\paren{E}&\ssi\quantifs{\forall t\in\Rps}t^2y\seconde\paren{t}+3ty\prim\paren{t}+y\paren{t}=\paren{t+1}^2 \\
+&\ssi\quantifs{\forall t\in\Rps}z\seconde\paren{\ln t}-z\prim\paren{\ln t}+3z\prim\paren{\ln t}+z\paren{\ln t}=\paren{t+1}^2 \\
+&\ssi\quantifs{\forall s\in\R}z\seconde\paren{s}+2z\prim\paren{s}+z\paren{s}=\paren{\e{s}+1}^2 \\
+&\ssi z\text{ est solution de }\paren{E\prim}~z\seconde+2z\prim+z=\paren{\e{s}+1}^2.
+\end{aligned}\]
+
+Résolvons \(\paren{E\prim}\).
+
+Résolvons \(\paren{E_0\prim}~z\seconde+2z\prim+z=0\).
+
+L'équation caractéristique \(x^2+2x+1\) admet \(-1\) comme solution double.
+
+Donc les solutions de \(\paren{E_0\prim}\) sont les fonctions de la forme \(z_0:s\mapsto\paren{\lambda s+\mu}\e{-t}\) avec \(\lambda,\mu\in\R\).
+
+Déterminons une solution de \(\paren{E\prim}\).
+
+On pose : \[\paren{E_1\prim}~y\seconde+2y\prim+y=\e{2s}\qquad\paren{E_2\prim}~y\seconde+2y\prim+y=\e{s}\qquad\paren{E_3\prim}y\seconde+2y\prim+y=1.\]
+
+Déterminons une solution de \(\paren{E_1\prim}\).
+
+\begin{brouill}
+On a \(P\paren{s}\e{\gamma s}\) avec \(\begin{dcases}
+P=1\text{ donc }\deg P=0 \\
+\gamma=2
+\end{dcases}\)
+
+Donc on cherche une solution de la forme \(Q\paren{s}\e{\gamma s}\) avec \(\deg Q=0\), \cad de la forme \(a\e{2s}\).
+\end{brouill}
+
+Soit \(a\in\R\).
+
+On pose \(z_1:s\mapsto a\e{2s}\).
+
+On a \(\quantifs{\forall s\in\R}\begin{dcases}
+z_1\prim\paren{s}=2a\e{2s} \\
+z_1\seconde\paren{s}=4a\e{2s}
+\end{dcases}\)
+
+Donc \[\begin{aligned}
+z_1\text{ est solution de }\paren{E_1\prim}&\ssi\quantifs{\forall s\in\R}4a\e{2s}+4a\e{2s}+a\e{2s}=\e{2s} \\
+&\ssi\quantifs{\forall s\in\R}9a\e{2s}=\e{2s} \\
+&\impr a=\dfrac{1}{9}.
+\end{aligned}\]
+
+Donc \(z_1:s\mapsto\dfrac{1}{9}\e{2s}\) est solution de \(\paren{E_1\prim}\).
+
+Déterminons une solution de \(\paren{E_2\prim}\).
+
+Soit \(a\in\R\).
+
+On pose \(z_2:s\mapsto a\e{s}\).
+
+On a : \[\begin{aligned}
+z_2\text{ est solution de }\paren{E_2\prim}&\ssi a\e{s}+2a\e{s}+a\e{s}=\e{s} \\
+&\impr a=\dfrac{1}{4}.
+\end{aligned}\]
+
+Donc \(z_2:s\mapsto\dfrac{1}{4}\e{s}\) est solution de \(\paren{E_2\prim}\).
+
+On remarque que \(z_3:s\mapsto1\) est solution de \(\paren{E_3\prim}\).
+
+Donc \(z:s\mapsto\dfrac{1}{9}\e{2s}+\dfrac{1}{2}\e{s}+1\) est solution de \(\paren{E\prim}\) selon le principe de superposition.
+
+Ainsi, les solutions de \(\paren{E\prim}\) sont les fonctions de la forme \[s\mapsto\paren{\lambda s+\mu}\e{-s}+\dfrac{1}{9}\e{2s}+\dfrac{1}{2}\e{s}+1\] avec \(\lambda,\mu\in\R\).
+
+Finalement : \[\begin{aligned}
+y\text{ est solution de }\paren{E}&\ssi\quantifs{\exists\lambda,\mu\in\R;\forall s\in\R}z\paren{s}=\paren{\lambda s+\mu}\e{-s}+\dfrac{1}{9}\e{2s}+\dfrac{1}{2}\e{s}+1 \\
+&\ssi\quantifs{\exists\lambda,\mu\in\R;\forall t\in\Rps}z\paren{\ln t}=\paren{\lambda\ln t+\mu}\e{-\ln t}+\dfrac{1}{9}\e{2\ln t}+\dfrac{1}{2}\e{\ln t}+1 \\
+&\ssi\quantifs{\exists\lambda,\mu\in\R;\forall t\in\Rps}y\paren{t}=\dfrac{\lambda\ln t+\mu}{t}+\dfrac{1}{9}t^2+\dfrac{1}{2}t+1.
+\end{aligned}\]
 \end{corr}
 
 \begin{exo}[Exercice 11]
