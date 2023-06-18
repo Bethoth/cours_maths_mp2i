@@ -325,3 +325,105 @@ On a \(\begin{pmatrix}
 
 De même, on a \(\begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}\begin{pmatrix}d \\ c \\ b \\ a\end{pmatrix}=d+2c+4b+8a\) donc \(l\paren{aX^3+bX^2+cX+d}=8a+4b+2c+d\) donc : \[\paren{aX^3+bX^2+cX+d}\paren{2}=8a+4b+2c+d.\]
 \end{ex}
+
+\subsection{Formules de changement de base}
+
+\begin{prop}
+{\normalfont\bfseries (Formule de changement de base pour la matrice d'une application linéaire)}
+
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(p\in\Ns\), \(F\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\), \(\fami{C}\) et \(\fami{C}\prim\) deux bases de \(F\) et \(u\in\L{E}{F}\).
+
+On a : \[\Mat[\fami{B},\fami{C}]{u}=\pass{\fami{C}}{\fami{C}\prim}\Mat[\fami{B}\prim,\fami{C}\prim]{u}\pass{\fami{B}\prim}{\fami{B}}.\]
+\end{prop}
+
+\begin{dem}
+Soit \(x\in E\).
+
+On note \(y=u\paren{x}\), \(X,X\prim\in\K^p\) les coordonnées de \(x\) dans les bases \(\fami{B}\) et \(\fami{B}\prim\) respectivement, \(Y,Y\prim\in\K^n\) les coordonnées de \(y\) dans les bases \(\fami{C}\) et \(\fami{C}\prim\) respectivement, \(A=\Mat[\fami{B},\fami{C}]{u}\), \(A\prim=\Mat[\fami{B}\prim,\fami{C}\prim]{u}\), \(P=\pass{\fami{B}}{\fami{B}\prim}\) et \(Q=\pass{\fami{C}}{\fami{C}\prim}\).
+
+On a vu \(\begin{dcases}
+X=PX\prim \\
+Y=QY\prim
+\end{dcases}\) et \(\begin{dcases}
+Y=AX \\
+Y\prim=A\prim X\prim
+\end{dcases}\)
+
+Donc \(QY\prim=APX\prim\).
+
+Donc \(Y\prim=Q\inv APX\prim\).
+
+Donc \(Q\inv AP=A\prim\), \cad : \[\pass{\fami{C}}{\fami{C}\prim}\inv\Mat[\fami{B},\fami{C}]{u}\pass{\fami{B}}{\fami{B}\prim}=\Mat[\fami{B}\prim,\fami{C}\prim]{u}.\]
+
+D'où la formule souhaitée car \(\pass{\fami{C}}{\fami{C}\prim}\inv=\pass{\fami{C}\prim}{\fami{C}}\).
+\end{dem}
+
+\begin{cor}
+{\normalfont\bfseries (Formule de changement de base pour la matrice d'un endomorphisme)}
+
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\) et \(u\in\Lendo{E}\).
+
+On a : \[\Mat{u}=\pass{\fami{B}}{\fami{B}\prim}\Mat[\fami{B}\prim]{u}\pass{\fami{B}\prim}{\fami{B}}.\]
+\end{cor}
+
+\begin{rem}
+Deux matrices carrées sont semblables si, et seulement si, ce sont les matrices d'un même endomorphisme dans deux bases différentes.
+\end{rem}
+
+\begin{rem}
+On peut maintenant démontrer que toute matrice de rang \(r\) est équivalente à \(J_r\) (on l'avait admis dans la \thref{dem:matriceDeRangrÉquivalenteÀJrAMoitiéAdmis}).
+\end{rem}
+
+\begin{appl}
+Soient \(n,p\in\Ns\), \(A\in\M{np}\) et \(r\in\N\).
+
+Alors : \[\rg A=r\ssi\quantifs{\exists P\in\GL{n};\exists Q\in\GL{p}}A=PJ_rQ,\] en posant \[J_r=\begin{pNiceMatrix}[first-col,last-row]
+1 & 1 & 0 & \dots & 0 & \Block{4-4}<\Huge>{0} \\
+& 0 & \ddots & \ddots & \vdots & & & & \\
+& \vdots & \ddots & \ddots & 0 & & & & \\
+r & 0 & \dots & 0 & 1 & & & & \\
+& \Block{4-4}<\Huge>{0} & & & & \Block{4-4}<\Huge>{0} \\
+&&&&&&&&& \\
+&&&&&&&&& \\
+&&&&&&&&& \\
+n &&&&&&&&& \\
+& 1 &  &  & r & & & & p
+\end{pNiceMatrix}.\]
+\end{appl}
+
+\begin{dem}
+Il reste à montrer \(\impdir\).
+
+Supposons \(\rg A=r\).
+
+On considère l'application linéaire canoniquement associée à \(A\) : \(u_A\in\L{\K^p}{\K^n}\).
+
+On a \(\rg u_A=\rg A=r\).
+
+Soit \(S\) un supplémentaire de \(\ker u_A\) dans \(\K^p\) : \[\K^p=S\oplus\ker u_A.\]
+
+Selon le théorème du rang, \(u_A\) induit un isomorphisme de \(S\) vers \(\Im u_A\).
+
+On a donc : \[\dim S=\dim\Im u_A=\rg u_A=r.\]
+
+Soit \(\paren{e_1,\dots,e_r}\) une base de \(S\).
+
+Comme les isomorphismes conservent les bases, \(\paren{u_A\paren{e_1},\dots,u_A\paren{e_r}}\) est une base de \(\Im u_A\).
+
+Soit \(\paren{e_{r+1},\dots,e_p}\) une base de \(\ker u_A\).
+
+La famille \(\fami{B}=\paren{e_1,\dots,e_p}\) est une base de \(\K^p\) car \(\K^p=S\oplus\ker u_A\).
+
+Enfin, la famille \(\paren{u_A\paren{e_1},\dots,u_A\paren{e_r}}\) est une famille libre de \(\K^n\) donc selon le théorème de la base incomplète, on peut la compléter en une base \(\fami{C}=\paren{u_A\paren{e_1},\dots,u_A\paren{e_r},\epsilon_{r+1},\dots,\epsilon_n}\) de \(\K^n\).
+
+On note \(\fami{B}_0\) et \(\fami{C}_0\) les bases respectives de \(\K^p\) et \(\K^n\).
+
+On a, d'une part, \(\Mat[\fami{B}_0,\fami{C}_0]{u_A}=A\).
+
+D'autre part : \[\Mat[\fami{B},\fami{C}]{u_A}=J_r.\] % TODO : expliciter
+
+On a donc \[A=\Mat[\fami{B}_0,\fami{C}_0]{u_A}=\pass{\fami{C_0}}{\fami{C}}\Mat[\fami{B},\fami{C}]{u_A}\pass{\fami{B}}{\fami{B}_0}=PJ_rQ\] en posant \(\begin{dcases}
+P=\pass{\fami{C_0}}{\fami{C}}\in\GL{n} \\
+Q=\pass{\fami{B}}{\fami{B}_0}\in\GL{p}
+\end{dcases}\)
+\end{dem}
