@@ -2,4 +2,588 @@
 
 \minitoc
 
-\note{À VENIR}
+On considère un corps \(\K\) (en pratique \(\K=\R\) ou \(\C\)).
+
+\section{Matrice d'une famille de vecteurs}
+
+\subsection{Définition}
+
+\begin{defi}[Matrice d'une famille de vecteurs dans une base]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\) et \(\paren{x_1,\dots,x_p}\in E^p\) une famille d'éléments de \(E\).
+
+La matrice de la famille \(\paren{x_1,\dots,x_p}\) dans la base \(\fami{B}\) est la matrice : \[\Mat{x_1,\dots,x_p}=\begin{pmatrix}
+a_{11} & \dots & a_{1p} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{np}
+\end{pmatrix}\in\M{np}\] dont les colonnes sont les coordonnées respectives des vecteurs de la famille \(\paren{x_1,\dots,x_p}\) : \[\quantifs{\forall j\in\interventierii{1}{n}}x_j=\sum_{i=1}^{n}a_{ij}e_i.\]
+\end{defi}
+
+\begin{rem}
+On garde les notations de la définition précédente.
+
+Si \(p=1\) (\cad si la famille de vecteurs ne possède qu'un seul vecteur), alors la matrice \(\Mat{x_1}\) de la famille \(\paren{x_1}\) dans la base \(\fami{B}\) est la matrice-colonne (\cad le \(n\)-uplet) des coordonnées de \(x_1\) dans la base \(\fami{B}\).
+\end{rem}
+
+\begin{exoex}
+On note \(T_0\), \(T_1\) et \(T_2\) les trois premiers polynômes de Tchebychev.
+
+Écrire la matrice de la famille \(\paren{T_0,T_1,T_2}\) dans la base canonique de \(\polydeg[\R]{2}\) puis dans la base canonique de \(\polydeg[\R]{3}\).
+\end{exoex}
+
+\begin{corr}
+On a : \[\Mat[\paren{1,X,X^2}]{1,X,2X^2-1}=\begin{pmatrix}
+1 & 0 & -1 \\
+0 & 1 & 0 \\
+0 & 0 & 2
+\end{pmatrix}\qquad\text{et}\qquad\Mat[\paren{1,X,X^2,X^3}]{1,X,2X^2-1}=\begin{pmatrix}
+1 & 0 & -1 \\
+0 & 1 & 0 \\
+0 & 0 & 2 \\
+0 & 0 & 0
+\end{pmatrix}.\]
+\end{corr}
+
+\begin{defi}[Matrice de passage]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}=\paren{e_1,\dots,e_n}\) et \(\fami{B}\prim=\paren{x_1,\dots,x_n}\) deux bases de \(E\).
+
+La matrice \(\Mat{x_1,\dots,x_n}\) est appelée matrice de passage de la base \(\fami{B}\) à la base \(\fami{B}\prim\) et est notée \(\pass{\fami{B}}{\fami{B}\prim}\) : \[\pass{\fami{B}}{\fami{B}\prim}=\Mat{\fami{B}\prim}=\Mat{x_1,\dots,x_n}.\]
+\end{defi}
+
+\begin{rem}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\) une base de \(E\).
+
+On a : \[\pass{\fami{B}}{\fami{B}}=I_n.\]
+\end{rem}
+
+\subsection{Formules de changement de base}
+
+\begin{prop}[Formule de changement de base pour les coordonnées d'un vecteur]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\) et \(x\) un vecteur de \(E\).
+
+On considère les coordonnées \(X\in\K^n\) et \(X\prim\in\K^n\) de \(x\) dans les bases \(\fami{B}\) et \(\fami{B}\prim\) : \[X=\tcoords{x_1}{\vdots}{x_n}=\Mat{x}\qquad\text{et}\qquad X\prim=\tcoords{x_1\prim}{\vdots}{x_n\prim}=\Mat[\fami{B}\prim]{x}.\]
+
+On a : \[X=\pass{\fami{B}}{\fami{B}\prim}X\prim,\] \cad : \[\Mat{x}=\pass{\fami{B}}{\fami{B}\prim}\Mat[\fami{B}\prim]{x}.\]
+\end{prop}
+
+\begin{dem}
+On note \(\fami{B}=\paren{e_1,\dots,e_n}\), \(\fami{B}\prim=\paren{e_1\prim,\dots,e_n\prim}\) et \(\pass{\fami{B}}{\fami{B}\prim}=\paren{a_{ij}}_{\paren{i,j}}\).
+
+On a : \[x=\sum_{k=1}^{n}x_ke_k=\sum_{k=1}^{n}x_k\prim e_k\prim\qquad\text{et}\qquad\quantifs{\forall j\in\interventierii{1}{n}}e_j\prim=\sum_{i=1}^{n}a_{ij}e_i.\]
+
+Donc : \[x=\sum_{j=1}^{n}x_j\prim\sum_{i=1}^{n}a_{ij}e_i=\sum_{i=1}^{n}e_i\sum_{j=1}^{n}a_{ij}x_j\prim.\]
+
+D'où \(\quantifs{\forall i\in\interventierii{1}{n}}x_i=\sum_{j=1}^{n}a_{ij}x_j\prim\), \cad : \[X=\pass{\fami{B}}{\fami{B}\prim}X\prim.\]
+\end{dem}
+
+\begin{exoex}
+On note \(\fami{C}\) le cercle unité de \(\R^2\), d'équation cartésienne (dans la base canonique \(\fami{B}\)) : \[\fami{C}:x^2+y^2=1.\]
+
+\begin{enumerate}
+    \item Justifier que la famille \(\fami{B}\prim=\paren{\dcoords{2}{0},\dcoords{1}{1}}\) est une base de \(\R^2\). \\
+    \item Donner une équation cartésienne de \(\fami{C}\) dans la base \(\fami{B}\prim\), \cad, pour tout point \(M\in\R^2\), une CNS en fonction des coordonnées \(\paren{x\prim,y\prim}\) de \(M\) dans \(\fami{B}\prim\) pour que \(M\) appartienne à \(\fami{C}\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+\(\fami{B}\prim\) est clairement libre et possède deux éléments donc c'est une base de \(\R^2\).
+\end{corr}
+
+\begin{corr}[2]
+Soit \(M\in\R^2\) dont on note \(\paren{x,y}\) les coordonnées dans \(\fami{B}\) et \(\paren{x\prim,y\prim}\) les coordonnées dans \(\fami{B}\prim\).
+
+On a : \[\dcoords{x}{y}=\pass{\fami{B}}{\fami{B}\prim}\dcoords{x\prim}{y\prim}=\begin{pmatrix}
+2 & 1 \\
+0 & 1
+\end{pmatrix}\dcoords{x\prim}{y\prim}=\dcoords{2x\prim+y\prim}{y\prim}.\]
+
+Donc \(\begin{dcases}
+x=2x\prim+y\prim \\
+y=y\prim
+\end{dcases}\)
+
+D'où : \[\begin{aligned}
+M\in\fami{C}&\ssi x^2+y^2=1 \\
+&\ssi\paren{2x\prim+y\prim}^2+{y\prim}^2=1 \\
+&\ssi4{x\prim}^2+4x\prim y\prim+2{y\prim}^2=1.
+\end{aligned}\]
+\end{corr}
+
+\begin{prop}\thlabel{prop:formuleDeChangementDeBasePourLaMatriceD'UneFamilleDeVecteurs}
+{\normalfont\bfseries(Formule de changement de base pour la matrice d'une famille de vecteurs)}
+
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\) et \(\fami{F}\) une famille de vecteurs.
+
+On a : \[\Mat{\fami{F}}=\pass{\fami{B}}{\fami{B}\prim}\Mat[\fami{B}\prim]{\fami{F}}.\]
+\end{prop}
+
+\begin{dem}
+On note \(\fami{F}=\paren{x_1,\dots,x_p}\in E^p\), \(\fami{B}=\paren{e_1,\dots,e_n}\), \(\fami{B}\prim=\paren{e_1\prim,\dots,e_n\prim}\), \(\Mat{\fami{F}}=\begin{pmatrix}C_1 & \dots & C_p\end{pmatrix}\) et \(\Mat[\fami{B}\prim]{\fami{F}}=\begin{pmatrix}C_1\prim & \dots & C_p\prim\end{pmatrix}\).
+
+On a \(\quantifs{\forall j\in\interventierii{1}{p}}C_j=\pass{\fami{B}}{\fami{B}\prim}C_j\prim\) donc : \[\begin{aligned}
+\Mat{\fami{F}}&=\begin{pmatrix}\pass{\fami{B}}{\fami{B}\prim}C_1\prim & \dots & \pass{\fami{B}}{\fami{B}\prim}C_p\prim\end{pmatrix} \\
+&=\pass{\fami{B}}{\fami{B}\prim}\begin{pmatrix}C_1\prim & \dots & C_p\prim\end{pmatrix} \\
+&=\pass{\fami{B}}{\fami{B}\prim}\Mat[\fami{B}\prim]{\fami{F}}.
+\end{aligned}\]
+\end{dem}
+
+\begin{cor}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\), \(\fami{B}\prim\) et \(\fami{B}\seconde\) trois bases de \(E\).
+
+On a : \[\pass{\fami{B}}{\fami{B}\seconde}=\pass{\fami{B}}{\fami{B}\prim}\pass{\fami{B}\prim}{\fami{B}\seconde}.\]
+\end{cor}
+
+\begin{dem}
+On a, selon la \thref{prop:formuleDeChangementDeBasePourLaMatriceD'UneFamilleDeVecteurs} : \[\Mat{\fami{B}\seconde}=\pass{\fami{B}}{\fami{B}\prim}\Mat[\fami{B}\prim]{\fami{B}\seconde}.\]
+
+Comme \(\fami{B}\seconde\) est aussi une base, cette formule s'écrit : \[\pass{\fami{B}}{\fami{B}\seconde}=\pass{\fami{B}}{\fami{B}\prim}\pass{\fami{B}\prim}{\fami{B}\seconde}.\]
+\end{dem}
+
+\begin{prop}[Inversibilité des matrices de passage]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\).
+
+La matrice de passage \(\pass{\fami{B}}{\fami{B}\prim}\) est inversible, d'inverse : \[\pass{\fami{B}}{\fami{B}\prim}\inv=\pass{\fami{B}\prim}{\fami{B}}.\]
+\end{prop}
+
+\begin{dem}
+On a : \[I_n=\pass{\fami{B}}{\fami{B}}=\pass{\fami{B}}{\fami{B}\prim}\pass{\fami{B}\prim}{\fami{B}}.\]
+
+Donc \(\pass{\fami{B}}{\fami{B}\prim}\) est inversible, d'inverse \(\pass{\fami{B}\prim}{\fami{B}}\).
+\end{dem}
+
+\subsection{Isomorphisme entre familles de vecteurs et matrices}
+
+\begin{prop}
+Soient \(n,p\in\Ns\), \(E\) un \(\K\)-espace vectoriel de dimension \(n\) et \(\fami{B}\) une base de \(E\).
+
+L'application \[\fonction{\phi}{E^p}{\M{np}}{\paren{x_1,\dots,x_p}}{\Mat{x_1,\dots,x_p}}\] est un isomorphisme d'espaces vectoriels.
+
+De plus, cet isomorphisme conserve le rang : \[\quantifs{\forall\fami{F}\in E^p}\rg\fami{F}=\rg\Mat{\fami{F}}.\]
+
+Ainsi, étant donnée une famille de vecteurs en dimension finie, on peut calculer son rang et décider si elle est libre ou génératrice en écrivant sa matrice dans une base de l'espace et en calculant le rang de cette matrice.
+\end{prop}
+
+\begin{exoex}
+On considère la famille de polynômes de \(\polydeg[\R]{3}\) : \[\fami{F}=\paren{X^3+X^2+X+1,X^2-1,\paren{X+1}^3,X^3-X}.\]
+
+\begin{enumerate}
+    \item Écrire la matrice de \(\fami{F}\) dans la base canonique de \(\polydeg[\R]{3}\). \\
+    \item En déduire le rang de \(\fami{F}\). \\
+    \item Est-ce une famille libre ? une famille génératrice de \(\polydeg[\R]{3}\) ?
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On pose : \[A=\Mat[\paren{1,X,X^2,X^3}]{\fami{F}}=\begin{pmatrix}
+1 & -1 & 1 & 0 \\
+1 & 0 & 3 & -1 \\
+1 & 1 & 3 & 0 \\
+1 & 0 & 1 & 1
+\end{pmatrix}.\]
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\begin{aligned}
+\rg\fami{F}&=\rg A \\
+&=\rg\begin{pmatrix}
+1 & -1 & 1 & 0 \\
+1 & 0 & 3 & -1 \\
+1 & 1 & 3 & 0 \\
+1 & 0 & 1 & 1
+\end{pmatrix} \\
+&=\rg\begin{pNiceMatrix}[last-col]
+0 & -1 & 0 & -1 & L_1\gets L_1-L_4 \\
+1 & 0 & 3 & -1 & \\
+0 & 1 & 0 & 1 & L_3\gets L_3-L_2 \\
+1 & 0 & 1 & 1
+\end{pNiceMatrix} \\
+&=\rg\begin{pNiceMatrix}
+1 & 0 & 3 & -1 \\
+0 & 1 & 0 & 1 \\
+1 & 0 & 1 & 1
+\end{pNiceMatrix} \\
+&=\rg\begin{pNiceMatrix}[last-col]
+1 & 0 & 3 & -1 & \\
+0 & 1 & 0 & 1 & \\
+0 & 0 & -2 & 2 & L_3\gets L_3-L_1
+\end{pNiceMatrix} \\
+&=\rg\begin{pNiceMatrix}[last-col]
+1 & 0 & 2 & -1 & C_3\gets C_3+C_4-C_2 \\
+0 & 1 & 0 & 1 & \\
+0 & 0 & 0 & 2 &
+\end{pNiceMatrix} \\
+&=\rg\begin{pNiceMatrix}[last-col]
+1 & 0 & 0 & 0 & C_3\gets C_3-2C_1 \\
+0 & 1 & 0 & 0 & C_4\gets C_4+C_1-C_2 \\
+0 & 0 & 0 & 2 &
+\end{pNiceMatrix} \\
+&=\rg\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 2
+\end{pmatrix} \\
+&=3.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[3]
+\(\fami{F}\) n'est pas libre car son rang diffère de son nombre de vecteurs et n'est pas génératrice de \(\polydeg[\R]{3}\) car son rang diffère de la dimension de \(\polydeg[\R]{3}\).
+\end{corr}
+
+\section{Matrice d'une application linéaire}
+
+\subsection{Définition}
+
+\begin{defi}[Matrice d'une application linéaire dans deux bases]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(p\in\Ns\), \(F\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}=\paren{e_1,\dots,e_p}\) une base de \(E\), \(\fami{C}=\paren{\epsilon_1,\dots,\epsilon_n}\) une base de \(F\) et \(u\in\L{E}{F}\).
+
+On appelle matrice de l'application linéaire \(u\) dans les bases \(\fami{B}\) et \(\fami{C}\) la matrice de la famille \(\paren{u\paren{e_1},\dots,u\paren{e_p}}\) de vecteurs de \(F\) dans la base \(\fami{C}\) : \[\Mat[\fami{B},\fami{C}]{u}=\Mat[\fami{C}]{u\paren{e_1},\dots,u\paren{e_n}}.\]
+
+Dans le cas où \(E=F\), \cad le cas où \(u\) est un endomorphisme, on choisit la même base \guillemets{au départ} et \guillemets{à l'arrivée}. On définit alors la matrice de l'endomorphisme \(u\) dans la base \(\fami{B}\) : \[\Mat{u}=\Mat[\fami{B},\fami{B}]{u}=\Mat{u\paren{e_1},\dots,u\paren{e_p}}.\]
+\end{defi}
+
+\begin{exoex}\thlabel{exoex:matriceD'ApplicationsLinéaires}
+On pose \(E=\polydeg[\R]{3}\).
+
+On note \(\fami{B}\) la base canonique de \(E\) et \(\fami{C}=\paren{1}\) la base canonique de \(\R\).
+
+\begin{enumerate}
+    \item Écrire la matrice de \(\fonction{D}{E}{E}{P}{P\prim}\) dans la base \(\fami{B}\). \\
+    \item Écrire la matrice de \(\fonction{u}{E}{E}{P}{P\paren{X+1}}\) dans la base \(\fami{B}\). \\
+    \item Écrire la matrice de \(\fonction{l}{E}{\R}{P}{P\paren{2}}\) dans les bases \(\fami{B}\) et \(\fami{C}\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a : \[\Mat{D}=\begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 2 & 0 \\
+0 & 0 & 0 & 3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}.\]
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\Mat{u}=\begin{pmatrix}
+1 & 1 & 1 & 1 \\
+0 & 1 & 2 & 3 \\
+0 & 0 & 1 & 3 \\
+0 & 0 & 0 & 1
+\end{pmatrix}.\]
+\end{corr}
+
+\begin{corr}[3]
+On a : \[\Mat[\fami{B},\fami{C}]{l}=\begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}.\]
+\end{corr}
+
+\begin{rem}
+Soient \(n,p\in\Ns\).
+
+Si \(A\in\M{np}\), l'application linéaire de \(\K^p\) dans \(\K^n\) canoniquement associée à \(A\) est l'application linéaire \(u_A\in\L{\K^p}{\K^n}\) dont la matrice dans les bases canoniques respectives \(\fami{B}_0\) et \(\fami{C}_0\) de \(\K^p\) et \(\K^n\) est \(A\) : \[\Mat[\fami{B}_0,\fami{C}_0]{u_A}=A.\]
+
+Si \(A\in\M{n}\), l'endomorphisme de \(\K^n\) canoniquement associé à \(A\) est l'endomorphisme \(u_A\in\Lendo{\K^n}\) dont la matrice dans la base canonique \(\fami{B}_0\) de \(\K^n\) est \(A\) : \[\Mat[\fami{B}_0]{u_A}=A.\]
+\end{rem}
+
+\begin{prop}[Calcul de l'image d'un vecteur]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(p\in\Ns\), \(F\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}=\paren{e_1,\dots,e_p}\) une base de \(E\), \(\fami{C}=\paren{\epsilon_1,\dots,\epsilon_n}\) une base de \(F\) et \(u\in\L{E}{F}\).
+
+La matrice \(\Mat[\fami{B},\fami{C}]{u}\) permet de \guillemets{calculer} l'image par \(u\) d'un vecteur de \(E\) :
+
+Posons \(A=\Mat[\fami{B},\fami{C}]{u}\).
+
+Si \(x\) est un vecteur de \(E\) de coordonnées \(X=\tcoords{x_1}{\vdots}{x_p}\) dans \(\fami{B}\), alors son image \(y=u\paren{x}\) est le vecteur de \(F\) dont les coordonnées \(Y=\tcoords{y_1}{\vdots}{y_n}\) dans \(\fami{C}\) sont données par la formule : \[Y=AX\qquad\text{\cad : }\Mat[\fami{C}]{u\paren{x}}=\Mat[\fami{B},\fami{C}]{u}\Mat{x}.\]
+
+Cette propriété caractérise la matrice \(A\).
+\end{prop}
+
+\begin{dem}
+On note \(\Mat[\fami{B},\fami{C}]{u}=\begin{pmatrix}C_1 & \dots & C_p\end{pmatrix}\), \cad : \[\quantifs{\forall j\in\interventierii{1}{p}}C_j=\Mat[\fami{C}]{u\paren{e_j}}.\]
+
+On a \(x=x_1e_1+\dots+x_pe_p\) donc \(u\paren{x}=x_1u\paren{e_1}+\dots+x_pu\paren{e_p}\in F\).
+
+Donc en prenant les coordonnées dans \(\fami{C}\) : \[\begin{aligned}
+Y&=x_1C_1+\dots+x_pC_p \\
+&=\begin{pmatrix}C_1 & \dots & C_p\end{pmatrix}\tcoords{x_1}{\vdots}{x_p} \\
+&=AX.
+\end{aligned}\]
+
+Si \(B\) est une autre matrice vérifiant la même propriété, on a : \[\quantifs{\forall Z\in\K^p}AZ=BZ.\]
+
+Donc en prenant comme vecteur \(Z\) le \(j\)-ème vecteur de la base canonique de \(\K^p\), \(A\) et \(B\) ont même \(j\)-ème colonne.
+
+Donc \(A=B\).
+\end{dem}
+
+\begin{ex}
+On reprend les exemples (1) et (3) de l'\thref{exoex:matriceD'ApplicationsLinéaires}.
+
+On a \(\begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 2 & 0 \\
+0 & 0 & 0 & 3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}\begin{pmatrix}d \\ c \\ b \\ a\end{pmatrix}=\begin{pmatrix}c \\ 2b \\ 3a \\ 0\end{pmatrix}\) donc : \[D\paren{aX^3+bX^2+cX+d}=3aX^2+2bX+c.\]
+
+De même, on a \(\begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}\begin{pmatrix}d \\ c \\ b \\ a\end{pmatrix}=d+2c+4b+8a\) donc \(l\paren{aX^3+bX^2+cX+d}=8a+4b+2c+d\) donc : \[\paren{aX^3+bX^2+cX+d}\paren{2}=8a+4b+2c+d.\]
+\end{ex}
+
+\subsection{Formules de changement de base}
+
+\begin{prop}
+{\normalfont\bfseries (Formule de changement de base pour la matrice d'une application linéaire)}
+
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(p\in\Ns\), \(F\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\), \(\fami{C}\) et \(\fami{C}\prim\) deux bases de \(F\) et \(u\in\L{E}{F}\).
+
+On a : \[\Mat[\fami{B},\fami{C}]{u}=\pass{\fami{C}}{\fami{C}\prim}\Mat[\fami{B}\prim,\fami{C}\prim]{u}\pass{\fami{B}\prim}{\fami{B}}.\]
+\end{prop}
+
+\begin{dem}
+Soit \(x\in E\).
+
+On note \(y=u\paren{x}\), \(X,X\prim\in\K^p\) les coordonnées de \(x\) dans les bases \(\fami{B}\) et \(\fami{B}\prim\) respectivement, \(Y,Y\prim\in\K^n\) les coordonnées de \(y\) dans les bases \(\fami{C}\) et \(\fami{C}\prim\) respectivement, \(A=\Mat[\fami{B},\fami{C}]{u}\), \(A\prim=\Mat[\fami{B}\prim,\fami{C}\prim]{u}\), \(P=\pass{\fami{B}}{\fami{B}\prim}\) et \(Q=\pass{\fami{C}}{\fami{C}\prim}\).
+
+On a vu \(\begin{dcases}
+X=PX\prim \\
+Y=QY\prim
+\end{dcases}\) et \(\begin{dcases}
+Y=AX \\
+Y\prim=A\prim X\prim
+\end{dcases}\)
+
+Donc \(QY\prim=APX\prim\).
+
+Donc \(Y\prim=Q\inv APX\prim\).
+
+Donc \(Q\inv AP=A\prim\), \cad : \[\pass{\fami{C}}{\fami{C}\prim}\inv\Mat[\fami{B},\fami{C}]{u}\pass{\fami{B}}{\fami{B}\prim}=\Mat[\fami{B}\prim,\fami{C}\prim]{u}.\]
+
+D'où la formule souhaitée car \(\pass{\fami{C}}{\fami{C}\prim}\inv=\pass{\fami{C}\prim}{\fami{C}}\).
+\end{dem}
+
+\begin{cor}
+{\normalfont\bfseries (Formule de changement de base pour la matrice d'un endomorphisme)}
+
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\) et \(u\in\Lendo{E}\).
+
+On a : \[\Mat{u}=\pass{\fami{B}}{\fami{B}\prim}\Mat[\fami{B}\prim]{u}\pass{\fami{B}\prim}{\fami{B}}.\]
+\end{cor}
+
+\begin{rem}
+Deux matrices carrées sont semblables si, et seulement si, ce sont les matrices d'un même endomorphisme dans deux bases différentes.
+\end{rem}
+
+\begin{rem}
+On peut maintenant démontrer que toute matrice de rang \(r\) est équivalente à \(J_r\) (on l'avait admis dans la \thref{dem:matriceDeRangrÉquivalenteÀJrAMoitiéAdmis}).
+\end{rem}
+
+\begin{appl}
+Soient \(n,p\in\Ns\), \(A\in\M{np}\) et \(r\in\N\).
+
+Alors : \[\rg A=r\ssi\quantifs{\exists P\in\GL{n};\exists Q\in\GL{p}}A=PJ_rQ,\] en posant \[J_r=\begin{pNiceMatrix}[first-col,last-row]
+1 & 1 & 0 & \dots & 0 & \Block{4-4}<\Huge>{0} \\
+& 0 & \ddots & \ddots & \vdots & & & & \\
+& \vdots & \ddots & \ddots & 0 & & & & \\
+r & 0 & \dots & 0 & 1 & & & & \\
+& \Block{4-4}<\Huge>{0} & & & & \Block{4-4}<\Huge>{0} \\
+&&&&&&&&& \\
+&&&&&&&&& \\
+&&&&&&&&& \\
+n &&&&&&&&& \\
+& 1 &  &  & r & & & & p
+\end{pNiceMatrix}.\]
+\end{appl}
+
+\begin{dem}
+Il reste à montrer \(\impdir\).
+
+Supposons \(\rg A=r\).
+
+On considère l'application linéaire canoniquement associée à \(A\) : \(u_A\in\L{\K^p}{\K^n}\).
+
+On a \(\rg u_A=\rg A=r\).
+
+Soit \(S\) un supplémentaire de \(\ker u_A\) dans \(\K^p\) : \[\K^p=S\oplus\ker u_A.\]
+
+Selon le théorème du rang, \(u_A\) induit un isomorphisme de \(S\) vers \(\Im u_A\).
+
+On a donc : \[\dim S=\dim\Im u_A=\rg u_A=r.\]
+
+Soit \(\paren{e_1,\dots,e_r}\) une base de \(S\).
+
+Comme les isomorphismes conservent les bases, \(\paren{u_A\paren{e_1},\dots,u_A\paren{e_r}}\) est une base de \(\Im u_A\).
+
+Soit \(\paren{e_{r+1},\dots,e_p}\) une base de \(\ker u_A\).
+
+La famille \(\fami{B}=\paren{e_1,\dots,e_p}\) est une base de \(\K^p\) car \(\K^p=S\oplus\ker u_A\).
+
+Enfin, la famille \(\paren{u_A\paren{e_1},\dots,u_A\paren{e_r}}\) est une famille libre de \(\K^n\) donc selon le théorème de la base incomplète, on peut la compléter en une base \(\fami{C}=\paren{u_A\paren{e_1},\dots,u_A\paren{e_r},\epsilon_{r+1},\dots,\epsilon_n}\) de \(\K^n\).
+
+On note \(\fami{B}_0\) et \(\fami{C}_0\) les bases respectives de \(\K^p\) et \(\K^n\).
+
+On a, d'une part, \(\Mat[\fami{B}_0,\fami{C}_0]{u_A}=A\).
+
+D'autre part : \[\Mat[\fami{B},\fami{C}]{u_A}=J_r.\] % TODO : expliciter
+
+On a donc \[A=\Mat[\fami{B}_0,\fami{C}_0]{u_A}=\pass{\fami{C_0}}{\fami{C}}\Mat[\fami{B},\fami{C}]{u_A}\pass{\fami{B}}{\fami{B}_0}=PJ_rQ\] en posant \(\begin{dcases}
+P=\pass{\fami{C_0}}{\fami{C}}\in\GL{n} \\
+Q=\pass{\fami{B}}{\fami{B}_0}\in\GL{p}
+\end{dcases}\)
+\end{dem}
+
+\subsection{Isomorphismes entre applications linéaires et matrices}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(p\in\Ns\), \(F\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}\) une base de \(E\) et \(\fami{C}\) une base de \(F\).
+
+L'application \[\fonctionlambda{\L{E}{F}}{\M{np}}{u}{\Mat[\fami{B},\fami{C}]{u}}\] est un isomorphisme d'espaces vectoriels.
+
+De plus, elle conserve le rang : \[\quantifs{\forall u\in\L{E}{F}}\rg u=\rg\Mat[\fami{B},\fami{C}]{u}.\]
+\end{prop}
+
+\begin{prop}[Matrice d'une composée]
+Soient \(E\), \(F\) et \(G\) des espaces vectoriels de dimensions finies non-nulles, \(\fami{B}_E\) une base de \(E\), \(\fami{B}_F\) une base de \(F\) et \(\fami{B}_G\) une base de \(G\), \(u\in\L{E}{F}\) et \(v\in\L{F}{G}\).
+
+On a : \[\Mat[\fami{B}_E,\fami{B}_G]{v\rond u}=\Mat[\fami{B}_F,\fami{B}_G]{v}\Mat[\fami{B}_E,\fami{B}_F]{u}.\]
+
+Cas des endomorphismes : si \(E=F=G\) et \(\fami{B}_E=\fami{B}_F=\fami{B}_G=\fami{B}\), la formule s'écrit : \[\Mat{v\rond u}=\Mat{v}\Mat{u}.\]
+\end{prop}
+
+\begin{dem}
+Soit \(x\in E\).
+
+On note \(y=u\paren{x}\), \(z=v\paren{y}=v\rond u\paren{x}\), \(X=\Mat[\fami{B}_E]{x}\), \(Y=\Mat[\fami{B}_F]{y}\), \(Z=\Mat[\fami{B}_G]{z}\), \(A=\Mat[\fami{B}_E,\fami{B}_F]{u}\) et \(B=\Mat[\fami{B}_F,\fami{B}_G]{v}\).
+
+On a \(Y=AX\) et \(Z=BY\) donc \(Z=BAX\).
+
+D'où \(\Mat[\fami{B}_E,\fami{B}_G]{v\rond u}=BA\).
+\end{dem}
+
+\begin{prop}[Matrice d'une bijection réciproque]
+Soient \(E\) et \(F\) deux espaces vectoriels de dimension \(n\in\Ns\), \(\fami{B}_E\) une base de \(E\), \(\fami{B}_F\) une base de \(F\) et \(u\in\L{E}{F}\).
+
+On a : \[u\text{ est un isomorphisme de }E\text{ vers }F\ssi\Mat[\fami{B}_E,\fami{B}_F]{u}\in\GL{n}.\]
+
+On a alors : \[\Mat[\fami{B}_F,\fami{B}_E]{u\inv}=\Mat[\fami{B}_E,\fami{B}_F]{u}\inv.\]
+\end{prop}
+
+\begin{dem}
+Posons \(A=\Mat[\fami{B}_E,\fami{B}_F]{u}\).
+
+On a \(\rg A=\rg u\).
+
+Donc, comme \(\dim E=\dim F\) : \[\begin{aligned}
+u\text{ est un isomorphisme de }E\text{ vers }F&\ssi u\text{ est une surjection de }E\text{ vers }F \\
+&\ssi\rg u=\dim F \\
+&\ssi\rg A=n \\
+&\ssi A\in\GL{n}.
+\end{aligned}\]
+
+Soient \(x\in E\) et \(y\in F\).
+
+On pose \(X=\Mat[\fami{B}_E]{x}\) et \(Y=\Mat[\fami{B}_F]{y}\).
+
+On a : \[\begin{aligned}
+x=u\inv\paren{y}&\ssi u\paren{x}=y \\
+&\ssi AX=Y \\
+&\ssi X=A\inv Y.
+\end{aligned}\]
+
+Donc \(A\inv=\Mat[\fami{B}_F,\fami{B}_E]{u\inv}\).
+\end{dem}
+
+\begin{prop}
+Soient \(E\) un espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\) une base de \(E\).
+
+L'application \[\fonctionlambda{\Lendo{E}}{\M{n}}{u}{\Mat{u}}\] est un isomorphisme d'anneaux de \(\anneau{\Lendo{E}}[+][\rond]\) vers \(\anneau{\M{n}}\).
+
+En particulier, on a : \[\quantifs{\forall u\in\Lendo{E}}u\in\GL{}[E]\ssi\Mat{u}\in\GL{n},\] et on a alors : \[\Mat{u\inv}=\Mat{u}\inv.\]
+
+De plus, on a : \[\quantifs{\forall u\in\Lendo{E};\forall k\in\N}\Mat{u^k}=\Mat{u}^k.\]
+\end{prop}
+
+\subsection{Trace d'un endomorphisme}
+
+\begin{defprop}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension finie et \(u\in\Lendo{E}\).
+
+Les matrices de l'endomorphisme \(u\) (en prenant les mêmes bases \guillemets{au départ} et \guillemets{à l'arrivée}) ont toutes la même trace (car elles sont toutes semblables).
+
+Leur trace commune est appelée trace de l'endomorphisme \(u\).
+
+On a ainsi, pour toute base \(\fami{B}\) de \(E\) : \[\tr u=\tr\Mat{u}.\]
+\end{defprop}
+
+\begin{ex}
+Soit \(E\) un espace vectoriel de dimension \(n\in\Ns\).
+
+On a \(\tr\id{E}=n\).
+\end{ex}
+
+\begin{dem}
+Soit \(\fami{B}\) une base de \(E\).
+
+On a \(\Mat{\id{E}}=I_n\) donc on a : \[\begin{aligned}
+\tr\id{E}&=\tr\Mat{\id{E}} \\
+&=\tr I_n \\
+&=n.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}
+Soit \(E\) un espace vectoriel de dimension \(n\in\Ns\).
+
+L'application \(\tr:\Lendo{E}\to\K\) est une forme linéaire sur \(\Lendo{E}\).
+\end{prop}
+
+\begin{prop}
+Soit \(E\) un espace vectoriel de dimension \(n\in\Ns\).
+
+On a : \[\quantifs{\forall u,v\in\Lendo{E}}\tr uv=\tr vu.\]
+\end{prop}
+
+\begin{prop}
+En dimension finie non-nulle, la trace d'un projecteur est égale à son rang.
+\end{prop}
+
+\begin{dem}
+Soient \(E\) un espace vectoriel de dimension \(n\in\Ns\) et \(p\in\Lendo{E}\) un projecteur.
+
+On sait que \(p\) est le projecteur sur \(\Im p\), parallèlement à \(\ker p\) et qu'on a \(E=\Im p\oplus\ker p\).
+
+Posons \(r=\rg p\).
+
+Soit \(\fami{B}\) une base de \(E\) adaptée à la décomposition de \(E\) en somme directe : \[\fami{B}=\paren{\underbrace{e_1,\dots,e_r}_{\text{base de }\Im p},\underbrace{e_{r+1},\dots,e_n}_{\text{base de }\ker p}}.\]
+
+On a : \(\begin{dcases}
+\quantifs{\forall j\in\interventierii{1}{r}}p\paren{e_j}=e_j\text{ car }e_j\in\Im p \\
+\quantifs{\forall j\in\interventierii{r+1}{n}}p\paren{e_j}=0_E\text{ car }e_j\in\ker p
+\end{dcases}\)
+
+D'où : \[\Mat{p}=J_r\in\M{n}.\]
+
+Donc \(\tr p=\tr J_r=r=\rg p\).
+\end{dem}
+
+\begin{exoex}
+Soient \(E\) un espace vectoriel de dimension finie non-nulle et \(F\) et \(G\) deux sous-espaces vectoriels supplémentaires dans \(E\).
+
+On note \(s\) la symétrie par rapport à \(F\) parallèlement à \(G\).
+
+Exprimer la trace de \(s\) en fonction des dimensions de \(F\) et \(G\).
+\end{exoex}
+
+\begin{corr}
+On pose \(a=\dim F\) et \(b=\dim G\).
+
+Soit \(\fami{B}\) une base adaptée à la décomposition de \(E\) en somme directe : \[\fami{B}=\paren{\underbrace{e_1,\dots,e_a}_{\text{base de }F},\underbrace{e_1\prim,\dots,e_b\prim}_{\text{base de }G}}.\]
+
+On a : \(\begin{dcases}
+\quantifs{\forall j\in\interventierii{1}{a}}s\paren{e_j}=e_j \\
+\quantifs{\forall j\in\interventierii{1}{b}}s\paren{e_j\prim}=-e_j\prim
+\end{dcases}\)
+
+D'où : \[\Mat{s}=\begin{pmatrix}
+I_a & 0 \\
+0 & -I_b
+\end{pmatrix}\in\M{a+b}.\]
+
+Donc \(\tr s=\tr\Mat{s}=a-b=\dim F-\dim G\).
+\end{corr}
