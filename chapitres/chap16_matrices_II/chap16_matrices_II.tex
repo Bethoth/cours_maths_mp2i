@@ -228,3 +228,100 @@ On a : \[\begin{aligned}
 \begin{corr}[3]
 \(\fami{F}\) n'est pas libre car son rang diffère de son nombre de vecteurs et n'est pas génératrice de \(\polydeg[\R]{3}\) car son rang diffère de la dimension de \(\polydeg[\R]{3}\).
 \end{corr}
+
+\section{Matrice d'une application linéaire}
+
+\subsection{Définition}
+
+\begin{defi}[Matrice d'une application linéaire dans deux bases]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(p\in\Ns\), \(F\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}=\paren{e_1,\dots,e_p}\) une base de \(E\), \(\fami{C}=\paren{\epsilon_1,\dots,\epsilon_n}\) une base de \(F\) et \(u\in\L{E}{F}\).
+
+On appelle matrice de l'application linéaire \(u\) dans les bases \(\fami{B}\) et \(\fami{C}\) la matrice de la famille \(\paren{u\paren{e_1},\dots,u\paren{e_p}}\) de vecteurs de \(F\) dans la base \(\fami{C}\) : \[\Mat[\fami{B},\fami{C}]{u}=\Mat[\fami{C}]{u\paren{e_1},\dots,u\paren{e_n}}.\]
+
+Dans le cas où \(E=F\), \cad le cas où \(u\) est un endomorphisme, on choisit la même base \guillemets{au départ} et \guillemets{à l'arrivée}. On définit alors la matrice de l'endomorphisme \(u\) dans la base \(\fami{B}\) : \[\Mat{u}=\Mat[\fami{B},\fami{B}]{u}=\Mat{u\paren{e_1},\dots,u\paren{e_p}}.\]
+\end{defi}
+
+\begin{exoex}\thlabel{exoex:matriceD'ApplicationsLinéaires}
+On pose \(E=\polydeg[\R]{3}\).
+
+On note \(\fami{B}\) la base canonique de \(E\) et \(\fami{C}=\paren{1}\) la base canonique de \(\R\).
+
+\begin{enumerate}
+    \item Écrire la matrice de \(\fonction{D}{E}{E}{P}{P\prim}\) dans la base \(\fami{B}\). \\
+    \item Écrire la matrice de \(\fonction{u}{E}{E}{P}{P\paren{X+1}}\) dans la base \(\fami{B}\). \\
+    \item Écrire la matrice de \(\fonction{l}{E}{\R}{P}{P\paren{2}}\) dans les bases \(\fami{B}\) et \(\fami{C}\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a : \[\Mat{D}=\begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 2 & 0 \\
+0 & 0 & 0 & 3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}.\]
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\Mat{u}=\begin{pmatrix}
+1 & 1 & 1 & 1 \\
+0 & 1 & 2 & 3 \\
+0 & 0 & 1 & 3 \\
+0 & 0 & 0 & 1
+\end{pmatrix}.\]
+\end{corr}
+
+\begin{corr}[3]
+On a : \[\Mat[\fami{B},\fami{C}]{l}=\begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}.\]
+\end{corr}
+
+\begin{rem}
+Soient \(n,p\in\Ns\).
+
+Si \(A\in\M{np}\), l'application linéaire de \(\K^p\) dans \(\K^n\) canoniquement associée à \(A\) est l'application linéaire \(u_A\in\L{\K^p}{\K^n}\) dont la matrice dans les bases canoniques respectives \(\fami{B}_0\) et \(\fami{C}_0\) de \(\K^p\) et \(\K^n\) est \(A\) : \[\Mat[\fami{B}_0,\fami{C}_0]{u_A}=A.\]
+
+Si \(A\in\M{n}\), l'endomorphisme de \(\K^n\) canoniquement associé à \(A\) est l'endomorphisme \(u_A\in\Lendo{\K^n}\) dont la matrice dans la base canonique \(\fami{B}_0\) de \(\K^n\) est \(A\) : \[\Mat[\fami{B}_0]{u_A}=A.\]
+\end{rem}
+
+\begin{prop}[Calcul de l'image d'un vecteur]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(p\in\Ns\), \(F\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}=\paren{e_1,\dots,e_p}\) une base de \(E\), \(\fami{C}=\paren{\epsilon_1,\dots,\epsilon_n}\) une base de \(F\) et \(u\in\L{E}{F}\).
+
+La matrice \(\Mat[\fami{B},\fami{C}]{u}\) permet de \guillemets{calculer} l'image par \(u\) d'un vecteur de \(E\) :
+
+Posons \(A=\Mat[\fami{B},\fami{C}]{u}\).
+
+Si \(x\) est un vecteur de \(E\) de coordonnées \(X=\tcoords{x_1}{\vdots}{x_p}\) dans \(\fami{B}\), alors son image \(y=u\paren{x}\) est le vecteur de \(F\) dont les coordonnées \(Y=\tcoords{y_1}{\vdots}{y_n}\) dans \(\fami{C}\) sont données par la formule : \[Y=AX\qquad\text{\cad : }\Mat[\fami{C}]{u\paren{x}}=\Mat[\fami{B},\fami{C}]{u}\Mat{x}.\]
+
+Cette propriété caractérise la matrice \(A\).
+\end{prop}
+
+\begin{dem}
+On note \(\Mat[\fami{B},\fami{C}]{u}=\begin{pmatrix}C_1 & \dots & C_p\end{pmatrix}\), \cad : \[\quantifs{\forall j\in\interventierii{1}{p}}C_j=\Mat[\fami{C}]{u\paren{e_j}}.\]
+
+On a \(x=x_1e_1+\dots+x_pe_p\) donc \(u\paren{x}=x_1u\paren{e_1}+\dots+x_pu\paren{e_p}\in F\).
+
+Donc en prenant les coordonnées dans \(\fami{C}\) : \[\begin{aligned}
+Y&=x_1C_1+\dots+x_pC_p \\
+&=\begin{pmatrix}C_1 & \dots & C_p\end{pmatrix}\tcoords{x_1}{\vdots}{x_p} \\
+&=AX.
+\end{aligned}\]
+
+Si \(B\) est une autre matrice vérifiant la même propriété, on a : \[\quantifs{\forall Z\in\K^p}AZ=BZ.\]
+
+Donc en prenant comme vecteur \(Z\) le \(j\)-ème vecteur de la base canonique de \(\K^p\), \(A\) et \(B\) ont même \(j\)-ème colonne.
+
+Donc \(A=B\).
+\end{dem}
+
+\begin{ex}
+On reprend les exemples (1) et (3) de l'\thref{exoex:matriceD'ApplicationsLinéaires}.
+
+On a \(\begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 2 & 0 \\
+0 & 0 & 0 & 3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}\begin{pmatrix}d \\ c \\ b \\ a\end{pmatrix}=\begin{pmatrix}c \\ 2b \\ 3a \\ 0\end{pmatrix}\) donc : \[D\paren{aX^3+bX^2+cX+d}=3aX^2+2bX+c.\]
+
+De même, on a \(\begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}\begin{pmatrix}d \\ c \\ b \\ a\end{pmatrix}=d+2c+4b+8a\) donc \(l\paren{aX^3+bX^2+cX+d}=8a+4b+2c+d\) donc : \[\paren{aX^3+bX^2+cX+d}\paren{2}=8a+4b+2c+d.\]
+\end{ex}
