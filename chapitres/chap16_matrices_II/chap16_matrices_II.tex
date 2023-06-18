@@ -427,3 +427,74 @@ P=\pass{\fami{C_0}}{\fami{C}}\in\GL{n} \\
 Q=\pass{\fami{B}}{\fami{B}_0}\in\GL{p}
 \end{dcases}\)
 \end{dem}
+
+\subsection{Isomorphismes entre applications linéaires et matrices}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(p\in\Ns\), \(F\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}\) une base de \(E\) et \(\fami{C}\) une base de \(F\).
+
+L'application \[\fonctionlambda{\L{E}{F}}{\M{np}}{u}{\Mat[\fami{B},\fami{C}]{u}}\] est un isomorphisme d'espaces vectoriels.
+
+De plus, elle conserve le rang : \[\quantifs{\forall u\in\L{E}{F}}\rg u=\rg\Mat[\fami{B},\fami{C}]{u}.\]
+\end{prop}
+
+\begin{prop}[Matrice d'une composée]
+Soient \(E\), \(F\) et \(G\) des espaces vectoriels de dimensions finies non-nulles, \(\fami{B}_E\) une base de \(E\), \(\fami{B}_F\) une base de \(F\) et \(\fami{B}_G\) une base de \(G\), \(u\in\L{E}{F}\) et \(v\in\L{F}{G}\).
+
+On a : \[\Mat[\fami{B}_E,\fami{B}_G]{v\rond u}=\Mat[\fami{B}_F,\fami{B}_G]{v}\Mat[\fami{B}_E,\fami{B}_F]{u}.\]
+
+Cas des endomorphismes : si \(E=F=G\) et \(\fami{B}_E=\fami{B}_F=\fami{B}_G=\fami{B}\), la formule s'écrit : \[\Mat{v\rond u}=\Mat{v}\Mat{u}.\]
+\end{prop}
+
+\begin{dem}
+Soit \(x\in E\).
+
+On note \(y=u\paren{x}\), \(z=v\paren{y}=v\rond u\paren{x}\), \(X=\Mat[\fami{B}_E]{x}\), \(Y=\Mat[\fami{B}_F]{y}\), \(Z=\Mat[\fami{B}_G]{z}\), \(A=\Mat[\fami{B}_E,\fami{B}_F]{u}\) et \(B=\Mat[\fami{B}_F,\fami{B}_G]{v}\).
+
+On a \(Y=AX\) et \(Z=BY\) donc \(Z=BAX\).
+
+D'où \(\Mat[\fami{B}_E,\fami{B}_G]{v\rond u}=BA\).
+\end{dem}
+
+\begin{prop}[Matrice d'une bijection réciproque]
+Soient \(E\) et \(F\) deux espaces vectoriels de dimension \(n\in\Ns\), \(\fami{B}_E\) une base de \(E\), \(\fami{B}_F\) une base de \(F\) et \(u\in\L{E}{F}\).
+
+On a : \[u\text{ est un isomorphisme de }E\text{ vers }F\ssi\Mat[\fami{B}_E,\fami{B}_F]{u}\in\GL{n}.\]
+
+On a alors : \[\Mat[\fami{B}_F,\fami{B}_E]{u\inv}=\Mat[\fami{B}_E,\fami{B}_F]{u}\inv.\]
+\end{prop}
+
+\begin{dem}
+Posons \(A=\Mat[\fami{B}_E,\fami{B}_F]{u}\).
+
+On a \(\rg A=\rg u\).
+
+Donc, comme \(\dim E=\dim F\) : \[\begin{aligned}
+u\text{ est un isomorphisme de }E\text{ vers }F&\ssi u\text{ est une surjection de }E\text{ vers }F \\
+&\ssi\rg u=\dim F \\
+&\ssi\rg A=n \\
+&\ssi A\in\GL{n}.
+\end{aligned}\]
+
+Soient \(x\in E\) et \(y\in F\).
+
+On pose \(X=\Mat[\fami{B}_E]{x}\) et \(Y=\Mat[\fami{B}_F]{y}\).
+
+On a : \[\begin{aligned}
+x=u\inv\paren{y}&\ssi u\paren{x}=y \\
+&\ssi AX=Y \\
+&\ssi X=A\inv Y.
+\end{aligned}\]
+
+Donc \(A\inv=\Mat[\fami{B}_F,\fami{B}_E]{u\inv}\).
+\end{dem}
+
+\begin{prop}
+Soient \(E\) un espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\) une base de \(E\).
+
+L'application \[\fonctionlambda{\Lendo{E}}{\M{n}}{u}{\Mat{u}}\] est un isomorphisme d'anneaux de \(\anneau{\Lendo{E}}[+][\rond]\) vers \(\anneau{\M{n}}\).
+
+En particulier, on a : \[\quantifs{\forall u\in\Lendo{E}}u\in\GL{}[E]\ssi\Mat{u}\in\GL{n},\] et on a alors : \[\Mat{u\inv}=\Mat{u}\inv.\]
+
+De plus, on a : \[\quantifs{\forall u\in\Lendo{E};\forall k\in\N}\Mat{u^k}=\Mat{u}^k.\]
+\end{prop}
