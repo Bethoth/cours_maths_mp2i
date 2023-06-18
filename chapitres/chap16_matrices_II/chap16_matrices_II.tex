@@ -2,4 +2,55 @@
 
 \minitoc
 
-\note{À VENIR}
+On considère un corps \(\K\) (en pratique \(\K=\R\) ou \(\C\)).
+
+\section{Matrice d'une famille de vecteurs}
+
+\subsection{Définition}
+
+\begin{defi}[Matrice d'une famille de vecteurs dans une base]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\) et \(\paren{x_1,\dots,x_p}\in E^p\) une famille d'éléments de \(E\).
+
+La matrice de la famille \(\paren{x_1,\dots,x_p}\) dans la base \(\fami{B}\) est la matrice : \[\Mat{x_1,\dots,x_p}=\begin{pmatrix}
+a_{11} & \dots & a_{1p} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{np}
+\end{pmatrix}\in\M{np}\] dont les colonnes sont les coordonnées respectives des vecteurs de la famille \(\paren{x_1,\dots,x_p}\) : \[\quantifs{\forall j\in\interventierii{1}{n}}x_j=\sum_{i=1}^{n}a_{ij}e_i.\]
+\end{defi}
+
+\begin{rem}
+On garde les notations de la définition précédente.
+
+Si \(p=1\) (\cad si la famille de vecteurs ne possède qu'un seul vecteur), alors la matrice \(\Mat{x_1}\) de la famille \(\paren{x_1}\) dans la base \(\fami{B}\) est la matrice-colonne (\cad le \(n\)-uplet) des coordonnées de \(x_1\) dans la base \(\fami{B}\).
+\end{rem}
+
+\begin{exoex}
+On note \(T_0\), \(T_1\) et \(T_2\) les trois premiers polynômes de Tchebychev.
+
+Écrire la matrice de la famille \(\paren{T_0,T_1,T_2}\) dans la base canonique de \(\polydeg[\R]{2}\) puis dans la base canonique de \(\polydeg[\R]{3}\).
+\end{exoex}
+
+\begin{corr}
+On a : \[\Mat[\paren{1,X,X^2}]{1,X,2X^2-1}=\begin{pmatrix}
+1 & 0 & -1 \\
+0 & 1 & 0 \\
+0 & 0 & 2
+\end{pmatrix}\qquad\text{et}\qquad\Mat[\paren{1,X,X^2,X^3}]{1,X,2X^2-1}=\begin{pmatrix}
+1 & 0 & -1 \\
+0 & 1 & 0 \\
+0 & 0 & 2 \\
+0 & 0 & 0
+\end{pmatrix}.\]
+\end{corr}
+
+\begin{defi}[Matrice de passage]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}=\paren{e_1,\dots,e_n}\) et \(\fami{B}\prim=\paren{x_1,\dots,x_n}\) deux bases de \(E\).
+
+La matrice \(\Mat{x_1,\dots,x_n}\) est appelée matrice de passage de la base \(\fami{B}\) à la base \(\fami{B}\prim\) et est notée \(\pass{\fami{B}}{\fami{B}\prim}\) : \[\pass{\fami{B}}{\fami{B}\prim}=\Mat{\fami{B}\prim}=\Mat{x_1,\dots,x_n}.\]
+\end{defi}
+
+\begin{rem}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\) une base de \(E\).
+
+On a : \[\pass{\fami{B}}{\fami{B}}=I_n.\]
+\end{rem}
