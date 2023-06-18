@@ -498,3 +498,92 @@ En particulier, on a : \[\quantifs{\forall u\in\Lendo{E}}u\in\GL{}[E]\ssi\Mat{u}
 
 De plus, on a : \[\quantifs{\forall u\in\Lendo{E};\forall k\in\N}\Mat{u^k}=\Mat{u}^k.\]
 \end{prop}
+
+\subsection{Trace d'un endomorphisme}
+
+\begin{defprop}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension finie et \(u\in\Lendo{E}\).
+
+Les matrices de l'endomorphisme \(u\) (en prenant les mêmes bases \guillemets{au départ} et \guillemets{à l'arrivée}) ont toutes la même trace (car elles sont toutes semblables).
+
+Leur trace commune est appelée trace de l'endomorphisme \(u\).
+
+On a ainsi, pour toute base \(\fami{B}\) de \(E\) : \[\tr u=\tr\Mat{u}.\]
+\end{defprop}
+
+\begin{ex}
+Soit \(E\) un espace vectoriel de dimension \(n\in\Ns\).
+
+On a \(\tr\id{E}=n\).
+\end{ex}
+
+\begin{dem}
+Soit \(\fami{B}\) une base de \(E\).
+
+On a \(\Mat{\id{E}}=I_n\) donc on a : \[\begin{aligned}
+\tr\id{E}&=\tr\Mat{\id{E}} \\
+&=\tr I_n \\
+&=n.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}
+Soit \(E\) un espace vectoriel de dimension \(n\in\Ns\).
+
+L'application \(\tr:\Lendo{E}\to\K\) est une forme linéaire sur \(\Lendo{E}\).
+\end{prop}
+
+\begin{prop}
+Soit \(E\) un espace vectoriel de dimension \(n\in\Ns\).
+
+On a : \[\quantifs{\forall u,v\in\Lendo{E}}\tr uv=\tr vu.\]
+\end{prop}
+
+\begin{prop}
+En dimension finie non-nulle, la trace d'un projecteur est égale à son rang.
+\end{prop}
+
+\begin{dem}
+Soient \(E\) un espace vectoriel de dimension \(n\in\Ns\) et \(p\in\Lendo{E}\) un projecteur.
+
+On sait que \(p\) est le projecteur sur \(\Im p\), parallèlement à \(\ker p\) et qu'on a \(E=\Im p\oplus\ker p\).
+
+Posons \(r=\rg p\).
+
+Soit \(\fami{B}\) une base de \(E\) adaptée à la décomposition de \(E\) en somme directe : \[\fami{B}=\paren{\underbrace{e_1,\dots,e_r}_{\text{base de }\Im p},\underbrace{e_{r+1},\dots,e_n}_{\text{base de }\ker p}}.\]
+
+On a : \(\begin{dcases}
+\quantifs{\forall j\in\interventierii{1}{r}}p\paren{e_j}=e_j\text{ car }e_j\in\Im p \\
+\quantifs{\forall j\in\interventierii{r+1}{n}}p\paren{e_j}=0_E\text{ car }e_j\in\ker p
+\end{dcases}\)
+
+D'où : \[\Mat{p}=J_r\in\M{n}.\]
+
+Donc \(\tr p=\tr J_r=r=\rg p\).
+\end{dem}
+
+\begin{exoex}
+Soient \(E\) un espace vectoriel de dimension finie non-nulle et \(F\) et \(G\) deux sous-espaces vectoriels supplémentaires dans \(E\).
+
+On note \(s\) la symétrie par rapport à \(F\) parallèlement à \(G\).
+
+Exprimer la trace de \(s\) en fonction des dimensions de \(F\) et \(G\).
+\end{exoex}
+
+\begin{corr}
+On pose \(a=\dim F\) et \(b=\dim G\).
+
+Soit \(\fami{B}\) une base adaptée à la décomposition de \(E\) en somme directe : \[\fami{B}=\paren{\underbrace{e_1,\dots,e_a}_{\text{base de }F},\underbrace{e_1\prim,\dots,e_b\prim}_{\text{base de }G}}.\]
+
+On a : \(\begin{dcases}
+\quantifs{\forall j\in\interventierii{1}{a}}s\paren{e_j}=e_j \\
+\quantifs{\forall j\in\interventierii{1}{b}}s\paren{e_j\prim}=-e_j\prim
+\end{dcases}\)
+
+D'où : \[\Mat{s}=\begin{pmatrix}
+I_a & 0 \\
+0 & -I_b
+\end{pmatrix}\in\M{a+b}.\]
+
+Donc \(\tr s=\tr\Mat{s}=a-b=\dim F-\dim G\).
+\end{corr}
