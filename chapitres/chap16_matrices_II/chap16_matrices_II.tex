@@ -54,3 +54,98 @@ Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\)
 
 On a : \[\pass{\fami{B}}{\fami{B}}=I_n.\]
 \end{rem}
+
+\subsection{Formules de changement de base}
+
+\begin{prop}[Formule de changement de base pour les coordonnées d'un vecteur]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\) et \(x\) un vecteur de \(E\).
+
+On considère les coordonnées \(X\in\K^n\) et \(X\prim\in\K^n\) de \(x\) dans les bases \(\fami{B}\) et \(\fami{B}\prim\) : \[X=\tcoords{x_1}{\vdots}{x_n}=\Mat{x}\qquad\text{et}\qquad X\prim=\tcoords{x_1\prim}{\vdots}{x_n\prim}=\Mat[\fami{B}\prim]{x}.\]
+
+On a : \[X=\pass{\fami{B}}{\fami{B}\prim}X\prim,\] \cad : \[\Mat{x}=\pass{\fami{B}}{\fami{B}\prim}\Mat[\fami{B}\prim]{x}.\]
+\end{prop}
+
+\begin{dem}
+On note \(\fami{B}=\paren{e_1,\dots,e_n}\), \(\fami{B}\prim=\paren{e_1\prim,\dots,e_n\prim}\) et \(\pass{\fami{B}}{\fami{B}\prim}=\paren{a_{ij}}_{\paren{i,j}}\).
+
+On a : \[x=\sum_{k=1}^{n}x_ke_k=\sum_{k=1}^{n}x_k\prim e_k\prim\qquad\text{et}\qquad\quantifs{\forall j\in\interventierii{1}{n}}e_j\prim=\sum_{i=1}^{n}a_{ij}e_i.\]
+
+Donc : \[x=\sum_{j=1}^{n}x_j\prim\sum_{i=1}^{n}a_{ij}e_i=\sum_{i=1}^{n}e_i\sum_{j=1}^{n}a_{ij}x_j\prim.\]
+
+D'où \(\quantifs{\forall i\in\interventierii{1}{n}}x_i=\sum_{j=1}^{n}a_{ij}x_j\prim\), \cad : \[X=\pass{\fami{B}}{\fami{B}\prim}X\prim.\]
+\end{dem}
+
+\begin{exoex}
+On note \(\fami{C}\) le cercle unité de \(\R^2\), d'équation cartésienne (dans la base canonique \(\fami{B}\)) : \[\fami{C}:x^2+y^2=1.\]
+
+\begin{enumerate}
+    \item Justifier que la famille \(\fami{B}\prim=\paren{\dcoords{2}{0},\dcoords{1}{1}}\) est une base de \(\R^2\). \\
+    \item Donner une équation cartésienne de \(\fami{C}\) dans la base \(\fami{B}\prim\), \cad, pour tout point \(M\in\R^2\), une CNS en fonction des coordonnées \(\paren{x\prim,y\prim}\) de \(M\) dans \(\fami{B}\prim\) pour que \(M\) appartienne à \(\fami{C}\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+\(\fami{B}\prim\) est clairement libre et possède deux éléments donc c'est une base de \(\R^2\).
+\end{corr}
+
+\begin{corr}[2]
+Soit \(M\in\R^2\) dont on note \(\paren{x,y}\) les coordonnées dans \(\fami{B}\) et \(\paren{x\prim,y\prim}\) les coordonnées dans \(\fami{B}\prim\).
+
+On a : \[\dcoords{x}{y}=\pass{\fami{B}}{\fami{B}\prim}\dcoords{x\prim}{y\prim}=\begin{pmatrix}
+2 & 1 \\
+0 & 1
+\end{pmatrix}\dcoords{x\prim}{y\prim}=\dcoords{2x\prim+y\prim}{y\prim}.\]
+
+Donc \(\begin{dcases}
+x=2x\prim+y\prim \\
+y=y\prim
+\end{dcases}\)
+
+D'où : \[\begin{aligned}
+M\in\fami{C}&\ssi x^2+y^2=1 \\
+&\ssi\paren{2x\prim+y\prim}^2+{y\prim}^2=1 \\
+&\ssi4{x\prim}^2+4x\prim y\prim+2{y\prim}^2=1.
+\end{aligned}\]
+\end{corr}
+
+\begin{prop}\thlabel{prop:formuleDeChangementDeBasePourLaMatriceD'UneFamilleDeVecteurs}
+{\normalfont\bfseries(Formule de changement de base pour la matrice d'une famille de vecteurs)}
+
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\), \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\) et \(\fami{F}\) une famille de vecteurs.
+
+On a : \[\Mat{\fami{F}}=\pass{\fami{B}}{\fami{B}\prim}\Mat[\fami{B}\prim]{\fami{F}}.\]
+\end{prop}
+
+\begin{dem}
+On note \(\fami{F}=\paren{x_1,\dots,x_p}\in E^p\), \(\fami{B}=\paren{e_1,\dots,e_n}\), \(\fami{B}\prim=\paren{e_1\prim,\dots,e_n\prim}\), \(\Mat{\fami{F}}=\begin{pmatrix}C_1 & \dots & C_p\end{pmatrix}\) et \(\Mat[\fami{B}\prim]{\fami{F}}=\begin{pmatrix}C_1\prim & \dots & C_p\prim\end{pmatrix}\).
+
+On a \(\quantifs{\forall j\in\interventierii{1}{p}}C_j=\pass{\fami{B}}{\fami{B}\prim}C_j\prim\) donc : \[\begin{aligned}
+\Mat{\fami{F}}&=\begin{pmatrix}\pass{\fami{B}}{\fami{B}\prim}C_1\prim & \dots & \pass{\fami{B}}{\fami{B}\prim}C_p\prim\end{pmatrix} \\
+&=\pass{\fami{B}}{\fami{B}\prim}\begin{pmatrix}C_1\prim & \dots & C_p\prim\end{pmatrix} \\
+&=\pass{\fami{B}}{\fami{B}\prim}\Mat[\fami{B}\prim]{\fami{F}}.
+\end{aligned}\]
+\end{dem}
+
+\begin{cor}
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\), \(\fami{B}\prim\) et \(\fami{B}\seconde\) trois bases de \(E\).
+
+On a : \[\pass{\fami{B}}{\fami{B}\seconde}=\pass{\fami{B}}{\fami{B}\prim}\pass{\fami{B}\prim}{\fami{B}\seconde}.\]
+\end{cor}
+
+\begin{dem}
+On a, selon la \thref{prop:formuleDeChangementDeBasePourLaMatriceD'UneFamilleDeVecteurs} : \[\Mat{\fami{B}\seconde}=\pass{\fami{B}}{\fami{B}\prim}\Mat[\fami{B}\prim]{\fami{B}\seconde}.\]
+
+Comme \(\fami{B}\seconde\) est aussi une base, cette formule s'écrit : \[\pass{\fami{B}}{\fami{B}\seconde}=\pass{\fami{B}}{\fami{B}\prim}\pass{\fami{B}\prim}{\fami{B}\seconde}.\]
+\end{dem}
+
+\begin{prop}[Inversibilité des matrices de passage]
+Soient \(E\) un \(\K\)-espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\).
+
+La matrice de passage \(\pass{\fami{B}}{\fami{B}\prim}\) est inversible, d'inverse : \[\pass{\fami{B}}{\fami{B}\prim}\inv=\pass{\fami{B}\prim}{\fami{B}}.\]
+\end{prop}
+
+\begin{dem}
+On a : \[I_n=\pass{\fami{B}}{\fami{B}}=\pass{\fami{B}}{\fami{B}\prim}\pass{\fami{B}\prim}{\fami{B}}.\]
+
+Donc \(\pass{\fami{B}}{\fami{B}\prim}\) est inversible, d'inverse \(\pass{\fami{B}\prim}{\fami{B}}\).
+\end{dem}
