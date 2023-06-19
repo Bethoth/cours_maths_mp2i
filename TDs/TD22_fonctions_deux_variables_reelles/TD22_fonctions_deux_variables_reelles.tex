@@ -2,4 +2,126 @@
 
 \minitoc
 
-\note{À VENIR}
+\begin{exo}[Exercice 1, ouverts de \(\R^2\)]
+\begin{enumerate}
+    \item Soit \(\paren{U_i}_{i\in I}\) une famille d'ouverts de \(\R^2\) (où \(I\) est un ensemble). Montrer que \(\bigunion_{i\in I}U_i\) est un ouvert de \(\R^2\). \\
+    \item Soient \(U_1,\dots,U_n\) des ouverts de \(\R^2\) (où \(n\in\Ns\)). Montrer que \(\biginter_{k=1}^n U_i\) est un ouvert de \(\R^2\).
+\end{enumerate}
+\end{exo}
+
+\begin{exo}[Exercice 2]
+En quels points la fonction \[\fonction{f}{\R^2}{\R}{\paren{x,y}}{\begin{dcases}
+\dfrac{y^2}{x^2+y^2} &\text{si }\paren{x,y}\not=\paren{0,0} \\
+0 &\text{sinon}
+\end{dcases}}\] est-elle continue ?
+\end{exo}
+
+\begin{exo}[Exercice 3]
+En quels points la fonction \[\fonction{f}{\R^2}{\R}{\paren{x,y}}{\begin{dcases}
+\dfrac{xy}{x^2+y^2} &\text{si }\paren{x,y}\not=\paren{0,0} \\
+0 &\text{sinon}
+\end{dcases}}\]
+
+\begin{enumerate}
+    \item En quels points \(f\) est-elle continue ? \\
+    \item En quels points \(f\) admet-elle des dérivées partielles ? \\
+    \item \(f\) est-elle de classe \(\classe{1}\) ?
+\end{enumerate}
+\end{exo}
+
+\begin{exo}[Exercice 4, à propos du théorème de Schwarz]
+On pose : \[\quantifs{\forall x,y\in\R}f\paren{x,y}=\begin{dcases}
+\dfrac{xy\paren{x^2-y^2}}{x^2+y^2} &\text{si }\paren{x,y}\not=\paren{0,0} \\
+0 &\text{sinon}
+\end{dcases}\]
+
+\begin{enumerate}
+    \item La fonction \(f:\R^2\to\R\) est-elle continue ? \\
+    \item Admet-elle des dérivées partielles ? Le cas échéant, les calculer. \\
+    \item Est-elle de classe \(\classe{1}\) ? \\
+    \item Calculer \(\pdv{f}{y,x}\paren{0,0}\) et \(\pdv{f}{x,y}\paren{0,0}\).
+\end{enumerate}
+\end{exo}
+
+\begin{exo}[Exercice 5]
+On pose : \[f\paren{x,y}=\Arctan x+\Arctan y-\Arctan\dfrac{x+y}{1-xy}.\]
+
+\begin{enumerate}
+    \item Donner trois ouverts \guillemets{naturels} \(U_1\), \(U_2\) et \(U_3\) tels que l'ensemble de définition de \(f\) soit \(U_1\union U_2\union U_3\). \\
+    \item Montrer que \(f\) est de classe \(\classe{1}\). \\
+    \item Déterminer \(f\).
+\end{enumerate}
+\end{exo}
+
+\begin{exo}[Exercice 6]
+Dire pour chacune des équations suivantes s'il existe une solution (fonction de classe \(\classe{1}\) sur l'ensemble indiqué).
+
+\[\quantifs{\forall\paren{x,y}\in\R^2\excluant\accol{\paren{0,0}}}\paren{E_1}~\nabla f\paren{x,y}=\dfrac{1}{x^2+y^2}\dcoords{-y}{x}\]
+
+\[\quantifs{\forall\paren{x,y}\in\Rps\times\R}\paren{E_2}~\nabla f\paren{x,y}=\dfrac{1}{x^2+y^2}\dcoords{-y}{x}\]
+
+\[\quantifs{\forall\paren{x,y}\in\R^2}\paren{E_3}~\nabla f\paren{x,y}=\dcoords{-y}{x}\]
+
+\[\quantifs{\forall\paren{x,y}\in\Rps\times\R}\paren{E_4}~\nabla f\paren{x,y}=\dcoords{-y}{x}\]
+
+\textit{Indication :} pour \(\paren{E_1}\), supposer par l'absurde qu'une telle fonction \(f\) existe et calculer la dérivée de \[\fonction{g}{\R}{\R}{\theta}{f\paren{\cos\theta,\sin\theta}}\]
+
+\textit{Remarque :} concernant \(\paren{E_3}\) et \(\paren{E_4}\), la façon la plus simple de conclure serait d'utiliser le théorème de Schwarz que vous verrez en deuxième année.
+\end{exo}
+
+\begin{exo}[Exercice 7]
+Soit \(f\in\ensclasse{1}{\R^2}{\R}\) une fonction telle que : \[\quantifs{\forall t,x,y\in\R}f\paren{tx,ty}=tf\paren{x,y}.\]
+
+\begin{enumerate}
+    \item Montrer : \[\quantifs{\forall t,x,y\in\R}f\paren{x,y}=x\pdv{f}{x}\paren{tx,ty}+y\pdv{f}{y}\paren{tx,ty}.\] \\ \textit{Indication :} dériver de deux façons la fonction \[\fonction{g}{\R}{\R}{t}{f\paren{tx,ty}}\]
+    \item En déduire que la fonction \(f\) est linéaire.
+\end{enumerate}
+\end{exo}
+
+\begin{rem}[Compléments de cours]
+\begin{itemize}
+    \item On dit qu'une partie \(A\subset\R^2\) est un fermé de \(\R^2\) si son complémentaire est un ouvert de \(\R^2\). \\
+    \item On admet le résultat suivant, qui sera un théorème du cours de deuxième année.
+\end{itemize}
+\end{rem}
+
+\begin{theo}
+Soit une fonction continue \(f:A\to\R\) sur une partie \(A\subset\R^2\) non-vide, fermée et bornée.
+
+Alors \(f\) est \guillemets{bornée et atteint ses bornes}, ce qui signifie qu'elle admet un maximum et un minimum (globaux).
+\end{theo}
+
+\begin{exo}[Exercice 8]
+Étudier les extrema de la fonction \[\fonction{f}{\R^2}{\R}{\paren{x,y}}{x^2+xy+y^2-2x-y}\]
+\end{exo}
+
+\begin{exo}[Exercice 9]
+Étudier les extrema de la fonction \[\fonction{f}{\R^2}{\R}{\paren{x,y}}{\dfrac{x+y}{\paren{1+x^2}\paren{1+y^2}}}\]
+\end{exo}
+
+\begin{exo}[Exercice 10]
+Étudier les extrema de la fonction \[\fonction{f}{\R^2}{\R}{\paren{x,y}}{x^3y^2\paren{1+x-y}}\]
+\end{exo}
+
+\begin{exo}[Exercice 11, CCP PSI 2015 BEOS]
+Soient les ensembles \[K=\accol{\paren{x,y}\in\R^2\tq0\leq x\leq\pi\text{ et }0\leq y\leq\pi}\qquad\text{et}\qquad T=\accol{\paren{x,y}\in\R^2\tq0<x<y<\pi}.\]
+
+On pose : \[\quantifs{\forall\paren{x,y}\in K}F\paren{x,y}=\begin{dcases}
+x\paren{\pi-y} &\text{si }0\leq x\leq y\leq\pi \\
+y\paren{\pi-x} &\text{si }0\leq y\leq x\leq\pi
+\end{dcases}\]
+
+\begin{enumerate}
+    \item Représenter \(K\) et \(T\). \\
+    \item La fonction \(F\) admet-elle des extrema locaux sur \(T\) ? \\
+    \item La fonction \(F\) admet-elle un minimum sur \(K\) ? un maximum sur \(K\) ? Le cas échéant, déterminer leur valeur.
+\end{enumerate}
+\end{exo}
+
+\begin{exo}[Exercice 12]
+Résoudre l'équation aux dérivées partielles : \[\paren{E}~x\pdv{f}{x}+y\pdv{f}{y}=x^3y^3\] d'inconnue \(f\in\ensclasse{1}{\paren{\Rps}^2}{\R}\) à l'aide du changement de variables : \[\paren{u,v}=\paren{xy,\dfrac{x}{y}}.\]
+\end{exo}
+
+\begin{exo}[Exercice 13]
+Résoudre l'équation aux dérivées partielles : \[\paren{E}~x\pdv{f}{x}-y\pdv{f}{y}=\paren{x^2+y^2}\dfrac{y}{x}\] d'inconnue \(f\in\ensclasse{1}{\Rps\times\R}{\R}\), en utilisant les coordonnées polaires : \[\paren{x,y}=\paren{r\cos\theta,r\sin\theta}.\] 
+\end{exo}
