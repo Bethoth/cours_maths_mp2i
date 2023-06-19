@@ -329,4 +329,45 @@ f\text{ est solution de }\paren{E}&\ssi\quantifs{\exists g\in\F{\R}{\R};\forall\
 \end{aligned}\] où \(g,h\in\ensclasse{2}{\R}{\R}\).
 \end{ex}
 
+\begin{ex}[\thref{exo:EDPChangementDeVariable}]~\\
+\begin{brouill}~\\
+On a \(\begin{dcases}
+x,y\in\Rps \\
+u=xy \\
+v=\dfrac{x}{y}
+\end{dcases}\ssi\begin{dcases}
+u,v\in\Rps \\
+x=\sqrt{uv} \\
+y=\sqrt{\dfrac{u}{v}}
+\end{dcases}\) et \(f\paren{x,y}=f\paren{\sqrt{uv},\sqrt{\dfrac{u}{v}}}=g\paren{u,v}=g\paren{xy,\dfrac{x}{y}}\).
+\end{brouill}
+
+Soit \(f\in\ensclasse{1}{\paren{\Rps}^2}{\R}\).
+
+On pose \(\fonction{g}{\paren{\Rps}^2}{\R}{\paren{u,v}}{f\paren{\sqrt{uv},\sqrt{\dfrac{u}{v}}}}\). \(g\) est de classe \(\classe{1}\).
+
+On a \(\quantifs{\forall\paren{x,y}\in\paren{\Rps}^2}\begin{dcases}
+f\paren{x,y}=g\paren{xy,\dfrac{x}{y}} \\
+\pdv{f}{x}\paren{x,y}=y\pdv{g}{u}\paren{xy,\dfrac{x}{y}}+\dfrac{1}{y}\pdv{g}{v}\paren{xy,\dfrac{x}{y}} \\
+\pdv{f}{y}\paren{x,y}=x\pdv{g}{u}\paren{xy,\dfrac{x}{y}}-\dfrac{x}{y^2}\pdv{g}{v}\paren{xy,\dfrac{x}{y}}
+\end{dcases}\)
+
+Donc : \[\begin{aligned}
+f\text{ est solution de }\paren{E}&\ssi\quantifs{\forall\paren{x,y}\in\paren{\Rps}^2}2xy\pdv{g}{u}\paren{xy,\dfrac{x}{y}}=x^3y^3 \\
+&\ssi\quantifs{\forall\paren{u,v}\in\paren{\Rps}^2}2\pdv{g}{u}\paren{u,v}=u^2 \\
+&\ssi\quantifs{\exists h\in\F{\Rps}{\R};\forall\paren{u,v}\in\paren{\Rps}^2}2g\paren{u,v}=\dfrac{u^3}{3}+h\paren{v} \\
+&\ssi\quantifs{\exists h\in\F{\Rps}{\R};\forall\paren{x,y}\in\paren{\Rps}^2}2f\paren{x,y}=\dfrac{x^3y^3}{3}+h\paren{\dfrac{x}{y}}.
+\end{aligned}\]
+
+Donc les solutions de \(\paren{E}\) sont les fonctions de la forme \[\paren{x,y}\mapsto\dfrac{x^3y^3}{6}+h\paren{\dfrac{x}{y}}\] avec \(h\in\ensclasse{1}{\Rps}{\R}\).
+\end{ex}
+
+\begin{rem}
+On retrouve que le gradient d'une fonction est \guillemets{orthogonal aux lignes de niveau}.
+
+Soient \(\Omega\) un ouvert de \(\R^2\), \(f\in\ensclasse{1}{\Omega}{\R}\), \(\lambda\in\R\) et \(\gamma\in\ensclasse{1}{I}{\R^2}\) où \(I\) est un intervalle de \(\R\) tels que \[\quantifs{\forall t\in I}\gamma\paren{t}\in\Omega\qquad\text{et}\qquad f\paren{\gamma\paren{t}}=\lambda.\]
+
+On a, selon la règle de la chaîne : \[\quantifs{\forall t\in I}\ps{\nabla f\paren{\gamma\paren{t}}}{\gamma\prim\paren{t}}=0.\]
+\end{rem}
+
 % le cours en est là pour le moment
