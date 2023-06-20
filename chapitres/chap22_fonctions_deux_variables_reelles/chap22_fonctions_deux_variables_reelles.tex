@@ -329,37 +329,8 @@ f\text{ est solution de }\paren{E}&\ssi\quantifs{\exists g\in\F{\R}{\R};\forall\
 \end{aligned}\] où \(g,h\in\ensclasse{2}{\R}{\R}\).
 \end{ex}
 
-\begin{ex}[\thref{exo:EDPChangementDeVariable}]~\\
-\begin{brouill}~\\
-On a \(\begin{dcases}
-x,y\in\Rps \\
-u=xy \\
-v=\dfrac{x}{y}
-\end{dcases}\ssi\begin{dcases}
-u,v\in\Rps \\
-x=\sqrt{uv} \\
-y=\sqrt{\dfrac{u}{v}}
-\end{dcases}\) et \(f\paren{x,y}=f\paren{\sqrt{uv},\sqrt{\dfrac{u}{v}}}=g\paren{u,v}=g\paren{xy,\dfrac{x}{y}}\).
-\end{brouill}
-
-Soit \(f\in\ensclasse{1}{\paren{\Rps}^2}{\R}\).
-
-On pose \(\fonction{g}{\paren{\Rps}^2}{\R}{\paren{u,v}}{f\paren{\sqrt{uv},\sqrt{\dfrac{u}{v}}}}\). \(g\) est de classe \(\classe{1}\).
-
-On a \(\quantifs{\forall\paren{x,y}\in\paren{\Rps}^2}\begin{dcases}
-f\paren{x,y}=g\paren{xy,\dfrac{x}{y}} \\
-\pdv{f}{x}\paren{x,y}=y\pdv{g}{u}\paren{xy,\dfrac{x}{y}}+\dfrac{1}{y}\pdv{g}{v}\paren{xy,\dfrac{x}{y}} \\
-\pdv{f}{y}\paren{x,y}=x\pdv{g}{u}\paren{xy,\dfrac{x}{y}}-\dfrac{x}{y^2}\pdv{g}{v}\paren{xy,\dfrac{x}{y}}
-\end{dcases}\)
-
-Donc : \[\begin{aligned}
-f\text{ est solution de }\paren{E}&\ssi\quantifs{\forall\paren{x,y}\in\paren{\Rps}^2}2xy\pdv{g}{u}\paren{xy,\dfrac{x}{y}}=x^3y^3 \\
-&\ssi\quantifs{\forall\paren{u,v}\in\paren{\Rps}^2}2\pdv{g}{u}\paren{u,v}=u^2 \\
-&\ssi\quantifs{\exists h\in\F{\Rps}{\R};\forall\paren{u,v}\in\paren{\Rps}^2}2g\paren{u,v}=\dfrac{u^3}{3}+h\paren{v} \\
-&\ssi\quantifs{\exists h\in\F{\Rps}{\R};\forall\paren{x,y}\in\paren{\Rps}^2}2f\paren{x,y}=\dfrac{x^3y^3}{3}+h\paren{\dfrac{x}{y}}.
-\end{aligned}\]
-
-Donc les solutions de \(\paren{E}\) sont les fonctions de la forme \[\paren{x,y}\mapsto\dfrac{x^3y^3}{6}+h\paren{\dfrac{x}{y}}\] avec \(h\in\ensclasse{1}{\Rps}{\R}\).
+\begin{ex}
+\Cf \thref{exo:EDPChangementDeVariable}.
 \end{ex}
 
 \begin{rem}
@@ -370,4 +341,65 @@ Soient \(\Omega\) un ouvert de \(\R^2\), \(f\in\ensclasse{1}{\Omega}{\R}\), \(\l
 On a, selon la règle de la chaîne : \[\quantifs{\forall t\in I}\ps{\nabla f\paren{\gamma\paren{t}}}{\gamma\prim\paren{t}}=0.\]
 \end{rem}
 
-% le cours en est là pour le moment
+\section{Extrema globaux, locaux}
+
+\begin{defi}
+Soient \(A\subset\R^2\) non-vide, \(f:A\to\R\) et \(a\in A\).
+
+On dit que \(f\) admet un maximum (global) en \(a\) si on a : \[\quantifs{\forall x\in A}f\paren{x}\leq f\paren{a}.\]
+
+On dit que \(f\) admet un minimum (global) en \(a\) si on a : \[\quantifs{\forall x\in A}f\paren{x}\geq f\paren{a}.\]
+
+On dit que \(f\) admet un maximum local en \(a\) si on a : \[\quantifs{\exists\epsilon\in\Rps;\forall x\in A\inter\bouleo{a}{\epsilon}}f\paren{x}\leq f\paren{a}.\]
+
+On dit que \(f\) admet un minimum local en \(a\) si on a : \[\quantifs{\exists\epsilon\in\Rps;\forall x\in A\inter\bouleo{a}{\epsilon}}f\paren{x}\geq f\paren{a}.\]
+
+On dit que \(f\) admet un extremum global en \(a\) si \(f\) admet un maximum ou un minimum en \(a\).
+
+On dit que \(f\) admet un extremum local en \(a\) si \(f\) admet un maximum local ou un minimum local en \(a\).
+\end{defi}
+
+\begin{ex}
+La fonction \(\fonction{N}{\R^2}{\R}{\paren{x,y}}{\sqrt{x^2+y^2}}\) admet un minimum global en \(\paren{0,0}\) et n'admet pas de maximum car elle n'est pas majorée.
+\end{ex}
+
+\begin{defi}[Point critique]
+Soient \(\Omega\) un ouvert de \(\R^2\) et \(f\in\ensclasse{1}{\Omega}{\R}\).
+
+On dit que \(f\) admet un point critique en \(a\in\Omega\) si \[\nabla f\paren{a}=\paren{0,0}.\]
+\end{defi}
+
+\begin{theo}
+Soient \(\Omega\) un ouvert de \(\R^2\), \(f\in\ensclasse{1}{\Omega}{\R}\) et \(a\in\Omega\).
+
+Si \(f\) admet un extremum local en \(a\) alors \[\nabla f\paren{a}=\paren{0,0}.\]
+
+NB : la réciproque est fausse. Par exemple, en posant \(\fonction{f}{\R^2}{\R}{\paren{x,y}}{x^3}\), on a \(\nabla f\paren{0,0}=\paren{0,0}\) mais \(f\) n'admet pas d'extremum local en \(\paren{0,0}\).
+\end{theo}
+
+\begin{dem}
+Quitte à remplacer \(f\) par \(-f\), on peut suppose que \(f\) admet un minimum local en \(a\).
+
+Soit \(\epsilon\in\Rps\) tel que \(\begin{dcases}
+\bouleo{a}{\epsilon}\subset\Omega \\
+\quantifs{\forall b\in\bouleo{a}{\epsilon}}f\paren{b}\geq f\paren{a}
+\end{dcases}\)
+
+Posons \(\paren{a_1,a_2}=a\).
+
+La fonction \(\fonction{g}{\intervee{a_1-\epsilon}{a_1+\epsilon}}{\R}{t}{f\paren{t,a_2}}\) admet un minimum en \(a_1\).
+
+De plus, \(\intervee{a_1-\epsilon}{a_1+\epsilon}\) est un voisinage de \(a_1\) et \(g\) est dérivable donc \(g\prim\paren{a_1}=0\), \cad \(\pdv{f}{x}\paren{a}=0\).
+
+On montre de même \(\pdv{f}{y}\paren{a}=0\).
+\end{dem}
+
+\begin{rem}
+L'hypothèse selon laquelle \(\Omega\) est un ouvert est importante.
+
+Par exemple, la fonction \[\fonction{h}{\Rp\times\R}{\R}{\paren{x,y}}{x}\] admet un minimum en \(\paren{0,0}\) mais \(\pdv{h}{x}\paren{0,0}\not=0\).
+\end{rem}
+
+\begin{ex}
+\Cf \thref{exo:exempleExoExtrema}.
+\end{ex}

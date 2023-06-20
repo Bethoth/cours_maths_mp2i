@@ -119,12 +119,53 @@ Soit une fonction continue \(f:A\to\R\) sur une partie \(A\subset\R^2\) non-vide
 Alors \(f\) est \guillemets{bornée et atteint ses bornes}, ce qui signifie qu'elle admet un maximum et un minimum (globaux).
 \end{theo}
 
-\begin{exo}[Exercice 8]
+\begin{exo}[Exercice 8]\thlabel{exo:exempleExoExtrema}
 Étudier les extrema de la fonction \[\fonction{f}{\R^2}{\R}{\paren{x,y}}{x^2+xy+y^2-2x-y}\]
 \end{exo}
 
 \begin{corr}
-\note{À venir}
+\analyse
+
+Soit \(\paren{x,y}\in\R^2\).
+
+Supposons que \(f\) admet un extremum local en \(\paren{x,y}\).
+
+Comme \(\R^2\) est un ouvert, on a \(\nabla f\paren{x,y}=0\), \cad : \[\begin{dcases}
+\pdv{f}{x}\paren{x,y}=0 \\
+\pdv{f}{y}\paren{x,y}=0
+\end{dcases}\]
+
+Or on a : \[\begin{dcases}
+\pdv{f}{x}\paren{x,y}=2x+y-2 \\
+\pdv{f}{y}\paren{x,y}=x+2y-1
+\end{dcases}\]
+
+D'où le système \(\begin{dcases}
+2x+y=2 \\
+x+2y=1
+\end{dcases}\)
+
+On a \(\begin{vmatrix}
+2 & 1 \\
+1 & 2
+\end{vmatrix}\not=0\) donc d'après les formules de Cramer, on a : \[x=\dfrac{\begin{vmatrix}2 & 1 \\ 1 & 2\end{vmatrix}}{\begin{vmatrix}2 & 1 \\ 1 & 2\end{vmatrix}}=1\qquad\text{et}\qquad y=\dfrac{\begin{vmatrix}2 & 2 \\ 1 & 1\end{vmatrix}}{\begin{vmatrix}2 & 1 \\ 1 & 2\end{vmatrix}}=0.\]
+
+\synthese
+
+Soient \(h,k\in\R\).
+
+On a : \[\begin{aligned}
+f\paren{1+h,0+k}&=\paren{1+h}^2+k\paren{1+h}+k^2-2\paren{1+h}-k+1 \\
+&=h^2+k^2+kh \\
+&=\dfrac{h^2}{2}+\dfrac{k^2}{2}+\dfrac{1}{2}\paren{h+k}^2 \\
+&\geq0.
+\end{aligned}\]
+
+Donc \(f\) admet un minimum en \(\paren{1,0}\).
+
+\conclusion
+
+\(f\) admet un minimum en \(\paren{1,0}\) et n'admet pas de maximum.
 \end{corr}
 
 \begin{exo}[Exercice 9]
@@ -166,8 +207,37 @@ y\paren{\pi-x} &\text{si }0\leq y\leq x\leq\pi
 Résoudre l'équation aux dérivées partielles : \[\paren{E}~x\pdv{f}{x}+y\pdv{f}{y}=x^3y^3\] d'inconnue \(f\in\ensclasse{1}{\paren{\Rps}^2}{\R}\) à l'aide du changement de variables : \[\paren{u,v}=\paren{xy,\dfrac{x}{y}}.\]
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}~\\
+\begin{brouill}~\\
+On a \(\begin{dcases}
+x,y\in\Rps \\
+u=xy \\
+v=\dfrac{x}{y}
+\end{dcases}\ssi\begin{dcases}
+u,v\in\Rps \\
+x=\sqrt{uv} \\
+y=\sqrt{\dfrac{u}{v}}
+\end{dcases}\) et \(f\paren{x,y}=f\paren{\sqrt{uv},\sqrt{\dfrac{u}{v}}}=g\paren{u,v}=g\paren{xy,\dfrac{x}{y}}\).
+\end{brouill}
+
+Soit \(f\in\ensclasse{1}{\paren{\Rps}^2}{\R}\).
+
+On pose \(\fonction{g}{\paren{\Rps}^2}{\R}{\paren{u,v}}{f\paren{\sqrt{uv},\sqrt{\dfrac{u}{v}}}}\). \(g\) est de classe \(\classe{1}\).
+
+On a \(\quantifs{\forall\paren{x,y}\in\paren{\Rps}^2}\begin{dcases}
+f\paren{x,y}=g\paren{xy,\dfrac{x}{y}} \\
+\pdv{f}{x}\paren{x,y}=y\pdv{g}{u}\paren{xy,\dfrac{x}{y}}+\dfrac{1}{y}\pdv{g}{v}\paren{xy,\dfrac{x}{y}} \\
+\pdv{f}{y}\paren{x,y}=x\pdv{g}{u}\paren{xy,\dfrac{x}{y}}-\dfrac{x}{y^2}\pdv{g}{v}\paren{xy,\dfrac{x}{y}}
+\end{dcases}\)
+
+Donc : \[\begin{aligned}
+f\text{ est solution de }\paren{E}&\ssi\quantifs{\forall\paren{x,y}\in\paren{\Rps}^2}2xy\pdv{g}{u}\paren{xy,\dfrac{x}{y}}=x^3y^3 \\
+&\ssi\quantifs{\forall\paren{u,v}\in\paren{\Rps}^2}2\pdv{g}{u}\paren{u,v}=u^2 \\
+&\ssi\quantifs{\exists h\in\F{\Rps}{\R};\forall\paren{u,v}\in\paren{\Rps}^2}2g\paren{u,v}=\dfrac{u^3}{3}+h\paren{v} \\
+&\ssi\quantifs{\exists h\in\F{\Rps}{\R};\forall\paren{x,y}\in\paren{\Rps}^2}2f\paren{x,y}=\dfrac{x^3y^3}{3}+h\paren{\dfrac{x}{y}}.
+\end{aligned}\]
+
+Donc les solutions de \(\paren{E}\) sont les fonctions de la forme \[\paren{x,y}\mapsto\dfrac{x^3y^3}{6}+h\paren{\dfrac{x}{y}}\] avec \(h\in\ensclasse{1}{\Rps}{\R}\).
 \end{corr}
 
 \begin{exo}[Exercice 13]
