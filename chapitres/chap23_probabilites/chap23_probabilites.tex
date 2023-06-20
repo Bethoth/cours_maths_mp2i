@@ -31,3 +31,85 @@ Les trois propositions suivantes sont équivalentes :
     \item \(f\) est une surjection.
 \end{enumerate}
 \end{theo}
+
+\subsection{Dénombrement des ensembles finis}
+
+Soient \(E\) un ensemble fini et \(A,B\in\P{E}\).
+
+On a :
+
+\begin{description}
+    \item[] \(\Card A\union B=\Card A+\Card B\) si \(A\) et \(B\) sont disjoints \\
+    \item[] \(\Card A\union B=\Card A+\Card B-\Card A\inter B\) \\
+    \item[] \(\Card E\excluant A=\Card E-\Card A\) \\
+    \item[] \(\Card A\times B=\Card A\times\Card B\) \\
+    \item[] \(\Card B^A=\Card\F{A}{B}=\paren{\Card B}^{\Card A}\) \\
+    \item[] \(\Card\P{E}=2^{\Card E}\) \\
+    \item[] \(\Card E^p=\paren{\Card E}^p\).
+\end{description}
+
+Soit \(p\in\interventierii{0}{n}\).
+
+On appelle :
+
+\begin{description}
+    \item[] \(p\)-arrangement de \(E\) tout \(p\)-uplet d'éléments de \(E\) deux à deux distincts ; \\
+    \item[] \(p\)-combinaison de \(E\) toute partie de \(E\) contenant \(p\) éléments.
+\end{description}
+
+On a alors, en notant \(n\) le cardinal de \(E\) :
+
+\begin{description}
+    \item[] le nombre de \(p\)-arrangements de \(E\) est \(\arr{p}{n}=\dfrac{n!}{\paren{n-p}!}\) \\
+    \item[] le nombre de \(p\)-combinaisons de \(E\) est \(\comb{p}{n}=\binom{p}{n}=\dfrac{n!}{p!\,\paren{n-p}!}\)
+\end{description}
+
+Enfin, \(\arr{p}{n}\) est aussi le nombre d'injections d'un ensemble de cardinal \(p\) vers \(E\). En particulier, si \(p=n\) et en notant \(\S{E}\) l'ensemble des bijections de \(E\) vers \(E\) : \[\Card\S{E}=n!\]
+
+\begin{exoex}
+Soient \(k,n\in\Ns\) tels que \(k\leq n\).
+
+Une urne contient \(n\) boules numérotées de \(1\) à \(n\). On tire \(k\) boules dans cette urne.
+
+Donner le nombre de résultats possibles en fonction du type de tirage :
+
+\begin{enumerate}
+    \item On tire \(k\) boules simultanément. \\
+    \item On tire \(k\) boules une par une, avec remise. \\
+    \item On tire \(k\) boules une par une, sans remise.
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}~\\
+\begin{enumerate}
+    \item Il y a \(\binom{k}{n}\) résultats possibles. \\
+    \item Il y a \(n^k\) résultats possibles. \\
+    \item Il y a \(\arr{k}{n}\) résultats possibles.
+\end{enumerate}
+\end{corr}
+
+\begin{exoex}[Mines-Télécom 2016]
+Soit \(E\) un ensemble fini dont on note \(n\) le cardinal.
+
+Donner le cardinal des ensembles suivants :
+
+\begin{enumerate}
+    \item \(E_1=\accol{\paren{X,Y}\in\P{E}^2\tq\accol{X;Y}\text{ est une partition de }E}\) ; \\
+    \item \(E_2=\accol{\paren{X,Y}\in\P{E}^2\tq X\inter Y=\ensvide}\) ; \\
+    \item \(E_3=\accol{\paren{X,Y}\in\P{E}^2\tq X\union Y=E}\) ; \\
+    \item \(E_4=\accol{\paren{X,Y}\in\P{E}^2\tq X\subset Y}\) ; \\
+    \item \(E_5=\accol{\paren{X,Y,Z}\in\P{E}^3\tq X\union Y\union Z=E}\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}
+On a :
+
+\begin{enumerate}
+    \item \(\Card E_1=2^n-2\) \\
+    \item \(\Card E_2=\sum_{k=0}^{n}\binom{k}{n}2^{n-k}=3^n\) \\
+    \item \(\Card E_3=3^n\) \\
+    \item \(\Card E_4=3^n\) \\
+    \item \(\Card E_5=7^n\)
+\end{enumerate}
+\end{corr}
