@@ -301,3 +301,72 @@ De plus, on a \(\proba{\Omega}=\sum_{\omega\in\Omega}p_\omega=1\).
 
 Donc \(\prem\) est une probabilité sur \(\Omega\).
 \end{dem}
+
+\subsection{Exemple : probabilité uniforme sur un ensemble fini}
+
+\begin{defi}[Probabilité uniforme]
+Soit \(\Omega\) un univers.
+
+On appelle probabilité uniforme sur \(\Omega\) la probabilité \(\prem\) définie par : \[\quantifs{\forall A\in\P{\Omega}}\proba{A}=\dfrac{\Card A}{\Card\Omega}.\]
+
+Pour cette probabilité, tous les événements élémentaires sont équiprobables, de probabilité \(\dfrac{1}{\Card\Omega}\).
+\end{defi}
+
+\begin{ex}[Lancer d'un dé]
+On lance un dé (non-pipé, à six faces).
+
+Le résultat peut être modélisé par l'univers \(\Omega=\interventierii{1}{6}\) muni de la probabilité uniforme.
+\end{ex}
+
+\begin{exoex}
+On tire simultanément trois cartes dans un jeu de trente-deux cartes. On suppose que tous les tirages sont équiprobables.
+
+\begin{enumerate}
+    \item Quelle est la probabilité de tirer trois as ? \\
+    \item Quelle est la probabilité de tirer trois cartes qui se suivent ? \\
+    \item Quelle est la probabilité de tirer deux rois et une dame ?
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]~\\
+On a \(\Card\Omega=\binom{3}{32}\).
+
+On note \(A\) l'événement \guillemets{on tire trois as}.
+
+On a \(\Card A=\binom{3}{4}\).
+
+Donc : \[\begin{aligned}
+\proba{A}&=\dfrac{\Card A}{\Card\Omega} \\
+&=\dfrac{\binom{3}{4}}{\binom{3}{32}} \\
+&=\dfrac{\frac{4\times3\times2}{3\times2\times1}}{\frac{32\times31\times30}{3\times2\times1}} \\
+&=\dfrac{4\times3\times2}{32\times31\times30} \\
+&=\dfrac{1}{4\times31\times10} \\
+&=\dfrac{1}{1240}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[2]
+On note \(B\) l'événement \guillemets{on tire trois cartes qui se suivent}.
+
+On a \(\Card B=6\times4^3\).
+
+Donc : \[\begin{aligned}
+\proba{B}&=\dfrac{6\times4^3}{\frac{32\times31\times30}{3\times2\times1}} \\
+&=\dfrac{2\times3\times6\times2^6}{30\times31\times32} \\
+&=\dfrac{2^2\times3}{5\times31} \\
+&=\dfrac{12}{155}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[3]
+On note \(C\) l'événement \guillemets{on tire deux rois et une dame}.
+
+On a \(\Card C=\binom{2}{4}\times\binom{1}{4}=4\times6\).
+
+Donc : \[\begin{aligned}
+\proba{C}&=\dfrac{6\times4}{\frac{32\times31\times30}{3\times2\times1}} \\
+&=\dfrac{2^4\times3^2}{2^5\times31\times2\times5\times3} \\
+&=\dfrac{3}{2^2\times5\times31} \\
+&=\dfrac{3}{620}.
+\end{aligned}\]
+\end{corr}
