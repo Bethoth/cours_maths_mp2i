@@ -113,3 +113,191 @@ On a :
     \item \(\Card E_5=7^n\)
 \end{enumerate}
 \end{corr}
+
+\section{Espaces probabilisés}
+
+\subsection{Cadre formel}
+
+\subsubsection{Univers}
+
+On considère un ensemble fini non-vide \(\Omega\) appelé l'univers.
+
+\begin{ex}
+\begin{itemize}
+    \item On lance un dé une fois : \(\Omega=\interventierii{1}{6}\). \\
+    \item On lance un dé deux fois : \(\Omega=\interventierii{1}{6}^2\). \\
+    \item On lance un dé \(n\) fois : \(\Omega=\interventierii{1}{6}^n\).
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+En pratique, on ne précisera pas quel est l'univers (il y a beaucoup de façons de modéliser une situation et la modélisation choisie ne change pas les probabilités obtenues).
+\end{rem}
+
+\subsubsection{Événements}
+
+Les parties de \(\Omega\) sont appelées les événements.
+
+\begin{ex}
+\begin{itemize}
+    \item Expérience aléatoire : on lance un dé une fois. \\ Univers : \(\Omega=\interventierii{1}{6}\). \\ Événement \guillemets{le résultat vaut \(6\)} : \(\accol{6}\). \\ Événement \guillemets{le résultat est pair} : \(\accol{2;4;6}\). \\
+    \item Expérience aléatoire : on lance un dé deux fois. \\ Univers : \(\Omega=\interventierii{1}{6}^2\). \\ Événement \guillemets{les deux lancers donnent le même résultat} : \(\accol{\paren{1,1};\paren{2,2};\paren{3,3};\paren{4,4};\paren{5,5};\paren{6,6}}\).
+\end{itemize}
+\end{ex}
+
+\begin{defi}
+L'ensemble vide \(\ensvide\) est un événement, appelé l'événement impossible.
+
+L'événement \(\Omega\) est appelé l'événement certain.
+
+Les événements qui ne contiennent qu'un seul élément (\ie les singletons) sont appelés événements élémentaires.
+\end{defi}
+
+\begin{defi}
+Deux événements sont dits incompatibles (ou disjoints) si leur intersection est vide.
+\end{defi}
+
+\begin{defi}[Système complet d'événements]
+Soient \(\Omega\) un univers et \(N\in\Ns\).
+
+On appelle système complet d'événements toute famille \(\paren{A_1,\dots,A_N}\in\P{\Omega}^N\) d'événements deux à deux incompatibles telle que \[\bigunion_{n=1}^NA_n=\Omega.\]
+\end{defi}
+
+\subsubsection{Probabilité}
+
+\begin{defi}[Probabilité]
+Soit \(\Omega\) un univers.
+
+On appelle probabilité sur \(\Omega\) toute application \(\prem:\P{\Omega}\to\intervii{0}{1}\) telle que :
+
+\begin{enumerate}
+    \item \(\proba{\Omega}=1\) \\
+    \item Pour tout entier \(N\in\Ns\) et toute famille \(\paren{A_1,\dots,A_N}\in\P{\Omega}^N\) d'événements deux à deux incompatibles : \[\proba{\bigunion_{n=1}^NA_n}=\sum_{n=1}^N\proba{A_n}.\]
+\end{enumerate}
+\end{defi}
+
+\begin{defi}[Espace probabilisé]
+Un couple \(\groupe{\Omega}[\prem]\), où \(\Omega\) est un univers et \(\prem\) est une probabilité sur \(\Omega\), est appelé un espace probabilisé.
+\end{defi}
+
+\begin{rem}
+Soit \(\groupe{\Omega}[\prem]\) un espace probabilisé.
+
+On a : \[\proba{\ensvide}=0.\]
+\end{rem}
+
+\begin{dem}
+On a \(\ensvide=\ensvide\union\ensvide\) (événements incompatibles) donc \(\proba{\ensvide}=\proba{\ensvide}+\proba{\ensvide}\).
+
+Donc \(\proba{\ensvide}=0\).
+\end{dem}
+
+\begin{rem}
+Soit \(\Omega\) un univers.
+
+Dans ce chapitre, on note généralement \(\conj{A}\) le complémentaire dans \(\Omega\) de l'événement \(A\in\P{\Omega}\).
+
+Le complémentaire d'une partie n'est jamais noté ainsi dans le cadre de la topologie (notation alors réservée à l'adhérence).
+\end{rem}
+
+\begin{prop}
+Soient \(\groupe{\Omega}[\prem]\) un espace probabilisé et \(A,B\in\P{\Omega}\) deux événements.
+
+\begin{enumerate}
+    \item Si \(A\subset B\) alors \(\proba{B\excluant A}=\proba{B}-\proba{A}\). En particulier, on a \(\proba{A}\leq\proba{B}\). \\
+    \item On a \(\proba{\conj{A}}=1-\proba{A}\). \\
+    \item On a \(\proba{A\union B}=\proba{A}+\proba{B}-\proba{A\inter B}\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+On a \(B=A\union\paren{B\excluant A}\) (réunion disjointe) donc \(\proba{B}=\proba{A}+\proba{B\excluant A}\).
+\end{dem}
+
+\begin{dem}[2]
+Découle du (1) en prenant \(B=\Omega\).
+\end{dem}
+
+\begin{dem}[3]
+On a \(A\union B=\paren{A\excluant B}\union\paren{A\inter B}\union\paren{B\excluant A}\) (réunion disjointe).
+
+Donc \(\proba{A\union B}=\proba{A\excluant B}+\proba{A\inter B}+\proba{B\excluant A}\).
+
+D'autre part, on a \(\begin{dcases}
+A=\paren{A\excluant B}\union\paren{A\inter B} \\
+B=\paren{B\excluant A}\union\paren{A\inter B}
+\end{dcases}\) (réunions disjointes).
+
+Donc on a \(\begin{dcases}
+\proba{A}=\proba{A\excluant B}+\proba{A\inter B} \\
+\proba{B}=\proba{B\excluant A}+\proba{A\inter B}
+\end{dcases}\)
+
+D'où la formule.
+\end{dem}
+
+\begin{prop}[Sous-additivité]
+Soient \(\groupe{\Omega}[\prem]\) un espace probabilisé et \(N\in\Ns\).
+
+Pour toute famille d'événements \(\paren{A_1,\dots,A_N}\in\P{\Omega}^N\), on a : \[\proba{\bigunion_{n=1}^NA_n}\leq\sum_{n=1}^N\proba{A_n}.\]
+\end{prop}
+
+\begin{dem}
+On pose \(\quantifs{\forall k\in\interventierii{1}{N}}A_k\prim=A_k\excluant\bigunion_{i=1}^{k-1}A_i\) de sorte que \(\bigunion_{k=1}^NA_k=\bigunion_{k=1}^NA_k\prim\) (réunion disjointe).
+
+On a alors : \[\begin{WithArrows}
+\proba{\bigunion_{k=1}^NA_k}&=\sum_{k=1}^N\proba{A_k\prim} \Arrow{car \(\quantifs{\forall k\in\interventierii{1}{N}}A_k\prim\subset A_k\)} \\
+&\leq\sum_{k=1}^N\proba{A_k}
+\end{WithArrows}\]
+\end{dem}
+
+\subsubsection{Distribution de probabilités}
+
+\begin{defi}
+Soit \(\Omega\) un univers.
+
+On appelle distribution de probabilités sur \(\Omega\) toute famille \(\paren{p_\omega}_{\omega\in\Omega}\) de réels positifs de somme \(1\) : \[\quantifs{\forall\omega\in\Omega}p_\omega\geq0\qquad\text{et}\qquad\sum_{\omega\in\Omega}p_\omega=1.\]
+\end{defi}
+
+\begin{prop}
+Soit \(\Omega\) un univers.
+
+La donnée d'une probabilité sur \(\Omega\) revient à la donnée d'une distribution de probabilités sur \(\Omega\).
+\end{prop}
+
+\begin{dem}
+\analyse
+
+Soient \(\prem\) une probabilité sur \(\Omega\) et \(A\subset\Omega\).
+
+On a \(A=\bigunion_{\omega\in A}\accol{\omega}\) (réunion disjointe).
+
+Donc, en posant \(\quantifs{\forall\omega\in\Omega}p_\omega=\proba{\accol{\omega}}\), on a : \[\proba{A}=\sum_{\omega\in A}\proba{\accol{\omega}}=p_\omega.\]
+
+On a bien \(\begin{dcases}
+\quantifs{\forall\omega\in\Omega}p_\omega\geq0 \\
+\sum_{\omega\in\Omega}p_\omega=\proba{\Omega}=1
+\end{dcases}\)
+
+Donc \(\paren{p_\omega}_{\omega\in\Omega}\) est une distribution de probabilités sur \(\Omega\).
+
+\synthese
+
+Soit \(\paren{p_\omega}_{\omega\in\Omega}\) une distribution de probabilités sur \(\Omega\).
+
+On pose : \[\fonction{\prem}{\P{\Omega}}{\R}{A}{\sum_{\omega\in A}p_\omega}\]
+
+Montrons que \(\prem\) est une probabilité sur \(\Omega\).
+
+Soient \(N\in\Ns\) et \(A_1,\dots,A_N\in\P{\Omega}\) des événements deux à deux incompatibles.
+
+On a : \[\begin{WithArrows}
+\proba{\bigunion_{i=1}^NA_i}&=\sum_{\omega\in\bigunion_{i=1}^NA_i}p_\omega \Arrow{car \(\bigunion_{i=1}^NA_i\) est une réunion disjointe} \\
+&=\sum_{i=1}^N\sum_{\omega\in A_i}p_\omega \\
+&=\sum_{i=1}^N\proba{A_i}.
+\end{WithArrows}\]
+
+De plus, on a \(\proba{\Omega}=\sum_{\omega\in\Omega}p_\omega=1\).
+
+Donc \(\prem\) est une probabilité sur \(\Omega\).
+\end{dem}
