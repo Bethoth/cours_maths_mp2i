@@ -508,3 +508,69 @@ On a : \[\begin{WithArrows}
 &=\dfrac{1}{16}.
 \end{WithArrows}\]
 \end{corr}
+
+\section{Événements indépendants}
+
+On considère toujours un espace probabilisé \(\groupe{\Omega}[\prem]\).
+
+\begin{defi}
+Deux événements \(A\) et \(B\) sont dits indépendants si on a : \[\proba{A\inter B}=\proba{A}\proba{B}.\]
+\end{defi}
+
+\begin{ex}
+On pioche une carte dans un jeu de 52 cartes.
+
+Les événements \guillemets{la carte est un 7} et \guillemets{la carte est un cœur} sont indépendants.
+\end{ex}
+
+\begin{rem}
+Soient deux événements \(A\) et \(B\) tels que \(\proba{B}\not=0\).
+
+Alors \[A\text{ et }B\text{ sont indépendants}\ssi\proba{A}=\proba{A\mid B}.\]
+\end{rem}
+
+\begin{dem}
+On a : \[\begin{WithArrows}
+A\text{ et }B\text{ sont indépendants}&\ssi\proba{A\inter B}=\proba{A}\proba{B} \Arrow{car \(\proba{B}\not=0\)} \\
+&\ssi\dfrac{\proba{A\inter B}}{\proba{B}}=\proba{A} \\
+&\ssi\proba{A\mid B}=\proba{A}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{defi}
+Soit \(N\in\Ns\).
+
+Des événements \(A_1,\dots,A_N\) sont dits :
+
+\begin{itemize}
+    \item deux à deux indépendants si pour tous \(i,j\in\interventierii{1}{N}\) tels que \(i\not=j\) on a : \[\proba{A_i\inter A_j}=\proba{A_i}\proba{A_j}.\]
+    \item mutuellement indépendants si pour tout \(J\subset\interventierii{1}{N}\) on a : \[\proba{\biginter_{j\in J}A_j}=\prod_{j\in J}\proba{A_j}.\]
+\end{itemize}
+\end{defi}
+
+\begin{rem}
+On a : \[\text{indépendance mutuelle}\imp\text{indépendance deux à deux}.\]
+
+La réciproque est fausse.
+\end{rem}
+
+\begin{exoex}
+Soient \(A\) et \(B\) deux événements indépendants.
+
+Montrer que \(A\) et \(\conj{B}\) sont indépendants, que \(\conj{A}\) et \(B\) sont indépendants et que \(\conj{A}\) et \(\conj{B}\) sont indépendants.
+\end{exoex}
+
+\begin{corr}
+On a \(\proba{A\inter B}=\proba{A}\proba{B}\).
+
+Donc, comme \(A=\paren{A\inter B}\union\paren{A\inter\conj{B}}\) : \[\begin{aligned}
+\proba{A\inter\conj{B}}&=\proba{A}-\proba{A\inter B} \\
+&=\proba{A}-\proba{A}\proba{B} \\
+&=\proba{A}\paren{1-\proba{B}} \\
+&=\proba{A}\proba{\conj{B}}.
+\end{aligned}\]
+
+Donc \(A\) et \(\conj{B}\) sont indépendants.
+
+Idem pour les autres.
+\end{corr}
