@@ -370,3 +370,55 @@ Donc : \[\begin{aligned}
 &=\dfrac{3}{620}.
 \end{aligned}\]
 \end{corr}
+
+\section{Conditionnement}
+
+\subsection{Définitions}
+
+On considère un espace probabilisé \(\groupe{\Omega}[\prem]\).
+
+\begin{defi}
+Soient \(A,B\in\P{\Omega}\) deux événements tels que \(\proba{B}\not=0\).
+
+On appelle probabilité conditionnelle de \(A\) sachant \(B\) le réel : \[\probacond{A}{B}=\proba{A\tq B}=\dfrac{\proba{A\inter B}}{\proba{B}}.\]
+\end{defi}
+
+\begin{rem}
+On a donc \(\proba{A\inter B}=\proba{B}\proba{A\tq B}\).
+\end{rem}
+
+\begin{exoex}
+On lance deux dés.
+
+\begin{enumerate}
+    \item Quelle est la probabilité d'avoir au total au moins \(10\) ? \\
+    \item Quelle est la probabilité d'avoir au total au moins \(10\) sachant que l'un des deux dés donne \(2\) ? \\
+    \item Quelle est la probabilité d'avoir au total au moins \(10\) sachant que l'un des deux dés donne \(6\) ?
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a l'univers \(\Omega=\interventierii{1}{6}^2\) de cardinal \(36\).
+
+On note \(A\) l'événement \guillemets{avoir au total au moins 10}.
+
+On a \(A=\accol{\paren{4,6};\paren{5,5};\paren{5,6};\paren{6,4};\paren{6,5};\paren{6,6}}\) donc \(\Card A=6\).
+
+Donc \(\proba{A}=\dfrac{6}{36}=\dfrac{1}{6}\).
+\end{corr}
+
+\begin{corr}[2]
+La probabilité est nulle.
+\end{corr}
+
+\begin{corr}[3]
+On note \(A\) l'événement \guillemets{avoir au total au moins 10} et \(B\) l'événement \guillemets{l'un des deux dés donne 6}.
+
+On a : \[\proba{A\tq B}=\dfrac{\proba{A\inter B}}{\proba{B}}=\dfrac{5}{11}.\]
+\end{corr}
+
+\begin{prop}
+Soit \(B\in\P{\Omega}\) un événement de probabilité non-nulle.
+
+L'application \(\prem_B:\P{\Omega}\to\intervii{0}{1}\) est une probabilité sur \(\Omega\).
+\end{prop}
