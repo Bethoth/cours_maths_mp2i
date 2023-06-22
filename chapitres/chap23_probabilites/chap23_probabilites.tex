@@ -574,3 +574,94 @@ Donc \(A\) et \(\conj{B}\) sont indépendants.
 
 Idem pour les autres.
 \end{corr}
+
+\section{Variables aléatoires}
+
+On considère toujours un espace probabilisé \(\groupe{\Omega}[\prem]\).
+
+\subsection{Définition}
+
+\begin{defi}[Variable aléatoire]
+On appelle variable aléatoire sur \(\Omega\) toute application de l'univers \(\Omega\) vers un ensemble \(E\) : \[X:\Omega\to E.\]
+
+Si \(E=\R\), on dit que \(X\) est une variable aléatoire réelle.
+\end{defi}
+
+\begin{nota}
+Soient \(E\) et \(F\) des ensembles, \(X:\Omega\to E\) une variable aléatoire et \(f:E\to F\) une fonction quelconque.
+
+Alors \(f\rond X\) est une variable aléatoire, notée abusivement \(f\paren{X}\).
+
+Par exemple, la valeur absolue d'une variable aléatoire réelle \(X\) est une variable aléatoire réelle notée \(\abs{X}\).
+\end{nota}
+
+\begin{rem}
+Une somme de variables aléatoires réelles est une variable aléatoire réelle.
+
+Un produit de variables aléatoires réelles est une variable aléatoire réelle.
+
+L'ensemble des variables aléatoires réelles (sur \(\Omega\)) est un anneau et un \(\R\)-espace vectoriel.
+\end{rem}
+
+\begin{nota}
+Soit \(E\) un ensemble.
+
+Lorsque \(X:\Omega\to E\) est une variable aléatoire, on s'autorise, pour tout \(F\subset E\), à noter \(\paren{X\in F}\) ou \(\accol{X\in F}\) l'image réciproque de \(X\) par \(F\) : \[\paren{X\in F}=\accol{X\in F}=X\inv\paren{F}.\]
+
+Il s'agit d'un événement.
+\end{nota}
+
+\begin{defi}[Loi d'une variable aléatoire]
+Soient \(E\) un ensemble et \(X:\Omega\to E\) une variable aléatoire.
+
+Quitte à remplacer \(E\) par \(\Im X\), on peut supposer que \(E\) est fini.
+
+On appelle loi de \(X\) la probabilité (sur l'univers \(E\)) : \[\fonction{\prem_X}{\P{E}}{\intervii{0}{1}}{F}{\proba{\accol{X\in F}}}\]
+
+On note simplement \(\probacond{F}{X}\) ou \(\proba{X\in F}\) la probabilité \(\proba{\accol{X\in F}}\) (intuitivement : la \guillemets{probabilité que \(X\) appartienne à \(F\)}).
+\end{defi}
+
+\begin{rem}
+Mêmes notations.
+
+Le couple \(\groupe{E}[\prem_X]\) est un espace probabilisé.
+\end{rem}
+
+\begin{defi}
+Soient \(X\) et \(Y\) deux variables aléatoires.
+
+On dit que \(X\) et \(Y\) suivent la même loi si on a \(\prem_X=\prem_Y\).
+
+On note alors : \[X\sim Y.\]
+\end{defi}
+
+\begin{exoex}
+On lance deux dés à quatre faces.
+
+Le lancer peut être modélisé en posant : \[\Omega=\interventierii{1}{4}^2\qquad\quantifs{\forall A\in\P{\Omega}}\proba{A}=\dfrac{\Card A}{\Card\Omega}\] et \[\fonction{X}{\Omega}{\interventierii{1}{4}}{\paren{x,y}}{x}\qquad\fonction{Y}{\Omega}{\interventierii{1}{4}}{\paren{x,y}}{y}\]
+
+On pose enfin \(S=X+Y\) et \(P=XY\).
+
+Les fonctions \(X\), \(Y\), \(S\) et \(P\) sont des variables aléatoires.
+
+Quelles sont leurs lois ?
+\end{exoex}
+
+\begin{corr}
+\(X\) est à valeurs dans \(\interventierii{1}{4}\) et on a : \[\quantifs{\forall k\in\interventierii{1}{4}}\proba{X=k}=\dfrac{1}{4}.\]
+
+Idem pour \(Y\).
+
+\(S\) est à valeurs dans \(\interventierii{2}{8}\) et on a : \[\begin{dcases}
+\proba{S=2}=\proba{S=8}=\dfrac{1}{16} \\
+\proba{S=3}=\proba{S=7}=\dfrac{1}{8} \\
+\proba{S=4}=\proba{S=6}=\dfrac{3}{16} \\
+\proba{S=5}=\dfrac{1}{4}
+\end{dcases}\]
+
+\(P\) est à valeurs dans \(\accol{1;2;3;4;6;8;9;12;16}\) et on a : \[\begin{dcases}
+\proba{P=1}=\proba{P=9}=\proba{P=16}=\dfrac{1}{16} \\
+\proba{P=2}=\proba{P=3}=\proba{P=6}=\proba{P=8}=\proba{P=12}=\dfrac{1}{8} \\
+\proba{P=4}=\dfrac{3}{16}
+\end{dcases}\]
+\end{corr}
