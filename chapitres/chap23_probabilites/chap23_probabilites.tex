@@ -665,3 +665,66 @@ Idem pour \(Y\).
 \proba{P=4}=\dfrac{3}{16}
 \end{dcases}\]
 \end{corr}
+
+\subsection{Exemples}
+
+On considère toujours un espace probabilisé \(\groupe{\Omega}[\prem]\) et on note \(X\) une variable aléatoire.
+
+\subsubsection{Loi uniforme sur un ensemble fini}
+
+\begin{defi}
+Soit \(E\) un ensemble fini non-vide.
+
+On dit que \(X:\Omega\to E\) suit une loi uniforme sur \(E\) si on a : \[\quantifs{\forall A\in\P{E}}\proba{X\in A}=\dfrac{\Card A}{\Card E}.\]
+\end{defi}
+
+\begin{nota}
+Mêmes notations.
+
+On note \(\loiuniforme{E}\) la loi uniforme sur \(E\) et \(X\sim\loiuniforme{E}\) si \(X\) suit une loi uniforme sur \(E\).
+\end{nota}
+
+\subsubsection{Loi de Bernoulli de paramètre \(p\in\intervii{0}{1}\)}
+
+\begin{defi}
+Soit \(p\in\intervii{0}{1}\).
+
+On dit que \(X:\Omega\to\accol{0;1}\) suit une loi de Bernoulli de paramètre \(p\) si on a : \[\begin{dcases}
+\proba{X=1}=p \\
+\proba{X=0}=1-p
+\end{dcases}\]
+\end{defi}
+
+\begin{nota}
+Mêmes notations.
+
+On note \(\loibernoulli{p}\) la loi de Bernoulli de paramètre \(p\) et \(X\sim\loibernoulli{p}\) si \(X\) suit une loi de Bernoulli de paramètre \(p\).
+\end{nota}
+
+\begin{ex}
+\begin{itemize}
+    \item Pile ou face ; \\
+    \item Si \(A\) est un événement de probabilité \(p\), alors \(\ind{A}\sim\loibernoulli{p}\).
+\end{itemize}
+\end{ex}
+
+\subsubsection{Loi binomiale de paramètres \(n\in\Ns\) et \(p\in\intervii{0}{1}\)}
+
+\begin{defi}
+Soient \(n\in\Ns\) et \(p\in\intervii{0}{1}\).
+
+On dit que \(X:\Omega\to\interventierii{0}{n}\) suit une loi binomiale de paramètres \(n\) et \(p\) si on a : \[\quantifs{\forall k\in\interventierii{0}{n}}\proba{X=k}=\binom{k}{n}p^k\paren{1-p}^{n-k}.\]
+\end{defi}
+
+\begin{nota}
+Mêmes notations.
+
+On note \(\loibinomiale{n}{p}\) la loi binomiale de paramètres \(n\) et \(p\) et \(X\sim\loibinomiale{n}{p}\) si \(X\) suit une loi binomiale de paramètres \(n\) et \(p\).
+\end{nota}
+
+\begin{ex}
+\begin{itemize}
+    \item Si l'on fait \(n\) tirages avec remise dans une urne contenant une proportion \(p\) de boules bleues et qu'on note \(X\) le nombre de boules bleues tirées, alors \(X\sim\loibinomiale{n}{p}\) ; \\
+    \item Nombre de \guillemets{piles} quand on lance \(n\) pièces en l'air.
+\end{itemize}
+\end{ex}
