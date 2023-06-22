@@ -380,11 +380,11 @@ On considère un espace probabilisé \(\groupe{\Omega}[\prem]\).
 \begin{defi}
 Soient \(A,B\in\P{\Omega}\) deux événements tels que \(\proba{B}\not=0\).
 
-On appelle probabilité conditionnelle de \(A\) sachant \(B\) le réel : \[\probacond{A}{B}=\proba{A\tq B}=\dfrac{\proba{A\inter B}}{\proba{B}}.\]
+On appelle probabilité conditionnelle de \(A\) sachant \(B\) le réel : \[\probacond{A}{B}=\proba{A\mid B}=\dfrac{\proba{A\inter B}}{\proba{B}}.\]
 \end{defi}
 
-\begin{rem}
-On a donc \(\proba{A\inter B}=\proba{B}\proba{A\tq B}\).
+\begin{rem}\thlabel{rem:probaIntersectionDeuxÉvénements}
+On a donc \(\proba{A\inter B}=\proba{B}\proba{A\mid B}\).
 \end{rem}
 
 \begin{exoex}
@@ -414,11 +414,97 @@ La probabilité est nulle.
 \begin{corr}[3]
 On note \(A\) l'événement \guillemets{avoir au total au moins 10} et \(B\) l'événement \guillemets{l'un des deux dés donne 6}.
 
-On a : \[\proba{A\tq B}=\dfrac{\proba{A\inter B}}{\proba{B}}=\dfrac{5}{11}.\]
+On a : \[\proba{A\mid B}=\dfrac{\proba{A\inter B}}{\proba{B}}=\dfrac{5}{11}.\]
 \end{corr}
 
 \begin{prop}
-Soit \(B\in\P{\Omega}\) un événement de probabilité non-nulle.
+Soit \(B\) un événement de probabilité non-nulle.
 
 L'application \(\prem_B:\P{\Omega}\to\intervii{0}{1}\) est une probabilité sur \(\Omega\).
 \end{prop}
+
+\subsection{Propriétés}
+
+\subsubsection{Formule des probabilités composées}
+
+\begin{prop}
+Soient \(N\in\Ns\) et \(A_1,\dots,A_N\) des événements tels que \(\proba{A_1\inter\dots\inter A_{N-1}}\not=0\).
+
+Alors \[\proba{A_1\inter\dots\inter A_N}=\proba{A_1}\probacond{A_2}{A_1}\probacond{A_3}{A_1\inter A_2}\dots\probacond{A_N}{A_1\inter\dots\inter A_{N-1}}.\]
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{rem:probaIntersectionDeuxÉvénements}, par récurrence sur \(N\).
+\end{dem}
+
+\subsubsection{Formule des probabilités totales}
+
+\begin{prop}[Formule des probabilités totales]
+Soient \(N\in\Ns\), \(\paren{A_1,\dots,A_N}\) un système complet fini d'événements et \(B\) un événement.
+
+On a : \[\proba{B}=\sum_{n=1}^N\proba{B\inter A_n}=\sum_{n=1}^N\proba{B\mid A_n}\proba{A_n},\] avec la convention \(\proba{B\mid A_n}\proba{A_n}=0\) si \(\proba{A_n}=0\).
+\end{prop}
+
+\begin{dem}~\\
+On a \(B=\bigunion_{n=1}^N\paren{A_n\inter B}\) (réunion disjointe).
+
+Donc \[\begin{WithArrows}
+\proba{B}&=\sum_{n=1}^N\proba{A_n\inter B} \Arrow[tikz={text width=4cm}]{selon la formule des probabilités composées} \\
+&=\sum_{n=1}^N\proba{A_n}\proba{B\mid A_n}.
+\end{WithArrows}\]
+\end{dem}
+
+\subsubsection{Formules de Bayes}
+
+\begin{prop}[Formule de Bayes]
+\begin{itemize}
+    \item Soient \(A\) et \(B\) deux événements de probabilité non-nulle. On a : \[\proba{A\mid B}=\dfrac{\proba{A}\proba{B\mid A}}{\proba{B}}=\dfrac{\proba{A}\proba{B\mid A}}{\proba{A}\proba{B\mid A}+\proba{\conj{A}}\proba{B\mid\conj{A}}}.\]
+    \item Soient \(N\in\Ns\), \(\paren{A_1,\dots,A_n}\) un système complet fini d'événements de probabilité non-nulle, \(B\) un événement de probabilité non-nulle et \(k\in\interventierii{1}{N}\). On a : \[\proba{A_k\mid B}=\dfrac{\proba{A_k}\proba{B\mid A_k}}{\ds\sum_{n=1}^{N}\proba{A_n}\proba{B\mid A_n}}.\]
+\end{itemize}
+\end{prop}
+
+\begin{exoex}
+Dans une population de 60 millions d'individus, 6000 personnes sont porteuses d'un virus.
+
+Il existe un test, mais celui-ci n'est pas complètement fiable :
+
+Si un patient sain est testé, le résultat est négatif avec une probabilité de 98\%.
+
+Si un patient malade est testé, le résultat est positif avec une probabilité de 99\%.
+
+Un patient a fait un test dont le résultat est positif.
+
+Quelle est la probabilité qu'il soit malade ?
+\end{exoex}
+
+\begin{corr}
+On note \(M\) l'événement \guillemets{le patient est malade} et \(P\) l'événement \guillemets{le test est positif}.
+
+On a : \[\begin{WithArrows}
+\proba{M\mid P}&=\dfrac{\proba{M}\proba{P\mid M}}{\proba{M}\proba{P\mid M}+\proba{\conj{M}}\proba{P\mid\conj{M}}} \\
+&=\dfrac{\num{e-4}\times\num{0.99}}{\num{e-2}\times\num{0.99}+\paren{1-\num{e-4}}\times\num{0.02}} \Arrow{on calcule} \\
+&=\dfrac{1}{203}.
+\end{WithArrows}\]
+\end{corr}
+
+\begin{exoex}
+Je possède 20 dés : 18 sont non-pipés (probabilité uniforme sur \(\interventierii{1}{6}\)) et 2 sont pipés (une chance sur deux d'obtenir 6 quand on les lance).
+
+Je prends l'un des 20 dés, le lance et obtiens 6.
+
+Quelle est la probabilité que ce dé soit truqué ? Et si j'obtiens autre chose que 6 ?
+\end{exoex}
+
+\begin{corr}
+On note \(P\) l'événement \guillemets{le dé est pipé} et \(S\) l'événement \guillemets{on obtient un 6}.
+
+On a : \[\begin{WithArrows}
+\proba{P\mid S}&=\dfrac{\proba{P}\proba{S\mid P}}{\proba{P}\proba{S\mid P}+\proba{\conj{P}}\proba{S\mid\conj{P}}} \\
+&=\dfrac{\frac{1}{10}\times\frac{1}{2}}{\frac{1}{10}\times\frac{1}{2}+\frac{9}{10}\times\frac{1}{6}} \Arrow{on calcule} \\
+&=\dfrac{1}{4}.
+\end{WithArrows}\] et \[\begin{WithArrows}
+\proba{P\mid\conj{S}}&=\dfrac{\proba{P}\proba{\conj{S}\mid P}}{\proba{P}\proba{\conj{S}\mid P}+\proba{\conj{P}}\proba{\conj{S}\mid\conj{P}}} \\
+&=\dfrac{\frac{1}{10}\times\frac{1}{2}}{\frac{1}{10}\times\frac{1}{2}+\frac{9}{10}\times\frac{5}{6}} \Arrow{on calcule} \\
+&=\dfrac{1}{16}.
+\end{WithArrows}\]
+\end{corr}
