@@ -728,3 +728,111 @@ On note \(\loibinomiale{n}{p}\) la loi binomiale de paramètres \(n\) et \(p\) e
     \item Nombre de \guillemets{piles} quand on lance \(n\) pièces en l'air.
 \end{itemize}
 \end{ex}
+
+\subsection{Couples de variables aléatoires}
+
+On considère toujours l'espace probabilisé \(\groupe{\Omega}[\prem]\).
+
+Soient \(E\) et \(F\) deux ensembles et \(X:\Omega\to E\) et \(Y:\Omega\to F\) deux variables aléatoires.
+
+On leur associe la variable aléatoire : \[\fonction{Z}{\Omega}{E\times F}{\omega}{\paren{X\paren{\omega},Y\paren{\omega}}}\] (que l'on note parfois \(Z=\paren{X,Y}\)).
+
+\begin{defi}
+La loi de \(Z\) est appelée loi conjointe de \(X\) et \(Y\).
+
+Les lois de \(X\) et \(Y\) sont appelées lois marginales de \(Z\).
+\end{defi}
+
+\begin{rem}
+Si on connaît la loi conjointe, on connaît les lois marginales.
+
+Cependant, connaître les lois marginales ne suffit pas pour connaître la loi conjointe.
+\end{rem}
+
+\begin{ex}
+On lance deux dés à quatre faces et on note \(X\) et \(Y\) les résultats.
+
+Alors \(\paren{X,Y}\) et \(\paren{X,X}\) ont mêmes lois marginales, mais pas mêmes lois conjointes :
+
+\begin{center}
+\begin{tikzpicture}
+\node at (2.25,1.5) {\(\paren{X,Y}\)};
+\draw[->] (0,0) -- (4.5,0) node[above right] {\(Y\)};
+\draw[->] (0,0) -- (0,-4.5) node[below left] {\(X\)};
+\draw (0,0) grid (4,-4);
+\node at (0.5,-0.5) {\(\nicefrac{1}{16}\)};
+\node at (1.5,-0.5) {\(\nicefrac{1}{16}\)};
+\node at (2.5,-0.5) {\(\nicefrac{1}{16}\)};
+\node at (3.5,-0.5) {\(\nicefrac{1}{16}\)};
+\node at (0.5,-1.5) {\(\nicefrac{1}{16}\)};
+\node at (1.5,-1.5) {\(\nicefrac{1}{16}\)};
+\node at (2.5,-1.5) {\(\nicefrac{1}{16}\)};
+\node at (3.5,-1.5) {\(\nicefrac{1}{16}\)};
+\node at (0.5,-2.5) {\(\nicefrac{1}{16}\)};
+\node at (1.5,-2.5) {\(\nicefrac{1}{16}\)};
+\node at (2.5,-2.5) {\(\nicefrac{1}{16}\)};
+\node at (3.5,-2.5) {\(\nicefrac{1}{16}\)};
+\node at (0.5,-3.5) {\(\nicefrac{1}{16}\)};
+\node at (1.5,-3.5) {\(\nicefrac{1}{16}\)};
+\node at (2.5,-3.5) {\(\nicefrac{1}{16}\)};
+\node at (3.5,-3.5) {\(\nicefrac{1}{16}\)};
+\node at (0.5,0.5) {\(\nicefrac{1}{4}\)};
+\node at (1.5,0.5) {\(\nicefrac{1}{4}\)};
+\node at (2.5,0.5) {\(\nicefrac{1}{4}\)};
+\node at (3.5,0.5) {\(\nicefrac{1}{4}\)};
+\node at (-0.5,-0.5) {\(\nicefrac{1}{4}\)};
+\node at (-0.5,-1.5) {\(\nicefrac{1}{4}\)};
+\node at (-0.5,-2.5) {\(\nicefrac{1}{4}\)};
+\node at (-0.5,-3.5) {\(\nicefrac{1}{4}\)};
+
+\node at (8.25,1.5) {\(\paren{X,X}\)};
+\draw[->] (6,0) -- (10.5,0) node[above right] {\(X\)};
+\draw[->] (6,0) -- (6,-4.5) node[below left] {\(X\)};
+\draw (6,0) grid (10,-4);
+\node at (6.5,-0.5) {\(\nicefrac{1}{4}\)};
+\node at (7.5,-0.5) {\(0\)};
+\node at (8.5,-0.5) {\(0\)};
+\node at (9.5,-0.5) {\(0\)};
+\node at (6.5,-1.5) {\(0\)};
+\node at (7.5,-1.5) {\(\nicefrac{1}{4}\)};
+\node at (8.5,-1.5) {\(0\)};
+\node at (9.5,-1.5) {\(0\)};
+\node at (6.5,-2.5) {\(0\)};
+\node at (7.5,-2.5) {\(0\)};
+\node at (8.5,-2.5) {\(\nicefrac{1}{4}\)};
+\node at (9.5,-2.5) {\(0\)};
+\node at (6.5,-3.5) {\(0\)};
+\node at (7.5,-3.5) {\(0\)};
+\node at (8.5,-3.5) {\(0\)};
+\node at (9.5,-3.5) {\(\nicefrac{1}{4}\)};
+\node at (6.5,0.5) {\(\nicefrac{1}{4}\)};
+\node at (7.5,0.5) {\(\nicefrac{1}{4}\)};
+\node at (8.5,0.5) {\(\nicefrac{1}{4}\)};
+\node at (9.5,0.5) {\(\nicefrac{1}{4}\)};
+\node at (5.5,-0.5) {\(\nicefrac{1}{4}\)};
+\node at (5.5,-1.5) {\(\nicefrac{1}{4}\)};
+\node at (5.5,-2.5) {\(\nicefrac{1}{4}\)};
+\node at (5.5,-3.5) {\(\nicefrac{1}{4}\)};
+\end{tikzpicture}
+\end{center}
+\end{ex}
+
+\begin{defi}
+Soit \(y\in F\) tel que \(\proba{Y=y}\not=0\).
+
+On appelle loi conditionnelle de \(X\) sachant \(Y=y\) la loi de \(X\) pour la probabilité conditionnelle \(\prem_{\accol{Y=y}}\).
+
+On a : \[\quantifs{\forall A\subset E}\proba{X\in A\mid Y=y}=\dfrac{\proba{X\in A\text{ et }Y=y}}{\proba{Y=y}}.\]
+\end{defi}
+
+\begin{rem}
+La connaissance de la loi de \(X\) et de la loi de \(X\) sachant \(Y=y\) pour tout \(y\in F\) tel que \(\proba{Y=y}\not=0\) détermine complètement la loi conjointe de \(Z\).
+\end{rem}
+
+\begin{rem}[Vecteurs aléatoires]
+Soit \(n\in\Ns\).
+
+Plus généralement, si \(X_1,\dots,X_n\) sont des variables aléatoires sur \(\groupe{\Omega}[\prem]\), on peut considérer le vecteur aléatoire \(Z=\paren{X_1,\dots,X_n}\).
+
+La loi de \(Z\) est appelée loi conjointe des variables \(X_1,\dots,X_n\) et les lois de \(X_1,\dots,X_n\) sont appelées lois marginales de \(Z\).
+\end{rem}
