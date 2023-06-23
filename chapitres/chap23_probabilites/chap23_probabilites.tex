@@ -836,3 +836,63 @@ Plus généralement, si \(X_1,\dots,X_n\) sont des variables aléatoires sur \(\
 
 La loi de \(Z\) est appelée loi conjointe des variables \(X_1,\dots,X_n\) et les lois de \(X_1,\dots,X_n\) sont appelées lois marginales de \(Z\).
 \end{rem}
+
+\section{Variables aléatoires indépendantes}
+
+\subsection{Définition}
+
+On considère toujours l'espace probabilisé \(\groupe{\Omega}[\prem]\) ainsi que deux ensembles \(E\) et \(F\) et deux variables aléatoires \(X:\Omega\to E\) et \(Y:\Omega\to F\).
+
+\begin{defi}\thlabel{defi:variablesAléatoiresIndépendantes}
+Les variables aléatoires \(X\) et \(Y\) sont dites indépendantes si : \[\quantifs{\forall x\in E;\forall y\in F}\proba{X=x\text{ et }Y=y}=\proba{X=x}\proba{Y=y}.\]
+\end{defi}
+
+\begin{prop}\thlabel{prop:caractérisationVariablesAléatoiresIndépendantes}
+Les variables aléatoires \(X\) et \(Y\) sont indépendantes si, et seulement si : \[\quantifs{\forall A\subset E;\forall B\subset F}\proba{X\in A\text{ et }Y\in B}=\proba{X\in A}\proba{Y\in B}.\]
+\end{prop}
+
+\begin{dem}
+\note{À venir}
+\end{dem}
+
+\begin{exoex}
+On modélise le lancer de deux dés par deux variables aléatoires \(X:\Omega\to\interventierii{1}{6}\) et \(Y:\Omega\to\interventierii{1}{6}\).
+
+La loi conjointe de \(X\) et \(Y\) est la loi uniforme sur \(\interventierii{1}{6}^2\), \cad : \[\quantifs{\forall\paren{k,l}\in\interventierii{1}{6}^2}\proba{X=k\text{ et }Y=l}=\dfrac{1}{36}.\]
+
+Posons \(S=X+Y\) et \(P=XY\).
+
+Les variables aléatoires \(X\) et \(Y\) sont-elles indépendantes ?
+
+Les variables aléatoires \(S\) et \(P\) sont-elles indépendantes ?
+\end{exoex}
+
+\begin{corr}
+\note{À venir}
+\end{corr}
+
+\begin{prop}
+Soient \(E\prim\) et \(F\prim\) deux ensembles et \(f:E\to E\prim\) et \(g:F\to F\prim\) deux fonctions.
+
+On suppose que \(X:\Omega\to E\) et \(Y:\Omega\to F\) sont indépendantes.
+
+Alors les variables aléatoires \(f\paren{X}\) et \(g\paren{Y}\) sont indépendantes.
+\end{prop}
+
+\begin{dem}
+\note{À venir}
+\end{dem}
+
+\begin{defi}
+Soient \(n\in\Ns\) et \(X_1,\dots,X_n\) des variables aléatoires.
+
+\begin{itemize}
+    \item On dit que les variables aléatoires \(X_1,\dots,X_n\) sont deux à deux indépendantes si \(X_i\) et \(X_j\) sont indépendantes pour tous \(i,j\in\interventierii{1}{n}\) tels que \(i\not=j\) (\cf \thref{defi:variablesAléatoiresIndépendantes} et \thref{prop:caractérisationVariablesAléatoiresIndépendantes}). \\
+    \item On dit que les variables aléatoires \(X_1,\dots,X_n\) sont mutuellement indépendantes si les conditions équivalentes suivantes sont satisfaites : \begin{enumerate}
+        \item \(\quantifs{\text{Pour tout }\paren{x_1,\dots,x_n}}\proba{X_1=x_1\text{ et }\dots\text{ et }X_n=x_n}=\prod_{k=1}^n\proba{X_k=x_k}\) \\
+        \item \(\quantifs{\text{Pour tout }\paren{A_1,\dots,A_n}}\proba{X_1\in A_1\text{ et }\dots\text{ et }X_n\in A_n}=\prod_{k=1}^n\proba{X_k\in A_k}\).
+    \end{enumerate}
+\end{itemize}
+
+NB : si un énoncé ne précise pas \guillemets{mutuellement} ou \guillemets{deux à deux}, cela signifie \guillemets{mutuellement}.
+\end{defi}
