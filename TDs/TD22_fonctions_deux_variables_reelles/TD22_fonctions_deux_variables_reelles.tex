@@ -55,8 +55,35 @@ On pose : \[\quantifs{\forall x,y\in\R}f\paren{x,y}=\begin{dcases}
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]
+On a \(\quantifs{\forall\paren{x,y}\in\R^2\excluant\accol{\paren{0,0}}}\abs{\dfrac{x^2-y^2}{x^2+y^2}}\leq1\).
+
+Donc \(\quantifs{\forall\paren{x,y}\in\R^2\excluant\accol{\paren{0,0}}}\abs{f\paren{x,y}}\leq\abs{xy}\).
+
+Si \(\begin{dcases}
+\abs{x}\leq\epsilon \\
+\abs{y}\leq1
+\end{dcases}\) alors \(\abs{f\paren{x,y}}\leq\epsilon\) donc \(\delta=\epsilon\) convient.
+
+Donc \(f\) est continue.
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\begin{aligned}
+\quantifs{\forall\paren{x,y}\in\R^2\excluant\accol{\paren{0,0}}}\pdv{f}{x}\paren{x,y}&=y\paren{\dfrac{x^2-y^2}{x^2+y^2}}+yx\paren{2y^2\times2x\times\paren{x^2+y^2}^{-2}} \\
+&=\dfrac{y\paren{x^2-y^2}\paren{x^2+y^2}+4y^3x^2}{\paren{x^2+y^2}^2} \\
+&=\dfrac{y\paren{x^4-y^4+4y^2x^2}}{\paren{x^2+y^2}^2}
+\end{aligned}\] et \(\quantifs{\forall x\in\R}f\paren{x,0}=0\).
+
+Donc \(\pdv{f}{x}\paren{0,0}=0\).
+
+On obtient de même : \[\quantifs{\forall\paren{x,y}\in\R^2}\pdv{f}{y}\paren{x,y}=\begin{dcases}
+-\dfrac{x\paren{y^4-x^4+4x^2y^2}}{\paren{y^2+x^2}^2} &\text{si }\paren{x,y}\not=\paren{0,0} \\
+0 &\text{sinon}
+\end{dcases}\] car on a : \[\begin{WithArrows}
+\quantifs{\forall\paren{x,y}\in\R^2}f\paren{x,y}&=-f\paren{y,x} \Arrow{\(\pdv{}{y}\)} \\
+\pdv{f}{y}\paren{x,y}&=-\pdv{f}{x}\paren{y,x}
+\end{WithArrows}\]
 \end{corr}
 
 \begin{exo}[Exercice 5]
