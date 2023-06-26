@@ -976,3 +976,39 @@ Alors les variables aléatoires \(f_1\paren{\paren{X_i}_{i\in I_1}},\dots,f_r\pa
 \begin{dem}
 \note{Exercice}
 \end{dem}
+
+\subsection{Interprétation de la loi binomiale}
+
+\begin{lem}\thlabel{lem:sommeLoisBinomialesEgaleLoiBinomialeSomme}
+Soient \(p\in\intervii{0}{1}\), \(n,m\in\Ns\) et \(X\) et \(Y\) des variables aléatoires indépendantes telles que \[X\sim\loibinomiale{n}{p}\qquad\text{et}\qquad Y\sim\loibinomiale{m}{p}.\]
+
+Alors on a \(X+Y\sim\loibinomiale{n+m}{p}\).
+\end{lem}
+
+\begin{dem}
+\(X\) et \(Y\) sont à valeurs dans \(\interventierii{0}{n}\) et \(\interventierii{0}{m}\) respectivement.
+
+On a : \(\begin{dcases}
+\quantifs{\forall i\in\interventierii{0}{n}}\proba{X=i}=\binom{i}{n}p^i\paren{1-p}^{n-i} \\
+\quantifs{\forall j\in\interventierii{0}{m}}\proba{Y=j}=\binom{j}{m}p^j\paren{1-p}^{m-j}
+\end{dcases}\)
+
+\(X+Y\) est à valeurs dans \(\interventierii{0}{n+m}\) et on a : \[\begin{WithArrows}
+\quantifs{\forall k\in\interventierii{0}{n+m}}\proba{X+Y=k}&=\sum_{i=0}^n\proba{X=i\text{ et }Y=k-i} \Arrow[ll,tikz={text width=4cm}]{car \(X\) et \(Y\) sont indépendantes} \\
+&=\sum_{i=0}^n\proba{X=i}\proba{Y=k-i} \\
+&=\sum_{i=0}^n\binom{i}{n}p^i\paren{1-p}^{n-i}\binom{k-i}{m}p^{k-i}\paren{1-p}^{m-k+i} \\
+&=p^k\paren{1-p}^{n-k}\sum_{i=0}^n\underbrace{\binom{i}{n}\binom{k-i}{m}}_{=\binom{k}{n+m}}.
+\end{WithArrows}\]
+
+Donc \(X+Y\sim\loibinomiale{n+m}{p}\).
+\end{dem}
+
+\begin{prop}
+Soient \(p\in\intervii{0}{1}\), \(n\in\Ns\) et \(X_1,\dots,X_n\) des variables aléatoires mutuellement indépendantes qui suivent chacune une loi de Bernoulli \(\loibernoulli{p}\).
+
+Alors \(X_1+\dots+X_n\sim\loibinomiale{n}{p}\).
+\end{prop}
+
+\begin{dem}
+Découle du \thref{lem:sommeLoisBinomialesEgaleLoiBinomialeSomme} par récurrence car \(\loibernoulli{p}=\loibinomiale{1}{p}\).
+\end{dem}
