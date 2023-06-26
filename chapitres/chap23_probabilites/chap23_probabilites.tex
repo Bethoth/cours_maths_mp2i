@@ -852,7 +852,24 @@ Les variables aléatoires \(X\) et \(Y\) sont indépendantes si, et seulement si
 \end{prop}
 
 \begin{dem}
-\note{À venir}
+\imprec Claire en prenant \(A=\accol{x}\) et \(B=\accol{y}\) pour tous \(x\in E\) et \(y\in F\).
+
+\impdir
+
+Supposons \(X\) et \(Y\) indépendantes.
+
+Soient \(A\subset E\) et \(B\subset F\).
+
+On a \(\accol{X\in A\text{ et }Y\in B}=\bigunion_{x\in A}\bigunion_{y\in B}\accol{X=x\text{ et }Y=y}\) (réunion disjointe).
+
+Donc : \[\begin{WithArrows}
+\proba{X\in A\text{ et }Y\in B}&=\sum_{x\in A}\sum_{y\in B}\proba{X=x\text{ et }Y=y} \Arrow[tikz={text width=3cm}]{car \(X\) et \(Y\) sont indépendantes} \\
+&=\sum_{x\in A}\sum_{y\in B}\proba{X=x}\proba{Y=y} \\
+&=\paren{\sum_{x\in A}\proba{X=x}}\paren{\sum_{y\in B}\proba{Y=y}} \Arrow{\(\star\)} \\
+&=\proba{X\in A}\proba{Y\in B}
+\end{WithArrows}\]
+
+\(\star\) : car \(\accol{X\in A}=\bigunion_{x\in A}\accol{X=x}\) et \(\accol{Y\in B}=\bigunion_{y\in B}\accol{Y=y}\) (réunions disjointes).
 \end{dem}
 
 \begin{exoex}
@@ -868,7 +885,24 @@ Les variables aléatoires \(S\) et \(P\) sont-elles indépendantes ?
 \end{exoex}
 
 \begin{corr}
-\note{À venir}
+Les lois de \(X\) et \(Y\) sont les lois marginales de \(\paren{X,Y}\) : \[\quantifs{\forall k\in\interventierii{1}{6}}\proba{X=k}=\sum_{l=1}^6\proba{X=k\text{ et }Y=l}=\dfrac{6}{36}=\dfrac{1}{6}.\]
+
+De même pour \(Y\), d'où \(X\sim Y\sim\loiuniforme{\interventierii{1}{6}}\).
+
+On a : \[\quantifs{\forall k,l\in\interventierii{1}{6}}\proba{X=k\text{ et }Y=l}=\dfrac{1}{36}=\proba{X=k}\proba{Y=l}.\]
+
+Donc \(X\) et \(Y\) sont indépendantes.
+
+De plus, on remarque \(\proba{S=2\text{ et }P=36}=0\).
+
+Or \(\begin{dcases}
+\proba{S=2}=\proba{X=Y=1}=\dfrac{1}{36} \\
+\proba{P=36}=\proba{X=Y=6}=\dfrac{1}{36}
+\end{dcases}\)
+
+Donc \(\proba{S=2\text{ et }P=36}\not=\proba{S=2}\proba{P=36}\).
+
+Donc \(S\) et \(P\) sont indépendantes.
 \end{corr}
 
 \begin{prop}
@@ -880,7 +914,20 @@ Alors les variables aléatoires \(f\paren{X}\) et \(g\paren{Y}\) sont indépenda
 \end{prop}
 
 \begin{dem}
-\note{À venir}
+Soient \(x\prim\in E\prim\) et \(y\prim\in F\prim\).
+
+On a \(\begin{dcases}
+\accol{f\paren{X}=x\prim}=\accol{X\in f\inv\paren{\accol{x\prim}}} \\
+\accol{g\paren{Y}=y\prim}=\accol{Y\in g\inv\paren{\accol{y\prim}}}
+\end{dcases}\)
+
+D'où : \[\begin{WithArrows}
+\proba{f\paren{X}=x\prim\text{ et }g\paren{Y}=y\prim}&=\proba{X\in f\inv\paren{\accol{x\prim}}\text{ et }Y\in g\inv\paren{\accol{y\prim}}} \Arrow[tikz={text width=2cm}]{car \(X\) et \(Y\) sont indépendantes} \\
+&=\proba{X\in f\inv\paren{\accol{x\prim}}}\proba{Y\in g\inv\paren{\accol{y\prim}}} \\
+&=\proba{f\paren{X}=x\prim}\proba{g\paren{Y}=y\prim}.
+\end{WithArrows}\]
+
+Donc \(f\paren{X}\) et \(g\paren{Y}\) sont indépendantes.
 \end{dem}
 
 \begin{defi}
@@ -896,3 +943,36 @@ Soient \(n\in\Ns\) et \(X_1,\dots,X_n\) des variables aléatoires.
 
 NB : si un énoncé ne précise pas \guillemets{mutuellement} ou \guillemets{deux à deux}, cela signifie \guillemets{mutuellement}.
 \end{defi}
+
+\subsection{Lemme des coalitions}
+
+\begin{lem}[Lemme des coalitions I]
+Soient \(n\in\Ns\), \(X_1,\dots,X_n\) des variables aléatoires mutuellement indépendantes, \(m\in\interventierii{1}{n-1}\) et deux fonctions \(f\) et \(g\) définies respectivement sur \(X_1\paren{\Omega}\times\dots\times X_m\paren{\Omega}\) et \(X_{m+1}\paren{\Omega}\times\dots\times X_n\paren{\Omega}\).
+
+Les variables aléatoires \(f\paren{X_1,\dots,X_m}\) et \(g\paren{X_{m+1},\dots,X_n}\) sont indépendantes.
+\end{lem}
+
+\begin{dem}
+Soient \(A\subset\Im f\) et \(B\subset\Im g\).
+
+On a : \[\begin{WithArrows}
+&\proba{f\paren{X_1,\dots,X_m}\in A\text{ et }g\paren{X_{m+1},\dots,X_n}\in B} \\
+&=\proba{\paren{X_1,\dots,X_m}\in f\inv\paren{A}\text{ et }\paren{X_{m+1},\dots,X_n}\in g\inv\paren{B}} \\
+&=\sum_{\paren{x_1,\dots,x_m}\in f\inv\paren{A}}\sum_{\paren{x_{m+1},\dots,x_n}\in g\inv\paren{B}}\proba{X_1=x_1\text{ et }\dots\text{ et }X_n=x_n} \Arrow[ll,tikz={text width=5cm}]{car \(X_1,\dots,X_n\) sont mutuellement indépendantes} \\
+&=\sum_{\paren{x_1,\dots,x_m}\in f\inv\paren{A}}\sum_{\paren{x_{m+1},\dots,x_n}\in g\inv\paren{B}}\proba{X_1=x_1}\dots\proba{X_n=x_n} \\
+&=\paren{\sum_{\paren{x_1,\dots,x_m}\in f\inv\paren{A}}\underbrace{\proba{X_1=x_1\text{ et }\dots\text{ et }X_m=x_m}}_{\substack{\text{car }X_1,\dots,X_m\text{ sont} \\ \text{mutuellement indépendantes}}}}\paren{\sum_{\paren{x_{m+1},\dots,x_n}\in g\inv\paren{B}}\underbrace{\proba{X_{m+1}=x_{m+1}\text{ et }\dots\text{ et }X_n=x_n}}_{\substack{\text{car }X_{m+1},\dots,X_n\text{ sont} \\ \text{mutuellement indépendantes}}}} \\
+&=\proba{f\paren{X_1,\dots,X_m}\in A}\proba{g\paren{X_{m+1},\dots,X_n}\in B}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{lem}[Lemme des coalitions II]
+Soient \(n,r\in\Ns\), \(X_1,\dots,X_n\) des variables mutuellement indépendantes et \(I_1,\dots,I_r\) des parties de \(\interventierii{1}{n}\) supposées non-vides et deux à deux disjointes.
+
+Pour tout \(k\in\interventierii{1}{r}\), on considère une fonction \(f_k\) définie sur \(\prod_{i\in I_k}X_i\paren{\Omega}\).
+
+Alors les variables aléatoires \(f_1\paren{\paren{X_i}_{i\in I_1}},\dots,f_r\paren{\paren{X_i}_{i\in I_r}}\) sont mutuellement indépendantes.
+\end{lem}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
