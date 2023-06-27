@@ -1279,3 +1279,63 @@ On a : \[\vari{X_1+\dots+X_n}=\vari{X_1}+\dots+\vari{X_n}.\]
 \begin{dem}
 Découle de la proposition précédente, car la covariance de deux variables aléatoires indépendantes est nulle.
 \end{dem}
+
+\subsection{Inégalités}
+
+\subsubsection{Inégalité de Markov}
+
+\begin{prop}
+Soient \(X\) une variable aléatoire réelle et \(a\in\Rps\).
+
+On a : \[\proba{\abs{X}\geq a}\leq\dfrac{\esp{\abs{X}}}{a}.\]
+\end{prop}
+
+\begin{dem}
+On pose : \[\fonction{Y}{\Omega}{\R}{\omega}{\begin{dcases}
+a &\text{si }\abs{X\paren{\omega}}\geq a \\
+0 &\text{sinon}
+\end{dcases}}\] de sorte que \(Y\leq\abs{X}\) et \(\esp{Y}=a\proba{\abs{X}\geq a}\).
+
+Par croissance de l'espérance, on a \(\esp{Y}\leq\esp{\abs{X}}\) et donc : \[a\proba{\abs{X}\geq a}\leq\esp{\abs{X}}.\]
+\end{dem}
+
+\subsubsection{Inégalité de Bienaymé-Tchebychev}
+
+\begin{prop}
+Soient \(X\) une variable aléatoire réelle et \(a\in\Rps\).
+
+On a : \[\proba{\abs{X-\esp{X}}\geq a}\leq\dfrac{\vari{X}}{a^2}.\]
+\end{prop}
+
+\begin{dem}
+On pose \(Y=\paren{X-\esp{X}}^2\).
+
+Selon l'inégalité de Markov, on a \(\proba{\abs{Y}\geq a^2}\leq\dfrac{\esp{Y}}{a^2}\).
+
+Donc \(\proba{\paren{X-\esp{X}}^2\geq a^2}\leq\dfrac{\esp{\paren{X-\esp{X}}^2}}{a^2}=\dfrac{\vari{X}}{a^2}\), \cad : \[\proba{\abs{X-\esp{X}}\geq a}\leq\dfrac{\vari{X}}{a^2}\] car \(a>0\).
+\end{dem}
+
+\begin{appl}
+Soient \(n\in\Ns\) et \(X_1,\dots,X_n\) des variables aléatoires réelles deux à deux indépendantes et de même loi.
+
+On pose : \(\begin{dcases}
+\quantifs{\forall n\in\Ns}S_n=\sum_{k=1}^nX_k \\
+m=\esp{X_1} \\
+\sigma=\ecarttype{X_1}
+\end{dcases}\)
+
+Soit \(\epsilon\in\Rps\).
+
+On a : \[\proba{\abs{\dfrac{S_n}{n}-m}\geq\epsilon}\leq\dfrac{\sigma^2}{n\epsilon^2}.\]
+\end{appl}
+
+\begin{dem}
+Appliquons l'inégalité de Bienaymé-Tchebychev à \(\dfrac{S_n}{n}\).
+
+On a : \[\begin{dcases}
+\esp{\dfrac{S_n}{n}}=\dfrac{\esp{X_1}+\dots+\esp{X_n}}{n}=m \\
+\vari{\dfrac{S_n}{n}}=\dfrac{1}{n^2}\paren{\vari{X_1}+\dots+\vari{X_n}}=\dfrac{\sigma^2}{n}
+\end{dcases}\]
+
+On obtient \(\proba{\abs{\dfrac{S_n}{n}-m}\geq\epsilon}\leq\dfrac{\frac{\sigma^2}{n}}{\epsilon^2}\).
+\end{dem}
