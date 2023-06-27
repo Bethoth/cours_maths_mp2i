@@ -1158,3 +1158,124 @@ Alors \(f\paren{X}\) admet pour espérance : \[\esp{f\paren{X}}=\sum_{n=1}^N\pro
 \begin{dem}
 \note{Exercice}
 \end{dem}
+
+\subsection{Variance, écart-type, covariance}
+
+\subsubsection{Définitions}
+
+\begin{defprop}
+Soit \(X\) une variable aléatoire réelle.
+
+La variance de \(X\) est le réel : \[\vari{X}=\esp{\paren{X-\esp{X}}^2}=\esp{X^2}-\esp{X}^2.\]
+
+L'écart-type de \(X\) est le réel : \[\ecarttype{X}=\sqrt{\vari{X}}.\]
+\end{defprop}
+
+\begin{dem}
+On a : \[\begin{aligned}
+\esp{\paren{X-\esp{X}}^2}&=\esp{X^2-2X\esp{X}-\esp{X}^2} \\
+&=\esp{X^2}-2\esp{X\esp{X}}+\esp{\esp{X}^2} \\
+&=\esp{X^2}-2\esp{X}^2+\esp{X}^2 \\
+&=\esp{X^2}-\esp{X}^2
+\end{aligned}\]
+\end{dem}
+
+\begin{ex}
+On s'intéresse au lancer d'un dé.
+
+Soit \(X\) une variable aléatoire telle que \(X\sim\loiuniforme{\interventierii{1}{6}}\).
+
+On a : \[\begin{WithArrows}
+\vari{X}&=\esp{X^2}-\esp{X}^2 \\
+&=\sum_{k=1}^6\proba{X=k}k^2-\paren{\dfrac{7}{2}}^2 \\
+&=\dfrac{1}{6}\sum_{k=1}^6k^2-\dfrac{49}{4} \\
+&=\dfrac{1}{6}\times\dfrac{6\times7\times13}{6}-\dfrac{49}{4} \Arrow{on calcule} \\
+&=\dfrac{35}{12}.
+\end{WithArrows}\]
+\end{ex}
+
+\begin{defprop}
+Soient \(X\) et \(Y\) deux variables aléatoires réelles.
+
+La covariance de \(X\) et \(Y\) est le réel : \[\cov{X}{Y}=\esp{\paren{X-\esp{X}}\paren{Y-\esp{Y}}}=\esp{XY}-\esp{X}\esp{Y}.\]
+\end{defprop}
+
+\begin{dem}
+On a : \[\begin{aligned}
+\esp{\paren{X-\esp{X}}\paren{Y-\esp{Y}}}&=\esp{XY-X\esp{Y}-\esp{X}Y+\esp{X}\esp{Y}} \\
+&=\esp{XY}-\esp{Y}\esp{X}-\esp{X}\esp{Y}+\esp{X}\esp{Y} \\
+&=\esp{XY}-\esp{X}\esp{Y}.
+\end{aligned}\]
+\end{dem}
+
+\begin{rem}
+Si \(X\) et \(Y\) sont indépendantes, alors \(\cov{X}{Y}=0\).
+\end{rem}
+
+\begin{dem}
+Si \(X\) et \(Y\) sont indépendantes, alors \(\esp{XY}=\esp{X}\esp{Y}\) donc \(\cov{X}{Y}=0\).
+\end{dem}
+
+\begin{exoex}
+On lance deux dés et on note \(X\) et \(Y\) les résultats obtenus.
+
+On pose \(S=X+Y\) et \(P=XY\).
+
+Calculer la covariance de \(S\) et \(P\).
+\end{exoex}
+
+\begin{corr}
+On a : \[\begin{WithArrows}
+\cov{S}{P}&=\esp{SP}-\esp{S}\esp{P} \\
+&=\esp{\paren{X+Y}XY}-\esp{X+Y}\esp{XY} \Arrow[tikz={text width=4cm}]{car \(X\) et \(Y\) sont indépendantes} \\
+&=\esp{X^2Y}+\esp{XY^2}-\esp{X+Y}\esp{X}\esp{Y} \Arrow{symétrie} \\
+&=2\esp{X^2Y}-2\esp{X}^2\esp{Y} \Arrow[tikz={text width=4cm}]{car \(X^2\) et \(Y\) sont indépendantes} \\
+&=2\esp{X^2}\esp{Y}-2\esp{X}^2\esp{Y} \\
+&=2\vari{X}\esp{Y} \\
+&=2\times\dfrac{35}{12}\times\dfrac{7}{2} \\
+&=\dfrac{245}{12}.
+\end{WithArrows}\]
+\end{corr}
+
+\subsubsection{Propriétés}
+
+\begin{prop}
+Soient \(X\) une variable aléatoire réelle et \(a,b\in\R\).
+
+On a : \[\vari{aX+b}=a^2\vari{X}.\]
+\end{prop}
+
+\begin{dem}
+On a : \[\begin{aligned}
+\vari{aX+b}&=\esp{\paren{aX+b-\esp{aX+b}}^2} \\
+&=\esp{\paren{aX+b-a\esp{X}-b}^2} \\
+&=\esp{a^2\paren{X-\esp{X}}^2} \\
+&=a^2\vari{X}.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}
+Soient \(n\in\Ns\) et \(X_1,\dots,X_n\) des variables aléatoires réelles.
+
+On a : \[\vari{\sum_{i=1}^nX_i}=\sum_{i=1}^n\vari{X_i}+2\sum_{1\leq i<j\leq n}\cov{X_i}{X_j}.\]
+\end{prop}
+
+\begin{dem}
+On a, en utilisant la définition de la variance et la linéarité de l'espérance : \[\begin{aligned}
+\vari{\sum_{i=1}^nX_i}&=\esp{\paren{\sum_{i=1}^nX_i}^2}-\esp{\sum_{i=1}^nX_i}^2 \\
+&=\esp{\sum_{i=1}^nX_i^2+2\sum_{1\leq i<j\leq n}X_iX_j}-\paren{\sum_{i=1}^n\esp{X_i}}^2 \\
+&=\sum_{i=1}^n\esp{X_i^2}+2\sum_{1\leq i<j\leq n}\esp{X_iX_j}-\paren{\sum_{i=1}^n\esp{X_i}^2+2\sum_{1\leq i<j\leq n}\esp{X_i}\esp{X_j}} \\
+&=\sum_{i=1}^n\paren{\esp{X_i^2}-\esp{X_i}^2}+2\sum_{1\leq i<j\leq n}\paren{\esp{X_iX_j}-\esp{X_i}\esp{X_j}} \\
+&=\sum_{i=1}^n\vari{X_i}+2\sum_{1\leq i<j\leq n}\cov{X_i}{X_j}.
+\end{aligned}\]
+\end{dem}
+
+\begin{cor}
+Soient \(n\in\Ns\) et \(X_1,\dots,X_n\) des variables aléatoires réelles deux à deux indépendantes.
+
+On a : \[\vari{X_1+\dots+X_n}=\vari{X_1}+\dots+\vari{X_n}.\]
+\end{cor}
+
+\begin{dem}
+Découle de la proposition précédente, car la covariance de deux variables aléatoires indépendantes est nulle.
+\end{dem}
