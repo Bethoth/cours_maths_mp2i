@@ -1012,3 +1012,149 @@ Alors \(X_1+\dots+X_n\sim\loibinomiale{n}{p}\).
 \begin{dem}
 Découle du \thref{lem:sommeLoisBinomialesEgaleLoiBinomialeSomme} par récurrence car \(\loibernoulli{p}=\loibinomiale{1}{p}\).
 \end{dem}
+
+\section{Espérance, variance}
+
+On considère toujours un espace probabilisé \(\groupe{\Omega}[\prem]\).
+
+\subsection{Espérance}
+
+\subsubsection{Définition}
+
+\begin{defi}
+Soit \(X:\Omega\to\R\) une variable aléatoire réelle.
+
+On appelle espérance de \(X\) et on note \(\esp{X}\) la somme : \[\esp{X}=\sum_{x\in X\paren{\Omega}}\proba{X=x}x.\]
+\end{defi}
+
+\begin{ex}
+Lancer de dé : \(X\sim\loiuniforme{\interventierii{1}{6}}\).
+
+On a : \[\esp{X}=\sum_{k=1}^6\dfrac{k}{6}=\dfrac{7}{2}.\]
+\end{ex}
+
+\begin{ex}
+Loi de Bernoulli : \(X\sim\loibernoulli{p}\).
+
+On a : \[\esp{X}=0\times\proba{X=0}+1\times\proba{X=1}=p.\]
+\end{ex}
+
+\begin{ex}
+Loi binomiale : \(X\sim\loibinomiale{n}{p}\).
+
+On a : \(\esp{X}=\sum_{k=0}^n\binom{k}{n}p^k\paren{1-p}^{n-k}\).
+
+Posons \(P\paren{T}=\sum_{k=0}^n\binom{k}{n}p^k\paren{1-p}^{n-k}T^k\in\poly[\R][T]\).
+
+On a \(P\paren{T}=\paren{pT+1-p}^n\) selon la formule du binôme de Newton.
+
+Donc : \[P\prim\paren{T}=\sum_{k=0}^nk\binom{k}{n}p^k\paren{1-p}^{n-k}T^{k-1}=np\paren{pT+1-p}^{n-1}.\]
+
+D'où, en évaluant en \(1\) : \[P\prim\paren{1}=\esp{X}=np.\]
+\end{ex}
+
+\subsubsection{Propriétés}
+
+\begin{prop}[Linéarité de l'espérance]
+Soient \(X:\Omega\to\R\) et \(Y:\Omega\to\R\) deux variables aléatoires réelles et \(\lambda\in\R\).
+
+On a : \[\esp{\lambda X}=\lambda\esp{X}\qquad\text{et}\qquad\esp{X+Y}=\esp{X}+\esp{Y}.\]
+
+On parle de \guillemets{linéarité} car l'ensemble \(\F{\Omega}{\R}\) des variables aléatoires sur \(\Omega\) est un \(\R\)-espace vectoriel et \(\operatorname{E}\) est une forme linéaire sur cet espace vectoriel.
+\end{prop}
+
+\begin{dem}
+Si \(\lambda\not=0\) : \[\begin{aligned}
+\esp{\lambda X}&=\sum_{x\in X\paren{\Omega}}\proba{\lambda X=\lambda x}\lambda x \\
+&=\sum_{x\in X\paren{\Omega}}\proba{X=x}\lambda x \\
+&=\lambda\esp{X}.
+\end{aligned}\]
+
+Si \(\lambda=0\) : vrai aussi.
+
+D'autre part, on a : \(\paren{X+Y}\paren{\Omega}\subset X\paren{\Omega}+Y\paren{\Omega}\).
+
+Donc : \[\begin{aligned}
+\esp{X+Y}&=\sum_{z\in X\paren{\Omega}+Y\paren{\Omega}}\proba{X+Y=z} \\
+&=\sum_{z\in X\paren{\Omega}+Y\paren{\Omega}}\sum_{\substack{\paren{a,b}\in X\paren{\Omega}\times Y\paren{\Omega} \\ a+b=z}}\proba{X=a\text{ et }Y=b}\paren{a+b} \\
+&=\sum_{a\in X\paren{\Omega}}\sum_{b\in Y\paren{\Omega}}\proba{X=a\text{ et }Y=b}\paren{a+b} \\
+&=\sum_{a\in X\paren{\Omega}}a\underbrace{\sum_{b\in Y\paren{\Omega}}\proba{X=a\text{ et }Y=b}}_{\proba{X=a}}+\sum_{b\in Y\paren{\Omega}}b\underbrace{\sum_{a\in X\paren{\Omega}}\proba{X=a\text{ et }Y=b}}_{\proba{Y=b}} \\
+&=\esp{X}+\esp{Y}.
+\end{aligned}\]
+\end{dem}
+
+\begin{rem}
+On retrouve que si \(X\sim\loibinomiale{n}{p}\) alors \(\esp{X}=np\) car \(X\sim X_1+\dots+X_n\) où \(X_1\sim\dots\sim X_n\sim\loibernoulli{p}\) donc \(\esp{X}=\esp{X_1}+\dots+\esp{X_n}=np\).
+\end{rem}
+
+\begin{ex}[Espérance de \(aX+b\)]
+Soient \(a,b\in\R\) et \(X\) une variable aléatoire réelle.
+
+On a : \[\esp{aX+b}=a\esp{X}+b.\]
+\end{ex}
+
+\begin{prop}
+Soient \(X:\Omega\to\R\) et \(Y:\Omega\to\R\) deux variables aléatoires réelles.
+
+Positivité : si \(X\geq0\) alors \(\esp{X}\geq0\).
+
+Croissance : si \(X\leq Y\) alors \(\esp{X}\leq\esp{Y}\).
+
+Inégalité triangulaire : on a \(\abs{\esp{X}}\leq\esp{\abs{X}}\).
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}[Espérance d'un produit]\thlabel{prop:espéranceProduit}
+Soient \(X\) et \(Y\) deux variables aléatoires réelles indépendantes.
+
+On a : \[\esp{XY}=\esp{X}\esp{Y}.\]
+\end{prop}
+
+\begin{dem}
+On a \(\paren{XY}\paren{\Omega}\subset X\paren{\Omega}Y\paren{\Omega}=\accol{xy}_{\paren{x,y}\in X\paren{\Omega}\times Y\paren{\Omega}}\).
+
+Donc : \[\begin{WithArrows}
+\esp{XY}&=\sum_{z\in X\paren{\Omega}Y\paren{\Omega}}\proba{XY=z}z \\
+&=\sum_{z\in X\paren{\Omega}Y\paren{\Omega}}\sum_{\substack{\paren{x,y}\in X\paren{\Omega}\times Y\paren{\Omega} \\ xy=z}}\proba{X=x\text{ et }Y=y}xy \Arrow[tikz={text width=3cm}]{car \(X\) et \(Y\) sont indépendantes} \\
+&=\sum_{x\in X\paren{\Omega}}\sum_{y\in Y\paren{\Omega}}\proba{X=x}\proba{Y=y}xy \\
+&=\esp{X}\esp{Y}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{cor}[Espérance d'un produit]
+Soient \(N\in\Ns\) et \(X_1,\dots,X_N\) des variables aléatoires réelles mutuellement indépendantes.
+
+On a : \[\esp{X_1\dots X_N}=\esp{X_1}\dots\esp{X_N}.\]
+\end{cor}
+
+\begin{dem}
+On raisonne par récurrence sur \(N\in\Ns\).
+
+Le corollaire est clairement vrai si \(N=1\) et si \(N=2\) selon la \thref{prop:espéranceProduit}.
+
+Soit \(N\in\Ns\). On suppose que le corollaire est vrai pour \(N\). Montrons qu'il est vrai pour \(N+1\).
+
+Soient \(X_1,\dots,X_{N+1}\) des variables aléatoires réelles mutuellement indépendantes.
+
+Selon le lemme des coalitions, les variables aléatoires \(X_1\) et \(X_2,\dots,X_{N+1}\) sont indépendantes.
+
+Donc selon la \thref{prop:espéranceProduit} : \[\begin{WithArrows}
+\esp{X_1\dots X_{N+1}}&=\esp{X_1}\esp{X_2\dots X_{N+1}} \Arrow[tikz={text width=4cm}]{selon l'hypothèse de récurrence} \\
+&=\esp{X_1}\dots\esp{X_{N+1}}
+\end{WithArrows}\]
+
+D'où le corollaire pour \(N+1\).
+\end{dem}
+
+\begin{prop}[Formule de transfert]
+Soient \(N\in\Ns\), \(X\) une variable aléatoire d'image finie \(\Im X=\accol{x_1,\dots,x_N}\) et \(f:\Im X\to\R\) une application.
+
+Alors \(f\paren{X}\) admet pour espérance : \[\esp{f\paren{X}}=\sum_{n=1}^N\proba{X=x_n}f\paren{x_n}.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
