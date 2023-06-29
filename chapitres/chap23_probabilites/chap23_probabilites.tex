@@ -1270,7 +1270,7 @@ On a, en utilisant la définition de la variance et la linéarité de l'espéran
 \end{aligned}\]
 \end{dem}
 
-\begin{cor}
+\begin{cor}\thlabel{cor:varianceSommeEgaleSommeVariancesSiVariablesIndépendantes}
 Soient \(n\in\Ns\) et \(X_1,\dots,X_n\) des variables aléatoires réelles deux à deux indépendantes.
 
 On a : \[\vari{X_1+\dots+X_n}=\vari{X_1}+\dots+\vari{X_n}.\]
@@ -1278,6 +1278,34 @@ On a : \[\vari{X_1+\dots+X_n}=\vari{X_1}+\dots+\vari{X_n}.\]
 
 \begin{dem}
 Découle de la proposition précédente, car la covariance de deux variables aléatoires indépendantes est nulle.
+\end{dem}
+
+\begin{prop}
+Soient \(n\in\Ns\), \(p\in\intervii{0}{1}\) et \(X\) une variable aléatoire.
+
+\begin{enumerate}
+    \item Si \(X\sim\loibernoulli{p}\) alors \(\vari{X}=p\paren{1-p}\). \\
+    \item Si \(X\sim\loibinomiale{n}{p}\) alors \(\vari{X}=np\paren{1-p}\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+On a : \[\begin{WithArrows}
+\vari{X}&=\esp{X^2}-\esp{X}^2 \Arrow{car \(X^2\sim X\)} \\
+&=p-p^2 \\
+&=p\paren{1-p}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{dem}[2]
+Soient \(X_1,\dots,X_n\) des variables aléatoires mutuellement indépendantes suivant toutes une loi \(\loibernoulli{p}\).
+
+On a \(X\sim X_1+\dots+X_n\).
+
+D'après le \thref{cor:varianceSommeEgaleSommeVariancesSiVariablesIndépendantes}, on a donc : \[\begin{aligned}
+\vari{X}&=\vari{X_1}+\dots+\vari{X_n} \\
+&=np\paren{1-p}.
+\end{aligned}\]
 \end{dem}
 
 \subsection{Inégalités}

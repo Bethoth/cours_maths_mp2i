@@ -505,6 +505,49 @@ Donc \(k\) majore \(\Ns\) : contradiction.
 Donc \(f\) n'est pas lipschitzienne.
 \end{ex}
 
+\subsection{Cas des fonctions à valeurs complexes}
+
+Soient \(I\) un intervalle de \(\R\) tel que \(\Card I\geq2\) et \(\fonction{f}{I}{\C}{x}{f_1\paren{x}+\i f_2\paren{x}}\) où \(f_1,f_2\in\F{I}{\R}\).
+
+\begin{defi}
+On dit que \(f\) est continue si, et seulement si, \(f_1\) et \(f_2\) sont continues.
+
+On dit que \(f\) est dérivable si, et seulement si, \(f_1\) et \(f_2\) sont dérivables.
+\end{defi}
+
+\begin{rem}
+Le théorème de Rolle et l'égalité des accroissements finis sont faux pour les fonctions à valeurs complexes. En revanche l'inégalité des accroissements finis reste vraie.
+\end{rem}
+
+\begin{ex}
+On pose \(\fonction{f}{\R}{\C}{x}{\e{\i x}}\)
+
+On a \(f\paren{0}=f\paren{2\pi}\) mais \(f\prim\) ne s'annule jamais sur \(\intervii{0}{2\pi}\).
+\end{ex}
+
+\begin{theo}[Inégalité des accroissements finis]
+Soient \(a,b\in\R\) tels que \(a<b\), \(f:\intervii{a}{b}\to\C\) une fonction continue sur \(\intervii{a}{b}\) et dérivable sur \(\intervee{a}{b}\) et \(M\in\Rp\) tel que \[\quantifs{\forall t\in\intervii{a}{b}}\abs{f\prim\paren{t}}\leq M.\]
+
+On a : \[\abs{f\paren{b}-f\paren{a}}\leq M\paren{b-a}.\]
+\end{theo}
+
+\begin{dem}
+Si \(f\paren{a}=f\paren{b}\) : on a l'inégalité.
+
+Supposons \(f\paren{a}\not=f\paren{b}\).
+
+Posons \(g=f\times\e{-\i\arg\paren{f\paren{b}-f\paren{a}}}\) de sorte que : \[g\paren{b}-g\paren{a}=\paren{f\paren{b}-f\paren{a}}\e{-\i\arg\paren{f\paren{b}-f\paren{a}}}\in\Rp.\]
+
+On a \(\abs{f\paren{b}-f\paren{a}}=g\paren{b}-g\paren{a}\).
+
+Posons \(g=g_1+\i g_2\) où \(g_1,g_2\in\F{\intervii{a}{b}}{\R}\).
+
+En appliquant l'inégalité des accroissements finis à \(g_1\), on a : \[\begin{WithArrows}
+g\paren{b}-g\paren{a}&=g_1\paren{b}-g_1\paren{a} \Arrow[tikz={text width=5.7cm}]{\(\quantifs{\forall t\in\intervee{a}{b}}\abs{g_1\prim\paren{t}}=\abs{\Re g\prim\paren{t}}\leq\abs{g\prim\paren{t}}=\abs{f\prim\paren{t}}\leq M\)} \\
+&\leq M\paren{b-a}
+\end{WithArrows}\]
+\end{dem}
+
 \subsection{Fonctions croissantes}
 
 \begin{theo}
