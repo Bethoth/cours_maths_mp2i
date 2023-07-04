@@ -686,3 +686,61 @@ Soit \(f\in\F{A}{\K}\). On a : \[f\paren{t}\simqd{t\to a}0\ssi f\text{ est nulle
 
 NB : l'équivalence précédente est valable pour toute limite finie non-nulle. En particulier, deux fonctions admettant un même limite finie non-nulle sont équivalentes.
 \end{ex}
+
+\subsection{Propriétés de \(\sim\)}
+
+\begin{prop}
+La relation \guillemets{être équivalentes au voisinage de \(a\)} est une relation d'équivalence sur \(\F{A}{\K}\).
+\end{prop}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\).
+
+On a : \[f\paren{t}\simqd{t\to a}g\paren{t}\imp\begin{dcases}
+    f\paren{t}\egqd{t\to a}\O{g\paren{t}} \\
+    g\paren{t}\egqd{t\to a}\O{f\paren{t}}
+\end{dcases}\]
+\end{prop}
+
+\begin{prop}[Cas réel : limite et signe]
+Soient \(f,g\in\F{A}{\R}\) et \(l\in\Rb\).
+
+Si \(\begin{dcases}
+    \lim_{t\to a}f\paren{t}=l \\
+    f\paren{t}\simqd{t\to a}g\paren{t}
+\end{dcases}\) alors \(\lim_{t\to a}g\paren{t}=l\).
+
+Si \(f\paren{t}\simqd{t\to a}g\paren{t}\) alors \(f\) et \(g\) sont de même signe au sens strict sur un voisinage de \(a\) : \[\quantifs{\exists V\in\V{a};\forall t\in V}\sg f\paren{t}=\sg g\paren{t}.\]
+\end{prop}
+
+\begin{prop}[Cas complexe : limite]
+Soient \(f,g\in\F{A}{\C}\) et \(l\in\C\).
+
+Si \(\begin{dcases}
+\lim_{t\to a}f\paren{t}=l \\
+f\paren{t}\simqd{t\to a}g\paren{t}
+\end{dcases}\) alors \(\lim_{t\to a}g\paren{t}=l\).
+\end{prop}
+
+\begin{prop}[Produits]
+Soient \(f,g,h,k\in\F{A}{\K}\).
+
+On a, quand \(t\) tend vers \(a\) : \[\begin{dcases}
+f\paren{t}\sim g\paren{t} \\
+h\paren{t}\sim k\paren{t}
+\end{dcases}\imp f\paren{t}h\paren{t}\sim g\paren{t}k\paren{t}.\]
+\end{prop}
+
+\begin{prop}[Puissances]
+Soient \(f,g\in\F{A}{\Rps}\) et \(\alpha\in\R\).
+
+On a, quand \(t\) tend vers \(a\) : \[f\paren{t}\sim g\paren{t}\imp f\paren{t}^\alpha\sim g\paren{t}^\alpha.\]
+
+On retient en particulier : \[f\paren{t}\sim g\paren{t}\imp\dfrac{1}{f\paren{t}}\sim\dfrac{1}{g\paren{t}}.\]
+
+La même proposition est vraie en prenant \(f,g\in\F{A}{\C}\) et \(\alpha\in\N\) ou en prenant \(f,g\in\F{A}{\Cs}\) et \(\alpha\in\Z\).
+\end{prop}
+
+\begin{prop}[Sommes]
+On ne fait pas de sommes d'équivalents.
+\end{prop}
