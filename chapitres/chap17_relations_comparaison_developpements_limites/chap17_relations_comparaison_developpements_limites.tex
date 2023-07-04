@@ -369,3 +369,92 @@ Soit \(\paren{u_n}_n\in\K^\N\). On a : \[u_n\simqd{n\to\pinf}0\ssi\paren{u_n}_n\
 
 NB : l'équivalence précédente est valable pour toute limite finie non-nulle. En particulier, deux suites admettant une même limite finie non-nulle sont équivalentes.
 \end{ex}
+
+\subsection{Propriétés de \(\sim\)}
+
+\begin{prop}
+La relation \(\sim\) est une relation d'équivalence sur \(\K^\N\).
+\end{prop}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+On a : \[u_n\simqd{n\to\pinf}v_n\imp\begin{dcases}
+u_n\egqd{n\to\pinf}\O{v_n} \\
+v_n\egqd{n\to\pinf}\O{u_n}
+\end{dcases}\]
+\end{prop}
+
+\begin{prop}[Cas réel : limite et signe]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\) et \(l\in\Rb\).
+
+Si \(\begin{dcases}
+\lim_{n\to\pinf}u_n=l \\
+u_n\simqd{n\to\pinf}v_n
+\end{dcases}\) alors \(\lim_{n\to\pinf}v_n=l\).
+
+Si \(u_n\simqd{n\to\pinf}v_n\) alors \(\paren{u_n}_n\) et \(\paren{v_n}_n\) sont de même signe au sens strict à partir d'un certain rang : \[\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\sg u_n=\sg v_n.\]
+\end{prop}
+
+\begin{dem}
+On suppose \(u_n\simqd{n\to\pinf}v_n\).
+
+Soit \(\paren{\lambda_n}_n\in\R^\N\) telle que \(\begin{dcases}
+\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}v_n=\lambda_nu_n \\
+\lim_{n\to\pinf}\lambda_n=1
+\end{dcases}\)
+
+Supposons \(\lim_nu_n=l\). Alors \(\lim_n\lambda_nu_n=l\) donc \(\lim_nv_n=l\).
+
+Comme \(\lim_n\lambda_n=1\), il existe \(N\in\N\) tel que \(\quantifs{\forall n\in\interventierie{N}{\pinf}}\begin{dcases}
+\lambda_n\geq\dfrac{1}{2} \\
+v_n=\lambda_nu_n
+\end{dcases}\) donc \[\quantifs{\forall n\in\interventierie{N}{\pinf}}\sg v_n=\sg u_n.\]
+\end{dem}
+
+\begin{prop}[Cas complexe : limite]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(l\in\C\).
+
+Si \(\begin{dcases}
+\lim_{n\to\pinf}u_n=l \\
+u_n\simqd{n\to\pinf}v_n
+\end{dcases}\) alors \(\lim_{n\to\pinf}v_n=l\).
+\end{prop}
+
+\begin{prop}[Produits]
+Soient \(\paren{a_n}_n,\paren{b_n}_n,\paren{c_n}_n,\paren{d_n}_n\in\K^\N\).
+
+On a, quand \(n\) tend vers \(\pinf\) : \[\begin{dcases}
+a_n\sim b_n \\
+c_n\sim d_n
+\end{dcases}\imp a_nc_n\sim b_nd_n.\]
+\end{prop}
+
+\begin{prop}[Puissances]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\paren{\Rps}^\N\) et \(\alpha\in\R\).
+
+On a, quand \(n\) tend vers \(\pinf\) : \[u_n\sim v_n\imp u_n^\alpha\sim v_n^\alpha.\]
+
+On retient en particulier : \[u_n\sim v_n\imp\dfrac{1}{u_n}\sim\dfrac{1}{v_n}.\]
+
+La même proposition est vraie en prenant \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(\alpha\in\N\) ou en prenant \(\paren{u_n}_n,\paren{v_n}_n\in\paren{\Cs}^\N\) et \(\alpha\in\Z\).
+\end{prop}
+
+\begin{prop}[Suites extraites]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(\phi:\N\to\N\) une fonction strictement croissante.
+
+On a : \[u_n\simqd{n\to\pinf}\imp u_{\phi\paren{n}}\simqd{n\to\pinf}v_{\phi\paren{n}}.\]
+\end{prop}
+
+\begin{prop}[Sommes]
+On ne fait pas de sommes d'équivalents.
+\end{prop}
+
+\begin{dem}
+Quand \(n\) tend vers \(\pinf\) :
+
+On a \(\begin{dcases}
+1+\dfrac{1}{n}\sim1 \\
+-1+\dfrac{1}{n}\sim-1
+\end{dcases}\) mais on n'a pas \(\dfrac{2}{n}\sim0\).
+\end{dem}
