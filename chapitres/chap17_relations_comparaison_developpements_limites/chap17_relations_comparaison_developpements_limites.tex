@@ -744,3 +744,19 @@ La même proposition est vraie en prenant \(f,g\in\F{A}{\C}\) et \(\alpha\in\N\)
 \begin{prop}[Sommes]
 On ne fait pas de sommes d'équivalents.
 \end{prop}
+
+\subsection{Changements de variable}
+
+\begin{prop}
+Soient \(B\subset\R\) et \(b\in\Rb\) tels que tout voisinage de \(b\) dans \(\R\) rencontre \(B\) : \[\quantifs{\forall V\in\V{b}}V\inter B\not=\ensvide.\]
+
+Soient \(\phi:B\to A\) telle que \(\lim_{s\to b}\phi\paren{s}=a\) et \(f,g\in\F{A}{\K}\).
+
+On a :
+
+\begin{enumerate}
+    \item Si \(f\paren{t}\egqd{t\to a}\O{g\paren{t}}\) alors \(f\paren{\phi\paren{s}}\egqd{s\to b}\O{g\paren{\phi\paren{s}}}\). \\
+    \item Si \(f\paren{t}\egqd{t\to a}\o{g\paren{t}}\) alors \(f\paren{\phi\paren{s}}\egqd{s\to b}\o{g\paren{\phi\paren{s}}}\). \\
+    \item Si \(f\paren{t}\simqd{t\to a}g\paren{t}\) alors \(f\paren{\phi\paren{s}}\simqd{s\to b}g\paren{\phi\paren{s}}\).
+\end{enumerate}
+\end{prop}
