@@ -306,3 +306,66 @@ Soient \(a\in\intervee{0}{1}\) et \(\alpha\in\Rms\).
 
 De même, \(a^n\egqd{n\to\pinf}\o{n^\alpha}\) découle de ce qui précède.
 \end{dem}
+
+\subsection{Relation d'équivalence \(\sim\)}
+
+\begin{defprop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(v_n\egqd{n\to\pinf}u_n+\o{u_n}\) \\
+    \item \(u_n\egqd{n\to\pinf}v_n+\o{v_n}\) \\
+    \item Il existe une suite \(\paren{\lambda_n}_n\in\K^\N\) telle que : \[\lim_{n\to\pinf}\lambda_n=1\qquad\text{et}\qquad\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=\lambda_nv_n\]
+    \item Il existe une suite \(\paren{\mu_n}_n\in\K^\N\) telle que : \[\lim_{n\to\pinf}\mu_n=1\qquad\text{et}\qquad\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}v_n=\mu_nu_n.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[\paren{u_n}_n\text{ est équivalente à }\paren{v_n}_n\] ou que \[\begin{aligned}
+u_n\text{ est équivalent à }v_n\text{ quand }n\text{ tend vers }\pinf \\
+u_n\text{ est un équivalent de }v_n\text{ quand }n\text{ tend vers }\pinf
+\end{aligned}\] et on note : \[u_n\sim v_n\text{ quand }n\text{ tend vers }\pinf\] ou : \[u_n\simqd{n\to\pinf}v_n.\]
+\end{defprop}
+
+\begin{dem}[(2) \(\ssi\) (3)]
+On a : \[\begin{aligned}
+u_n\egqd{n\to\pinf}v_n+\o{v_n}&\ssi\quantifs{\exists\paren{\epsilon_n}_n\in\K^\N}\begin{dcases}
+\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=v_n+\epsilon_nv_n \\
+\lim_n\epsilon_n=0
+\end{dcases} \\
+&\ssi\quantifs{\exists\paren{\epsilon_n}_n\in\K^\N}\begin{dcases}
+\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=\paren{1+\epsilon_n}v_n \\
+\lim_n\epsilon_n=0
+\end{dcases} \\
+&\ssi\quantifs{\exists\paren{\lambda_n}_n\in\K^\N}\begin{dcases}
+\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=\lambda_nv_n \\
+\lim_n\lambda_n=1
+\end{dcases}
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[(1) \(\ssi\) (4)]
+Idem.
+\end{dem}
+
+\begin{dem}[(3) \(\ssi\) (4)]~\\
+Claire en prenant \(\mu_n=\dfrac{1}{\lambda_n}\) à partir d'un certain rang.
+\end{dem}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+Si les termes de \(\paren{v_n}_n\) sont non-nuls à partir d'un certain rang : \[\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}v_n\not=0,\] alors : \[u_n\simqd{n\to\pinf}v_n\ssi\lim_{n\to\pinf}\dfrac{u_n}{v_n}=1.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a : \[n^\alpha\simqd{n\to\pinf}n^\beta\ssi\alpha=\beta.\]
+
+Soient \(a,b\in\Rps\). On a : \[a^n\simqd{n\to\pinf}b^n\ssi a=b.\]
+
+Soient \(d\in\N\), \(a_0,\dots,a_d\in\C\) tels que \(a_d\not=0\) et \(P=a_dX^d+\dots+a_0X^0\in\poly[\C]\). On a : \[P\paren{n}\simqd{n\to\pinf}a_dn^d.\]
+
+Soit \(\paren{u_n}_n\in\K^\N\). On a : \[u_n\simqd{n\to\pinf}0\ssi\paren{u_n}_n\text{ est nulle à partir d'un certain rang}\] et : \[\quantifs{\forall l\in\K\excluant\accol{0}}u_n\simqd{n\to\pinf}l\ssi\lim_{n\to\pinf}u_n=l.\]
+
+NB : l'équivalence précédente est valable pour toute limite finie non-nulle. En particulier, deux suites admettant une même limite finie non-nulle sont équivalentes.
+\end{ex}
