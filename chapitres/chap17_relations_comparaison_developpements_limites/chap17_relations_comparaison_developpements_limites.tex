@@ -468,3 +468,51 @@ On a : \[n!\simqd{n\to\pinf}\sqrt{2\pi n}\paren{\dfrac{n}{\e{}}}^n.\]
 \begin{dem}
 \note{Admise}
 \end{dem}
+
+\section{Relations de comparaison : cas général}
+
+On va maintenant étendre ce qui précède au cas des fonctions définies sur un ensemble \(A\subset\R\), à valeurs dans \(\K=\R\) ou \(\C\) et dont on étudie le comportement au voisinage d'un point \(a\in\Rb\).
+
+Pour cela, on suppose qu'il existe des points où la fonction \(f\) est définie et qui sont arbitrairement proches de \(a\) (autrement, étudier le comportement de \(f\) au voisinage de \(a\) n'a pas de sens).
+
+Précisément, on supposera que tout voisinage de \(a\) dans \(\R\) rencontre \(A\) : \[\quantifs{\forall V\in\V{a}}V\inter A\not=\ensvide.\]
+
+\begin{itemize}
+    \item Si \(a=\pinf\), cela signifie que \(A\) est une partie de \(\R\) non-majorée. \\
+    \item Si \(a=\minf\), cela signifie que \(A\) est une partie de \(\R\) non-minorée. \\
+    \item Si \(a\in\R\), cela signifie : \(\quantifs{\forall\epsilon\in\Rps;\exists a\prim\in A}\abs{a\prim-a}\leq\epsilon\).
+\end{itemize}
+
+On fixe dans la suite une telle partie \(A\) et un tel point \(a\in\Rb\).
+
+\subsection{Relation de domination \(\mathscr{O}\)}
+
+\begin{defprop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(\quantifs{\exists M\in\Rp;\exists V\in\V{a};\forall t\in V}\abs{f\paren{t}}\leq M\abs{g\paren{t}}\) \\
+    \item Il existe une fonction \(\lambda\in\F{A}{\K}\) telle que : \[\lambda\text{ est bornée}\qquad\text{et}\qquad\quantifs{\exists V\in\V{a};\forall t\in V}f\paren{t}=\lambda\paren{t}g\paren{t}.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[g\text{ domine }f\] ou que \[g\paren{t}\text{ domine }f\paren{t}\text{ quand }t\text{ tend vers }a\] et on note : \[f\paren{t}=\O{g\paren{t}}\text{ quand }t\text{ tend vers }a\] ou : \[f\paren{t}\egqd{t\to a}\O{g\paren{t}}.\]
+\end{defprop}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Si \(g\) ne s'annule pas sur un voisinage \(V\) de \(a\) : \[\quantifs{\forall t\in V}g\paren{t}\not=0,\] alors : \[f\paren{t}\egqd{t\to a}\O{g\paren{t}}\ssi\dfrac{f}{g}\text{ est bornée sur }V.\]
+
+Si \(g\) ne s'annule pas : \[\quantifs{\forall t\in A}g\paren{t}\not=0,\] alors : \[f\paren{t}\egqd{t\to a}\O{g\paren{t}}\ssi\dfrac{f}{g}\text{ est bornée sur un voisinage de }a.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a, quand \(t\) tend vers \(\pinf\) : \[t^\alpha=\O{t^\beta}\ssi\alpha\leq\beta.\]
+
+Soit \(f\in\F{A}{\K}\). On a, quand \(t\) tend vers \(a\) : \[\begin{aligned}
+f\paren{t}=\O{0}&\ssi f\text{ est nulle sur un voisinage de }a \\
+&\ssi\quantifs{\exists V\in\V{a};\forall t\in V\inter A}f\paren{t}=0
+\end{aligned}\] et : \[f\paren{t}=\O{1}\ssi f\text{ est bornée sur un voisinage de }a,\] \cad : \[f\paren{t}=\O{1}\ssi\quantifs{\exists V\in\V{a};\exists M\in\Rp;\forall t\in V\inter A}\abs{f\paren{t}}\leq M.\]
+\end{ex}
