@@ -516,3 +516,30 @@ f\paren{t}=\O{0}&\ssi f\text{ est nulle sur un voisinage de }a \\
 &\ssi\quantifs{\exists V\in\V{a};\forall t\in V\inter A}f\paren{t}=0
 \end{aligned}\] et : \[f\paren{t}=\O{1}\ssi f\text{ est bornée sur un voisinage de }a,\] \cad : \[f\paren{t}=\O{1}\ssi\quantifs{\exists V\in\V{a};\exists M\in\Rp;\forall t\in V\inter A}\abs{f\paren{t}}\leq M.\]
 \end{ex}
+
+\subsection{Relation de négligeabilité \(o\)}
+
+\begin{defprop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(\quantifs{\forall\epsilon\in\Rps;\exists V\in\V{a};\forall t\in V}\abs{f\paren{t}}\leq\epsilon\abs{g\paren{t}}\) \\
+    \item Il existe une fonction \(\epsilon\in\F{A}{\K}\) telle que : \[\lim_{t\to a}\epsilon\paren{t}=0\qquad\text{et}\qquad\quantifs{\exists V\in\V{a};\forall t\in V}f\paren{t}=\epsilon\paren{t}g\paren{t}.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[f\text{ est négligeable devant }g\] ou que \[f\paren{t}\text{ est négligeable devant }g\paren{t}\text{ quand }t\text{ tend vers }a\] et on note : \[f\paren{t}=\o{g\paren{t}}\text{ quand }t\text{ tend vers }a\] ou : \[f\paren{t}\egqd{t\to a}\o{g\paren{t}}.\]
+\end{defprop}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Si \(g\) ne s'annule pas au voisinage de \(a\) : \[\quantifs{\exists V\in\V{a};\forall t\in V}g\paren{t}\not=0,\] alors : \[f\paren{t}\egqd{t\to a}\o{g\paren{t}}\ssi\lim_{t\to a}\dfrac{f\paren{t}}{g\paren{t}}=0.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a, quand \(t\) tend vers \(a\) : \[t^\alpha=\o{t^\beta}\ssi\alpha<\beta.\]
+
+Soit \(f\in\F{A}{\K}\). On a : \[f\paren{t}\egqd{t\to a}\o{0}\ssi f\text{ est nulle sur un voisinage de }a\] et : \[f\paren{t}\egqd{t\to a}\o{1}\ssi\lim_{t\to a}f\paren{t}=0.\]
+\end{ex}
