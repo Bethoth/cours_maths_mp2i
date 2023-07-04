@@ -131,13 +131,13 @@ Or \(\Arctan:\R\to\R\) est continue donc \(g\) est continue par composition.
 \begin{nota}
 Soient \(\Omega\) un ouvert de \(\R^2\) contenant \(\paren{0,0}\) et \(g:\Omega\to\R\).
 
-On dit que \(g\paren{x}\) est négligeable devant \(\norme{x}\) et on note \(g\paren{x}\egqd{x\to\paren{0,0}}o\paren{\norme{x}}\) si on a : \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x\in\Omega}\norme{x}\leq\delta\imp\abs{g\paren{x}}\leq\epsilon\norme{x}.\]
+On dit que \(g\paren{x}\) est négligeable devant \(\norme{x}\) et on note \(g\paren{x}\egqd{x\to\paren{0,0}}\o{\norme{x}}\) si on a : \[\quantifs{\forall\epsilon\in\Rps;\exists\delta\in\Rps;\forall x\in\Omega}\norme{x}\leq\delta\imp\abs{g\paren{x}}\leq\epsilon\norme{x}.\]
 \end{nota}
 
 \begin{defi}
 Soient \(\Omega\) un ouvert de \(\R^2\), \(f:\Omega\to\R\) et \(a=\paren{a_1,a_2}\in\Omega\).
 
-On dit que \(f\) admet un développement limité à l'ordre 1 en \(a\) s'il existe \(\lambda,\mu\in\R\) tels que : \[f\paren{a_1+h_1,a_2+h_2}\egqd{h=\paren{h_1,h_2}\to\paren{0,0}}f\paren{a_1,a_2}+\lambda h_1+\mu h_2+o\paren{\norme{h}}.\]
+On dit que \(f\) admet un développement limité à l'ordre 1 en \(a\) s'il existe \(\lambda,\mu\in\R\) tels que : \[f\paren{a_1+h_1,a_2+h_2}\egqd{h=\paren{h_1,h_2}\to\paren{0,0}}f\paren{a_1,a_2}+\lambda h_1+\mu h_2+\o{\norme{h}}.\]
 
 Les réels \(\lambda\) et \(\mu\) sont alors uniques.
 \end{defi}
@@ -194,7 +194,7 @@ Alors \(f\) admet un développement limité à l'ordre 1 en tout point de \(\Ome
 
 Soit \(\paren{x_0,y_0}\in\Omega\).
 
-Alors on a : \[f\paren{x_1,y_1}\egqd{\paren{x_1,y_1}\to\paren{x_0,y_0}}f\paren{x_0,y_0}+\paren{x_1-x_0}\pdv{f}{x}\paren{x_0,y_0}+\paren{y_1-y_0}\pdv{f}{y}\paren{x_0,y_0}+o\paren{\norme{\paren{x_1-x_0,y_1-y_0}}}\]
+Alors on a : \[f\paren{x_1,y_1}\egqd{\paren{x_1,y_1}\to\paren{x_0,y_0}}f\paren{x_0,y_0}+\paren{x_1-x_0}\pdv{f}{x}\paren{x_0,y_0}+\paren{y_1-y_0}\pdv{f}{y}\paren{x_0,y_0}+\o{\norme{\paren{x_1-x_0,y_1-y_0}}}\]
 \end{theo}
 
 \begin{dem}
@@ -220,7 +220,7 @@ f\paren{x_1,y_1}-f\paren{x_0,y_0}&=\underbrace{\int_{y_0}^{y_1}\underbrace{\pare
 
 Donc \[\begin{aligned}
 \int_{y_0}^{y_1}\paren{\pdv{f}{y}\paren{x_1,t}-\pdv{f}{y}\paren{x_0,y_0}}\odif{t}+\int_{x_0}^{x_1}\paren{\pdv{f}{x}\paren{t,y_0}-\pdv{f}{x}\paren{x_0,y_0}}\odif{t}&\leq2\epsilon\norme{\paren{x_1,y_1}-\paren{x_0,y_0}} \\
-&=o\paren{\norme{\paren{x_1-x_0,y_1-y_0}}}.
+&=\o{\norme{\paren{x_1-x_0,y_1-y_0}}}.
 \end{aligned}\]
 
 D'où le résultat.
@@ -231,7 +231,7 @@ Soient \(\Omega\) un ouvert de \(\R^2\), \(f\in\ensclasse{1}{\Omega}{\R}\) et \(
 
 On appelle gradient de \(f\) en \(a\) le vecteur \[\nabla f\paren{a}=\paren{\pdv{f}{x}\paren{a},\pdv{f}{y}\paren{a}}.\]
 
-Selon le théorème précédent, il vérifie : \[f\paren{a+h}\egqd{h\to\paren{0,0}}f\paren{a}+\ps{\nabla f\paren{a}}{h}+o\paren{\norme{h}}.\]
+Selon le théorème précédent, il vérifie : \[f\paren{a+h}\egqd{h\to\paren{0,0}}f\paren{a}+\ps{\nabla f\paren{a}}{h}+\o{\norme{h}}.\]
 \end{defi}
 
 \begin{exoex}
@@ -258,15 +258,15 @@ Alors \(\fonction{g}{I}{\R}{t}{f\paren{\gamma\paren{t}}}\) est de classe \(\clas
 Soit \(t\in I\).
 
 On a, quand \(h\to0\) : \(\begin{dcases}
-\gamma_1\paren{t+h}=\gamma_1\paren{t}+\gamma_1\prim\paren{t}h+o\paren{h} \\
-\gamma_2\paren{t+h}=\gamma_2\paren{t}+\gamma_2\prim\paren{t}h+o\paren{h}
+\gamma_1\paren{t+h}=\gamma_1\paren{t}+\gamma_1\prim\paren{t}h+\o{h} \\
+\gamma_2\paren{t+h}=\gamma_2\paren{t}+\gamma_2\prim\paren{t}h+\o{h}
 \end{dcases}\)
 
 Donc : \[\begin{aligned}
-g\paren{t+h}&=f\paren{\gamma_1\paren{t}+\underbrace{\gamma_1\prim\paren{t}h+o\paren{h}}_{\to0},\gamma_2\paren{t}+\underbrace{\gamma_2\prim\paren{t}h+o\paren{h}}_{\to0}} \\
-&=f\paren{\gamma\paren{t}}+\pdv{f}{x}\paren{\gamma\paren{t}}\paren{\gamma_1\prim\paren{t}h+o\paren{h}}+\pdv{f}{y}\paren{\gamma\paren{t}}\paren{\gamma_2\prim\paren{t}h+o\paren{h}} \\
-&\color{white}=\color{black}+\underbrace{o\paren{\norme{\paren{\underbrace{\gamma_1\prim\paren{t}h+o\paren{h}}_{O\paren{h}},\underbrace{\gamma_2\prim\paren{t}h+o\paren{h}}_{O\paren{h}}}}}}_{o\paren{h}} \\
-&=g\paren{t}+\paren{\pdv{f}{x}\paren{\gamma\paren{t}}\gamma_1\prim\paren{t}+\pdv{f}{y}\paren{\gamma\paren{t}}\gamma_2\prim\paren{t}}h+o\paren{h}
+g\paren{t+h}&=f\paren{\gamma_1\paren{t}+\underbrace{\gamma_1\prim\paren{t}h+\o{h}}_{\to0},\gamma_2\paren{t}+\underbrace{\gamma_2\prim\paren{t}h+\o{h}}_{\to0}} \\
+&=f\paren{\gamma\paren{t}}+\pdv{f}{x}\paren{\gamma\paren{t}}\paren{\gamma_1\prim\paren{t}h+\o{h}}+\pdv{f}{y}\paren{\gamma\paren{t}}\paren{\gamma_2\prim\paren{t}h+\o{h}} \\
+&\color{white}=\color{black}+\underbrace{\o{\norme{\paren{\underbrace{\gamma_1\prim\paren{t}h+\o{h}}_{\O{h}},\underbrace{\gamma_2\prim\paren{t}h+\o{h}}_{\O{h}}}}}}_{\o{h}} \\
+&=g\paren{t}+\paren{\pdv{f}{x}\paren{\gamma\paren{t}}\gamma_1\prim\paren{t}+\pdv{f}{y}\paren{\gamma\paren{t}}\gamma_2\prim\paren{t}}h+\o{h}
 \end{aligned}\]
 
 Donc \(g\) est dérivable, de dérivée \(\pdv{f}{x}\paren{\gamma\paren{t}}\gamma_1\prim\paren{t}+\pdv{f}{y}\paren{\gamma\paren{t}}\gamma_2\prim\paren{t}\).

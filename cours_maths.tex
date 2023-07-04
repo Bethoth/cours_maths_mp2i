@@ -155,8 +155,6 @@ per-mode=power-positive-first
 \newcommand{\prem}{\mathbb{P}}
 
 \newcommand{\U}{\mathbb{U}} % complex numbers whose modulus is 1
-\renewcommand{\H}{\mathbb{H}} % quaternions (\H normally prints slanted quotation marks)
-\renewcommand{\O}{\mathbb{O}} % octonions (\O normally prints a slashed capital o : Ø)
 
 \renewcommand{\P}[1]{\mathscr{P}\paren{#1}} % subsets of a set
 \newcommand{\F}[2]{\mathscr{F}\paren{#1,#2}} % functions from 1 to 2
@@ -652,6 +650,9 @@ per-mode=power-positive-first
 \newcommand{\vari}[1]{\operatorname{V}\paren{#1}}
 \newcommand{\cov}[2]{\operatorname{Cov}\paren{#1,#2}}
 \newcommand{\ecarttype}[1]{\sigma\paren{#1}}
+
+\renewcommand{\O}[1]{\mathscr{O}\paren{#1}}
+\renewcommand{\o}[1]{o\paren{#1}}
 
 \begin{document}
 \renewcommand{\labelitemi}{\(\bullet\)}

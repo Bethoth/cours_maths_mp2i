@@ -6,7 +6,7 @@ Dans tout le chapitre, on pose : \(\K=\R\) ou \(\C\).
 
 \section{Relations de comparaison : cas des suites}
 
-\subsection{Relation de domination \(O\)}
+\subsection{Relation de domination \(\mathscr{O}\)}
 
 \begin{defprop}
 Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
@@ -18,21 +18,21 @@ Les propositions suivantes sont équivalentes :
     \item Il existe une suite \(\paren{\lambda_n}_n\in\K^\N\) telle que : \[\paren{\lambda_n}_n\text{ est bornée}\qquad\text{et}\qquad\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=\lambda v_n.\]
 \end{enumerate}
 
-Lorsqu'elles sont vérifiées, on dit que \[\paren{v_n}_n\text{ domine }\paren{u_n}_n\] ou que \[v_n\text{ domine }u_n\text{ quand }n\text{ tend vers }\pinf\] et on note : \[u_n=O\paren{v_n}\text{ quand }n\text{ tend vers }\pinf\] ou : \[u_n\egqd{n\to\pinf}O\paren{v_n}.\]
+Lorsqu'elles sont vérifiées, on dit que \[\paren{v_n}_n\text{ domine }\paren{u_n}_n\] ou que \[v_n\text{ domine }u_n\text{ quand }n\text{ tend vers }\pinf\] et on note : \[u_n=\O{v_n}\text{ quand }n\text{ tend vers }\pinf\] ou : \[u_n\egqd{n\to\pinf}\O{v_n}.\]
 \end{defprop}
 
 \begin{prop}
 Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
 
-Si les termes de \(\paren{v_n}_n\) sont non-nuls à partir d'un certain rang \(N\in\N\) : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}v_n\not=0,\] alors : \[u_n\egqd{n\to\pinf}O\paren{v_n}\ssi\text{la suite }\paren{\dfrac{u_n}{v_n}}_{n\geq N}\text{ est bornée}.\]
+Si les termes de \(\paren{v_n}_n\) sont non-nuls à partir d'un certain rang \(N\in\N\) : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}v_n\not=0,\] alors : \[u_n\egqd{n\to\pinf}\O{v_n}\ssi\text{la suite }\paren{\dfrac{u_n}{v_n}}_{n\geq N}\text{ est bornée}.\]
 
-Si les termes de \(\paren{v_n}_n\) sont tous non-nuls : \[\quantifs{\forall n\in\N}v_n\not=0,\] alors : \[u_n\egqd{n\to\pinf}O\paren{v_n}\ssi\text{la suite }\paren{\dfrac{u_n}{v_n}}_{n\in\N}\text{ est bornée}.\]
+Si les termes de \(\paren{v_n}_n\) sont tous non-nuls : \[\quantifs{\forall n\in\N}v_n\not=0,\] alors : \[u_n\egqd{n\to\pinf}\O{v_n}\ssi\text{la suite }\paren{\dfrac{u_n}{v_n}}_{n\in\N}\text{ est bornée}.\]
 \end{prop}
 
 \begin{ex}
-Soient \(\alpha,\beta\in\R\). On a : \[n^{\alpha}\egqd{n\to\pinf}O\paren{n^\beta}\ssi\alpha\leq\beta.\]
+Soient \(\alpha,\beta\in\R\). On a : \[n^{\alpha}\egqd{n\to\pinf}\O{n^\beta}\ssi\alpha\leq\beta.\]
 
-Soient \(a,b\in\Rps\). On a : \[a^n\egqd{n\to\pinf}O\paren{b^n}\ssi a\leq b.\]
+Soient \(a,b\in\Rps\). On a : \[a^n\egqd{n\to\pinf}\O{b^n}\ssi a\leq b.\]
 
-Soit \(\paren{u_n}_n\in\K^\N\). On a : \[u_n\egqd{n\to\pinf}O\paren{0}\ssi\paren{u_n}_n\text{ est nulle à partir d'un certain rang}\] et : \[u_n\egqd{n\to\pinf}O\paren{1}\ssi\paren{u_n}_n\text{ est bornée}.\]
+Soit \(\paren{u_n}_n\in\K^\N\). On a : \[u_n\egqd{n\to\pinf}\O{0}\ssi\paren{u_n}_n\text{ est nulle à partir d'un certain rang}\] et : \[u_n\egqd{n\to\pinf}\O{1}\ssi\paren{u_n}_n\text{ est bornée}.\]
 \end{ex}
