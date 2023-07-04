@@ -798,3 +798,40 @@ On a \(\ln t\egqd{t\to0^+}\o{\dfrac{1}{t}}\) donc \(\lim_{t\to0^+}\dfrac{\ln t}{
 
 Donc \[\lim_{t\to0^+}t\ln t=0.\]
 \end{corr}
+
+\subsection{Erreurs à ne pas faire}
+
+\subsubsection{Sommes d'équivalents}
+
+Quand \(t\to0^+\) :
+
+On a \(\dfrac{1}{t}+\ln t\sim\dfrac{1}{t}+1\) car \(\ln t=\o{\dfrac{1}{t}}\).
+
+De plus, on a \(1=\o{\dfrac{1}{t}}\) donc \[\dfrac{1}{t}+\ln t=\dfrac{1}{t}+\o{\dfrac{1}{t}}\sim\dfrac{1}{t}\qquad\text{et}\qquad\dfrac{1}{t}+1=\dfrac{1}{t}+\o{\dfrac{1}{t}}\sim\dfrac{1}{t}.\]
+
+D'autre part, \(\dfrac{-1}{t}\sim\dfrac{-1}{t}\) mais on n'a pas \(\ln t\sim1\).
+
+\subsubsection{Limite nulle donc équivalent nul}
+
+L'affirmation \guillemets{\(\lim_{t\to\pinf}\dfrac{1}{t}=0\) donc \(\dfrac{1}{t}\simqd{t\to\pinf}0\)} est fausse car \(\lim_{t\to\pinf}\dfrac{0}{\nicefrac{1}{t}}\not=1\).
+
+\subsubsection{Appliquer une fonction à un équivalent}
+
+On a, quand \(n\to\pinf\) : \(\dfrac{1}{n}+1\sim\dfrac{2}{n}+1\) mais on n'a pas \(\ln\paren{\dfrac{1}{n}+1}\sim\ln\paren{\dfrac{2}{n}+1}\).
+
+En effet, on a \(\lim_{\substack{t\to0 \\ t\not=0}}\dfrac{\ln\paren{1+t}-\ln1}{t-0}=\ln\prim1=1\) donc \(\ln\paren{1+t}\simqd{t\to0}t\).
+
+Or \(\lim_n\dfrac{1}{n}=\lim_n\dfrac{2}{n}=0\).
+
+Donc \(\begin{dcases}
+\ln\paren{1+\dfrac{1}{n}}\sim\dfrac{1}{n} \\
+\ln\paren{1+\dfrac{2}{n}}\sim\dfrac{2}{n}
+\end{dcases}\)
+
+Autre exemple : on a \(n\simqd{n\to\pinf}n+1\) mais on n'a pas \(\e{n}\simqd{n\to\pinf}\e{n+1}\) car \(\lim_n\dfrac{\e{n+1}}{\e{n}}=\e{}\not=1\).
+
+\subsubsection{Changement de variable inadéquat}
+
+On a \(\ln\paren{1+t}\simqd{t\to0}t\).
+
+L'affirmation \guillemets{donc \(\ln\paren{1+\e{x}}\simqd{x\to\pinf}\e{x}\)} est fausse car \(\e{x}\xrightarrow[x\to\pinf]{}\pinf\not=0\).
