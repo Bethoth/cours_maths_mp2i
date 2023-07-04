@@ -650,3 +650,39 @@ On retient en particulier : \[f\paren{t}=\O{g\paren{t}}\imp\dfrac{1}{g\paren{t}}
 
 La même proposition est vraie en prenant \(f,g\in\F{A}{\C}\) et \(\alpha\in\N\) ou en prenant \(f,g\in\F{A}{\Cs}\) et \(\alpha\in\Z\).
 \end{prop}
+
+\subsection{Relation d'équivalence \(\sim\)}
+
+\begin{defprop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(g\paren{t}\egqd{t\to a}f\paren{t}+\o{f\paren{t}}\) \\
+    \item \(f\paren{t}\egqd{t\to a}g\paren{t}+\o{g\paren{t}}\) \\
+    \item Il existe une fonction \(\lambda\in\F{A}{\K}\) telle que : \[\lim_{t\to a}\lambda\paren{t}=1\qquad\text{et}\qquad\quantifs{\exists V\in\V{a};\forall t\in V}f\paren{t}=\lambda\paren{t}g\paren{t}\]
+    \item Il existe une fonction \(\mu\in\F{A}{\K}\) telle que : \[\lim_{t\to a}\mu\paren{t}=1\qquad\text{et}\qquad\quantifs{\exists V\in\V{a};\forall t\in V}g\paren{t}=\mu\paren{t}f\paren{t}.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[f\text{ est équivalente à }g\] ou \[\begin{aligned}
+f\paren{t}\text{ est équivalent à }g\paren{t}\text{ quand }t\text{ tend vers }a \\
+f\paren{t}\text{ est un équivalent de }g\paren{t}\text{ quand }t\text{ tend vers }a
+\end{aligned}\] et on note : \[f\paren{t}\sim g\paren{t}\text{ quand }t\text{ tend vers }a\] ou : \[f\paren{t}\simqd{t\to a}g\paren{t}.\]
+\end{defprop}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Si \(g\) ne s'annule pas au voisinage de \(a\) : \[\quantifs{\exists V\in\V{a};\forall t\in V}g\paren{t}\not=0,\] alors : \[f\paren{t}\simqd{t\to a}g\paren{t}\ssi\lim_{t\to a}\dfrac{f\paren{t}}{g\paren{t}}=1.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a : \[t^\alpha\simqd{t\to a}t^\beta\ssi\alpha=\beta.\]
+
+Soient \(d\in\N\), \(a_0,\dots,a_d\in\C\) tels que \(a_d\not=0\) et \(P=a_dX^d+\dots+a_0X^0\in\poly[\C]\). On a : \[P\paren{t}\simqd{t\to\pinf}a_dt^d.\]
+
+Soit \(f\in\F{A}{\K}\). On a : \[f\paren{t}\simqd{t\to a}0\ssi f\text{ est nulle sur un voisinage de }a\] et : \[\quantifs{\forall l\in\K\excluant\accol{0}}f\paren{t}\simqd{t\to a}l\ssi\lim_{t\to a}f\paren{t}=l.\]
+
+NB : l'équivalence précédente est valable pour toute limite finie non-nulle. En particulier, deux fonctions admettant un même limite finie non-nulle sont équivalentes.
+\end{ex}
