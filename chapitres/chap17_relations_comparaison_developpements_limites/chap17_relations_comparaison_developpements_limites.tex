@@ -36,3 +36,32 @@ Soient \(a,b\in\Rps\). On a : \[a^n\egqd{n\to\pinf}\O{b^n}\ssi a\leq b.\]
 
 Soit \(\paren{u_n}_n\in\K^\N\). On a : \[u_n\egqd{n\to\pinf}\O{0}\ssi\paren{u_n}_n\text{ est nulle à partir d'un certain rang}\] et : \[u_n\egqd{n\to\pinf}\O{1}\ssi\paren{u_n}_n\text{ est bornée}.\]
 \end{ex}
+
+\subsection{Relation de négligeabilité \(o\)}
+
+\begin{defprop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\abs{u_n}\leq\epsilon\abs{v_n}\) \\
+    \item Il existe une suite \(\paren{\epsilon_n}_n\in\K^\N\) telle que : \[\lim_{n\to\pinf}\epsilon_n=0\qquad\text{et}\qquad\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=\epsilon_nv_n.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[\paren{u_n}_n\text{ est négligeable devant }\paren{v_n}_n\] ou que \[u_n\text{ est négligeable devant }v_n\text{ quand }n\text{ tend vers }\pinf\] et on note : \[u_n=\o{v_n}\text{ quand }n\text{ tend vers }\pinf\] ou : \[u_n\egqd{n\to\pinf}\o{v_n}.\]
+\end{defprop}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+Si les termes de \(\paren{v_n}_n\) sont non-nuls à partir d'un certain rang : \[\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}v_n\not=0,\] alors : \[u_n\egqd{n\to\pinf}\o{v_n}\ssi\lim_{n\to\pinf}\dfrac{u_n}{v_n}=0.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a : \[n^\alpha\egqd{n\to\pinf}\o{n^\beta}\ssi\alpha<\beta.\]
+
+Soient \(a,b\in\Rps\). On a : \[a^n\egqd{n\to\pinf}\o{b^n}\ssi a<b.\]
+
+Soit \(\paren{u_n}_n\in\K^\N\). On a : \[u_n\egqd{n\to\pinf}\o{0}\ssi\paren{u_n}_n\text{ est nulle à partir d'un certain rang}\] et : \[u_n\egqd{n\to\pinf}\o{1}\ssi\lim_{n\to\pinf}u_n=0.\]
+\end{ex}
