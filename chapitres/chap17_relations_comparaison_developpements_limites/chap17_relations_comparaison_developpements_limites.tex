@@ -178,3 +178,131 @@ Soient \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(\phi:\N\to\N\) une fonction 
 
 On a, quand \(n\) tend vers \(\pinf\) : \[u_n=\O{v_n}\imp u_{\phi\paren{n}}=\O{v_{\phi\paren{n}}}\qquad\text{et}\qquad u_n=\o{v_n}\imp u_{\phi\paren{n}}=\o{v_{\phi\paren{n}}}.\]
 \end{prop}
+
+\subsection{Croissances comparées}
+
+\begin{rem}[Culturelle]
+Il existe d'autres notations que les \guillemets{notations de Landau} \(\mathscr{O}\), \(o\) et \(\sim\) qu'on utilise en mathématiques de CPGE.
+
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+\begin{itemize}
+    \item \guillemets{Notations de Hardy} (peu utilisées mais très commodes pour énoncer la proposition suivante) : \[u_n\prec v_n\ssi u_n\egqd{n\to\pinf}\o{v_n}\] et : \[u_n\preccurlyeq v_n\ssi u_n\egqd{n\to\pinf}\O{v_n}.\]
+    \item \guillemets{Notation de Vinogradov} : \[u_n\ll v_n\ssi u_n\egqd{n\to\pinf}\O{v_n}.\]
+    \item \guillemets{Notation \(\Theta\)} : \[\begin{aligned}
+        u_n\egqd{n\to\pinf}\Theta\paren{v_n}&\ssi\croch{u_n\egqd{n\to\pinf}\O{v_n}\quad\text{et}\quad v_n\egqd{n\to\pinf}\O{u_n}} \\
+        &\ssi\quantifs{\exists M_1,M_2\in\Rps;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}M_1\abs{v_n}\leq\abs{u_n}\leq M_2\abs{v_n}.
+    \end{aligned}\] Cette notation est surtout utilisée en informatique (pour étudier la complexité des algorithmes). On verra qu'on a : \[u_n\egqd{n\to\pinf}\Theta\paren{v_n}\imp u_n\simqd{n\to\pinf}v_n.\]
+\end{itemize}
+\end{rem}
+
+\begin{prop}[Croissances comparées]
+On utilise exceptionnellement les notations de Hardy pour gagner en concision.
+
+Soient \(a_1,a_2,\alpha_1,\alpha_2,\beta_1,\beta_2\in\R\) tels que : \[0<a_1<1<a_2\qquad\text{et}\qquad\alpha_1<0<\alpha_2\qquad\text{et}\qquad\beta_1<0<\beta_2.\]
+
+Alors on a, quand \(n\) tend vers \(\pinf\) : \[\underbrace{a_1^n\quad\prec\quad n^{\alpha_1}\quad\prec\quad\ln^{\beta_1}n}_{\text{suites de limite nulle}}\quad\prec\quad1\quad\prec\quad\underbrace{\ln^{\beta_2}n\quad\prec\quad n^{\alpha_2}\quad\prec\quad a_2^n\quad\prec\quad n!}_{\text{suites de limite }\pinf}\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(a^n\egqd{n\to\pinf}\o{n!}\) avec \(a\in\Rps\), \cad \(\lim_{n\to\pinf}\dfrac{a^n}{n!}=0\).
+
+On a : \[\quantifs{\forall n\in\N}a\times\dfrac{a}{2}\times\dots\times\dfrac{a}{n}=\dfrac{a^n}{n!}.\]
+
+Soit \(N\in\Ns\) tel que \(\dfrac{a}{N}\leq\dfrac{1}{2}\) (un tel \(N\) existe car \(\lim_{n\to\pinf}\dfrac{a}{n}=0\)).
+
+Posons \(M=\dfrac{a^{N-1}}{\paren{N-1}!}>0\).
+
+On a : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}\dfrac{a^n}{n!}=\underbrace{a\times\dots\times\dfrac{a}{N-1}}_{=M}\times\underbrace{\dfrac{a}{N}}_{\leq\frac{1}{2}}\times\dots\times\underbrace{\dfrac{a}{n}}_{\leq\frac{1}{2}}.\]
+
+Donc : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}0\leq\dfrac{a^n}{n!}\leq M\dfrac{1}{2^{n-N+1}}.\]
+
+Or \(\lim_{n\to\pinf}\dfrac{M}{2^{n-N+1}}=0\).
+
+Donc selon le théorème des gendarmes, on a \(\lim_{n\to\pinf}\dfrac{a^n}{n!}=0\) donc : \[a^n\egqd{n\to\pinf}\o{n!}.\]
+\end{dem}
+
+\begin{dem}
+Soient \(a\in\intervee{1}{\pinf}\) et \(\alpha\in\R\).
+
+Montrons que \(n^\alpha\egqd{n\to\pinf}\o{a^n}\), \cad \(\lim_{n\to\pinf}\dfrac{n^\alpha}{a^n}=0\).
+
+Posons \(\fonction{f}{\Rps}{\R}{x}{\dfrac{x^\alpha}{a^x}=x^\alpha\e{-x\ln a}}\)
+
+On a : \[\begin{aligned}
+\quantifs{\forall x\in\Rps}f\prim\paren{x}&=\alpha x^{\alpha-1}a^{-x}-x^\alpha a^{\alpha x}\ln a \\
+&=x^{\alpha-1}a^{-x}\paren{\alpha-x\ln a}.
+\end{aligned}\]
+
+On a \(\quantifs{\forall x\in\Rps}f\prim\paren{x}\geq0\ssi x\leq\dfrac{\alpha}{\ln a}\) donc \(f\) est décroissante sur \(\intervie{\dfrac{\alpha}{\ln a}}{\pinf}\).
+
+Donc \(f\) admet une limite en \(\pinf\).
+
+De plus, \(f\) est minorée par \(0\) donc \(l=\lim_{\pinf}f\in\Rps\).
+
+De plus : \[\quantifs{\forall x\in\Rps}f\paren{2x}=\dfrac{2^\alpha}{a^x}f\paren{x}.\]
+
+D'où, en passant à la limite quand \(x\to\pinf\) : \[l=0\times l=0\text{ car }l\text{ est finie}.\]
+
+Donc \(n^\alpha\egqd{n\to\pinf}\o{a^n}\).
+\end{dem}
+
+\begin{dem}
+Soient \(\alpha\in\Rps\) et \(\beta\in\R\).
+
+Montrons que \(\ln^\beta n\egqd{n\to\pinf}\o{n^\alpha}\), \cad \(\lim_{n\to\pinf}\dfrac{\ln^\beta n}{n^\alpha}=0\).
+
+Posons \(\fonction{f}{\intervee{1}{\pinf}}{\R}{x}{\dfrac{\ln^\beta x}{x^\alpha}=x^{-\alpha}\ln^\beta x}\)
+
+On a : \[\begin{aligned}
+\quantifs{\forall x\in\intervee{1}{\pinf}}f\prim\paren{x}&=\dfrac{\beta}{x}x^{-\alpha}\ln^{\beta-1}x-\alpha x^{-\alpha-1}\ln^\beta x \\
+&=x^{-\alpha-1}\ln^{\beta-1}x\paren{\beta-\alpha\ln x}.
+\end{aligned}\]
+
+On a : \[\begin{aligned}
+\quantifs{\forall x\in\intervee{1}{\pinf}}f\prim\paren{x}\geq0&\ssi\alpha\ln x\leq\beta \\
+&\ssi x\leq\e{\nicefrac{\beta}{\alpha}}.
+\end{aligned}\]
+
+Donc \(f\) est décroissante sur \(\intervie{\e{\nicefrac{\beta}{\alpha}}}{\pinf}\).
+
+Donc \(f\) admet une limite en \(\pinf\).
+
+De plus, \(f\) est minorée par \(0\) donc \(l=\lim_{\pinf}f\in\Rp\).
+
+De plus, on a \(\quantifs{\forall x\in\intervee{1}{\pinf}}f\paren{x^2}=\dfrac{2^\beta}{x^\alpha}f\paren{x}\).
+
+Donc en passant à la limite quand \(x\to\pinf\) : \[l=0\times l=0\text{ car }l\text{ est finie}.\]
+
+D'où \(\ln^\beta n\egqd{n\to\pinf}\o{n^{\alpha}}\).
+\end{dem}
+
+\begin{dem}
+Soit \(\beta\in\Rps\).
+
+On a \(\lim_n\ln^\beta n=\pinf\) donc \(1\egqd{n\to\pinf}\o{\ln^\beta n}\) car \(\lim_n\dfrac{1}{\ln^\beta n}=0\).
+\end{dem}
+
+\begin{dem}
+Soit \(\beta\in\Rms\).
+
+On a \(-\beta>0\) donc \(1\egqd{n\to\pinf}\o{\ln^{-\beta}n}\).
+
+Donc \(\ln^\beta n\egqd{n\to\pinf}\o{1}\).
+\end{dem}
+
+\begin{dem}
+Soient \(\alpha,\beta\in\Rms\).
+
+On a \(-\alpha>0\) et \(-\beta>0\).
+
+Donc selon ce qui précède, on a, quand \(n\to\pinf\) : \(\ln^{-\beta}n=\o{n^{-\alpha}}\).
+
+D'où : \[n^\alpha\egqd{n\to\pinf}\o{\ln^\beta n}.\]
+\end{dem}
+
+\begin{dem}
+Soient \(a\in\intervee{0}{1}\) et \(\alpha\in\Rms\).
+
+De même, \(a^n\egqd{n\to\pinf}\o{n^\alpha}\) découle de ce qui précède.
+\end{dem}
