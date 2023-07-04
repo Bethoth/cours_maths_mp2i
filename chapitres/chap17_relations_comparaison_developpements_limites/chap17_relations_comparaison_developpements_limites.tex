@@ -65,3 +65,116 @@ Soient \(a,b\in\Rps\). On a : \[a^n\egqd{n\to\pinf}\o{b^n}\ssi a<b.\]
 
 Soit \(\paren{u_n}_n\in\K^\N\). On a : \[u_n\egqd{n\to\pinf}\o{0}\ssi\paren{u_n}_n\text{ est nulle à partir d'un certain rang}\] et : \[u_n\egqd{n\to\pinf}\o{1}\ssi\lim_{n\to\pinf}u_n=0.\]
 \end{ex}
+
+\subsection{Propriétés de \(\mathscr{O}\) et \(o\)}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+On a : \[u_n\egqd{n\to\pinf}\o{v_n}\imp u_n\egqd{n\to\pinf}\O{v_n}.\]
+\end{prop}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\) et \(l,l\prim\in\intervii{0}{\pinf}\) tels que : \[\lim_{n\to\pinf}\abs{u_n}=l\qquad\text{et}\qquad\lim_{n\to\pinf}\abs{v_n}=l\prim.\]
+
+On a, quand \(n\) tend vers \(\pinf\) :
+
+\begin{enumerate}
+    \item Si \(l=0\) et \(l\prim\not=0\) alors \(u_n=\o{v_n}\). \\
+    \item Si \(l\in\intervie{0}{\pinf}\) et \(l\prim=\pinf\) alors \(u_n=\o{v_n}\). \\
+    \item Si \(l,l\prim\in\intervee{0}{\pinf}\) alors \(u_n=\O{v_n}\). \\
+    \item Si \(l=l\prim=0\) ou \(l=l\prim=\pinf\) alors on ne peut rien dire.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Transitivités]
+Soient \(\paren{u_n}_n,\paren{v_n}_n,\paren{w_n}_n\in\K^\N\).
+
+On a, quand \(n\) tend vers \(\pinf\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        u_n=\O{v_n} \\
+        v_n=\O{w_n}
+    \end{dcases}\) alors \(u_n=\O{w_n}\). \\\\ Autrement dit : la relation de domination est transitive. \\
+    \item Si \(\begin{dcases}
+        u_n=\O{v_n} \\
+        v_n=\o{w_n}
+    \end{dcases}\) ou \(\begin{dcases}
+        u_n=\o{v_n} \\
+        v_n=\O{w_n}
+    \end{dcases}\) alors \(u_n=\o{w_n}\). \\
+    \item En particulier, la relation de négligeabilité est transitive.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Sommes]
+Soient \(\paren{u_n}_n,\paren{v_n}_n,\paren{w_n}_n\in\K^\N\).
+
+On a, quand \(n\) tend vers \(\pinf\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        u_n=\O{w_n} \\
+        v_n=\O{w_n}
+    \end{dcases}\) alors \(u_n+v_n=\O{w_n}\). \\
+    \item Si \(\begin{dcases}
+        u_n=\o{w_n} \\
+        v_n=\o{w_n}
+    \end{dcases}\) alors \(u_n+v_n=\o{w_n}\).
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Produits]
+Soient \(\paren{a_n}_n,\paren{b_n}_n,\paren{c_n}_n,\paren{d_n}_n\in\K^\N\).
+
+On a, quand \(n\) tend vers \(\pinf\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        a_n=\O{b_n} \\
+        c_n=\O{d_n}
+    \end{dcases}\) alors \(a_nc_n=\O{b_nd_n}\). \\
+    \item En particulier : si \(a_n=\O{b_n}\) alors \(a_nc_n=\O{b_nc_n}\). \\
+    \item Si \(\begin{dcases}
+        a_n=\o{b_n} \\
+        c_n=\O{d_n}
+    \end{dcases}\) alors \(a_nc_n=\o{b_nd_n}\). \\
+    \item En particulier : si \(a_n=\o{b_n}\) alors \(a_nc_n=\o{b_nc_n}\).
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Puissances]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\paren{\Rps}^\N\) et \(\alpha\in\R\).
+
+On a, quand \(n\) tend vers \(\pinf\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        u_n=\O{v_n} \\
+        \alpha\geq0
+    \end{dcases}\) alors \(u_n^\alpha=\O{v_n^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        u_n=\O{v_n} \\
+        \alpha\leq0
+    \end{dcases}\) alors \(v_n^\alpha=\O{u_n^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        u_n=\o{v_n} \\
+        \alpha>0
+    \end{dcases}\) alors \(u_n^\alpha=\o{v_n^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        u_n=\o{v_n} \\
+        \alpha<0
+    \end{dcases}\) alors \(v_n^\alpha=\o{u_n^\alpha}\).
+\end{enumerate}
+
+On retient en particulier : \[u_n=\O{v_n}\imp\dfrac{1}{v_n}=\O{\dfrac{1}{u_n}}\qquad\text{et}\qquad u_n=\o{v_n}\imp\dfrac{1}{v_n}=\o{\dfrac{1}{u_n}}.\]
+
+La même proposition est vraie en prenant \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(\alpha\in\N\) ou en prenant \(\paren{u_n}_n,\paren{v_n}_n\in\paren{\Cs}^\N\) et \(\alpha\in\Z\).
+\end{prop}
+
+\begin{prop}[Suites extraites]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(\phi:\N\to\N\) une fonction strictement croissante.
+
+On a, quand \(n\) tend vers \(\pinf\) : \[u_n=\O{v_n}\imp u_{\phi\paren{n}}=\O{v_{\phi\paren{n}}}\qquad\text{et}\qquad u_n=\o{v_n}\imp u_{\phi\paren{n}}=\o{v_{\phi\paren{n}}}.\]
+\end{prop}
