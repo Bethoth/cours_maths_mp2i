@@ -187,16 +187,16 @@ Il existe d'autres notations que les \guillemets{notations de Landau} \(\mathscr
 Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
 
 \begin{itemize}
-    \item \guillemets{Notations de Hardy} (peu utilisées mais très commodes pour énoncer la proposition suivante) : \[u_n\prec v_n\ssi u_n\egqd{n\to\pinf}\o{v_n}\] et : \[u_n\preccurlyeq v_n\ssi u_n\egqd{n\to\pinf}\O{v_n}.\]
-    \item \guillemets{Notation de Vinogradov} : \[u_n\ll v_n\ssi u_n\egqd{n\to\pinf}\O{v_n}.\]
+    \item \guillemets{Notations de Hardy} (peu utilisées mais très commodes pour énoncer la proposition suivante) : \[u_n\prec v_n\ssi u_n=\o{v_n}\] et : \[u_n\preccurlyeq v_n\ssi u_n=\O{v_n}.\]
+    \item \guillemets{Notation de Vinogradov} : \[u_n\ll v_n\ssi u_n=\O{v_n}.\]
     \item \guillemets{Notation \(\Theta\)} : \[\begin{aligned}
-        u_n\egqd{n\to\pinf}\Theta\paren{v_n}&\ssi\croch{u_n\egqd{n\to\pinf}\O{v_n}\quad\text{et}\quad v_n\egqd{n\to\pinf}\O{u_n}} \\
+        u_n=\Theta\paren{v_n}&\ssi\croch{u_n=\O{v_n}\quad\text{et}\quad v_n=\O{u_n}} \\
         &\ssi\quantifs{\exists M_1,M_2\in\Rps;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}M_1\abs{v_n}\leq\abs{u_n}\leq M_2\abs{v_n}.
-    \end{aligned}\] Cette notation est surtout utilisée en informatique (pour étudier la complexité des algorithmes). On verra qu'on a : \[u_n\egqd{n\to\pinf}\Theta\paren{v_n}\imp u_n\simqd{n\to\pinf}v_n.\]
+    \end{aligned}\] Cette notation est surtout utilisée en informatique (pour étudier la complexité des algorithmes). On verra qu'on a : \[u_n=\Theta\paren{v_n}\imp u_n\sim v_n.\]
 \end{itemize}
 \end{rem}
 
-\begin{prop}[Croissances comparées]
+\begin{prop}[Croissances comparées]\thlabel{prop:croissancesComparéesSuites}
 On utilise exceptionnellement les notations de Hardy pour gagner en concision.
 
 Soient \(a_1,a_2,\alpha_1,\alpha_2,\beta_1,\beta_2\in\R\) tels que : \[0<a_1<1<a_2\qquad\text{et}\qquad\alpha_1<0<\alpha_2\qquad\text{et}\qquad\beta_1<0<\beta_2.\]
@@ -760,3 +760,41 @@ On a :
     \item Si \(f\paren{t}\simqd{t\to a}g\paren{t}\) alors \(f\paren{\phi\paren{s}}\simqd{s\to b}g\paren{\phi\paren{s}}\).
 \end{enumerate}
 \end{prop}
+
+\subsection{Croissances comparées}
+
+\begin{prop}[Croissances comparées en \(\pinf\)]\thlabel{prop:croissancesComparéesFonctionsPinf}
+Soient \(\alpha_1,\alpha_2,\beta_1,\beta_2,\gamma_1,\gamma_2\in\R\) tels que : \[\alpha_1<0<\alpha_2\qquad\text{et}\qquad\beta_1<0<\beta_2\qquad\text{et}\qquad\gamma_1<0<\gamma_2.\]
+
+On a, quand \(t\) tend vers \(\pinf\) : \[\underbrace{\e{\gamma_1t}\quad\prec\quad t^{\alpha_1}\quad\prec\quad\ln^{\beta_1}t}_{\text{fonctions de }t\text{ de limite nulle}}\quad\prec\quad1\quad\prec\quad\underbrace{\ln^{\beta_2}t\quad\prec\quad t^{\alpha_2}\quad\prec\quad\e{\gamma_2t}}_{\text{fonctions de }t\text{ de limite }\pinf}.\]
+\end{prop}
+
+\begin{dem}
+\Cf \thref{prop:croissancesComparéesSuites}.
+\end{dem}
+
+\begin{prop}[Croissances comparées en \(0^+\)]
+Soient \(\alpha_1,\alpha_2,\beta_1,\beta_2\in\R\) tels que : \[\alpha_1<0<\alpha_2\qquad\text{et}\qquad\beta_1<0<\beta_2.\]
+
+On a, quand \(t\) tend vers \(0^+\) : \[\underbrace{t^{\alpha_2}\quad\prec\quad\abs{\ln t}^{\beta_1}}_{\text{fonctions de }t\text{ de limite nulle}}\quad\prec\quad1\quad\prec\quad\underbrace{\abs{\ln t}^{\beta_2}\quad\prec\quad t^{\alpha_1}}_{\text{fonctions de }t\text{ de limite }\pinf}.\]
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:croissancesComparéesFonctionsPinf} par un changement de variable.
+
+Par exemple, on a vu \(\ln^{\beta_2}s\egqd{s\to\pinf}\o{s^{-\alpha_1}}\) car \(-\alpha_1>0\).
+
+Or \(\lim_{t\to0^+}\dfrac{1}{t}=\pinf\) donc \(\ln^{\beta_2}\dfrac{1}{t}\egqd{t\to0^+}\o{\paren{\dfrac{1}{t}}^{-\alpha_1}}\).
+
+D'où \(\abs{\ln t}^{\beta_2}\egqd{t\to0^+}\o{t^{\alpha_1}}\).
+\end{dem}
+
+\begin{exoex}
+Calculer : \[\lim_{t\to0^+}t\ln t.\]
+\end{exoex}
+
+\begin{corr}
+On a \(\ln t\egqd{t\to0^+}\o{\dfrac{1}{t}}\) donc \(\lim_{t\to0^+}\dfrac{\ln t}{\nicefrac{1}{t}}=0\).
+
+Donc \[\lim_{t\to0^+}t\ln t=0.\]
+\end{corr}
