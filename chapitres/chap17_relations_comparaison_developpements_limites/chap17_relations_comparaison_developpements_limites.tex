@@ -543,3 +543,110 @@ Soient \(\alpha,\beta\in\R\). On a, quand \(t\) tend vers \(a\) : \[t^\alpha=\o{
 
 Soit \(f\in\F{A}{\K}\). On a : \[f\paren{t}\egqd{t\to a}\o{0}\ssi f\text{ est nulle sur un voisinage de }a\] et : \[f\paren{t}\egqd{t\to a}\o{1}\ssi\lim_{t\to a}f\paren{t}=0.\]
 \end{ex}
+
+\subsection{Propriétés de \(\mathscr{O}\) et \(o\)}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\).
+
+On a : \[f\paren{t}\egqd{t\to a}\o{g\paren{t}}\imp f\paren{t}\egqd{t\to a}\O{g\paren{t}}.\]
+\end{prop}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\) et \(l,l\prim\in\intervii{0}{\pinf}\) tels que : \[\lim_{t\to a}\abs{f\paren{t}}=l\qquad\text{et}\qquad\lim_{t\to a}\abs{g\paren{t}}=l\prim.\]
+
+On a, quand \(t\) tend vers \(a\) :
+
+\begin{enumerate}
+    \item Si \(l=0\) et \(l\prim\not=0\) alors \(f\paren{t}=\o{g\paren{t}}\) \\
+    \item Si \(l\in\intervie{0}{\pinf}\) et \(l\prim=\pinf\) alors \(f\paren{t}=\o{g\paren{t}}\) \\
+    \item Si \(l,l\prim\in\intervee{0}{\pinf}\) alors \(f\paren{t}=\O{g\paren{t}}\) \\
+    \item Si \(l=l\prim=0\) ou \(l=l\prim=\pinf\), on ne peut rien dire.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Transitivités]
+Soient \(f,g,h\in\F{A}{\K}\).
+
+On a, quand \(t\) tend vers \(a\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{g\paren{t}} \\
+        g\paren{t}=\O{h\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}=\O{h\paren{t}}\). \\\\ Autrement dit : la relation de domination est transitive. \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{g\paren{t}} \\
+        g\paren{t}=\o{h\paren{t}}
+    \end{dcases}\) ou \(\begin{dcases}
+        f\paren{t}=\o{g\paren{t}} \\
+        g\paren{t}=\O{h\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}=\o{h\paren{t}}\). \\
+    \item En particulier, la relation de négligeabilité est transitive.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Sommes]
+Soient \(f,g,h\in\F{A}{\K}\).
+
+On a, quand \(t\) tend vers \(a\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{h\paren{t}} \\
+        g\paren{t}=\O{h\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}+g\paren{t}=\O{h\paren{t}}\). \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\o{h\paren{t}} \\
+        g\paren{t}=\o{h\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}+g\paren{t}=\o{h\paren{t}}\).
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Produits]
+Soient \(f,g,h,k\in\F{A}{\K}\).
+
+On a, quand \(t\) tend vers \(a\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{g\paren{t}} \\
+        h\paren{t}=\O{k\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}h\paren{t}=\O{g\paren{t}k\paren{t}}\). \\
+    \item En particulier : si \(f\paren{t}=\O{g\paren{t}}\) alors \(f\paren{t}h\paren{t}=\O{g\paren{t}h\paren{t}}\). \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\o{g\paren{t}} \\
+        h\paren{t}=\O{k\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}h\paren{t}=\o{g\paren{t}k\paren{t}}\). \\
+    \item En particulier : si \(f\paren{t}=\o{g\paren{t}}\) alors \(f\paren{t}h\paren{t}=\o{g\paren{t}h\paren{t}}\).
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Puissances]
+Soient \(f,g\in\F{A}{\Rps}\) et \(\alpha\in\R\).
+
+On a, quand \(t\) tend vers \(a\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{g\paren{t}} \\
+        \alpha\geq0
+    \end{dcases}\) alors \(f\paren{t}^\alpha=\O{g\paren{t}^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{g\paren{t}} \\
+        \alpha\leq0
+    \end{dcases}\) alors \(g\paren{t}^\alpha=\O{f\paren{t}^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\o{g\paren{t}} \\
+        \alpha>0
+    \end{dcases}\) alors \(f\paren{t}^\alpha=\o{g\paren{t}^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\o{g\paren{t}} \\
+        \alpha<0
+    \end{dcases}\) alors \(g\paren{t}^\alpha=\o{f\paren{t}^\alpha}\).
+\end{enumerate}
+
+On retient en particulier : \[f\paren{t}=\O{g\paren{t}}\imp\dfrac{1}{g\paren{t}}=\O{\dfrac{1}{f\paren{t}}}\qquad\text{et}\qquad f\paren{t}=\o{g\paren{t}}\imp\dfrac{1}{g\paren{t}}=\o{\dfrac{1}{f\paren{t}}}.\]
+
+La même proposition est vraie en prenant \(f,g\in\F{A}{\C}\) et \(\alpha\in\N\) ou en prenant \(f,g\in\F{A}{\Cs}\) et \(\alpha\in\Z\).
+\end{prop}
