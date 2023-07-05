@@ -459,6 +459,52 @@ On a \(\begin{dcases}
 \end{dcases}\) mais on n'a pas \(\dfrac{2}{n}\sim0\).
 \end{dem}
 
+\begin{prop}
+Soient \(\paren{a_n}_n,\paren{b_n}_n,\paren{c_n}_n,\paren{d_n}_n\in\R^\N\).
+
+On suppose \(\begin{dcases}
+\quantifs{\forall n\in\N}a_n\leq b_n\leq c_n \\
+\text{quand }n\to\pinf\text{, }a_n\sim c_n\sim d_n
+\end{dcases}\)
+
+Alors : \[b_n\simqd{n\to\pinf}d_n.\]
+\end{prop}
+
+\begin{dem}
+Soient \(\paren{\lambda_n}_n,\paren{\mu_n}_n\in\R^\N\) telles que \(\begin{dcases}
+\lim_n\lambda_n=\lim_n\mu_n=1 \\
+\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\begin{dcases}
+    a_n=\lambda_nd_n \\
+    c_n=\mu_nd_n
+\end{dcases}
+\end{dcases}\)
+
+Soit un tel \(N\in\N\).
+
+On a : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}\begin{dcases}
+\lambda_n=\dfrac{a_n}{d_n}\leq\dfrac{b_n}{d_n}\leq\dfrac{c_n}{d_n}=\mu_n &\text{si }d_n>0 \\
+\mu_n\leq\dfrac{c_n}{d_n}\leq\dfrac{b_n}{d_n}\leq\dfrac{a_n}{d_n}=\lambda_n &\text{si }d_n<0 \\
+b_n=0 &\text{si }d_n=0
+\end{dcases}\]
+
+Posons \(\quantifs{\forall n\in\N}\nu_n=\begin{dcases}
+1 &\text{si }d_n=0 \\
+\dfrac{b_n}{d_n} &\text{si }d_n\not=0
+\end{dcases}\)
+
+On a : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}b_n=\nu_nd_n\] et : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}\min\accol{\lambda_n;\mu_n}\leq\nu_n\leq\max\accol{\lambda_n;\mu_n}\qquad\text{ou}\qquad\nu_n=1.\]
+
+Donc \(\lim_n\nu_n=1\) donc \(b_n\simqd{n\to\pinf}d_n\).
+\end{dem}
+
+\begin{ex}
+Soit \(\paren{u_n}_n\in\K^\N\) telle que \(\quantifs{\forall n\in\N}n-1\leq u_n\leq n+2\).
+
+On a, quand \(n\to\pinf\) : \(n-1\sim n+2\sim n\).
+
+Donc \(u_n\simqd{n\to\pinf} n\).
+\end{ex}
+
 \subsection{Formule de Stirling}
 
 \begin{theo}[Formule de Stirling]
