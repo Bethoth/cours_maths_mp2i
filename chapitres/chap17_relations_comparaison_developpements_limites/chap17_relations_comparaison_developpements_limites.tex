@@ -890,3 +890,56 @@ Autre exemple : on a \(n\simqd{n\to\pinf}n+1\) mais on n'a pas \(\e{n}\simqd{n\t
 On a \(\ln\paren{1+t}\simqd{t\to0}t\).
 
 L'affirmation \guillemets{donc \(\ln\paren{1+\e{x}}\simqd{x\to\pinf}\e{x}\)} est fausse car \(\e{x}\xrightarrow[x\to\pinf]{}\pinf\not=0\).
+
+\section{Développements limités}
+
+\subsection*{Développements limités usuels}
+
+Soit \(\alpha\in\R\).
+
+On a, quand \(x\) tend vers \(0\) :
+
+\[\begin{array}{ccccc}
+\dfrac{1}{1+x}&=&\sum_{k=0}^n\paren{-x}^k+\o{x^n}&=&1-x+x^2-x^3+\dots+\paren{-1}^nx^n+\o{x^n} \\\\
+\ln\paren{1+x}&=&\sum_{k=1}^n\paren{-1}^{k-1}\dfrac{x^k}{k}+\o{x^n}&=&x-\dfrac{x^2}{2}+\dfrac{x^3}{3}+\dots+\paren{-1}^{n-1}\dfrac{x^n}{n}+\o{x^n} \\\\
+\e{x}&=&\sum_{k=0}^n\dfrac{x^k}{k!}+\o{x^n}&=&1+x+\dfrac{x^2}{2}+\dfrac{x^3}{6}+\dots+\dfrac{x^n}{n!}+\o{x^n} \\\\
+\cos x&=&\sum_{k=0}^n\paren{-1}^k\dfrac{x^{2k}}{\paren{2k}!}+\o{x^{2n+1}}&=&1-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\dots+\paren{-1}^n\dfrac{x^{2n}}{\paren{2n}!}+\o{x^{2n+1}} \\\\
+\sin x&=&\sum_{k=0}^n\paren{-1}^k\dfrac{x^{2k+1}}{\paren{2k+1}!}+\o{x^{2n+2}}&=&x-\dfrac{x^3}{6}+\dfrac{x^5}{120}+\dots+\paren{-1}^n\dfrac{x^{2n+1}}{\paren{2n+1}!}+\o{x^{2n+2}} \\\\
+\ch x&=&\sum_{k=0}^n\dfrac{x^{2k}}{\paren{2k}!}+\o{x^{2n+1}}&=&1+\dfrac{x^2}{2}+\dfrac{x^4}{24}+\dots+\dfrac{x^{2n}}{\paren{2n}!}+\o{x^{2n+1}} \\\\
+\sh x&=&\sum_{k=0}^n\dfrac{x^{2k+1}}{\paren{2k+1}!}+\o{x^{2n+2}}&=&x+\dfrac{x^3}{6}+\dfrac{x^5}{120}+\dots+\dfrac{x^{2n+1}}{\paren{2n+1}!}+\o{x^{2n+2}} \\\\
+\Arctan x&=&\sum_{k=0}^n\paren{-1}^k\dfrac{x^{2k+1}}{2k+1}+\o{x^{2n+2}}&=&x-\dfrac{x^3}{3}+\dfrac{x^5}{5}+\dots+\paren{-1}^n\dfrac{x^{2n+1}}{2n+1}+\o{x^{2n+2}} \\\\
+\tan x&=&&=&x+\dfrac{x^3}{3}+\dfrac{2x^5}{15}+\dfrac{17x^7}{315}+\o{x^8} \\\\
+\paren{1+x}^\alpha&=&\sum_{k=0}^n\binom{k}{\alpha}x^k+\o{x^n}&=&1+\alpha x+\dfrac{\alpha\paren{\alpha-1}}{2}x^2+\dots+\binom{n}{\alpha}x^n+\o{x^n}
+\end{array}\] en posant : \[\quantifs{\forall k\in\N}\binom{k}{\alpha}=\dfrac{\alpha\paren{\alpha-1}\dots\paren{\alpha-k+1}}{k!}\] (même si \(\alpha\) n'est pas un entier).
+
+\subsection{Définition}
+
+\begin{defi}[Développement limité]
+Soient \(I\) un intervalle de \(\R\), \(f:I\to\K\), \(a\in I\) et \(n\in\N\).
+
+On dit que \(f\) admet un développement limité à l'ordre \(n\) en \(a\) s'il existe \(a_0,\dots,a_n\in\K\) tels que : \[f\paren{a+h}\egqd{h\to0}a_0h^0+\dots+a_nh^n+\o{h^n},\] \cad : \[f\paren{x}\egqd{x\to a}a_0\paren{x-a}^0+\dots+a_n\paren{x-a}^n+\o{\paren{x-a}^n}.\]
+
+Autrement dit : il existe \(P\in\poly\) tel que : \[f\paren{a+h}\egqd{h\to0}P\paren{h}+\o{h^n}.\]
+
+NB : les termes de \(P\) de degrés strictement supérieurs à \(n\) vont \guillemets{dans le \(o\)}.
+\end{defi}
+
+\begin{ex}
+Soit \(n\in\N\).
+
+On a : \[\dfrac{1}{1-x}\egqd{x\to0}1+x+x^2+\dots+x^n+\o{x^n}.\]
+\end{ex}
+
+\begin{dem}
+On a \(\quantifs{\forall x\in\R\excluant\accol{1}}1+x+\dots+x^n=\dfrac{1-x^{n+1}}{1-x}\) donc : \[\quantifs{\forall x\in\R\excluant\accol{1}}\dfrac{1}{1-x}=x^0+\dots+x^n+\dfrac{x^{n+1}}{1-x}.\]
+
+Or, quand \(x\to0\) : \[\dfrac{x^{n+1}}{1-x}=x^n\dfrac{x}{1-x}=x^n\o{1}=\o{x^n}.\]
+
+Donc : \[\dfrac{1}{1-x}\egqd{x\to0}x^0+\dots+x^n+\o{x^n}.\]
+\end{dem}
+
+\begin{cor}
+Soit \(n\in\N\).
+
+On a : \[\dfrac{1}{1+x}\egqd{x\to0}\sum_{k=0}^n\paren{-1}^kx^k+\o{x^n}.\]
+\end{cor}
