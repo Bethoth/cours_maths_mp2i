@@ -2,4 +2,1643 @@
 
 \minitoc
 
-\note{À VENIR}
+Dans tout le chapitre, on pose : \(\K=\R\) ou \(\C\).
+
+\section{Relations de comparaison : cas des suites}
+
+\subsection{Relation de domination \(\mathscr{O}\)}
+
+\begin{defprop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(\quantifs{\exists M\in\Rp;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\abs{u_n}\leq M\abs{v_n}\) \\
+    \item Il existe une suite \(\paren{\lambda_n}_n\in\K^\N\) telle que : \[\paren{\lambda_n}_n\text{ est bornée}\qquad\text{et}\qquad\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=\lambda v_n.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[\paren{v_n}_n\text{ domine }\paren{u_n}_n\] ou que \[v_n\text{ domine }u_n\text{ quand }n\text{ tend vers }\pinf\] et on note : \[u_n=\O{v_n}\text{ quand }n\text{ tend vers }\pinf\] ou : \[u_n\egqd{n\to\pinf}\O{v_n}.\]
+\end{defprop}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+Si les termes de \(\paren{v_n}_n\) sont non-nuls à partir d'un certain rang \(N\in\N\) : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}v_n\not=0,\] alors : \[u_n\egqd{n\to\pinf}\O{v_n}\ssi\text{la suite }\paren{\dfrac{u_n}{v_n}}_{n\geq N}\text{ est bornée}.\]
+
+Si les termes de \(\paren{v_n}_n\) sont tous non-nuls : \[\quantifs{\forall n\in\N}v_n\not=0,\] alors : \[u_n\egqd{n\to\pinf}\O{v_n}\ssi\text{la suite }\paren{\dfrac{u_n}{v_n}}_{n\in\N}\text{ est bornée}.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a : \[n^{\alpha}\egqd{n\to\pinf}\O{n^\beta}\ssi\alpha\leq\beta.\]
+
+Soient \(a,b\in\Rps\). On a : \[a^n\egqd{n\to\pinf}\O{b^n}\ssi a\leq b.\]
+
+Soit \(\paren{u_n}_n\in\K^\N\). On a : \[u_n\egqd{n\to\pinf}\O{0}\ssi\paren{u_n}_n\text{ est nulle à partir d'un certain rang}\] et : \[u_n\egqd{n\to\pinf}\O{1}\ssi\paren{u_n}_n\text{ est bornée}.\]
+\end{ex}
+
+\subsection{Relation de négligeabilité \(o\)}
+
+\begin{defprop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(\quantifs{\forall\epsilon\in\Rps;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\abs{u_n}\leq\epsilon\abs{v_n}\) \\
+    \item Il existe une suite \(\paren{\epsilon_n}_n\in\K^\N\) telle que : \[\lim_{n\to\pinf}\epsilon_n=0\qquad\text{et}\qquad\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=\epsilon_nv_n.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[\paren{u_n}_n\text{ est négligeable devant }\paren{v_n}_n\] ou que \[u_n\text{ est négligeable devant }v_n\text{ quand }n\text{ tend vers }\pinf\] et on note : \[u_n=\o{v_n}\text{ quand }n\text{ tend vers }\pinf\] ou : \[u_n\egqd{n\to\pinf}\o{v_n}.\]
+\end{defprop}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+Si les termes de \(\paren{v_n}_n\) sont non-nuls à partir d'un certain rang : \[\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}v_n\not=0,\] alors : \[u_n\egqd{n\to\pinf}\o{v_n}\ssi\lim_{n\to\pinf}\dfrac{u_n}{v_n}=0.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a : \[n^\alpha\egqd{n\to\pinf}\o{n^\beta}\ssi\alpha<\beta.\]
+
+Soient \(a,b\in\Rps\). On a : \[a^n\egqd{n\to\pinf}\o{b^n}\ssi a<b.\]
+
+Soit \(\paren{u_n}_n\in\K^\N\). On a : \[u_n\egqd{n\to\pinf}\o{0}\ssi\paren{u_n}_n\text{ est nulle à partir d'un certain rang}\] et : \[u_n\egqd{n\to\pinf}\o{1}\ssi\lim_{n\to\pinf}u_n=0.\]
+\end{ex}
+
+\subsection{Propriétés de \(\mathscr{O}\) et \(o\)}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+On a : \[u_n\egqd{n\to\pinf}\o{v_n}\imp u_n\egqd{n\to\pinf}\O{v_n}.\]
+\end{prop}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\) et \(l,l\prim\in\intervii{0}{\pinf}\) tels que : \[\lim_{n\to\pinf}\abs{u_n}=l\qquad\text{et}\qquad\lim_{n\to\pinf}\abs{v_n}=l\prim.\]
+
+On a, quand \(n\) tend vers \(\pinf\) :
+
+\begin{enumerate}
+    \item Si \(l=0\) et \(l\prim\not=0\) alors \(u_n=\o{v_n}\). \\
+    \item Si \(l\in\intervie{0}{\pinf}\) et \(l\prim=\pinf\) alors \(u_n=\o{v_n}\). \\
+    \item Si \(l,l\prim\in\intervee{0}{\pinf}\) alors \(u_n=\O{v_n}\). \\
+    \item Si \(l=l\prim=0\) ou \(l=l\prim=\pinf\) alors on ne peut rien dire.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Transitivités]
+Soient \(\paren{u_n}_n,\paren{v_n}_n,\paren{w_n}_n\in\K^\N\).
+
+On a, quand \(n\) tend vers \(\pinf\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        u_n=\O{v_n} \\
+        v_n=\O{w_n}
+    \end{dcases}\) alors \(u_n=\O{w_n}\). \\\\ Autrement dit : la relation de domination est transitive. \\
+    \item Si \(\begin{dcases}
+        u_n=\O{v_n} \\
+        v_n=\o{w_n}
+    \end{dcases}\) ou \(\begin{dcases}
+        u_n=\o{v_n} \\
+        v_n=\O{w_n}
+    \end{dcases}\) alors \(u_n=\o{w_n}\). \\
+    \item En particulier, la relation de négligeabilité est transitive.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Sommes]
+Soient \(\paren{u_n}_n,\paren{v_n}_n,\paren{w_n}_n\in\K^\N\).
+
+On a, quand \(n\) tend vers \(\pinf\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        u_n=\O{w_n} \\
+        v_n=\O{w_n}
+    \end{dcases}\) alors \(u_n+v_n=\O{w_n}\). \\
+    \item Si \(\begin{dcases}
+        u_n=\o{w_n} \\
+        v_n=\o{w_n}
+    \end{dcases}\) alors \(u_n+v_n=\o{w_n}\).
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Produits]
+Soient \(\paren{a_n}_n,\paren{b_n}_n,\paren{c_n}_n,\paren{d_n}_n\in\K^\N\).
+
+On a, quand \(n\) tend vers \(\pinf\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        a_n=\O{b_n} \\
+        c_n=\O{d_n}
+    \end{dcases}\) alors \(a_nc_n=\O{b_nd_n}\). \\
+    \item En particulier : si \(a_n=\O{b_n}\) alors \(a_nc_n=\O{b_nc_n}\). \\
+    \item Si \(\begin{dcases}
+        a_n=\o{b_n} \\
+        c_n=\O{d_n}
+    \end{dcases}\) alors \(a_nc_n=\o{b_nd_n}\). \\
+    \item En particulier : si \(a_n=\o{b_n}\) alors \(a_nc_n=\o{b_nc_n}\).
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Puissances]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\paren{\Rps}^\N\) et \(\alpha\in\R\).
+
+On a, quand \(n\) tend vers \(\pinf\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        u_n=\O{v_n} \\
+        \alpha\geq0
+    \end{dcases}\) alors \(u_n^\alpha=\O{v_n^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        u_n=\O{v_n} \\
+        \alpha\leq0
+    \end{dcases}\) alors \(v_n^\alpha=\O{u_n^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        u_n=\o{v_n} \\
+        \alpha>0
+    \end{dcases}\) alors \(u_n^\alpha=\o{v_n^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        u_n=\o{v_n} \\
+        \alpha<0
+    \end{dcases}\) alors \(v_n^\alpha=\o{u_n^\alpha}\).
+\end{enumerate}
+
+On retient en particulier : \[u_n=\O{v_n}\imp\dfrac{1}{v_n}=\O{\dfrac{1}{u_n}}\qquad\text{et}\qquad u_n=\o{v_n}\imp\dfrac{1}{v_n}=\o{\dfrac{1}{u_n}}.\]
+
+La même proposition est vraie en prenant \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(\alpha\in\N\) ou en prenant \(\paren{u_n}_n,\paren{v_n}_n\in\paren{\Cs}^\N\) et \(\alpha\in\Z\).
+\end{prop}
+
+\begin{prop}[Suites extraites]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(\phi:\N\to\N\) une fonction strictement croissante.
+
+On a, quand \(n\) tend vers \(\pinf\) : \[u_n=\O{v_n}\imp u_{\phi\paren{n}}=\O{v_{\phi\paren{n}}}\qquad\text{et}\qquad u_n=\o{v_n}\imp u_{\phi\paren{n}}=\o{v_{\phi\paren{n}}}.\]
+\end{prop}
+
+\subsection{Croissances comparées}
+
+\begin{rem}[Culturelle]
+Il existe d'autres notations que les \guillemets{notations de Landau} \(\mathscr{O}\), \(o\) et \(\sim\) qu'on utilise en mathématiques de CPGE.
+
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+\begin{itemize}
+    \item \guillemets{Notations de Hardy} (peu utilisées mais très commodes pour énoncer la proposition suivante) : \[u_n\prec v_n\ssi u_n=\o{v_n}\] et : \[u_n\preccurlyeq v_n\ssi u_n=\O{v_n}.\]
+    \item \guillemets{Notation de Vinogradov} : \[u_n\ll v_n\ssi u_n=\O{v_n}.\]
+    \item \guillemets{Notation \(\Theta\)} : \[\begin{aligned}
+        u_n=\Theta\paren{v_n}&\ssi\croch{u_n=\O{v_n}\quad\text{et}\quad v_n=\O{u_n}} \\
+        &\ssi\quantifs{\exists M_1,M_2\in\Rps;\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}M_1\abs{v_n}\leq\abs{u_n}\leq M_2\abs{v_n}.
+    \end{aligned}\] Cette notation est surtout utilisée en informatique (pour étudier la complexité des algorithmes). On verra qu'on a : \[u_n=\Theta\paren{v_n}\imp u_n\sim v_n.\]
+\end{itemize}
+\end{rem}
+
+\begin{prop}[Croissances comparées]\thlabel{prop:croissancesComparéesSuites}
+On utilise exceptionnellement les notations de Hardy pour gagner en concision.
+
+Soient \(a_1,a_2,\alpha_1,\alpha_2,\beta_1,\beta_2\in\R\) tels que : \[0<a_1<1<a_2\qquad\text{et}\qquad\alpha_1<0<\alpha_2\qquad\text{et}\qquad\beta_1<0<\beta_2.\]
+
+Alors on a, quand \(n\) tend vers \(\pinf\) : \[\underbrace{a_1^n\quad\prec\quad n^{\alpha_1}\quad\prec\quad\ln^{\beta_1}n}_{\text{suites de limite nulle}}\quad\prec\quad1\quad\prec\quad\underbrace{\ln^{\beta_2}n\quad\prec\quad n^{\alpha_2}\quad\prec\quad a_2^n\quad\prec\quad n!}_{\text{suites de limite }\pinf}\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(a^n\egqd{n\to\pinf}\o{n!}\) avec \(a\in\Rps\), \cad \(\lim_{n\to\pinf}\dfrac{a^n}{n!}=0\).
+
+On a : \[\quantifs{\forall n\in\N}a\times\dfrac{a}{2}\times\dots\times\dfrac{a}{n}=\dfrac{a^n}{n!}.\]
+
+Soit \(N\in\Ns\) tel que \(\dfrac{a}{N}\leq\dfrac{1}{2}\) (un tel \(N\) existe car \(\lim_{n\to\pinf}\dfrac{a}{n}=0\)).
+
+Posons \(M=\dfrac{a^{N-1}}{\paren{N-1}!}>0\).
+
+On a : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}\dfrac{a^n}{n!}=\underbrace{a\times\dots\times\dfrac{a}{N-1}}_{=M}\times\underbrace{\dfrac{a}{N}}_{\leq\frac{1}{2}}\times\dots\times\underbrace{\dfrac{a}{n}}_{\leq\frac{1}{2}}.\]
+
+Donc : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}0\leq\dfrac{a^n}{n!}\leq M\dfrac{1}{2^{n-N+1}}.\]
+
+Or \(\lim_{n\to\pinf}\dfrac{M}{2^{n-N+1}}=0\).
+
+Donc selon le théorème des gendarmes, on a \(\lim_{n\to\pinf}\dfrac{a^n}{n!}=0\) donc : \[a^n\egqd{n\to\pinf}\o{n!}.\]
+\end{dem}
+
+\begin{dem}
+Soient \(a\in\intervee{1}{\pinf}\) et \(\alpha\in\R\).
+
+Montrons que \(n^\alpha\egqd{n\to\pinf}\o{a^n}\), \cad \(\lim_{n\to\pinf}\dfrac{n^\alpha}{a^n}=0\).
+
+Posons \(\fonction{f}{\Rps}{\R}{x}{\dfrac{x^\alpha}{a^x}=x^\alpha\e{-x\ln a}}\)
+
+On a : \[\begin{aligned}
+\quantifs{\forall x\in\Rps}f\prim\paren{x}&=\alpha x^{\alpha-1}a^{-x}-x^\alpha a^{\alpha x}\ln a \\
+&=x^{\alpha-1}a^{-x}\paren{\alpha-x\ln a}.
+\end{aligned}\]
+
+On a \(\quantifs{\forall x\in\Rps}f\prim\paren{x}\geq0\ssi x\leq\dfrac{\alpha}{\ln a}\) donc \(f\) est décroissante sur \(\intervie{\dfrac{\alpha}{\ln a}}{\pinf}\).
+
+Donc \(f\) admet une limite en \(\pinf\).
+
+De plus, \(f\) est minorée par \(0\) donc \(l=\lim_{\pinf}f\in\Rps\).
+
+De plus : \[\quantifs{\forall x\in\Rps}f\paren{2x}=\dfrac{2^\alpha}{a^x}f\paren{x}.\]
+
+D'où, en passant à la limite quand \(x\to\pinf\) : \[l=0\times l=0\text{ car }l\text{ est finie}.\]
+
+Donc \(n^\alpha\egqd{n\to\pinf}\o{a^n}\).
+\end{dem}
+
+\begin{dem}
+Soient \(\alpha\in\Rps\) et \(\beta\in\R\).
+
+Montrons que \(\ln^\beta n\egqd{n\to\pinf}\o{n^\alpha}\), \cad \(\lim_{n\to\pinf}\dfrac{\ln^\beta n}{n^\alpha}=0\).
+
+Posons \(\fonction{f}{\intervee{1}{\pinf}}{\R}{x}{\dfrac{\ln^\beta x}{x^\alpha}=x^{-\alpha}\ln^\beta x}\)
+
+On a : \[\begin{aligned}
+\quantifs{\forall x\in\intervee{1}{\pinf}}f\prim\paren{x}&=\dfrac{\beta}{x}x^{-\alpha}\ln^{\beta-1}x-\alpha x^{-\alpha-1}\ln^\beta x \\
+&=x^{-\alpha-1}\ln^{\beta-1}x\paren{\beta-\alpha\ln x}.
+\end{aligned}\]
+
+On a : \[\begin{aligned}
+\quantifs{\forall x\in\intervee{1}{\pinf}}f\prim\paren{x}\geq0&\ssi\alpha\ln x\leq\beta \\
+&\ssi x\leq\e{\nicefrac{\beta}{\alpha}}.
+\end{aligned}\]
+
+Donc \(f\) est décroissante sur \(\intervie{\e{\nicefrac{\beta}{\alpha}}}{\pinf}\).
+
+Donc \(f\) admet une limite en \(\pinf\).
+
+De plus, \(f\) est minorée par \(0\) donc \(l=\lim_{\pinf}f\in\Rp\).
+
+De plus, on a \(\quantifs{\forall x\in\intervee{1}{\pinf}}f\paren{x^2}=\dfrac{2^\beta}{x^\alpha}f\paren{x}\).
+
+Donc en passant à la limite quand \(x\to\pinf\) : \[l=0\times l=0\text{ car }l\text{ est finie}.\]
+
+D'où \(\ln^\beta n\egqd{n\to\pinf}\o{n^{\alpha}}\).
+\end{dem}
+
+\begin{dem}
+Soit \(\beta\in\Rps\).
+
+On a \(\lim_n\ln^\beta n=\pinf\) donc \(1\egqd{n\to\pinf}\o{\ln^\beta n}\) car \(\lim_n\dfrac{1}{\ln^\beta n}=0\).
+\end{dem}
+
+\begin{dem}
+Soit \(\beta\in\Rms\).
+
+On a \(-\beta>0\) donc \(1\egqd{n\to\pinf}\o{\ln^{-\beta}n}\).
+
+Donc \(\ln^\beta n\egqd{n\to\pinf}\o{1}\).
+\end{dem}
+
+\begin{dem}
+Soient \(\alpha,\beta\in\Rms\).
+
+On a \(-\alpha>0\) et \(-\beta>0\).
+
+Donc selon ce qui précède, on a, quand \(n\to\pinf\) : \(\ln^{-\beta}n=\o{n^{-\alpha}}\).
+
+D'où : \[n^\alpha\egqd{n\to\pinf}\o{\ln^\beta n}.\]
+\end{dem}
+
+\begin{dem}
+Soient \(a\in\intervee{0}{1}\) et \(\alpha\in\Rms\).
+
+De même, \(a^n\egqd{n\to\pinf}\o{n^\alpha}\) découle de ce qui précède.
+\end{dem}
+
+\subsection{Relation d'équivalence \(\sim\)}
+
+\begin{defprop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(v_n\egqd{n\to\pinf}u_n+\o{u_n}\) \\
+    \item \(u_n\egqd{n\to\pinf}v_n+\o{v_n}\) \\
+    \item Il existe une suite \(\paren{\lambda_n}_n\in\K^\N\) telle que : \[\lim_{n\to\pinf}\lambda_n=1\qquad\text{et}\qquad\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=\lambda_nv_n\]
+    \item Il existe une suite \(\paren{\mu_n}_n\in\K^\N\) telle que : \[\lim_{n\to\pinf}\mu_n=1\qquad\text{et}\qquad\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}v_n=\mu_nu_n.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[\paren{u_n}_n\text{ est équivalente à }\paren{v_n}_n\] ou que \[\begin{aligned}
+u_n\text{ est équivalent à }v_n\text{ quand }n\text{ tend vers }\pinf \\
+u_n\text{ est un équivalent de }v_n\text{ quand }n\text{ tend vers }\pinf
+\end{aligned}\] et on note : \[u_n\sim v_n\text{ quand }n\text{ tend vers }\pinf\] ou : \[u_n\simqd{n\to\pinf}v_n.\]
+\end{defprop}
+
+\begin{dem}[(2) \(\ssi\) (3)]
+On a : \[\begin{aligned}
+u_n\egqd{n\to\pinf}v_n+\o{v_n}&\ssi\quantifs{\exists\paren{\epsilon_n}_n\in\K^\N}\begin{dcases}
+\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=v_n+\epsilon_nv_n \\
+\lim_n\epsilon_n=0
+\end{dcases} \\
+&\ssi\quantifs{\exists\paren{\epsilon_n}_n\in\K^\N}\begin{dcases}
+\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=\paren{1+\epsilon_n}v_n \\
+\lim_n\epsilon_n=0
+\end{dcases} \\
+&\ssi\quantifs{\exists\paren{\lambda_n}_n\in\K^\N}\begin{dcases}
+\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}u_n=\lambda_nv_n \\
+\lim_n\lambda_n=1
+\end{dcases}
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[(1) \(\ssi\) (4)]
+Idem.
+\end{dem}
+
+\begin{dem}[(3) \(\ssi\) (4)]~\\
+Claire en prenant \(\mu_n=\dfrac{1}{\lambda_n}\) à partir d'un certain rang.
+\end{dem}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+Si les termes de \(\paren{v_n}_n\) sont non-nuls à partir d'un certain rang : \[\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}v_n\not=0,\] alors : \[u_n\simqd{n\to\pinf}v_n\ssi\lim_{n\to\pinf}\dfrac{u_n}{v_n}=1.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a : \[n^\alpha\simqd{n\to\pinf}n^\beta\ssi\alpha=\beta.\]
+
+Soient \(a,b\in\Rps\). On a : \[a^n\simqd{n\to\pinf}b^n\ssi a=b.\]
+
+Soient \(d\in\N\), \(a_0,\dots,a_d\in\C\) tels que \(a_d\not=0\) et \(P=a_dX^d+\dots+a_0X^0\in\poly[\C]\). On a : \[P\paren{n}\simqd{n\to\pinf}a_dn^d.\]
+
+Soit \(\paren{u_n}_n\in\K^\N\). On a : \[u_n\simqd{n\to\pinf}0\ssi\paren{u_n}_n\text{ est nulle à partir d'un certain rang}\] et : \[\quantifs{\forall l\in\K\excluant\accol{0}}u_n\simqd{n\to\pinf}l\ssi\lim_{n\to\pinf}u_n=l.\]
+
+NB : l'équivalence précédente est valable pour toute limite finie non-nulle. En particulier, deux suites admettant une même limite finie non-nulle sont équivalentes.
+\end{ex}
+
+\subsection{Propriétés de \(\sim\)}
+
+\begin{prop}
+La relation \(\sim\) est une relation d'équivalence sur \(\K^\N\).
+\end{prop}
+
+\begin{prop}
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\K^\N\).
+
+On a : \[u_n\simqd{n\to\pinf}v_n\imp\begin{dcases}
+u_n\egqd{n\to\pinf}\O{v_n} \\
+v_n\egqd{n\to\pinf}\O{u_n}
+\end{dcases}\]
+\end{prop}
+
+\begin{prop}[Cas réel : limite et signe]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\R^\N\) et \(l\in\Rb\).
+
+Si \(\begin{dcases}
+\lim_{n\to\pinf}u_n=l \\
+u_n\simqd{n\to\pinf}v_n
+\end{dcases}\) alors \(\lim_{n\to\pinf}v_n=l\).
+
+Si \(u_n\simqd{n\to\pinf}v_n\) alors \(\paren{u_n}_n\) et \(\paren{v_n}_n\) sont de même signe au sens strict à partir d'un certain rang : \[\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\sg u_n=\sg v_n.\]
+\end{prop}
+
+\begin{dem}
+On suppose \(u_n\simqd{n\to\pinf}v_n\).
+
+Soit \(\paren{\lambda_n}_n\in\R^\N\) telle que \(\begin{dcases}
+\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}v_n=\lambda_nu_n \\
+\lim_{n\to\pinf}\lambda_n=1
+\end{dcases}\)
+
+Supposons \(\lim_nu_n=l\). Alors \(\lim_n\lambda_nu_n=l\) donc \(\lim_nv_n=l\).
+
+Comme \(\lim_n\lambda_n=1\), il existe \(N\in\N\) tel que \(\quantifs{\forall n\in\interventierie{N}{\pinf}}\begin{dcases}
+\lambda_n\geq\dfrac{1}{2} \\
+v_n=\lambda_nu_n
+\end{dcases}\) donc \[\quantifs{\forall n\in\interventierie{N}{\pinf}}\sg v_n=\sg u_n.\]
+\end{dem}
+
+\begin{prop}[Cas complexe : limite]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(l\in\C\).
+
+Si \(\begin{dcases}
+\lim_{n\to\pinf}u_n=l \\
+u_n\simqd{n\to\pinf}v_n
+\end{dcases}\) alors \(\lim_{n\to\pinf}v_n=l\).
+\end{prop}
+
+\begin{prop}[Produits]
+Soient \(\paren{a_n}_n,\paren{b_n}_n,\paren{c_n}_n,\paren{d_n}_n\in\K^\N\).
+
+On a, quand \(n\) tend vers \(\pinf\) : \[\begin{dcases}
+a_n\sim b_n \\
+c_n\sim d_n
+\end{dcases}\imp a_nc_n\sim b_nd_n.\]
+\end{prop}
+
+\begin{prop}[Puissances]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\paren{\Rps}^\N\) et \(\alpha\in\R\).
+
+On a, quand \(n\) tend vers \(\pinf\) : \[u_n\sim v_n\imp u_n^\alpha\sim v_n^\alpha.\]
+
+On retient en particulier : \[u_n\sim v_n\imp\dfrac{1}{u_n}\sim\dfrac{1}{v_n}.\]
+
+La même proposition est vraie en prenant \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(\alpha\in\N\) ou en prenant \(\paren{u_n}_n,\paren{v_n}_n\in\paren{\Cs}^\N\) et \(\alpha\in\Z\).
+\end{prop}
+
+\begin{prop}[Suites extraites]
+Soient \(\paren{u_n}_n,\paren{v_n}_n\in\C^\N\) et \(\phi:\N\to\N\) une fonction strictement croissante.
+
+On a : \[u_n\simqd{n\to\pinf}\imp u_{\phi\paren{n}}\simqd{n\to\pinf}v_{\phi\paren{n}}.\]
+\end{prop}
+
+\begin{prop}[Sommes]
+On ne fait pas de sommes d'équivalents.
+\end{prop}
+
+\begin{dem}
+Quand \(n\) tend vers \(\pinf\) :
+
+On a \(\begin{dcases}
+1+\dfrac{1}{n}\sim1 \\
+-1+\dfrac{1}{n}\sim-1
+\end{dcases}\) mais on n'a pas \(\dfrac{2}{n}\sim0\).
+\end{dem}
+
+\begin{prop}
+Soient \(\paren{a_n}_n,\paren{b_n}_n,\paren{c_n}_n,\paren{d_n}_n\in\R^\N\).
+
+On suppose \(\begin{dcases}
+\quantifs{\forall n\in\N}a_n\leq b_n\leq c_n \\
+\text{quand }n\to\pinf\text{, }a_n\sim c_n\sim d_n
+\end{dcases}\)
+
+Alors : \[b_n\simqd{n\to\pinf}d_n.\]
+\end{prop}
+
+\begin{dem}
+Soient \(\paren{\lambda_n}_n,\paren{\mu_n}_n\in\R^\N\) telles que \(\begin{dcases}
+\lim_n\lambda_n=\lim_n\mu_n=1 \\
+\quantifs{\exists N\in\N;\forall n\in\interventierie{N}{\pinf}}\begin{dcases}
+    a_n=\lambda_nd_n \\
+    c_n=\mu_nd_n
+\end{dcases}
+\end{dcases}\)
+
+Soit un tel \(N\in\N\).
+
+On a : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}\begin{dcases}
+\lambda_n=\dfrac{a_n}{d_n}\leq\dfrac{b_n}{d_n}\leq\dfrac{c_n}{d_n}=\mu_n &\text{si }d_n>0 \\
+\mu_n\leq\dfrac{c_n}{d_n}\leq\dfrac{b_n}{d_n}\leq\dfrac{a_n}{d_n}=\lambda_n &\text{si }d_n<0 \\
+b_n=0 &\text{si }d_n=0
+\end{dcases}\]
+
+Posons \(\quantifs{\forall n\in\N}\nu_n=\begin{dcases}
+1 &\text{si }d_n=0 \\
+\dfrac{b_n}{d_n} &\text{si }d_n\not=0
+\end{dcases}\)
+
+On a : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}b_n=\nu_nd_n\] et : \[\quantifs{\forall n\in\interventierie{N}{\pinf}}\min\accol{\lambda_n;\mu_n}\leq\nu_n\leq\max\accol{\lambda_n;\mu_n}\qquad\text{ou}\qquad\nu_n=1.\]
+
+Donc \(\lim_n\nu_n=1\) donc \(b_n\simqd{n\to\pinf}d_n\).
+\end{dem}
+
+\begin{ex}
+Soit \(\paren{u_n}_n\in\K^\N\) telle que \(\quantifs{\forall n\in\N}n-1\leq u_n\leq n+2\).
+
+On a, quand \(n\to\pinf\) : \(n-1\sim n+2\sim n\).
+
+Donc \(u_n\simqd{n\to\pinf} n\).
+\end{ex}
+
+\subsection{Formule de Stirling}
+
+\begin{theo}[Formule de Stirling]
+On a : \[n!\simqd{n\to\pinf}\sqrt{2\pi n}\paren{\dfrac{n}{\e{}}}^n.\]
+\end{theo}
+
+\begin{dem}
+\note{Admise}
+\end{dem}
+
+\section{Relations de comparaison : cas général}
+
+On va maintenant étendre ce qui précède au cas des fonctions définies sur un ensemble \(A\subset\R\), à valeurs dans \(\K=\R\) ou \(\C\) et dont on étudie le comportement au voisinage d'un point \(a\in\Rb\).
+
+Pour cela, on suppose qu'il existe des points où la fonction \(f\) est définie et qui sont arbitrairement proches de \(a\) (autrement, étudier le comportement de \(f\) au voisinage de \(a\) n'a pas de sens).
+
+Précisément, on supposera que tout voisinage de \(a\) dans \(\R\) rencontre \(A\) : \[\quantifs{\forall V\in\V{a}}V\inter A\not=\ensvide.\]
+
+\begin{itemize}
+    \item Si \(a=\pinf\), cela signifie que \(A\) est une partie de \(\R\) non-majorée. \\
+    \item Si \(a=\minf\), cela signifie que \(A\) est une partie de \(\R\) non-minorée. \\
+    \item Si \(a\in\R\), cela signifie : \(\quantifs{\forall\epsilon\in\Rps;\exists a\prim\in A}\abs{a\prim-a}\leq\epsilon\).
+\end{itemize}
+
+On fixe dans la suite une telle partie \(A\) et un tel point \(a\in\Rb\).
+
+\subsection{Relation de domination \(\mathscr{O}\)}
+
+\begin{defprop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(\quantifs{\exists M\in\Rp;\exists V\in\V{a};\forall t\in V}\abs{f\paren{t}}\leq M\abs{g\paren{t}}\) \\
+    \item Il existe une fonction \(\lambda\in\F{A}{\K}\) telle que : \[\lambda\text{ est bornée}\qquad\text{et}\qquad\quantifs{\exists V\in\V{a};\forall t\in V}f\paren{t}=\lambda\paren{t}g\paren{t}.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[g\text{ domine }f\] ou que \[g\paren{t}\text{ domine }f\paren{t}\text{ quand }t\text{ tend vers }a\] et on note : \[f\paren{t}=\O{g\paren{t}}\text{ quand }t\text{ tend vers }a\] ou : \[f\paren{t}\egqd{t\to a}\O{g\paren{t}}.\]
+\end{defprop}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Si \(g\) ne s'annule pas sur un voisinage \(V\) de \(a\) : \[\quantifs{\forall t\in V}g\paren{t}\not=0,\] alors : \[f\paren{t}\egqd{t\to a}\O{g\paren{t}}\ssi\dfrac{f}{g}\text{ est bornée sur }V.\]
+
+Si \(g\) ne s'annule pas : \[\quantifs{\forall t\in A}g\paren{t}\not=0,\] alors : \[f\paren{t}\egqd{t\to a}\O{g\paren{t}}\ssi\dfrac{f}{g}\text{ est bornée sur un voisinage de }a.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a, quand \(t\) tend vers \(\pinf\) : \[t^\alpha=\O{t^\beta}\ssi\alpha\leq\beta.\]
+
+Soit \(f\in\F{A}{\K}\). On a, quand \(t\) tend vers \(a\) : \[\begin{aligned}
+f\paren{t}=\O{0}&\ssi f\text{ est nulle sur un voisinage de }a \\
+&\ssi\quantifs{\exists V\in\V{a};\forall t\in V\inter A}f\paren{t}=0
+\end{aligned}\] et : \[f\paren{t}=\O{1}\ssi f\text{ est bornée sur un voisinage de }a,\] \cad : \[f\paren{t}=\O{1}\ssi\quantifs{\exists V\in\V{a};\exists M\in\Rp;\forall t\in V\inter A}\abs{f\paren{t}}\leq M.\]
+\end{ex}
+
+\subsection{Relation de négligeabilité \(o\)}
+
+\begin{defprop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(\quantifs{\forall\epsilon\in\Rps;\exists V\in\V{a};\forall t\in V}\abs{f\paren{t}}\leq\epsilon\abs{g\paren{t}}\) \\
+    \item Il existe une fonction \(\epsilon\in\F{A}{\K}\) telle que : \[\lim_{t\to a}\epsilon\paren{t}=0\qquad\text{et}\qquad\quantifs{\exists V\in\V{a};\forall t\in V}f\paren{t}=\epsilon\paren{t}g\paren{t}.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[f\text{ est négligeable devant }g\] ou que \[f\paren{t}\text{ est négligeable devant }g\paren{t}\text{ quand }t\text{ tend vers }a\] et on note : \[f\paren{t}=\o{g\paren{t}}\text{ quand }t\text{ tend vers }a\] ou : \[f\paren{t}\egqd{t\to a}\o{g\paren{t}}.\]
+\end{defprop}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Si \(g\) ne s'annule pas au voisinage de \(a\) : \[\quantifs{\exists V\in\V{a};\forall t\in V}g\paren{t}\not=0,\] alors : \[f\paren{t}\egqd{t\to a}\o{g\paren{t}}\ssi\lim_{t\to a}\dfrac{f\paren{t}}{g\paren{t}}=0.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a, quand \(t\) tend vers \(a\) : \[t^\alpha=\o{t^\beta}\ssi\alpha<\beta.\]
+
+Soit \(f\in\F{A}{\K}\). On a : \[f\paren{t}\egqd{t\to a}\o{0}\ssi f\text{ est nulle sur un voisinage de }a\] et : \[f\paren{t}\egqd{t\to a}\o{1}\ssi\lim_{t\to a}f\paren{t}=0.\]
+\end{ex}
+
+\subsection{Propriétés de \(\mathscr{O}\) et \(o\)}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\).
+
+On a : \[f\paren{t}\egqd{t\to a}\o{g\paren{t}}\imp f\paren{t}\egqd{t\to a}\O{g\paren{t}}.\]
+\end{prop}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\) et \(l,l\prim\in\intervii{0}{\pinf}\) tels que : \[\lim_{t\to a}\abs{f\paren{t}}=l\qquad\text{et}\qquad\lim_{t\to a}\abs{g\paren{t}}=l\prim.\]
+
+On a, quand \(t\) tend vers \(a\) :
+
+\begin{enumerate}
+    \item Si \(l=0\) et \(l\prim\not=0\) alors \(f\paren{t}=\o{g\paren{t}}\) \\
+    \item Si \(l\in\intervie{0}{\pinf}\) et \(l\prim=\pinf\) alors \(f\paren{t}=\o{g\paren{t}}\) \\
+    \item Si \(l,l\prim\in\intervee{0}{\pinf}\) alors \(f\paren{t}=\O{g\paren{t}}\) \\
+    \item Si \(l=l\prim=0\) ou \(l=l\prim=\pinf\), on ne peut rien dire.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Transitivités]
+Soient \(f,g,h\in\F{A}{\K}\).
+
+On a, quand \(t\) tend vers \(a\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{g\paren{t}} \\
+        g\paren{t}=\O{h\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}=\O{h\paren{t}}\). \\\\ Autrement dit : la relation de domination est transitive. \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{g\paren{t}} \\
+        g\paren{t}=\o{h\paren{t}}
+    \end{dcases}\) ou \(\begin{dcases}
+        f\paren{t}=\o{g\paren{t}} \\
+        g\paren{t}=\O{h\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}=\o{h\paren{t}}\). \\
+    \item En particulier, la relation de négligeabilité est transitive.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Sommes]
+Soient \(f,g,h\in\F{A}{\K}\).
+
+On a, quand \(t\) tend vers \(a\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{h\paren{t}} \\
+        g\paren{t}=\O{h\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}+g\paren{t}=\O{h\paren{t}}\). \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\o{h\paren{t}} \\
+        g\paren{t}=\o{h\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}+g\paren{t}=\o{h\paren{t}}\).
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Produits]
+Soient \(f,g,h,k\in\F{A}{\K}\).
+
+On a, quand \(t\) tend vers \(a\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{g\paren{t}} \\
+        h\paren{t}=\O{k\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}h\paren{t}=\O{g\paren{t}k\paren{t}}\). \\
+    \item En particulier : si \(f\paren{t}=\O{g\paren{t}}\) alors \(f\paren{t}h\paren{t}=\O{g\paren{t}h\paren{t}}\). \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\o{g\paren{t}} \\
+        h\paren{t}=\O{k\paren{t}}
+    \end{dcases}\) alors \(f\paren{t}h\paren{t}=\o{g\paren{t}k\paren{t}}\). \\
+    \item En particulier : si \(f\paren{t}=\o{g\paren{t}}\) alors \(f\paren{t}h\paren{t}=\o{g\paren{t}h\paren{t}}\).
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Puissances]
+Soient \(f,g\in\F{A}{\Rps}\) et \(\alpha\in\R\).
+
+On a, quand \(t\) tend vers \(a\) :
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{g\paren{t}} \\
+        \alpha\geq0
+    \end{dcases}\) alors \(f\paren{t}^\alpha=\O{g\paren{t}^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\O{g\paren{t}} \\
+        \alpha\leq0
+    \end{dcases}\) alors \(g\paren{t}^\alpha=\O{f\paren{t}^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\o{g\paren{t}} \\
+        \alpha>0
+    \end{dcases}\) alors \(f\paren{t}^\alpha=\o{g\paren{t}^\alpha}\). \\
+    \item Si \(\begin{dcases}
+        f\paren{t}=\o{g\paren{t}} \\
+        \alpha<0
+    \end{dcases}\) alors \(g\paren{t}^\alpha=\o{f\paren{t}^\alpha}\).
+\end{enumerate}
+
+On retient en particulier : \[f\paren{t}=\O{g\paren{t}}\imp\dfrac{1}{g\paren{t}}=\O{\dfrac{1}{f\paren{t}}}\qquad\text{et}\qquad f\paren{t}=\o{g\paren{t}}\imp\dfrac{1}{g\paren{t}}=\o{\dfrac{1}{f\paren{t}}}.\]
+
+La même proposition est vraie en prenant \(f,g\in\F{A}{\C}\) et \(\alpha\in\N\) ou en prenant \(f,g\in\F{A}{\Cs}\) et \(\alpha\in\Z\).
+\end{prop}
+
+\subsection{Relation d'équivalence \(\sim\)}
+
+\begin{defprop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Les propositions suivantes sont équivalentes :
+
+\begin{enumerate}
+    \item \(g\paren{t}\egqd{t\to a}f\paren{t}+\o{f\paren{t}}\) \\
+    \item \(f\paren{t}\egqd{t\to a}g\paren{t}+\o{g\paren{t}}\) \\
+    \item Il existe une fonction \(\lambda\in\F{A}{\K}\) telle que : \[\lim_{t\to a}\lambda\paren{t}=1\qquad\text{et}\qquad\quantifs{\exists V\in\V{a};\forall t\in V}f\paren{t}=\lambda\paren{t}g\paren{t}\]
+    \item Il existe une fonction \(\mu\in\F{A}{\K}\) telle que : \[\lim_{t\to a}\mu\paren{t}=1\qquad\text{et}\qquad\quantifs{\exists V\in\V{a};\forall t\in V}g\paren{t}=\mu\paren{t}f\paren{t}.\]
+\end{enumerate}
+
+Lorsqu'elles sont vérifiées, on dit que \[f\text{ est équivalente à }g\] ou \[\begin{aligned}
+f\paren{t}\text{ est équivalent à }g\paren{t}\text{ quand }t\text{ tend vers }a \\
+f\paren{t}\text{ est un équivalent de }g\paren{t}\text{ quand }t\text{ tend vers }a
+\end{aligned}\] et on note : \[f\paren{t}\sim g\paren{t}\text{ quand }t\text{ tend vers }a\] ou : \[f\paren{t}\simqd{t\to a}g\paren{t}.\]
+\end{defprop}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\).
+
+Si \(g\) ne s'annule pas au voisinage de \(a\) : \[\quantifs{\exists V\in\V{a};\forall t\in V}g\paren{t}\not=0,\] alors : \[f\paren{t}\simqd{t\to a}g\paren{t}\ssi\lim_{t\to a}\dfrac{f\paren{t}}{g\paren{t}}=1.\]
+\end{prop}
+
+\begin{ex}
+Soient \(\alpha,\beta\in\R\). On a : \[t^\alpha\simqd{t\to a}t^\beta\ssi\alpha=\beta.\]
+
+Soient \(d\in\N\), \(a_0,\dots,a_d\in\C\) tels que \(a_d\not=0\) et \(P=a_dX^d+\dots+a_0X^0\in\poly[\C]\). On a : \[P\paren{t}\simqd{t\to\pinf}a_dt^d.\]
+
+Soit \(f\in\F{A}{\K}\). On a : \[f\paren{t}\simqd{t\to a}0\ssi f\text{ est nulle sur un voisinage de }a\] et : \[\quantifs{\forall l\in\K\excluant\accol{0}}f\paren{t}\simqd{t\to a}l\ssi\lim_{t\to a}f\paren{t}=l.\]
+
+NB : l'équivalence précédente est valable pour toute limite finie non-nulle. En particulier, deux fonctions admettant un même limite finie non-nulle sont équivalentes.
+\end{ex}
+
+\subsection{Propriétés de \(\sim\)}
+
+\begin{prop}
+La relation \guillemets{être équivalentes au voisinage de \(a\)} est une relation d'équivalence sur \(\F{A}{\K}\).
+\end{prop}
+
+\begin{prop}
+Soient \(f,g\in\F{A}{\K}\).
+
+On a : \[f\paren{t}\simqd{t\to a}g\paren{t}\imp\begin{dcases}
+    f\paren{t}\egqd{t\to a}\O{g\paren{t}} \\
+    g\paren{t}\egqd{t\to a}\O{f\paren{t}}
+\end{dcases}\]
+\end{prop}
+
+\begin{prop}[Cas réel : limite et signe]
+Soient \(f,g\in\F{A}{\R}\) et \(l\in\Rb\).
+
+Si \(\begin{dcases}
+    \lim_{t\to a}f\paren{t}=l \\
+    f\paren{t}\simqd{t\to a}g\paren{t}
+\end{dcases}\) alors \(\lim_{t\to a}g\paren{t}=l\).
+
+Si \(f\paren{t}\simqd{t\to a}g\paren{t}\) alors \(f\) et \(g\) sont de même signe au sens strict sur un voisinage de \(a\) : \[\quantifs{\exists V\in\V{a};\forall t\in V}\sg f\paren{t}=\sg g\paren{t}.\]
+\end{prop}
+
+\begin{prop}[Cas complexe : limite]
+Soient \(f,g\in\F{A}{\C}\) et \(l\in\C\).
+
+Si \(\begin{dcases}
+\lim_{t\to a}f\paren{t}=l \\
+f\paren{t}\simqd{t\to a}g\paren{t}
+\end{dcases}\) alors \(\lim_{t\to a}g\paren{t}=l\).
+\end{prop}
+
+\begin{prop}[Produits]
+Soient \(f,g,h,k\in\F{A}{\K}\).
+
+On a, quand \(t\) tend vers \(a\) : \[\begin{dcases}
+f\paren{t}\sim g\paren{t} \\
+h\paren{t}\sim k\paren{t}
+\end{dcases}\imp f\paren{t}h\paren{t}\sim g\paren{t}k\paren{t}.\]
+\end{prop}
+
+\begin{prop}[Puissances]
+Soient \(f,g\in\F{A}{\Rps}\) et \(\alpha\in\R\).
+
+On a, quand \(t\) tend vers \(a\) : \[f\paren{t}\sim g\paren{t}\imp f\paren{t}^\alpha\sim g\paren{t}^\alpha.\]
+
+On retient en particulier : \[f\paren{t}\sim g\paren{t}\imp\dfrac{1}{f\paren{t}}\sim\dfrac{1}{g\paren{t}}.\]
+
+La même proposition est vraie en prenant \(f,g\in\F{A}{\C}\) et \(\alpha\in\N\) ou en prenant \(f,g\in\F{A}{\Cs}\) et \(\alpha\in\Z\).
+\end{prop}
+
+\begin{prop}[Sommes]
+On ne fait pas de sommes d'équivalents.
+\end{prop}
+
+\begin{prop}
+Soient \(f,g,h,k\in\F{A}{\R}\).
+
+Si \(\begin{dcases}
+f\leq g\leq h \\
+f\sim h\sim k
+\end{dcases}\) alors \(g\sim k\).
+\end{prop}
+
+\subsection{Changements de variable}
+
+\begin{prop}
+Soient \(B\subset\R\) et \(b\in\Rb\) tels que tout voisinage de \(b\) dans \(\R\) rencontre \(B\) : \[\quantifs{\forall V\in\V{b}}V\inter B\not=\ensvide.\]
+
+Soient \(\phi:B\to A\) telle que \(\lim_{s\to b}\phi\paren{s}=a\) et \(f,g\in\F{A}{\K}\).
+
+On a :
+
+\begin{enumerate}
+    \item Si \(f\paren{t}\egqd{t\to a}\O{g\paren{t}}\) alors \(f\paren{\phi\paren{s}}\egqd{s\to b}\O{g\paren{\phi\paren{s}}}\). \\
+    \item Si \(f\paren{t}\egqd{t\to a}\o{g\paren{t}}\) alors \(f\paren{\phi\paren{s}}\egqd{s\to b}\o{g\paren{\phi\paren{s}}}\). \\
+    \item Si \(f\paren{t}\simqd{t\to a}g\paren{t}\) alors \(f\paren{\phi\paren{s}}\simqd{s\to b}g\paren{\phi\paren{s}}\).
+\end{enumerate}
+\end{prop}
+
+\subsection{Croissances comparées}
+
+\begin{prop}[Croissances comparées en \(\pinf\)]\thlabel{prop:croissancesComparéesFonctionsPinf}
+Soient \(\alpha_1,\alpha_2,\beta_1,\beta_2,\gamma_1,\gamma_2\in\R\) tels que : \[\alpha_1<0<\alpha_2\qquad\text{et}\qquad\beta_1<0<\beta_2\qquad\text{et}\qquad\gamma_1<0<\gamma_2.\]
+
+On a, quand \(t\) tend vers \(\pinf\) : \[\underbrace{\e{\gamma_1t}\quad\prec\quad t^{\alpha_1}\quad\prec\quad\ln^{\beta_1}t}_{\text{fonctions de }t\text{ de limite nulle}}\quad\prec\quad1\quad\prec\quad\underbrace{\ln^{\beta_2}t\quad\prec\quad t^{\alpha_2}\quad\prec\quad\e{\gamma_2t}}_{\text{fonctions de }t\text{ de limite }\pinf}.\]
+\end{prop}
+
+\begin{dem}
+\Cf \thref{prop:croissancesComparéesSuites}.
+\end{dem}
+
+\begin{prop}[Croissances comparées en \(0^+\)]
+Soient \(\alpha_1,\alpha_2,\beta_1,\beta_2\in\R\) tels que : \[\alpha_1<0<\alpha_2\qquad\text{et}\qquad\beta_1<0<\beta_2.\]
+
+On a, quand \(t\) tend vers \(0^+\) : \[\underbrace{t^{\alpha_2}\quad\prec\quad\abs{\ln t}^{\beta_1}}_{\text{fonctions de }t\text{ de limite nulle}}\quad\prec\quad1\quad\prec\quad\underbrace{\abs{\ln t}^{\beta_2}\quad\prec\quad t^{\alpha_1}}_{\text{fonctions de }t\text{ de limite }\pinf}.\]
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:croissancesComparéesFonctionsPinf} par un changement de variable.
+
+Par exemple, on a vu \(\ln^{\beta_2}s\egqd{s\to\pinf}\o{s^{-\alpha_1}}\) car \(-\alpha_1>0\).
+
+Or \(\lim_{t\to0^+}\dfrac{1}{t}=\pinf\) donc \(\ln^{\beta_2}\dfrac{1}{t}\egqd{t\to0^+}\o{\paren{\dfrac{1}{t}}^{-\alpha_1}}\).
+
+D'où \(\abs{\ln t}^{\beta_2}\egqd{t\to0^+}\o{t^{\alpha_1}}\).
+\end{dem}
+
+\begin{exoex}
+Calculer : \[\lim_{t\to0^+}t\ln t.\]
+\end{exoex}
+
+\begin{corr}
+On a \(\ln t\egqd{t\to0^+}\o{\dfrac{1}{t}}\) donc \(\lim_{t\to0^+}\dfrac{\ln t}{\nicefrac{1}{t}}=0\).
+
+Donc \[\lim_{t\to0^+}t\ln t=0.\]
+\end{corr}
+
+\subsection{Erreurs à ne pas faire}
+
+\subsubsection{Sommes d'équivalents}
+
+Quand \(t\to0^+\) :
+
+On a \(\dfrac{1}{t}+\ln t\sim\dfrac{1}{t}+1\) car \(\ln t=\o{\dfrac{1}{t}}\).
+
+De plus, on a \(1=\o{\dfrac{1}{t}}\) donc \[\dfrac{1}{t}+\ln t=\dfrac{1}{t}+\o{\dfrac{1}{t}}\sim\dfrac{1}{t}\qquad\text{et}\qquad\dfrac{1}{t}+1=\dfrac{1}{t}+\o{\dfrac{1}{t}}\sim\dfrac{1}{t}.\]
+
+D'autre part, \(\dfrac{-1}{t}\sim\dfrac{-1}{t}\) mais on n'a pas \(\ln t\sim1\).
+
+\subsubsection{Limite nulle donc équivalent nul}
+
+L'affirmation \guillemets{\(\lim_{t\to\pinf}\dfrac{1}{t}=0\) donc \(\dfrac{1}{t}\simqd{t\to\pinf}0\)} est fausse car \(\lim_{t\to\pinf}\dfrac{0}{\nicefrac{1}{t}}\not=1\).
+
+\subsubsection{Appliquer une fonction à un équivalent}
+
+On a, quand \(n\to\pinf\) : \(\dfrac{1}{n}+1\sim\dfrac{2}{n}+1\) mais on n'a pas \(\ln\paren{\dfrac{1}{n}+1}\sim\ln\paren{\dfrac{2}{n}+1}\).
+
+En effet, on a \(\lim_{\substack{t\to0 \\ t\not=0}}\dfrac{\ln\paren{1+t}-\ln1}{t-0}=\ln\prim1=1\) donc \(\ln\paren{1+t}\simqd{t\to0}t\).
+
+Or \(\lim_n\dfrac{1}{n}=\lim_n\dfrac{2}{n}=0\).
+
+Donc \(\begin{dcases}
+\ln\paren{1+\dfrac{1}{n}}\sim\dfrac{1}{n} \\
+\ln\paren{1+\dfrac{2}{n}}\sim\dfrac{2}{n}
+\end{dcases}\)
+
+Autre exemple : on a \(n\simqd{n\to\pinf}n+1\) mais on n'a pas \(\e{n}\simqd{n\to\pinf}\e{n+1}\) car \(\lim_n\dfrac{\e{n+1}}{\e{n}}=\e{}\not=1\).
+
+\subsubsection{Changement de variable inadéquat}
+
+On a \(\ln\paren{1+t}\simqd{t\to0}t\).
+
+L'affirmation \guillemets{donc \(\ln\paren{1+\e{x}}\simqd{x\to\pinf}\e{x}\)} est fausse car \(\e{x}\xrightarrow[x\to\pinf]{}\pinf\not=0\).
+
+\section{Développements limités}
+
+\subsection*{Développements limités usuels}\label{subsec:développementsLimitésUsuels}
+
+Soit \(\alpha\in\R\).
+
+On a, quand \(x\) tend vers \(0\) :
+
+\[\begin{array}{ccccc}
+\dfrac{1}{1+x}&=&\sum_{k=0}^n\paren{-x}^k+\o{x^n}&=&1-x+x^2-x^3+\dots+\paren{-1}^nx^n+\o{x^n} \\\\
+\ln\paren{1+x}&=&\sum_{k=1}^n\paren{-1}^{k-1}\dfrac{x^k}{k}+\o{x^n}&=&x-\dfrac{x^2}{2}+\dfrac{x^3}{3}+\dots+\paren{-1}^{n-1}\dfrac{x^n}{n}+\o{x^n} \\\\
+\e{x}&=&\sum_{k=0}^n\dfrac{x^k}{k!}+\o{x^n}&=&1+x+\dfrac{x^2}{2}+\dfrac{x^3}{6}+\dots+\dfrac{x^n}{n!}+\o{x^n} \\\\
+\cos x&=&\sum_{k=0}^n\paren{-1}^k\dfrac{x^{2k}}{\paren{2k}!}+\o{x^{2n+1}}&=&1-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\dots+\paren{-1}^n\dfrac{x^{2n}}{\paren{2n}!}+\o{x^{2n+1}} \\\\
+\sin x&=&\sum_{k=0}^n\paren{-1}^k\dfrac{x^{2k+1}}{\paren{2k+1}!}+\o{x^{2n+2}}&=&x-\dfrac{x^3}{6}+\dfrac{x^5}{120}+\dots+\paren{-1}^n\dfrac{x^{2n+1}}{\paren{2n+1}!}+\o{x^{2n+2}} \\\\
+\ch x&=&\sum_{k=0}^n\dfrac{x^{2k}}{\paren{2k}!}+\o{x^{2n+1}}&=&1+\dfrac{x^2}{2}+\dfrac{x^4}{24}+\dots+\dfrac{x^{2n}}{\paren{2n}!}+\o{x^{2n+1}} \\\\
+\sh x&=&\sum_{k=0}^n\dfrac{x^{2k+1}}{\paren{2k+1}!}+\o{x^{2n+2}}&=&x+\dfrac{x^3}{6}+\dfrac{x^5}{120}+\dots+\dfrac{x^{2n+1}}{\paren{2n+1}!}+\o{x^{2n+2}} \\\\
+\Arctan x&=&\sum_{k=0}^n\paren{-1}^k\dfrac{x^{2k+1}}{2k+1}+\o{x^{2n+2}}&=&x-\dfrac{x^3}{3}+\dfrac{x^5}{5}+\dots+\paren{-1}^n\dfrac{x^{2n+1}}{2n+1}+\o{x^{2n+2}} \\\\
+\tan x&=&&=&x+\dfrac{x^3}{3}+\dfrac{2x^5}{15}+\dfrac{17x^7}{315}+\o{x^8} \\\\
+\paren{1+x}^\alpha&=&\sum_{k=0}^n\binom{k}{\alpha}x^k+\o{x^n}&=&1+\alpha x+\dfrac{\alpha\paren{\alpha-1}}{2}x^2+\dots+\binom{n}{\alpha}x^n+\o{x^n}
+\end{array}\] en posant : \[\quantifs{\forall k\in\N}\binom{k}{\alpha}=\dfrac{\alpha\paren{\alpha-1}\dots\paren{\alpha-k+1}}{k!}\] (même si \(\alpha\) n'est pas un entier).
+
+\subsection{Définition}
+
+\begin{defi}[Développement limité]
+Soient \(I\) un intervalle de \(\R\), \(f:I\to\K\), \(a\in I\) et \(n\in\N\).
+
+On dit que \(f\) admet un développement limité à l'ordre \(n\) en \(a\) s'il existe \(a_0,\dots,a_n\in\K\) tels que : \[f\paren{a+h}\egqd{h\to0}a_0h^0+\dots+a_nh^n+\o{h^n},\] \cad : \[f\paren{x}\egqd{x\to a}a_0\paren{x-a}^0+\dots+a_n\paren{x-a}^n+\o{\paren{x-a}^n}.\]
+
+Autrement dit : il existe \(P\in\poly\) tel que : \[f\paren{a+h}\egqd{h\to0}P\paren{h}+\o{h^n}.\]
+
+NB : les termes de \(P\) de degrés strictement supérieurs à \(n\) vont \guillemets{dans le \(o\)}.
+\end{defi}
+
+\begin{ex}
+Soit \(n\in\N\).
+
+On a : \[\dfrac{1}{1-x}\egqd{x\to0}1+x+x^2+\dots+x^n+\o{x^n}.\]
+\end{ex}
+
+\begin{dem}
+On a \(\quantifs{\forall x\in\R\excluant\accol{1}}1+x+\dots+x^n=\dfrac{1-x^{n+1}}{1-x}\) donc : \[\quantifs{\forall x\in\R\excluant\accol{1}}\dfrac{1}{1-x}=x^0+\dots+x^n+\dfrac{x^{n+1}}{1-x}.\]
+
+Or, quand \(x\to0\) : \[\dfrac{x^{n+1}}{1-x}=x^n\dfrac{x}{1-x}=x^n\o{1}=\o{x^n}.\]
+
+Donc : \[\dfrac{1}{1-x}\egqd{x\to0}x^0+\dots+x^n+\o{x^n}.\]
+\end{dem}
+
+\begin{cor}
+Soit \(n\in\N\).
+
+On a : \[\dfrac{1}{1+x}\egqd{x\to0}\sum_{k=0}^n\paren{-1}^kx^k+\o{x^n}.\]
+\end{cor}
+
+\subsection{Propriétés des développements limités}
+
+\begin{prop}[Unicité du développement limité]
+Soient \(I\) un intervalle de \(\R\), \(f:I\to\K\), \(a\in I\), \(n\in\N\) et \(a_0,\dots,a_n,b_0,\dots,b_n\in\K\).
+
+On suppose qu'on a, quand \(h\to0\) : \[f\paren{a+h}=a_0h^0+\dots+a_nh^n+\o{h^n}=b_0h^0+\dots+b_nh^n+\o{h^n}.\]
+
+Alors \(\quantifs{\forall k\in\interventierii{0}{n}}a_k=b_k\).
+\end{prop}
+
+\begin{dem}
+On raisonne par l'absurde.
+
+Soit \(k\in\interventierii{0}{n}\) tel que \(\begin{dcases}
+\quantifs{\forall l\in\interventierii{0}{k-1}}a_l=b_l \\
+a_k\not=b_k
+\end{dcases}\)
+
+On obtient, par différence : \[\begin{aligned}
+\underbrace{\paren{a_k-b_k}}_{\not=0}h^k&=\underbrace{\paren{b_{k+1}-a_{k+1}}h^{k+1}}_{=\o{h^k}}+\dots+\underbrace{\paren{b_n-a_n}h^n}_{=\o{h^k}}+\underbrace{\o{h^n}}_{=\o{h^k}} \\
+&=\o{h^k}.
+\end{aligned}\]
+
+Donc \(h^k=\o{h^k}\) : contradiction.
+\end{dem}
+
+\begin{prop}
+Soient \(I\) un intervalle de \(\R\), \(f:I\to\K\) et \(a\in I\).
+
+On a :
+
+\begin{enumerate}
+    \item \(f\text{ admet un développement limité à l'ordre 0 en }a\ssi f\text{ est continue en }a\) \\
+    \item \(f\text{ admet un développement limité à l'ordre 1 en }a\ssi f\text{ est dérivable en }a\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+\impdir
+
+On suppose qu'il existe \(a_0\in\K\) tel que \(f\paren{a+h}\egqd{h\to0}a_0+\o{1}\).
+
+On a \(\lim_{h\to0}f\paren{a+h}=a_0\in\K\).
+
+Donc \(f\) est continue en \(a\) et \(f\paren{a}=a_0\).
+
+\imprec
+
+Supposons \(f\) continue en \(a\).
+
+Alors \(\lim_{h\to0}f\paren{a+h}=f\paren{a}\).
+
+Donc \(f\paren{a+h}\egqd{h\to0}f\paren{a}+\o{1}\).
+
+Donc \(f\) admet un développement limité à l'ordre 0 en \(a\).
+\end{dem}
+
+\begin{dem}[2]
+\impdir
+
+On suppose qu'il existe \(a_0,a_1\in\K\) tels que \(f\paren{a+h}\egqd{h\to0}a_0+a_1h+\o{h}\).
+
+On a, en prenant \(h=0\) : \(f\paren{a}=a_0\).
+
+D'où \(f\paren{a+h}-f\paren{a}\egqd{h\to0}a_1h+\o{h}\).
+
+Donc \(\dfrac{f\paren{a+h}-f\paren{a}}{h}\egqd{\substack{h\to0 \\ h\not=0}}a_1+\o{1}\).
+
+Donc \(\lim_{\substack{h\to0 \\ h\not=0}}\dfrac{f\paren{a+h}-f\paren{a}}{h}=a_1\in\K\).
+
+Donc \(f\) est dérivable en \(a\) et \(a_1=f\prim\paren{a}\).
+
+\imprec
+
+Supposons \(f\) dérivable en \(a\).
+
+On a \(\lim_{\substack{h\to0 \\ h\not=0}}\dfrac{f\paren{a+h}-f\paren{a}}{h}=f\prim\paren{a}\in\K\).
+
+Donc \(\lim_{\substack{h\to0 \\ h\not=0}}\dfrac{f\paren{a+h}-f\paren{a}}{h}-f\prim\paren{a}=0\).
+
+Donc \(\dfrac{f\paren{a+h}-f\paren{a}-hf\prim\paren{a}}{h}\egqd{\substack{h\to0 \\ h\not=0}}\o{1}\).
+
+Donc \(f\paren{a+h}-f\paren{a}-hf\prim\paren{a}\egqd{h\to0}\o{h}\).
+
+D'où le développement limité à l'ordre 1 en \(a\) : \[f\paren{a+h}\egqd{h\to0}f\paren{a}+f\prim\paren{a}h+\o{h}.\]
+\end{dem}
+
+\begin{rem}
+On a aussi obtenu que le coefficient de degré 0 est \(f\paren{a}\) et que le coefficient de degré 1 est \(f\prim\paren{a}\).
+\end{rem}
+
+\begin{ex}
+On a, quand \(h\to0\) : \begin{align*}
+\ln\paren{1+h}&=0+h+\o{h} & \exp\paren{h}&=1+h+\o{h} & \sin h&=0+h+\o{h} \\
+&=h+\o{h} & \exp\paren{h}-1&\sim h & &=h+\o{h} \\
+&\sim h & & & &\sim h.
+\end{align*}
+\end{ex}
+
+\begin{prop}[Tronquer un développement limité]
+Soient \(I\) un intervalle de \(\R\), \(a\in I\), \(f:I\to\K\) et \(n\in\N\).
+
+Si \(f\) admet un développement limité d'ordre \(n+1\) en \(a\) alors \(f\) admet un développement limité d'ordre \(n\) en \(a\) obtenu en \guillemets{tronquant} son développement limité à l'ordre \(n+1\) en \(a\).
+\end{prop}
+
+\begin{dem}
+Supposons qu'on a : \[f\paren{a+h}\egqd{h\to0}a_0h^0+\dots+a_nh^n+\underbrace{a_{n+1}h^{n+1}}_{=\o{h^n}}+\underbrace{\o{h^{n+1}}}_{=\o{h^n}}.\]
+
+Alors on a : \[f\paren{a+h}\egqd{h\to0}a_0h^0+\dots+a_nh^n+\o{h^n}.\]
+
+D'où la proposition.
+\end{dem}
+
+\begin{prop}
+Soient \(I\) un intervalle de \(\R\), \(a\in I\), \(n\in\N\) et \(f,g\in\F{I}{\K}\).
+
+Si \(f\) et \(g\) admettent un développement limité d'ordre \(n\) en \(a\) alors \(f+g\) et \(fg\) aussi.
+\end{prop}
+
+\begin{dem}
+Soient \(P,Q\in\polydeg{n}\) tels que, quand \(h\to0\) : \[\begin{dcases}
+f\paren{a+h}=P\paren{h}+\o{h^n} \\
+g\paren{a+h}=Q\paren{h}+\o{h^n}
+\end{dcases}\]
+
+On a : \[\paren{f+g}\paren{a+h}=\paren{P+Q}\paren{a+h}+\o{h^n}\] et \[\begin{aligned}
+\paren{fg}\paren{a+h}&=\croch{P\paren{h}+\o{h^n}}\croch{Q\paren{h}+\o{h^n}} \\
+&=P\paren{h}Q\paren{h}+\underbrace{P\paren{h}\o{h^n}}_{=\o{h^n}\O{1}=\o{h^n}}+\underbrace{\o{h^n}Q\paren{h}}_{=\o{h^n}\O{1}=\o{h^n}}+\underbrace{\o{h^n}\o{h^n}}_{=\o{h^{2n}}=\o{h^n}} \\
+&=\underbrace{P\paren{h}Q\paren{h}}_{\star}+\o{h^n}.
+\end{aligned}\]
+
+\(\star\) : il peut y avoir des termes de degré appartenant à l'intervalle entier \(\interventierii{n+1}{2n}\) mais ils sont négligeables devant \(h^n\).
+\end{dem}
+
+\begin{rem}
+On peut également faire des quotients et des composées de développements limités : on le montrera au cas par cas.
+\end{rem}
+
+\subsection{Applications}
+
+\begin{prop}
+Soient \(I\) et \(J\) deux intervalles de \(\R\), \(a\in I\), \(f:I\to J\) dérivable en \(a\) et \(g:J\to\K\) dérivable en \(f\paren{a}\).
+
+Alors \(g\rond f\) est dérivable en \(a\) et on a : \[\paren{g\rond f}\prim\paren{a}=f\prim\paren{a}\times g\prim\paren{f\paren{a}}.\]
+\end{prop}
+
+\begin{dem}
+Comme \(f\) et \(g\) sont dérivables en \(a\) et \(f\paren{a}\) respectivement, on a : \[\begin{dcases}
+f\paren{a+h}\egqd{h\to0}f\paren{a}+f\prim\paren{a}h+\o{h} \\
+g\paren{f\paren{a}+h}\egqd{h\to0}g\paren{f\paren{a}}+g\prim\paren{f\paren{a}}h+\o{h}
+\end{dcases}\]
+
+Comme \(f\) est dérivable en \(a\), \(f\) est continue en \(a\) donc on a : \[\lim_{h\to0}f\paren{a+h}-f\paren{a}=0.\]
+
+On a donc, quand \(h\to0\) : \[\begin{WithArrows}
+g\paren{f\paren{a+h}}&=g\paren{f\paren{a}+\underbrace{f\paren{a+h}-f\paren{a}}_{\to0}} \Arrow[i]{développement limité de \(f\)} \\
+&=g\paren{f\paren{a}+\underbrace{f\prim\paren{a}h+\o{h}}_{\to0}} \Arrow[lr,xoffset=1cm]{développement limité de \(g\)} \\
+&=g\paren{f\paren{a}}+g\prim\paren{f\paren{a}}\croch{f\prim\paren{a}h+\o{h}}+\underbrace{\o{\underbrace{f\prim\paren{a}h+\o{h}}_{=\O{h}}}}_{=\o{h}} \\
+&=g\rond f\paren{a}+g\prim\paren{f\paren{a}}\times f\prim\paren{a}\times h+\o{h}.
+\end{WithArrows}\]
+
+Donc \(g\rond f\) admet un développement limité à l'ordre 1 en \(a\).
+
+Donc \(g\rond f\) est dérivable en \(a\) et on a : \[\paren{g\rond f}\prim\paren{a}=f\prim\paren{a}\times g\prim\paren{f\paren{a}}.\]
+\end{dem}
+
+\begin{prop}
+Soient \(I\) un intervalle de \(\R\), \(a\in I\), \(n\in\N\) et \(f:I\to\R\) admettant un développement limité à l'ordre \(n\) en \(a\) : \[\quantifs{\exists a_0,\dots,a_n\in\R}f\paren{a+h}\egqd{h\to0}a_0h^0+\dots+a_nh^n+\o{h^n}.\]
+
+On suppose qu'il existe \(d\in\interventierii{1}{n}\) tel que \(\begin{dcases}
+a_1=\dots=a_{d-1}=0 \\
+a_d\not=0
+\end{dcases}\)
+
+Alors \(f\paren{a+h}-f\paren{a}\) est du signe de \(a_dh^d\) quand \(h\) est petit.
+\end{prop}
+
+\begin{dem}
+On a, quand \(h\to0\) : \[f\paren{a+h}=f\paren{a}+a_dh^d+\underbrace{a_{d+1}h^{d+1}}_{=\o{h^d}}+\dots+\underbrace{a_nh^n}_{=\o{h^d}}+\underbrace{\o{h^n}}_{=\o{h^d}}.\]
+
+Donc on a : \[\begin{WithArrows}
+f\paren{a+h}-f\paren{a}&=a_dh^d+\o{h^d} \Arrow{car \(a_d\not=0\)} \\
+&\sim a_dh^d.
+\end{WithArrows}\]
+
+D'où le résultat.
+\end{dem}
+
+\section{Formule de Taylor}
+
+\subsection{Primitivation de développements limités}
+
+\begin{lem}
+Soient \(J\) un intervalle de \(\R\) contenant \(0\), \(n\in\N\) et \(g:J\to\K\) dérivable et telle que \[g\prim\paren{x}\egqd{x\to0}\o{x^n}.\]
+
+Alors on a : \[g\paren{x}-g\paren{0}\egqd{x\to0}\o{x^{n+1}}.\]
+\end{lem}
+
+\begin{dem}
+Soit \(\epsilon:J\to\K\) telle que \(\begin{dcases}
+\lim_0\epsilon=0 \\
+\quantifs{\forall x\in J}g\prim\paren{x}=x^n\epsilon\paren{x}
+\end{dcases}\)
+
+On remarque : \[\lim_{x\to0}\underbrace{\sup_{t\in\intervii{-\abs{x}}{\abs{x}}}\abs{\epsilon\paren{t}}}_{M_x}=0.\]
+
+Soit \(x\in J\).
+
+Selon l'inégalité des accroissements finis appliquée à \(g\prim\) entre \(0\) et \(x\), on a : \[\begin{dcases}
+\quantifs{\forall t\in\intervii{0}{x}}\abs{g\prim\paren{t}}=\epsilon\paren{t}t^n\leq M_x\abs{x}^n &\text{si }x>0 \\
+\quantifs{\forall t\in\intervii{x}{0}}\abs{g\prim\paren{t}}=\epsilon\paren{t}t^n\leq M_x\abs{x}^n &\text{si }x<0
+\end{dcases}\]
+
+Donc, si \(x\not=0\), on a : \[\abs{g\paren{x}-g\paren{0}}\leq M_x\abs{x}^n\abs{x-0}=M_x\abs{x}^{n+1}.\]
+
+Cela est aussi vrai si \(x=0\).
+
+D'où : \[g\paren{x}-g\paren{0}\egqd{x\to0}\o{x^{n+1}}.\]
+\end{dem}
+
+\begin{rem}
+On ne peut pas \guillemets{dériver un développement limité}.
+\end{rem}
+
+\begin{dem}
+Posons \(\fonction{f}{\R}{\R}{x}{\begin{dcases}x^2\sin\dfrac{1}{x} &\text{si }x\not=0 \\ 0 &\text{sinon}\end{dcases}}\)
+
+On a, quand \(x\to0\) : \(\begin{dcases}
+\sin\dfrac{1}{x}=\O{1} \\
+x^2=\o{x}
+\end{dcases}\)
+
+D'où : \[f\paren{x}\egqd{x\to0}\o{x},\] on a un développement limité à l'ordre 1 en \(0\) donc \(f\) est dérivable en \(0\).
+
+Or, on a : \[\quantifs{\forall x\in\Rs}f\prim\paren{x}=\underbrace{2x\sin\dfrac{1}{x}}_{\xrightarrow[x\to0]{}0}-\underbrace{\cos\dfrac{1}{x}}_{\substack{\text{pas de} \\ \text{limite} \\ \text{en }0}}.\]
+
+Donc \(f\prim\) n'a pas de limite en \(0\).
+
+Donc \(f\prim\) n'est pas continue en \(0\) : \(f\prim\) n'admet pas de développement limité à l'ordre 0 en \(0\).
+\end{dem}
+
+\begin{prop}[Primitivation de développement limité]
+Soient \(I\) un intervalle de \(\R\), \(a\in I\), \(n\in\N\) et \(f:I\to\K\) dérivable et telle qu'il existe \(a_0,\dots,a_n\in\K\) tels que : \[f\prim\paren{a+h}\egqd{h\to0}\sum_{k=0}^na_kh^k+\o{h^n}.\]
+
+Alors \(f\) admet le développement limité à l'ordre \(n+1\) en \(a\) suivant : \[f\paren{a+h}\egqd{h\to0}f\paren{a}+\sum_{k=0}^na_k\dfrac{h^{k+1}}{k+1}+\o{h^{n+1}}.\]
+\end{prop}
+
+\begin{dem}
+La fonction \(g:h\mapsto f\paren{a+h}-\sum_{k=0}^na_k\dfrac{h^{k+1}}{k+1}\) est dérivable et on a : \[\quantifs{\forall h\in\R}g\prim\paren{h}=f\prim\paren{a+h}-\sum_{k=0}^na_kh^k=\o{h^n}.\]
+
+Selon le lemme précédent, on en déduit, quand \(h\to0\) : \[g\paren{h}-g\paren{0}=\o{h^{n+1}},\] \cad : \[f\paren{a+h}-\sum_{k=0}^na_k\dfrac{h^{k+1}}{k+1}-f\paren{a}=\o{h^{n+1}}.\]
+\end{dem}
+
+\begin{appl}
+Établissons le développement limité à l'ordre 5 en \(0\) de la fonction \(\tan\).
+
+Comme \(\tan\) est dérivable en \(0\), on a, quand \(x\) tend vers \(0\) : \[\tan x=\tan\paren{0}+\tan\prim\paren{0}x+\o{x}=x+\o{x}.\]
+
+D'où : \[\tan^2x=\paren{x+\o{x}}^2=x^2+2x\o{x}+\o{x^2}=x^2+\o{x^2}.\]
+
+D'où : \[\tan\prim x=1+x^2+\o{x^2}.\]
+
+D'où, en primitivant le développement limité : \[\tan x=0+x+\dfrac{x^3}{3}+\o{x^3}.\]
+
+D'où : \[\begin{aligned}
+\tan^2x&=x^2+\dfrac{x^6}{9}+\o{x^6}+2\paren{\dfrac{x^4}{3}+\o{x^4}+\o{x^6}} \\
+&=x^2+\dfrac{x^6}{9}+\dfrac{2x^4}{3}+\o{x^4}.
+\end{aligned}\]
+
+D'où : \[\tan\prim x=1+x^2+\dfrac{2x^4}{3}+\dfrac{x^6}{9}+\o{x^4}.\]
+
+D'où, en primitivant le développement limité : \[\tan x=x+\dfrac{x^3}{3}+\dfrac{2x^5}{15}+\o{x^5}.\]
+\end{appl}
+
+\begin{theo}[Formule de Taylor-Young]
+Soient \(I\) un intervalle de \(\R\), \(n\in\N\), \(a\in I\) et \(f\in\ensclasse{n}{I}{\K}\).
+
+Alors \(f\) admet le développement limité à l'ordre \(n\) en \(a\) suivant : \[f\paren{a+h}\egqd{h\to0}\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}h^k+\o{h^n}.\]
+\end{theo}
+
+\begin{dem}
+Raisonnons par récurrence sur \(n\in\N\).
+
+Pour tout \(n\in\N\), on note \(\P{n}\) la proposition \guillemets{\(\quantifs{\forall f\in\ensclasse{n}{I}{\K}}f\paren{a+h}\egqd{h\to0}\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}h^k+\o{h^n}\)}.
+
+On a déjà vu \(\P{0}\) et \(\P{1}\).
+
+Soit \(n\in\N\) tel que \(\P{n}\). Montrons \(\P{n+1}\).
+
+Soit \(f\in\ensclasse{n+1}{I}{\K}\).
+
+On a \(f\prim\in\ensclasse{n}{I}{\K}\).
+
+D'où, selon \(\P{n}\) : \[f\prim\paren{a+h}\egqd{h\to0}\sum_{k=0}^n\dfrac{\paren{f\prim}\deriv{k}\paren{a}}{k!}h^k+\o{h^n}.\]
+
+D'où, en primitivant le développement limité : \[\begin{aligned}
+f\paren{a+h}&\egqd{h\to0}f\paren{a}+\sum_{k=0}^n\dfrac{f\deriv{k+1}\paren{a}}{k!}\times\dfrac{h^{k+1}}{k+1}+\o{h^{n+1}} \\
+&\egqd{h\to0}\dfrac{f\deriv{0}\paren{a}}{0!}+\sum_{k=0}^n\dfrac{f\deriv{k+1}\paren{a}}{\paren{k+1}!}h^{k+1}+\o{h^{n+1}} \\
+&\egqd{h\to0}\sum_{k=0}^{n+1}\dfrac{f\deriv{k}\paren{a}}{k!}h^k+\o{h^{n+1}}.
+\end{aligned}\]
+
+D'où \(\P{n+1}\).
+
+D'où la formule.
+\end{dem}
+
+\begin{ex}
+\Cf \hyperref[subsec:développementsLimitésUsuels]{développements limités usuels}.
+\end{ex}
+
+\begin{dem}[\(\exp\)]
+Soit \(n\in\N\).
+
+Déterminons le développement limité de \(\exp\) à l'ordre \(n\) en \(0\).
+
+On a \(\exp\in\ensclasse{\infty}{\R}{\R}\) donc : \[\begin{aligned}
+\e{x}&\egqd{x\to0}\sum_{k=0}^n\dfrac{\exp\deriv{k}\paren{0}}{k!}x^k+\o{x^n} \\
+&\egqd{x\to0}\sum_{k=0}^n\dfrac{x^k}{k!}+\o{x^n}.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[\(\sh\) \& \(\ch\)]
+Soit \(n\in\N\).
+
+Les développements limités de \(\sh\) et \(\ch\) à l'ordre \(n\) en \(0\) se déduisent de celui de \(\exp\) car on a : \[\begin{dcases}
+\ch:x\mapsto\dfrac{\e{x}+\e{-x}}{2} \\
+\sh:x\mapsto\dfrac{\e{x}-\e{-x}}{2}
+\end{dcases}\]
+\end{dem}
+
+\begin{dem}[\(\cos\) \& \(\sin\)]
+Soit \(n\in\N\).
+
+Les développements limités de \(\cos\) et \(\sin\) à l'ordre \(n\) en \(0\) découlent de la formule de Taylor-Young.
+\end{dem}
+
+\begin{dem}[\(\ln\)]
+Soit \(n\in\N\).
+
+Déterminons le développement limité de \(\ln\) à l'ordre \(n\) en \(1\).
+
+On a, quand \(x\to0\) : \[\dfrac{1}{1+x}=\sum_{k=0}^n\paren{-1}^kx^k+\o{x^n}.\]
+
+D'où, en primitivant le développement limité : \[\ln\paren{1+x}=\ln1+\sum_{k=0}^n\paren{-1}^k\dfrac{x^{k+1}}{k+1}+\o{x^{n+1}}.\]
+\end{dem}
+
+\begin{dem}[\(\Arctan\)]
+Soit \(n\in\N\).
+
+Déterminons le développement limité de \(\Arctan\) à l'ordre \(n\) en \(0\).
+
+On a, quand \(x\to0\) : \[\dfrac{1}{1+x^2}=\sum_{k=0}^n\paren{-1}^kx^{2k}+\o{x^{2n}}.\]
+
+D'où, en primitivant le développement limité : \[\Arctan x=\Arctan0+\sum_{k=0}^n\paren{-1}^k\dfrac{x^{2k+1}}{2k+1}+\o{x^{2n+1}}.\]
+\end{dem}
+
+\begin{dem}[\(x\mapsto\paren{1+x}^\alpha\)]
+Soient \(n\in\N\), \(\alpha\in\R\) et \(f:x\mapsto\paren{1+x}^\alpha\).
+
+Déterminons le développement limité de \(f\) à l'ordre \(n\) en \(0\).
+
+On remarque : \[\quantifs{\forall k\in\N;\forall x\in\intervee{-1}{\pinf}}f\deriv{k}\paren{x}=\paren{1+x}^{\alpha-k}\prod_{l=0}^{k+1}\paren{\alpha-l}.\]
+
+D'où : \[\quantifs{\forall k\in\N}\dfrac{f\deriv{k}\paren{0}}{k!}=\dfrac{1}{k!}\prod_{l=0}^{k+1}\paren{\alpha-l}=\binom{k}{\alpha}.\]
+\end{dem}
+
+\begin{rem}
+Il est parfois bien plus facile de calculer une dérivée en un point à partir des développements limités plutôt que par les méthodes souvent rencontrées jusqu'ici (calcul \guillemets{classique} de dérivée, théorème de la limite de la dérivée).
+\end{rem}
+
+\begin{exoex}
+\begin{enumerate}
+    \item Calculer la dérivée en \(0\) de la fonction \[\fonction{f}{\R}{\R}{x}{\dfrac{\e{x}\paren{1+\sh x}\paren{1+\sin x}\paren{1+\tan x}\paren{1+\ln\paren{1+x}}}{1-x}}\]
+    \item Calculer la dérivée en \(0\) de la fonction \[\fonction{g}{\R}{\R}{x}{\begin{dcases}
+        \dfrac{\sin x-x}{\e{x}-1-x} &\text{si }x\not=0 \\
+        0 &\text{sinon}
+    \end{dcases}}\]
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a les développements limités à l'ordre 1 en \(0\) suivants : \[\begin{dcases}
+\e{x}=1+x+\o{x} \\
+1+\sh x=1+x+\o{x} \\
+1+\sin x=1+x+\o{x} \\
+1+\tan x=1+x+\o{x} \\
+1+\ln\paren{1+x}=1+x+\o{x} \\
+\dfrac{1}{1-x}=1+x+\o{x}
+\end{dcases}\]
+
+D'où le développement limité à l'ordre 1 en \(0\) de \(f\) : \[\underbrace{\paren{1+x+\o{x}}\dots\paren{1+x+\o{x}}}_{\text{6 facteurs}}=1+6x+\o{x}.\]
+
+Donc la dérivée de \(f\) en \(0\) est \(6\).
+\end{corr}
+
+\begin{corr}[2]
+On a, quand \(x\to0\) : \[\begin{dcases}
+\sin x=x-\dfrac{x^3}{6}+\o{x^3} \\
+\e{x}=1+x+\dfrac{x^2}{2}+\o{x^2}
+\end{dcases}\]
+
+Donc : \[\begin{dcases}
+\sin x-x=-\dfrac{x^3}{6}+\o{x^3}\sim-\dfrac{x^3}{6} \\
+\e{x}-1-x=\dfrac{x^2}{2}+\o{x^2}\sim\dfrac{x^2}{2}
+\end{dcases}\]
+
+Donc on a : \[\begin{aligned}
+g\paren{x}&\sim\dfrac{-\frac{x^3}{6}}{\frac{x^2}{2}} \\
+&=-\dfrac{x}{3}+\o{x}.
+\end{aligned}\]
+
+D'où \(g\prim\paren{0}=-\dfrac{1}{3}\).
+\end{corr}
+
+\subsection{Application}
+
+\begin{appl}[Extrema locaux]
+Soient \(I\) un intervalle de \(\R\), \(a\in I\), \(n\in\N\) et \(f\in\ensclasse{n}{I}{\R}\) tels que : \[I\in\V{a}\qquad\text{et}\qquad f\deriv{n}\paren{a}\not=0\qquad\text{et}\qquad\quantifs{\forall k\in\interventierii{1}{n-1}}f\deriv{k}\paren{a}=0.\]
+
+On peut en déduire le comportement de \(f\) au voisinage de \(a\) :
+
+\begin{itemize}
+    \item si \(n\) est pair et \(f\deriv{n}\paren{a}>0\) alors \(f\) admet un minimum local en \(a\) ; \\
+    \item si \(n\) est pair et \(f\deriv{n}\paren{a}<0\) alors \(f\) admet un maximum local en \(a\) ; \\
+    \item si \(n\) est impair alors \(f\) n'admet pas d'extremum local en \(a\).
+\end{itemize}
+\end{appl}
+
+\begin{dem}
+Comme \(f\) est de classe \(\classe{n}\), d'après la formule de Taylor-Young, quand \(h\to0\), on a : \[f\paren{a+h}=\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}h^k+\o{h^n}=f\paren{a}+\dfrac{f\deriv{n}\paren{a}}{n!}h^n+\o{h^n}.\]
+
+Donc, comme \(f\deriv{n}\paren{a}\not=0\), on a : \[f\paren{a+h}-f\paren{a}\sim\dfrac{f\deriv{n}\paren{a}}{n!}h^n.\]
+
+Donc : \[\sg\paren{f\paren{a+h}-f\paren{a}}=\sg\paren{f\deriv{n}\paren{a}h^n}.\]
+
+D'où les conclusions.
+\end{dem}
+
+\begin{exoex}
+Étudier les extrema (globaux et locaux) de \(\fonction{f}{\R}{\R}{x}{\e{x}\sin x}\)
+\end{exoex}
+
+\begin{corr}
+On remarque : \[\quantifs{\forall k\in\N}f\paren{\dfrac{\pi}{2}+k\pi}=\paren{-1}^k\e{\frac{\pi}{2}+k\pi}.\]
+
+Donc : \[\lim_{k\to\pinf}f\paren{\dfrac{\pi}{2}+2k\pi}=\pinf\qquad\text{et}\qquad\lim_{k\to\pinf}f\paren{\dfrac{\pi}{2}+\paren{2k+1}\pi}=\minf.\]
+
+Donc \(f\) n'est ni majorée, ni minorée, et n'admet donc aucun extremum global.
+
+De plus, on a : \[\begin{aligned}
+\quantifs{\forall x\in\R}f\prim\paren{x}&=\e{x}\paren{\sin x+\cos x} \\
+&=\sqrt{2}\e{x}\paren{\dfrac{1}{\sqrt{2}}\sin x+\dfrac{1}{\sqrt{2}}\cos x} \\
+&=\sqrt{2}\e{x}\paren{\cos\dfrac{\pi}{4}\sin x+\sin\dfrac{\pi}{4}\cos x} \\
+&=\sqrt{2}\e{x}\sin\paren{x+\dfrac{\pi}{4}}.
+\end{aligned}\]
+
+On obtient de même : \[\quantifs{\forall x\in\R}f\seconde\paren{x}=2\e{x}\sin\paren{x+\dfrac{\pi}{2}}.\]
+
+\analyse
+
+Soit \(x\in\R\) tel que \(f\) admette un extremum local en \(x\).
+
+Comme \(\R\) est un voisinage de \(x\), on a \(f\prim\paren{x}=0\) donc \(\sin\paren{x+\dfrac{\pi}{4}}=0\) donc \(x\equiv-\dfrac{\pi}{4}\croch{\pi}\).
+
+\synthese
+
+Soient \(x\in\R\) tel que \(x\equiv-\dfrac{\pi}{4}\croch{\pi}\) et \(k\in\Z\) tel que \(x=-\dfrac{\pi}{4}+k\pi\).
+
+On a : \[f\seconde\paren{x}=2\e{-\frac{\pi}{4}+k\pi}\sin\paren{\dfrac{\pi}{4}+k\pi}=\paren{-1}^k\sqrt{2}\e{-\frac{\pi}{4}+k\pi}.\]
+
+Si \(k\) est pair alors \(f\seconde\paren{x}>0\) donc \(f\) admet un minimum local en \(x\).
+
+Si \(k\) est impair alors \(f\seconde\paren{x}<0\) donc \(f\) admet un maximum local en \(x\).
+
+\conclusion
+
+\(f\) admet un minimum local en tout point de la forme \(-\dfrac{\pi}{4}+2k\pi\) avec \(k\in\Z\) et un maximum local en tout point de la forme \(-\dfrac{\pi}{4}+\paren{2k+1}\pi\) avec \(k\in\Z\).
+\end{corr}
+
+\begin{rem}
+En pratique, on se sert peu de la proposition précédente : il est plus facile de calculer un développement limité à l'ordre \(n\) et d'en déduire un équivalent que de calculer \(n\) dérivées successives (de plus, si l'on peut déterminer le signe de la dérivée première, on peut lire dans le tableau de variations quels sont les extrema locaux de la fonction).
+\end{rem}
+
+\section{Développements asymptotiques}
+
+\begin{defi}
+Soient \(A\subset\R\), \(f:A\to\K\) et \(a\in\Rb\) tel que tout voisinage de \(a\) dans \(\R\) rencontre \(A\), de sorte qu'on peut parler du comportement de \(f\) au voisinage de \(a\).
+
+On appelle développement asymptotique de \(f\) en \(a\) (à la précision \(f_n\)) toute écriture de \(f\) sous la forme : \[f\paren{t}\egqd{t\to a}f_0\paren{t}+\dots+f_n\paren{t}+\o{f_n\paren{t}}\] où \(n\in\N\) et \(f_0,\dots,f_n\) sont des fonctions définies sur \(A\) (du moins au voisinage de \(a\)) telles que : \[\quantifs{\forall i\in\interventierii{1}{n}}f_i\paren{t}\egqd{t\to a}\o{f_{i-1}\paren{t}}.\]
+
+On a alors : \[f\paren{t}\simqd{t\to a}f_0\paren{t}\] et : \[f\paren{t}-f_0\paren{t}\simqd{t\to a}f_1\paren{t}\] et : \[f\paren{t}-f_0\paren{t}-f_1\paren{t}\simqd{t\to a}f_2\paren{t}\] etc.
+\end{defi}
+
+\begin{ex}
+Développement asymptotique à la précision \(\ln^2n\) : \[u_n\egqd{n\to\pinf}n!+n+\sqrt{n}\ln n+\ln^2n+\o{\ln^2n}.\]
+
+Développement asymptotique à la précision \(\dfrac{1}{x^2}\) : \[f\paren{x}\egqd{x\to\pinf}\dfrac{x}{\ln x}+\sqrt{x}+\pi+\dfrac{2}{x^2}+\o{\dfrac{1}{x^2}}.\]
+
+Développement asymptotique à la précision \(x\) : \[f\paren{x}\egqd{x\to0}\dfrac{1}{x}+\dfrac{\ln x}{\sqrt{x}}+7+\sqrt{x}+x+\o{x}.\]
+\end{ex}
+
+\begin{exoex}
+Donner un développement asymptotique de \(\ln\paren{n!}\) quand \(n\) tend vers \(\pinf\) à la précision \(1\).
+\end{exoex}
+
+\begin{corr}
+On a, quand \(n\to\pinf\) : \(n!\sim\sqrt{2\pi n}\paren{\dfrac{n}{\e{}}}^n\) donc \(\lim_n\dfrac{n!}{\sqrt{2\pi n}\paren{\dfrac{n}{\e{}}}^n}=1\) donc : \[\lim_n\ln\dfrac{n!}{\sqrt{2\pi n}\paren{\dfrac{n}{\e{}}}^n}=0.\]
+
+Donc \(\ln\dfrac{n!}{\sqrt{2\pi n}\paren{\dfrac{n}{\e{}}}^n}=\o{1}\) donc : \[\ln\paren{n!}-\dfrac{1}{2}\ln\paren{2\pi n}-n\ln n+n\ln\e{}=\o{1}.\]
+
+Finalement, on a le développement asymptotique suivant : \[\ln\paren{n!}=n\ln n-n+\dfrac{1}{2}\ln n+\dfrac{1}{2}\ln\paren{2\pi}+\o{1}.\]
+\end{corr}
+
+\begin{exoex}
+\begin{enumerate}
+    \item Donner un développement asymptotique de \(\Arctan x\) quand \(x\) tend vers \(\pinf\) à la précision \(\dfrac{1}{x^5}\). \\
+    \item Application : en déduire un équivalent de \(\Arctan\paren{2x}-\Arctan x\) quand \(x\) tend vers \(\pinf\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+Rappel : on a \(\quantifs{\forall x\in\Rps}\Arctan x+\Arctan\dfrac{1}{x}=\dfrac{\pi}{2}\).
+
+On a, quand \(h\to0\) : \[\Arctan h=h-\dfrac{h^3}{3}+\dfrac{h^5}{5}+\o{h^5}.\]
+
+Donc, quand \(x\to\pinf\) : \[\Arctan\dfrac{1}{x}=\dfrac{1}{x}-\dfrac{1}{3x^3}+\dfrac{1}{5x^5}+\o{\dfrac{1}{x^5}}.\]
+
+Donc : \[\Arctan x\egqd{x\to\pinf}\dfrac{\pi}{2}-\dfrac{1}{x}+\dfrac{1}{3x^3}-\dfrac{1}{5x^5}+\o{\dfrac{1}{x^5}}.\]
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\begin{aligned}
+\Arctan\paren{2x}-\Arctan x&\egqd{x\to\pinf}-\dfrac{1}{2x}+\dfrac{1}{x}+\o{\dfrac{1}{x}} \\
+&\egqd{x\to\pinf}\dfrac{1}{2x}+\o{\dfrac{1}{x}}.
+\end{aligned}\]
+
+Donc \(\Arctan\paren{2x}-\Arctan x\simqd{x\to\pinf}\dfrac{1}{2x}\).
+\end{corr}
+
+\begin{exoex}
+Donner un développement asymptotique de \(\dfrac{\ln\paren{1-x}}{\cos x-1}\) quand \(x\) tend vers \(0\) à la précision \(x^2\).
+\end{exoex}
+
+\begin{corr}
+On a : \[\ln\paren{1-x}\egqd{x\to0}-x-\dfrac{x^2}{2}-\dfrac{x^3}{3}-\dfrac{x^4}{4}+\o{x^4}\qquad\text{et}\qquad\cos x-1\egqd{x\to0}-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^5}.\]
+
+Donc : \[\begin{aligned}
+f\paren{x}&\egqd{x\to0}\dfrac{-x-\frac{x^2}{2}-\frac{x^3}{3}-\frac{x^4}{4}+\o{x^4}}{-\frac{x^2}{2}+\frac{x^4}{24}+\o{x^5}} \\
+&\egqd{x\to0}\dfrac{-2}{x^2}\paren{\dfrac{-x-\frac{x^2}{2}-\frac{x^3}{3}-\frac{x^4}{4}+\o{x^4}}{1-\frac{x^2}{12}+\o{x^3}}}.
+\end{aligned}\]
+
+Or : \(\dfrac{1}{1+h}\egqd{h\to0}1+h+\O{h^2}\).
+
+Donc : \[\dfrac{1}{1-\frac{x^2}{12}+\o{x^3}}\egqd{x\to0}1+\dfrac{x^2}{12}+\o{x^3}.\]
+
+D'où, quand \(x\to0\) : \[\begin{aligned}
+f\paren{x}&=\dfrac{-2}{x^2}\paren{1+\dfrac{x^2}{12}+\o{x^3}}\paren{-x-\dfrac{x^2}{2}-\dfrac{x^3}{3}-\dfrac{x^4}{4}+\o{x^4}} \\
+&=\dfrac{-2}{x^2}\paren{-x-\dfrac{x^2}{2}-\dfrac{x^3}{3}-\dfrac{x^4}{4}-\dfrac{x^3}{12}-\dfrac{x^4}{24}+\o{x^4}} \\
+&=\dfrac{2}{x}+1+\dfrac{5}{6}x+\dfrac{7}{12}x^2+\o{x^2}.
+\end{aligned}\]
+\end{corr}
+
+\begin{rem}
+Apprenez à obtenir des développements limités à l'aide de votre calculatrice.
+
+On peut aussi les obtenir avec Python, par exemple avec le module \verb|sympy| (les paramètres de la méthode \verb|series| sont la variable, le point où l'on se place et le nombre de termes du développement asymptotique voulu) :
+
+\begin{verbatim}
+>>> from sympy import sin, cos, log, pprint, latex
+>>> from sympy.abc import x
+>>> pprint(sin(x).series(x, 0, 9))    # "pretty print"
+\end{verbatim}
+
+\(x-\dfrac{x^3}{6}+\dfrac{x^5}{120}-\dfrac{x^7}{5040}+\O{x^9}\)
+
+\begin{verbatim}
+>>> print(latex(sin(x).series(x, 0, 7)))    # code LaTeX
+x - \frac{x^{3}}{6} + \frac{x^{5}}{120} + O\left(x^{7}\right)
+
+>>> a = log(1 - x) / (cos(x) - 1)
+>>> b = a.series(x, 0, 6)
+>>> pprint(b)
+\end{verbatim}
+
+\(\dfrac{2}{x}+1+\dfrac{5x}{6}+\dfrac{7x^2}{12}+\dfrac{167x^3}{360}+\dfrac{91x^4}{240}+\dfrac{4871x^5}{15120}+\O{x^6}\)
+\end{rem}
+
+\section{Méthodes à bien connaître}
+
+\subsection{Composer des développements limités}
+
+\begin{ex}
+On pose \(f:x\mapsto\Arctan\paren{\sin x}\).
+
+Déterminons le développement limité de \(f\) à l'ordre 4 en \(0\).
+
+On a : \[\Arctan h\egqd{h\to0}h-\dfrac{h^3}{3}+\o{h^4}\qquad\text{et}\qquad\sin x\egqd{x\to0}x-\dfrac{x^3}{6}+\o{x^4}.\]
+
+Donc, comme \(\sin x\xrightarrow[x\to0]{}0\), on a, quand \(x\to0\) : \[\begin{aligned}
+\Arctan\paren{\sin x}&=x-\dfrac{x^3}{6}+\o{x^4}-\dfrac{1}{3}\paren{x-\dfrac{x^3}{6}+\o{x^4}}^3+\underbrace{\o{\paren{\underbrace{x-\dfrac{x^3}{6}+\o{x^4}}_{\sim x}}^4}}_{=\o{x^4}} \\
+&=x-\dfrac{x^3}{6}+\o{x^4}-\dfrac{1}{3}\paren{x^3+\o{x^4}}+\o{x^4} \\
+&=x-\dfrac{x^3}{2}+\o{x^4}.
+\end{aligned}\]
+\end{ex}
+
+\subsection{Inverse d'un développement limité}
+
+\begin{ex}
+Posons \(f:x\mapsto\dfrac{1}{\cos x}\).
+
+Déterminons le développement limité de \(f\) à l'ordre 4 en \(0\).
+
+On a : \[\cos x\egqd{x\to0}1-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}.\]
+
+Or, on a \(\dfrac{1}{1+h}\egqd{h\to0}1-h+h^2+\o{h^2}\) donc, quand \(x\to0\) : \[\begin{aligned}
+f\paren{x}&=1-\paren{-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}}+\paren{-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}}^2+\o{x^4} \\
+&=1+\dfrac{x^2}{2}-\dfrac{x^4}{24}+\paren{-\dfrac{x^2}{2}}^2+\o{x^4} \\
+&=1+\dfrac{x^2}{2}+\dfrac{5x^4}{24}+\o{x^4}.
+\end{aligned}\]
+\end{ex}
+
+\subsection{Se ramener aux développements limités connus}
+
+\begin{ex}
+On pose \(f:x\mapsto\ln\paren{1+\cos x}\).
+
+Déterminons le développement limité de \(f\) à l'ordre 4 en \(0\).
+
+On a : \[\ln\paren{1+h}\egqd{h\to0}h-\dfrac{h^2}{2}+\o{h^2}.\]
+
+Il ne faut surtout pas remplacer \(h\) par \(\cos x\).
+
+Quand \(x\to0\) :
+
+On a : \[\cos x=1-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}.\]
+
+Donc : \[\begin{aligned}
+f\paren{x}&=\ln\paren{2-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}} \\
+&=\ln2+\ln\paren{1-\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}} \\
+&=\ln2+\paren{-\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}}-\dfrac{1}{2}\paren{-\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}}^2+\o{x^4} \\
+&=\ln2-\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}-\dfrac{x^4}{32}+\o{x^4} \\
+&=\ln2-\dfrac{x^2}{4}-\dfrac{x^4}{96}+\o{x^4}.
+\end{aligned}\]
+\end{ex}
+
+\begin{ex}
+On pose \(f:x\mapsto\dfrac{1}{1+\ch x}\).
+
+Déterminons le développement limité de \(f\) à l'ordre 4 en \(0\).
+
+On a : \[\dfrac{1}{1+h}\egqd{h\to0}1-h+h^2+\o{h^2}.\]
+
+Quand \(x\to0\) :
+
+On a : \[\ch x=1+\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}.\]
+
+Donc : \[\begin{aligned}
+f\paren{x}&=\dfrac{1}{2+\frac{x^2}{2}+\frac{x^4}{24}+\o{x^4}} \\
+&=\dfrac{1}{2}\times\dfrac{1}{1+\frac{x^2}{4}+\frac{x^4}{48}+\o{x^4}} \\
+&=\dfrac{1}{2}\croch{1-\paren{\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}}+\paren{\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}}^2+\o{x^4}} \\
+&=\dfrac{1}{2}\paren{1-\dfrac{x^2}{4}-\dfrac{x^4}{48}+\o{x^4}+\dfrac{x^4}{16}+\o{x^4}} \\
+&=\dfrac{1}{2}-\dfrac{x^2}{8}+\dfrac{x^4}{48}+\o{x^4}.
+\end{aligned}\]
+\end{ex}
+
+\begin{ex}
+On pose \(f:x\mapsto\e{\cos x}\).
+
+Déterminons le développement limité de \(f\) à l'ordre 2 en \(0\).
+
+On a : \[\e{h}\egqd{h\to0}1+h+\o{h}.\]
+
+Quand \(x\to0\) :
+
+On a : \[\cos x=1-\dfrac{x^2}{2}+\o{x^2}.\]
+
+Donc : \[\begin{aligned}
+f\paren{x}&=\exp\paren{1-\dfrac{x^2}{2}+\o{x^2}} \\
+&=\e{}\exp\paren{-\dfrac{x^2}{2}+\o{x^2}} \\
+&=\e{}\croch{1+\paren{-\dfrac{x^2}{2}+\o{x^2}}+\o{x^2}} \\
+&=\e{}\paren{1-\dfrac{x^2}{2}+\o{x^2}} \\
+&=\e{}-\dfrac{\e{}x^2}{2}+\o{x^2}.
+\end{aligned}\]
+\end{ex}
+
+\begin{ex}
+Déterminons un développement asymptotique à la précision \(x^3\) de \(f:x\mapsto\ln\paren{\sin x}\) quand \(x\to0^+\).
+
+On a : \[\sin h\egqd{h\to0}x-\dfrac{x^3}{6}+\o{x^4}.\]
+
+D'où, quand \(x\to0^+\) : \[\begin{aligned}
+f\paren{x}&=\ln\paren{x-\dfrac{x^3}{6}+\o{x^4}} \\
+&=\ln\paren{x\paren{1-\dfrac{x^2}{6}+\o{x^3}}} \\
+&=\ln x+\ln\paren{1-\dfrac{x^2}{6}+\o{x^3}} \\
+&=\ln x+\croch{-\dfrac{x^2}{6}-\dfrac{1}{2}\paren{-\dfrac{x^2}{6}+\o{x^3}}^2+\o{x^3}} \\
+&=\ln x-\dfrac{x^2}{6}+\o{x^3}.
+\end{aligned}\]
+\end{ex}

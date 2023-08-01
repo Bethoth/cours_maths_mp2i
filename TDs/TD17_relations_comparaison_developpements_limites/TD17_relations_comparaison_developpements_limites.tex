@@ -12,7 +12,7 @@ Classer les expressions suivantes de la plus \guillemets{petite} à la plus \gui
 
 \begin{exo}[Exercice 2]
 \begin{enumerate}
-\item Simplifier les expressions suivantes : \[A\egqd{x\to\pinf}\paren{x\ln x+\sqrt{x}\ln^2x+O\paren{x}+\sin x+\sqrt{x}}x+o\paren{x^2\ln x}\] et \[B\egqd{x\to0}O\paren{x^3\ln x}+x^3\ln^2x+2x^3+\dfrac{x\ln^2x}{1-x}+o\paren{x^3}+O\paren{x^3}\] en utilisant pour \(B\) le développement limité en \(0\) de \(x\mapsto\dfrac{1}{1-x}\). \\
+\item Simplifier les expressions suivantes : \[A\egqd{x\to\pinf}\paren{x\ln x+\sqrt{x}\ln^2x+\O{x}+\sin x+\sqrt{x}}x+\o{x^2\ln x}\] et \[B\egqd{x\to0}\O{x^3\ln x}+x^3\ln^2x+2x^3+\dfrac{x\ln^2x}{1-x}+\o{x^3}+\O{x^3}\] en utilisant pour \(B\) le développement limité en \(0\) de \(x\mapsto\dfrac{1}{1-x}\). \\
 
 \item Donner un équivalent de \(A\) et \(B\).
 \end{enumerate}
@@ -80,7 +80,7 @@ De plus, on a \[\begin{WithArrows}
 u_n&\geq\sum_{\alpha=1}^{\floor{\log_5n}}\paren{\dfrac{n}{5^{\alpha}}-1} \\
 &=n\dfrac{\frac{1}{5}-\frac{1}{5^{\floor{\log_5n}+1}}}{1-\frac{1}{5}}-\floor{\log_5n} \\
 &=\dfrac{n}{4}\paren{1-\dfrac{1}{5^{\floor{\log_5n}+1}}}-\floor{\log_5n} \\
-&\geq\dfrac{n}{4}\paren{1-\dfrac{1}{5^{\floor{\log_5n}+1}}}-\log_5n \Arrow{\(n\dfrac{1+o\paren{1}}{4}+o\paren{n}=\dfrac{n}{4}+o\paren{n}\)} \\
+&\geq\dfrac{n}{4}\paren{1-\dfrac{1}{5^{\floor{\log_5n}+1}}}-\log_5n \Arrow{\(n\dfrac{1+\o{1}}{4}+\o{n}=\dfrac{n}{4}+\o{n}\)} \\
 &\simqd{n\to\pinf}\dfrac{n}{4}
 \end{WithArrows}\]
 
@@ -90,7 +90,7 @@ Donc \(u_n\sim\dfrac{n}{4}\).
 \begin{exo}[Exercice 5]\thlabel{exo:fonctionPaireDLAvecTermesPairs}
 Soient \(I\) un intervalle de \(\R\) centré en \(0\), \(f:I\to\R\) et \(n\in\N\).
 
-On suppose que \(f\) admet un développement limité à l'ordre \(n\) en \(0\) : \[f\paren{x}\egqd{x\to0}a_0+a_1x+a_2x^2+\dots+a_nx^n+o\paren{x^n}.\]
+On suppose que \(f\) admet un développement limité à l'ordre \(n\) en \(0\) : \[f\paren{x}\egqd{x\to0}a_0+a_1x+a_2x^2+\dots+a_nx^n+\o{x^n}.\]
 
 \begin{enumerate}
 \item Montrer que si la fonction \(f\) est paire, alors les termes de degré impair de son développement limité sont tous nuls : \[0=a_1=a_3=a_5=\dots\]
