@@ -1357,3 +1357,72 @@ g\paren{x}&\sim\dfrac{-\frac{x^3}{6}}{\frac{x^2}{2}} \\
 
 D'où \(g\prim\paren{0}=-\dfrac{1}{3}\).
 \end{corr}
+
+\subsection{Application}
+
+\begin{appl}[Extrema locaux]
+Soient \(I\) un intervalle de \(\R\), \(a\in I\), \(n\in\N\) et \(f\in\ensclasse{n}{I}{\R}\) tels que : \[I\in\V{a}\qquad\text{et}\qquad f\deriv{n}\paren{a}\not=0\qquad\text{et}\qquad\quantifs{\forall k\in\interventierii{1}{n-1}}f\deriv{k}\paren{a}=0.\]
+
+On peut en déduire le comportement de \(f\) au voisinage de \(a\) :
+
+\begin{itemize}
+    \item si \(n\) est pair et \(f\deriv{n}\paren{a}>0\) alors \(f\) admet un minimum local en \(a\) ; \\
+    \item si \(n\) est pair et \(f\deriv{n}\paren{a}<0\) alors \(f\) admet un maximum local en \(a\) ; \\
+    \item si \(n\) est impair alors \(f\) n'admet pas d'extremum local en \(a\).
+\end{itemize}
+\end{appl}
+
+\begin{dem}
+Comme \(f\) est de classe \(\classe{n}\), d'après la formule de Taylor-Young, quand \(h\to0\), on a : \[f\paren{a+h}=\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}h^k+\o{h^n}=f\paren{a}+\dfrac{f\deriv{n}\paren{a}}{n!}h^n+\o{h^n}.\]
+
+Donc, comme \(f\deriv{n}\paren{a}\not=0\), on a : \[f\paren{a+h}-f\paren{a}\sim\dfrac{f\deriv{n}\paren{a}}{n!}h^n.\]
+
+Donc : \[\sg\paren{f\paren{a+h}-f\paren{a}}=\sg\paren{f\deriv{n}\paren{a}h^n}.\]
+
+D'où les conclusions.
+\end{dem}
+
+\begin{exoex}
+Étudier les extrema (globaux et locaux) de \(\fonction{f}{\R}{\R}{x}{\e{x}\sin x}\)
+\end{exoex}
+
+\begin{corr}
+On remarque : \[\quantifs{\forall k\in\N}f\paren{\dfrac{\pi}{2}+k\pi}=\paren{-1}^k\e{\frac{\pi}{2}+k\pi}.\]
+
+Donc : \[\lim_{k\to\pinf}f\paren{\dfrac{\pi}{2}+2k\pi}=\pinf\qquad\text{et}\qquad\lim_{k\to\pinf}f\paren{\dfrac{\pi}{2}+\paren{2k+1}\pi}=\minf.\]
+
+Donc \(f\) n'est ni majorée, ni minorée, et n'admet donc aucun extremum global.
+
+De plus, on a : \[\begin{aligned}
+\quantifs{\forall x\in\R}f\prim\paren{x}&=\e{x}\paren{\sin x+\cos x} \\
+&=\sqrt{2}\e{x}\paren{\dfrac{1}{\sqrt{2}}\sin x+\dfrac{1}{\sqrt{2}}\cos x} \\
+&=\sqrt{2}\e{x}\paren{\cos\dfrac{\pi}{4}\sin x+\sin\dfrac{\pi}{4}\cos x} \\
+&=\sqrt{2}\e{x}\sin\paren{x+\dfrac{\pi}{4}}.
+\end{aligned}\]
+
+On obtient de même : \[\quantifs{\forall x\in\R}f\seconde\paren{x}=2\e{x}\sin\paren{x+\dfrac{\pi}{2}}.\]
+
+\analyse
+
+Soit \(x\in\R\) tel que \(f\) admette un extremum local en \(x\).
+
+Comme \(\R\) est un voisinage de \(x\), on a \(f\prim\paren{x}=0\) donc \(\sin\paren{x+\dfrac{\pi}{4}}=0\) donc \(x\equiv-\dfrac{\pi}{4}\croch{\pi}\).
+
+\synthese
+
+Soient \(x\in\R\) tel que \(x\equiv-\dfrac{\pi}{4}\croch{\pi}\) et \(k\in\Z\) tel que \(x=-\dfrac{\pi}{4}+k\pi\).
+
+On a : \[f\seconde\paren{x}=2\e{-\frac{\pi}{4}+k\pi}\sin\paren{\dfrac{\pi}{4}+k\pi}=\paren{-1}^k\sqrt{2}\e{-\frac{\pi}{4}+k\pi}.\]
+
+Si \(k\) est pair alors \(f\seconde\paren{x}>0\) donc \(f\) admet un minimum local en \(x\).
+
+Si \(k\) est impair alors \(f\seconde\paren{x}<0\) donc \(f\) admet un maximum local en \(x\).
+
+\conclusion
+
+\(f\) admet un minimum local en tout point de la forme \(-\dfrac{\pi}{4}+2k\pi\) avec \(k\in\Z\) et un maximum local en tout point de la forme \(-\dfrac{\pi}{4}+\paren{2k+1}\pi\) avec \(k\in\Z\).
+\end{corr}
+
+\begin{rem}
+En pratique, on se sert peu de la proposition précédente : il est plus facile de calculer un développement limité à l'ordre \(n\) et d'en déduire un équivalent que de calculer \(n\) dérivées successives (de plus, si l'on peut déterminer le signe de la dérivée première, on peut lire dans le tableau de variations quels sont les extrema locaux de la fonction).
+\end{rem}
