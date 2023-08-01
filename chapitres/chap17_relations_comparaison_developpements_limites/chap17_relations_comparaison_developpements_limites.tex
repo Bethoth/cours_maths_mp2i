@@ -1426,3 +1426,107 @@ Si \(k\) est impair alors \(f\seconde\paren{x}<0\) donc \(f\) admet un maximum l
 \begin{rem}
 En pratique, on se sert peu de la proposition précédente : il est plus facile de calculer un développement limité à l'ordre \(n\) et d'en déduire un équivalent que de calculer \(n\) dérivées successives (de plus, si l'on peut déterminer le signe de la dérivée première, on peut lire dans le tableau de variations quels sont les extrema locaux de la fonction).
 \end{rem}
+
+\section{Développements asymptotiques}
+
+\begin{defi}
+Soient \(A\subset\R\), \(f:A\to\K\) et \(a\in\Rb\) tel que tout voisinage de \(a\) dans \(\R\) rencontre \(A\), de sorte qu'on peut parler du comportement de \(f\) au voisinage de \(a\).
+
+On appelle développement asymptotique de \(f\) en \(a\) (à la précision \(f_n\)) toute écriture de \(f\) sous la forme : \[f\paren{t}\egqd{t\to a}f_0\paren{t}+\dots+f_n\paren{t}+\o{f_n\paren{t}}\] où \(n\in\N\) et \(f_0,\dots,f_n\) sont des fonctions définies sur \(A\) (du moins au voisinage de \(a\)) telles que : \[\quantifs{\forall i\in\interventierii{1}{n}}f_i\paren{t}\egqd{t\to a}\o{f_{i-1}\paren{t}}.\]
+
+On a alors : \[f\paren{t}\simqd{t\to a}f_0\paren{t}\] et : \[f\paren{t}-f_0\paren{t}\simqd{t\to a}f_1\paren{t}\] et : \[f\paren{t}-f_0\paren{t}-f_1\paren{t}\simqd{t\to a}f_2\paren{t}\] etc.
+\end{defi}
+
+\begin{ex}
+Développement asymptotique à la précision \(\ln^2n\) : \[u_n\egqd{n\to\pinf}n!+n+\sqrt{n}\ln n+\ln^2n+\o{\ln^2n}.\]
+
+Développement asymptotique à la précision \(\dfrac{1}{x^2}\) : \[f\paren{x}\egqd{x\to\pinf}\dfrac{x}{\ln x}+\sqrt{x}+\pi+\dfrac{2}{x^2}+\o{\dfrac{1}{x^2}}.\]
+
+Développement asymptotique à la précision \(x\) : \[f\paren{x}\egqd{x\to0}\dfrac{1}{x}+\dfrac{\ln x}{\sqrt{x}}+7+\sqrt{x}+x+\o{x}.\]
+\end{ex}
+
+\begin{exoex}
+Donner un développement asymptotique de \(\ln\paren{n!}\) quand \(n\) tend vers \(\pinf\) à la précision \(1\).
+\end{exoex}
+
+\begin{corr}
+On a, quand \(n\to\pinf\) : \(n!\sim\sqrt{2\pi n}\paren{\dfrac{n}{\e{}}}^n\) donc \(\lim_n\dfrac{n!}{\sqrt{2\pi n}\paren{\dfrac{n}{\e{}}}^n}=1\) donc : \[\lim_n\ln\dfrac{n!}{\sqrt{2\pi n}\paren{\dfrac{n}{\e{}}}^n}=0.\]
+
+Donc \(\ln\dfrac{n!}{\sqrt{2\pi n}\paren{\dfrac{n}{\e{}}}^n}=\o{1}\) donc : \[\ln\paren{n!}-\dfrac{1}{2}\ln\paren{2\pi n}-n\ln n+n\ln\e{}=\o{1}.\]
+
+Finalement, on a le développement asymptotique suivant : \[\ln\paren{n!}=n\ln n-n+\dfrac{1}{2}\ln n+\dfrac{1}{2}\ln\paren{2\pi}+\o{1}.\]
+\end{corr}
+
+\begin{exoex}
+\begin{enumerate}
+    \item Donner un développement asymptotique de \(\Arctan x\) quand \(x\) tend vers \(\pinf\) à la précision \(\dfrac{1}{x^5}\). \\
+    \item Application : en déduire un équivalent de \(\Arctan\paren{2x}-\Arctan x\) quand \(x\) tend vers \(\pinf\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+Rappel : on a \(\quantifs{\forall x\in\Rps}\Arctan x+\Arctan\dfrac{1}{x}=\dfrac{\pi}{2}\).
+
+On a, quand \(h\to0\) : \[\Arctan h=h-\dfrac{h^3}{3}+\dfrac{h^5}{5}+\o{h^5}.\]
+
+Donc, quand \(x\to\pinf\) : \[\Arctan\dfrac{1}{x}=\dfrac{1}{x}-\dfrac{1}{3x^3}+\dfrac{1}{5x^5}+\o{\dfrac{1}{x^5}}.\]
+
+Donc : \[\Arctan x\egqd{x\to\pinf}\dfrac{\pi}{2}-\dfrac{1}{x}+\dfrac{1}{3x^3}-\dfrac{1}{5x^5}+\o{\dfrac{1}{x^5}}.\]
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\begin{aligned}
+\Arctan\paren{2x}-\Arctan x&\egqd{x\to\pinf}-\dfrac{1}{2x}+\dfrac{1}{x}+\o{\dfrac{1}{x}} \\
+&\egqd{x\to\pinf}\dfrac{1}{2x}+\o{\dfrac{1}{x}}.
+\end{aligned}\]
+
+Donc \(\Arctan\paren{2x}-\Arctan x\simqd{x\to\pinf}\dfrac{1}{2x}\).
+\end{corr}
+
+\begin{exoex}
+Donner un développement asymptotique de \(\dfrac{\ln\paren{1-x}}{\cos x-1}\) quand \(x\) tend vers \(0\) à la précision \(x^2\).
+\end{exoex}
+
+\begin{corr}
+On a : \[\ln\paren{1-x}\egqd{x\to0}-x-\dfrac{x^2}{2}-\dfrac{x^3}{3}-\dfrac{x^4}{4}+\o{x^4}\qquad\text{et}\qquad\cos x-1\egqd{x\to0}-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^5}.\]
+
+Donc : \[\begin{aligned}
+f\paren{x}&\egqd{x\to0}\dfrac{-x-\frac{x^2}{2}-\frac{x^3}{3}-\frac{x^4}{4}+\o{x^4}}{-\frac{x^2}{2}+\frac{x^4}{24}+\o{x^5}} \\
+&\egqd{x\to0}\dfrac{-2}{x^2}\paren{\dfrac{-x-\frac{x^2}{2}-\frac{x^3}{3}-\frac{x^4}{4}+\o{x^4}}{1-\frac{x^2}{12}+\o{x^3}}}.
+\end{aligned}\]
+
+Or : \(\dfrac{1}{1+h}\egqd{h\to0}1+h+\O{h^2}\).
+
+Donc : \[\dfrac{1}{1-\frac{x^2}{12}+\o{x^3}}\egqd{x\to0}1+\dfrac{x^2}{12}+\o{x^3}.\]
+
+D'où, quand \(x\to0\) : \[\begin{aligned}
+f\paren{x}&=\dfrac{-2}{x^2}\paren{1+\dfrac{x^2}{12}+\o{x^3}}\paren{-x-\dfrac{x^2}{2}-\dfrac{x^3}{3}-\dfrac{x^4}{4}+\o{x^4}} \\
+&=\dfrac{-2}{x^2}\paren{-x-\dfrac{x^2}{2}-\dfrac{x^3}{3}-\dfrac{x^4}{4}-\dfrac{x^3}{12}-\dfrac{x^4}{24}+\o{x^4}} \\
+&=\dfrac{2}{x}+1+\dfrac{5}{6}x+\dfrac{7}{12}x^2+\o{x^2}.
+\end{aligned}\]
+\end{corr}
+
+\begin{rem}
+Apprenez à obtenir des développements limités à l'aide de votre calculatrice.
+
+On peut aussi les obtenir avec Python, par exemple avec le module \verb|sympy| (les paramètres de la méthode \verb|series| sont la variable, le point où l'on se place et le nombre de termes du développement asymptotique voulu) :
+
+\begin{verbatim}
+>>> from sympy import sin, cos, log, pprint, latex
+>>> from sympy.abc import x
+>>> pprint(sin(x).series(x, 0, 9))    # "pretty print"
+\end{verbatim}
+
+\(x-\dfrac{x^3}{6}+\dfrac{x^5}{120}-\dfrac{x^7}{5040}+\O{x^9}\)
+
+\begin{verbatim}
+>>> print(latex(sin(x).series(x, 0, 7)))    # code LaTeX
+x - \frac{x^{3}}{6} + \frac{x^{5}}{120} + O\left(x^{7}\right)
+
+>>> a = log(1 - x) / (cos(x) - 1)
+>>> b = a.series(x, 0, 6)
+>>> pprint(b)
+\end{verbatim}
+
+\(\dfrac{2}{x}+1+\dfrac{5x}{6}+\dfrac{7x^2}{12}+\dfrac{167x^3}{360}+\dfrac{91x^4}{240}+\dfrac{4871x^5}{15120}+\O{x^6}\)
+\end{rem}
