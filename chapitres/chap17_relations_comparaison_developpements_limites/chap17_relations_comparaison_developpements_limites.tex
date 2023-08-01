@@ -893,7 +893,7 @@ L'affirmation \guillemets{donc \(\ln\paren{1+\e{x}}\simqd{x\to\pinf}\e{x}\)} est
 
 \section{Développements limités}
 
-\subsection*{Développements limités usuels}
+\subsection*{Développements limités usuels}\label{subsec:développementsLimitésUsuels}
 
 Soit \(\alpha\in\R\).
 
@@ -1131,3 +1131,229 @@ f\paren{a+h}-f\paren{a}&=a_dh^d+\o{h^d} \Arrow{car \(a_d\not=0\)} \\
 
 D'où le résultat.
 \end{dem}
+
+\section{Formule de Taylor}
+
+\subsection{Primitivation de développements limités}
+
+\begin{lem}
+Soient \(J\) un intervalle de \(\R\) contenant \(0\), \(n\in\N\) et \(g:J\to\K\) dérivable et telle que \[g\prim\paren{x}\egqd{x\to0}\o{x^n}.\]
+
+Alors on a : \[g\paren{x}-g\paren{0}\egqd{x\to0}\o{x^{n+1}}.\]
+\end{lem}
+
+\begin{dem}
+Soit \(\epsilon:J\to\K\) telle que \(\begin{dcases}
+\lim_0\epsilon=0 \\
+\quantifs{\forall x\in J}g\prim\paren{x}=x^n\epsilon\paren{x}
+\end{dcases}\)
+
+On remarque : \[\lim_{x\to0}\underbrace{\sup_{t\in\intervii{-\abs{x}}{\abs{x}}}\abs{\epsilon\paren{t}}}_{M_x}=0.\]
+
+Soit \(x\in J\).
+
+Selon l'inégalité des accroissements finis appliquée à \(g\prim\) entre \(0\) et \(x\), on a : \[\begin{dcases}
+\quantifs{\forall t\in\intervii{0}{x}}\abs{g\prim\paren{t}}=\epsilon\paren{t}t^n\leq M_x\abs{x}^n &\text{si }x>0 \\
+\quantifs{\forall t\in\intervii{x}{0}}\abs{g\prim\paren{t}}=\epsilon\paren{t}t^n\leq M_x\abs{x}^n &\text{si }x<0
+\end{dcases}\]
+
+Donc, si \(x\not=0\), on a : \[\abs{g\paren{x}-g\paren{0}}\leq M_x\abs{x}^n\abs{x-0}=M_x\abs{x}^{n+1}.\]
+
+Cela est aussi vrai si \(x=0\).
+
+D'où : \[g\paren{x}-g\paren{0}\egqd{x\to0}\o{x^{n+1}}.\]
+\end{dem}
+
+\begin{rem}
+On ne peut pas \guillemets{dériver un développement limité}.
+\end{rem}
+
+\begin{dem}
+Posons \(\fonction{f}{\R}{\R}{x}{\begin{dcases}x^2\sin\dfrac{1}{x} &\text{si }x\not=0 \\ 0 &\text{sinon}\end{dcases}}\)
+
+On a, quand \(x\to0\) : \(\begin{dcases}
+\sin\dfrac{1}{x}=\O{1} \\
+x^2=\o{x}
+\end{dcases}\)
+
+D'où : \[f\paren{x}\egqd{x\to0}\o{x},\] on a un développement limité à l'ordre 1 en \(0\) donc \(f\) est dérivable en \(0\).
+
+Or, on a : \[\quantifs{\forall x\in\Rs}f\prim\paren{x}=\underbrace{2x\sin\dfrac{1}{x}}_{\xrightarrow[x\to0]{}0}-\underbrace{\cos\dfrac{1}{x}}_{\substack{\text{pas de} \\ \text{limite} \\ \text{en }0}}.\]
+
+Donc \(f\prim\) n'a pas de limite en \(0\).
+
+Donc \(f\prim\) n'est pas continue en \(0\) : \(f\prim\) n'admet pas de développement limité à l'ordre 0 en \(0\).
+\end{dem}
+
+\begin{prop}[Primitivation de développement limité]
+Soient \(I\) un intervalle de \(\R\), \(a\in I\), \(n\in\N\) et \(f:I\to\K\) dérivable et telle qu'il existe \(a_0,\dots,a_n\in\K\) tels que : \[f\prim\paren{a+h}\egqd{h\to0}\sum_{k=0}^na_kh^k+\o{h^n}.\]
+
+Alors \(f\) admet le développement limité à l'ordre \(n+1\) en \(a\) suivant : \[f\paren{a+h}\egqd{h\to0}f\paren{a}+\sum_{k=0}^na_k\dfrac{h^{k+1}}{k+1}+\o{h^{n+1}}.\]
+\end{prop}
+
+\begin{dem}
+La fonction \(g:h\mapsto f\paren{a+h}-\sum_{k=0}^na_k\dfrac{h^{k+1}}{k+1}\) est dérivable et on a : \[\quantifs{\forall h\in\R}g\prim\paren{h}=f\prim\paren{a+h}-\sum_{k=0}^na_kh^k=\o{h^n}.\]
+
+Selon le lemme précédent, on en déduit, quand \(h\to0\) : \[g\paren{h}-g\paren{0}=\o{h^{n+1}},\] \cad : \[f\paren{a+h}-\sum_{k=0}^na_k\dfrac{h^{k+1}}{k+1}-f\paren{a}=\o{h^{n+1}}.\]
+\end{dem}
+
+\begin{appl}
+Établissons le développement limité à l'ordre 5 en \(0\) de la fonction \(\tan\).
+
+Comme \(\tan\) est dérivable en \(0\), on a, quand \(x\) tend vers \(0\) : \[\tan x=\tan\paren{0}+\tan\prim\paren{0}x+\o{x}=x+\o{x}.\]
+
+D'où : \[\tan^2x=\paren{x+\o{x}}^2=x^2+2x\o{x}+\o{x^2}=x^2+\o{x^2}.\]
+
+D'où : \[\tan\prim x=1+x^2+\o{x^2}.\]
+
+D'où, en primitivant le développement limité : \[\tan x=0+x+\dfrac{x^3}{3}+\o{x^3}.\]
+
+D'où : \[\begin{aligned}
+\tan^2x&=x^2+\dfrac{x^6}{9}+\o{x^6}+2\paren{\dfrac{x^4}{3}+\o{x^4}+\o{x^6}} \\
+&=x^2+\dfrac{x^6}{9}+\dfrac{2x^4}{3}+\o{x^4}.
+\end{aligned}\]
+
+D'où : \[\tan\prim x=1+x^2+\dfrac{2x^4}{3}+\dfrac{x^6}{9}+\o{x^4}.\]
+
+D'où, en primitivant le développement limité : \[\tan x=x+\dfrac{x^3}{3}+\dfrac{2x^5}{15}+\o{x^5}.\]
+\end{appl}
+
+\begin{theo}[Formule de Taylor-Young]
+Soient \(I\) un intervalle de \(\R\), \(n\in\N\), \(a\in I\) et \(f\in\ensclasse{n}{I}{\K}\).
+
+Alors \(f\) admet le développement limité à l'ordre \(n\) en \(a\) suivant : \[f\paren{a+h}\egqd{h\to0}\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}h^k+\o{h^n}.\]
+\end{theo}
+
+\begin{dem}
+Raisonnons par récurrence sur \(n\in\N\).
+
+Pour tout \(n\in\N\), on note \(\P{n}\) la proposition \guillemets{\(\quantifs{\forall f\in\ensclasse{n}{I}{\K}}f\paren{a+h}\egqd{h\to0}\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}h^k+\o{h^n}\)}.
+
+On a déjà vu \(\P{0}\) et \(\P{1}\).
+
+Soit \(n\in\N\) tel que \(\P{n}\). Montrons \(\P{n+1}\).
+
+Soit \(f\in\ensclasse{n+1}{I}{\K}\).
+
+On a \(f\prim\in\ensclasse{n}{I}{\K}\).
+
+D'où, selon \(\P{n}\) : \[f\prim\paren{a+h}\egqd{h\to0}\sum_{k=0}^n\dfrac{\paren{f\prim}\deriv{k}\paren{a}}{k!}h^k+\o{h^n}.\]
+
+D'où, en primitivant le développement limité : \[\begin{aligned}
+f\paren{a+h}&\egqd{h\to0}f\paren{a}+\sum_{k=0}^n\dfrac{f\deriv{k+1}\paren{a}}{k!}\times\dfrac{h^{k+1}}{k+1}+\o{h^{n+1}} \\
+&\egqd{h\to0}\dfrac{f\deriv{0}\paren{a}}{0!}+\sum_{k=0}^n\dfrac{f\deriv{k+1}\paren{a}}{\paren{k+1}!}h^{k+1}+\o{h^{n+1}} \\
+&\egqd{h\to0}\sum_{k=0}^{n+1}\dfrac{f\deriv{k}\paren{a}}{k!}h^k+\o{h^{n+1}}.
+\end{aligned}\]
+
+D'où \(\P{n+1}\).
+
+D'où la formule.
+\end{dem}
+
+\begin{ex}
+\Cf \hyperref[subsec:développementsLimitésUsuels]{développements limités usuels}.
+\end{ex}
+
+\begin{dem}[\(\exp\)]
+Soit \(n\in\N\).
+
+Déterminons le développement limité de \(\exp\) à l'ordre \(n\) en \(0\).
+
+On a \(\exp\in\ensclasse{\infty}{\R}{\R}\) donc : \[\begin{aligned}
+\e{x}&\egqd{x\to0}\sum_{k=0}^n\dfrac{\exp\deriv{k}\paren{0}}{k!}x^k+\o{x^n} \\
+&\egqd{x\to0}\sum_{k=0}^n\dfrac{x^k}{k!}+\o{x^n}.
+\end{aligned}\]
+\end{dem}
+
+\begin{dem}[\(\sh\) \& \(\ch\)]
+Soit \(n\in\N\).
+
+Les développements limités de \(\sh\) et \(\ch\) à l'ordre \(n\) en \(0\) se déduisent de celui de \(\exp\) car on a : \[\begin{dcases}
+\ch:x\mapsto\dfrac{\e{x}+\e{-x}}{2} \\
+\sh:x\mapsto\dfrac{\e{x}-\e{-x}}{2}
+\end{dcases}\]
+\end{dem}
+
+\begin{dem}[\(\cos\) \& \(\sin\)]
+Soit \(n\in\N\).
+
+Les développements limités de \(\cos\) et \(\sin\) à l'ordre \(n\) en \(0\) découlent de la formule de Taylor-Young.
+\end{dem}
+
+\begin{dem}[\(\ln\)]
+Soit \(n\in\N\).
+
+Déterminons le développement limité de \(\ln\) à l'ordre \(n\) en \(1\).
+
+On a, quand \(x\to0\) : \[\dfrac{1}{1+x}=\sum_{k=0}^n\paren{-1}^kx^k+\o{x^n}.\]
+
+D'où, en primitivant le développement limité : \[\ln\paren{1+x}=\ln1+\sum_{k=0}^n\paren{-1}^k\dfrac{x^{k+1}}{k+1}+\o{x^{n+1}}.\]
+\end{dem}
+
+\begin{dem}[\(\Arctan\)]
+Soit \(n\in\N\).
+
+Déterminons le développement limité de \(\Arctan\) à l'ordre \(n\) en \(0\).
+
+On a, quand \(x\to0\) : \[\dfrac{1}{1+x^2}=\sum_{k=0}^n\paren{-1}^kx^{2k}+\o{x^{2n}}.\]
+
+D'où, en primitivant le développement limité : \[\Arctan x=\Arctan0+\sum_{k=0}^n\paren{-1}^k\dfrac{x^{2k+1}}{2k+1}+\o{x^{2n+1}}.\]
+\end{dem}
+
+\begin{dem}[\(x\mapsto\paren{1+x}^\alpha\)]
+Soient \(n\in\N\), \(\alpha\in\R\) et \(f:x\mapsto\paren{1+x}^\alpha\).
+
+Déterminons le développement limité de \(f\) à l'ordre \(n\) en \(0\).
+
+On remarque : \[\quantifs{\forall k\in\N;\forall x\in\intervee{-1}{\pinf}}f\deriv{k}\paren{x}=\paren{1+x}^{\alpha-k}\prod_{l=0}^{k+1}\paren{\alpha-l}.\]
+
+D'où : \[\quantifs{\forall k\in\N}\dfrac{f\deriv{k}\paren{0}}{k!}=\dfrac{1}{k!}\prod_{l=0}^{k+1}\paren{\alpha-l}=\binom{k}{\alpha}.\]
+\end{dem}
+
+\begin{rem}
+Il est parfois bien plus facile de calculer une dérivée en un point à partir des développements limités plutôt que par les méthodes souvent rencontrées jusqu'ici (calcul \guillemets{classique} de dérivée, théorème de la limite de la dérivée).
+\end{rem}
+
+\begin{exoex}
+\begin{enumerate}
+    \item Calculer la dérivée en \(0\) de la fonction \[\fonction{f}{\R}{\R}{x}{\dfrac{\e{x}\paren{1+\sh x}\paren{1+\sin x}\paren{1+\tan x}\paren{1+\ln\paren{1+x}}}{1-x}}\]
+    \item Calculer la dérivée en \(0\) de la fonction \[\fonction{g}{\R}{\R}{x}{\begin{dcases}
+        \dfrac{\sin x-x}{\e{x}-1-x} &\text{si }x\not=0 \\
+        0 &\text{sinon}
+    \end{dcases}}\]
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a les développements limités à l'ordre 1 en \(0\) suivants : \[\begin{dcases}
+\e{x}=1+x+\o{x} \\
+1+\sh x=1+x+\o{x} \\
+1+\sin x=1+x+\o{x} \\
+1+\tan x=1+x+\o{x} \\
+1+\ln\paren{1+x}=1+x+\o{x} \\
+\dfrac{1}{1-x}=1+x+\o{x}
+\end{dcases}\]
+
+D'où le développement limité à l'ordre 1 en \(0\) de \(f\) : \[\underbrace{\paren{1+x+\o{x}}\dots\paren{1+x+\o{x}}}_{\text{6 facteurs}}=1+6x+\o{x}.\]
+
+Donc la dérivée de \(f\) en \(0\) est \(6\).
+\end{corr}
+
+\begin{corr}[2]
+On a, quand \(x\to0\) : \[\begin{dcases}
+\sin x=x-\dfrac{x^3}{6}+\o{x^3} \\
+\e{x}=1+x+\dfrac{x^2}{2}+\o{x^2}
+\end{dcases}\]
+
+Donc : \[\begin{dcases}
+\sin x-x=-\dfrac{x^3}{6}+\o{x^3}\sim-\dfrac{x^3}{6} \\
+\e{x}-1-x=\dfrac{x^2}{2}+\o{x^2}\sim\dfrac{x^2}{2}
+\end{dcases}\]
+
+Donc on a : \[\begin{aligned}
+g\paren{x}&\sim\dfrac{-\frac{x^3}{6}}{\frac{x^2}{2}} \\
+&=-\dfrac{x}{3}+\o{x}.
+\end{aligned}\]
+
+D'où \(g\prim\paren{0}=-\dfrac{1}{3}\).
+\end{corr}
