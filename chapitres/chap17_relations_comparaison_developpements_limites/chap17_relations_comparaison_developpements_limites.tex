@@ -1530,3 +1530,21 @@ x - \frac{x^{3}}{6} + \frac{x^{5}}{120} + O\left(x^{7}\right)
 
 \(\dfrac{2}{x}+1+\dfrac{5x}{6}+\dfrac{7x^2}{12}+\dfrac{167x^3}{360}+\dfrac{91x^4}{240}+\dfrac{4871x^5}{15120}+\O{x^6}\)
 \end{rem}
+
+\section{Méthodes à bien connaître}
+
+\subsection{Composer des développements limités}
+
+\begin{ex}
+On pose \(f:x\mapsto\Arctan\paren{\sin x}\).
+
+Déterminons le développement limité de \(f\) à l'ordre 4 en \(0\).
+
+On a : \[\Arctan h\egqd{h\to0}h-\dfrac{h^3}{3}+\o{h^4}\qquad\text{et}\qquad\sin x\egqd{x\to0}x-\dfrac{x^3}{6}+\o{x^4}.\]
+
+Donc, comme \(\sin x\xrightarrow[x\to0]{}0\), on a, quand \(x\to0\) : \[\begin{aligned}
+\Arctan\paren{\sin x}&=x-\dfrac{x^3}{6}+\o{x^4}-\dfrac{1}{3}\paren{x-\dfrac{x^3}{6}+\o{x^4}}^3+\underbrace{\o{\paren{\underbrace{x-\dfrac{x^3}{6}+\o{x^4}}_{\sim x}}^4}}_{=\o{x^4}} \\
+&=x-\dfrac{x^3}{6}+\o{x^4}-\dfrac{1}{3}\paren{x^3+\o{x^4}}+\o{x^4} \\
+&=x-\dfrac{x^3}{2}+\o{x^4}.
+\end{aligned}\]
+\end{ex}
