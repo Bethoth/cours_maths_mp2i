@@ -943,3 +943,191 @@ Soit \(n\in\N\).
 
 On a : \[\dfrac{1}{1+x}\egqd{x\to0}\sum_{k=0}^n\paren{-1}^kx^k+\o{x^n}.\]
 \end{cor}
+
+\subsection{Propriétés des développements limités}
+
+\begin{prop}[Unicité du développement limité]
+Soient \(I\) un intervalle de \(\R\), \(f:I\to\K\), \(a\in I\), \(n\in\N\) et \(a_0,\dots,a_n,b_0,\dots,b_n\in\K\).
+
+On suppose qu'on a, quand \(h\to0\) : \[f\paren{a+h}=a_0h^0+\dots+a_nh^n+\o{h^n}=b_0h^0+\dots+b_nh^n+\o{h^n}.\]
+
+Alors \(\quantifs{\forall k\in\interventierii{0}{n}}a_k=b_k\).
+\end{prop}
+
+\begin{dem}
+On raisonne par l'absurde.
+
+Soit \(k\in\interventierii{0}{n}\) tel que \(\begin{dcases}
+\quantifs{\forall l\in\interventierii{0}{k-1}}a_l=b_l \\
+a_k\not=b_k
+\end{dcases}\)
+
+On obtient, par différence : \[\begin{aligned}
+\underbrace{\paren{a_k-b_k}}_{\not=0}h^k&=\underbrace{\paren{b_{k+1}-a_{k+1}}h^{k+1}}_{=\o{h^k}}+\dots+\underbrace{\paren{b_n-a_n}h^n}_{=\o{h^k}}+\underbrace{\o{h^n}}_{=\o{h^k}} \\
+&=\o{h^k}.
+\end{aligned}\]
+
+Donc \(h^k=\o{h^k}\) : contradiction.
+\end{dem}
+
+\begin{prop}
+Soient \(I\) un intervalle de \(\R\), \(f:I\to\K\) et \(a\in I\).
+
+On a :
+
+\begin{enumerate}
+    \item \(f\text{ admet un développement limité à l'ordre 0 en }a\ssi f\text{ est continue en }a\) \\
+    \item \(f\text{ admet un développement limité à l'ordre 1 en }a\ssi f\text{ est dérivable en }a\).
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+\impdir
+
+On suppose qu'il existe \(a_0\in\K\) tel que \(f\paren{a+h}\egqd{h\to0}a_0+\o{1}\).
+
+On a \(\lim_{h\to0}f\paren{a+h}=a_0\in\K\).
+
+Donc \(f\) est continue en \(a\) et \(f\paren{a}=a_0\).
+
+\imprec
+
+Supposons \(f\) continue en \(a\).
+
+Alors \(\lim_{h\to0}f\paren{a+h}=f\paren{a}\).
+
+Donc \(f\paren{a+h}\egqd{h\to0}f\paren{a}+\o{1}\).
+
+Donc \(f\) admet un développement limité à l'ordre 0 en \(a\).
+\end{dem}
+
+\begin{dem}[2]
+\impdir
+
+On suppose qu'il existe \(a_0,a_1\in\K\) tels que \(f\paren{a+h}\egqd{h\to0}a_0+a_1h+\o{h}\).
+
+On a, en prenant \(h=0\) : \(f\paren{a}=a_0\).
+
+D'où \(f\paren{a+h}-f\paren{a}\egqd{h\to0}a_1h+\o{h}\).
+
+Donc \(\dfrac{f\paren{a+h}-f\paren{a}}{h}\egqd{\substack{h\to0 \\ h\not=0}}a_1+\o{1}\).
+
+Donc \(\lim_{\substack{h\to0 \\ h\not=0}}\dfrac{f\paren{a+h}-f\paren{a}}{h}=a_1\in\K\).
+
+Donc \(f\) est dérivable en \(a\) et \(a_1=f\prim\paren{a}\).
+
+\imprec
+
+Supposons \(f\) dérivable en \(a\).
+
+On a \(\lim_{\substack{h\to0 \\ h\not=0}}\dfrac{f\paren{a+h}-f\paren{a}}{h}=f\prim\paren{a}\in\K\).
+
+Donc \(\lim_{\substack{h\to0 \\ h\not=0}}\dfrac{f\paren{a+h}-f\paren{a}}{h}-f\prim\paren{a}=0\).
+
+Donc \(\dfrac{f\paren{a+h}-f\paren{a}-hf\prim\paren{a}}{h}\egqd{\substack{h\to0 \\ h\not=0}}\o{1}\).
+
+Donc \(f\paren{a+h}-f\paren{a}-hf\prim\paren{a}\egqd{h\to0}\o{h}\).
+
+D'où le développement limité à l'ordre 1 en \(a\) : \[f\paren{a+h}\egqd{h\to0}f\paren{a}+f\prim\paren{a}h+\o{h}.\]
+\end{dem}
+
+\begin{rem}
+On a aussi obtenu que le coefficient de degré 0 est \(f\paren{a}\) et que le coefficient de degré 1 est \(f\prim\paren{a}\).
+\end{rem}
+
+\begin{ex}
+On a, quand \(h\to0\) : \begin{align*}
+\ln\paren{1+h}&=0+h+\o{h} & \exp\paren{h}&=1+h+\o{h} & \sin h&=0+h+\o{h} \\
+&=h+\o{h} & \exp\paren{h}-1&\sim h & &=h+\o{h} \\
+&\sim h & & & &\sim h.
+\end{align*}
+\end{ex}
+
+\begin{prop}[Tronquer un développement limité]
+Soient \(I\) un intervalle de \(\R\), \(a\in I\), \(f:I\to\K\) et \(n\in\N\).
+
+Si \(f\) admet un développement limité d'ordre \(n+1\) en \(a\) alors \(f\) admet un développement limité d'ordre \(n\) en \(a\) obtenu en \guillemets{tronquant} son développement limité à l'ordre \(n+1\) en \(a\).
+\end{prop}
+
+\begin{dem}
+Supposons qu'on a : \[f\paren{a+h}\egqd{h\to0}a_0h^0+\dots+a_nh^n+\underbrace{a_{n+1}h^{n+1}}_{=\o{h^n}}+\underbrace{\o{h^{n+1}}}_{=\o{h^n}}.\]
+
+Alors on a : \[f\paren{a+h}\egqd{h\to0}a_0h^0+\dots+a_nh^n+\o{h^n}.\]
+
+D'où la proposition.
+\end{dem}
+
+\begin{prop}
+Soient \(I\) un intervalle de \(\R\), \(a\in I\), \(n\in\N\) et \(f,g\in\F{I}{\K}\).
+
+Si \(f\) et \(g\) admettent un développement limité d'ordre \(n\) en \(a\) alors \(f+g\) et \(fg\) aussi.
+\end{prop}
+
+\begin{dem}
+Soient \(P,Q\in\polydeg{n}\) tels que, quand \(h\to0\) : \[\begin{dcases}
+f\paren{a+h}=P\paren{h}+\o{h^n} \\
+g\paren{a+h}=Q\paren{h}+\o{h^n}
+\end{dcases}\]
+
+On a : \[\paren{f+g}\paren{a+h}=\paren{P+Q}\paren{a+h}+\o{h^n}\] et \[\begin{aligned}
+\paren{fg}\paren{a+h}&=\croch{P\paren{h}+\o{h^n}}\croch{Q\paren{h}+\o{h^n}} \\
+&=P\paren{h}Q\paren{h}+\underbrace{P\paren{h}\o{h^n}}_{=\o{h^n}\O{1}=\o{h^n}}+\underbrace{\o{h^n}Q\paren{h}}_{=\o{h^n}\O{1}=\o{h^n}}+\underbrace{\o{h^n}\o{h^n}}_{=\o{h^{2n}}=\o{h^n}} \\
+&=\underbrace{P\paren{h}Q\paren{h}}_{\star}+\o{h^n}.
+\end{aligned}\]
+
+\(\star\) : il peut y avoir des termes de degré appartenant à l'intervalle entier \(\interventierii{n+1}{2n}\) mais ils sont négligeables devant \(h^n\).
+\end{dem}
+
+\begin{rem}
+On peut également faire des quotients et des composées de développements limités : on le montrera au cas par cas.
+\end{rem}
+
+\subsection{Applications}
+
+\begin{prop}
+Soient \(I\) et \(J\) deux intervalles de \(\R\), \(a\in I\), \(f:I\to J\) dérivable en \(a\) et \(g:J\to\K\) dérivable en \(f\paren{a}\).
+
+Alors \(g\rond f\) est dérivable en \(a\) et on a : \[\paren{g\rond f}\prim\paren{a}=f\prim\paren{a}\times g\prim\paren{f\paren{a}}.\]
+\end{prop}
+
+\begin{dem}
+Comme \(f\) et \(g\) sont dérivables en \(a\) et \(f\paren{a}\) respectivement, on a : \[\begin{dcases}
+f\paren{a+h}\egqd{h\to0}f\paren{a}+f\prim\paren{a}h+\o{h} \\
+g\paren{f\paren{a}+h}\egqd{h\to0}g\paren{f\paren{a}}+g\prim\paren{f\paren{a}}h+\o{h}
+\end{dcases}\]
+
+Comme \(f\) est dérivable en \(a\), \(f\) est continue en \(a\) donc on a : \[\lim_{h\to0}f\paren{a+h}-f\paren{a}=0.\]
+
+On a donc, quand \(h\to0\) : \[\begin{WithArrows}
+g\paren{f\paren{a+h}}&=g\paren{f\paren{a}+\underbrace{f\paren{a+h}-f\paren{a}}_{\to0}} \Arrow[i]{développement limité de \(f\)} \\
+&=g\paren{f\paren{a}+\underbrace{f\prim\paren{a}h+\o{h}}_{\to0}} \Arrow[lr,xoffset=1cm]{développement limité de \(g\)} \\
+&=g\paren{f\paren{a}}+g\prim\paren{f\paren{a}}\croch{f\prim\paren{a}h+\o{h}}+\underbrace{\o{\underbrace{f\prim\paren{a}h+\o{h}}_{=\O{h}}}}_{=\o{h}} \\
+&=g\rond f\paren{a}+g\prim\paren{f\paren{a}}\times f\prim\paren{a}\times h+\o{h}.
+\end{WithArrows}\]
+
+Donc \(g\rond f\) admet un développement limité à l'ordre 1 en \(a\).
+
+Donc \(g\rond f\) est dérivable en \(a\) et on a : \[\paren{g\rond f}\prim\paren{a}=f\prim\paren{a}\times g\prim\paren{f\paren{a}}.\]
+\end{dem}
+
+\begin{prop}
+Soient \(I\) un intervalle de \(\R\), \(a\in I\), \(n\in\N\) et \(f:I\to\R\) admettant un développement limité à l'ordre \(n\) en \(a\) : \[\quantifs{\exists a_0,\dots,a_n\in\R}f\paren{a+h}\egqd{h\to0}a_0h^0+\dots+a_nh^n+\o{h^n}.\]
+
+On suppose qu'il existe \(d\in\interventierii{1}{n}\) tel que \(\begin{dcases}
+a_1=\dots=a_{d-1}=0 \\
+a_d\not=0
+\end{dcases}\)
+
+Alors \(f\paren{a+h}-f\paren{a}\) est du signe de \(a_dh^d\) quand \(h\) est petit.
+\end{prop}
+
+\begin{dem}
+On a, quand \(h\to0\) : \[f\paren{a+h}=f\paren{a}+a_dh^d+\underbrace{a_{d+1}h^{d+1}}_{=\o{h^d}}+\dots+\underbrace{a_nh^n}_{=\o{h^d}}+\underbrace{\o{h^n}}_{=\o{h^d}}.\]
+
+Donc on a : \[\begin{WithArrows}
+f\paren{a+h}-f\paren{a}&=a_dh^d+\o{h^d} \Arrow{car \(a_d\not=0\)} \\
+&\sim a_dh^d.
+\end{WithArrows}\]
+
+D'où le résultat.
+\end{dem}
