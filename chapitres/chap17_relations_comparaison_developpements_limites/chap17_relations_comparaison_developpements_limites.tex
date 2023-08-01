@@ -1548,3 +1548,19 @@ Donc, comme \(\sin x\xrightarrow[x\to0]{}0\), on a, quand \(x\to0\) : \[\begin{a
 &=x-\dfrac{x^3}{2}+\o{x^4}.
 \end{aligned}\]
 \end{ex}
+
+\subsection{Inverse d'un développement limité}
+
+\begin{ex}
+Posons \(f:x\mapsto\dfrac{1}{\cos x}\).
+
+Déterminons le développement limité de \(f\) à l'ordre 4 en \(0\).
+
+On a : \[\cos x\egqd{x\to0}1-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}.\]
+
+Or, on a \(\dfrac{1}{1+h}\egqd{h\to0}1-h+h^2+\o{h^2}\) donc, quand \(x\to0\) : \[\begin{aligned}
+f\paren{x}&=1-\paren{-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}}+\paren{-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}}^2+\o{x^4} \\
+&=1+\dfrac{x^2}{2}-\dfrac{x^4}{24}+\paren{-\dfrac{x^2}{2}}^2+\o{x^4} \\
+&=1+\dfrac{x^2}{2}+\dfrac{5x^4}{24}+\o{x^4}.
+\end{aligned}\]
+\end{ex}
