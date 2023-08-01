@@ -1564,3 +1564,81 @@ f\paren{x}&=1-\paren{-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}}+\paren{-\dfrac{x^2
 &=1+\dfrac{x^2}{2}+\dfrac{5x^4}{24}+\o{x^4}.
 \end{aligned}\]
 \end{ex}
+
+\subsection{Se ramener aux développements limités connus}
+
+\begin{ex}
+On pose \(f:x\mapsto\ln\paren{1+\cos x}\).
+
+Déterminons le développement limité de \(f\) à l'ordre 4 en \(0\).
+
+On a : \[\ln\paren{1+h}\egqd{h\to0}h-\dfrac{h^2}{2}+\o{h^2}.\]
+
+Il ne faut surtout pas remplacer \(h\) par \(\cos x\).
+
+Quand \(x\to0\) :
+
+On a : \[\cos x=1-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}.\]
+
+Donc : \[\begin{aligned}
+f\paren{x}&=\ln\paren{2-\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}} \\
+&=\ln2+\ln\paren{1-\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}} \\
+&=\ln2+\paren{-\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}}-\dfrac{1}{2}\paren{-\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}}^2+\o{x^4} \\
+&=\ln2-\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}-\dfrac{x^4}{32}+\o{x^4} \\
+&=\ln2-\dfrac{x^2}{4}-\dfrac{x^4}{96}+\o{x^4}.
+\end{aligned}\]
+\end{ex}
+
+\begin{ex}
+On pose \(f:x\mapsto\dfrac{1}{1+\ch x}\).
+
+Déterminons le développement limité de \(f\) à l'ordre 4 en \(0\).
+
+On a : \[\dfrac{1}{1+h}\egqd{h\to0}1-h+h^2+\o{h^2}.\]
+
+Quand \(x\to0\) :
+
+On a : \[\ch x=1+\dfrac{x^2}{2}+\dfrac{x^4}{24}+\o{x^4}.\]
+
+Donc : \[\begin{aligned}
+f\paren{x}&=\dfrac{1}{2+\frac{x^2}{2}+\frac{x^4}{24}+\o{x^4}} \\
+&=\dfrac{1}{2}\times\dfrac{1}{1+\frac{x^2}{4}+\frac{x^4}{48}+\o{x^4}} \\
+&=\dfrac{1}{2}\croch{1-\paren{\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}}+\paren{\dfrac{x^2}{4}+\dfrac{x^4}{48}+\o{x^4}}^2+\o{x^4}} \\
+&=\dfrac{1}{2}\paren{1-\dfrac{x^2}{4}-\dfrac{x^4}{48}+\o{x^4}+\dfrac{x^4}{16}+\o{x^4}} \\
+&=\dfrac{1}{2}-\dfrac{x^2}{8}+\dfrac{x^4}{48}+\o{x^4}.
+\end{aligned}\]
+\end{ex}
+
+\begin{ex}
+On pose \(f:x\mapsto\e{\cos x}\).
+
+Déterminons le développement limité de \(f\) à l'ordre 2 en \(0\).
+
+On a : \[\e{h}\egqd{h\to0}1+h+\o{h}.\]
+
+Quand \(x\to0\) :
+
+On a : \[\cos x=1-\dfrac{x^2}{2}+\o{x^2}.\]
+
+Donc : \[\begin{aligned}
+f\paren{x}&=\exp\paren{1-\dfrac{x^2}{2}+\o{x^2}} \\
+&=\e{}\exp\paren{-\dfrac{x^2}{2}+\o{x^2}} \\
+&=\e{}\croch{1+\paren{-\dfrac{x^2}{2}+\o{x^2}}+\o{x^2}} \\
+&=\e{}\paren{1-\dfrac{x^2}{2}+\o{x^2}} \\
+&=\e{}-\dfrac{\e{}x^2}{2}+\o{x^2}.
+\end{aligned}\]
+\end{ex}
+
+\begin{ex}
+Déterminons un développement asymptotique à la précision \(x^3\) de \(f:x\mapsto\ln\paren{\sin x}\) quand \(x\to0^+\).
+
+On a : \[\sin h\egqd{h\to0}x-\dfrac{x^3}{6}+\o{x^4}.\]
+
+D'où, quand \(x\to0^+\) : \[\begin{aligned}
+f\paren{x}&=\ln\paren{x-\dfrac{x^3}{6}+\o{x^4}} \\
+&=\ln\paren{x\paren{1-\dfrac{x^2}{6}+\o{x^3}}} \\
+&=\ln x+\ln\paren{1-\dfrac{x^2}{6}+\o{x^3}} \\
+&=\ln x+\croch{-\dfrac{x^2}{6}-\dfrac{1}{2}\paren{-\dfrac{x^2}{6}+\o{x^3}}^2+\o{x^3}} \\
+&=\ln x-\dfrac{x^2}{6}+\o{x^3}.
+\end{aligned}\]
+\end{ex}
