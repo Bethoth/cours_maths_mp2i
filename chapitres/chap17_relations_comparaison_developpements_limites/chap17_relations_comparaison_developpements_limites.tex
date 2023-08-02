@@ -889,7 +889,7 @@ Autre exemple : on a \(n\simqd{n\to\pinf}n+1\) mais on n'a pas \(\e{n}\simqd{n\t
 
 On a \(\ln\paren{1+t}\simqd{t\to0}t\).
 
-L'affirmation \guillemets{donc \(\ln\paren{1+\e{x}}\simqd{x\to\pinf}\e{x}\)} est fausse car \(\e{x}\xrightarrow[x\to\pinf]{}\pinf\not=0\).
+L'affirmation \guillemets{donc \(\ln\paren{1+\e{x}}\simqd{x\to\pinf}\e{x}\)} est fausse car \(\e{x}\tendqd{x\to\pinf}\pinf\not=0\).
 
 \section{Développements limités}
 
@@ -1178,7 +1178,7 @@ x^2=\o{x}
 
 D'où : \[f\paren{x}\egqd{x\to0}\o{x},\] on a un développement limité à l'ordre 1 en \(0\) donc \(f\) est dérivable en \(0\).
 
-Or, on a : \[\quantifs{\forall x\in\Rs}f\prim\paren{x}=\underbrace{2x\sin\dfrac{1}{x}}_{\xrightarrow[x\to0]{}0}-\underbrace{\cos\dfrac{1}{x}}_{\substack{\text{pas de} \\ \text{limite} \\ \text{en }0}}.\]
+Or, on a : \[\quantifs{\forall x\in\Rs}f\prim\paren{x}=\underbrace{2x\sin\dfrac{1}{x}}_{\tendqd{x\to0}0}-\underbrace{\cos\dfrac{1}{x}}_{\substack{\text{pas de} \\ \text{limite} \\ \text{en }0}}.\]
 
 Donc \(f\prim\) n'a pas de limite en \(0\).
 
@@ -1542,7 +1542,7 @@ Déterminons le développement limité de \(f\) à l'ordre 4 en \(0\).
 
 On a : \[\Arctan h\egqd{h\to0}h-\dfrac{h^3}{3}+\o{h^4}\qquad\text{et}\qquad\sin x\egqd{x\to0}x-\dfrac{x^3}{6}+\o{x^4}.\]
 
-Donc, comme \(\sin x\xrightarrow[x\to0]{}0\), on a, quand \(x\to0\) : \[\begin{aligned}
+Donc, comme \(\sin x\tendqd{x\to0}0\), on a, quand \(x\to0\) : \[\begin{aligned}
 \Arctan\paren{\sin x}&=x-\dfrac{x^3}{6}+\o{x^4}-\dfrac{1}{3}\paren{x-\dfrac{x^3}{6}+\o{x^4}}^3+\underbrace{\o{\paren{\underbrace{x-\dfrac{x^3}{6}+\o{x^4}}_{\sim x}}^4}}_{=\o{x^4}} \\
 &=x-\dfrac{x^3}{6}+\o{x^4}-\dfrac{1}{3}\paren{x^3+\o{x^4}}+\o{x^4} \\
 &=x-\dfrac{x^3}{2}+\o{x^4}.
