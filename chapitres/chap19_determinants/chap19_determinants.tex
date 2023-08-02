@@ -37,3 +37,57 @@ Les applications suivantes sont multilinéaires :
     \item L'application \[\fonctionlambda{\M{n}^3}{\M{n}}{\paren{A,B,C}}{A\times B\times C}\] est \(3\)-linéaire (on dit aussi trilinéaire).
 \end{itemize}
 \end{ex}
+
+\subsection{Formes multilinéaires alternées}
+
+\begin{defi}[Forme multilinéaire alternée]
+Soient \(r\in\Ns\), \(E\) un \(\K\)-espace vectoriel et une forme \(r\)-linéaire \[\fonction{f}{E^r}{\K}{\paren{x_1,\dots,x_r}}{f\paren{x_1,\dots,x_r}}\]
+
+On dit que \(f\) est une forme multilinéaire alternée si l'on a : \[\quantifs{\forall\paren{x_1,\dots,x_r}\in E^r}\paren{\quantifs{\exists i,j\in\interventierii{1}{r}}i\not=j\quad\text{et}\quad x_i=x_j}\imp f\paren{x_1,\dots,x_r}=0.\]
+
+En français : \guillemets{\(f\paren{x_1,\dots,x_r}\) est nul s'il existe (au moins) deux vecteurs égaux parmi \(x_1,\dots,x_r\).}
+\end{defi}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel, \(r\in\interventierie{2}{\pinf}\), \(f:E^r\to\K\) une forme \(r\)-linéaire alternée et \(i,j\in\interventierii{1}{r}\) tels que \(i<j\).
+
+On a : \[\quantifs{\forall\paren{x_1,\dots,x_r}\in E^r}f\paren{x_1,\dots,x_{i-1},x_j,x_{i+1},\dots,x_{j-1},x_i,x_{j+1},\dots,x_r}=-f\paren{x_1,\dots,x_r}.\]
+\end{prop}
+
+\begin{dem}
+Soient \(x_1,\dots,x_r\in E\).
+
+On pose \(\fonction{g}{E^2}{\K}{\paren{x,y}}{f\paren{x_1,\dots,x_{i-1},x,x_{i+1},\dots,x_{j-1},y,x_{j+1},\dots,x_r}}\)
+
+Montrons que \(g\paren{x_j,x_i}=-g\paren{x_i,x_j}\).
+
+Comme \(g\) est une forme bilinéaire alternée, on a : \[\underbrace{g\paren{x_i+x_j,x_i+x_j}}_{=0}=\underbrace{g\paren{x_i,x_i}}_{=0}+g\paren{x_i,x_j}+g\paren{x_j,x_i}+\underbrace{g\paren{x_j,x_j}}_{=0}.\]
+
+D'où le résultat.
+\end{dem}
+
+\begin{cor}
+Soient \(E\) un \(\K\)-espace vectoriel, \(r\in\Ns\) et \(f:E^r\to\K\) une forme \(r\)-linéaire alternée.
+
+On a : \[\quantifs{\forall\sigma\in\S{n};\forall\paren{x_1,\dots,x_r}\in E^r}f\paren{x_{\sigma\paren{1}},\dots,x_{\sigma\paren{x_r}}}=\epsilon\paren{\sigma}f\paren{x_1,\dots,x_r}.\]
+\end{cor}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel, \(r\in\Ns\), \(f:E^r\to\K\) une forme \(r\)-linéaire alternée et \(\paren{x_1,\dots,x_r}\in E^r\) une famille liée.
+
+On a : \[f\paren{x_1,\dots,x_r}=0.\]
+\end{prop}
+
+\begin{dem}
+Comme \(\paren{x_1,\dots,x_r}\) est liée, il existe \(i\in\interventierii{1}{r}\) tel que \(x_i\in\Vect{x_1,\dots,x_{i-1},x_{i+1},\dots,x_r}\).
+
+Quitte à permuter les vecteurs \(x_1,\dots,x_r\), on peut supposer \(i=1\).
+
+Soient \(\lambda_2,\dots,\lambda_r\in\K\) tels que \(x_1=\lambda_2x_2+\dots+\lambda_rx_r\).
+
+On a : \[\begin{WithArrows}
+f\paren{x_1,\dots,x_r}&=f\paren{\lambda_2x_2+\dots+\lambda_rx_r,x_2,\dots,x_r} \Arrow{car \(f\) est \(r\)-linéaire} \\
+&=\sum_{k=2}^r\lambda_kf\paren{x_k,x_2,\dots,x_r} \Arrow{car \(f\) est alternée} \\
+&=0.
+\end{WithArrows}\]
+\end{dem}
