@@ -585,6 +585,14 @@ per-mode=power-positive-first
 \NewDocumentCommand{\orenv}{>{\SplitList{\\}}m}{%
 \begin{orlist}\ProcessList{#1}{\oritem}\end{orlist}}
 
+\newcounter{permuitemcounter}
+
+\newcommand{\permuitem}[1]{%
+\ifthenelse{\thepermuitemcounter<1}{}{&}#1\stepcounter{permuitemcounter}}
+
+\NewDocumentCommand{\permu}{>{\SplitList{;}}m >{\SplitList{;}}m}{%
+\begin{pmatrix}\setcounter{permuitemcounter}{0}\ProcessList{#1}{\permuitem} \\ \setcounter{permuitemcounter}{0}\ProcessList{#2}{\permuitem}\end{pmatrix}}
+
 \usepackage{pgfplots}
 
 \DeclareDocumentCommand{\pgcd}{o o}{

@@ -3,19 +3,7 @@
 \minitoc
 
 \begin{exo}[Exercice 1]
-On pose \[\sigma_1=\begin{pmatrix}
-1 & 2 & 3 & 4 & 5 \\
-3 & 5 & 2 & 4 & 1
-\end{pmatrix}\quad\sigma_2=\begin{pmatrix}
-1 & 2 & 3 & 4 & 5 \\
-2 & 1 & 5 & 4 & 3
-\end{pmatrix}\quad\sigma_3=\begin{pmatrix}
-1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-7 & 6 & 5 & 4 & 3 & 2 & 1
-\end{pmatrix}\quad\sigma_4=\begin{pmatrix}
-1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-5 & 4 & 6 & 3 & 7 & 2 & 1
-\end{pmatrix}\]
+On pose \[\sigma_1=\permu{1;2;3;4;5}{3;5;2;4;1}\quad\sigma_2=\permu{1;2;3;4;5}{2;1;5;4;3}\quad\sigma_3=\permu{1;2;3;4;5;6;7}{7;6;5;4;3;2;1}\quad\sigma_4=\permu{1;2;3;4;5;6;7}{5;4;6;3;7;2;1}\]
 
 Pour tout \(k\in\interventierii{1}{4}\) :
 
@@ -35,7 +23,7 @@ Pour tout \(k\in\interventierii{1}{4}\) :
 \begin{exo}[Exercice 2, bon à retenir]
 Soient \(n,k\in\N\) tels que \(2\leq k\leq n\).
 
-Soient \(\sigma\in\S{n}\) et un \(k\)-cycle \[c=\begin{pmatrix}a_1 & a_2 & a_3 & \dots & a_k\end{pmatrix}\in\S{n}\] (avec \(a_1,\dots,a_k\in\interventierii{1}{n}\) deux à deux distincts).
+Soient \(\sigma\in\S{n}\) et un \(k\)-cycle \[c=\cycle{a_1;a_2;a_3;\dots;a_k}\in\S{n}\] (avec \(a_1,\dots,a_k\in\interventierii{1}{n}\) deux à deux distincts).
 
 Calculer \[\sigma c\sigma\inv.\]
 \end{exo}
@@ -73,7 +61,7 @@ Montrer \[\sigma=\id{}.\]
 \begin{exo}[Exercice 5]
 Soit \(n\in\interventierie{2}{\pinf}\).
 
-On considère le \(n\)-cycle \[c=\begin{pmatrix}1 & 2 & 3 & \dots & n\end{pmatrix}\in\S{n}.\]
+On considère le \(n\)-cycle \[c=\cycle{1;2;3;\dots;n}\in\S{n}.\]
 
 Quelles sont les permutations de \(\S{n}\) qui commutent avec \(c\) ?
 
@@ -87,7 +75,7 @@ On pourra identifier \(\interventierii{1}{n}\) avec \(\Z/n\Z\) de sorte que \[\q
 \begin{exo}[Exercice 6]
 Soit \(n\in\Ns\).
 
-Montrer que toute permutation \(\sigma\in\S{n}\) est produit de transpositions de la forme \(\begin{pmatrix}i & i+1\end{pmatrix}\) où \(i\in\interventierii{1}{n-1}\).
+Montrer que toute permutation \(\sigma\in\S{n}\) est produit de transpositions de la forme \(\cycle{i;i+1}\) où \(i\in\interventierii{1}{n-1}\).
 \end{exo}
 
 \begin{corr}
@@ -130,34 +118,34 @@ On suppose désormais \(n\geq5\).
 
 \begin{corr}[1]
 On a \[\begin{aligned}
-\frakA{4}&=\left\lbrace\id{};\begin{pmatrix}1 & 2 & 3\end{pmatrix};\begin{pmatrix}3 & 2 & 1\end{pmatrix};\begin{pmatrix}1 & 2 & 4\end{pmatrix};\begin{pmatrix}4 & 2 & 1\end{pmatrix};\begin{pmatrix}1 & 3 & 4\end{pmatrix};\begin{pmatrix}4 & 3 & 1\end{pmatrix};\begin{pmatrix}2 & 3 & 4\end{pmatrix};\right. \\
-&\color{white}=\lbrace\color{black}\left.\begin{pmatrix}4 & 3 & 2\end{pmatrix};\begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix};\begin{pmatrix}1 & 3\end{pmatrix}\begin{pmatrix}2 & 4\end{pmatrix};\begin{pmatrix}1 & 4\end{pmatrix}\begin{pmatrix}2 & 3\end{pmatrix}\right\rbrace
+\frakA{4}&=\left\lbrace\id{};\cycle{1;2;3};\cycle{3;2;1};\cycle{1;2;4};\cycle{4;2;1};\cycle{1;3;4};\cycle{4;3;1};\cycle{2;3;4};\right. \\
+&\color{white}=\lbrace\color{black}\left.\cycle{4;3;2};\cycle{1;2}\cycle{3;4};\cycle{1;3}\cycle{2;4};\cycle{1;4}\cycle{2;3}\right\rbrace
 \end{aligned}\]
 
 On remarque \(\Card\frakA{4}=12\).
 \end{corr}
 
 \begin{corr}[2]
-Montrons que \(\fonction{f}{\frakA{n}}{\S{n}\excluant\frakA{n}}{\sigma}{\begin{pmatrix}1 & 2\end{pmatrix}\sigma}\) est une bijection.
+Montrons que \(\fonction{f}{\frakA{n}}{\S{n}\excluant\frakA{n}}{\sigma}{\cycle{1;2}\sigma}\) est une bijection.
 
 \(f\) est bien définie car \(\quantifs{\forall\sigma\in\frakA{n}}f\paren{\sigma}\in\S{n}\excluant\frakA{n}\).
 
 Soit \(\sigma\prim\in\S{n}\excluant\frakA{n}\).
 
 On a \[\begin{aligned}
-\quantifs{\forall\sigma\in\frakA{n}}f\paren{\sigma}=\sigma\prim&\ssi\begin{pmatrix}1 & 2\end{pmatrix}\sigma=\sigma\prim \\
-&\ssi\sigma=\begin{pmatrix}1 & 2\end{pmatrix}\sigma\prim.
+\quantifs{\forall\sigma\in\frakA{n}}f\paren{\sigma}=\sigma\prim&\ssi\cycle{1;2}\sigma=\sigma\prim \\
+&\ssi\sigma=\cycle{1;2}\sigma\prim.
 \end{aligned}\]
 
 De plus : \[\begin{aligned}
-\epsilon\paren{\begin{pmatrix}1 & 2\end{pmatrix}\sigma\prim}&=\epsilon\paren{\begin{pmatrix}1 & 2\end{pmatrix}}\epsilon\paren{\sigma\prim} \\
+\epsilon\paren{\cycle{1;2}\sigma\prim}&=\epsilon\paren{\cycle{1;2}}\epsilon\paren{\sigma\prim} \\
 &=\paren{-1}\paren{-1} \\
 &=1.
 \end{aligned}\]
 
-Donc \(\begin{pmatrix}1 & 2\end{pmatrix}\sigma\prim\in\frakA{n}\).
+Donc \(\cycle{1;2}\sigma\prim\in\frakA{n}\).
 
-Donc \(\begin{pmatrix}1 & 2\end{pmatrix}\sigma\prim\) est l'unique antécédent de \(\sigma\) par \(f\).
+Donc \(\cycle{1;2}\sigma\prim\) est l'unique antécédent de \(\sigma\) par \(f\).
 
 Donc \(f\) est une bijection.
 
@@ -175,12 +163,12 @@ n!&=2\Card\frakA{n} \\
 \begin{corr}[3]
 \(\frakA{1}\) et \(\frakA{2}\) sont clairement commutatifs.
 
-De plus, \(\frakA{3}=\accol{\id{};\begin{pmatrix}1 & 2 & 3\end{pmatrix};\begin{pmatrix}3 & 2 & 1\end{pmatrix}}\) est commutatif car \(\begin{pmatrix}3 & 2 & 1\end{pmatrix}^2=\begin{pmatrix}1 & 2 & 3\end{pmatrix}\).
+De plus, \(\frakA{3}=\accol{\id{};\cycle{1;2;3};\cycle{3;2;1}}\) est commutatif car \(\cycle{3;2;1}^2=\cycle{1;2;3}\).
 
 Enfin, dans \(\frakA{n}\) avec \(n\geq4\), on a \[\begin{dcases}
-\begin{pmatrix}1 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 2 & 4\end{pmatrix}\paren{3}=1 \\
-\begin{pmatrix}1 & 2 & 4\end{pmatrix}\begin{pmatrix}1 & 2 & 3\end{pmatrix}\paren{3}=2
-\end{dcases}\] donc \(\begin{pmatrix}1 & 2 & 3\end{pmatrix}\) et \(\begin{pmatrix}1 & 2 & 4\end{pmatrix}\) ne commutent pas donc \(\frakA{n}\) n'est pas commutatif.
+\cycle{1;2;3}\cycle{1;2;4}\paren{3}=1 \\
+\cycle{1;2;4}\cycle{1;2;3}\paren{3}=2
+\end{dcases}\] donc \(\cycle{1;2;3}\) et \(\cycle{1;2;4}\) ne commutent pas donc \(\frakA{n}\) n'est pas commutatif.
 
 D'où la CNS : \[\frakA{n}\text{ est commutatif}\ssi n\leq3.\]
 \end{corr}
@@ -188,23 +176,23 @@ D'où la CNS : \[\frakA{n}\text{ est commutatif}\ssi n\leq3.\]
 \begin{corr}[4]
 Soit \(\sigma\in\frakA{n}\).
 
-Soient \(N\in\N\) et \(a_1,b_1,\dots,a_N,b_N\in\interventierii{1}{N}\) tels que \[\begin{dcases}\sigma=\begin{pmatrix}a_1 & b_1\end{pmatrix}\dots\begin{pmatrix}a_N & b_N\end{pmatrix} \\ \quantifs{\forall j\in\interventierii{1}{n}}a_j\not=b_j\end{dcases}\]
+Soient \(N\in\N\) et \(a_1,b_1,\dots,a_N,b_N\in\interventierii{1}{N}\) tels que \[\begin{dcases}\sigma=\cycle{a_1;b_1}\dots\cycle{a_N;b_N} \\ \quantifs{\forall j\in\interventierii{1}{n}}a_j\not=b_j\end{dcases}\]
 
 Comme \(\sigma\in\frakA{n}\), \(N\) est pair donc il existe \(k\in\N\) tel que \(N=2k\).
 
-Donc \[\sigma=\underbrace{\begin{pmatrix}a_1 & b_1\end{pmatrix}\begin{pmatrix}a_2 & b_2\end{pmatrix}}_{\sigma_1}\dots\underbrace{\begin{pmatrix}a_{N-1} & b_{N-1}\end{pmatrix}\begin{pmatrix}a_N & b_N\end{pmatrix}}_{\sigma_k}.\]
+Donc \[\sigma=\underbrace{\cycle{a_1;b_1}\cycle{a_2;b_2}}_{\sigma_1}\dots\underbrace{\cycle{a_{N-1};b_{N-1}}\cycle{a_N;b_N}}_{\sigma_k}.\]
 
 Il suffit de montrer que \(\sigma_1,\dots,\sigma_k\) sont produits de \(3\)-cycles.
 
 Montrons que \(\sigma_1\) est produit de \(3\)-cycles.
 
-Si \(\Card\paren{\accol{a_1;b_1}\inter\accol{a_2;b_2}}=2\) alors \[\begin{pmatrix}a_1 & b_1\end{pmatrix}\begin{pmatrix}a_2 & b_2\end{pmatrix}=\id{}.\]
+Si \(\Card\paren{\accol{a_1;b_1}\inter\accol{a_2;b_2}}=2\) alors \[\cycle{a_1;b_1}\cycle{a_2;b_2}=\id{}.\]
 
-Si \(\Card\paren{\accol{a_1;b_1}\inter\accol{a_2;b_2}}=1\) : supposons par exemple \(b_1=a_2\). Alors \[\begin{pmatrix}a_1 & b_1\end{pmatrix}\begin{pmatrix}a_2 & b_2\end{pmatrix}=\begin{pmatrix}a_1 & b_1 & b_2\end{pmatrix}.\]
+Si \(\Card\paren{\accol{a_1;b_1}\inter\accol{a_2;b_2}}=1\) : supposons par exemple \(b_1=a_2\). Alors \[\cycle{a_1;b_1}\cycle{a_2;b_2}=\cycle{a_1;b_1;b_2}.\]
 
 Si \(\Card\paren{\accol{a_1;b_1}\inter\accol{a_2;b_2}}=0\) alors \[\begin{aligned}
-\begin{pmatrix}a_1 & b_1\end{pmatrix}\begin{pmatrix}a_2 & b_2\end{pmatrix}&=\begin{pmatrix}a_1 & b_1\end{pmatrix}\begin{pmatrix}b_1 & a_2\end{pmatrix}\begin{pmatrix}b_1 & a_2\end{pmatrix}\begin{pmatrix}a_2 & b_2\end{pmatrix} \\
-&=\begin{pmatrix}a_1 & b_1 & a_2\end{pmatrix}\begin{pmatrix}b_1 & a_2 & b_2\end{pmatrix}.
+\cycle{a_1;b_1}\cycle{a_2;b_2}&=\cycle{a_1;b_1}\cycle{b_1;a_2}\cycle{b_1;a_2}\cycle{a_2;b_2} \\
+&=\cycle{a_1;b_1;a_2}\cycle{b_1;a_2;b_2}.
 \end{aligned}\]
 
 Donc \(\sigma_1\) est produit de \(3\)-cycles.
@@ -215,21 +203,21 @@ Donc \(\sigma\) est produit de \(3\)-cycles.
 \end{corr}
 
 \begin{corr}[5]
-Soient \(x_1,y_1,z_1,x_2,y_2,z_2\in\interventierii{1}{n}\) tels que \[\begin{dcases}c_1=\begin{pmatrix}x_1 & y_1 & z_1\end{pmatrix} \\ c_2=\begin{pmatrix}x_2 & y_2 & z_2\end{pmatrix}\end{dcases}\]
+Soient \(x_1,y_1,z_1,x_2,y_2,z_2\in\interventierii{1}{n}\) tels que \[\begin{dcases}c_1=\cycle{x_1;y_1;z_1} \\ c_2=\cycle{x_2;y_2;z_2}\end{dcases}\]
 
 \(x_1,y_1,z_1\) sont deux à deux distincts et \(x_2,y_2,z_2\) aussi.
 
 Soit \(\sigma\in\S{n}\) telle que \[\begin{dcases}\sigma\paren{x_1}=x_2 \\ \sigma\paren{y_1}=y_2 \\ \sigma\paren{z_1}=z_2\end{dcases}\]
 
 On a \[\begin{aligned}
-\sigma c_1\sigma\inv&=\begin{pmatrix}\sigma\paren{x_1} & \sigma\paren{y_1} & \sigma\paren{z_1}\end{pmatrix} \\
-&=\begin{pmatrix}x_2 & y_2 & z_2\end{pmatrix} \\
+\sigma c_1\sigma\inv&=\cycle{\sigma\paren{x_1};\sigma\paren{y_1};\sigma\paren{z_1}} \\
+&=\cycle{x_2;y_2;z_2} \\
 &=c_2.
 \end{aligned}\]
 
 Soient \(a,b\in\interventierii{1}{n}\excluant\accol{x_1;y_1;z_1}\) tels que \(a\not=b\).
 
-Posons \(\sigma\prim=\sigma\begin{pmatrix}a & b\end{pmatrix}\).
+Posons \(\sigma\prim=\sigma\cycle{a;b}\).
 
 On a \[\begin{dcases}
 \sigma\prim\paren{x_1}=x_2 \\
@@ -269,8 +257,8 @@ On schématise la situation comme suit :
 \end{center}
 
 Prenons donc \(\begin{dcases}
-a=\begin{pmatrix}2 & 3 & 4\end{pmatrix} \\
-b=\begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}4 & 5\end{pmatrix}
+a=\cycle{2;3;4} \\
+b=\cycle{1;2}\cycle{4;5}
 \end{dcases}\)
 
 On a bien \[\begin{dcases}
@@ -279,8 +267,8 @@ b^2=\id{}
 \end{dcases}\]
 
 De plus, on a aussi \[\begin{aligned}
-\paren{ab}^5&=\paren{\begin{pmatrix}2 & 3 & 4\end{pmatrix}\begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}4 & 5\end{pmatrix}}^5 \\
-&=\begin{pmatrix}1 & 3 & 4 & 5 & 2\end{pmatrix}^5 \\
+\paren{ab}^5&=\paren{\cycle{2;3;4}\cycle{1;2}\cycle{4;5}}^5 \\
+&=\cycle{1;3;4;5;2}^5 \\
 &=\id{}.
 \end{aligned}\]
 \end{corr}
@@ -315,7 +303,7 @@ Donc \(a,b\in\ker\phi\).
 \begin{corr}[6c]
 Soit \(c\) un \(3\)-cycle.
 
-Selon (5), il existe \(\sigma\in\frakA{n}\) telle que \(c=\sigma a\sigma\inv\) car \(a=\begin{pmatrix}2 & 3 & 4\end{pmatrix}\).
+Selon (5), il existe \(\sigma\in\frakA{n}\) telle que \(c=\sigma a\sigma\inv\) car \(a=\cycle{2;3;4}\).
 
 Donc \[\begin{WithArrows}
 \phi\paren{c}&=\phi\paren{\sigma a\sigma\inv} \\
@@ -339,7 +327,7 @@ Posons \(\phi=\restr{\psi}{\frakA{5}}\).
 
 Selon (6), \(\phi\) est constant.
 
-Donc \[\psi\paren{\begin{pmatrix}1 & 2 & 3\end{pmatrix}}=\phi\paren{\begin{pmatrix}1 & 2 & 3\end{pmatrix}}=1.\]
+Donc \[\psi\paren{\cycle{1;2;3}}=\phi\paren{\cycle{1;2;3}}=1.\]
 
 Comme précédemment, on en déduit que tout \(3\)-cycle de \(\frakA{n}\) appartient à \(\ker\psi\) puis que \(\psi\) est constant.
 \end{corr}
