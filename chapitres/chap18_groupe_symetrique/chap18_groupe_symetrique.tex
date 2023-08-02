@@ -2,4 +2,329 @@
 
 \minitoc
 
-\note{À VENIR}
+\section{Permutations}
+
+\begin{rappel}[Groupe des permutations d'un ensemble]
+Soit \(E\) un ensemble.
+
+On appelle permutation de \(E\) toute bijection\footnote{On rappelle aussi que, si l'ensemble \(E\) est fini, alors pour qu'une fonction \(\sigma:E\to E\) soit une bijection, il suffit qu'elle soit injective ou surjective.} \(\sigma:E\to E\).
+
+On note \(S_E\) ou \(\S{E}\) l'ensemble des permutations de \(E\).
+
+Alors \(\groupe{\S{E}}[\rond]\) est un groupe, appelé groupe des permutations de \(E\).
+
+Son élément neutre est \(\id{E}\).
+
+L'inverse d'une permutation \(\sigma\in\S{E}\) est sa bijection réciproque \(\sigma\inv\).
+
+Il est commutatif si, et seulement si, \(\Card E\leq2\).
+\end{rappel}
+
+\begin{defi}
+Soit \(n\in\Ns\).
+
+On appelle groupe symétrique d'ordre \(n\) et on note \(S_n\) ou \(\S{n}\) le groupe des permutations de l'ensemble \(\interventierii{1}{n}\) : \[S_n=\S{n}=\S{\interventierii{1}{n}}.\]
+
+Ce groupe est commutatif si, et seulement si, \(n\leq2\).
+\end{defi}
+
+\begin{rem}
+Dans ce chapitre, on étudie le groupe symétrique, \cad le groupe des permutations de \(\interventierii{1}{n}\) où \(n\in\Ns\).
+
+Ce qu'on fait s'applique en fait au groupe des permutations de n'importe quel ensemble fini non-vide \(E\), puisque si \(n\) est son cardinal, alors il existe une bijection \(f:\interventierii{1}{n}\to E\) et l'application \[\fonctionlambda{\S{n}}{\S{E}}{\sigma}{f\rond\sigma\rond f\inv}\] est alors un isomorphisme de groupes.
+\end{rem}
+
+\begin{nota}\thlabel{nota:permutations}
+Soient \(n\in\Ns\) et \(a_1,\dots,a_n\in\interventierii{1}{n}\) deux à deux distincts.
+
+La permutation \(\sigma\) telle que \[\quantifs{\forall k\in\interventierii{1}{n}}\sigma\paren{k}=a_k\] est notée : \[\sigma=\permu{1;2;3;\dots;n}{a_1;a_2;a_3;\dots;a_n}.\]
+\end{nota}
+
+\begin{exoex}
+Énumérer tous les éléments de \(\S{2}\) et \(\S{3}\) à l'aide de la notation précédente.
+\end{exoex}
+
+\begin{corr}
+On a : \[\S{2}=\accol{\permu{1;2}{1;2};\permu{1;2}{2;1}}\] et : \[\S{3}=\accol{\permu{1;2;3}{1;2;3};\permu{1;2;3}{2;1;3};\permu{1;2;3}{2;3;1};\permu{1;2;3}{3;1;2};\permu{1;2;3}{3;2;1};\permu{1;2;3}{1;3;2}}.\]
+\end{corr}
+
+\begin{exoex}
+On pose : \[\sigma_1=\permu{1;2;3;4}{3;1;4;2}\qquad\sigma_2=\permu{1;2;3;4}{4;3;2;1}\qquad\sigma_3=\permu{1;2;3;4;5;6}{3;6;5;4;1;2}.\]
+
+\begin{enumerate}
+    \item Calculer les inverses de ces trois permutations. \\
+    \item \(\sigma_1\) et \(\sigma_2\) commutent-elles ? \\
+    \item Calculer \(\sigma_1^2\) et \(\sigma_1^{2023}\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a : \[\sigma_1\inv=\permu{1;2;3;4}{2;4;1;3}\qquad\sigma_2\inv=\permu{1;2;3;4}{4;3;2;1}\qquad\sigma_3\inv=\permu{1;2;3;4;5;6}{5;6;1;4;3;2}.\]
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\sigma_1\rond\sigma_2=\permu{1;2;3;4}{2;4;1;3}\qquad\text{et}\qquad\sigma_2\rond\sigma_1=\permu{1;2;3;4}{2;4;1;3}\] donc \(\sigma_1\) et \(\sigma_2\) commutent.
+\end{corr}
+
+\begin{corr}[3]
+On remarque : \[\sigma_1^2=\permu{1;2;3;4}{4;3;2;1}\qquad\sigma_1^3=\permu{1;2;3;4}{2;4;1;3}\qquad\sigma_1^4=\permu{1;2;3;4}{1;2;3;4}=\id{}.\]
+
+Donc, comme \(2023\equiv3\croch{4}\), on a : \[\sigma_1^{2023}=\sigma_1^3=\permu{1;2;3;4}{2;4;1;3}.\]
+\end{corr}
+
+\section{Cycles}
+
+\begin{defi}[Cycle]\thlabel{defi:cycle}
+Soient \(n,l\in\N\) tels que \(2\leq l\leq n\) et \(a_1,\dots,a_l\in\interventierii{1}{n}\) deux à deux distincts.
+
+La permutation \(c\in\S{n}\) définie par : \[\begin{dcases}
+\quantifs{\forall i\in\interventierii{1}{l-1}}c\paren{a_i}=a_{i+1} \\
+c\paren{a_l}=a_1 \\
+\quantifs{\forall x\in\interventierii{1}{n}\excluant\accol{a_1;\dots;a_l}}c\paren{x}=x
+\end{dcases}\] est notée : \[c=\cycle{a_1;a_2;a_3;\dots;a_l}.\]
+
+On l'appelle \(l\)-cycle ou cycle de longueur \(l\).
+
+Enfin, l'ensemble \(\accol{a_1;\dots;a_l}\) est appelé le support du cycle \(c\). C'est l'ensemble des points de \(\interventierii{1}{n}\) qui ne sont pas des points fixes de \(c\). On le note parfois : \[\supp c=\accol{a_1;\dots;a_l}.\]
+\end{defi}
+
+\begin{rem}
+Lorsqu'une permutation est un cycle, on peut l'écrire avec deux notations distinctes : la \thref{nota:permutations} et la notation propre aux cycles.
+
+Dans la seconde notation, l'entier \(n\) n'est pas précisé.
+\end{rem}
+
+\begin{rem}
+La longueur d'un cycle est le cardinal de son support.
+\end{rem}
+
+\begin{exoex}
+\[\sigma_1=\permu{1;2;3;4}{3;1;4;2}\qquad\sigma_2=\permu{1;2;3;4}{4;3;2;1}\qquad\sigma_3=\permu{1;2;3;4;5;6}{3;1;5;4;2;6}\]
+
+Parmi les permutations ci-dessus, lesquelles sont des cycles ? Écrire ces cycles avec la notation de la \thref{defi:cycle}.
+\end{exoex}
+
+\begin{corr}
+\(\sigma_1\) et \(\sigma_3\) sont des cycles. On a : \[\sigma_1=\cycle{3;4;2;1}\in\S{4}\qquad\sigma_3=\cycle{3;5;2;1}\in\S{6}.\]
+\end{corr}
+
+\begin{defi}[Transposition]
+Une transposition est un cycle de longueur \(2\), \cad une permutation qui échange deux éléments et laisse fixes tous les autres.
+\end{defi}
+
+\begin{exoex}[Transpositions]
+\begin{enumerate}
+    \item Énumérer les transpositions de \(\S{1}\). \\
+    \item Énumérer les transpositions de \(\S{2}\). \\
+    \item Énumérer les transpositions de \(\S{3}\). \\
+    \item Énumérer les transpositions de \(\S{4}\). \\
+    \item Soit \(n\in\Ns\). Donner le nombre de transpositions de \(\S{n}\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}
+Ensemble des transpositions de \(\S{1}\) : \(\ensvide\).
+
+Ensemble des transpositions de \(\S{2}\) : \(\accol{\cycle{1;2}}\).
+
+Ensemble des transpositions de \(\S{3}\) : \(\accol{\cycle{1;2};\cycle{1;3};\cycle{2;3}}\).
+
+Ensemble des transpositions de \(\S{4}\) : \(\accol{\cycle{1;2};\cycle{1;3};\cycle{1;4};\cycle{2;3};\cycle{2;4};\cycle{3;4}}\).
+
+Le nombre de transpositions de \(\S{n}\) est : \(\binom{2}{n}=\dfrac{n\paren{n-1}}{2}\).
+\end{corr}
+
+\begin{rem}
+Soit \(n\in\Ns\).
+
+Si \(c\in\S{n}\) est un cycle de longueur \(l\), alors \(c^l=\id{\interventierii{1}{n}}\).
+
+En particulier, toute transposition est son propre inverse.
+\end{rem}
+
+\section{Décomposition en produit de cycles à supports disjoints}
+
+\begin{rem}\thlabel{rem:cyclesASupportsDisjointsCommutent}
+Si \(c\) et \(c\prim\) sont deux cycles à supports disjoints, alors ils commutent.
+\end{rem}
+
+\begin{prop}
+Soient \(n\in\Ns\) et \(r\in\N\).
+
+Toute permutation \(\sigma\in\S{n}\) s'écrit comme le produit de cycles \(c_1,\dots,c_r\) à supports deux à deux disjoints : \[\sigma=c_1\dots c_r\qquad\text{et}\qquad\quantifs{\forall i,j\in\interventierii{1}{r}}i\not=j\imp\supp c_i\inter\supp c_j=\ensvide.\]
+
+De plus, cette écriture est unique, à l'ordre des facteurs près.
+\end{prop}
+
+\begin{dem}
+\note{Admis (non-exigible)}
+
+Il suffit d'être capable de décomposer une permutation donnée en produit de cycles à supports disjoints, comme dans l'\thref{exoex:décompositionEnProduitDeCyclesASupportsDisjoints}.
+\end{dem}
+
+\begin{rem}
+Quand on écrit une permutation comme produit de cycles à supports disjoints : \[\sigma=c_1\dots c_r,\] selon la \thref{rem:cyclesASupportsDisjointsCommutent} :
+
+\begin{itemize}
+    \item la même égalité est vraie pour toute permutation des facteurs : \[\quantifs{\forall\gamma\in\S{r}}\sigma=c_{\gamma\paren{1}}\dots c_{\gamma\paren{r}}\text{ ;}\]
+    \item les puissances de \(\sigma\) sont faciles à calculer : \[\quantifs{\forall k\in\Z}\sigma^k=c_1^k\dots c_r^k.\]
+\end{itemize}
+\end{rem}
+
+\begin{exoex}\thlabel{exoex:décompositionEnProduitDeCyclesASupportsDisjoints}
+Écrire chacune des permutations suivantes comme un produit de cycles à supports disjoints : \[\sigma_1=\permu{1;2;3;4}{3;1;4;2}\qquad\sigma_2=\permu{1;2;3;4}{4;3;2;1}\qquad\sigma_3=\permu{1;2;3;4;5;6}{3;1;5;4;2;6}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\sigma_1=\cycle{3;4;2;1}\qquad\sigma_2=\cycle{4;1}\rond\cycle{3;2}\qquad\sigma_3=\cycle{3;5;2;1}.\]
+\end{corr}
+
+\section{Décomposition en produit de transpositions}
+
+\begin{prop}\thlabel{prop:décompositionEnProduitDeTranspositions}
+Soient \(n\in\Ns\) et \(r\in\N\).
+
+Toute permutation \(\sigma\in\S{n}\) s'écrit comme le produit de transpositions \(\tau_1,\dots,\tau_r\in\S{n}\) : \[\sigma=\tau_1\dots\tau_r\]
+\end{prop}
+
+\begin{dem}
+Soit \(\sigma\in\S{n}\).
+
+Comme \(\sigma\) est produit de cycles, il suffit de traiter le cas où \(\sigma\) est un cycle.
+
+Supposons \(\sigma=\cycle{a_1;\dots;a_l}\) où \(\begin{dcases}
+l\in\interventierii{2}{n} \\
+a_1,\dots,a_n\in\interventierii{1}{n}\text{ deux à deux distincts}
+\end{dcases}\)
+
+On remarque : \[\cycle{a_1;a_2;a_3;\dots;a_l}=\cycle{a_1;a_2}\cycle{a_2;a_3}\dots\cycle{a_{l-1};a_l}.\]
+
+D'où la proposition.
+\end{dem}
+
+\begin{ex}~\\
+Posons \(\sigma=\permu{1;2;3;4;5;6;7;8;9}{2;5;6;1;4;9;8;7;3}\).
+
+Alors on a : \[\begin{aligned}
+\sigma&=\cycle{1;2;5;4}\cycle{3;6;9}\cycle{7;8} \\
+&=\cycle{1;2}\cycle{2;5}\cycle{5;4}\cycle{3;6}\cycle{6;9}\cycle{7;8}.
+\end{aligned}\]
+\end{ex}
+
+\begin{rem}
+Attention, dans la proposition précédente, les transpositions ne sont pas nécessairement à supports disjoints et elles ne commutent pas nécessairement.
+\end{rem}
+
+\section{Signature}
+
+\begin{deftheo}[Signature]
+Soit \(n\in\Ns\).
+
+Il existe un unique morphisme de groupes \[\epsilon:\S{n}\to\accol{-1;1}\] tel qu'on ait : \[\epsilon\paren{\tau}=-1\] pour toute transposition \(\tau\in\S{n}\).
+
+Ce morphisme est appelé la signature.
+
+Si \(\sigma\in\S{n}\) est une permutation alors on dit que \(\epsilon\paren{\sigma}\) est la signature de \(\sigma\).
+\end{deftheo}
+
+\begin{dem}\thlabel{dem:existenceEtUnicitéDeLaSignature}
+\note{Non-exigible}
+
+\unicite
+
+Soient un morphisme de groupes \[\epsilon:\S{n}\to\accol{-1;1}\] envoyant toute transposition de \(\S{n}\) sur \(-1\) et \(\sigma\in\S{n}\).
+
+Selon la \thref{prop:décompositionEnProduitDeTranspositions}, il existe \(r\in\N\) et  des transpositions \(\tau_1,\dots,\tau_r\in\S{n}\) telles que : \[\sigma=\tau_1\dots\tau_r.\]
+
+On a nécessairement : \[\epsilon\paren{\sigma}=\epsilon\paren{\tau_1}\dots\epsilon\paren{\tau_r}=\paren{-1}^r.\]
+
+Donc le morphisme \(\epsilon\) est unique.
+
+\existence\newcommand{\polys}{\poly[\R][X_1,\dots,X_n]}\newcommand{\Pdeux}{\mathscr{P}_2\paren{\interventierii{1}{n}}}
+
+On considère l'ensemble \(\polys\) des polynômes à \(n\) indéterminées et ses lois naturelles \(+\), \(\cdot\) et \(\times\) qui en font un \(\R\)-espace vectoriel et un anneau commutatif. Disons pour les décrire complètement que \(\polys\) : \begin{itemize}
+    \item est un espace vectoriel de base la famille \(\paren{X_1^{\alpha_1},\dots,X_n^{\alpha_n}}_{\paren{\alpha_1,\dots,\alpha_n}\in\N^n}\).
+    \item est un anneau commutatif de produit \(\times\) bilinéaire tel que : \[\quantifs{\forall\alpha_1,\dots,\alpha_n,\beta_1,\dots,\beta_n\in\N}\paren{X_1^{\alpha_1}\dots X_n^{\alpha_n}}\times\paren{X_1^{\beta_1}\dots X_n^{\beta_n}}=X_1^{\alpha_1+\beta_1}\dots X_n^{\alpha_n+\beta_n}.\]~
+\end{itemize}
+
+Pour toute permutation \(\sigma\in\S{n}\), il existe un unique automorphisme d'anneau et d'espace vectoriel \[\phi_\sigma:\polys\to\polys\] tel que : \[\quantifs{\forall k\in\interventierii{1}{n}}\phi_\sigma\paren{X_k}=X_{\sigma\paren{k}}.\]
+
+On définit ainsi un morphisme de groupes : \[\fonctionlambda{\S{n}}{\Aut{\polys}}{\sigma}{\phi_\sigma}\] où \(\Aut{\polys}\) est le groupe des automorphismes d'anneau et d'espace vectoriel de \(\polys\).
+
+On dit que le groupe \(\S{n}\) agit sur \(\polys\) et on pose : \[\quantifs{\forall\sigma\in\S{n};\forall P\in\polys}\sigma\cdot P=\phi_\sigma\paren{P}.\]
+
+Par exemple : \[\cycle{1;2}\cdot\paren{X_1^3+X_2+X_1X_2^2X_3}=X_2^3+X_1+X_2X_1^2X_3.\]
+
+On pose : \[P=\prod_{1\leq i<j\leq n}\paren{X_j-X_i}.\]
+
+Autrement dit, on a, en notant \(\Pdeux\) l'ensemble des parties à deux éléments de \(\interventierii{1}{n}\) : \[P=\prod_{A\in\Pdeux}\paren{X_{\max A}-X_{\min A}}.\]
+
+On remarque : \[\quantifs{\forall\sigma\in\S{n}}\sigma\cdot P=\pm P.\]
+
+En effet : \[\begin{aligned}
+\sigma\cdot P&=\sigma\cdot\prod_{1\leq i<j\leq n}\paren{X_j-X_i} \\
+&=\prod_{1\leq i<j\leq n}\paren{X_{\sigma\paren{j}}-X_{\sigma\paren{i}}} \\
+&=\pm\prod_{1\leq k<l\leq n}\paren{X_l-X_k}
+\end{aligned}\] car \(\fonctionlambda{\Pdeux}{\Pdeux}{\accol{i;j}}{\accol{\sigma\paren{i};\sigma\paren{j}}}\) est une bijection.
+
+Ainsi, on a montré : \[\quantifs{\forall\sigma\in\S{n};\exists!\epsilon\paren{\sigma}\in\accol{-1;1}}\sigma\cdot P=\epsilon\paren{\sigma}P.\]
+
+Enfin, on remarque que l'application \(\epsilon:\S{n}\to\accol{-1;1}\) est un morphisme de groupes car : \[\quantifs{\forall\sigma_1,\sigma_2\in\S{n}}\epsilon\paren{\sigma_1\sigma_2}P=\paren{\sigma_1\sigma_2}\cdot P=\sigma_1\cdot\paren{\sigma_2\cdot P}=\epsilon\paren{\sigma_1}\epsilon\paren{\sigma_2}P\] donc : \[\quantifs{\forall\sigma_1,\sigma_2\in\S{n}}\epsilon\paren{\sigma_1\sigma_2}=\epsilon\paren{\sigma_1}\epsilon\paren{\sigma_2}.\]
+
+D'où l'existence du morphisme.
+\end{dem}
+
+\begin{rem}
+La décomposition d'une permutation \(\sigma\in\S{n}\) avec \(n\in\Ns\) en produit de transpositions n'est pas unique, mais si l'on a deux écritures : \[\sigma=\tau_1\dots\tau_r=\tau_1\prim\dots\tau_s\prim\] avec \(r,s\in\N\) et \(\tau_1,\dots,\tau_r,\tau_1\prim,\dots,\tau_s\prim\in\S{n}\) des transpositions, alors \[r\equiv s\croch{2}\] car \[\epsilon\paren{\sigma}=\paren{-1}^r=\paren{-1}^s.\]
+\end{rem}
+
+\begin{rem}[Nombre d'inversions]
+Soient \(n\in\Ns\) et \(\sigma\in\S{n}\).
+
+On appelle nombre d'inversions de \(\sigma\) l'entier : \[N=\Card\accol{\paren{i,j}\in\interventierii{1}{n}^2\tq i<j\quad\text{et}\quad\sigma\paren{i}>\sigma\paren{j}}.\]
+
+D'après la partie existence de la \thref{dem:existenceEtUnicitéDeLaSignature}, on a : \[\epsilon\paren{\sigma}=\paren{-1}^N.\]
+\end{rem}
+
+\begin{rem}
+En pratique, le plus simple pour calculer la signature d'une permutation est de la décomposer en produit de cycles à supports disjoints et d'utiliser la proposition suivante.
+\end{rem}
+
+\begin{prop}[Signature d'un cycle]
+Soient \(n,l\in\N\) tels que \(2\leq l\leq n\) et \(c\in\S{n}\) un cycle de longueur \(l\) : \[c=\cycle{a_1;a_2;a_3;\dots;a_l}\] où \(a_1,\dots,a_l\in\interventierii{1}{n}\) sont deux à deux distincts.
+
+Alors on a : \[\epsilon\paren{c}=\paren{-1}^{l-1}.\]
+\end{prop}
+
+\begin{dem}
+On a \(c=\cycle{a_1;a_2}\cycle{a_2;a_3}\dots\cycle{a_{l-1};a_l}\) donc : \[\begin{aligned}
+\epsilon\paren{c}&=\epsilon\paren{\cycle{a_1;a_2}}\times\dots\times\epsilon\paren{\cycle{a_{l-1};a_l}} \\
+&=\paren{-1}^{l-1}.
+\end{aligned}\]
+\end{dem}
+
+\begin{exoex}
+Calculer la signature de \[\sigma=\permu{1;2;3;4;5;6;7;8;9;10;11;12;13;14}{10;9;3;1;6;8;2;7;11;4;5;14;12;13}.\]
+\end{exoex}
+
+\begin{corr}
+On a \(\sigma=\cycle{10;4;1}\cycle{9;11;5;6;8;7;2}\cycle{14;13;12}\) donc : \[\epsilon\paren{\sigma}=\paren{-1}^2\times\paren{-1}^6\times\paren{-1}^2=1.\]
+\end{corr}
+
+\begin{defi}[Permutations paires/impaires]
+Une permutation est dite paire si elle est de signature \(1\) ; impaire si elle est de signature \(-1\).
+\end{defi}
+
+\begin{ex}[Piège]
+Soit \(c\) un cycle.
+
+Alors \(c\) est une permutation paire si, et seulement si, sa longueur est impaire.
+\end{ex}
+
+\begin{defi}[Groupe alterné]
+Soit \(n\in\Ns\).
+
+On appelle groupe alterné d'ordre \(n\) et on note \(A_n\) ou \(\frakA{n}\) le noyau de la signature \(\epsilon:\S{n}\to\accol{-1;1}\) : \[\frakA{n}=\ker\epsilon=\accol{\sigma\in\S{n}\tq\epsilon\paren{\sigma}=1}.\]
+
+Ainsi, \(\frakA{n}\) est le groupe des permutations paires.
+\end{defi}
