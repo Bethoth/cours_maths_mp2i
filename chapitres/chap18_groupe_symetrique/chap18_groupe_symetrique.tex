@@ -2,4 +2,72 @@
 
 \minitoc
 
-\note{À VENIR}
+\section{Permutations}
+
+\begin{rappel}[Groupe des permutations d'un ensemble]
+Soit \(E\) un ensemble.
+
+On appelle permutation de \(E\) toute bijection\footnote{On rappelle aussi que, si l'ensemble \(E\) est fini, alors pour qu'une fonction \(\sigma:E\to E\) soit une bijection, il suffit qu'elle soit injective ou surjective.} \(\sigma:E\to E\).
+
+On note \(S_E\) ou \(\S{E}\) l'ensemble des permutations de \(E\).
+
+Alors \(\groupe{\S{E}}[\rond]\) est un groupe, appelé groupe des permutations de \(E\).
+
+Son élément neutre est \(\id{E}\).
+
+L'inverse d'une permutation \(\sigma\in\S{E}\) est sa bijection réciproque \(\sigma\inv\).
+
+Il est commutatif si, et seulement si, \(\Card E\leq2\).
+\end{rappel}
+
+\begin{defi}
+Soit \(n\in\Ns\).
+
+On appelle groupe symétrique d'ordre \(n\) et on note \(S_n\) ou \(\S{n}\) le groupe des permutations de l'ensemble \(\interventierii{1}{n}\) : \[S_n=\S{n}=\S{\interventierii{1}{n}}.\]
+
+Ce groupe est commutatif si, et seulement si, \(n\leq2\).
+\end{defi}
+
+\begin{rem}
+Dans ce chapitre, on étudie le groupe symétrique, \cad le groupe des permutations de \(\interventierii{1}{n}\) où \(n\in\Ns\).
+
+Ce qu'on fait s'applique en fait au groupe des permutations de n'importe quel ensemble fini non-vide \(E\), puisque si \(n\) est son cardinal, alors il existe une bijection \(f:\interventierii{1}{n}\to E\) et l'application \[\fonctionlambda{\S{n}}{\S{E}}{\sigma}{f\rond\sigma\rond f\inv}\] est alors un isomorphisme de groupes.
+\end{rem}
+
+\begin{nota}
+Soient \(n\in\Ns\) et \(a_1,\dots,a_n\in\interventierii{1}{n}\) deux à deux distincts.
+
+La permutation \(\sigma\) telle que \[\quantifs{\forall k\in\interventierii{1}{n}}\sigma\paren{k}=a_k\] est notée : \[\sigma=\permu{1;2;3;\dots;n}{a_1;a_2;a_3;\dots;a_n}.\]
+\end{nota}
+
+\begin{exoex}
+Énumérer tous les éléments de \(\S{2}\) et \(\S{3}\) à l'aide de la notation précédente.
+\end{exoex}
+
+\begin{corr}
+On a : \[\S{2}=\accol{\permu{1;2}{1;2};\permu{1;2}{2;1}}\] et : \[\S{3}=\accol{\permu{1;2;3}{1;2;3};\permu{1;2;3}{2;1;3};\permu{1;2;3}{2;3;1};\permu{1;2;3}{3;1;2};\permu{1;2;3}{3;2;1};\permu{1;2;3}{1;3;2}}.\]
+\end{corr}
+
+\begin{exoex}
+On pose : \[\sigma_1=\permu{1;2;3;4}{3;1;4;2}\qquad\sigma_2=\permu{1;2;3;4}{4;3;2;1}\qquad\sigma_3=\permu{1;2;3;4;5;6}{3;6;5;4;1;2}.\]
+
+\begin{enumerate}
+    \item Calculer les inverses de ces trois permutations. \\
+    \item \(\sigma_1\) et \(\sigma_2\) commutent-elles ? \\
+    \item Calculer \(\sigma_1^2\) et \(\sigma_1^{2023}\).
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a : \[\sigma_1\inv=\permu{1;2;3;4}{2;4;1;3}\qquad\sigma_2\inv=\permu{1;2;3;4}{4;3;2;1}\qquad\sigma_3\inv=\permu{1;2;3;4;5;6}{5;6;1;4;3;2}.\]
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\sigma_1\rond\sigma_2=\permu{1;2;3;4}{2;4;1;3}\qquad\text{et}\qquad\sigma_2\rond\sigma_1=\permu{1;2;3;4}{2;4;1;3}\] donc \(\sigma_1\) et \(\sigma_2\) commutent.
+\end{corr}
+
+\begin{corr}[3]
+On remarque : \[\sigma_1^2=\permu{1;2;3;4}{4;3;2;1}\qquad\sigma_1^3=\permu{1;2;3;4}{2;4;1;3}\qquad\sigma_1^4=\permu{1;2;3;4}{1;2;3;4}=\id{}.\]
+
+Donc, comme \(2023\equiv3\croch{4}\), on a : \[\sigma_1^{2023}=\sigma_1^3=\permu{1;2;3;4}{2;4;1;3}.\]
+\end{corr}
