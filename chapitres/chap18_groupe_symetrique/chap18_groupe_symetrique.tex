@@ -141,3 +141,40 @@ Si \(c\in\S{n}\) est un cycle de longueur \(l\), alors \(c^l=\id{\interventierii
 
 En particulier, toute transposition est son propre inverse.
 \end{rem}
+
+\section{Décomposition en produit de cycles à supports disjoints}
+
+\begin{rem}\thlabel{rem:cyclesASupportsDisjointsCommutent}
+Si \(c\) et \(c\prim\) sont deux cycles à supports disjoints, alors ils commutent.
+\end{rem}
+
+\begin{prop}
+Soient \(n\in\Ns\) et \(r\in\N\).
+
+Toute permutation \(\sigma\in\S{n}\) s'écrit comme le produit de cycles \(c_1,\dots,c_r\) à supports deux à deux disjoints : \[\sigma=c_1\dots c_r\qquad\text{et}\qquad\quantifs{\forall i,j\in\interventierii{1}{r}}i\not=j\imp\supp c_i\inter\supp c_j=\ensvide.\]
+
+De plus, cette écriture est unique, à l'ordre des facteurs près.
+\end{prop}
+
+\begin{dem}
+\note{Admis (non-exigible)}
+
+Il suffit d'être capable de décomposer une permutation donnée en produit de cycles à supports disjoints, comme dans l'\thref{exoex:décompositionEnProduitDeCyclesASupportsDisjoints}.
+\end{dem}
+
+\begin{rem}
+Quand on écrit une permutation comme produit de cycles à supports disjoints : \[\sigma=c_1\dots c_r,\] selon la \thref{rem:cyclesASupportsDisjointsCommutent} :
+
+\begin{itemize}
+    \item la même égalité est vraie pour toute permutation des facteurs : \[\quantifs{\forall\gamma\in\S{r}}\sigma=c_{\gamma\paren{1}}\dots c_{\gamma\paren{r}}\text{ ;}\]
+    \item les puissances de \(\sigma\) sont faciles à calculer : \[\quantifs{\forall k\in\Z}\sigma^k=c_1^k\dots c_r^k.\]
+\end{itemize}
+\end{rem}
+
+\begin{exoex}\thlabel{exoex:décompositionEnProduitDeCyclesASupportsDisjoints}
+Écrire chacune des permutations suivantes comme un produit de cycles à supports disjoints : \[\sigma_1=\permu{1;2;3;4}{3;1;4;2}\qquad\sigma_2=\permu{1;2;3;4}{4;3;2;1}\qquad\sigma_3=\permu{1;2;3;4;5;6}{3;1;5;4;2;6}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\sigma_1=\cycle{3;4;2;1}\qquad\sigma_2=\cycle{4;1}\rond\cycle{3;2}\qquad\sigma_3=\cycle{3;5;2;1}.\]
+\end{corr}
