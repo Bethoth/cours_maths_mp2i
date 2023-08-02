@@ -2,4 +2,38 @@
 
 \minitoc
 
-\note{À VENIR}
+On considère un corps \(\K\) (en pratique, \(\K=\R\) ou \(\C\)).
+
+\section{Multilinéarité}
+
+\subsection{Formes multilinéaires}
+
+\begin{defi}[Application multilinéaire]
+Soient \(E_1,\dots,E_r,F\) des \(\K\)-espaces vectoriels où \(r\in\Ns\) et une fonction \[\fonction{f}{E_1\times\dots\times E_r}{F}{\paren{x_1,\dots,x_r}}{f\paren{x_1,\dots,x_r}}\]
+
+On dit que \(f\) est une fonction multilinéaire (ou, plus précisément, est \(r\)-linéaire) si elle est linéaire par rapport à chacune de ses \(r\) variables, \cad si l'on a : \[\begin{aligned}
+&\quantifs{\forall j\in\interventierii{1}{r};\forall\lambda,\mu\in\K;\forall\paren{x_1,\dots,x_r}\in E_1\times\dots\times E_r;\forall y_j\in E_j} \\
+&f\paren{x_1,\dots,x_{j-1},\lambda x_j+\mu y_j,x_{j+1},\dots,x_r}=\lambda f\paren{x_1,\dots,x_{j-1},x_j,x_{j+1},\dots,x_r}+\mu f\paren{x_1,\dots,x_{j-1},y_j,x_{j+1},\dots,x_r}.
+\end{aligned}\]
+
+Si, de plus, \(F=\K\) alors on dit que \(f\) est une forme \(r\)-linéaire.
+\end{defi}
+
+\begin{rem}
+Soient \(E_1,\dots,E_r,F\) des \(\K\)-espaces vectoriels où \(r\in\Ns\) et une fonction \(r\)-linéaire \[f:E_1\times\dots\times E_r\to F.\]
+
+\begin{itemize}
+    \item On a : \[\quantifs{\forall\paren{x_1,\dots,x_r}\in E_1\times\dots\times E_r}\paren{\quantifs{\exists i\in\interventierii{1}{r}}x_i=0_{E_i}}\imp f\paren{x_1,\dots,x_r}=0_F.\] En français : \guillemets{Si (au moins) l'un des \(x_i\) est nul alors \(f\paren{x_1,\dots,x_r}\) est nul.} \\
+    \item On a : \[\quantifs{\forall\lambda\in\K;\forall\paren{x_1,\dots,x_r}\in E_1\times\dots\times E_r}f\paren{\lambda x_1,\dots,\lambda x_r}=\lambda^rf\paren{x_1,\dots,x_r}.\] En particulier, une application \(r\)-linéaire avec \(r\geq2\) n'est pas linéaire.
+\end{itemize}
+\end{rem}
+
+\begin{ex}
+Les applications suivantes sont multilinéaires :
+
+\begin{itemize}
+    \item Toute application linéaire est \(1\)-linéaire. \\
+    \item Le produit matriciel et la composition des applications linéaires sont \(2\)-linéaires (on dit aussi bilinéaires). Par exemple, si \(n\in\Ns\) et \(E\) est un espace vectoriel : \[\fonctionlambda{\M{n}\times\M{n}}{\M{n}}{\paren{A,B}}{A\times B}\qquad\text{et}\qquad\fonctionlambda{\Lendo{E}\times\Lendo{E}}{\Lendo{E}}{\paren{u,v}}{u\rond v}\] sont bilinéaires. \\
+    \item L'application \[\fonctionlambda{\M{n}^3}{\M{n}}{\paren{A,B,C}}{A\times B\times C}\] est \(3\)-linéaire (on dit aussi trilinéaire).
+\end{itemize}
+\end{ex}
