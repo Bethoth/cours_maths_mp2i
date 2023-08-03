@@ -620,3 +620,490 @@ On a : \[\begin{aligned}
 &=\det A.
 \end{aligned}\]
 \end{dem}
+
+\subsection{Calculs}
+
+\subsubsection{Opérations sur les lignes et les colonnes d'un déterminant}
+
+Effet des opérations élémentaires sur une matrice \(A\in\M{n}\) :
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+opération sur la matrice & effet sur son déterminant \\
+\hline
+\(C_i\gets\lambda C_i\) & multiplié par \(\lambda\) \\
+\hline
+\(C_i\echange C_j\) (où \(i\not=j\)) & multiplié par \(-1\) \\
+\hline
+\(C_i\gets C_i+C_j\) (où \(i\not=j\)) & inchangé \\
+\hline
+\end{tabular}
+\end{center}
+
+Plus généralement :
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+opération sur la matrice & effet sur son déterminant \\
+\hline
+\(C_i\gets\sum_{j=1}^n\lambda_jC_j\) & multiplié par \(\lambda_i\) \\
+\hline
+\(\quantifs{\forall i\in\interventierii{1}{n}}C_i\gets C_{\sigma\paren{i}}\) (où \(\sigma\in\S{n}\)) & multiplié par \(\epsilon\paren{\sigma}\) \\
+\hline
+\end{tabular}
+\end{center}
+
+Idem pour les lignes.
+
+\begin{exoex}
+Calculer les déterminants suivants en se ramenant à des déterminants triangulaires (\cf \hyperref[subsubsec:déterminantsTriangulaires]{plus loin}) : \[\begin{vmatrix}
+1 & 1 & 1 & 1 \\
+2 & 9 & 2 & 2 \\
+2 & 2 & 3 & 2 \\
+2 & 2 & 2 & 3
+\end{vmatrix}\qquad\text{et}\qquad\begin{vmatrix}
+9 & 1 & 1 & 2 \\
+1 & 1 & 0 & 1 \\
+1 & 0 & 1 & 1 \\
+2 & 1 & 1 & 13
+\end{vmatrix}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\begin{aligned}
+\begin{vmatrix}
+1 & 1 & 1 & 1 \\
+2 & 9 & 2 & 2 \\
+2 & 2 & 3 & 2 \\
+2 & 2 & 2 & 3
+\end{vmatrix}&=2\begin{vNiceMatrix}[last-col]
+0 & -7 & 0 & 0 & L_1\gets2L_1-L_2 \\
+2 & 9 & 2 & 2 & \\
+0 & -7 & 1 & 0 & L_3\gets L_3-L_2 \\
+0 & -7 & 0 & 1 & L_4\gets L_4-L_2
+\end{vNiceMatrix} \\
+&=2\begin{vNiceMatrix}[last-col]
+0 & -7 & 0 & 0 & C_2\gets C_2+7C_3+7C_4 \\
+2 & 37 & 2 & 2 & \\
+0 & 0 & 1 & 0 & \\
+0 & 0 & 0 & 1 &
+\end{vNiceMatrix} \\
+&=2\begin{vNiceMatrix}[last-col]
+0 & -7 & 0 & 0 & \\
+2 & 37 & 0 & 0 & L_2\gets L_2-2L_3-2L_4 \\
+0 & 0 & 1 & 0 & \\
+0 & 0 & 0 & 1 &
+\end{vNiceMatrix} \\
+&=\begin{vNiceMatrix}[last-col]
+\frac{7}{37} & -7 & 0 & 0 & C_1\gets\dfrac{1}{2}C_1-\dfrac{1}{37}C_2 \\
+0 & 37 & 0 & 0 & \\
+0 & 0 & 1 & 0 & \\
+0 & 0 & 0 & 1 &
+\end{vNiceMatrix} \\
+&=7
+\end{aligned}\] et : \[\begin{aligned}
+\begin{vmatrix}
+9 & 1 & 1 & 2 \\
+1 & 1 & 0 & 1 \\
+1 & 0 & 1 & 1 \\
+2 & 1 & 1 & 13
+\end{vmatrix}&=\begin{vNiceMatrix}[last-col]
+7 & 1 & 1 & 2 & C_1\gets C_1-C_2-C_3 \\
+0 & 1 & 0 & 1 & \\
+0 & 0 & 1 & 1 & \\
+0 & 1 & 1 & 13
+\end{vNiceMatrix} \\
+&=\begin{vNiceMatrix}[last-col]
+7 & 1 & 1 & 2 & \\
+0 & 1 & 0 & 1 & \\
+0 & 0 & 1 & 1 & \\
+0 & 0 & 0 & 11 & L_4\gets L_4-L_2-L_3
+\end{vNiceMatrix} \\
+&=77.
+\end{aligned}\]
+\end{corr}
+
+\subsubsection{Développement par rapport à une ligne ou une colonne}
+
+\begin{lem}\thlabel{lem:développementDéterminantAvecJusteUn1}
+Soient \(n\in\Ns\) et \(\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{n}^2}\in\K^{\interventierii{1}{n}^2}\).
+
+On a : \[\begin{vmatrix}
+1 & 0 & \dots & 0 \\
+0 & a_{11} & \dots & a_{1n} \\
+\vdots & \vdots &  & \vdots \\
+0 & a_{n1} & \dots & a_{nn}
+\end{vmatrix}=\begin{vmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{vmatrix}.\]
+\end{lem}
+
+\begin{dem}
+Posons \(\fonction{f}{\paren{\K^n}^n}{\K}{\paren{C_1,\dots,C_n}}{\begin{vNiceMatrix}
+1 & 0 & \dots & 0 \\
+0 & \Block{3-1}<\Large>{C_1} & \Block{3-1}<\Large>{\dots} & \Block{3-1}<\Large>{C_n} \\
+\vdots &  &  & \\
+0 &  &  &
+\end{vNiceMatrix}}\)
+
+On remarque que \(f\) est une forme \(n\)-linéaire alternée et qu'on a, en notant \(\fami{B}_0\) la base canonique de \(\K^n\) : \[f\paren{\fami{B}_0}=1.\]
+
+D'où \(f=\detb[\fami{B}_0]\), d'où : \[\quantifs{\forall C_1,\dots,C_n\in\K^n}f\paren{C_1,\dots,C_n}=\detb[\fami{B}_0]\paren{C_1,\dots,C_n}=\begin{vmatrix}C_1 & \dots & C_n\end{vmatrix}.\]
+\end{dem}
+
+\begin{nota}
+Soit \(n\in\Ns\).
+
+À toute matrice \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}\] on associe les objets suivants (notations officielles) :
+
+\begin{itemize}
+    \item pour tous \(i,j\in\interventierii{1}{n}\), on note \(\Delta_{ij}\) le mineur en position \(\paren{i,j}\) : c'est le déterminant de la matrice extraite de \(A\) obtenue en supprimant la \(i\)-ème ligne et la \(j\)-ème colonne de \(A\) ; \\
+    \item pour tous \(i,j\in\interventierii{1}{n}\), on appelle cofacteur en position \(\paren{i,j}\) le produit \(\paren{-1}^{i+j}\Delta_{ij}\) ; \\
+    \item enfin, on appelle comatrice de \(A\) la matrice des cofacteurs : \[\Com{A}=\paren{\paren{-1}^{i+j}\Delta_{ij}}_{\paren{i,j}}\in\M{n}.\]
+\end{itemize}
+\end{nota}
+
+\begin{ex}
+On a : \[\Com{\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}}=\begin{pmatrix}
+d & -c \\
+-b & a
+\end{pmatrix}\qquad\text{et}\qquad\Com{\begin{pmatrix}
+a & b & c \\
+d & e & f \\
+g & h & i
+\end{pmatrix}}=\begin{pmatrix}
+ei-fh & fg-di & dh-eg \\
+ch-bi & ai-cg & bg-ah \\
+bf-ce & cd-af & ae-bd
+\end{pmatrix}.\]
+\end{ex}
+
+\begin{prop}
+{\normalfont\bfseries (Développement du déterminant d'une matrice par rapport à une colonne)}
+
+Soient \(n\in\Ns\) et \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}.\]
+
+On a : \[\quantifs{\forall j\in\interventierii{1}{n}}\det A=\sum_{i=1}^n\paren{-1}^{i+j}\Delta_{ij}a_{ij}.\]
+
+Quand on applique cette formule, on dit qu'on a développé \(\det A\) par rapport à la \(j\)-ème colonne.
+\end{prop}
+
+\begin{dem}
+Soit \(j\in\interventierii{1}{n}\).
+
+On a, par linéarité par rapport à la \(j\)-ème colonne : \[\begin{aligned}
+\begin{vmatrix}
+a_{11} & \dots & a_{1j} & \dots & a_{1n} \\
+\vdots &  & \vdots &  & \vdots \\
+a_{n1} & \dots & a_{nj} & \dots & a_{nn}
+\end{vmatrix}&=a_{1j}\underbrace{\begin{vmatrix}
+a_{11} & \dots & a_{1\,j-1} & 1 & a_{1\,j+1} & \dots & a_{1n} \\
+\vdots &  & \vdots & 0 & \vdots &  & \vdots \\
+\vdots &  & \vdots & \vdots & \vdots &  & \vdots \\
+a_{n1} & \dots & a_{n\,j-1} & 0 & a_{n\,j+1} & \dots & a_{nn}
+\end{vmatrix}}_{D_1} \\
+&\color{white}=\color{black}+\dots+a_{nj}\underbrace{\begin{vmatrix}
+a_{11} & \dots & a_{1\,j-1} & 0 & a_{1\,j+1} & \dots & a_{1n} \\
+\vdots &  & \vdots & \vdots & \vdots &  & \vdots \\
+\vdots &  & \vdots & 0 & \vdots &  & \vdots \\
+a_{n1} & \dots & a_{n\,j-1} & 1 & a_{n\,j+1} & \dots & a_{nn}
+\end{vmatrix}}_{D_n} \\
+&=\sum_{i=1}^na_{ij}D_i.
+\end{aligned}\]
+
+Calculons \(D_i\) pour \(i\in\interventierii{1}{n}\).
+
+On a : \[D_i=\begin{vNiceMatrix}[last-col]
+a_{11} & \dots & a_{1\,j-1} & 0      & a_{1\,j+1} & \dots & a_{1n} & \\
+       &       &            & \vdots &            &       &        & \\
+       &       &            & 0      &            &       &        & \\
+       &       &            & 1      &            &       &        & i\text{-ème ligne} \\
+       &       &            & 0      &            &       &        & \\
+       &       &            & \vdots &            &       &        & \\
+a_{n1} & \dots & a_{n\,j-1} & 0      & a_{n\,j+1} & \dots & a_{nn} &
+\end{vNiceMatrix}.\]
+
+On applique à ce déterminant : \[\quantifs{\forall k\in\interventierii{1}{n}}C_k\gets C_{\cycle{j;\dots;3;2;1}\paren{k}}\] puis : \[\quantifs{\forall k\in\interventierii{1}{n}}L_k\gets L_{\cycle{i;\dots;3;2;1}\paren{k}}.\]
+
+D'où, selon le \thref{lem:développementDéterminantAvecJusteUn1} : \[\paren{-1}^{j-1}\paren{-1}^{i-1}D_i=\Delta_{ij}.\]
+
+D'où la proposition.
+\end{dem}
+
+\begin{ex}
+On a, en développant par rapport à la première colonne : \[\begin{WithArrows}
+\begin{vmatrix}
+0 & a & b \\
+1 & c & d \\
+2 & e & f
+\end{vmatrix}&=0+1\paren{-\begin{vmatrix}
+a & b \\
+e & f
+\end{vmatrix}}+2\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} \\
+&=eb-af+2ad-2bc.
+\end{WithArrows}\]
+\end{ex}
+
+\begin{prop}
+{\normalfont\bfseries (Développement du déterminant d'une matrice par rapport à une ligne)}
+
+Soient \(n\in\Ns\) et \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}.\]
+
+On a : \[\quantifs{\forall i\in\interventierii{1}{n}}\det A=\sum_{j=1}^n\paren{-1}^{i+j}\Delta_{ij}a_{ij}.\]
+
+Quand on applique cette formule, on dit qu'on a développé \(\det A\) par rapport à la \(i\)-ème colonne.
+\end{prop}
+
+\begin{dem}
+Idem.
+\end{dem}
+
+\subsubsection{Déterminants triangulaires}\label{subsubsec:déterminantsTriangulaires}
+
+\begin{prop}
+Le déterminant d'une matrice triangulaire est le produit de ses coefficients diagonaux.
+
+En particulier, une matrice triangulaire est inversible si, et seulement si, ses coefficients diagonaux sont tous non-nuls.
+
+Par exemple, pour une matrice triangulaire supérieure : \[\begin{vmatrix}
+a_{11} & \dots & \dots & a_{1n} \\
+0 & \ddots &  & \vdots \\
+\vdots & \ddots & \ddots & \vdots \\
+0 & \dots & 0 & a_{nn}
+\end{vmatrix}=\prod_{k=1}^na_{kk}\] et \[\begin{pmatrix}
+a_{11} & \dots & \dots & a_{1n} \\
+0 & \ddots &  & \vdots \\
+\vdots & \ddots & \ddots & \vdots \\
+0 & \dots & 0 & a_{nn}
+\end{pmatrix}\in\GL{n}\ssi\quantifs{\forall k\in\interventierii{1}{n}}a_{kk}\not=0.\]
+\end{prop}
+
+\begin{dem}
+Par récurrence sur \(n\in\Ns\), en développant par rapport à la première colonne.
+\end{dem}
+
+\subsubsection{Déterminants de Vandermonde}
+
+\begin{exoex}
+Soient \(\lambda_1,\lambda_2,\lambda_3\in\K\)
+
+Calculer en factorisant le plus possible les déterminants suivants : \[\begin{vmatrix}
+1 & 1 \\
+\lambda_1 & \lambda_2
+\end{vmatrix}\qquad\text{et}\qquad\begin{vmatrix}
+1 & 1 & 1 \\
+\lambda_1 & \lambda_2 & \lambda_3 \\
+\lambda_1^2 & \lambda_2^2 & \lambda_3^2
+\end{vmatrix}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\begin{vmatrix}
+1 & 1 \\
+\lambda_1 & \lambda_2
+\end{vmatrix}=\lambda_2-\lambda_1\] et : \[\begin{aligned}
+\begin{vmatrix}
+1 & 1 & 1 \\
+\lambda_1 & \lambda_2 & \lambda_3 \\
+\lambda_1^2 & \lambda_2^2 & \lambda_3^2
+\end{vmatrix}&=\begin{vNiceMatrix}[last-col]
+1 & 0 & 0 & C_2\gets C_2-C_1 \\
+\lambda_1 & \lambda_2-\lambda_1 & \lambda_3-\lambda_1 & C_3\gets C_3-C_1 \\
+\lambda_1^2 & \lambda_2^2-\lambda_1^2 & \lambda_3^2-\lambda_1^2 &
+\end{vNiceMatrix} \\
+&=\begin{vmatrix}
+\lambda_2-\lambda_1 & \lambda_3-\lambda_1 \\
+\lambda_2^2-\lambda_1^2 & \lambda_3^2-\lambda_1^2
+\end{vmatrix} \\
+&=\paren{\lambda_2-\lambda_1}\paren{\lambda_3-\lambda_1}\begin{vmatrix}
+1 & 1 \\
+\lambda_2+\lambda_1 & \lambda_3+\lambda_1
+\end{vmatrix} \\
+&=\paren{\lambda_2-\lambda_1}\paren{\lambda_3-\lambda_1}\begin{vNiceMatrix}[last-col]
+1 & 0 & C_2\gets C_2-C_1 \\
+\lambda_2+\lambda_1 & \lambda_3-\lambda_2 &
+\end{vNiceMatrix} \\
+&=\paren{\lambda_2-\lambda_1}\paren{\lambda_3-\lambda_1}\paren{\lambda_3-\lambda_2}.
+\end{aligned}\]
+\end{corr}
+
+\begin{prop}[Déterminants de Vandermonde]
+Soit \(n\in\Ns\).
+
+On a : \[\quantifs{\forall\lambda_1,\dots,\lambda_n\in\K}\begin{vmatrix}
+1               &  &       &  & 1               \\
+\lambda_1       &  &       &  & \lambda_n       \\
+\lambda_1^2     &  & \dots &  & \lambda_n^2     \\
+\vdots          &  &       &  & \vdots          \\
+\lambda_1^{n-1} &  &       &  & \lambda_n^{n-1} \\
+\end{vmatrix}=\prod_{1\leq i<j\leq n}\paren{\lambda_j-\lambda_i}.\]
+\end{prop}
+
+\begin{dem}
+On note, pour tout \(n\in\Ns\) : \[\P{n}:\text{\og}\quantifs{\forall\lambda_1,\dots,\lambda_n\in\K}\begin{vmatrix}
+1               &  &       &  & 1               \\
+\lambda_1       &  &       &  & \lambda_n       \\
+\lambda_1^2     &  & \dots &  & \lambda_n^2     \\
+\vdots          &  &       &  & \vdots          \\
+\lambda_1^{n-1} &  &       &  & \lambda_n^{n-1} \\
+\end{vmatrix}=\prod_{1\leq i<j\leq n}\paren{\lambda_j-\lambda_i}\text{\fg{}}.\]
+
+On a \(\P{1}\), \(\P{2}\) et \(\P{3}\).
+
+Soit \(n\in\Ns\) tel que \(\P{n}\). Montrons \(\P{n+1}\).
+
+Soient \(\lambda_1,\dots,\lambda_{n+1}\in\K\).
+
+On pose \(A=\begin{pmatrix}
+1           &  &       &  & 1           & 1      \\
+\lambda_1   &  &       &  & \lambda_n   & X      \\
+\lambda_1^2 &  & \dots &  & \lambda_n^2 & X^2    \\
+\vdots      &  &       &  & \vdots      & \vdots \\
+\lambda_1^n &  &       &  & \lambda_n^n & X^n    \\
+\end{pmatrix}\in\M{n+1}[\fracrat]\) et \(P=\det A\).
+
+En développant le déterminant par rapport à sa dernière colonne, on remarque \(P\in\poly\) et que le coefficient de degré \(n\) de \(P\) est \[\paren{-1}^{n+1+n+1}\begin{vmatrix}
+1               &  &       &  & 1               \\
+\lambda_1       &  &       &  & \lambda_n       \\
+\lambda_1^2     &  & \dots &  & \lambda_n^2     \\
+\vdots          &  &       &  & \vdots          \\
+\lambda_1^{n-1} &  &       &  & \lambda_n^{n-1} \\
+\end{vmatrix}=\prod_{1\leq i<j\leq n}\paren{\lambda_j-\lambda_i}.\]
+
+Supposons \(\lambda_1,\dots,\lambda_n\) deux à deux distincts.
+
+Alors le coefficient de degré \(n\) de \(P\) est non-nul donc \(\deg P=n\).
+
+De plus, on remarque que \(P\) admet \(n\) racines deux à deux distinctes : les scalaires \(\lambda_1,\dots,\lambda_n\).
+
+D'où la factorisation de \(P\) en produit d'irréductibles : \[P=\underbrace{\prod_{1\leq i<j\leq n}\paren{\lambda_j-\lambda_i}}_{\text{coefficient dominant}}\underbrace{\prod_{k=1}^n\paren{X-\lambda_k}}_{\substack{n\text{ racines} \\ \text{simples car} \\ \deg P=n}}.\]
+
+D'où, en évaluant en \(\lambda_{n+1}\) : \[\begin{vmatrix}
+\lambda_1^0 & \dots & \lambda_{n+1}^0 \\
+\vdots &  & \vdots \\
+\lambda_1^n & \dots & \lambda_{n+1}^n
+\end{vmatrix}=\prod_{1\leq i<j\leq n}\paren{\lambda_j-\lambda_i}\prod_{k=1}^n\paren{\lambda_{n+1}-\lambda_k}=\prod_{1\leq i<j\leq n+1}\paren{\lambda_j-\lambda_i}.\]
+
+D'où \(\P{n+1}\).
+
+Supposons que \(\lambda_1,\dots,\lambda_n\) ne sont pas deux à deux distincts.
+
+La formule est encore vraie car le déterminant est nul (car deux colonnes sont égales) et le produit est nul.
+
+D'où \(\P{n+1}\).
+
+Donc, par récurrence, on a \(\quantifs{\forall n\in\Ns}\P{n}\).
+\end{dem}
+
+\subsubsection{Formules de Cramer}
+
+\begin{prop}[Formules de Cramer]
+Soient \(n\in\Ns\), \(a_{11},\dots,a_{1n},\dots,a_{n1},\dots,a_{nn},b_1,\dots,b_n\in\K\) et un système de Cramer d'inconnue \(\paren{x_1,\dots,x_n}\in\K^n\) \[\paren{S}~\begin{dcases}
+a_{11}x_1+\dots+a_{1n}x_n=b_1 \\
+\vdots \\
+a_{n1}x_1+\dots+a_{nn}x_n=b_n
+\end{dcases}\]
+
+Posons \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}=\cycle{C_1;\dots;C_n}\in\M{n}\qquad\text{et}\qquad B=\tcoords{b_1}{\vdots}{b_n}\in\K^n\] (en notant \(\paren{C_1,\dots,C_n}\) la famille des vecteurs-colonne de \(A\)).
+
+On rappelle que le fait que \(\paren{S}\) soit un système de Cramer signifie que \(A\) est inversible et que \(\paren{S}\) admet donc une unique solution \(X=\tcoords{x_1}{\vdots}{x_n}\in\K^n\).
+
+Cette solution est donnée par les formules de Cramer (on note \(\fami{B}_0\) la base canonique de \(\K^n\)) : \[\quantifs{\forall j\in\interventierii{1}{n}}x_j=\dfrac{\detb[\fami{B}_0]\paren{C_1,\dots,C_{j-1},B,C_{j+1},\dots,C_n}}{\det A}.\]
+\end{prop}
+
+\begin{dem}
+On a, en notant \(\paren{x_1,\dots,x_n}\) l'unique solution de \(\paren{S}\) : \[\sum_{k=1}^nx_kC_k=B.\]
+
+Comme \(\paren{S}\) est un système de Cramer, \(\paren{C_1,\dots,C_n}\) est une base de \(\K^n\), donc : \[\detb[\fami{B}_0]\paren{C_1,\dots,C_n}=\det A\not=0.\]
+
+On a, pour tous \(j\in\interventierii{1}{n}\) : \[\begin{aligned}
+\detb[\fami{B}_0]\paren{C_1,\dots,C_{j-1},B,C_{j+1},\dots,C_n}&=\detb[\fami{B}_0]\paren{C_1,\dots,C_{j-1},\sum_{k=1}^nx_kC_k,C_{j+1},\dots,C_n} \\
+&=\sum_{k=1}^nx_k\underbrace{\detb[\fami{B}_0]\paren{C_1,\dots,C_{j-1},C_k,C_{j+1},\dots,C_n}}_{=0\text{ si }k\not=j} \\
+&=x_j\det A.
+\end{aligned}\]
+
+D'où le résultat.
+\end{dem}
+
+\begin{exoex}
+Résoudre le système \[\paren{S}~\begin{pmatrix}
+2 & 1 \\
+1 & 1
+\end{pmatrix}\dcoords{x}{y}=\dcoords{5}{7}.\]
+\end{exoex}
+
+\begin{corr}
+\(\paren{S}\) est un système de Cramer car \(\begin{vmatrix}
+2 & 1 \\
+1 & 1
+\end{vmatrix}=1\not=0\).
+
+Son unique solution \(\paren{x,y}\) est donnée par les formules de Cramer : \[x=\dfrac{\begin{vmatrix}5 & 1 \\ 7 & 1\end{vmatrix}}{\begin{vmatrix}2 & 1 \\ 1 & 1\end{vmatrix}}=-2\qquad\text{et}\qquad y=\dfrac{\begin{vmatrix}2 & 5 \\ 1 & 7\end{vmatrix}}{\begin{vmatrix}2 & 1 \\ 1 & 1\end{vmatrix}}=9.\]
+\end{corr}
+
+\subsubsection{Comatrice}
+
+\begin{prop}
+Soient \(n\in\Ns\) et \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}.\]
+
+On a : \[A\times\trans{\Com{A}}=\trans{\Com{A}}\times A=\paren{\det A}I_n.\]
+
+Donc si \(A\in\GL{n}\) : \[A\inv=\dfrac{1}{\det A}\trans{\Com{A}}.\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(M=A\times\trans{\Com{A}}=\paren{\det A}I_n\).
+
+Soient \(i,j\in\interventierii{1}{n}\).
+
+Le coefficient de \(M\) en position \(\paren{i,j}\) est \(m_{ij}=\sum_{k=1}^na_{ik}\paren{-1}^{j+k}\Delta_{jk}\).
+
+Si \(i=j\), on a : \[\begin{WithArrows}
+m_{ii}&=\sum_{k=1}^na_{ik}\underbrace{\paren{-1}^{i+k}\Delta_{ik}}_{\substack{\text{cofacteur} \\ \text{de }a_{ik}}} \Arrow[tikz={text width=5cm}]{en développant par rapport à la \(i\)-ème ligne} \\
+&=\det A.
+\end{WithArrows}\]
+
+Si \(i\not=j\), on a, en notant \(A\prim\) la matrice obtenue en remplaçant la \(j\)-ème ligne de \(A\) par la \(i\)-ème ligne de \(A\) : \[\begin{WithArrows}
+m_{ij}&=\sum_{k=1}^na_{ik}\paren{-1}^{j+k}\Delta_{jk} \\
+&=\det A\prim \Arrow[i,tikz={text width=7cm}]{car la \(i\)-ème et la \(j\)-ème ligne sont égales dans \(A\)} \\
+&=0.
+\end{WithArrows}\]
+
+D'où l'égalité.
+
+Idem pour \(\trans{\Com{A}}\times A=\paren{\det A}I_n\).
+\end{dem}
+
+\begin{rem}
+Il faut bien savoir appliquer la formule de l'inverse dans le cas des matrices \(2\times2\) : \[\quantifs{\forall\begin{pmatrix}a & b \\ c & d\end{pmatrix}\in\GL{2}}\begin{pmatrix}a & b \\ c & d\end{pmatrix}\inv=\dfrac{1}{ad-bc}\begin{pmatrix}d & -b \\ -c & a\end{pmatrix}.\]
+\end{rem}
