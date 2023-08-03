@@ -114,3 +114,35 @@ Si les séries \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq0}y_n\) sont convergentes al
     \item Dans le cas de la somme de deux séries divergentes, on ne peut pas conclure a priori.
 \end{itemize}
 \end{rem}
+
+\subsection{Séries grossièrement divergentes}
+
+\begin{prop}\thlabel{prop:sérieConvergenteImpliqueLimiteDuTermeGénéralNulle}
+Soit \(\paren{x_n}_{n\in\N}\in\K^\N\).
+
+On a : \[\sum_nx_n\text{ converge}\imp\lim_{n\to\pinf}x_n=0.\]
+\end{prop}
+
+\begin{dem}
+Supposons \(\sum_nx_n\) convergente, \cad \(\lim_nS_n=\sum_{k=0}^{\pinf}x_k\in\K\).
+
+On remarque \(\quantifs{\forall n\in\Ns}x_n=S_n-S_{n-1}\) donc : \[\lim_nx_n=\lim_nS_n-\lim_nS_{n-1}=0.\]
+\end{dem}
+
+\begin{defi}
+Soit \(\paren{x_n}_{n\in\N}\in\K^\N\).
+
+Si la suite \(\paren{x_n}_n\) ne tend pas vers \(0\), la série \(\sum_nx_n\) est dite grossièrement divergente.
+
+Toute série grossièrement divergente est divergente.
+\end{defi}
+
+\begin{rem}
+L'implication réciproque de la \thref{prop:sérieConvergenteImpliqueLimiteDuTermeGénéralNulle} est fausse.
+
+Autrement dit : pour qu'une série soit convergente, il ne suffit pas qu'elle ne soit pas grossièrement divergente.
+\end{rem}
+
+\begin{dem}
+La série harmonique \(\sum_{n\geq1}\dfrac{1}{n}\) n'est pas grossièrement divergente mais divergente.
+\end{dem}
