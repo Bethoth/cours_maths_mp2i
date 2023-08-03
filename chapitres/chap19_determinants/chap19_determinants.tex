@@ -476,3 +476,63 @@ m & n & o & p
 &\color{white}=\color{black}-bekp-cfip-dfkm-agjp-ahkn-aflo-dejo-dgin-bhio-chjm-bglm-celn.
 \end{aligned}\]
 \end{rem}
+
+\subsection{Lien avec les autres déterminants}
+
+\begin{prop}
+Soit \(A\in\M{n}\).
+
+Le déterminant de \(A\) est aussi le déterminant de l'endomorphisme \(u_A\in\Lendo{\K^n}\) canoniquement associé à \(A\).
+\end{prop}
+
+\begin{dem}
+On note \(\paren{C_1,\dots,C_n}\) la famille des vecteurs-colonne de \(A\) et \(\fami{B}_0=\paren{e_1,\dots,e_n}\) la base canonique de \(\K^n\).
+
+Selon la \thref{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}, on a : \[\begin{aligned}
+\det u_A&=\detb[\fami{B}_0]\paren{u_A\paren{e_1},\dots,u_A\paren{e_n}} \\
+&=\detb[\fami{B}_0]\paren{C_1,\dots,C_n} \\
+&=\det A.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}\thlabel{prop:leDéterminantD'UneFamilleDeVecteursDansBEstCeluiDeSaMatriceDansB}
+{\normalfont\bfseries (Le déterminant d'une famille de vecteurs dans \(\fami{B}\) est celui de sa matrice dans \(\fami{B}\))}
+
+Soient \(E\) un espace vectoriel de dimension \(n\), \(\fami{F}\in E^n\) et \(\fami{B}\) une base de \(E\).
+
+On a : \[\detb\paren{\fami{F}}=\det\Mat{\fami{F}}.\]
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:formuleDéterminantDansUneBase}.
+\end{dem}
+
+\begin{prop}
+{\normalfont\bfseries (Le déterminant d'un endomorphisme est celui de sa matrice dans n'importe quelle base)}
+
+Soient \(E\) un espace vectoriel de dimension \(n\), \(u\in\Lendo{E}\) et \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+On a : \[\det u=\det\Mat{u}.\]
+\end{prop}
+
+\begin{dem}
+D'après la \thref{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}, on a : \[\begin{WithArrows}
+\det u&=\detb\paren{u\paren{e_1},\dots,u\paren{e_n}} \Arrow{\thref{prop:leDéterminantD'UneFamilleDeVecteursDansBEstCeluiDeSaMatriceDansB}} \\
+&=\det\Mat{u\paren{e_1},\dots,u\paren{e_n}} \Arrow{par définition de \(\Mat{u}\)} \\
+&=\det\Mat{u}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{exoex}
+Calculer le déterminant de l'endomorphisme \[\fonction{u}{\polydeg[\R]{2}}{\polydeg[\R]{2}}{P}{XP\prim}\]
+\end{exoex}
+
+\begin{corr}
+On pose \(\fami{B}_0=\paren{1,X,X^2}\) la base canonique de \(\polydeg[\R]{2}\).
+
+On a : \[\Mat[\fami{B}_0]{u}=\begin{pmatrix}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 2
+\end{pmatrix}\] donc : \[\det u=\det\Mat[\fami{B}_0]{u}=0.\]
+\end{corr}
