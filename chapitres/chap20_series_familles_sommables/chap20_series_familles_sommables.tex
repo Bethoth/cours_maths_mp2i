@@ -327,3 +327,45 @@ Donc, selon le théorème des gendarmes : \[\lim_n\sum_{k=0}^n\dfrac{\paren{-1}^
 
 Idem pour \(\sin\).
 \end{dem}
+
+\section{Séries à termes positifs}
+
+\subsection{Convergence des séries à termes positifs}
+
+\begin{defi}
+Une série à termes positifs est une série de la forme \(\sum_nx_n\) où \(\paren{x_n}_n\in\paren{\Rp}^\N\) est une suite de réels positifs.
+\end{defi}
+
+\begin{rappel}[Théorème de la limite monotone (\thref{theo:théorèmeDeLaLimiteMonotone})]\thlabel{rappel:théorèmeDeLaLimiteMonotone}
+Soit \(\paren{u_n}_n\in\R^\N\) une suite réelle croissante.
+
+Alors elle admet une limite et on a : \[\lim_nu_n=\begin{dcases}
+\sup_{n\in\N}u_n &\text{si la suite est majorée} \\
+\pinf &\text{sinon}
+\end{dcases}\]
+\end{rappel}
+
+\begin{theo}
+Une série à termes positifs converge si, et seulement si, la suite de ses sommes partielles est majorée.
+\end{theo}
+
+\begin{dem}
+Notons \(\paren{S_n}_n\) la suite des sommes partielles de la série \(\sum_nx_n\).
+
+On remarque : \[\quantifs{\forall n\in\N}S_{n+1}=\sum_{k=0}^{n+1}x_k=S_n+x_{n+1}\geq S_n.\]
+
+Donc \(\paren{S_n}_n\) est croissante.
+
+D'où : \[\begin{WithArrows}
+\sum_nx_n\text{ converge}&\ssi\paren{S_n}_n\text{ converge} \Arrow{\thref{rappel:théorèmeDeLaLimiteMonotone}} \\
+&\ssi\paren{S_n}_n\text{ est majorée}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{nota}
+Soit \(\sum_nx_n\) une série à termes positifs.
+
+Si la série est divergente, on s'autorise à écrire : \[\sum_{n=0}^{\pinf}x_n=\pinf.\]
+
+Cette notation est relativement naturelle car la suite des sommes partielles de la série tend vers \(\pinf\) (mais elle est réservée au cas des séries à termes positifs divergentes).
+\end{nota}
