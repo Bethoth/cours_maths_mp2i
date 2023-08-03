@@ -407,3 +407,72 @@ Soit \(E\) un espace vectoriel de dimension \(n\).
 
 On a : \[\quantifs{\forall u\in\GL{}[E]}\det\paren{u\inv}=\dfrac{1}{\det u}.\]
 \end{cor}
+
+\section{Déterminant d'une matrice carrée}
+
+Soit \(n\in\Ns\).
+
+\subsection{Définition}
+
+\begin{defi}
+Soit une matrice \(A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}\).
+
+On appelle déterminant de \(A\) le déterminant de la famille des vecteurs-colonne de \(A\) dans la base canonique \(\fami{B}_0\) de \(\K^n\) : \[\begin{aligned}
+\det A=\begin{vmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{vmatrix}&=\detb[\fami{B}_0]\paren{\tcoords{a_{11}}{\vdots}{a_{n1}},\dots,\tcoords{a_{1n}}{\vdots}{a_{nn}}} \\
+&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}} \\
+&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}.
+\end{aligned}\]
+\end{defi}
+
+\begin{ex}
+Soit \(\lambda\in\K\).
+
+On a : \[\det\paren{\lambda I_n}=\lambda^n.\]
+\end{ex}
+
+\begin{ex}[Règles de Sarrus]
+Soient \(a,b,c,d,e,f,g,h,i\in\K\).
+
+\begin{itemize}
+    \item On a : \[\begin{vmatrix}
+        a & b \\
+        c & d
+    \end{vmatrix}=ad-bc.\]
+    \item On a : \[\begin{vmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i
+    \end{vmatrix}=aei+bfg+cdh-ceg-bdi-afh.\]
+\end{itemize}
+\end{ex}
+
+\begin{prop}[Conséquences immédiates de la définition]
+\begin{itemize}
+    \item Le déterminant d'une matrice carrée de taille \(n\) est une forme \(n\)-linéaire alternée par rapport aux colonnes de la matrice. \\
+    \item On a : \[\quantifs{\forall A\in\M{n}}\det\paren{\trans{A}}=\det A.\]~
+    \item Le déterminant d'une matrice carrée de taille \(n\) est une forme \(n\)-linéaire alternée par rapport aux lignes de la matrice.
+\end{itemize}
+\end{prop}
+
+\begin{rem}
+Attention à ne pas inventer de fausses formules pour calculer des déterminants de taille supérieures à \(4\).
+
+Par exemple, si \(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p\in\K\), on a : \[\begin{aligned}
+\begin{vmatrix}
+a & b & c & d \\
+e & f & g & h \\
+i & j & k & l \\
+m & n & o & p
+\end{vmatrix}&=\sum_{\sigma\in\S{4}}\dots \\
+&=afkp+cejp+bgip+dekn+bhkm+ahjo+agln+dfio+cflm+belo+chin+dgjm \\
+&\color{white}=\color{black}-bekp-cfip-dfkm-agjp-ahkn-aflo-dejo-dgin-bhio-chjm-bglm-celn.
+\end{aligned}\]
+\end{rem}
