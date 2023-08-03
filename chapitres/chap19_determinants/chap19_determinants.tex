@@ -250,7 +250,7 @@ D'où : \[\detb[\fami{B}\prim]=\detb[\fami{B}\prim]\paren{\fami{B}}\detb.\]
 Si \(\fami{B}=\paren{e_1,\dots,e_n}\) et \(\fami{B}\prim=\paren{2e_1,\dots,2e_n}\) alors : \[\detb[\fami{B}\prim]\fami{B}=\detb[\fami{B}\prim]\paren{e_1,\dots,e_n}=\dfrac{1}{2^n}\detb[\fami{B}\prim]\paren{2e_1,\dots,2e_n}=\dfrac{1}{2^n}\] et : \[\detb[\fami{B}\prim]=\dfrac{1}{2^n}\detb.\]
 \end{ex}
 
-\begin{prop}[Caractérisation des bases]
+\begin{prop}[Caractérisation des bases]\thlabel{prop:caractérisationDesBases}
 Soient \(E\) un espace vectoriel de dimension \(n\), \(\fami{B}\) une base de \(E\) et \(x_1,\dots,x_n\in E\).
 
 On a : \[\paren{x_1,\dots,x_n}\text{ est une base de }E\ssi\detb\paren{x_1,\dots,x_n}\not=0.\]
@@ -280,7 +280,7 @@ Soit \(n\in\Ns\).
 
 \subsection{Définition}
 
-\begin{deftheo}[Déterminant d'un endomorphisme]
+\begin{deftheo}[Déterminant d'un endomorphisme]\thlabel{deftheo:déterminantD'UnEndomorphisme}
 Soient \(E\) un espace vectoriel de dimension \(n\) et \(u\in\Lendo{E}\).
 
 Il existe un unique scalaire \(\lambda\in\K\) tel que : \[\quantifs{\forall\fami{B}\text{ base de }E;\forall x_1,\dots,x_n\in E}\detb\paren{u\paren{x_1},\dots,u\paren{x_n}}=\lambda\detb\paren{x_1,\dots,x_n}.\]
@@ -316,7 +316,7 @@ On a : \[\det u=\detb\paren{u\paren{e_1},\dots,u\paren{e_n}}.\]
 On a, par définition : \[\detb\paren{u\paren{e_1},\dots,u\paren{e_n}}=\det u\times\detb\paren{e_1,\dots,e_n}=\det u.\]
 \end{dem}
 
-\begin{ex}[Déterminant d'une homothétie]
+\begin{ex}[Déterminant d'une homothétie]\thlabel{ex:déterminantD'UneHomothétie}
 Soit \(E\) un espace vectoriel de dimension \(n\).
 
 On a : \[\quantifs{\forall\lambda\in\K}\det\paren{\lambda\id{E}}=\lambda^n.\]
@@ -335,3 +335,75 @@ On a : \[\begin{aligned}
 &=\lambda^n.
 \end{aligned}\]
 \end{dem}
+
+\subsection{Propriétés}
+
+\begin{prop}\thlabel{prop:déterminantD'UneComposéeD'EndomorphismesEstLeProduitDesDéterminantsDesEndomorphismes}
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+On a : \[\quantifs{\forall u,v\in\Lendo{E}}\det\paren{uv}=\det\paren{u}\det\paren{v}.\]
+\end{prop}
+
+\begin{dem}
+Soit \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+D'après la \thref{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}, on a : \[\begin{WithArrows}
+\det\paren{uv}&=\detb\paren{uv\paren{e_1},\dots,uv\paren{e_n}} \Arrow[tikz={text width=4.5cm}]{\thref{deftheo:déterminantD'UnEndomorphisme}} \\
+&=\paren{\det u}\detb\paren{v\paren{e_1},\dots,v\paren{e_n}} \Arrow{idem} \\
+&=\paren{\det u}\paren{\det v}\detb\paren{e_1,\dots,e_n} \\
+&=\det\paren{u}\det\paren{v}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{prop}
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+On a : \[\quantifs{\forall\lambda\in\K;\forall u\in\Lendo{E}}\det\paren{\lambda u}=\lambda^n\det u.\]
+\end{prop}
+
+\begin{dem}
+On a \(\lambda u=\paren{\lambda\id{E}}u\) donc selon la \thref{prop:déterminantD'UneComposéeD'EndomorphismesEstLeProduitDesDéterminantsDesEndomorphismes}, on a : \[\begin{WithArrows}
+\det\paren{\lambda u}&=\det\paren{\lambda\id{E}}\det u \Arrow{\thref{ex:déterminantD'UneHomothétie}} \\
+&=\lambda^n\det u.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{rem}
+Soient \(E\) un espace vectoriel de dimension \(n\) et \(u,v\in\Lendo{E}\).
+
+Il n'y a pas de formule exprimant \(\det\paren{u+v}\) en fonction de \(\det u\) et \(\det v\).
+\end{rem}
+
+\begin{prop}\thlabel{prop:unEndomorphismeEstUnAutomorphismeSsiSonDéterminantEstNonNul}
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+On a : \[\quantifs{\forall u\in\Lendo{E}}u\in\GL{}[E]\ssi\det u\not=0.\]
+\end{prop}
+
+\begin{dem}
+Soit \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+On a : \[\begin{WithArrows}
+u\in\GL{}[E]&\ssi\paren{u\paren{e_1},\dots,u\paren{e_n}}\text{ est une base de }E \Arrow{\thref{prop:caractérisationDesBases}} \\
+&\ssi\detb\paren{u\paren{e_1},\dots,u\paren{e_n}}\not=0 \Arrow{\thref{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}} \\
+&\ssi\det u\not=0.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{defprop}[Groupe spécial linéaire]
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+L'application \[\det:\GL{}[E]\to\K\excluant\accol{0}\] est un morphisme de groupes de \(\groupe{\GL{}[E]}[\rond]\) vers \(\groupe{\K\excluant\accol{0}}[\times]\).
+
+Son noyau est un sous-groupe de \(\groupe{\GL{}[E]}[\rond]\) appelé groupe spécial linéaire de \(E\) : \[\SL{}[E]=\accol{u\in\GL{}[E]\tq\det u=1}.\]
+\end{defprop}
+
+\begin{dem}
+L'application \(\det:\GL{}[E]\to\K\excluant\accol{0}\) est bien définie selon la \thref{prop:unEndomorphismeEstUnAutomorphismeSsiSonDéterminantEstNonNul} et c'est un morphisme de groupes selon la \thref{prop:déterminantD'UneComposéeD'EndomorphismesEstLeProduitDesDéterminantsDesEndomorphismes}.
+\end{dem}
+
+\begin{cor}
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+On a : \[\quantifs{\forall u\in\GL{}[E]}\det\paren{u\inv}=\dfrac{1}{\det u}.\]
+\end{cor}
