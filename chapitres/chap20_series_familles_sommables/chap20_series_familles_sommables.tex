@@ -146,3 +146,184 @@ Autrement dit : pour qu'une série soit convergente, il ne suffit pas qu'elle ne
 \begin{dem}
 La série harmonique \(\sum_{n\geq1}\dfrac{1}{n}\) n'est pas grossièrement divergente mais divergente.
 \end{dem}
+
+\subsection{Exemples}
+
+\subsubsection{Séries géométriques}
+
+\begin{defi}[Série géométrique]
+Soit \(\paren{x_n}_{n\in\N}\in\K^\N\).
+
+On dit que \(\sum_nx_n\) est une série géométrique si la suite \(\paren{x_n}_n\) est une suite géométrique : \[\quantifs{\exists q\in\C;\forall n\in\N}x_{n+1}=qx_n.\]
+
+L'élément \(q\) est appelé raison de la série.
+\end{defi}
+
+\begin{prop}[Convergence des séries géométriques]
+Soit \(q\in\C\).
+
+On a : \[\sum_nq^n\text{ converge}\ssi\abs{q}<1.\]
+
+Sa somme vaut alors \[\sum_{k=0}^{\pinf}q^k=\dfrac{1}{1-q}.\]
+
+Si \(\abs{q}\geq1\), la série géométrique est en fait grossièrement divergente.
+\end{prop}
+
+\begin{dem}
+Rappel : la suite géométrique \(\paren{q^n}_{n\in\N}\) \(\begin{dcases}
+\text{converge vers }0 &\text{si }\abs{q}<1 \\
+\text{converge vers }1 &\text{si }\abs{q}=1 \\
+\text{diverge} &\text{si }\begin{dcases}
+\abs{q}\geq1 \\
+q\not=1
+\end{dcases}
+\end{dcases}\)
+
+Si \(\abs{q}\geq1\) alors \(\sum_nq^n\) est grossièrement divergente donc divergente.
+
+Si \(\abs{q}<1\), on a : \[\begin{aligned}
+\quantifs{\forall n\in\N}S_n&=\sum_{k=0}^nq^k \\
+&=\dfrac{1-q^{n+1}}{1-q} \\
+&\tendqd{n\to\pinf}\dfrac{1}{1-q}.
+\end{aligned}\]
+\end{dem}
+
+\begin{rem}
+Soient \(q\in\C\) tel que \(\abs{q}<1\) et \(n_0\in\N\).
+
+On a : \[\sum_{n=n_0}^{\pinf}q^n=q^{n_0}\sum_{n=n_0}^{\pinf}q^{n-n_0}=q^{n_0}\sum_{k=0}^{\pinf}q^k=\dfrac{q^{n_0}}{1-q}.\]
+\end{rem}
+
+\subsubsection{Séries télescopiques}
+
+\begin{defi}[Série télescopique]
+Une série télescopique est une série écrite sous la forme \[\sum_n\paren{u_{n+1}-u_n}\] où \(\paren{u_n}_n\in\K^\N\).
+\end{defi}
+
+\begin{prop}[Convergence des séries télescopiques]
+Soit \(\paren{u_n}_n\in\K^\N\).
+
+On a : \[\sum_n\paren{u_{n+1}-u_n}\text{ converge}\ssi\paren{u_n}_n\text{ converge}.\]
+
+Sa somme vaut alors \[\sum_{k=0}^{\pinf}\paren{u_{k+1}-u_k}=\lim_nu_n-u_0.\]
+\end{prop}
+
+\begin{dem}
+On remarque \(\quantifs{\forall n\in\N}\sum_{k=0}^n\paren{u_{k+1}-u_k}=u_{n+1}-u_0\) donc : \[\begin{aligned}
+\sum_n\paren{u_{n+1}-u_n}\text{ converge}&\ssi\paren{u_{n+1}-u_0}_n\text{ converge} \\
+&\ssi\paren{u_n}_n\text{ converge}.
+\end{aligned}\]
+
+On a alors : \[\begin{aligned}
+\sum_{k=0}^{\pinf}\paren{u_{k+1}-u_k}&=\lim_n\paren{u_{n+1}-u_0} \\
+&=\lim_nu_n-u_0.
+\end{aligned}\]
+\end{dem}
+
+\begin{exoex}
+Calculer : \[\sum_{n=1}^{\pinf}\dfrac{1}{n\paren{n+1}}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\begin{aligned}
+\quantifs{\forall n\in\Ns}\sum_{k=1}^n\dfrac{1}{k\paren{k+1}}&=\sum_{k=1}^n\paren{\dfrac{1}{k}-\dfrac{1}{k+1}} \\
+&=1-\dfrac{1}{n+1} \\
+&\tendqd{n\to\pinf}1.
+\end{aligned}\]
+
+Donc \(\sum_n\dfrac{1}{n\paren{n+1}}\) converge et on a \(\sum_{n=1}^{\pinf}\dfrac{1}{n\paren{n+1}}=1\).
+\end{corr}
+
+\begin{exoex}
+Calculer : \[\sum_{n=1}^{\pinf}\dfrac{n}{\paren{n+1}!}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\begin{aligned}
+\quantifs{\forall n\in\Ns}\sum_{k=1}^n\dfrac{k}{\paren{k+1}!}&=\sum_{k=1}^n\paren{\dfrac{1}{k!}-\dfrac{1}{\paren{k+1}!}} \\
+&=1-\dfrac{1}{\paren{n+1}!} \\
+&\tendqd{n\to\pinf}1.
+\end{aligned}\]
+
+Donc \(\sum_n\dfrac{n}{\paren{n+1}!}\) converge et on a \(\sum_{n=1}^{\pinf}\dfrac{n}{\paren{n+1}!}=1\).
+\end{corr}
+
+\begin{rem}
+Toute suite peut être vue comme la suite des sommes partielles d'une série.
+
+Cela permet d'appliquer aux suites les outils dont on dispose pour les séries (\cf TD).
+\end{rem}
+
+\begin{dem}
+Soit \(\paren{u_n}_n\in\K^\N\).
+
+Posons \(u_{-1}=0\).
+
+La suite des sommes partielles de la série \(\sum_{n\geq0}\paren{u_n-u_{n-1}}\) est \(\paren{u_n}_{n\geq0}\).
+
+En effet : \[\quantifs{\forall n\in\N}\sum_{k=0}^n\paren{u_k-u_{k-1}}=u_n-u_{-1}=u_n.\]
+\end{dem}
+
+\subsubsection{Séries de Riemann}
+
+\begin{defi}[Série de Riemann]
+On appelle série de Riemann une série de la forme \(\sum_n\dfrac{1}{n^\alpha}\) où \(\alpha\in\R\).
+
+Si \(\alpha=1\), la série de Riemann \(\sum_n\dfrac{1}{n}\) est appelée série harmonique.
+\end{defi}
+
+\begin{ex}
+On a vu au DS 9, question 21 : \[\sum_{n=1}^{\pinf}\dfrac{1}{n^2}=\dfrac{\pi^2}{6}.\]
+\end{ex}
+
+\begin{rem}
+Soit \(\alpha\in\R\).
+
+On montrera au \hyperref[subsubsec:applicationAuxSériesDeRiemann]{paragraphe 2.3.2} que la série de Riemann \(\sum_{n}\dfrac{1}{n^\alpha}\) est convergente si, et seulement si, \(\alpha>1\).
+
+Elle est grossièrement divergente si, et seulement si, \(\alpha\leq0\).
+\end{rem}
+
+\begin{nota}[Fonction zêta de Riemann]
+On pose : \[\quantifs{\forall\alpha\in\intervee{1}{\pinf}}\zeta\paren{\alpha}=\sum_{n=1}^{\pinf}\dfrac{1}{n^\alpha}.\]
+\end{nota}
+
+\subsubsection{Autres exemples}
+
+\begin{rappel}[Inégalité de Taylor-Lagrange (\thref{cor:inégalitéDeTaylorLagrange})]
+Soient \(I\) un intervalle de \(\R\), \(n\in\N\), \(f\in\ensclasse{n+1}{I}{\K}\), \(M\in\Rp\) et \(a,b\in I\).
+
+On suppose : \[\quantifs{\forall t\in I}\abs{f\deriv{n+1}\paren{t}}\leq M.\]
+
+On a : \[\abs{f\paren{b}-\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}\paren{b-a}^k}\leq\dfrac{M\abs{b-a}^{n+1}}{\paren{n+1}!}.\]
+\end{rappel}
+
+\begin{prop}
+On a, pour tous \(x\in\R\) : \[\e{x}=\sum_{n=0}^{\pinf}\dfrac{x^n}{n!}\qquad\cos x=\sum_{n=0}^{\pinf}\dfrac{\paren{-1}^nx^{2n}}{\paren{2n}!}\qquad\sin x=\sum_{n=0}^{\pinf}\dfrac{\paren{-1}^nx^{2n+1}}{\paren{2n+1}!}.\]
+\end{prop}
+
+\begin{dem}
+Soit \(x\in\R\).
+
+Montrons que \(\sum_{n=0}^{\pinf}\dfrac{x^n}{n!}=\e{x}\), \cad \(\sum_n\dfrac{x^n}{n!}\) converge et sa somme vaut \(\e{x}\), \cad \(\lim_n\sum_{k=0}^n\dfrac{x^k}{k!}=\e{x}\).
+
+Soit \(n\in\N\).
+
+On a : \[\quantifs{\forall t\in\intervii{-\abs{x}}{\abs{x}}}\abs{\exp\deriv{n+1}\paren{t}}=\e{t}\leq\e{\abs{x}}.\]
+
+Donc, selon l'inégalité de Taylor-Lagrange appliquée entre \(0\) et \(x\) : \[\abs{\e{x}-\sum_{k=0}^n\dfrac{1}{k!}\paren{x-0}^k}\leq\dfrac{\e{\abs{x}}\abs{x-0}^{n+1}}{\paren{n+1}!}.\]
+
+Or \(x^{n+1}\egqd{n\to\pinf}\o{\paren{n+1}!}\) donc : \[\lim_n\dfrac{\e{\abs{x}}\abs{x-0}^{n+1}}{\paren{n+1}!}=0.\]
+
+Donc, selon le théorème des gendarmes : \[\lim_n\sum_{k=0}^n\dfrac{x^k}{k!}=\sum_{k=0}^{\pinf}\dfrac{x^k}{k!}=\e{x}.\]
+
+De plus, on a : \[\quantifs{\forall t\in\R}\abs{\cos\deriv{2n+1}\paren{t}}\leq1.\]
+
+Donc, selon l'inégalité de Taylor-Lagrange appliquée entre \(0\) et \(x\) : \[\abs{\cos x-\sum_{k=0}^{2n}\dfrac{\cos\deriv{k}\paren{0}}{k!}\paren{x-0}^k}\leq\dfrac{\abs{x-0}^{2n+1}}{\paren{2n+1}!}.\]
+
+Or \(x^{2n+1}\egqd{n\to\pinf}\o{\paren{2n+1}!}\) donc : \[\lim_n\dfrac{\abs{x-0}^{2n+1}}{\paren{2n+1}!}=0.\]
+
+Donc, selon le théorème des gendarmes : \[\lim_n\sum_{k=0}^n\dfrac{\paren{-1}^kx^{2k}}{\paren{2k}!}=\sum_{k=0}^{\pinf}\dfrac{\paren{-1}^kx^{2k}}{\paren{2k}!}=\cos x.\]
+
+Idem pour \(\sin\).
+\end{dem}
