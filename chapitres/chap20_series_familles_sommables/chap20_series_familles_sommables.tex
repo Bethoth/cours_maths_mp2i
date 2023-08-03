@@ -24,3 +24,93 @@ On a la série géométrique de raison \(\dfrac{1}{2}\) : \[\dfrac{1}{2}+\dfrac{
 \begin{ex}[Série harmonique]
 On a la série harmonique : \[\dfrac{1}{1}+\dfrac{1}{2}+\dfrac{1}{3}+\dfrac{1}{4}+\dfrac{1}{5}+\dots=\pinf.\]
 \end{ex}
+
+\subsection{Séries convergentes, séries divergentes}
+
+\begin{defi}[Série convergente, série divergente]
+À toute suite \(\paren{x_n}_{n\in\N}\in\K^\N\) on associe une série notée \[\sum x_n\qquad\text{ou}\qquad\sum_nx_n\qquad\text{ou}\qquad\sum_{n\geq0}x_n\] et appelée série de terme général \(x_n\).
+
+La suite \(\paren{S_n}_n\) des sommes partielles de la série \(\sum_nx_n\) est définie par : \[\quantifs{\forall n\in\N}S_n=\sum_{k=0}^nx_k.\]
+
+On dit que la série \(\sum_nx_n\) converge ou est convergente si la suite \(\paren{S_n}_n\) de ses sommes partielles est convergente.
+
+On définit alors la somme de la série \(\sum_nx_n\) par : \[\sum_{n=0}^{\pinf}x_n=\lim_{N\to\pinf}\sum_{n=0}^Nx_n.\]
+
+Sinon, on dit que la série \(\sum_nx_n\) diverge ou est divergente.
+
+Déterminer la nature d'une série ou étudier sa convergence, c'est décider si elle est convergente ou divergente.
+\end{defi}
+
+\begin{rem}
+(Mêmes notations)
+
+La série \(\sum_nx_n\) est toujours définie ; sa somme \(\sum_{n=0}^{\pinf}x_n\) n'est définie que si la série est convergente.
+\end{rem}
+
+\begin{rem}
+En pratique, la suite \(\paren{x_n}_n\) n'est pas toujours définie à partir du rang \(n=0\).
+
+Si la suite \(\paren{x_n}_{n\in\interventierie{n_0}{\pinf}}\in\K^{\interventierie{n_0}{\pinf}}\) est définie à partir d'un certain rang \(n_0\in\N\), on lui associe la série notée \[\sum x_n\qquad\text{ou}\qquad\sum_nx_n\qquad\text{ou}\qquad\sum_{n\geq n_0}x_n\] dont la suite \(\paren{S_n}_{n\geq n_0}\) des sommes partielles est définie par : \[\quantifs{\forall n\in\interventierie{n_0}{\pinf}}S_n=\sum_{k=n_0}^nx_k.\]
+
+On dit que la série \(\sum_{n\geq n_0}x_n\) converge ou est convergente si la suite \(\paren{S_n}_n\) de ses sommes partielles est convergente.
+
+On définit alors la somme de la série \(\sum_{n\geq n_0}x_n\) par : \[\sum_{n=n_0}^{\pinf}x_n=\lim_{N\to\pinf}\sum_{n=n_0}^Nx_n.\]
+
+Dans la suite du cours, on suppose que la suite \(\paren{x_n}_n\) est définie à partir de \(n=0\) pour simplifier l'exposé.
+\end{rem}
+
+\begin{rem}[Tronquer une série]\thlabel{rem:tronquerUneSérie}
+Soient \(\sum_{n\geq0}x_n\) une série et \(n_0\in\N\).
+
+Les séries \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq n_0}x_n\) sont de même nature (on dit qu'\guillemets{on ne change pas la nature d'une série en la tronquant}).
+
+Si elles convergent, leurs sommes respectives vérifient : \[\sum_{n=0}^{\pinf}x_n=\sum_{n=0}^{n_0-1}x_n+\sum_{n=n_0}^{\pinf}x_n.\]
+\end{rem}
+
+\begin{dem}
+On note \(\paren{S_n}_n\) et \(\paren{S_n\prim}_n\) les suites des sommes partielles respectives des séries \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq n_0}x_n\).
+
+On a : \[\quantifs{\forall n\geq n_0}S_n=\sum_{k=0}^nx_k=\sum_{k=0}^{n_0-1}x_k+S_n\prim.\]
+
+Donc : \[\paren{S_n}_n\text{ converge}\ssi\paren{S_n\prim}_n\text{ converge}.\]
+
+D'où : \[\sum_{n\geq0}x_n\text{ converge}\ssi\sum_{n\geq n_0}x_n\text{ converge}\] et, en cas de convergence, \(\lim_nS_n=\sum_{k=0}^{n_0-1}x_k+\lim_nS_n\prim\), \cad : \[\sum_{n=0}^{\pinf}x_n=\sum_{n=0}^{n_0-1}x_n+\sum_{n=n_0}^{\pinf}x_n.\]
+\end{dem}
+
+\begin{defprop}[Restes d'une série convergente]
+Soit \(\sum_{n\geq0}x_n\) une série convergente.
+
+On définit la suite \(\paren{R_n}_{n\in\N}\) des restes de cette série : \[\quantifs{\forall n\in\N}R_n=\sum_{k=n+1}^{\pinf}x_k.\]
+
+Celle-ci vérifie : \[\quantifs{\forall n\in\N}S_n+R_n=\sum_{k=0}^{\pinf}x_k\] et : \[\lim_{n\to\pinf}R_n=0.\]
+\end{defprop}
+
+\begin{dem}
+Pour tout \(n\in\N\), \(R_n\) est bien défini car la série \(\sum_nx_n\) converge.
+
+D'après la \thref{rem:tronquerUneSérie}, on a bien : \[\quantifs{\forall n\in\N}S_n+R_n=\sum_{k=0}^{\pinf}x_k.\]
+
+D'où : \[\begin{aligned}
+\quantifs{\forall n\in\N}R_n&=\sum_{k=0}^{\pinf}-S_n \\
+&\tendqd{n\to\pinf}\sum_{k=0}^{\pinf}x_k-\sum_{k=0}^{\pinf}x_k \\
+&=0.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}[Linéarité de la somme d'une série]
+Soient \(\lambda,\mu\in\K\) et \(\paren{x_n}_n,\paren{y_n}_n\in\K^\N\).
+
+Si les séries \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq0}y_n\) sont convergentes alors la série \(\sum_{n\geq0}\paren{\lambda x_n+\mu y_n}\) l'est aussi et sa somme est : \[\sum_{n=0}^{\pinf}\paren{\lambda x_n+\mu y_n}=\lambda\sum_{n=0}^{\pinf}x_n+\mu\sum_{n=0}^{\pinf}y_n.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{rem}
+\begin{itemize}
+    \item La somme de deux séries convergentes est une série convergente. \\
+    \item La somme d'une série convergente et d'une série divergente est une série divergente. \\
+    \item Dans le cas de la somme de deux séries divergentes, on ne peut pas conclure a priori.
+\end{itemize}
+\end{rem}
