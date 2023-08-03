@@ -522,6 +522,7 @@ per-mode=power-positive-first
 \DeclareDocumentCommand{\sym}{m O{\K}}{\mathscr{S}_{#1}\paren{#2}}
 \DeclareDocumentCommand{\antisym}{m O{\K}}{\mathscr{A}_{#1}\paren{#2}}
 \DeclareDocumentCommand{\GL}{m O{\K}}{\operatorname{GL}_{#1}\paren{#2}}
+\DeclareDocumentCommand{\SL}{m O{\K}}{\operatorname{SL}_{#1}\paren{#2}}
 \DeclareDocumentCommand{\Mat}{O{\fami{B}} m}{\operatorname{Mat}_{#1}\paren{#2}}
 \newcommand{\pass}[2]{\mathscr{P}_{#1\to#2}}
 
@@ -620,7 +621,7 @@ per-mode=power-positive-first
 
 \usepackage{mathdots}
 
-\newcommand{\detb}[1]{{\det}_{#1}}
+\DeclareDocumentCommand{\detb}{O{\fami{B}}}{{\det}_{#1}}
 
 \usepackage{cancel}
 
@@ -668,6 +669,8 @@ per-mode=power-positive-first
 
 \setcounter{MaxMatrixCols}{200}
 
+\newcommand{\Com}[1]{\operatorname{Com}#1}
+
 \begin{document}
 \renewcommand{\labelitemi}{\(\bullet\)}
 \renewcommand{\labelenumi}{(\arabic{enumi})}
@@ -681,7 +684,7 @@ Ce document réunit l'ensemble de mes cours de Mathématiques de MP2I, ainsi que
 
 Les éléments des tables des matières initiale et présentes au début de chaque chapitre sont cliquables (amenant directement à la partie cliquée). C'est également le cas des références à des éléments antérieurs de la forme, par exemple, \guillemets{Démonstration 5.22}.
 
-Dernier chapitre terminé : Chapitre 23 -- Probabilités (trou de 19 à 20).
+Dernier chapitre terminé : Chapitre 23 -- Probabilités (20 manquant).
 
 Dernier TD terminé : Chapitre 23 -- Probabilités.
 

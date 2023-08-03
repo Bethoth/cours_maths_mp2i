@@ -2,4 +2,1126 @@
 
 \minitoc
 
-\note{À VENIR}
+On considère un corps \(\K\) (en pratique, \(\K=\R\) ou \(\C\)).
+
+\section{Multilinéarité}
+
+\subsection{Formes multilinéaires}
+
+\begin{defi}[Application multilinéaire]
+Soient \(E_1,\dots,E_r,F\) des \(\K\)-espaces vectoriels où \(r\in\Ns\) et une fonction \[\fonction{f}{E_1\times\dots\times E_r}{F}{\paren{x_1,\dots,x_r}}{f\paren{x_1,\dots,x_r}}\]
+
+On dit que \(f\) est une fonction multilinéaire (ou, plus précisément, est \(r\)-linéaire) si elle est linéaire par rapport à chacune de ses \(r\) variables, \cad si l'on a : \[\begin{aligned}
+&\quantifs{\forall j\in\interventierii{1}{r};\forall\lambda,\mu\in\K;\forall\paren{x_1,\dots,x_r}\in E_1\times\dots\times E_r;\forall y_j\in E_j} \\
+&f\paren{x_1,\dots,x_{j-1},\lambda x_j+\mu y_j,x_{j+1},\dots,x_r}=\lambda f\paren{x_1,\dots,x_{j-1},x_j,x_{j+1},\dots,x_r}+\mu f\paren{x_1,\dots,x_{j-1},y_j,x_{j+1},\dots,x_r}.
+\end{aligned}\]
+
+Si, de plus, \(F=\K\) alors on dit que \(f\) est une forme \(r\)-linéaire.
+\end{defi}
+
+\begin{rem}
+Soient \(E_1,\dots,E_r,F\) des \(\K\)-espaces vectoriels où \(r\in\Ns\) et une fonction \(r\)-linéaire \[f:E_1\times\dots\times E_r\to F.\]
+
+\begin{itemize}
+    \item On a : \[\quantifs{\forall\paren{x_1,\dots,x_r}\in E_1\times\dots\times E_r}\paren{\quantifs{\exists i\in\interventierii{1}{r}}x_i=0_{E_i}}\imp f\paren{x_1,\dots,x_r}=0_F.\] En français : \guillemets{Si (au moins) l'un des \(x_i\) est nul alors \(f\paren{x_1,\dots,x_r}\) est nul.} \\
+    \item On a : \[\quantifs{\forall\lambda\in\K;\forall\paren{x_1,\dots,x_r}\in E_1\times\dots\times E_r}f\paren{\lambda x_1,\dots,\lambda x_r}=\lambda^rf\paren{x_1,\dots,x_r}.\] En particulier, une application \(r\)-linéaire avec \(r\geq2\) n'est pas linéaire.
+\end{itemize}
+\end{rem}
+
+\begin{ex}
+Les applications suivantes sont multilinéaires :
+
+\begin{itemize}
+    \item Toute application linéaire est \(1\)-linéaire. \\
+    \item Le produit matriciel et la composition des applications linéaires sont \(2\)-linéaires (on dit aussi bilinéaires). Par exemple, si \(n\in\Ns\) et \(E\) est un espace vectoriel : \[\fonctionlambda{\M{n}\times\M{n}}{\M{n}}{\paren{A,B}}{A\times B}\qquad\text{et}\qquad\fonctionlambda{\Lendo{E}\times\Lendo{E}}{\Lendo{E}}{\paren{u,v}}{u\rond v}\] sont bilinéaires. \\
+    \item L'application \[\fonctionlambda{\M{n}^3}{\M{n}}{\paren{A,B,C}}{A\times B\times C}\] est \(3\)-linéaire (on dit aussi trilinéaire).
+\end{itemize}
+\end{ex}
+
+\subsection{Formes multilinéaires alternées}
+
+\begin{defi}[Forme multilinéaire alternée]
+Soient \(r\in\Ns\), \(E\) un \(\K\)-espace vectoriel et une forme \(r\)-linéaire \[\fonction{f}{E^r}{\K}{\paren{x_1,\dots,x_r}}{f\paren{x_1,\dots,x_r}}\]
+
+On dit que \(f\) est une forme multilinéaire alternée si l'on a : \[\quantifs{\forall\paren{x_1,\dots,x_r}\in E^r}\paren{\quantifs{\exists i,j\in\interventierii{1}{r}}i\not=j\quad\text{et}\quad x_i=x_j}\imp f\paren{x_1,\dots,x_r}=0.\]
+
+En français : \guillemets{\(f\paren{x_1,\dots,x_r}\) est nul s'il existe (au moins) deux vecteurs égaux parmi \(x_1,\dots,x_r\).}
+\end{defi}
+
+\begin{prop}
+Soient \(E\) un \(\K\)-espace vectoriel, \(r\in\interventierie{2}{\pinf}\), \(f:E^r\to\K\) une forme \(r\)-linéaire alternée et \(i,j\in\interventierii{1}{r}\) tels que \(i<j\).
+
+On a : \[\quantifs{\forall\paren{x_1,\dots,x_r}\in E^r}f\paren{x_1,\dots,x_{i-1},x_j,x_{i+1},\dots,x_{j-1},x_i,x_{j+1},\dots,x_r}=-f\paren{x_1,\dots,x_r}.\]
+\end{prop}
+
+\begin{dem}
+Soient \(x_1,\dots,x_r\in E\).
+
+On pose \(\fonction{g}{E^2}{\K}{\paren{x,y}}{f\paren{x_1,\dots,x_{i-1},x,x_{i+1},\dots,x_{j-1},y,x_{j+1},\dots,x_r}}\)
+
+Montrons que \(g\paren{x_j,x_i}=-g\paren{x_i,x_j}\).
+
+Comme \(g\) est une forme bilinéaire alternée, on a : \[\underbrace{g\paren{x_i+x_j,x_i+x_j}}_{=0}=\underbrace{g\paren{x_i,x_i}}_{=0}+g\paren{x_i,x_j}+g\paren{x_j,x_i}+\underbrace{g\paren{x_j,x_j}}_{=0}.\]
+
+D'où le résultat.
+\end{dem}
+
+\begin{cor}
+Soient \(E\) un \(\K\)-espace vectoriel, \(r\in\Ns\) et \(f:E^r\to\K\) une forme \(r\)-linéaire alternée.
+
+On a : \[\quantifs{\forall\sigma\in\S{n};\forall\paren{x_1,\dots,x_r}\in E^r}f\paren{x_{\sigma\paren{1}},\dots,x_{\sigma\paren{x_r}}}=\epsilon\paren{\sigma}f\paren{x_1,\dots,x_r}.\]
+\end{cor}
+
+\begin{prop}\thlabel{prop:l'ImageD'UneFamilleLiéeParUneFormeMultilinéaireAlternéeEstNulle}
+Soient \(E\) un \(\K\)-espace vectoriel, \(r\in\Ns\), \(f:E^r\to\K\) une forme \(r\)-linéaire alternée et \(\paren{x_1,\dots,x_r}\in E^r\) une famille liée.
+
+On a : \[f\paren{x_1,\dots,x_r}=0.\]
+\end{prop}
+
+\begin{dem}
+Comme \(\paren{x_1,\dots,x_r}\) est liée, il existe \(i\in\interventierii{1}{r}\) tel que \(x_i\in\Vect{x_1,\dots,x_{i-1},x_{i+1},\dots,x_r}\).
+
+Quitte à permuter les vecteurs \(x_1,\dots,x_r\), on peut supposer \(i=1\).
+
+Soient \(\lambda_2,\dots,\lambda_r\in\K\) tels que \(x_1=\lambda_2x_2+\dots+\lambda_rx_r\).
+
+On a : \[\begin{WithArrows}
+f\paren{x_1,\dots,x_r}&=f\paren{\lambda_2x_2+\dots+\lambda_rx_r,x_2,\dots,x_r} \Arrow{car \(f\) est \(r\)-linéaire} \\
+&=\sum_{k=2}^r\lambda_kf\paren{x_k,x_2,\dots,x_r} \Arrow{car \(f\) est alternée} \\
+&=0.
+\end{WithArrows}\]
+\end{dem}
+
+\section{Déterminant d'une famille de vecteurs dans une base}
+
+Soit \(n\in\Ns\).
+
+On s'intéresse désormais aux formes \(n\)-linéaires sur un espace vectoriel de dimension finie \(n\).
+
+\begin{lem}[Calcul d'une forme \(n\)-linéaire en dimension \(n\)]\thlabel{lem:calculFormeN-LinéaireEnDimensionN}
+Soient \(E\) un espace vectoriel de dimension \(n\), \(f:E^n\to\K\) une forme \(n\)-linéaire alternée, \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\) et \(\paren{x_1,\dots,x_n}\in E^n\).
+
+On considère la matrice de cette famille dans la base \(\fami{B}\) : \[\Mat{x_1,\dots,x_n}=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}.\]
+
+On a : \[\begin{aligned}
+f\paren{x_1,\dots,x_n}&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}f\paren{e_1,\dots,e_n} \\
+&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}f\paren{e_1,\dots,e_n}.
+\end{aligned}\]
+\end{lem}
+
+\begin{dem}
+On a : \[\quantifs{\forall j\in\interventierii{1}{n}}x_j=\sum_{i=1}^na_{ij}e_i.\]
+
+Donc, comme \(f\) est une forme \(n\)-linéaire, on a : \[\begin{WithArrows}
+f\paren{x_1,\dots,x_n}&=f\paren{\sum_{i_1=1}^na_{i_11}e_{i_1},\dots,\sum_{i_n=1}^na_{i_nn}e_{i_n}} \\
+&=\underbrace{\sum_{i_1=1}^n\dots\sum_{i_n=1}^n}_{n^n\text{ termes}}a_{i_11}\dots a_{i_nn}f\paren{e_{i_1},\dots,e_{i_n}} \\
+&=\underbrace{\sum_{\alpha\in\F{\interventierii{1}{n}}{\interventierii{1}{n}}}}_{\star}a_{\alpha\paren{1}1}\dots a_{\alpha\paren{n}n}f\paren{e_{\alpha\paren{1}},\dots,e_{\alpha\paren{n}}} \\
+&=\sum_{\sigma\in\S{n}}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}f\paren{e_{\sigma\paren{1}},\dots,e_{\sigma\paren{n}}} \Arrow{car \(f\) est alternée} \\
+&=\sum_{\sigma\in\S{n}}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}\epsilon\paren{\sigma}f\paren{e_1,\dots,e_n}.
+\end{WithArrows}\]
+
+\(\star\) : \(n^n\) termes dont beaucoup sont nuls : tous ceux pour lesquels \(\alpha\) n'est pas injective et donc pas bijective, car \(f\) est alternée.
+\end{dem}
+
+\begin{deftheo}[Déterminant d'une famille de vecteurs dans une base]
+Soient \(E\) un espace vectoriel de dimension \(n\) et \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+Il existe une unique forme \(n\)-linéaire alternée \(\detb:E^n\to\K\) telle que \[\detb\paren{e_1,\dots,e_n}=1.\]
+
+On l'appelle le déterminant dans la base \(\fami{B}\).
+\end{deftheo}
+
+\begin{dem}
+\note{Existence non-exigible}
+
+\analyse (unicité)
+
+Soit \(f:E^n\to\K\) une forme \(n\)-linéaire alternée telle que \[\detb\paren{e_1,\dots,e_n}=1.\]
+
+Selon le \thref{lem:calculFormeN-LinéaireEnDimensionN}, l'image de toute famille \(\paren{x_1,\dots,x_n}\in E^n\) de matrice \[\Mat{x_1,\dots,x_n}=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\] dans la base \(\fami{B}\) est : \[f\paren{x_1,\dots,x_n}=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}.\]
+
+\synthese (existence)
+
+Considérons la fonction \(f:E^n\to\K\) qui envoie toute famille \(\paren{x_1,\dots,x_n}\in E^n\) de matrice \[\Mat{x_1,\dots,x_n}=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\] dans la base \(\fami{B}\) sur : \[\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}.\]
+
+Alors \(f\) est clairement une forme \(n\)-linéaire sur \(E\).
+
+Montrons qu'elle est alternée.
+
+Soit une famille \(\paren{x_1,\dots,x_n}\in E^n\) de matrice dans la base \(\fami{B}\) : \[\Mat{x_1,\dots,x_n}=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}.\]
+
+On suppose qu'il existe \(k,l\in\interventierii{1}{n}\) tels que \(k<l\) et \(x_k=x_l\).
+
+On a donc : \[\quantifs{\forall i\in\interventierii{1}{n}}a_{ik}=a_{il}.\]
+
+Donc, en posant \(\tau=\cycle{k;l}\), on a : \[\quantifs{\forall\sigma\in\S{n}}a_{1\sigma\paren{1}}\dots a_{k\sigma\paren{k}}\dots a_{l\sigma\paren{l}}\dots a_{n\sigma\paren{n}}=a_{1\,\sigma\tau\paren{1}}\dots a_{k\,\sigma\tau\paren{k}}\dots a_{l\,\sigma\tau\paren{l}}\dots a_{n\,\sigma\tau\paren{n}}.\]
+
+Or, le groupe symétrique s'écrit comme une réunion disjointe : \[\S{n}=\underbrace{\frakA{n}}_{\substack{\text{permutations} \\ \text{paires}}}\union\underbrace{\frakA{n}\tau}_{\substack{\text{permutations} \\ \text{impaires}}}.\]
+
+D'où : \[\begin{aligned}
+f\paren{x_1,\dots,x_n}&=\sum_{\sigma\in\frakA{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}+\sum_{\sigma\in\frakA{n}}\epsilon\paren{\sigma\tau}a_{1\,\sigma\tau\paren{1}}\dots a_{n\,\sigma\tau\paren{n}} \\
+&=\sum_{\sigma\in\frakA{n}}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}-\sum_{\sigma\in\frakA{n}}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}} \\
+&=0.
+\end{aligned}\]
+
+Donc \(f\) est une forme \(n\)-linéaire alternée.
+
+Enfin, il est clair que \(f\paren{\fami{B}}=1\), d'où l'existence.
+\end{dem}
+
+\begin{prop}\thlabel{prop:formuleDéterminantDansUneBase}
+Soient \(E\) un espace vectoriel de dimension \(n\), \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\) et \(\paren{x_1,\dots,x_n}\in E^n\).
+
+On considère la matrice de cette famille dans la base \(\fami{B}\) : \[\Mat{x_1,\dots,x_n}=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}.\]
+
+On a : \[\detb\paren{x_1,\dots,x_n}=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}.\]
+\end{prop}
+
+\begin{exoex}
+Soient \(a,b,c,d,e,f,g,h,i\in\K\).
+
+\begin{enumerate}
+    \item On note \(\fami{B}_0\) la base canonique de \(\K^2\). Calculer : \[\detb[\fami{B}_0]\paren{\dcoords{a}{b},\dcoords{c}{d}}.\]
+    \item On note \(\fami{B}_0\) la base canonique de \(\K^3\). Calculer : \[\detb[\fami{B}_0]\paren{\tcoords{a}{b}{c},\tcoords{d}{e}{f},\tcoords{g}{h}{i}}.\]
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a \(\S{2}=\accol{\id{};\cycle{1;2}}\) donc : \[\detb[\fami{B}_0]\paren{\dcoords{a}{b},\dcoords{c}{d}}=ad-bc.\]
+\end{corr}
+
+\begin{corr}[2]
+On a \(\S{3}=\accol{\id{};\cycle{1;2};\cycle{1;3};\cycle{2;3};\cycle{1;2;3};\cycle{3;2;1}}\) donc : \[\detb[\fami{B}_0]\paren{\tcoords{a}{b}{c},\tcoords{d}{e}{f},\tcoords{g}{h}{i}}=aei-bdi-ceg-afh+bfg+cdh.\]
+\end{corr}
+
+\begin{prop}\thlabel{prop:formeMultilinéaireAlternéeProportionnelleAuDéterminantDansUneBase}
+Soient \(E\) un espace vectoriel de dimension \(n\), \(\fami{B}\) une base de \(E\) et \(f:E^n\to\K\) une forme \(n\)-linéaire alternée.
+
+On a : \[\quantifs{\exists\lambda\in\K}f=\lambda\detb.\]
+\end{prop}
+
+\begin{dem}
+Découle du \thref{lem:calculFormeN-LinéaireEnDimensionN} et de la \thref{prop:formuleDéterminantDansUneBase}.
+\end{dem}
+
+\begin{rem}
+Soient \(E\) un espace vectoriel de dimension \(n\) et \(\fami{B}\) une base de \(E\).
+
+On pourrait montrer\footnote{C'est très facile mais le programme se limite à la proposition précédente.} que l'ensemble des formes \(n\)-linéaires alternées sur \(E\) est un espace vectoriel, de base \(\paren{\detb}\).
+
+En particulier, cet espace vectoriel est de dimension \(1\).
+\end{rem}
+
+\begin{prop}[Changement de base]
+Soient \(E\) un espace vectoriel de dimension \(n\) et \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\).
+
+On a : \[\detb[\fami{B}\prim]=\detb[\fami{B}\prim]\paren{\fami{B}}\detb,\] \cad : \[\quantifs{\forall x_1,\dots,x_n\in E}\detb[\fami{B}\prim]\paren{x_1,\dots,x_n}=\detb[\fami{B}\prim]\paren{\fami{B}}\detb\paren{x_1,\dots,x_n}.\]
+\end{prop}
+
+\begin{dem}
+Comme \(\detb[\fami{B}\prim]\) est une forme \(n\)-linéaire alternée sur \(E\), selon la \thref{prop:formeMultilinéaireAlternéeProportionnelleAuDéterminantDansUneBase}, il existe \(\lambda\in\K\) tel que \(\detb[\fami{B}\prim]=\lambda\detb\).
+
+D'où, en appliquant à \(\fami{B}\) : \[\detb[\fami{B}\prim]\paren{\fami{B}}=\lambda\detb\paren{\fami{B}}=\lambda.\]
+
+D'où : \[\detb[\fami{B}\prim]=\detb[\fami{B}\prim]\paren{\fami{B}}\detb.\]
+\end{dem}
+
+\begin{ex}
+Si \(\fami{B}=\paren{e_1,\dots,e_n}\) et \(\fami{B}\prim=\paren{2e_1,\dots,2e_n}\) alors : \[\detb[\fami{B}\prim]\fami{B}=\detb[\fami{B}\prim]\paren{e_1,\dots,e_n}=\dfrac{1}{2^n}\detb[\fami{B}\prim]\paren{2e_1,\dots,2e_n}=\dfrac{1}{2^n}\] et : \[\detb[\fami{B}\prim]=\dfrac{1}{2^n}\detb.\]
+\end{ex}
+
+\begin{prop}[Caractérisation des bases]\thlabel{prop:caractérisationDesBases}
+Soient \(E\) un espace vectoriel de dimension \(n\), \(\fami{B}\) une base de \(E\) et \(x_1,\dots,x_n\in E\).
+
+On a : \[\paren{x_1,\dots,x_n}\text{ est une base de }E\ssi\detb\paren{x_1,\dots,x_n}\not=0.\]
+\end{prop}
+
+\begin{dem}
+\imprec Par contraposée :
+
+Supposons que \(\paren{x_1,\dots,x_n}\) n'est pas une base de \(E\).
+
+Comme \(\dim E=n\) et \(\paren{x_1,\dots,x_n}\) possède \(n\) vecteurs, \(\paren{x_1,\dots,x_n}\) est liée.
+
+Donc \(\detb\paren{x_1,\dots,x_n}=0\) selon la \thref{prop:l'ImageD'UneFamilleLiéeParUneFormeMultilinéaireAlternéeEstNulle}.
+
+\impdir
+
+Supposons que \(\fami{B}\prim=\paren{x_1,\dots,x_n}\) est une base de \(E\).
+
+On a \(\detb=\detb\paren{\fami{B}\prim}\detb[\fami{B}\prim]\) donc en appliquant à \(\fami{B}\) : \[1=\detb\paren{\fami{B}\prim}\times\detb[\fami{B}\prim]\paren{\fami{B}}.\]
+
+Donc \(\detb\paren{\fami{B}\prim}\not=0\).
+\end{dem}
+
+\section{Déterminant d'un endomorphisme}
+
+Soit \(n\in\Ns\).
+
+\subsection{Définition}
+
+\begin{deftheo}[Déterminant d'un endomorphisme]\thlabel{deftheo:déterminantD'UnEndomorphisme}
+Soient \(E\) un espace vectoriel de dimension \(n\) et \(u\in\Lendo{E}\).
+
+Il existe un unique scalaire \(\lambda\in\K\) tel que : \[\quantifs{\forall\fami{B}\text{ base de }E;\forall x_1,\dots,x_n\in E}\detb\paren{u\paren{x_1},\dots,u\paren{x_n}}=\lambda\detb\paren{x_1,\dots,x_n}.\]
+
+Ce scalaire \(\lambda\) est appelé déterminant de \(u\) et est noté \(\det u\).
+\end{deftheo}
+
+\begin{dem}
+Soit \(\fami{B}\) une base de \(E\).
+
+On pose \(\fonction{f}{E^n}{\K}{\paren{x_1,\dots,x_n}}{\detb\paren{u\paren{x_1},\dots,u\paren{x_n}}}\) une forme \(n\)-linéaire alternée.
+
+Selon la \thref{prop:formeMultilinéaireAlternéeProportionnelleAuDéterminantDansUneBase}, il existe \(\lambda\in\K\) tel que : \[\quantifs{\forall x_1,\dots,x_n\in E}f\paren{x_1,\dots,x_n}=\lambda\detb\paren{x_1,\dots,x_n}.\]
+
+Soit \(\fami{B}\prim\) une autre base de \(E\).
+
+On a : \[\quantifs{\forall x_1,\dots,x_n\in E}\detb\paren{u\paren{x_1},\dots,u\paren{x_n}}=\lambda\detb\paren{x_1,\dots,x_n}.\]
+
+Donc : \[\quantifs{\forall x_1,\dots,x_n\in E}\detb[\fami{B}\prim]\paren{\fami{B}}\detb\paren{u\paren{x_1},\dots,u\paren{x_n}}=\lambda\detb[\fami{B}\prim]\paren{\fami{B}}\detb\paren{x_1,\dots,x_n}.\]
+
+Donc : \[\quantifs{\forall x_1,\dots,x_n\in E}\detb[\fami{B}\prim]\paren{u\paren{x_1},\dots,u\paren{x_n}}=\lambda\detb[\fami{B}\prim]\paren{x_1,\dots,x_n}.\]
+
+Donc \(\lambda\) est indépendant du choix de la base.
+\end{dem}
+
+\begin{rem}\thlabel{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}
+Soient \(E\) un espace vectoriel de dimension \(n\), \(u\in\Lendo{E}\) et \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+On a : \[\det u=\detb\paren{u\paren{e_1},\dots,u\paren{e_n}}.\]
+\end{rem}
+
+\begin{dem}
+On a, par définition : \[\detb\paren{u\paren{e_1},\dots,u\paren{e_n}}=\det u\times\detb\paren{e_1,\dots,e_n}=\det u.\]
+\end{dem}
+
+\begin{ex}[Déterminant d'une homothétie]\thlabel{ex:déterminantD'UneHomothétie}
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+On a : \[\quantifs{\forall\lambda\in\K}\det\paren{\lambda\id{E}}=\lambda^n.\]
+\end{ex}
+
+\begin{dem}
+On applique la \thref{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}.
+
+Soit \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+On a : \[\begin{aligned}
+\det\paren{\lambda\id{E}}&=\detb\paren{\lambda\id{E}\paren{e_1},\dots,\lambda\id{E}\paren{e_n}} \\
+&=\detb\paren{\lambda e_1,\dots,\lambda e_n} \\
+&=\lambda^n\detb\paren{e_1,\dots,e_n} \\
+&=\lambda^n\detb\paren{\fami{B}} \\
+&=\lambda^n.
+\end{aligned}\]
+\end{dem}
+
+\subsection{Propriétés}
+
+\begin{prop}\thlabel{prop:déterminantD'UneComposéeD'EndomorphismesEstLeProduitDesDéterminantsDesEndomorphismes}
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+On a : \[\quantifs{\forall u,v\in\Lendo{E}}\det\paren{uv}=\det\paren{u}\det\paren{v}.\]
+\end{prop}
+
+\begin{dem}
+Soit \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+D'après la \thref{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}, on a : \[\begin{WithArrows}
+\det\paren{uv}&=\detb\paren{uv\paren{e_1},\dots,uv\paren{e_n}} \Arrow[tikz={text width=4.5cm}]{\thref{deftheo:déterminantD'UnEndomorphisme}} \\
+&=\paren{\det u}\detb\paren{v\paren{e_1},\dots,v\paren{e_n}} \Arrow{idem} \\
+&=\paren{\det u}\paren{\det v}\detb\paren{e_1,\dots,e_n} \\
+&=\det\paren{u}\det\paren{v}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{prop}
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+On a : \[\quantifs{\forall\lambda\in\K;\forall u\in\Lendo{E}}\det\paren{\lambda u}=\lambda^n\det u.\]
+\end{prop}
+
+\begin{dem}
+On a \(\lambda u=\paren{\lambda\id{E}}u\) donc selon la \thref{prop:déterminantD'UneComposéeD'EndomorphismesEstLeProduitDesDéterminantsDesEndomorphismes}, on a : \[\begin{WithArrows}
+\det\paren{\lambda u}&=\det\paren{\lambda\id{E}}\det u \Arrow{\thref{ex:déterminantD'UneHomothétie}} \\
+&=\lambda^n\det u.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{rem}
+Soient \(E\) un espace vectoriel de dimension \(n\) et \(u,v\in\Lendo{E}\).
+
+Il n'y a pas de formule exprimant \(\det\paren{u+v}\) en fonction de \(\det u\) et \(\det v\).
+\end{rem}
+
+\begin{prop}\thlabel{prop:unEndomorphismeEstUnAutomorphismeSsiSonDéterminantEstNonNul}
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+On a : \[\quantifs{\forall u\in\Lendo{E}}u\in\GL{}[E]\ssi\det u\not=0.\]
+\end{prop}
+
+\begin{dem}
+Soit \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+On a : \[\begin{WithArrows}
+u\in\GL{}[E]&\ssi\paren{u\paren{e_1},\dots,u\paren{e_n}}\text{ est une base de }E \Arrow{\thref{prop:caractérisationDesBases}} \\
+&\ssi\detb\paren{u\paren{e_1},\dots,u\paren{e_n}}\not=0 \Arrow{\thref{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}} \\
+&\ssi\det u\not=0.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{defprop}[Groupe spécial linéaire]
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+L'application \[\det:\GL{}[E]\to\K\excluant\accol{0}\] est un morphisme de groupes de \(\groupe{\GL{}[E]}[\rond]\) vers \(\groupe{\K\excluant\accol{0}}[\times]\).
+
+Son noyau est un sous-groupe de \(\groupe{\GL{}[E]}[\rond]\) appelé groupe spécial linéaire de \(E\) : \[\SL{}[E]=\accol{u\in\GL{}[E]\tq\det u=1}.\]
+\end{defprop}
+
+\begin{dem}
+L'application \(\det:\GL{}[E]\to\K\excluant\accol{0}\) est bien définie selon la \thref{prop:unEndomorphismeEstUnAutomorphismeSsiSonDéterminantEstNonNul} et c'est un morphisme de groupes selon la \thref{prop:déterminantD'UneComposéeD'EndomorphismesEstLeProduitDesDéterminantsDesEndomorphismes}.
+\end{dem}
+
+\begin{cor}
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+On a : \[\quantifs{\forall u\in\GL{}[E]}\det\paren{u\inv}=\dfrac{1}{\det u}.\]
+\end{cor}
+
+\section{Déterminant d'une matrice carrée}
+
+Soit \(n\in\Ns\).
+
+\subsection{Définition}
+
+\begin{defi}
+Soit une matrice \(A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}\).
+
+On appelle déterminant de \(A\) le déterminant de la famille des vecteurs-colonne de \(A\) dans la base canonique \(\fami{B}_0\) de \(\K^n\) : \[\begin{aligned}
+\det A=\begin{vmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{vmatrix}&=\detb[\fami{B}_0]\paren{\tcoords{a_{11}}{\vdots}{a_{n1}},\dots,\tcoords{a_{1n}}{\vdots}{a_{nn}}} \\
+&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}} \\
+&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}.
+\end{aligned}\]
+\end{defi}
+
+\begin{ex}
+Soit \(\lambda\in\K\).
+
+On a : \[\det\paren{\lambda I_n}=\lambda^n.\]
+\end{ex}
+
+\begin{ex}[Règles de Sarrus]
+Soient \(a,b,c,d,e,f,g,h,i\in\K\).
+
+\begin{itemize}
+    \item On a : \[\begin{vmatrix}
+        a & b \\
+        c & d
+    \end{vmatrix}=ad-bc.\]
+    \item On a : \[\begin{vmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i
+    \end{vmatrix}=aei+bfg+cdh-ceg-bdi-afh.\]
+\end{itemize}
+\end{ex}
+
+\begin{prop}[Conséquences immédiates de la définition]
+\begin{itemize}
+    \item Le déterminant d'une matrice carrée de taille \(n\) est une forme \(n\)-linéaire alternée par rapport aux colonnes de la matrice. \\
+    \item On a : \[\quantifs{\forall A\in\M{n}}\det\paren{\trans{A}}=\det A.\]~
+    \item Le déterminant d'une matrice carrée de taille \(n\) est une forme \(n\)-linéaire alternée par rapport aux lignes de la matrice.
+\end{itemize}
+\end{prop}
+
+\begin{rem}
+Attention à ne pas inventer de fausses formules pour calculer des déterminants de taille supérieures à \(4\).
+
+Par exemple, si \(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p\in\K\), on a : \[\begin{aligned}
+\begin{vmatrix}
+a & b & c & d \\
+e & f & g & h \\
+i & j & k & l \\
+m & n & o & p
+\end{vmatrix}&=\sum_{\sigma\in\S{4}}\dots \\
+&=afkp+cejp+bgip+dekn+bhkm+ahjo+agln+dfio+cflm+belo+chin+dgjm \\
+&\color{white}=\color{black}-bekp-cfip-dfkm-agjp-ahkn-aflo-dejo-dgin-bhio-chjm-bglm-celn.
+\end{aligned}\]
+\end{rem}
+
+\subsection{Lien avec les autres déterminants}
+
+\begin{prop}\thlabel{prop:déterminantMatriceEgalACeluiDeL'EndomorphismeCanoniquementAssocié}
+Soit \(A\in\M{n}\).
+
+Le déterminant de \(A\) est aussi le déterminant de l'endomorphisme \(u_A\in\Lendo{\K^n}\) canoniquement associé à \(A\).
+\end{prop}
+
+\begin{dem}
+On note \(\paren{C_1,\dots,C_n}\) la famille des vecteurs-colonne de \(A\) et \(\fami{B}_0=\paren{e_1,\dots,e_n}\) la base canonique de \(\K^n\).
+
+Selon la \thref{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}, on a : \[\begin{aligned}
+\det u_A&=\detb[\fami{B}_0]\paren{u_A\paren{e_1},\dots,u_A\paren{e_n}} \\
+&=\detb[\fami{B}_0]\paren{C_1,\dots,C_n} \\
+&=\det A.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}\thlabel{prop:leDéterminantD'UneFamilleDeVecteursDansBEstCeluiDeSaMatriceDansB}
+{\normalfont\bfseries (Le déterminant d'une famille de vecteurs dans \(\fami{B}\) est celui de sa matrice dans \(\fami{B}\))}
+
+Soient \(E\) un espace vectoriel de dimension \(n\), \(\fami{F}\in E^n\) et \(\fami{B}\) une base de \(E\).
+
+On a : \[\detb\paren{\fami{F}}=\det\Mat{\fami{F}}.\]
+\end{prop}
+
+\begin{dem}
+Découle de la \thref{prop:formuleDéterminantDansUneBase}.
+\end{dem}
+
+\begin{prop}
+{\normalfont\bfseries (Le déterminant d'un endomorphisme est celui de sa matrice dans n'importe quelle base)}
+
+Soient \(E\) un espace vectoriel de dimension \(n\), \(u\in\Lendo{E}\) et \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+On a : \[\det u=\det\Mat{u}.\]
+\end{prop}
+
+\begin{dem}
+D'après la \thref{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}, on a : \[\begin{WithArrows}
+\det u&=\detb\paren{u\paren{e_1},\dots,u\paren{e_n}} \Arrow{\thref{prop:leDéterminantD'UneFamilleDeVecteursDansBEstCeluiDeSaMatriceDansB}} \\
+&=\det\Mat{u\paren{e_1},\dots,u\paren{e_n}} \Arrow{par définition de \(\Mat{u}\)} \\
+&=\det\Mat{u}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{exoex}
+Calculer le déterminant de l'endomorphisme \[\fonction{u}{\polydeg[\R]{2}}{\polydeg[\R]{2}}{P}{XP\prim}\]
+\end{exoex}
+
+\begin{corr}
+On pose \(\fami{B}_0=\paren{1,X,X^2}\) la base canonique de \(\polydeg[\R]{2}\).
+
+On a : \[\Mat[\fami{B}_0]{u}=\begin{pmatrix}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 2
+\end{pmatrix}\] donc : \[\det u=\det\Mat[\fami{B}_0]{u}=0.\]
+\end{corr}
+
+\subsection{Propriétés}
+
+\begin{prop}\thlabel{prop:déterminantProduitDeMatriceEgalAuProduitDesDéterminants}
+On a : \[\quantifs{\forall A,B\in\M{n}}\det\paren{AB}=\det\paren{A}\det\paren{B}.\]
+\end{prop}
+
+\begin{dem}
+D'après la \thref{prop:déterminantMatriceEgalACeluiDeL'EndomorphismeCanoniquementAssocié}, on a : \[\begin{WithArrows}
+\det\paren{AB}&=\det u_{AB} \\
+&=\det\paren{u_Au_B} \Arrow{\thref{prop:déterminantD'UneComposéeD'EndomorphismesEstLeProduitDesDéterminantsDesEndomorphismes}} \\
+&=\det\paren{u_A}\det\paren{u_B} \Arrow{\thref{prop:déterminantMatriceEgalACeluiDeL'EndomorphismeCanoniquementAssocié}} \\
+&=\det\paren{A}\det\paren{B}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{prop}
+On a : \[\quantifs{\forall\lambda\in\K;\forall A\in\M{n}}\det\paren{\lambda A}=\lambda^n\det A.\]
+\end{prop}
+
+\begin{dem}
+On a : \[\begin{aligned}
+\det\paren{\lambda A}&=\det\paren{\lambda I_nA} \\
+&=\det\paren{\lambda I_n}\det\paren{A} \\
+&=\lambda^n\det A.
+\end{aligned}\]
+\end{dem}
+
+\begin{rem}
+Soient \(A,B\in\M{n}\).
+
+Il n'y a pas de formule exprimant \(\det\paren{A+B}\) en fonction de \(\det A\) et \(\det B\).
+
+Par exemple, si \(\lambda\in\K\excluant\accol{0}\) : \[\underbrace{\begin{pmatrix}
+\lambda & 0 \\
+0 & 0
+\end{pmatrix}}_{\det=0}+\underbrace{\begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}}_{\det=0}=\underbrace{\begin{pmatrix}
+\lambda & 0 \\
+0 & 1
+\end{pmatrix}}_{\det=\lambda}.\]
+\end{rem}
+
+\begin{prop}\thlabel{prop:matriceInversibleSsiDéterminantNonNul}
+On a : \[\quantifs{\forall A\in\M{n}}A\in\GL{n}\ssi\det A\not=0.\]
+\end{prop}
+
+\begin{dem}
+On a : \[\begin{aligned}
+A\in\GL{n}&\ssi u_A\in\GL{}[\K^n] \\
+&\ssi\det u_A\not=0 \\
+&\ssi\det A\not=0.
+\end{aligned}\]
+\end{dem}
+
+\begin{defprop}[Groupe spécial linéaire]
+L'application \[\det:\GL{n}\to\K\excluant\accol{0}\] est un morphisme de groupes de \(\groupe{\GL{n}}[\times]\) vers \(\groupe{\K\excluant\accol{0}}[\times]\).
+
+Son noyau est un sous-groupe de \(\groupe{\GL{n}}[\times]\) appelé groupe spécial linéaire d'ordre \(n\) : \[\SL{n}=\accol{A\in\GL{n}\tq\det A=1}.\]
+\end{defprop}
+
+\begin{dem}
+L'application \(\det:\GL{n}\to\K\excluant\accol{0}\) est bien définie d'après la \thref{prop:matriceInversibleSsiDéterminantNonNul} et c'est un morphisme de groupes d'après la \thref{prop:déterminantProduitDeMatriceEgalAuProduitDesDéterminants}.
+\end{dem}
+
+\begin{cor}
+On a : \[\quantifs{\forall A\in\GL{n}}\det\paren{A\inv}=\dfrac{1}{\det A}.\]
+\end{cor}
+
+\begin{rem}
+Deux matrices semblables ont même déterminant.
+\end{rem}
+
+\begin{dem}
+Soient \(A,B\in\M{n}\) deux matrices semblables et \(P\in\GL{n}\) telle que \(B=PAP\inv\).
+
+On a : \[\begin{aligned}
+\det B&=\det\paren{PAP\inv} \\
+&=\det\paren{P}\det\paren{A}\det\paren{P\inv} \\
+&=\det A.
+\end{aligned}\]
+\end{dem}
+
+\subsection{Calculs}
+
+\subsubsection{Opérations sur les lignes et les colonnes d'un déterminant}
+
+Effet des opérations élémentaires sur une matrice \(A\in\M{n}\) :
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+opération sur la matrice & effet sur son déterminant \\
+\hline
+\(C_i\gets\lambda C_i\) & multiplié par \(\lambda\) \\
+\hline
+\(C_i\echange C_j\) (où \(i\not=j\)) & multiplié par \(-1\) \\
+\hline
+\(C_i\gets C_i+C_j\) (où \(i\not=j\)) & inchangé \\
+\hline
+\end{tabular}
+\end{center}
+
+Plus généralement :
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+opération sur la matrice & effet sur son déterminant \\
+\hline
+\(C_i\gets\sum_{j=1}^n\lambda_jC_j\) & multiplié par \(\lambda_i\) \\
+\hline
+\(\quantifs{\forall i\in\interventierii{1}{n}}C_i\gets C_{\sigma\paren{i}}\) (où \(\sigma\in\S{n}\)) & multiplié par \(\epsilon\paren{\sigma}\) \\
+\hline
+\end{tabular}
+\end{center}
+
+Idem pour les lignes.
+
+\begin{exoex}
+Calculer les déterminants suivants en se ramenant à des déterminants triangulaires (\cf \hyperref[subsubsec:déterminantsTriangulaires]{plus loin}) : \[\begin{vmatrix}
+1 & 1 & 1 & 1 \\
+2 & 9 & 2 & 2 \\
+2 & 2 & 3 & 2 \\
+2 & 2 & 2 & 3
+\end{vmatrix}\qquad\text{et}\qquad\begin{vmatrix}
+9 & 1 & 1 & 2 \\
+1 & 1 & 0 & 1 \\
+1 & 0 & 1 & 1 \\
+2 & 1 & 1 & 13
+\end{vmatrix}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\begin{aligned}
+\begin{vmatrix}
+1 & 1 & 1 & 1 \\
+2 & 9 & 2 & 2 \\
+2 & 2 & 3 & 2 \\
+2 & 2 & 2 & 3
+\end{vmatrix}&=2\begin{vNiceMatrix}[last-col]
+0 & -7 & 0 & 0 & L_1\gets2L_1-L_2 \\
+2 & 9 & 2 & 2 & \\
+0 & -7 & 1 & 0 & L_3\gets L_3-L_2 \\
+0 & -7 & 0 & 1 & L_4\gets L_4-L_2
+\end{vNiceMatrix} \\
+&=2\begin{vNiceMatrix}[last-col]
+0 & -7 & 0 & 0 & C_2\gets C_2+7C_3+7C_4 \\
+2 & 37 & 2 & 2 & \\
+0 & 0 & 1 & 0 & \\
+0 & 0 & 0 & 1 &
+\end{vNiceMatrix} \\
+&=2\begin{vNiceMatrix}[last-col]
+0 & -7 & 0 & 0 & \\
+2 & 37 & 0 & 0 & L_2\gets L_2-2L_3-2L_4 \\
+0 & 0 & 1 & 0 & \\
+0 & 0 & 0 & 1 &
+\end{vNiceMatrix} \\
+&=\begin{vNiceMatrix}[last-col]
+\frac{7}{37} & -7 & 0 & 0 & C_1\gets\dfrac{1}{2}C_1-\dfrac{1}{37}C_2 \\
+0 & 37 & 0 & 0 & \\
+0 & 0 & 1 & 0 & \\
+0 & 0 & 0 & 1 &
+\end{vNiceMatrix} \\
+&=7
+\end{aligned}\] et : \[\begin{aligned}
+\begin{vmatrix}
+9 & 1 & 1 & 2 \\
+1 & 1 & 0 & 1 \\
+1 & 0 & 1 & 1 \\
+2 & 1 & 1 & 13
+\end{vmatrix}&=\begin{vNiceMatrix}[last-col]
+7 & 1 & 1 & 2 & C_1\gets C_1-C_2-C_3 \\
+0 & 1 & 0 & 1 & \\
+0 & 0 & 1 & 1 & \\
+0 & 1 & 1 & 13
+\end{vNiceMatrix} \\
+&=\begin{vNiceMatrix}[last-col]
+7 & 1 & 1 & 2 & \\
+0 & 1 & 0 & 1 & \\
+0 & 0 & 1 & 1 & \\
+0 & 0 & 0 & 11 & L_4\gets L_4-L_2-L_3
+\end{vNiceMatrix} \\
+&=77.
+\end{aligned}\]
+\end{corr}
+
+\subsubsection{Développement par rapport à une ligne ou une colonne}
+
+\begin{lem}\thlabel{lem:développementDéterminantAvecJusteUn1}
+Soient \(n\in\Ns\) et \(\paren{a_{ij}}_{\paren{i,j}\in\interventierii{1}{n}^2}\in\K^{\interventierii{1}{n}^2}\).
+
+On a : \[\begin{vmatrix}
+1 & 0 & \dots & 0 \\
+0 & a_{11} & \dots & a_{1n} \\
+\vdots & \vdots &  & \vdots \\
+0 & a_{n1} & \dots & a_{nn}
+\end{vmatrix}=\begin{vmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{vmatrix}.\]
+\end{lem}
+
+\begin{dem}
+Posons \(\fonction{f}{\paren{\K^n}^n}{\K}{\paren{C_1,\dots,C_n}}{\begin{vNiceMatrix}
+1 & 0 & \dots & 0 \\
+0 & \Block{3-1}<\Large>{C_1} & \Block{3-1}<\Large>{\dots} & \Block{3-1}<\Large>{C_n} \\
+\vdots &  &  & \\
+0 &  &  &
+\end{vNiceMatrix}}\)
+
+On remarque que \(f\) est une forme \(n\)-linéaire alternée et qu'on a, en notant \(\fami{B}_0\) la base canonique de \(\K^n\) : \[f\paren{\fami{B}_0}=1.\]
+
+D'où \(f=\detb[\fami{B}_0]\), d'où : \[\quantifs{\forall C_1,\dots,C_n\in\K^n}f\paren{C_1,\dots,C_n}=\detb[\fami{B}_0]\paren{C_1,\dots,C_n}=\begin{vmatrix}C_1 & \dots & C_n\end{vmatrix}.\]
+\end{dem}
+
+\begin{nota}
+Soit \(n\in\Ns\).
+
+À toute matrice \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}\] on associe les objets suivants (notations officielles) :
+
+\begin{itemize}
+    \item pour tous \(i,j\in\interventierii{1}{n}\), on note \(\Delta_{ij}\) le mineur en position \(\paren{i,j}\) : c'est le déterminant de la matrice extraite de \(A\) obtenue en supprimant la \(i\)-ème ligne et la \(j\)-ème colonne de \(A\) ; \\
+    \item pour tous \(i,j\in\interventierii{1}{n}\), on appelle cofacteur en position \(\paren{i,j}\) le produit \(\paren{-1}^{i+j}\Delta_{ij}\) ; \\
+    \item enfin, on appelle comatrice de \(A\) la matrice des cofacteurs : \[\Com{A}=\paren{\paren{-1}^{i+j}\Delta_{ij}}_{\paren{i,j}}\in\M{n}.\]
+\end{itemize}
+\end{nota}
+
+\begin{ex}
+On a : \[\Com{\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}}=\begin{pmatrix}
+d & -c \\
+-b & a
+\end{pmatrix}\qquad\text{et}\qquad\Com{\begin{pmatrix}
+a & b & c \\
+d & e & f \\
+g & h & i
+\end{pmatrix}}=\begin{pmatrix}
+ei-fh & fg-di & dh-eg \\
+ch-bi & ai-cg & bg-ah \\
+bf-ce & cd-af & ae-bd
+\end{pmatrix}.\]
+\end{ex}
+
+\begin{prop}
+{\normalfont\bfseries (Développement du déterminant d'une matrice par rapport à une colonne)}
+
+Soient \(n\in\Ns\) et \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}.\]
+
+On a : \[\quantifs{\forall j\in\interventierii{1}{n}}\det A=\sum_{i=1}^n\paren{-1}^{i+j}\Delta_{ij}a_{ij}.\]
+
+Quand on applique cette formule, on dit qu'on a développé \(\det A\) par rapport à la \(j\)-ème colonne.
+\end{prop}
+
+\begin{dem}
+Soit \(j\in\interventierii{1}{n}\).
+
+On a, par linéarité par rapport à la \(j\)-ème colonne : \[\begin{aligned}
+\begin{vmatrix}
+a_{11} & \dots & a_{1j} & \dots & a_{1n} \\
+\vdots &  & \vdots &  & \vdots \\
+a_{n1} & \dots & a_{nj} & \dots & a_{nn}
+\end{vmatrix}&=a_{1j}\underbrace{\begin{vmatrix}
+a_{11} & \dots & a_{1\,j-1} & 1 & a_{1\,j+1} & \dots & a_{1n} \\
+\vdots &  & \vdots & 0 & \vdots &  & \vdots \\
+\vdots &  & \vdots & \vdots & \vdots &  & \vdots \\
+a_{n1} & \dots & a_{n\,j-1} & 0 & a_{n\,j+1} & \dots & a_{nn}
+\end{vmatrix}}_{D_1} \\
+&\color{white}=\color{black}+\dots+a_{nj}\underbrace{\begin{vmatrix}
+a_{11} & \dots & a_{1\,j-1} & 0 & a_{1\,j+1} & \dots & a_{1n} \\
+\vdots &  & \vdots & \vdots & \vdots &  & \vdots \\
+\vdots &  & \vdots & 0 & \vdots &  & \vdots \\
+a_{n1} & \dots & a_{n\,j-1} & 1 & a_{n\,j+1} & \dots & a_{nn}
+\end{vmatrix}}_{D_n} \\
+&=\sum_{i=1}^na_{ij}D_i.
+\end{aligned}\]
+
+Calculons \(D_i\) pour \(i\in\interventierii{1}{n}\).
+
+On a : \[D_i=\begin{vNiceMatrix}[last-col]
+a_{11} & \dots & a_{1\,j-1} & 0      & a_{1\,j+1} & \dots & a_{1n} & \\
+       &       &            & \vdots &            &       &        & \\
+       &       &            & 0      &            &       &        & \\
+       &       &            & 1      &            &       &        & i\text{-ème ligne} \\
+       &       &            & 0      &            &       &        & \\
+       &       &            & \vdots &            &       &        & \\
+a_{n1} & \dots & a_{n\,j-1} & 0      & a_{n\,j+1} & \dots & a_{nn} &
+\end{vNiceMatrix}.\]
+
+On applique à ce déterminant : \[\quantifs{\forall k\in\interventierii{1}{n}}C_k\gets C_{\cycle{j;\dots;3;2;1}\paren{k}}\] puis : \[\quantifs{\forall k\in\interventierii{1}{n}}L_k\gets L_{\cycle{i;\dots;3;2;1}\paren{k}}.\]
+
+D'où, selon le \thref{lem:développementDéterminantAvecJusteUn1} : \[\paren{-1}^{j-1}\paren{-1}^{i-1}D_i=\Delta_{ij}.\]
+
+D'où la proposition.
+\end{dem}
+
+\begin{ex}
+On a, en développant par rapport à la première colonne : \[\begin{WithArrows}
+\begin{vmatrix}
+0 & a & b \\
+1 & c & d \\
+2 & e & f
+\end{vmatrix}&=0+1\paren{-\begin{vmatrix}
+a & b \\
+e & f
+\end{vmatrix}}+2\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} \\
+&=eb-af+2ad-2bc.
+\end{WithArrows}\]
+\end{ex}
+
+\begin{prop}
+{\normalfont\bfseries (Développement du déterminant d'une matrice par rapport à une ligne)}
+
+Soient \(n\in\Ns\) et \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}.\]
+
+On a : \[\quantifs{\forall i\in\interventierii{1}{n}}\det A=\sum_{j=1}^n\paren{-1}^{i+j}\Delta_{ij}a_{ij}.\]
+
+Quand on applique cette formule, on dit qu'on a développé \(\det A\) par rapport à la \(i\)-ème colonne.
+\end{prop}
+
+\begin{dem}
+Idem.
+\end{dem}
+
+\subsubsection{Déterminants triangulaires}\label{subsubsec:déterminantsTriangulaires}
+
+\begin{prop}
+Le déterminant d'une matrice triangulaire est le produit de ses coefficients diagonaux.
+
+En particulier, une matrice triangulaire est inversible si, et seulement si, ses coefficients diagonaux sont tous non-nuls.
+
+Par exemple, pour une matrice triangulaire supérieure : \[\begin{vmatrix}
+a_{11} & \dots & \dots & a_{1n} \\
+0 & \ddots &  & \vdots \\
+\vdots & \ddots & \ddots & \vdots \\
+0 & \dots & 0 & a_{nn}
+\end{vmatrix}=\prod_{k=1}^na_{kk}\] et \[\begin{pmatrix}
+a_{11} & \dots & \dots & a_{1n} \\
+0 & \ddots &  & \vdots \\
+\vdots & \ddots & \ddots & \vdots \\
+0 & \dots & 0 & a_{nn}
+\end{pmatrix}\in\GL{n}\ssi\quantifs{\forall k\in\interventierii{1}{n}}a_{kk}\not=0.\]
+\end{prop}
+
+\begin{dem}
+Par récurrence sur \(n\in\Ns\), en développant par rapport à la première colonne.
+\end{dem}
+
+\subsubsection{Déterminants de Vandermonde}
+
+\begin{exoex}
+Soient \(\lambda_1,\lambda_2,\lambda_3\in\K\)
+
+Calculer en factorisant le plus possible les déterminants suivants : \[\begin{vmatrix}
+1 & 1 \\
+\lambda_1 & \lambda_2
+\end{vmatrix}\qquad\text{et}\qquad\begin{vmatrix}
+1 & 1 & 1 \\
+\lambda_1 & \lambda_2 & \lambda_3 \\
+\lambda_1^2 & \lambda_2^2 & \lambda_3^2
+\end{vmatrix}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\begin{vmatrix}
+1 & 1 \\
+\lambda_1 & \lambda_2
+\end{vmatrix}=\lambda_2-\lambda_1\] et : \[\begin{aligned}
+\begin{vmatrix}
+1 & 1 & 1 \\
+\lambda_1 & \lambda_2 & \lambda_3 \\
+\lambda_1^2 & \lambda_2^2 & \lambda_3^2
+\end{vmatrix}&=\begin{vNiceMatrix}[last-col]
+1 & 0 & 0 & C_2\gets C_2-C_1 \\
+\lambda_1 & \lambda_2-\lambda_1 & \lambda_3-\lambda_1 & C_3\gets C_3-C_1 \\
+\lambda_1^2 & \lambda_2^2-\lambda_1^2 & \lambda_3^2-\lambda_1^2 &
+\end{vNiceMatrix} \\
+&=\begin{vmatrix}
+\lambda_2-\lambda_1 & \lambda_3-\lambda_1 \\
+\lambda_2^2-\lambda_1^2 & \lambda_3^2-\lambda_1^2
+\end{vmatrix} \\
+&=\paren{\lambda_2-\lambda_1}\paren{\lambda_3-\lambda_1}\begin{vmatrix}
+1 & 1 \\
+\lambda_2+\lambda_1 & \lambda_3+\lambda_1
+\end{vmatrix} \\
+&=\paren{\lambda_2-\lambda_1}\paren{\lambda_3-\lambda_1}\begin{vNiceMatrix}[last-col]
+1 & 0 & C_2\gets C_2-C_1 \\
+\lambda_2+\lambda_1 & \lambda_3-\lambda_2 &
+\end{vNiceMatrix} \\
+&=\paren{\lambda_2-\lambda_1}\paren{\lambda_3-\lambda_1}\paren{\lambda_3-\lambda_2}.
+\end{aligned}\]
+\end{corr}
+
+\begin{prop}[Déterminants de Vandermonde]
+Soit \(n\in\Ns\).
+
+On a : \[\quantifs{\forall\lambda_1,\dots,\lambda_n\in\K}\begin{vmatrix}
+1               &  &       &  & 1               \\
+\lambda_1       &  &       &  & \lambda_n       \\
+\lambda_1^2     &  & \dots &  & \lambda_n^2     \\
+\vdots          &  &       &  & \vdots          \\
+\lambda_1^{n-1} &  &       &  & \lambda_n^{n-1} \\
+\end{vmatrix}=\prod_{1\leq i<j\leq n}\paren{\lambda_j-\lambda_i}.\]
+\end{prop}
+
+\begin{dem}
+On note, pour tout \(n\in\Ns\) : \[\P{n}:\text{\og}\quantifs{\forall\lambda_1,\dots,\lambda_n\in\K}\begin{vmatrix}
+1               &  &       &  & 1               \\
+\lambda_1       &  &       &  & \lambda_n       \\
+\lambda_1^2     &  & \dots &  & \lambda_n^2     \\
+\vdots          &  &       &  & \vdots          \\
+\lambda_1^{n-1} &  &       &  & \lambda_n^{n-1} \\
+\end{vmatrix}=\prod_{1\leq i<j\leq n}\paren{\lambda_j-\lambda_i}\text{\fg{}}.\]
+
+On a \(\P{1}\), \(\P{2}\) et \(\P{3}\).
+
+Soit \(n\in\Ns\) tel que \(\P{n}\). Montrons \(\P{n+1}\).
+
+Soient \(\lambda_1,\dots,\lambda_{n+1}\in\K\).
+
+On pose \(A=\begin{pmatrix}
+1           &  &       &  & 1           & 1      \\
+\lambda_1   &  &       &  & \lambda_n   & X      \\
+\lambda_1^2 &  & \dots &  & \lambda_n^2 & X^2    \\
+\vdots      &  &       &  & \vdots      & \vdots \\
+\lambda_1^n &  &       &  & \lambda_n^n & X^n    \\
+\end{pmatrix}\in\M{n+1}[\fracrat]\) et \(P=\det A\).
+
+En développant le déterminant par rapport à sa dernière colonne, on remarque \(P\in\poly\) et que le coefficient de degré \(n\) de \(P\) est \[\paren{-1}^{n+1+n+1}\begin{vmatrix}
+1               &  &       &  & 1               \\
+\lambda_1       &  &       &  & \lambda_n       \\
+\lambda_1^2     &  & \dots &  & \lambda_n^2     \\
+\vdots          &  &       &  & \vdots          \\
+\lambda_1^{n-1} &  &       &  & \lambda_n^{n-1} \\
+\end{vmatrix}=\prod_{1\leq i<j\leq n}\paren{\lambda_j-\lambda_i}.\]
+
+Supposons \(\lambda_1,\dots,\lambda_n\) deux à deux distincts.
+
+Alors le coefficient de degré \(n\) de \(P\) est non-nul donc \(\deg P=n\).
+
+De plus, on remarque que \(P\) admet \(n\) racines deux à deux distinctes : les scalaires \(\lambda_1,\dots,\lambda_n\).
+
+D'où la factorisation de \(P\) en produit d'irréductibles : \[P=\underbrace{\prod_{1\leq i<j\leq n}\paren{\lambda_j-\lambda_i}}_{\text{coefficient dominant}}\underbrace{\prod_{k=1}^n\paren{X-\lambda_k}}_{\substack{n\text{ racines} \\ \text{simples car} \\ \deg P=n}}.\]
+
+D'où, en évaluant en \(\lambda_{n+1}\) : \[\begin{vmatrix}
+\lambda_1^0 & \dots & \lambda_{n+1}^0 \\
+\vdots &  & \vdots \\
+\lambda_1^n & \dots & \lambda_{n+1}^n
+\end{vmatrix}=\prod_{1\leq i<j\leq n}\paren{\lambda_j-\lambda_i}\prod_{k=1}^n\paren{\lambda_{n+1}-\lambda_k}=\prod_{1\leq i<j\leq n+1}\paren{\lambda_j-\lambda_i}.\]
+
+D'où \(\P{n+1}\).
+
+Supposons que \(\lambda_1,\dots,\lambda_n\) ne sont pas deux à deux distincts.
+
+La formule est encore vraie car le déterminant est nul (car deux colonnes sont égales) et le produit est nul.
+
+D'où \(\P{n+1}\).
+
+Donc, par récurrence, on a \(\quantifs{\forall n\in\Ns}\P{n}\).
+\end{dem}
+
+\subsubsection{Formules de Cramer}
+
+\begin{prop}[Formules de Cramer]
+Soient \(n\in\Ns\), \(a_{11},\dots,a_{1n},\dots,a_{n1},\dots,a_{nn},b_1,\dots,b_n\in\K\) et un système de Cramer d'inconnue \(\paren{x_1,\dots,x_n}\in\K^n\) \[\paren{S}~\begin{dcases}
+a_{11}x_1+\dots+a_{1n}x_n=b_1 \\
+\vdots \\
+a_{n1}x_1+\dots+a_{nn}x_n=b_n
+\end{dcases}\]
+
+Posons \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}=\cycle{C_1;\dots;C_n}\in\M{n}\qquad\text{et}\qquad B=\tcoords{b_1}{\vdots}{b_n}\in\K^n\] (en notant \(\paren{C_1,\dots,C_n}\) la famille des vecteurs-colonne de \(A\)).
+
+On rappelle que le fait que \(\paren{S}\) soit un système de Cramer signifie que \(A\) est inversible et que \(\paren{S}\) admet donc une unique solution \(X=\tcoords{x_1}{\vdots}{x_n}\in\K^n\).
+
+Cette solution est donnée par les formules de Cramer (on note \(\fami{B}_0\) la base canonique de \(\K^n\)) : \[\quantifs{\forall j\in\interventierii{1}{n}}x_j=\dfrac{\detb[\fami{B}_0]\paren{C_1,\dots,C_{j-1},B,C_{j+1},\dots,C_n}}{\det A}.\]
+\end{prop}
+
+\begin{dem}
+On a, en notant \(\paren{x_1,\dots,x_n}\) l'unique solution de \(\paren{S}\) : \[\sum_{k=1}^nx_kC_k=B.\]
+
+Comme \(\paren{S}\) est un système de Cramer, \(\paren{C_1,\dots,C_n}\) est une base de \(\K^n\), donc : \[\detb[\fami{B}_0]\paren{C_1,\dots,C_n}=\det A\not=0.\]
+
+On a, pour tous \(j\in\interventierii{1}{n}\) : \[\begin{aligned}
+\detb[\fami{B}_0]\paren{C_1,\dots,C_{j-1},B,C_{j+1},\dots,C_n}&=\detb[\fami{B}_0]\paren{C_1,\dots,C_{j-1},\sum_{k=1}^nx_kC_k,C_{j+1},\dots,C_n} \\
+&=\sum_{k=1}^nx_k\underbrace{\detb[\fami{B}_0]\paren{C_1,\dots,C_{j-1},C_k,C_{j+1},\dots,C_n}}_{=0\text{ si }k\not=j} \\
+&=x_j\det A.
+\end{aligned}\]
+
+D'où le résultat.
+\end{dem}
+
+\begin{exoex}
+Résoudre le système \[\paren{S}~\begin{pmatrix}
+2 & 1 \\
+1 & 1
+\end{pmatrix}\dcoords{x}{y}=\dcoords{5}{7}.\]
+\end{exoex}
+
+\begin{corr}
+\(\paren{S}\) est un système de Cramer car \(\begin{vmatrix}
+2 & 1 \\
+1 & 1
+\end{vmatrix}=1\not=0\).
+
+Son unique solution \(\paren{x,y}\) est donnée par les formules de Cramer : \[x=\dfrac{\begin{vmatrix}5 & 1 \\ 7 & 1\end{vmatrix}}{\begin{vmatrix}2 & 1 \\ 1 & 1\end{vmatrix}}=-2\qquad\text{et}\qquad y=\dfrac{\begin{vmatrix}2 & 5 \\ 1 & 7\end{vmatrix}}{\begin{vmatrix}2 & 1 \\ 1 & 1\end{vmatrix}}=9.\]
+\end{corr}
+
+\subsubsection{Comatrice}
+
+\begin{prop}
+Soient \(n\in\Ns\) et \[A=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}.\]
+
+On a : \[A\times\trans{\Com{A}}=\trans{\Com{A}}\times A=\paren{\det A}I_n.\]
+
+Donc si \(A\in\GL{n}\) : \[A\inv=\dfrac{1}{\det A}\trans{\Com{A}}.\]
+\end{prop}
+
+\begin{dem}
+Montrons que \(M=A\times\trans{\Com{A}}=\paren{\det A}I_n\).
+
+Soient \(i,j\in\interventierii{1}{n}\).
+
+Le coefficient de \(M\) en position \(\paren{i,j}\) est \(m_{ij}=\sum_{k=1}^na_{ik}\paren{-1}^{j+k}\Delta_{jk}\).
+
+Si \(i=j\), on a : \[\begin{WithArrows}
+m_{ii}&=\sum_{k=1}^na_{ik}\underbrace{\paren{-1}^{i+k}\Delta_{ik}}_{\substack{\text{cofacteur} \\ \text{de }a_{ik}}} \Arrow[tikz={text width=5cm}]{en développant par rapport à la \(i\)-ème ligne} \\
+&=\det A.
+\end{WithArrows}\]
+
+Si \(i\not=j\), on a, en notant \(A\prim\) la matrice obtenue en remplaçant la \(j\)-ème ligne de \(A\) par la \(i\)-ème ligne de \(A\) : \[\begin{WithArrows}
+m_{ij}&=\sum_{k=1}^na_{ik}\paren{-1}^{j+k}\Delta_{jk} \\
+&=\det A\prim \Arrow[i,tikz={text width=7cm}]{car la \(i\)-ème et la \(j\)-ème ligne sont égales dans \(A\)} \\
+&=0.
+\end{WithArrows}\]
+
+D'où l'égalité.
+
+Idem pour \(\trans{\Com{A}}\times A=\paren{\det A}I_n\).
+\end{dem}
+
+\begin{rem}
+Il faut bien savoir appliquer la formule de l'inverse dans le cas des matrices \(2\times2\) : \[\quantifs{\forall\begin{pmatrix}a & b \\ c & d\end{pmatrix}\in\GL{2}}\begin{pmatrix}a & b \\ c & d\end{pmatrix}\inv=\dfrac{1}{ad-bc}\begin{pmatrix}d & -b \\ -c & a\end{pmatrix}.\]
+\end{rem}
+
+\section{Remarque}
+
+Ne pas confondre les trois types de déterminants :
+
+\begin{itemize}
+    \item Déterminant \(\detb\paren{\fami{F}}\) de la famille de \(n\) vecteurs \(\fami{F}\in E^n\) où \(E\) est un espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\) une base de \(E\). \\
+    \item Déterminant \(\det u\) de l'endomorphisme \(u\in\Lendo{E}\) où \(E\) est un espace vectoriel de dimension finie non-nulle. \\
+    \item Déterminant \(\det A\) de la matrice carrée \(A\in\M{n}\) où \(n\in\Ns\).
+\end{itemize}
+
+Connaître parfaitement les CNS fondamentales :
+
+\begin{itemize}
+    \item Pour les matrices carrées de taille \(n\in\Ns\) : \[\quantifs{\forall A\in\M{n}}A\in\GL{n}\ssi\det A\not=0.\]~
+    \item Pour les endomorphismes d'un espace vectoriel \(E\) de dimension finie non-nulle : \[\quantifs{\forall u\in\Lendo{E}}u\in\GL{}[E]\ssi\det u\not=0.\]~
+    \item Pour les familles de \(n\) vecteurs d'un espace vectoriel \(E\) de dimension \(n\in\Ns\) et de base \(\fami{B}\) : \[\quantifs{\forall\fami{F}\in E^n}\fami{F}\text{ est une base de }E\ssi\detb\paren{\fami{F}}\not=0.\]
+\end{itemize}
