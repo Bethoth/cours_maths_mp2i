@@ -1107,3 +1107,21 @@ Idem pour \(\trans{\Com{A}}\times A=\paren{\det A}I_n\).
 \begin{rem}
 Il faut bien savoir appliquer la formule de l'inverse dans le cas des matrices \(2\times2\) : \[\quantifs{\forall\begin{pmatrix}a & b \\ c & d\end{pmatrix}\in\GL{2}}\begin{pmatrix}a & b \\ c & d\end{pmatrix}\inv=\dfrac{1}{ad-bc}\begin{pmatrix}d & -b \\ -c & a\end{pmatrix}.\]
 \end{rem}
+
+\section{Remarque}
+
+Ne pas confondre les trois types de déterminants :
+
+\begin{itemize}
+    \item Déterminant \(\detb\paren{\fami{F}}\) de la famille de \(n\) vecteurs \(\fami{F}\in E^n\) où \(E\) est un espace vectoriel de dimension \(n\in\Ns\) et \(\fami{B}\) une base de \(E\). \\
+    \item Déterminant \(\det u\) de l'endomorphisme \(u\in\Lendo{E}\) où \(E\) est un espace vectoriel de dimension finie non-nulle. \\
+    \item Déterminant \(\det A\) de la matrice carrée \(A\in\M{n}\) où \(n\in\Ns\).
+\end{itemize}
+
+Connaître parfaitement les CNS fondamentales :
+
+\begin{itemize}
+    \item Pour les matrices carrées de taille \(n\in\Ns\) : \[\quantifs{\forall A\in\M{n}}A\in\GL{n}\ssi\det A\not=0.\]~
+    \item Pour les endomorphismes d'un espace vectoriel \(E\) de dimension finie non-nulle : \[\quantifs{\forall u\in\Lendo{E}}u\in\GL{}[E]\ssi\det u\not=0.\]~
+    \item Pour les familles de \(n\) vecteurs d'un espace vectoriel \(E\) de dimension \(n\in\Ns\) et de base \(\fami{B}\) : \[\quantifs{\forall\fami{F}\in E^n}\fami{F}\text{ est une base de }E\ssi\detb\paren{\fami{F}}\not=0.\]
+\end{itemize}
