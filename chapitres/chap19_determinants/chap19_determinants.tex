@@ -72,7 +72,7 @@ Soient \(E\) un \(\K\)-espace vectoriel, \(r\in\Ns\) et \(f:E^r\to\K\) une forme
 On a : \[\quantifs{\forall\sigma\in\S{n};\forall\paren{x_1,\dots,x_r}\in E^r}f\paren{x_{\sigma\paren{1}},\dots,x_{\sigma\paren{x_r}}}=\epsilon\paren{\sigma}f\paren{x_1,\dots,x_r}.\]
 \end{cor}
 
-\begin{prop}
+\begin{prop}\thlabel{prop:l'ImageD'UneFamilleLiéeParUneFormeMultilinéaireAlternéeEstNulle}
 Soient \(E\) un \(\K\)-espace vectoriel, \(r\in\Ns\), \(f:E^r\to\K\) une forme \(r\)-linéaire alternée et \(\paren{x_1,\dots,x_r}\in E^r\) une famille liée.
 
 On a : \[f\paren{x_1,\dots,x_r}=0.\]
@@ -90,4 +90,186 @@ f\paren{x_1,\dots,x_r}&=f\paren{\lambda_2x_2+\dots+\lambda_rx_r,x_2,\dots,x_r} \
 &=\sum_{k=2}^r\lambda_kf\paren{x_k,x_2,\dots,x_r} \Arrow{car \(f\) est alternée} \\
 &=0.
 \end{WithArrows}\]
+\end{dem}
+
+\section{Déterminant d'une famille de vecteurs dans une base}
+
+Soit \(n\in\Ns\).
+
+On s'intéresse désormais aux formes \(n\)-linéaires sur un espace vectoriel de dimension finie \(n\).
+
+\begin{lem}[Calcul d'une forme \(n\)-linéaire en dimension \(n\)]\thlabel{lem:calculFormeN-LinéaireEnDimensionN}
+Soient \(E\) un espace vectoriel de dimension \(n\), \(f:E^n\to\K\) une forme \(n\)-linéaire alternée, \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\) et \(\paren{x_1,\dots,x_n}\in E^n\).
+
+On considère la matrice de cette famille dans la base \(\fami{B}\) : \[\Mat{x_1,\dots,x_n}=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\in\M{n}.\]
+
+On a : \[\begin{aligned}
+f\paren{x_1,\dots,x_n}&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}f\paren{e_1,\dots,e_n} \\
+&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}f\paren{e_1,\dots,e_n}.
+\end{aligned}\]
+\end{lem}
+
+\begin{dem}
+On a : \[\quantifs{\forall j\in\interventierii{1}{n}}x_j=\sum_{i=1}^na_{ij}e_i.\]
+
+Donc, comme \(f\) est une forme \(n\)-linéaire, on a : \[\begin{WithArrows}
+f\paren{x_1,\dots,x_n}&=f\paren{\sum_{i_1=1}^na_{i_11}e_{i_1},\dots,\sum_{i_n=1}^na_{i_nn}e_{i_n}} \\
+&=\underbrace{\sum_{i_1=1}^n\dots\sum_{i_n=1}^n}_{n^n\text{ termes}}a_{i_11}\dots a_{i_nn}f\paren{e_{i_1},\dots,e_{i_n}} \\
+&=\underbrace{\sum_{\alpha\in\F{\interventierii{1}{n}}{\interventierii{1}{n}}}}_{\star}a_{\alpha\paren{1}1}\dots a_{\alpha\paren{n}n}f\paren{e_{\alpha\paren{1}},\dots,e_{\alpha\paren{n}}} \\
+&=\sum_{\sigma\in\S{n}}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}f\paren{e_{\sigma\paren{1}},\dots,e_{\sigma\paren{n}}} \Arrow{car \(f\) est alternée} \\
+&=\sum_{\sigma\in\S{n}}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}\epsilon\paren{\sigma}f\paren{e_1,\dots,e_n}.
+\end{WithArrows}\]
+
+\(\star\) : \(n^n\) termes dont beaucoup sont nuls : tous ceux pour lesquels \(\alpha\) n'est pas injective et donc pas bijective, car \(f\) est alternée.
+\end{dem}
+
+\begin{deftheo}[Déterminant d'une famille de vecteurs dans une base]
+Soient \(E\) un espace vectoriel de dimension \(n\) et \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+Il existe une unique forme \(n\)-linéaire alternée \(\detb:E^n\to\K\) telle que \[\detb\paren{e_1,\dots,e_n}=1.\]
+
+On l'appelle le déterminant dans la base \(\fami{B}\).
+\end{deftheo}
+
+\begin{dem}
+\note{Existence non-exigible}
+
+\analyse (unicité)
+
+Soit \(f:E^n\to\K\) une forme \(n\)-linéaire alternée telle que \[\detb\paren{e_1,\dots,e_n}=1.\]
+
+Selon le \thref{lem:calculFormeN-LinéaireEnDimensionN}, l'image de toute famille \(\paren{x_1,\dots,x_n}\in E^n\) de matrice \[\Mat{x_1,\dots,x_n}=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\] dans la base \(\fami{B}\) est : \[f\paren{x_1,\dots,x_n}=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}.\]
+
+\synthese (existence)
+
+Considérons la fonction \(f:E^n\to\K\) qui envoie toute famille \(\paren{x_1,\dots,x_n}\in E^n\) de matrice \[\Mat{x_1,\dots,x_n}=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}\] dans la base \(\fami{B}\) sur : \[\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}.\]
+
+Alors \(f\) est clairement une forme \(n\)-linéaire sur \(E\).
+
+Montrons qu'elle est alternée.
+
+Soit une famille \(\paren{x_1,\dots,x_n}\in E^n\) de matrice dans la base \(\fami{B}\) : \[\Mat{x_1,\dots,x_n}=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}.\]
+
+On suppose qu'il existe \(k,l\in\interventierii{1}{n}\) tels que \(k<l\) et \(x_k=x_l\).
+
+On a donc : \[\quantifs{\forall i\in\interventierii{1}{n}}a_{ik}=a_{il}.\]
+
+Donc, en posant \(\tau=\cycle{k;l}\), on a : \[\quantifs{\forall\sigma\in\S{n}}a_{1\sigma\paren{1}}\dots a_{k\sigma\paren{k}}\dots a_{l\sigma\paren{l}}\dots a_{n\sigma\paren{n}}=a_{1\,\sigma\tau\paren{1}}\dots a_{k\,\sigma\tau\paren{k}}\dots a_{l\,\sigma\tau\paren{l}}\dots a_{n\,\sigma\tau\paren{n}}.\]
+
+Or, le groupe symétrique s'écrit comme une réunion disjointe : \[\S{n}=\underbrace{\frakA{n}}_{\substack{\text{permutations} \\ \text{paires}}}\union\underbrace{\frakA{n}\tau}_{\substack{\text{permutations} \\ \text{impaires}}}.\]
+
+D'où : \[\begin{aligned}
+f\paren{x_1,\dots,x_n}&=\sum_{\sigma\in\frakA{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}+\sum_{\sigma\in\frakA{n}}\epsilon\paren{\sigma\tau}a_{1\,\sigma\tau\paren{1}}\dots a_{n\,\sigma\tau\paren{n}} \\
+&=\sum_{\sigma\in\frakA{n}}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}-\sum_{\sigma\in\frakA{n}}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}} \\
+&=0.
+\end{aligned}\]
+
+Donc \(f\) est une forme \(n\)-linéaire alternée.
+
+Enfin, il est clair que \(f\paren{\fami{B}}=1\), d'où l'existence.
+\end{dem}
+
+\begin{prop}\thlabel{prop:formuleDéterminantDansUneBase}
+Soient \(E\) un espace vectoriel de dimension \(n\), \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\) et \(\paren{x_1,\dots,x_n}\in E^n\).
+
+On considère la matrice de cette famille dans la base \(\fami{B}\) : \[\Mat{x_1,\dots,x_n}=\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots &  & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix}.\]
+
+On a : \[\detb\paren{x_1,\dots,x_n}=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}.\]
+\end{prop}
+
+\begin{exoex}
+Soient \(a,b,c,d,e,f,g,h,i\in\K\).
+
+\begin{enumerate}
+    \item On note \(\fami{B}_0\) la base canonique de \(\K^2\). Calculer : \[\detb[\fami{B}_0]\paren{\dcoords{a}{b},\dcoords{c}{d}}.\]
+    \item On note \(\fami{B}_0\) la base canonique de \(\K^3\). Calculer : \[\detb[\fami{B}_0]\paren{\tcoords{a}{b}{c},\tcoords{d}{e}{f},\tcoords{g}{h}{i}}.\]
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a \(\S{2}=\accol{\id{};\cycle{1;2}}\) donc : \[\detb[\fami{B}_0]\paren{\dcoords{a}{b},\dcoords{c}{d}}=ad-bc.\]
+\end{corr}
+
+\begin{corr}[2]
+On a \(\S{3}=\accol{\id{};\cycle{1;2};\cycle{1;3};\cycle{2;3};\cycle{1;2;3};\cycle{3;2;1}}\) donc : \[\detb[\fami{B}_0]\paren{\tcoords{a}{b}{c},\tcoords{d}{e}{f},\tcoords{g}{h}{i}}=aei-bdi-ceg-afh+bfg+cdh.\]
+\end{corr}
+
+\begin{prop}\thlabel{prop:formeMultilinéaireAlternéeProportionnelleAuDéterminantDansUneBase}
+Soient \(E\) un espace vectoriel de dimension \(n\), \(\fami{B}\) une base de \(E\) et \(f:E^n\to\K\) une forme \(n\)-linéaire alternée.
+
+On a : \[\quantifs{\exists\lambda\in\K}f=\lambda\detb.\]
+\end{prop}
+
+\begin{dem}
+Découle du \thref{lem:calculFormeN-LinéaireEnDimensionN} et de la \thref{prop:formuleDéterminantDansUneBase}.
+\end{dem}
+
+\begin{rem}
+Soient \(E\) un espace vectoriel de dimension \(n\) et \(\fami{B}\) une base de \(E\).
+
+On pourrait montrer\footnote{C'est très facile mais le programme se limite à la proposition précédente.} que l'ensemble des formes \(n\)-linéaires alternées sur \(E\) est un espace vectoriel, de base \(\paren{\detb}\).
+
+En particulier, cet espace vectoriel est de dimension \(1\).
+\end{rem}
+
+\begin{prop}[Changement de base]
+Soient \(E\) un espace vectoriel de dimension \(n\) et \(\fami{B}\) et \(\fami{B}\prim\) deux bases de \(E\).
+
+On a : \[\detb[\fami{B}\prim]=\detb[\fami{B}\prim]\paren{\fami{B}}\detb,\] \cad : \[\quantifs{\forall x_1,\dots,x_n\in E}\detb[\fami{B}\prim]\paren{x_1,\dots,x_n}=\detb[\fami{B}\prim]\paren{\fami{B}}\detb\paren{x_1,\dots,x_n}.\]
+\end{prop}
+
+\begin{dem}
+Comme \(\detb[\fami{B}\prim]\) est une forme \(n\)-linéaire alternée sur \(E\), selon la \thref{prop:formeMultilinéaireAlternéeProportionnelleAuDéterminantDansUneBase}, il existe \(\lambda\in\K\) tel que \(\detb[\fami{B}\prim]=\lambda\detb\).
+
+D'où, en appliquant à \(\fami{B}\) : \[\detb[\fami{B}\prim]\paren{\fami{B}}=\lambda\detb\paren{\fami{B}}=\lambda.\]
+
+D'où : \[\detb[\fami{B}\prim]=\detb[\fami{B}\prim]\paren{\fami{B}}\detb.\]
+\end{dem}
+
+\begin{ex}
+Si \(\fami{B}=\paren{e_1,\dots,e_n}\) et \(\fami{B}\prim=\paren{2e_1,\dots,2e_n}\) alors : \[\detb[\fami{B}\prim]\fami{B}=\detb[\fami{B}\prim]\paren{e_1,\dots,e_n}=\dfrac{1}{2^n}\detb[\fami{B}\prim]\paren{2e_1,\dots,2e_n}=\dfrac{1}{2^n}\] et : \[\detb[\fami{B}\prim]=\dfrac{1}{2^n}\detb.\]
+\end{ex}
+
+\begin{prop}[Caractérisation des bases]
+Soient \(E\) un espace vectoriel de dimension \(n\), \(\fami{B}\) une base de \(E\) et \(x_1,\dots,x_n\in E\).
+
+On a : \[\paren{x_1,\dots,x_n}\text{ est une base de }E\ssi\detb\paren{x_1,\dots,x_n}\not=0.\]
+\end{prop}
+
+\begin{dem}
+\imprec Par contraposée :
+
+Supposons que \(\paren{x_1,\dots,x_n}\) n'est pas une base de \(E\).
+
+Comme \(\dim E=n\) et \(\paren{x_1,\dots,x_n}\) possède \(n\) vecteurs, \(\paren{x_1,\dots,x_n}\) est liée.
+
+Donc \(\detb\paren{x_1,\dots,x_n}=0\) selon la \thref{prop:l'ImageD'UneFamilleLiéeParUneFormeMultilinéaireAlternéeEstNulle}.
+
+\impdir
+
+Supposons que \(\fami{B}\prim=\paren{x_1,\dots,x_n}\) est une base de \(E\).
+
+On a \(\detb=\detb\paren{\fami{B}\prim}\detb[\fami{B}\prim]\) donc en appliquant à \(\fami{B}\) : \[1=\detb\paren{\fami{B}\prim}\times\detb[\fami{B}\prim]\paren{\fami{B}}.\]
+
+Donc \(\detb\paren{\fami{B}\prim}\not=0\).
 \end{dem}
