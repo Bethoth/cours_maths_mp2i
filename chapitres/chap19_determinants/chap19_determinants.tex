@@ -273,3 +273,65 @@ On a \(\detb=\detb\paren{\fami{B}\prim}\detb[\fami{B}\prim]\) donc en appliquant
 
 Donc \(\detb\paren{\fami{B}\prim}\not=0\).
 \end{dem}
+
+\section{Déterminant d'un endomorphisme}
+
+Soit \(n\in\Ns\).
+
+\subsection{Définition}
+
+\begin{deftheo}[Déterminant d'un endomorphisme]
+Soient \(E\) un espace vectoriel de dimension \(n\) et \(u\in\Lendo{E}\).
+
+Il existe un unique scalaire \(\lambda\in\K\) tel que : \[\quantifs{\forall\fami{B}\text{ base de }E;\forall x_1,\dots,x_n\in E}\detb\paren{u\paren{x_1},\dots,u\paren{x_n}}=\lambda\detb\paren{x_1,\dots,x_n}.\]
+
+Ce scalaire \(\lambda\) est appelé déterminant de \(u\) et est noté \(\det u\).
+\end{deftheo}
+
+\begin{dem}
+Soit \(\fami{B}\) une base de \(E\).
+
+On pose \(\fonction{f}{E^n}{\K}{\paren{x_1,\dots,x_n}}{\detb\paren{u\paren{x_1},\dots,u\paren{x_n}}}\) une forme \(n\)-linéaire alternée.
+
+Selon la \thref{prop:formeMultilinéaireAlternéeProportionnelleAuDéterminantDansUneBase}, il existe \(\lambda\in\K\) tel que : \[\quantifs{\forall x_1,\dots,x_n\in E}f\paren{x_1,\dots,x_n}=\lambda\detb\paren{x_1,\dots,x_n}.\]
+
+Soit \(\fami{B}\prim\) une autre base de \(E\).
+
+On a : \[\quantifs{\forall x_1,\dots,x_n\in E}\detb\paren{u\paren{x_1},\dots,u\paren{x_n}}=\lambda\detb\paren{x_1,\dots,x_n}.\]
+
+Donc : \[\quantifs{\forall x_1,\dots,x_n\in E}\detb[\fami{B}\prim]\paren{\fami{B}}\detb\paren{u\paren{x_1},\dots,u\paren{x_n}}=\lambda\detb[\fami{B}\prim]\paren{\fami{B}}\detb\paren{x_1,\dots,x_n}.\]
+
+Donc : \[\quantifs{\forall x_1,\dots,x_n\in E}\detb[\fami{B}\prim]\paren{u\paren{x_1},\dots,u\paren{x_n}}=\lambda\detb[\fami{B}\prim]\paren{x_1,\dots,x_n}.\]
+
+Donc \(\lambda\) est indépendant du choix de la base.
+\end{dem}
+
+\begin{rem}\thlabel{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}
+Soient \(E\) un espace vectoriel de dimension \(n\), \(u\in\Lendo{E}\) et \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+On a : \[\det u=\detb\paren{u\paren{e_1},\dots,u\paren{e_n}}.\]
+\end{rem}
+
+\begin{dem}
+On a, par définition : \[\detb\paren{u\paren{e_1},\dots,u\paren{e_n}}=\det u\times\detb\paren{e_1,\dots,e_n}=\det u.\]
+\end{dem}
+
+\begin{ex}[Déterminant d'une homothétie]
+Soit \(E\) un espace vectoriel de dimension \(n\).
+
+On a : \[\quantifs{\forall\lambda\in\K}\det\paren{\lambda\id{E}}=\lambda^n.\]
+\end{ex}
+
+\begin{dem}
+On applique la \thref{rem:déterminantD'UnEndomorphismeVautLeDéterminantDeL'ImageD'uneBaseParCetEndomorphismeDansCetteBase}.
+
+Soit \(\fami{B}=\paren{e_1,\dots,e_n}\) une base de \(E\).
+
+On a : \[\begin{aligned}
+\det\paren{\lambda\id{E}}&=\detb\paren{\lambda\id{E}\paren{e_1},\dots,\lambda\id{E}\paren{e_n}} \\
+&=\detb\paren{\lambda e_1,\dots,\lambda e_n} \\
+&=\lambda^n\detb\paren{e_1,\dots,e_n} \\
+&=\lambda^n\detb\paren{\fami{B}} \\
+&=\lambda^n.
+\end{aligned}\]
+\end{dem}
