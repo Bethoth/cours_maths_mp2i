@@ -479,7 +479,7 @@ m & n & o & p
 
 \subsection{Lien avec les autres déterminants}
 
-\begin{prop}
+\begin{prop}\thlabel{prop:déterminantMatriceEgalACeluiDeL'EndomorphismeCanoniquementAssocié}
 Soit \(A\in\M{n}\).
 
 Le déterminant de \(A\) est aussi le déterminant de l'endomorphisme \(u_A\in\Lendo{\K^n}\) canoniquement associé à \(A\).
@@ -536,3 +536,87 @@ On a : \[\Mat[\fami{B}_0]{u}=\begin{pmatrix}
 0 & 0 & 2
 \end{pmatrix}\] donc : \[\det u=\det\Mat[\fami{B}_0]{u}=0.\]
 \end{corr}
+
+\subsection{Propriétés}
+
+\begin{prop}\thlabel{prop:déterminantProduitDeMatriceEgalAuProduitDesDéterminants}
+On a : \[\quantifs{\forall A,B\in\M{n}}\det\paren{AB}=\det\paren{A}\det\paren{B}.\]
+\end{prop}
+
+\begin{dem}
+D'après la \thref{prop:déterminantMatriceEgalACeluiDeL'EndomorphismeCanoniquementAssocié}, on a : \[\begin{WithArrows}
+\det\paren{AB}&=\det u_{AB} \\
+&=\det\paren{u_Au_B} \Arrow{\thref{prop:déterminantD'UneComposéeD'EndomorphismesEstLeProduitDesDéterminantsDesEndomorphismes}} \\
+&=\det\paren{u_A}\det\paren{u_B} \Arrow{\thref{prop:déterminantMatriceEgalACeluiDeL'EndomorphismeCanoniquementAssocié}} \\
+&=\det\paren{A}\det\paren{B}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{prop}
+On a : \[\quantifs{\forall\lambda\in\K;\forall A\in\M{n}}\det\paren{\lambda A}=\lambda^n\det A.\]
+\end{prop}
+
+\begin{dem}
+On a : \[\begin{aligned}
+\det\paren{\lambda A}&=\det\paren{\lambda I_nA} \\
+&=\det\paren{\lambda I_n}\det\paren{A} \\
+&=\lambda^n\det A.
+\end{aligned}\]
+\end{dem}
+
+\begin{rem}
+Soient \(A,B\in\M{n}\).
+
+Il n'y a pas de formule exprimant \(\det\paren{A+B}\) en fonction de \(\det A\) et \(\det B\).
+
+Par exemple, si \(\lambda\in\K\excluant\accol{0}\) : \[\underbrace{\begin{pmatrix}
+\lambda & 0 \\
+0 & 0
+\end{pmatrix}}_{\det=0}+\underbrace{\begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}}_{\det=0}=\underbrace{\begin{pmatrix}
+\lambda & 0 \\
+0 & 1
+\end{pmatrix}}_{\det=\lambda}.\]
+\end{rem}
+
+\begin{prop}\thlabel{prop:matriceInversibleSsiDéterminantNonNul}
+On a : \[\quantifs{\forall A\in\M{n}}A\in\GL{n}\ssi\det A\not=0.\]
+\end{prop}
+
+\begin{dem}
+On a : \[\begin{aligned}
+A\in\GL{n}&\ssi u_A\in\GL{}[\K^n] \\
+&\ssi\det u_A\not=0 \\
+&\ssi\det A\not=0.
+\end{aligned}\]
+\end{dem}
+
+\begin{defprop}[Groupe spécial linéaire]
+L'application \[\det:\GL{n}\to\K\excluant\accol{0}\] est un morphisme de groupes de \(\groupe{\GL{n}}[\times]\) vers \(\groupe{\K\excluant\accol{0}}[\times]\).
+
+Son noyau est un sous-groupe de \(\groupe{\GL{n}}[\times]\) appelé groupe spécial linéaire d'ordre \(n\) : \[\SL{n}=\accol{A\in\GL{n}\tq\det A=1}.\]
+\end{defprop}
+
+\begin{dem}
+L'application \(\det:\GL{n}\to\K\excluant\accol{0}\) est bien définie d'après la \thref{prop:matriceInversibleSsiDéterminantNonNul} et c'est un morphisme de groupes d'après la \thref{prop:déterminantProduitDeMatriceEgalAuProduitDesDéterminants}.
+\end{dem}
+
+\begin{cor}
+On a : \[\quantifs{\forall A\in\GL{n}}\det\paren{A\inv}=\dfrac{1}{\det A}.\]
+\end{cor}
+
+\begin{rem}
+Deux matrices semblables ont même déterminant.
+\end{rem}
+
+\begin{dem}
+Soient \(A,B\in\M{n}\) deux matrices semblables et \(P\in\GL{n}\) telle que \(B=PAP\inv\).
+
+On a : \[\begin{aligned}
+\det B&=\det\paren{PAP\inv} \\
+&=\det\paren{P}\det\paren{A}\det\paren{P\inv} \\
+&=\det A.
+\end{aligned}\]
+\end{dem}
