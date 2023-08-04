@@ -585,3 +585,125 @@ Donc \(\sum_n\dfrac{1}{n^{1+\nicefrac{1}{n}}}\) et \(\sum_n\dfrac{1}{n}\) sont d
 
 Or la série harmonique diverge donc \(\sum_n\dfrac{1}{n^{1+\nicefrac{1}{n}}}\) diverge.
 \end{corr}
+
+\section{Séries absolument convergentes}
+
+\begin{defi}[Série absolument convergente]
+Soit \(\paren{x_n}_n\in\K^\N\).
+
+On dit que la série \(\sum_nx_n\) est absolument convergente ou converge absolument si la série \(\sum_n\abs{x_n}\) est convergente.
+\end{defi}
+
+\begin{rem}
+Pour une série à termes positifs, la convergence absolue équivaut à la convergence.
+\end{rem}
+
+\begin{rem}
+Une série convergente qui ne converge pas absolument est dite semi-convergente.
+\end{rem}
+
+\begin{theo}[Convergence absolue \(\imp\) convergence]
+Soit \(\paren{x_n}_n\in\K^\N\).
+
+Si la série \(\sum_nx_n\) est absolument convergente alors elle est convergente.
+\end{theo}
+
+\begin{dem}
+Supposons \(\sum_nx_n\) absolument convergente, \cad \(\sum_x\abs{x_n}\) convergente.
+
+Si \(\K=\R\) :
+
+On remarque : \[\begin{WithArrows}
+\quantifs{\forall n\in\N}&-\abs{x_n}\leq x_n\leq\abs{x_n} \Arrow{\(+\abs{x_n}\)} \\
+&0\leq x_n+\abs{x_n}\leq2\abs{x_n}.
+\end{WithArrows}\]
+
+Or \(\sum_n2\abs{x_n}\) est convergente et \(\sum_n\paren{x_n+\abs{x_n}}\) et \(\sum_n2\abs{x_n}\) sont des séries à termes positifs.
+
+Donc selon le théorème de comparaison des séries à termes positifs, \(\sum_n\paren{x_n+\abs{x_n}}\) converge.
+
+Or \(\sum_n\abs{x_n}\) converge donc \(\sum_nx_n\) converge (différence de deux séries convergentes).
+
+Si \(\K=\C\) :
+
+On a : \[\quantifs{\forall n\in\N}\begin{dcases}
+\abs{\Re x_n}\leq\abs{x_n} \\
+\abs{\Im x_n}\leq\abs{x_n}
+\end{dcases}\]
+
+Donc les séries \(\sum_n\abs{\Re x_n}\) et \(\sum_n\abs{\Im x_n}\) sont convergentes selon le théorème de comparaison des séries à termes positifs.
+
+Donc \(\sum_n\Re x_n\) et \(\sum_n\Im x_n\) sont absolument convergentes et donc convergentes selon le cas \(\K=\R\).
+
+Donc \(\sum_nx_n=\sum_n\Re x_n+\i\sum_n\Im x_n\) est convergente.
+\end{dem}
+
+\begin{bilan}[Convergence absolue \(\imp\) convergence \(\imp\) non divergence grossière]
+Pour toute série \(\sum_nx_n\), on a : \[\sum_n\abs{x_n}\text{ converge}\imp\sum_nx_n\text{ converge}\imp\lim_{n\to\pinf}x_n=0.\]
+\end{bilan}
+
+\begin{rem}[Inégalité triangulaire pour les séries absolument convergentes]
+Soit \(\sum_nx_n\) une série absolument convergente.
+
+On a : \[\abs{\sum_{n=0}^{\pinf}x_n}\leq\sum_{n=0}^{\pinf}\abs{x_n}.\]
+\end{rem}
+
+\begin{dem}
+On a, selon l'inégalité triangulaire dans \(\K\) : \[\quantifs{\forall N\in\N}\abs{\sum_{n=0}^Nx_n}\leq\sum_{n=0}^N\abs{x_n}.\]
+
+Or, quand \(N\to\pinf\) : \[\begin{dcases}
+\abs{\sum_{n=0}^Nx_n}\to\abs{\sum_{n=0}^{\pinf}x_n} &\text{car }\sum_nx_n\text{ converge absolument donc converge} \\
+\sum_{n=0}^N\abs{x_n}\to\sum_{n=0}^{\pinf}\abs{x_n} &\text{car }\sum_nx_n\text{ converge absolument}
+\end{dcases}\]
+
+D'où le résultat, par passage à la limite dans l'inégalité.
+\end{dem}
+
+\begin{rem}
+Pour montrer la convergence absolue d'une série, on peut utiliser le théorème de comparaison des séries à termes positifs :
+\end{rem}
+
+\begin{rem}[Corollaire du \thref{theo:théorèmeDeComparaisonDesSériesATermesPositifs}]
+Soient \(\paren{x_n}_n\in\K^\N\) et \(\paren{y_n}_n\in\paren{\Rp}^\N\).
+
+Supposons \[\begin{dcases}
+x_n\egqd{n\to\pinf}\O{y_n} \\
+\sum_ny_n\text{ converge}
+\end{dcases}\]
+
+Alors, selon le théorème de comparaison des séries à termes positifs, \(\sum_n\abs{x_n}\) converge.
+
+Donc la série \(\sum_nx_n\) converge absolument, donc elle converge.
+\end{rem}
+
+\begin{exoex}
+Les séries suivantes sont-elles absolument convergentes ?
+
+\begin{enumerate}
+    \item \(\sum_n\dfrac{\paren{-1}^n}{n}\) \\
+    \item \(\sum_n\dfrac{\cos n}{n^2\Arctan n}\) \\
+    \item \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\)
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a : \[\sum_n\abs{\dfrac{\paren{-1}^n}{n}}=\sum_n\dfrac{1}{n}.\]
+
+Or, la série harmonique diverge donc \(\sum_n\dfrac{\paren{-1}^n}{n}\) ne converge pas absolument.
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\quantifs{\forall n\in\Ns}0\leq\dfrac{1}{\Arctan n}\leq\dfrac{1}{\Arctan1}=\dfrac{4}{\pi}.\]
+
+Donc : \[\quantifs{\forall n\in\Ns}\abs{\dfrac{\cos n}{n^2\Arctan n}}\leq\dfrac{4}{\pi n^2}.\]
+
+Or \(\sum_n\dfrac{4}{\pi n^2}\) converge donc selon le théorème de comparaison des séries à termes positifs, \(\sum_n\abs{\dfrac{\cos n}{n^2\Arctan n}}\) converge et donc \(\sum_n\dfrac{\cos n}{n^2\Arctan n}\) converge absolument.
+\end{corr}
+
+\begin{corr}[3]
+On a, quand \(x\to0\) : \[\tan x=x+\O{x^2}\qquad\text{et}\qquad\sin x=x+\O{x^2}.\]
+
+Donc, quand \(n\to\pinf\) : \[\abs{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}=\O{\dfrac{1}{n^2}}.\]
+
+Or \(\sum_n\dfrac{1}{n^2}\) est une série de Riemann convergente donc selon le théorème de comparaison des séries à termes positifs, \(\sum_n\abs{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) converge et donc \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) converge absolument.
+\end{corr}
