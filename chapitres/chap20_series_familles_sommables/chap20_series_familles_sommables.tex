@@ -345,7 +345,7 @@ Alors elle admet une limite et on a : \[\lim_nu_n=\begin{dcases}
 \end{dcases}\]
 \end{rappel}
 
-\begin{theo}
+\begin{theo}\thlabel{theo:convergenceDesSériesATermesPositifs}
 Une série à termes positifs converge si, et seulement si, la suite de ses sommes partielles est majorée.
 \end{theo}
 
@@ -369,3 +369,108 @@ Si la série est divergente, on s'autorise à écrire : \[\sum_{n=0}^{\pinf}x_n=
 
 Cette notation est relativement naturelle car la suite des sommes partielles de la série tend vers \(\pinf\) (mais elle est réservée au cas des séries à termes positifs divergentes).
 \end{nota}
+
+\subsection{Comparaison des séries à termes positifs}
+
+\begin{theo}[Théorème de comparaison des séries à termes positifs]\thlabel{theo:théorèmeDeComparaisonDesSériesATermesPositifs}
+Soient \(\sum_nx_n\) et \(\sum_ny_n\) deux séries à termes positifs.
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        \quantifs{\forall n\in\N}x_n\leq y_n \\
+        \sum_ny_n\text{ converge}
+    \end{dcases}\) alors \(\sum_nx_n\) converge. \\
+    \item Si \(\begin{dcases}
+        x_n\egqd{n\to\pinf}\O{y_n} \\
+        \sum_ny_n\text{ converge}
+    \end{dcases}\) alors \(\sum_nx_n\) converge. \\
+    \item Si \(x_n\simqd{n\to\pinf}y_n\) alors \(\sum_nx_n\) et \(\sum_ny_n\) sont de même nature. \\
+    \item Si \(\begin{dcases}
+        \quantifs{\forall n\in\N}x_n\leq y_n \\
+        \sum_nx_n\text{ diverge}
+    \end{dcases}\) alors \(\sum_ny_n\) diverge. \\
+    \item Si \(\begin{dcases}
+        x_n\egqd{n\to\pinf}\O{y_n} \\
+        \sum_nx_n\text{ diverge}
+    \end{dcases}\) alors \(\sum_ny_n\) diverge.
+\end{enumerate}
+\end{theo}
+
+\begin{dem}[1]
+Supposons \(\quantifs{\forall n\in\N}x_n\leq y_n\) et \(\sum_ny_n\) converge.
+
+Selon le \thref{theo:convergenceDesSériesATermesPositifs}, il existe \(M\in\Rp\) tel que \[\quantifs{\forall n\in\N}\sum_{k=0}^ny_k\leq M.\]
+
+Donc : \[\quantifs{\forall n\in\N}\sum_{k=0}^nx_k\leq M.\]
+
+Donc \(\sum_nx_n\) converge car c'est une série à termes positifs dont la suite des sommes partielles est majorée.
+\end{dem}
+
+\begin{dem}[2]
+Découle du (1) car si \(x_n\egqd{n\to\pinf}\O{y_n}\) alors il existe \(K\in\Rp\) tel que \(\quantifs{\forall n\in\N}x_n\leq Ky_n\) et si \(\sum_ny_n\) converge alors \(\sum_nKy_n\) aussi.
+\end{dem}
+
+\begin{dem}[3]
+Découle de (2) car \(x_n\simqd{n\to\pinf}y_n\imp\begin{dcases}
+x_n\egqd{n\to\pinf}\O{y_n} \\
+y_n\egqd{n\to\pinf}\O{x_n}
+\end{dcases}\)
+\end{dem}
+
+\begin{dem}[4]
+Contraposée de (1).
+\end{dem}
+
+\begin{dem}[5]
+Contraposée de (2).
+\end{dem}
+
+\begin{rem}
+Le (1) est suffisant pour énoncer le théorème.
+\end{rem}
+
+\begin{rem}
+Attention à ne surtout pas utiliser le \thref{theo:convergenceDesSériesATermesPositifs} pour comparer des séries quelconques (\cf pour un contre-exemple).
+
+On peut comparer des séries à termes positifs, ou plus généralement, des séries dont les termes sont de signe constant à partir d'un certain rang.
+\end{rem}
+
+\begin{exoex}
+Soit \(q\in\Rps\).
+
+Étudier la nature des séries suivantes :
+
+\begin{enumerate}
+    \item \(\sum_n\sin\dfrac{1}{2^n}\) \\
+    \item \(\sum_n\dfrac{q^n}{1+q^n}\)
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]~\\
+On a \(\begin{dcases}
+\sin h\simqd{h\to0}h \\
+\lim_n\dfrac{1}{2^n}=0
+\end{dcases}\) donc \(\sin\dfrac{1}{2^n}\simqd{n\to\pinf}\dfrac{1}{2^n}\).
+
+Or la série géométrique \(\sum_n\dfrac{1}{2^n}\) converge donc selon le théorème de comparaison des séries à termes positifs, \(\sum_n\sin\dfrac{1}{2^n}\) converge.
+\end{corr}
+
+\begin{corr}[2]
+On a, quand \(n\to\pinf\) : \[1+q^n\sim\begin{dcases}
+1 &\text{si }q<1 \\
+2 &\text{si }q=1 \\
+q^n &\text{si }q>1
+\end{dcases}\] donc : \[\dfrac{q^n}{1+q^n}\sim\begin{dcases}
+q^n &\text{si }q<1 \\
+\dfrac{1}{2} &\text{si }q=1 \\
+1 &\text{si }q>1
+\end{dcases}\]
+
+Si \(q\geq1\) : \(\sum_n\dfrac{q^n}{1+q^n}\) diverge grossièrement.
+
+Sinon, selon le théorème de comparaison des séries à termes positifs : \[\sum_n\dfrac{q^n}{1+q^n}\text{ converge}\ssi\sum_nq^n\text{ converge}.\]
+
+Or la série géométrique \(\sum_nq^n\) converge car \(\abs{q}<1\) donc \(\sum_n\dfrac{q^n}{1+q^n}\) converge.
+
+Conclusion : \[\sum_n\dfrac{q^n}{1+q^n}\text{ converge}\ssi q<1.\]
+\end{corr}
