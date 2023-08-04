@@ -430,7 +430,7 @@ Le (1) est suffisant pour énoncer le théorème.
 \end{rem}
 
 \begin{rem}
-Attention à ne surtout pas utiliser le \thref{theo:convergenceDesSériesATermesPositifs} pour comparer des séries quelconques (\cf pour un contre-exemple).
+Attention à ne surtout pas utiliser le \thref{theo:convergenceDesSériesATermesPositifs} pour comparer des séries quelconques (\cf \thref{exoex:contreExempleUtilisationDuThéorèmeDeComparaisonDesSériesATermesPositifsSurDesSériesQuelconques} pour un contre-exemple).
 
 On peut comparer des séries à termes positifs, ou plus généralement, des séries dont les termes sont de signe constant à partir d'un certain rang.
 \end{rem}
@@ -706,4 +706,102 @@ On a, quand \(x\to0\) : \[\tan x=x+\O{x^2}\qquad\text{et}\qquad\sin x=x+\O{x^2}.
 Donc, quand \(n\to\pinf\) : \[\abs{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}=\O{\dfrac{1}{n^2}}.\]
 
 Or \(\sum_n\dfrac{1}{n^2}\) est une série de Riemann convergente donc selon le théorème de comparaison des séries à termes positifs, \(\sum_n\abs{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) converge et donc \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) converge absolument.
+\end{corr}
+
+\section{Séries alternées}
+
+\begin{rappel}[\thref{prop:suiteConvergenteSsiSuitesExtraitesPairesEtImpairesConvergentVersLaMêmeLimite}]
+Soient \(\paren{u_n}_n\in\K^\N\) et \(l\in\K\).
+
+On a : \[\lim_{n\to\pinf}u_n=l\ssi\lim_{n\to\pinf}u_{2n}=\lim_{n\to\pinf}u_{2n+1}=l.\]
+\end{rappel}
+
+\begin{rappel}[Suites adjacentes (\thref{theo:théorèmeDesSuitesAdjacentes})]
+Deux suites réelles \(\paren{a_n}_n,\paren{b_n}_n\in\R^\N\) sont dites adjacentes si l'une est croissante, l'autre est décroissante et la limite de leur différence est nulle.
+
+Les deux suites sont alors convergentes et de même limite.
+\end{rappel}
+
+\begin{defi}
+On appelle série alternée une série de la forme \(\sum_n\paren{-1}^na_n\) où \(\paren{a_n}_{n\in\N}\) est une suite de réelle de signe constant : \[\orenv{\quantifs{\forall n\in\N}a_n\geq0 \\ \quantifs{\forall n\in\N}a_n\leq0}\]
+\end{defi}
+
+\begin{theo}[Critère spécial des séries alternées (CSSA)]
+Soit \(\paren{a_n}_n\in\R^\N\).
+
+On suppose :
+
+\begin{enumerate}
+    \item \(\paren{a_n}_n\) est positive : \(\quantifs{\forall n\in\N}a_n\geq0\) ; \\
+    \item \(\paren{a_n}_n\) est décroissante : \(\quantifs{\forall n\in\N}a_{n+1}\leq a_n\) ; \\
+    \item \(\paren{a_n}_n\) tend vers \(0\) : \(\lim_{n\to\pinf}a_n=0\).
+\end{enumerate}
+
+Alors la série \(\sum_n\paren{-1}^na_n\) est convergente.
+
+De plus, on a les encadrements : \[\quantifs{\forall n\in\N}-a_{2n+1}\leq R_{2n}=\sum_{k=2n+1}^{\pinf}\paren{-1}^ka_k\leq0\] et : \[\quantifs{\forall n\in\N}0\leq R_{2n+1}=\sum_{k=2n+2}^{\pinf}\paren{-1}^ka_k\leq a_{2n+2}.\]
+
+En d'autres termes, le reste est du signe de son premier terme et on a la \guillemets{majoration du reste} : \[\quantifs{\forall N\in\N}\abs{R_N}\leq a_{N+1}.\]
+\end{theo}
+
+\begin{dem}[Convergence de la série]
+Montrons que \(\paren{S_{2n}}_n\) et \(\paren{S_{2n+1}}_n\) sont adjacentes, où \(\paren{S_N}_N\) est la suite des sommes partielles de la série : \[\quantifs{\forall N\in\N}S_N=\sum_{k=0}^N\paren{-1}^ka_k.\]
+
+On a : \[\begin{aligned}
+\quantifs{\forall n\in\N}S_{2\paren{n+1}}&=S_{2n}+\paren{-1}^{2n+1}a_{2n+1}+\paren{-1}^{2n+2}a_{2n+2} \\
+&=S_{2n}-a_{2n+1}+a_{2n+2} \\
+&\leq S_{2n}.
+\end{aligned}\]
+
+Donc \(\paren{S_{2n}}_n\) est décroissante.
+
+De même : \[\begin{aligned}
+\quantifs{\forall n\in\N}S_{2n+3}&=S_{2n+1}+a_{2n+2}-a_{2n+3} \\
+&\geq S_{2n+1}.
+\end{aligned}\]
+
+Donc \(\paren{S_{2n+1}}_n\) est croissante.
+
+Enfin, on a : \[\quantifs{\forall n\in\N}S_{2n+1}-S_{2n}=-a_{2n+1}\tendqd{n\to\pinf}0.\]
+
+Donc \(\paren{S_{2n}}_n\) et \(\paren{S_{2n+1}}_n\) sont adjacentes et donc convergentes de même limite \(l\in\R\).
+
+Donc \(\sum_n\paren{-1}^na_n\) est convergente (de somme \(l\)).
+\end{dem}
+
+\begin{dem}[Encadrements]
+Comme \(\paren{S_{2n+1}}_n\) est croissante de limite \(l\) et \(\paren{S_{2n}}_n\) est décroissante de limite \(l\), on a : \[\quantifs{\forall n\in\N}S_{2n+1}\leq l\leq S_{2n},\] \cad : \[\quantifs{\forall n\in\N}\sum_{k=0}^{2n+1}\paren{-1}^ka_k\leq\sum_{k=0}^{\pinf}\paren{-1}^ka_k\leq\sum_{k=0}^{2n}\paren{-1}^ka_k.\]
+
+D'où, en soustrayant \(\sum_{k=0}^{2n}\paren{-1}^ka_k\) : \[\quantifs{\forall n\in\N}-a_{2n+1}\leq\underbrace{\sum_{k=2n+1}^{\pinf}\paren{-1}^ka_k}_{=R_{2n}}\leq0.\]
+
+Idem pour l'autre encadrement en partant de \(S_{2n+1}\leq l\leq S_{2n+2}\).
+\end{dem}
+
+\begin{ex}~\\
+La série \(\sum_{n}\dfrac{\paren{-1}^n}{n}\) est semi-convergente.
+\end{ex}
+
+\begin{dem}~\\
+La suite \(\paren{\dfrac{1}{n}}_n\) est positive, décroissante et de limite nulle donc d'après le critère spécial des séries alternées, \(\sum_n\dfrac{\paren{-1}^n}{n}\) est convergente.
+
+Or, on a vu qu'elle n'est pas absolument convergente donc elle est semi-convergente.
+\end{dem}
+
+\begin{exoex}\thlabel{exoex:contreExempleUtilisationDuThéorèmeDeComparaisonDesSériesATermesPositifsSurDesSériesQuelconques}~\\
+\begin{enumerate}
+    \item La série \(\sum_n\paren{\dfrac{\paren{-1}^n}{\sqrt{n}}+\dfrac{1}{n}}\) est-elle convergente ? \\
+    \item Donner un équivalent de son terme général. Que remarque-t-on ?
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]~\\
+La suite \(\paren{\dfrac{1}{\sqrt{n}}}_n\) est positive, décroissante et de limite nulle donc d'après le critère spécial des séries alternées, \(\sum_n\dfrac{\paren{-1}^n}{\sqrt{n}}\) converge.
+
+Or, \(\sum_n\dfrac{1}{n}\) diverge donc \(\sum_n\paren{\dfrac{\paren{-1}^n}{\sqrt{n}}+\dfrac{1}{n}}\) diverge (somme d'une série convergente et d'une série divergente).
+\end{corr}
+
+\begin{corr}[2]~\\
+On a \(\dfrac{1}{n}\egqd{n\to\pinf}\o{\dfrac{\paren{-1}^n}{\sqrt{n}}}\) donc : \[\dfrac{1}{n}+\dfrac{\paren{-1}^n}{\sqrt{n}}\simqd{n\to\pinf}\dfrac{\paren{-1}^n}{\sqrt{n}}.\]
+
+Pourtant, \(\sum_n\paren{\dfrac{\paren{-1}^n}{\sqrt{n}}+\dfrac{1}{n}}\) et \(\sum_n\dfrac{\paren{-1}^n}{\sqrt{n}}\) ne sont pas de même nature.
 \end{corr}
