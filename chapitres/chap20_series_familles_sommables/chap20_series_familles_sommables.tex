@@ -474,3 +474,114 @@ Or la série géométrique \(\sum_nq^n\) converge car \(\abs{q}<1\) donc \(\sum_
 
 Conclusion : \[\sum_n\dfrac{q^n}{1+q^n}\text{ converge}\ssi q<1.\]
 \end{corr}
+
+\subsection{Utilisation des intégrales}
+
+\subsubsection{Méthode}
+
+\begin{rem}
+La proposition suivante est en fait une méthode pour encadrer les sommes partielles d'une série. Vous énoncerez en deuxième année le \guillemets{théorème de comparaison série-intégrale} qui repose sur cette méthode.
+\end{rem}
+
+\begin{prop}
+Soit une fonction décroissante \(f:\Rp\to\R\).
+
+On a : \[\quantifs{\forall n\in\N}\sum_{k=1}^nf\paren{k}\leq\int_0^nf\paren{t}\odif{t}\leq\sum_{k=0}^{n-1}f\paren{k}.\]
+
+D'où l'encadrement des sommes partielles de la série \(\sum_{n\geq0}f\paren{n}\) : \[\quantifs{\forall n\in\N}\int_0^{n+1}f\paren{t}\odif{t}\leq\sum_{k=0}^nf\paren{k}\leq f\paren{0}+\int_0^nf\paren{t}\odif{t}.\]
+\end{prop}
+
+\begin{dem}
+Comme \(f\) est décroissante, on a : \[\quantifs{\forall k\in\N;\forall t\in\intervii{k}{k+1}}f\paren{k+1}\leq f\paren{t}\leq f\paren{k}.\]
+
+D'où, par croissance de l'intégrale : \[\quantifs{\forall k\in\N}\underbrace{\int_k^{k+1}f\paren{k+1}\odif{t}}_{=f\paren{k+1}}\leq\int_k^{k+1}f\paren{t}\odif{t}\leq\underbrace{\int_k^{k+1}f\paren{k}\odif{t}}_{=f\paren{k}}.\]
+
+D'où, par somme : \[\quantifs{\forall n\in\N}\sum_{k=0}^{n-1}f\paren{k+1}\leq\sum_{k=0}^{n-1}\int_k^{k+1}f\paren{t}\odif{t}\leq\sum_{k=0}^{n-1}\paren{k},\] \cad : \[\quantifs{\forall n\in\N}\sum_{k=1}^nf\paren{k}\leq\int_0^nf\paren{t}\odif{t}\leq\sum_{k=0}^{n-1}f\paren{k}.\]
+\end{dem}
+
+\begin{rem}
+\begin{itemize}
+    \item Ne pas retenir l'énoncé de la proposition : ce qui importe est la méthode. En pratique, redémontrer les encadrements utiles, en s'adaptant au contexte (notamment quand la fonction n'est pas définie en \(0\), \cf \hyperref[subsubsec:applicationAuxSériesDeRiemann]{paragraphe 2.3.2}). \\
+    \item La méthode est très intéressante dans le cas (très fréquent) où l'on ne sait pas calculer les sommes partielles alors qu'on sait calculer les intégrales. Elle permet : \begin{itemize}
+        \item de montrer la convergence d'une série (\cf \hyperref[subsubsec:applicationAuxSériesDeRiemann]{paragraphe 2.3.2}) ;
+        \item d'obtenir un équivalent des sommes partielles d'une série ;
+        \item d'obtenir un équivalent des restes d'une série convergente.
+    \end{itemize}
+\end{itemize}
+\end{rem}
+
+\subsubsection{Application aux séries de Riemann}\label{subsubsec:applicationAuxSériesDeRiemann}
+
+\begin{theo}[Convergence des séries de Riemann]
+Soit \(\alpha\in\R\).
+
+On a : \[\sum_n\dfrac{1}{n^\alpha}\text{ converge}\ssi\alpha>1.\]
+\end{theo}
+
+\begin{dem}~\\
+Si \(\alpha\leq0\) alors \(\sum_n\dfrac{1}{n^\alpha}\) est grossièrement divergente.
+
+Sinon, la fonction \(\fonction{f}{\Rps}{\R}{t}{\dfrac{1}{t^\alpha}}\) est décroissante et continue.
+
+On a donc : \[\quantifs{\forall k\in\Ns;\forall t\in\intervii{k}{k+1}}\dfrac{1}{\paren{k+1}^\alpha}\leq\dfrac{1}{t^\alpha}\leq\dfrac{1}{k^\alpha}.\]
+
+D'où, par croissance de l'intégrale : \[\quantifs{\forall k\in\Ns}\dfrac{1}{\paren{k+1}^\alpha}\leq\int_k^{k+1}\dfrac{\odif{t}}{t^\alpha}\leq\dfrac{1}{k^\alpha}.\]
+
+D'où, par somme : \[\quantifs{\forall n\in\interventierie{2}{\pinf}}\sum_{k=1}^{n-1}\dfrac{1}{\paren{k+1}^\alpha}\leq\int_1^n\dfrac{\odif{t}}{t^\alpha}\leq\sum_{k=1}^{n-1}\dfrac{1}{k^\alpha}.\]
+
+D'où : \[\quantifs{\forall n\in\Ns}\int_1^{n+1}\dfrac{\odif{t}}{t^\alpha}\leq\sum_{k=1}^n\dfrac{1}{k^\alpha}\leq1+\int_1^n\dfrac{\odif{t}}{t^\alpha}.\]
+
+Si \(\alpha=1\) (série harmonique), on obtient : \[\quantifs{\forall n\in\Ns}\ln\paren{n+1}\leq\sum_{k=1}^n\dfrac{1}{k}\leq1+\ln n.\]
+
+Or \(\lim_n\ln\paren{n+1}=\lim_n\paren{1+\ln n}=\pinf\) donc selon le théorème des gendarmes, on a \(\lim_n\sum_{k=1}^n\dfrac{1}{k}=\pinf\).
+
+Donc la suite des sommes partielles de la série à termes positifs \(\sum_n\dfrac{1}{n}\) n'est pas majorée donc la série diverge.
+
+Si \(\alpha<1\), on a \(\dfrac{1}{n}\egqd{n\to\pinf}\O{\dfrac{1}{n^\alpha}}\) et \(\sum_n\dfrac{1}{n}\) diverge donc selon le théorème de comparaison des séries à termes positifs, la série \(\sum_n\dfrac{1}{n^\alpha}\) diverge.
+
+Si \(\alpha>1\), on obtient : \[\quantifs{\forall n\in\Ns}\dfrac{1}{\alpha-1}\paren{1-\dfrac{1}{\paren{n+1}^{\alpha-1}}}\leq\sum_{k=1}^n\dfrac{1}{k^\alpha}\leq1+\int_1^nt^{-\alpha}\odif{t}=\croch{\dfrac{t^{1-\alpha}}{1-\alpha}}_1^n=1+\dfrac{1}{\alpha-1}\paren{1-\dfrac{1}{n^{\alpha-1}}}.\]
+
+D'où : \[\quantifs{\forall n\in\Ns}\sum_{k=1}^n\dfrac{1}{k^\alpha}\leq1+\dfrac{1}{\alpha-1}.\]
+
+Donc \(\sum_n\dfrac{1}{n^\alpha}\) converge car c'est une série à termes positifs dont la suite des sommes partielles est majorée.
+\end{dem}
+
+\begin{exoex}
+Étudier la nature des séries suivantes :
+
+\begin{enumerate}
+    \item \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) \\
+    \item \(\sum_n\dfrac{1}{n^{1+\nicefrac{1}{n}}}\)
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a : \[\sin x\egqd{x\to0}x-\dfrac{x^3}{6}+\o{x^3}\qquad\text{et}\qquad\tan x\egqd{x\to0}x+\dfrac{x^3}{3}+\o{x^3}.\]
+
+Donc : \[\begin{aligned}
+\tan\dfrac{1}{n}-\sin\dfrac{1}{n}&\egqd{n\to\pinf}\dfrac{1}{3n^3}+\dfrac{1}{6n^3}+\o{\dfrac{1}{n^3}} \\
+&\egqd{n\to\pinf}\dfrac{1}{2n^3}+\o{\dfrac{1}{n^3}} \\
+&\simqd{n\to\pinf}\dfrac{1}{2n^3}.
+\end{aligned}\]
+
+En particulier, \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) est une série à termes positifs à partir d'un certain rang.
+
+Selon le théorème de comparaison des séries à termes positifs (à partir d'un certain rang) : \[\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\text{ et }\sum_n\dfrac{1}{2n^3}\text{ sont de même nature}.\]
+
+Or la série de Riemann \(\sum_n\dfrac{1}{n^3}\) converge donc \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) converge.
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\begin{aligned}
+n^{1+\nicefrac{1}{n}}&=\exp\paren{\paren{1+\dfrac{1}{n}}\ln n} \\
+&=\exp\paren{\ln n+\dfrac{\ln n}{n}} \\
+&=n\underbrace{\exp\underbrace{\dfrac{\ln n}{n}}_{\tendqd{n\to\pinf}0}}_{\simqd{n\to\pinf}1} \\
+&\simqd{n\to\pinf}n.
+\end{aligned}\]
+
+Donc \(\dfrac{1}{n^{1+\nicefrac{1}{n}}}\simqd{n\to\pinf}\dfrac{1}{n}\).
+
+Donc \(\sum_n\dfrac{1}{n^{1+\nicefrac{1}{n}}}\) et \(\sum_n\dfrac{1}{n}\) sont de même nature selon le théorème de comparaison des séries à termes positifs.
+
+Or la série harmonique diverge donc \(\sum_n\dfrac{1}{n^{1+\nicefrac{1}{n}}}\) diverge.
+\end{corr}
