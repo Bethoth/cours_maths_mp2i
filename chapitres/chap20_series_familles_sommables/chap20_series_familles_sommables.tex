@@ -805,3 +805,29 @@ On a \(\dfrac{1}{n}\egqd{n\to\pinf}\o{\dfrac{\paren{-1}^n}{\sqrt{n}}}\) donc : \
 
 Pourtant, \(\sum_n\paren{\dfrac{\paren{-1}^n}{\sqrt{n}}+\dfrac{1}{n}}\) et \(\sum_n\dfrac{\paren{-1}^n}{\sqrt{n}}\) ne sont pas de même nature.
 \end{corr}
+
+\section{Familles sommables de réels positifs}\label{sec:famillesSommablesDeRéelsPositifs}
+
+\subsection{L'ensemble \(\intervii{0}{\pinf}\)}
+
+\begin{rappel}
+On a muni l'ensemble \(\intervii{0}{\pinf}\) d'une loi de composition interne \(+\) et d'une relation d'ordre \(\leq\).
+\end{rappel}
+
+\begin{nota}
+Comme la loi \(+\) sur \(\intervii{0}{\pinf}\) est associative, commutative et possède un élément neutre, on peut sans problème utiliser la notation \[\sum_{i\in A}x_i\] pour tout famille finie \(\paren{x_i}_{i\in A}\in\intervii{0}{\pinf}^A\) (la somme vaut \(0\) si \(A=\ensvide\)).
+\end{nota}
+
+\begin{prop}
+Toute partie de \(\intervii{0}{\pinf}\) admet une borne supérieure et une borne inférieure dans \(\intervii{0}{\pinf}\).
+
+Par exemple : \[\quantifs{\forall A\subset\intervii{0}{\pinf}}\sup A=\begin{dcases}
+{\sup}_\R\,A &\text{si }A\text{ est une partie de }\R\text{ majorée et non-vide} \\
+\pinf &\text{si }A\text{ n'admet pas de majorant dans }\R \\
+0 &\text{si }A=\ensvide
+\end{dcases}\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice} (\cf \thref{exo:toutePartieDeRbAdmetUnSupEtUnInfDansRb} où on a montré la même chose pour les parties de \(\Rb\)).
+\end{dem}
