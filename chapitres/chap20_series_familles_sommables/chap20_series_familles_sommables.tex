@@ -814,7 +814,7 @@ Pourtant, \(\sum_n\paren{\dfrac{\paren{-1}^n}{\sqrt{n}}+\dfrac{1}{n}}\) et \(\su
 On a muni l'ensemble \(\intervii{0}{\pinf}\) d'une loi de composition interne \(+\) et d'une relation d'ordre \(\leq\).
 \end{rappel}
 
-\begin{nota}
+\begin{nota}\thlabel{nota:sommeFamilleFinie}
 Comme la loi \(+\) sur \(\intervii{0}{\pinf}\) est associative, commutative et possède un élément neutre, on peut sans problème utiliser la notation \[\sum_{i\in A}x_i\] pour tout famille finie \(\paren{x_i}_{i\in A}\in\intervii{0}{\pinf}^A\) (la somme vaut \(0\) si \(A=\ensvide\)).
 \end{nota}
 
@@ -831,3 +831,83 @@ Par exemple : \[\quantifs{\forall A\subset\intervii{0}{\pinf}}\sup A=\begin{dcas
 \begin{dem}
 \note{Exercice} (\cf \thref{exo:toutePartieDeRbAdmetUnSupEtUnInfDansRb} où on a montré la même chose pour les parties de \(\Rb\)).
 \end{dem}
+
+\subsection{Somme d'une famille de réels positifs}
+
+\begin{nota}
+On note \(\Pf{I}\) l'ensemble des parties finies de l'ensemble \(I\) : \[\Pf{I}=\accol{A\in\P{I}\tq\Card A<\pinf}.\]
+\end{nota}
+
+\begin{defi}\thlabel{defi:sommeD'uneFamilleDeRéelsPositifs}
+Soient \(I\) un ensemble et \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\).
+
+On appelle somme de \(\paren{x_i}_i\) et on note \(\sum_{i\in I}x_i\) l'élément \[\sum_{i\in I}x_i=\sup_{A\in\Pf{I}}\sum_{i\in A}x_i.\]
+\end{defi}
+
+\begin{rem}
+Lorsqu'on manipule des sommes dans \(\intervii{0}{\pinf}\), il n'y a pas de problème de convergence. Les propositions de ce paragraphe sont donc vraies sans autre hypothèse que \guillemets{les éléments sont dans \(\intervii{0}{\pinf}\)}.
+
+Lorsqu'une famille \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\) vérifie \[\sum_{i\in I}x_i<\pinf\] on dit que la famille est sommable.
+
+Cela signifie que tous les termes de la famille sont finis et que l'ensemble de ses sommes finies est une partie majorée de \(\Rp\) : \[\accol{\sum_{i\in A}x_i}_{A\in\Pf{I}}\text{ est une partie majorée de }\Rp.\]
+\end{rem}
+
+\begin{ex}[Familles finies]
+Dans le cas d'une famille finie, la nouvelle notation de la \thref{defi:sommeD'uneFamilleDeRéelsPositifs} coïncide avec la \thref{nota:sommeFamilleFinie}.
+
+Une famille finie d'éléments de \(\intervii{0}{\pinf}\) est sommable si, et seulement si, tous ses termes sont finis.
+\end{ex}
+
+\begin{ex}[Séries à termes positifs]
+Soit \(\paren{x_n}_n\in\paren{\Rp}^\N\).
+
+On a : \[\sum_{n\in\N}x_n=\sum_{n=0}^{\pinf}x_n.\]
+
+Ainsi, \(\paren{x_n}_n\) est sommable si, et seulement si, la série à termes positifs \(\sum_nx_n\) est convergente.
+\end{ex}
+
+\begin{dem}~\\
+\geqbox Montrons que \(\sum_{n=0}^{\pinf}x_n\leq\sum_{n\in\N}x_n\).
+
+Si \(\sum_{n\in\N}x_n=\pinf\), l'inégalité est claire.
+
+Supposons \(\sum_{n\in\N}x_n<\pinf\) et posons \(M=\sum_{n\in\N}x_n\).
+
+On a : \[\quantifs{\forall A\in\Pf{\N}}\sum_{n\in A}x_n\leq M.\]
+
+En particulier, en prenant \(A=\interventierii{0}{N}\) : \[\quantifs{\forall N\in\N}\sum_{n=0}^Nx_n\leq M.\]
+
+Donc \(\sum_nx_n\) est convergente car c'est une série à termes positifs dont la suite des sommes partielles est majorée.
+
+De plus, par passage à la limite dans l'inégalité : \[\sum_{n=0}^{\pinf}x_n\leq M.\]
+
+\leqbox Montrons que \(\sum_{n\in\N}x_n\leq\sum_{n=0}^{\pinf}x_n\).
+
+Si \(\sum_{n=0}^{\pinf}x_n=\pinf\) alors l'inégalité est claire.
+
+Supposons \(\sum_{n=0}^{\pinf}x_n<\pinf\) (\cad la série converge).
+
+Montrons que : \[\quantifs{\forall A\in\Pf{\N}}\sum_{n\in A}x_n\leq\sum_{n=0}^{\pinf}x_n.\]
+
+On sait que \(\paren{\sum_{n=0}^Nx_n}_N\) est croissante et converge vers \(\sum_{n=0}^{\pinf}x_n\) donc : \[\quantifs{\forall N\in\N}\sum_{n=0}^Nx_n\leq\sum_{n=0}^{\pinf}x_n.\]
+
+Soient \(A\in\Pf{\N}\) et \(N\) un majorant de \(A\).
+
+On a \(A\subset\interventierii{0}{N}\).
+
+Donc, comme \(\quantifs{\forall n\in\interventierii{0}{N}}x_n\geq0\) : \[\sum_{n\in A}x_n\leq\sum_{n=0}^Nx_n\leq\sum_{n=0}^{\pinf}x_n.\]
+
+Donc : \[\sum_{n\in\N}x_n\leq\sum_{n=0}^{\pinf}x_n.\]
+\end{dem}
+
+\begin{ex}
+Soit \(q\in\Rps\).
+
+\begin{itemize}
+    \item La famille \(\paren{q^n}_{n\in\Z}\) n'est pas sommable : \[\sum_{n\in\Z}q^n=\pinf.\]~
+    \item La famille \(\paren{q^{\abs{n}}}_{n\in\Z}\) est sommable si, et seulement si, \(q<1\). On a : \[\sum_{n\in\Z}q^{\abs{n}}=\begin{dcases}
+        \dfrac{1+q}{1-q} &\text{si }q<1 \\
+        \pinf &\text{sinon}
+    \end{dcases}\]
+\end{itemize}
+\end{ex}
