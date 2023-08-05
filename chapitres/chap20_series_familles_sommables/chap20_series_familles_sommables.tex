@@ -1114,3 +1114,130 @@ On a : \[\sum_{n\in\N}x_n=\sum_{n=0}^{\pinf}x_n.\]
 
 NB : le membre de droite est la somme de la série absolument convergente \(\sum_nx_n\).
 \end{ex}
+
+\subsection{Propriétés}
+
+\begin{prop}
+Soient \(I\) un ensemble et \(\paren{x_i}_i\in\C^I\) une famille sommable.
+
+Pour tout \(\epsilon\in\Rps\), il existe une partie finie \(A\subset I\) telle que : \[\abs{\sum_{i\in I}x_i-\sum_{i\in A}x_i}\leq\epsilon.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}[Invariance de la somme par permutation]\thlabel{prop:invarianceDeLaSommeParPermutationCasComplexe}
+Soient \(\paren{x_i}_i\in\C^I\) et \(\sigma\in\S{I}\).
+
+La famille \(\paren{x_i}_i\) est sommable si, et seulement si, la famille \(\paren{x_{\sigma\paren{i}}}_i\) est sommable.
+
+On a alors : \[\sum_{i\in I}x_i=\sum_{i\in I}x_{\sigma\paren{i}}.\]
+\end{prop}
+
+\begin{cor}[Application aux séries absolument convergentes]
+Soient \(\sum_nx_n\) une série à termes complexes et \(\sigma\in\S{\N}\).
+
+La série \(\sum_nx_n\) est absolument convergente si, et seulement si, la série \(\sum_nx_{\sigma\paren{n}}\) est absolument convergente.
+
+On a alors : \[\sum_{n=0}^{\pinf}x_n=\sum_{n=0}^{\pinf}x_{\sigma\paren{n}}.\]
+\end{cor}
+
+\begin{rem}
+On dit qu'une série à termes complexes \(\sum_nx_n\) est commutativement convergente si quelle que soit la permutation \(\sigma\in\S{\N}\), la série \(\sum_nx_{\sigma\paren{n}}\) est convergente et de même somme que \(\sum_nx_n\).
+
+On peut montrer : \[\sum_nx_n\text{ est commutativement convergente}\ssi\sum_nx_n\text{ est absolument convergente}.\]
+\end{rem}
+
+\begin{rem}
+La proposition suivante généralise la \thref{prop:invarianceDeLaSommeParPermutationCasComplexe}.
+\end{rem}
+
+\begin{prop}[Changement d'indice]
+Soient \(I\) et \(J\) deux ensembles, \(\paren{x_i}_i\in\C^I\) et \(\phi:J\to I\) une bijection.
+
+La famille \(\paren{x_i}_{i\in I}\) est sommable si, et seulement si, la famille \(\paren{x_{\phi\paren{j}}}_{j\in J}\) est sommable.
+
+On a alors : \[\sum_{i\in I}x_i=\sum_{j\in J}x_{\phi\paren{j}}.\]
+\end{prop}
+
+\begin{prop}[Sous-famille]
+Toute sous-famille d'une famille sommable est sommable.
+\end{prop}
+
+\begin{prop}
+Soient \(\paren{x_i}_i\in\C^I\) et \(\paren{y_i}_i\in\intervii{0}{\pinf}^I\) telles que \[\quantifs{\forall i\in I}\abs{x_i}\leq y_i.\]
+
+Alors : \[\sum_{i\in I}\abs{x_i}\leq\sum_{i\in I}y_i.\]
+
+En particulier : \[\paren{y_i}_i\text{ est sommable}\imp\paren{x_i}_i\text{ est sommable}.\]
+\end{prop}
+
+\begin{prop}[Linéarité de la somme]
+Soient \(\paren{x_i}_i,\paren{y_i}_i\in\C^I\) deux familles sommables et \(\lambda,\mu\in\C\).
+
+La combinaison linéaire des deux familles : \[\paren{\lambda x_i+\mu y_i}_i\] est sommable et on a : \[\sum_{i\in I}\paren{\lambda x_i+\mu y_i}=\lambda\sum_{i\in I}x_i+\mu\sum_{i\in I}y_i.\]
+\end{prop}
+
+\begin{theo}[Sommation par paquets]
+Soit \(\paren{x_i}_i\in\C^I\) une famille sommable.
+
+On suppose que l'ensemble \(I\) s'écrit comme une réunion disjointe : \[I=\bigunion_{j\in J}I_j\qquad\text{avec}\qquad\quantifs{\forall j_1,j_2\in J}\croch{j_1\not=j_2\imp I_{j_1}\inter I_{j_2}=\ensvide}.\]
+
+Alors : \[\begin{dcases}
+\quantifs{\forall j\in J}\paren{x_i}_{i\in I_j}\text{ est sommable} \\
+\paren{\sum_{i\in I_j}x_i}_{j\in J}\text{ est sommable}
+\end{dcases}\] et on a : \[\sum_{i\in I}x_i=\sum_{j\in J}\paren{\sum_{i\in I_j}x_i}.\]
+\end{theo}
+
+\begin{dem}
+\note{Hors programme}
+\end{dem}
+
+\begin{cor}[Théorème de Fubini]
+Soient \(I\) et \(J\) des ensembles et \(\paren{x_{ij}}_{\paren{i,j}\in I\times J}\in\C^{I\times J}\) une famille sommable.
+
+On a : \[\sum_{i\in I}\sum_{j\in J}x_{ij}=\sum_{j\in J}\sum_{i\in I}x_{ij}.\]
+\end{cor}
+
+\begin{exoex}
+Soit \(z\in\C\) tel que \(\abs{z}<1\).
+
+\begin{enumerate}
+    \item Calculer \(\sum_{i=1}^{\pinf}\sum_{j=1}^{\pinf}z^{i+j}\) \\
+    \item La famille \(\paren{z^{i+j}}_{\paren{i,j}\in\paren{\Ns}^2}\) est-elle sommable ? Le cas échéant, quelle est sa somme ?
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a : \[\begin{aligned}
+\sum_{i=1}^{\pinf}\sum_{j=1}^{\pinf}z^{i+j}&=\sum_{i=1}^{\pinf}\dfrac{z^{i+1}}{1-z} \\
+&=\dfrac{z^2}{1-z}\times\dfrac{1}{1-z} \\
+&=\dfrac{z^2}{\paren{1-z}^2}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[2]
+Comme les termes sont positifs, on a, en sommant par paquets : \[\begin{aligned}
+\sum_{\paren{i,j}\in\paren{\Ns}^2}\abs{z^{i+j}}&=\sum_{i=1}^{\pinf}\sum_{j=1}^{\pinf}\abs{z^{i+j}} \\
+&=\dfrac{\abs{z}^2}{\paren{1-\abs{z}}^2} \\
+&<\pinf.
+\end{aligned}\]
+
+Donc la famille est sommable donc, en sommant par paquets : \[\begin{aligned}
+\sum_{\paren{i,j}\in\paren{\Ns}^2}z^{i+j}&=\sum_{i=1}^{\pinf}\sum_{j=1}^{\pinf}z^{i+j} \\
+&=\dfrac{z^2}{\paren{1-z}^2}.
+\end{aligned}\]
+\end{corr}
+
+\begin{cor}
+Soient \(\paren{x_i}_i\in\C^I\) et \(\paren{y_j}_j\in\C^J\) deux familles sommables.
+
+Alors la famille \(\paren{x_iy_j}_{\paren{i,j}\in I\times J}\) est sommable et on a : \[\sum_{\paren{i,j}\in I\times J}x_iy_j=\paren{\sum_{i\in I}x_i}\times\paren{\sum_{j\in J}y_j}.\]
+\end{cor}
+
+\begin{cor}
+Soient \(n\in\interventierie{2}{\pinf}\) et \(\paren{x_{i_1}}_{i_1}\in\C^{I_1},\dots,\paren{x_{i_n}}_{i_n}\in\C^{I_n}\) des familles sommables.
+
+Alors la famille \(\paren{x_{i_1}\dots x_{i_n}}_{\paren{i_1,\dots,i_n}\in I_1\times\dots\times I_n}\) est sommable et on a : \[\sum_{\paren{i_1,\dots,i_n}\in I_1\times\dots\times I_n}x_{i_1}\dots x_{i_n}=\paren{\sum_{i_1\in I_1}x_{i_1}}\times\dots\times\paren{\sum_{i_n\in I_n}x_{i_n}}.\]
+\end{cor}
