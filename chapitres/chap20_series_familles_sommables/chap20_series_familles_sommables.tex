@@ -298,7 +298,7 @@ On suppose : \[\quantifs{\forall t\in I}\abs{f\deriv{n+1}\paren{t}}\leq M.\]
 On a : \[\abs{f\paren{b}-\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}\paren{b-a}^k}\leq\dfrac{M\abs{b-a}^{n+1}}{\paren{n+1}!}.\]
 \end{rappel}
 
-\begin{prop}
+\begin{prop}\thlabel{prop:sommesInfiniesExponentielleCosEtSin}
 On a, pour tous \(x\in\R\) : \[\e{x}=\sum_{n=0}^{\pinf}\dfrac{x^n}{n!}\qquad\cos x=\sum_{n=0}^{\pinf}\dfrac{\paren{-1}^nx^{2n}}{\paren{2n}!}\qquad\sin x=\sum_{n=0}^{\pinf}\dfrac{\paren{-1}^nx^{2n+1}}{\paren{2n+1}!}.\]
 \end{prop}
 
@@ -1297,3 +1297,75 @@ Considérons les séries \(\sum_nz^n\) et \(\sum_nz^n\) et leur produit de Cauch
 
 Comme \(\sum_nz^n\) et \(\sum_nz^n\) sont absolument convergentes, leur produit de Cauchy l'est aussi et on a : \[\sum_{n=0}^{\pinf}x_n=\paren{\sum_{n=0}^{\pinf}z^n}^2=\paren{\dfrac{1}{1-z}}^2=\dfrac{1}{\paren{1-z}^2}.\]
 \end{corr}
+
+\section{Fonction exponentielle}
+
+\begin{defprop}[Fonction exponentielle]\thlabel{defprop:fonctionExponentielle}
+Soit \(z\in\C\).
+
+La série \(\sum_n\dfrac{z^n}{n!}\) est absolument convergente.
+
+Sa somme est appelée exponentielle de \(z\) et est notée \[\exp z=\e{z}=\sum_{n=0}^{\pinf}\dfrac{z^n}{n!}.\]
+\end{defprop}
+
+\begin{dem}
+Selon la \thref{prop:sommesInfiniesExponentielleCosEtSin} : \[\sum_{n=0}^{\pinf}\dfrac{\abs{z}^n}{n!}=\e{\abs{z}}<\pinf.\]
+
+Donc \(\sum_n\dfrac{\abs{z}^n}{n!}\) converge donc \(\sum_n\dfrac{z^n}{n!}\) converge absolument.
+\end{dem}
+
+\begin{prop}\thlabel{prop:propriétésExponentielleDéfinieCommeLaSommeDUneSérie}
+On a :
+
+\begin{enumerate}
+    \item \(\e{0}=1\) \\
+    \item \(\quantifs{\forall z_1,z_2\in\C}\e{z_1+z_2}=\e{z_1}\e{z_2}\) \\
+    \item \(\quantifs{\forall z\in\C}\e{-z}=\dfrac{1}{\e{z}}\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+On a : \[\e{0}=\sum_{n=0}^{\pinf}\dfrac{0^n}{n!}=\dfrac{0^0}{0!}=1.\]
+\end{dem}
+
+\begin{dem}[2]
+Soient \(z_1,z_2\in\C\).
+
+On a : \[\begin{WithArrows}
+\e{z_1+z_2}&=\sum_{n=0}^{\pinf}\dfrac{\paren{z_1+z_2}^n}{n!} \\
+&=\sum_{n=0}^{\pinf}\dfrac{1}{n!}\sum_{k=0}^n\binom{k}{n}z_1^kz_2^{n-k} \\
+&=\sum_{n=0}^{\pinf}\sum_{k=0}^n\dfrac{z_1^k}{k!}\times\dfrac{z_2^{n-k}}{\paren{n-k}!} \Arrow[tikz={text width=4cm}]{produit de Cauchy car \(\sum_n\dfrac{z_1^n}{n!}\) et \(\sum_n\dfrac{z_2^n}{n!}\) convergent absolument} \\
+&=\paren{\sum_{n=0}^{\pinf}\dfrac{z_1^n}{n!}}\paren{\sum_{n=0}^{\pinf}\dfrac{z_2^n}{n!}} \\
+&=\e{z_1}\e{z_2}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{dem}[3]
+Soit \(z\in\C\).
+
+On a \(\e{z}\e{-z}=1\) donc \(\e{-z}=\dfrac{1}{\e{z}}\) (en particulier, \(\e{z}\not=0\)).
+\end{dem}
+
+\begin{cor}
+La fonction \(\fonction{\exp}{\C}{\Cs}{z}{\e{z}}\) est un morphisme de groupes de \(\groupe{\C}\) vers \(\groupe{\Cs}[\times]\).
+\end{cor}
+
+\begin{rem}[Compatibilité avec les anciennes définitions]
+\begin{enumerate}
+    \item D'après la \thref{prop:sommesInfiniesExponentielleCosEtSin}, la \thref{defprop:fonctionExponentielle} est bien compatible avec la fonction \(\exp:\R\to\R\) vue au lycée. \\
+    \item On avait déjà défini une fonction \(\exp:\C\to\C\) en posant : \[\quantifs{\forall a,b\in\R}\e{a+\i b}=\e{a}\e{\i b}=\e{a}\paren{\cos b+\i\sin b}.\] La \thref{defprop:fonctionExponentielle} est également compatible avec cette définition. \\
+    \item Vous aurez en deuxième année des outils pour étudier les \guillemets{séries de fonctions} qui rendront cette définition davantage exploitable.
+\end{enumerate}
+\end{rem}
+
+\begin{dem}[2]
+Soient \(a,b\in\R\).
+
+D'après la \thref{prop:sommesInfiniesExponentielleCosEtSin}, on a : \[\begin{WithArrows}
+\e{a}\paren{\cos b+\i\sin b}&=\e{a}\paren{\sum_{n=0}^{\pinf}\dfrac{\paren{-1}^nb^{2n}}{\paren{2n}!}+\i\sum_{n=0}^{\pinf}\dfrac{\paren{-1}^nb^{2n+1}}{\paren{2n+1}!}} \\
+&=\e{a}\paren{\sum_{n=0}^{\pinf}\dfrac{\paren{\i b}^{2n}}{\paren{2n}!}+\sum_{n=0}^{\pinf}\dfrac{\paren{\i b}^{2n+1}}{\paren{2n+1}!}} \\
+&=\e{a}\sum_{N=0}^{\pinf}\dfrac{\paren{\i b}^N}{N!} \\
+&=\e{a}\e{\i b} \Arrow[i]{\thref{prop:propriétésExponentielleDéfinieCommeLaSommeDUneSérie} (2)} \\
+&=\e{a+\i b}.
+\end{WithArrows}\]
+\end{dem}
