@@ -911,3 +911,139 @@ Soit \(q\in\Rps\).
     \end{dcases}\]
 \end{itemize}
 \end{ex}
+
+\subsection{Propriétés}
+
+\begin{prop}[Invariance de la somme par permutation]\thlabel{prop:invarianceDeLaSommeParPermutation}
+Soient \(\paren{x_i}_i\in\intervii{0}{\pinf}^{I}\) et \(\sigma\in\S{I}\).
+
+On a : \[\sum_{i\in I}x_i=\sum_{i\in I}x_{\sigma\paren{i}}.\]
+
+En particulier, \(\paren{x_i}_i\) est sommable si, et seulement si, \(\paren{x_{\sigma\paren{i}}}_i\) est sommable.
+\end{prop}
+
+\begin{dem}
+C'est clair car les sommes finies d'éléments de \(\paren{x_i}_i\) sont les sommes finies d'éléments de \(\paren{x_{\sigma\paren{i}}}_i\).
+\end{dem}
+
+\begin{cor}[Application aux séries à termes positifs]
+Soient \(\paren{x_n}_n\in\paren{\Rp}^\N\) et \(\sigma\in\S{\N}\).
+
+On a : \[\sum_{n=0}^{\pinf}x_n=\sum_{n=0}^{\pinf}x_{\sigma\paren{n}}.\]
+
+En particulier, \(\sum_nx_{\sigma\paren{n}}\) converge si, et seulement si, \(\sum_nx_n\) converge.
+\end{cor}
+
+\begin{rem}
+La proposition suivante généralise la \thref{prop:invarianceDeLaSommeParPermutation}.
+\end{rem}
+
+\begin{prop}[Changement d'indice]
+Soient \(I\) et \(J\) deux ensembles, \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\) et \(\phi:J\to I\) une bijection.
+
+On a : \[\sum_{i\in I}x_i=\sum_{j\in J}x_{\phi\paren{j}}.\]
+
+En particulier, \(\paren{x_i}_{i\in I}\) est sommable si, et seulement si, \(\paren{x_{\phi\paren{j}}}_{j\in J}\) est sommable.
+\end{prop}
+
+\begin{dem}
+C'est clair car les sommes finies d'éléments de \(\paren{x_i}_{i\in I}\) sont les sommes finies d'éléments de \(\paren{x_{\phi\paren{j}}}_{j\in J}\).
+\end{dem}
+
+\begin{prop}[Sous-famille]
+Soient \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\) et \(J\subset I\).
+
+On a : \[\sum_{i\in J}x_i\leq\sum_{i\in I}x_i.\]
+
+En particulier, une sous-famille d'une famille sommable est sommable.
+\end{prop}
+
+\begin{prop}[Croissance de la somme]
+Soient \(\paren{x_i}_i,\paren{y_i}_i\in\intervii{0}{\pinf}^I\) telles que \[\quantifs{\forall i\in I}x_i\leq y_i.\]
+
+On a : \[\sum_{i\in I}x_i\leq\sum_{i\in I}y_i.\]
+
+En particulier, \(\paren{x_i}_i\) est sommable si \(\paren{y_i}_i\) est sommable.
+\end{prop}
+
+\begin{prop}[\guillemets{somme de sommes}]
+Soient \(\paren{x_i}_i,\paren{y_i}_i\in\intervii{0}{\pinf}^I\).
+
+On a : \[\sum_{i\in I}\paren{x_i+y_i}=\sum_{i\in I}x_i+\sum_{i\in I}y_i.\]
+
+En particulier, la somme de deux familles sommables est une famille sommable.
+\end{prop}
+
+\begin{prop}
+Soient \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\) et \(\lambda\in\Rp\).
+
+On a : \[\sum_{i\in I}\lambda x_i=\lambda\sum_{i\in I}x_i.\]
+\end{prop}
+
+\begin{theo}[Sommation par paquets]
+Soit \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\).
+
+On suppose que \(I\) s'écrit comme une réunion disjointe : \[I=\bigunion_{j\in J}I_j\qquad\text{avec}\qquad\quantifs{\forall j_1,j_2\in J}\croch{j_1\not=j_2\imp I_{j_1}\inter I_{j_2}=\ensvide}.\]
+
+Alors : \[\sum_{i\in I}x_i=\sum_{j\in J}\paren{\sum_{i\in I_j}x_i}.\]
+
+En particulier : \[\paren{x_i}_{i\in I}\text{ est sommable}\ssi\begin{dcases}
+\quantifs{\forall j\in J}\paren{x_i}_{i\in I_j}\text{ est sommable} \\
+\paren{\sum_{i\in I_j}x_i}_{j\in J}\text{ est sommable}
+\end{dcases}\]
+\end{theo}
+
+\begin{dem}
+\note{Hors programme}
+\end{dem}
+
+\begin{exoex}
+Calculer : \[\sum_{n=2}^{\pinf}\paren{\zeta\paren{n}-1}.\]
+\end{exoex}
+
+\begin{corr}
+On remarque : \[\quantifs{\forall n\in\interventierie{2}{\pinf}}\zeta\paren{n}=\sum_{k=1}^{\pinf}\dfrac{1}{k^n}\geq1.\]
+
+Donc \(\sum_{n\geq2}\paren{\zeta\paren{n}-1}\) est une série à termes positifs.
+
+Donc : \[\sum_{n=2}^{\pinf}\paren{\zeta\paren{n}-1}=\sum_{n\in\interventierie{2}{\pinf}}\paren{\zeta\paren{n}-1}.\]
+
+Calculons cette somme en utilisant le théorème précédent.
+
+\begin{brouill}
+On a : \[\begin{aligned}
+\sum_{n=2}^{\pinf}\paren{\zeta\paren{n}-1}&=\sum_{n=2}^{\pinf}\sum_{k=2}^{\pinf}\dfrac{1}{k^n} \\
+&\overset{\star}{=}\sum_{k=2}^{\pinf}\sum_{n=2}^{\pinf}\dfrac{1}{k^n} \\
+&=\sum_{k=2}^{\pinf}\dfrac{1}{k^2-k} \\
+&=\sum_{k=2}^{\pinf}\dfrac{1}{k\paren{k-1}} \\
+&=\sum_{k=2}^{\pinf}\paren{\dfrac{1}{k-1}-\dfrac{1}{k}} \\
+&=1.
+\end{aligned}\]
+\end{brouill}
+
+Il ne reste qu'à justifier \(\star\).
+
+Posons \(I=\interventierie{2}{\pinf}^2\).
+
+On considère la famille \(\paren{\dfrac{1}{k^n}}_{\paren{n,k}\in I}\in\intervii{0}{\pinf}^I\).
+
+On remarque que \(I\) s'écrit comme une réunion disjointe : \[I=\bigunion_{n\in\interventierie{2}{\pinf}}\accol{n}\times\interventierie{2}{\pinf}.\]
+
+D'où (sommation par paquets) : \[\sum_{n=2}^{\pinf}\sum_{k=2}^{\pinf}\dfrac{1}{k^n}=\sum_{\paren{n,k}\in I}\dfrac{1}{k^n}.\]
+
+D'autre part, on a \(I=\bigunion_{k\in\interventierie{2}{\pinf}}\interventierie{2}{\pinf}\times\accol{k}\) donc : \[\sum_{k=2}^{\pinf}\sum_{n=2}^{\pinf}\dfrac{1}{k^n}=\sum_{\paren{n,k}\in I}\dfrac{1}{k^n}.\]
+
+D'où l'égalité.
+\end{corr}
+
+\begin{cor}[Théorème de Fubini positif]
+Soient \(I\) et \(J\) des ensembles et \(\paren{x_{ij}}_{\paren{i,j}\in I\times J}\in\intervii{0}{\pinf}^{I\times J}\).
+
+On a : \[\sum_{i\in I}\sum_{j\in J}x_{ij}=\sum_{j\in J}\sum_{i\in I}x_{ij}.\]
+\end{cor}
+
+\begin{dem}
+On a les réunions disjointes : \[I\times J=\bigunion_{i\in I}\accol{i}\times J=\bigunion_{j\in J}I\times\accol{j}.\]
+
+D'où (sommations par paquets) : \[\sum_{\paren{i,j}\in I\times J}x_{ij}=\sum_{i\in I}\sum_{j\in J}x_{ij}=\sum_{j\in J}\sum_{i\in I}x_{ij}.\]
+\end{dem}
