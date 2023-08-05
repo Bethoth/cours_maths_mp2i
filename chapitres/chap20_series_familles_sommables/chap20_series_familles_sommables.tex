@@ -1047,3 +1047,70 @@ On a les réunions disjointes : \[I\times J=\bigunion_{i\in I}\accol{i}\times J=
 
 D'où (sommations par paquets) : \[\sum_{\paren{i,j}\in I\times J}x_{ij}=\sum_{i\in I}\sum_{j\in J}x_{ij}=\sum_{j\in J}\sum_{i\in I}x_{ij}.\]
 \end{dem}
+
+\section{Familles sommables de nombres complexes}
+
+\subsection{Somme d'une famille sommable de nombres complexes}
+
+\begin{defi}[Famille sommable]
+Soit \(I\) un ensemble.
+
+On dit qu'une famille \(\paren{x_i}_i\in\C^I\) est sommable si on a : \[\sum_{i\in I}\abs{x_i}<\pinf.\]
+
+L'ensemble des familles sommables d'éléments de \(\C\) indicées par \(I\) est noté : \[l^1\paren{I,\C}\qquad\text{ou}\qquad l^1\paren{I}.\]
+\end{defi}
+
+\begin{ex}
+Prenons \(I=\N\) et \(\paren{x_n}_n\in\C^\N\).
+
+Alors : \[\paren{x_n}_n\text{ est sommable}\ssi\sum_nx_n\text{ converge absolument}.\]
+\end{ex}
+
+\begin{defi}[Somme d'une famille sommable]
+Soient \(I\) un ensemble et \(\paren{z_k}_k\in\C^I\) une famille sommable.
+
+On pose \(\quantifs{\forall x\in\R}\begin{dcases}
+x_+=\max\accol{x;0}\in\Rp \\
+x_-=\max\accol{-x;0}
+\end{dcases}\) tels que \(\quantifs{\forall x\in\R}x=x_+-x_-\).
+
+Ainsi, on a : \[\quantifs{\forall x,y\in\R}x+\i y=x_+-x_-+\i y_+-\i y_-.\]
+
+On remarque : \[\quantifs{\forall x,y\in\R}\begin{dcases}
+0\leq x_+\leq\abs{x}\leq\abs{x+\i y} \\
+0\leq x_-\leq\abs{x}\leq\abs{x+\i y} \\
+0\leq y_+\leq\abs{x}\leq\abs{x+\i y} \\
+0\leq y_-\leq\abs{x}\leq\abs{x+\i y}
+\end{dcases}\]
+
+On pose : \[\quantifs{\forall k\in I}\begin{dcases}
+x_k=\paren{\Re z_k}_+ \\
+x_k\prim=\paren{\Re z_k}_- \\
+y_k=\paren{\Im z_k}_+ \\
+y_k\prim=\paren{\Im z_k}_-
+\end{dcases}\qquad\text{de sorte que}\qquad\quantifs{\forall k\in I}\begin{dcases}
+z_k=x_k-x_k\prim+\i y_k-\i y_k\prim \\
+0\leq x_k\leq\abs{x_k} \\
+0\leq x_k\prim\leq\abs{x_k\prim} \\
+0\leq y_k\leq\abs{y_k} \\
+0\leq y_k\prim\leq\abs{y_k\prim}
+\end{dcases}\]
+
+Or, \(\sum_{k\in I}\abs{z_k}<\pinf\) donc \(\paren{x_k}_{k\in I}\), \(\paren{x_k\prim}_{k\in I}\), \(\paren{y_k}_{k\in I}\) et \(\paren{y_k\prim}_{k\in I}\) sont sommables.
+
+On pose alors : \[\sum_{k\in I}z_k=\sum_{k\in I}x_k-\sum_{k\in I}x_k\prim+\i\sum_{k\in I}y_k-\i\sum_{k\in I}y_k\prim.\]
+
+NB : on a des sommes finies car on a des familles sommables de réels positifs.
+\end{defi}
+
+\begin{ex}[Familles finies]
+Toute famille finie de nombres complexes est sommable. Sa somme est la somme usuelle.
+\end{ex}
+
+\begin{ex}[Suites sommables]
+Soit \(\paren{x_n}_n\in\C^\N\).
+
+On a : \[\sum_{n\in\N}x_n=\sum_{n=0}^{\pinf}x_n.\]
+
+NB : le membre de droite est la somme de la série absolument convergente \(\sum_nx_n\).
+\end{ex}
