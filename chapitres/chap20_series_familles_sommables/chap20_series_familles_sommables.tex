@@ -1230,7 +1230,7 @@ Donc la famille est sommable donc, en sommant par paquets : \[\begin{aligned}
 \end{aligned}\]
 \end{corr}
 
-\begin{cor}
+\begin{cor}\thlabel{cor:produitDeFamillesSommablesEstSommable}
 Soient \(\paren{x_i}_i\in\C^I\) et \(\paren{y_j}_j\in\C^J\) deux familles sommables.
 
 Alors la famille \(\paren{x_iy_j}_{\paren{i,j}\in I\times J}\) est sommable et on a : \[\sum_{\paren{i,j}\in I\times J}x_iy_j=\paren{\sum_{i\in I}x_i}\times\paren{\sum_{j\in J}y_j}.\]
@@ -1241,3 +1241,59 @@ Soient \(n\in\interventierie{2}{\pinf}\) et \(\paren{x_{i_1}}_{i_1}\in\C^{I_1},\
 
 Alors la famille \(\paren{x_{i_1}\dots x_{i_n}}_{\paren{i_1,\dots,i_n}\in I_1\times\dots\times I_n}\) est sommable et on a : \[\sum_{\paren{i_1,\dots,i_n}\in I_1\times\dots\times I_n}x_{i_1}\dots x_{i_n}=\paren{\sum_{i_1\in I_1}x_{i_1}}\times\dots\times\paren{\sum_{i_n\in I_n}x_{i_n}}.\]
 \end{cor}
+
+\subsection{Produits de Cauchy de séries absolument convergentes}
+
+\begin{defi}[Produit de Cauchy de deux séries]
+Soient \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq0}y_n\) deux séries de nombres complexes.
+
+On appelle produit de Cauchy de \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq0}y_n\) la série \(\sum_{n\geq0}z_n\) définie par : \[\quantifs{\forall n\in\N}z_n=\sum_{k=0}^nx_ky_{n-k}.\]
+\end{defi}
+
+\begin{rem}
+\begin{itemize}
+    \item On suppose que les séries sont définies \guillemets{à partir de \(n=0\)}. Quand ce n'est pas le cas, le plus simple est d'ajouter des termes nuls à la série pour manipuler proprement les produits de Cauchy. \\
+    \item Le produit de Cauchy est une loi de composition commutative (on le voit en faisant le changement d'indice \(k\prim=n-k\) dans la somme \(\sum_{k=0}^nx_ky_{n-k}\)).
+\end{itemize}
+\end{rem}
+
+\begin{theo}
+Soient \(\sum_nx_n\) et \(\sum_ny_n\) deux séries de nombres complexes absolument convergentes.
+
+Alors leur produit de Cauchy \(\sum_nz_n\) est une série absolument convergente, de somme : \[\sum_{n=0}^{\pinf}z_n=\paren{\sum_{n=0}^{\pinf}x_n}\times\paren{\sum_{n=0}^{\pinf}y_n}.\]
+\end{theo}
+
+\begin{dem}
+Comme les séries \(\sum_nx_n\) et \(\sum_ny_n\) sont absolument convergentes, les familles \(\paren{x_n}_n\) et \(\paren{y_n}_n\) sont sommables.
+
+Selon le \thref{cor:produitDeFamillesSommablesEstSommable}, la famille \(\paren{x_iy_j}_{\paren{i,j}\in\N^2}\) est sommable et de somme : \[\begin{aligned}
+\sum_{\paren{i,j}\in\N^2}x_iy_j&=\paren{\sum_{i\in\N}x_i}\paren{\sum_{j\in\N}y_j} \\
+&=\paren{\sum_{i=0}^{\pinf}x_i}\paren{\sum_{j=0}^{\pinf}y_j}.
+\end{aligned}\]
+
+Or, on a les réunions disjointes suivantes : \[\begin{aligned}
+\N^2&=\accol{\paren{i,j}\in\N^2} \\
+&=\bigunion_{n\in\N}\accol{\paren{i,j}\in\N^2\tq i+j=n} \\
+&=\bigunion_{n\in\N}\accol{\paren{k,n-k}}_{k\in\interventierii{0}{n}}.
+\end{aligned}\]
+
+D'où (sommation par paquets) : \[\sum_{\paren{i,j}\in\N^2}x_iy_j=\sum_{n=0}^{\pinf}\sum_{k=0}^nx_ky_{n-k}.\]
+
+De plus, la série \(\sum_n\sum_{k=0}^nx_ky_{n-k}\) est absolument convergente.
+\end{dem}
+
+\begin{exoex}
+Soit \(z\in\C\) tel que \(\abs{z}<1\).
+
+Montrer : \[\sum_{n=0}^{\pinf}\paren{n+1}z^n=\dfrac{1}{\paren{1-z}^2}.\]
+\end{exoex}
+
+\begin{corr}
+Considérons les séries \(\sum_nz^n\) et \(\sum_nz^n\) et leur produit de Cauchy \(\sum_nx_n\) défini par : \[\begin{aligned}
+\quantifs{\forall n\in\N}x_n&=\sum_{k=0}^nz^kz^{n-k} \\
+&=\sum_{k=0}^nz^n \\
+&=\paren{n+1}z^n.
+\end{aligned}\]
+
+Comme \(\sum_nz^n\) et \(\sum_nz^n\) sont absolument convergentes, leur produit de Cauchy l'est aussi et on a : \[\sum_{n=0}^{\pinf}x_n=\paren{\sum_{n=0}^{\pinf}z^n}^2=\paren{\dfrac{1}{1-z}}^2=\dfrac{1}{\paren{1-z}^2}.\]
+\end{corr}
