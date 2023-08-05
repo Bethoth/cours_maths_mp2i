@@ -2,4 +2,1370 @@
 
 \minitoc
 
-\note{À VENIR}
+On pose \(\K=\R\) ou \(\C\).
+
+Dans ce chapitre, on définit la valeur d'une \guillemets{somme infinie} dans \(\K\) de la forme \(x_0+x_1+x_2+\dots\) de deux façons :
+
+\begin{itemize}
+    \item une première façon au \hyperref[sec:séries]{paragraphe 1} où elle est notée \(\sum_{n=0}^{\pinf}x_n\) ; \\
+    \item une seconde au paragraphe \hyperref[sec:famillesSommablesDeRéelsPositifs]{paragraphe 5} où elle est notée \(\sum_{n\in\N}x_n\).
+\end{itemize}
+
+La grande différence entre les deux façons est que l'ordre dans lequel sont énumérés les termes de la somme est important dans la première ; pas dans la seconde.
+
+\section{Séries}\label{sec:séries}
+
+\subsection{Deux exemples}
+
+\begin{ex}[Série géométrique]
+On a la série géométrique de raison \(\dfrac{1}{2}\) : \[\dfrac{1}{2}+\dfrac{1}{4}+\dfrac{1}{8}+\dfrac{1}{16}+\dots=1.\]
+\end{ex}
+
+\begin{ex}[Série harmonique]
+On a la série harmonique : \[\dfrac{1}{1}+\dfrac{1}{2}+\dfrac{1}{3}+\dfrac{1}{4}+\dfrac{1}{5}+\dots=\pinf.\]
+\end{ex}
+
+\subsection{Séries convergentes, séries divergentes}
+
+\begin{defi}[Série convergente, série divergente]
+À toute suite \(\paren{x_n}_{n\in\N}\in\K^\N\) on associe une série notée \[\sum x_n\qquad\text{ou}\qquad\sum_nx_n\qquad\text{ou}\qquad\sum_{n\geq0}x_n\] et appelée série de terme général \(x_n\).
+
+La suite \(\paren{S_n}_n\) des sommes partielles de la série \(\sum_nx_n\) est définie par : \[\quantifs{\forall n\in\N}S_n=\sum_{k=0}^nx_k.\]
+
+On dit que la série \(\sum_nx_n\) converge ou est convergente si la suite \(\paren{S_n}_n\) de ses sommes partielles est convergente.
+
+On définit alors la somme de la série \(\sum_nx_n\) par : \[\sum_{n=0}^{\pinf}x_n=\lim_{N\to\pinf}\sum_{n=0}^Nx_n.\]
+
+Sinon, on dit que la série \(\sum_nx_n\) diverge ou est divergente.
+
+Déterminer la nature d'une série ou étudier sa convergence, c'est décider si elle est convergente ou divergente.
+\end{defi}
+
+\begin{rem}
+(Mêmes notations)
+
+La série \(\sum_nx_n\) est toujours définie ; sa somme \(\sum_{n=0}^{\pinf}x_n\) n'est définie que si la série est convergente.
+\end{rem}
+
+\begin{rem}
+En pratique, la suite \(\paren{x_n}_n\) n'est pas toujours définie à partir du rang \(n=0\).
+
+Si la suite \(\paren{x_n}_{n\in\interventierie{n_0}{\pinf}}\in\K^{\interventierie{n_0}{\pinf}}\) est définie à partir d'un certain rang \(n_0\in\N\), on lui associe la série notée \[\sum x_n\qquad\text{ou}\qquad\sum_nx_n\qquad\text{ou}\qquad\sum_{n\geq n_0}x_n\] dont la suite \(\paren{S_n}_{n\geq n_0}\) des sommes partielles est définie par : \[\quantifs{\forall n\in\interventierie{n_0}{\pinf}}S_n=\sum_{k=n_0}^nx_k.\]
+
+On dit que la série \(\sum_{n\geq n_0}x_n\) converge ou est convergente si la suite \(\paren{S_n}_n\) de ses sommes partielles est convergente.
+
+On définit alors la somme de la série \(\sum_{n\geq n_0}x_n\) par : \[\sum_{n=n_0}^{\pinf}x_n=\lim_{N\to\pinf}\sum_{n=n_0}^Nx_n.\]
+
+Dans la suite du cours, on suppose que la suite \(\paren{x_n}_n\) est définie à partir de \(n=0\) pour simplifier l'exposé.
+\end{rem}
+
+\begin{rem}[Tronquer une série]\thlabel{rem:tronquerUneSérie}
+Soient \(\sum_{n\geq0}x_n\) une série et \(n_0\in\N\).
+
+Les séries \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq n_0}x_n\) sont de même nature (on dit qu'\guillemets{on ne change pas la nature d'une série en la tronquant}).
+
+Si elles convergent, leurs sommes respectives vérifient : \[\sum_{n=0}^{\pinf}x_n=\sum_{n=0}^{n_0-1}x_n+\sum_{n=n_0}^{\pinf}x_n.\]
+\end{rem}
+
+\begin{dem}
+On note \(\paren{S_n}_n\) et \(\paren{S_n\prim}_n\) les suites des sommes partielles respectives des séries \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq n_0}x_n\).
+
+On a : \[\quantifs{\forall n\geq n_0}S_n=\sum_{k=0}^nx_k=\sum_{k=0}^{n_0-1}x_k+S_n\prim.\]
+
+Donc : \[\paren{S_n}_n\text{ converge}\ssi\paren{S_n\prim}_n\text{ converge}.\]
+
+D'où : \[\sum_{n\geq0}x_n\text{ converge}\ssi\sum_{n\geq n_0}x_n\text{ converge}\] et, en cas de convergence, \(\lim_nS_n=\sum_{k=0}^{n_0-1}x_k+\lim_nS_n\prim\), \cad : \[\sum_{n=0}^{\pinf}x_n=\sum_{n=0}^{n_0-1}x_n+\sum_{n=n_0}^{\pinf}x_n.\]
+\end{dem}
+
+\begin{defprop}[Restes d'une série convergente]
+Soit \(\sum_{n\geq0}x_n\) une série convergente.
+
+On définit la suite \(\paren{R_n}_{n\in\N}\) des restes de cette série : \[\quantifs{\forall n\in\N}R_n=\sum_{k=n+1}^{\pinf}x_k.\]
+
+Celle-ci vérifie : \[\quantifs{\forall n\in\N}S_n+R_n=\sum_{k=0}^{\pinf}x_k\] et : \[\lim_{n\to\pinf}R_n=0.\]
+\end{defprop}
+
+\begin{dem}
+Pour tout \(n\in\N\), \(R_n\) est bien défini car la série \(\sum_nx_n\) converge.
+
+D'après la \thref{rem:tronquerUneSérie}, on a bien : \[\quantifs{\forall n\in\N}S_n+R_n=\sum_{k=0}^{\pinf}x_k.\]
+
+D'où : \[\begin{aligned}
+\quantifs{\forall n\in\N}R_n&=\sum_{k=0}^{\pinf}x_k-S_n \\
+&\tendqd{n\to\pinf}\sum_{k=0}^{\pinf}x_k-\sum_{k=0}^{\pinf}x_k \\
+&=0.
+\end{aligned}\]
+\end{dem}
+
+\begin{prop}[Linéarité de la somme d'une série]
+Soient \(\lambda,\mu\in\K\) et \(\paren{x_n}_n,\paren{y_n}_n\in\K^\N\).
+
+Si les séries \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq0}y_n\) sont convergentes alors la série \(\sum_{n\geq0}\paren{\lambda x_n+\mu y_n}\) l'est aussi et sa somme est : \[\sum_{n=0}^{\pinf}\paren{\lambda x_n+\mu y_n}=\lambda\sum_{n=0}^{\pinf}x_n+\mu\sum_{n=0}^{\pinf}y_n.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{rem}
+\begin{itemize}
+    \item La somme de deux séries convergentes est une série convergente. \\
+    \item La somme d'une série convergente et d'une série divergente est une série divergente. \\
+    \item Dans le cas de la somme de deux séries divergentes, on ne peut pas conclure a priori.
+\end{itemize}
+\end{rem}
+
+\subsection{Séries grossièrement divergentes}
+
+\begin{prop}\thlabel{prop:sérieConvergenteImpliqueLimiteDuTermeGénéralNulle}
+Soit \(\paren{x_n}_{n\in\N}\in\K^\N\).
+
+On a : \[\sum_nx_n\text{ converge}\imp\lim_{n\to\pinf}x_n=0.\]
+\end{prop}
+
+\begin{dem}
+Supposons \(\sum_nx_n\) convergente, \cad \(\lim_nS_n=\sum_{k=0}^{\pinf}x_k\in\K\).
+
+On remarque \(\quantifs{\forall n\in\Ns}x_n=S_n-S_{n-1}\) donc : \[\lim_nx_n=\lim_nS_n-\lim_nS_{n-1}=0.\]
+\end{dem}
+
+\begin{defi}
+Soit \(\paren{x_n}_{n\in\N}\in\K^\N\).
+
+Si la suite \(\paren{x_n}_n\) ne tend pas vers \(0\), la série \(\sum_nx_n\) est dite grossièrement divergente.
+
+Toute série grossièrement divergente est divergente.
+\end{defi}
+
+\begin{rem}
+L'implication réciproque de la \thref{prop:sérieConvergenteImpliqueLimiteDuTermeGénéralNulle} est fausse.
+
+Autrement dit : pour qu'une série soit convergente, il ne suffit pas qu'elle ne soit pas grossièrement divergente.
+\end{rem}
+
+\begin{dem}
+La série harmonique \(\sum_{n\geq1}\dfrac{1}{n}\) n'est pas grossièrement divergente mais divergente.
+\end{dem}
+
+\subsection{Exemples}
+
+\subsubsection{Séries géométriques}
+
+\begin{defi}[Série géométrique]
+Soit \(\paren{x_n}_{n\in\N}\in\K^\N\).
+
+On dit que \(\sum_nx_n\) est une série géométrique si la suite \(\paren{x_n}_n\) est une suite géométrique : \[\quantifs{\exists q\in\C;\forall n\in\N}x_{n+1}=qx_n.\]
+
+L'élément \(q\) est appelé raison de la série.
+\end{defi}
+
+\begin{prop}[Convergence des séries géométriques]
+Soit \(q\in\C\).
+
+On a : \[\sum_nq^n\text{ converge}\ssi\abs{q}<1.\]
+
+Sa somme vaut alors \[\sum_{k=0}^{\pinf}q^k=\dfrac{1}{1-q}.\]
+
+Si \(\abs{q}\geq1\), la série géométrique est en fait grossièrement divergente.
+\end{prop}
+
+\begin{dem}
+Rappel : la suite géométrique \(\paren{q^n}_{n\in\N}\) \(\begin{dcases}
+\text{converge vers }0 &\text{si }\abs{q}<1 \\
+\text{converge vers }1 &\text{si }\abs{q}=1 \\
+\text{diverge} &\text{si }\begin{dcases}
+\abs{q}\geq1 \\
+q\not=1
+\end{dcases}
+\end{dcases}\)
+
+Si \(\abs{q}\geq1\) alors \(\sum_nq^n\) est grossièrement divergente donc divergente.
+
+Si \(\abs{q}<1\), on a : \[\begin{aligned}
+\quantifs{\forall n\in\N}S_n&=\sum_{k=0}^nq^k \\
+&=\dfrac{1-q^{n+1}}{1-q} \\
+&\tendqd{n\to\pinf}\dfrac{1}{1-q}.
+\end{aligned}\]
+\end{dem}
+
+\begin{rem}
+Soient \(q\in\C\) tel que \(\abs{q}<1\) et \(n_0\in\N\).
+
+On a : \[\sum_{n=n_0}^{\pinf}q^n=q^{n_0}\sum_{n=n_0}^{\pinf}q^{n-n_0}=q^{n_0}\sum_{k=0}^{\pinf}q^k=\dfrac{q^{n_0}}{1-q}.\]
+\end{rem}
+
+\subsubsection{Séries télescopiques}
+
+\begin{defi}[Série télescopique]
+Une série télescopique est une série écrite sous la forme \[\sum_n\paren{u_{n+1}-u_n}\] où \(\paren{u_n}_n\in\K^\N\).
+\end{defi}
+
+\begin{prop}[Convergence des séries télescopiques]
+Soit \(\paren{u_n}_n\in\K^\N\).
+
+On a : \[\sum_n\paren{u_{n+1}-u_n}\text{ converge}\ssi\paren{u_n}_n\text{ converge}.\]
+
+Sa somme vaut alors \[\sum_{k=0}^{\pinf}\paren{u_{k+1}-u_k}=\lim_nu_n-u_0.\]
+\end{prop}
+
+\begin{dem}
+On remarque \(\quantifs{\forall n\in\N}\sum_{k=0}^n\paren{u_{k+1}-u_k}=u_{n+1}-u_0\) donc : \[\begin{aligned}
+\sum_n\paren{u_{n+1}-u_n}\text{ converge}&\ssi\paren{u_{n+1}-u_0}_n\text{ converge} \\
+&\ssi\paren{u_n}_n\text{ converge}.
+\end{aligned}\]
+
+On a alors : \[\begin{aligned}
+\sum_{k=0}^{\pinf}\paren{u_{k+1}-u_k}&=\lim_n\paren{u_{n+1}-u_0} \\
+&=\lim_nu_n-u_0.
+\end{aligned}\]
+\end{dem}
+
+\begin{exoex}
+Calculer : \[\sum_{n=1}^{\pinf}\dfrac{1}{n\paren{n+1}}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\begin{aligned}
+\quantifs{\forall n\in\Ns}\sum_{k=1}^n\dfrac{1}{k\paren{k+1}}&=\sum_{k=1}^n\paren{\dfrac{1}{k}-\dfrac{1}{k+1}} \\
+&=1-\dfrac{1}{n+1} \\
+&\tendqd{n\to\pinf}1.
+\end{aligned}\]
+
+Donc \(\sum_n\dfrac{1}{n\paren{n+1}}\) converge et on a \(\sum_{n=1}^{\pinf}\dfrac{1}{n\paren{n+1}}=1\).
+\end{corr}
+
+\begin{exoex}
+Calculer : \[\sum_{n=1}^{\pinf}\dfrac{n}{\paren{n+1}!}.\]
+\end{exoex}
+
+\begin{corr}
+On a : \[\begin{aligned}
+\quantifs{\forall n\in\Ns}\sum_{k=1}^n\dfrac{k}{\paren{k+1}!}&=\sum_{k=1}^n\paren{\dfrac{1}{k!}-\dfrac{1}{\paren{k+1}!}} \\
+&=1-\dfrac{1}{\paren{n+1}!} \\
+&\tendqd{n\to\pinf}1.
+\end{aligned}\]
+
+Donc \(\sum_n\dfrac{n}{\paren{n+1}!}\) converge et on a \(\sum_{n=1}^{\pinf}\dfrac{n}{\paren{n+1}!}=1\).
+\end{corr}
+
+\begin{rem}
+Toute suite peut être vue comme la suite des sommes partielles d'une série.
+
+Cela permet d'appliquer aux suites les outils dont on dispose pour les séries (\cf TD).
+\end{rem}
+
+\begin{dem}
+Soit \(\paren{u_n}_n\in\K^\N\).
+
+Posons \(u_{-1}=0\).
+
+La suite des sommes partielles de la série \(\sum_{n\geq0}\paren{u_n-u_{n-1}}\) est \(\paren{u_n}_{n\geq0}\).
+
+En effet : \[\quantifs{\forall n\in\N}\sum_{k=0}^n\paren{u_k-u_{k-1}}=u_n-u_{-1}=u_n.\]
+\end{dem}
+
+\subsubsection{Séries de Riemann}
+
+\begin{defi}[Série de Riemann]
+On appelle série de Riemann une série de la forme \(\sum_n\dfrac{1}{n^\alpha}\) où \(\alpha\in\R\).
+
+Si \(\alpha=1\), la série de Riemann \(\sum_n\dfrac{1}{n}\) est appelée série harmonique.
+\end{defi}
+
+\begin{ex}
+On a vu au DS 9, question 21 : \[\sum_{n=1}^{\pinf}\dfrac{1}{n^2}=\dfrac{\pi^2}{6}.\]
+\end{ex}
+
+\begin{rem}
+Soit \(\alpha\in\R\).
+
+On montrera au \hyperref[subsubsec:applicationAuxSériesDeRiemann]{paragraphe 2.3.2} que la série de Riemann \(\sum_{n}\dfrac{1}{n^\alpha}\) est convergente si, et seulement si, \(\alpha>1\).
+
+Elle est grossièrement divergente si, et seulement si, \(\alpha\leq0\).
+\end{rem}
+
+\begin{nota}[Fonction zêta de Riemann]
+On pose : \[\quantifs{\forall\alpha\in\intervee{1}{\pinf}}\zeta\paren{\alpha}=\sum_{n=1}^{\pinf}\dfrac{1}{n^\alpha}.\]
+\end{nota}
+
+\subsubsection{Autres exemples}
+
+\begin{rappel}[Inégalité de Taylor-Lagrange (\thref{cor:inégalitéDeTaylorLagrange})]
+Soient \(I\) un intervalle de \(\R\), \(n\in\N\), \(f\in\ensclasse{n+1}{I}{\K}\), \(M\in\Rp\) et \(a,b\in I\).
+
+On suppose : \[\quantifs{\forall t\in I}\abs{f\deriv{n+1}\paren{t}}\leq M.\]
+
+On a : \[\abs{f\paren{b}-\sum_{k=0}^n\dfrac{f\deriv{k}\paren{a}}{k!}\paren{b-a}^k}\leq\dfrac{M\abs{b-a}^{n+1}}{\paren{n+1}!}.\]
+\end{rappel}
+
+\begin{prop}\thlabel{prop:sommesInfiniesExponentielleCosEtSin}
+On a, pour tous \(x\in\R\) : \[\e{x}=\sum_{n=0}^{\pinf}\dfrac{x^n}{n!}\qquad\cos x=\sum_{n=0}^{\pinf}\dfrac{\paren{-1}^nx^{2n}}{\paren{2n}!}\qquad\sin x=\sum_{n=0}^{\pinf}\dfrac{\paren{-1}^nx^{2n+1}}{\paren{2n+1}!}.\]
+\end{prop}
+
+\begin{dem}
+Soit \(x\in\R\).
+
+Montrons que \(\sum_{n=0}^{\pinf}\dfrac{x^n}{n!}=\e{x}\), \cad \(\sum_n\dfrac{x^n}{n!}\) converge et sa somme vaut \(\e{x}\), \cad \(\lim_n\sum_{k=0}^n\dfrac{x^k}{k!}=\e{x}\).
+
+Soit \(n\in\N\).
+
+On a : \[\quantifs{\forall t\in\intervii{-\abs{x}}{\abs{x}}}\abs{\exp\deriv{n+1}\paren{t}}=\e{t}\leq\e{\abs{x}}.\]
+
+Donc, selon l'inégalité de Taylor-Lagrange appliquée entre \(0\) et \(x\) : \[\abs{\e{x}-\sum_{k=0}^n\dfrac{1}{k!}\paren{x-0}^k}\leq\dfrac{\e{\abs{x}}\abs{x-0}^{n+1}}{\paren{n+1}!}.\]
+
+Or \(x^{n+1}\egqd{n\to\pinf}\o{\paren{n+1}!}\) donc : \[\lim_n\dfrac{\e{\abs{x}}\abs{x-0}^{n+1}}{\paren{n+1}!}=0.\]
+
+Donc, selon le théorème des gendarmes : \[\lim_n\sum_{k=0}^n\dfrac{x^k}{k!}=\sum_{k=0}^{\pinf}\dfrac{x^k}{k!}=\e{x}.\]
+
+De plus, on a : \[\quantifs{\forall t\in\R}\abs{\cos\deriv{2n+1}\paren{t}}\leq1.\]
+
+Donc, selon l'inégalité de Taylor-Lagrange appliquée entre \(0\) et \(x\) : \[\abs{\cos x-\sum_{k=0}^{2n}\dfrac{\cos\deriv{k}\paren{0}}{k!}\paren{x-0}^k}\leq\dfrac{\abs{x-0}^{2n+1}}{\paren{2n+1}!}.\]
+
+Or \(x^{2n+1}\egqd{n\to\pinf}\o{\paren{2n+1}!}\) donc : \[\lim_n\dfrac{\abs{x-0}^{2n+1}}{\paren{2n+1}!}=0.\]
+
+Donc, selon le théorème des gendarmes : \[\lim_n\sum_{k=0}^n\dfrac{\paren{-1}^kx^{2k}}{\paren{2k}!}=\sum_{k=0}^{\pinf}\dfrac{\paren{-1}^kx^{2k}}{\paren{2k}!}=\cos x.\]
+
+Idem pour \(\sin\).
+\end{dem}
+
+\section{Séries à termes positifs}
+
+\subsection{Convergence des séries à termes positifs}
+
+\begin{defi}
+Une série à termes positifs est une série de la forme \(\sum_nx_n\) où \(\paren{x_n}_n\in\paren{\Rp}^\N\) est une suite de réels positifs.
+\end{defi}
+
+\begin{rappel}[Théorème de la limite monotone (\thref{theo:théorèmeDeLaLimiteMonotone})]\thlabel{rappel:théorèmeDeLaLimiteMonotone}
+Soit \(\paren{u_n}_n\in\R^\N\) une suite réelle croissante.
+
+Alors elle admet une limite et on a : \[\lim_nu_n=\begin{dcases}
+\sup_{n\in\N}u_n &\text{si la suite est majorée} \\
+\pinf &\text{sinon}
+\end{dcases}\]
+\end{rappel}
+
+\begin{theo}\thlabel{theo:convergenceDesSériesATermesPositifs}
+Une série à termes positifs converge si, et seulement si, la suite de ses sommes partielles est majorée.
+\end{theo}
+
+\begin{dem}
+Notons \(\paren{S_n}_n\) la suite des sommes partielles de la série \(\sum_nx_n\).
+
+On remarque : \[\quantifs{\forall n\in\N}S_{n+1}=\sum_{k=0}^{n+1}x_k=S_n+x_{n+1}\geq S_n.\]
+
+Donc \(\paren{S_n}_n\) est croissante.
+
+D'où : \[\begin{WithArrows}
+\sum_nx_n\text{ converge}&\ssi\paren{S_n}_n\text{ converge} \Arrow{\thref{rappel:théorèmeDeLaLimiteMonotone}} \\
+&\ssi\paren{S_n}_n\text{ est majorée}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{nota}
+Soit \(\sum_nx_n\) une série à termes positifs.
+
+Si la série est divergente, on s'autorise à écrire : \[\sum_{n=0}^{\pinf}x_n=\pinf.\]
+
+Cette notation est relativement naturelle car la suite des sommes partielles de la série tend vers \(\pinf\) (mais elle est réservée au cas des séries à termes positifs divergentes).
+\end{nota}
+
+\subsection{Comparaison des séries à termes positifs}
+
+\begin{theo}[Théorème de comparaison des séries à termes positifs]\thlabel{theo:théorèmeDeComparaisonDesSériesATermesPositifs}
+Soient \(\sum_nx_n\) et \(\sum_ny_n\) deux séries à termes positifs.
+
+\begin{enumerate}
+    \item Si \(\begin{dcases}
+        \quantifs{\forall n\in\N}x_n\leq y_n \\
+        \sum_ny_n\text{ converge}
+    \end{dcases}\) alors \(\sum_nx_n\) converge. \\
+    \item Si \(\begin{dcases}
+        x_n\egqd{n\to\pinf}\O{y_n} \\
+        \sum_ny_n\text{ converge}
+    \end{dcases}\) alors \(\sum_nx_n\) converge. \\
+    \item Si \(x_n\simqd{n\to\pinf}y_n\) alors \(\sum_nx_n\) et \(\sum_ny_n\) sont de même nature. \\
+    \item Si \(\begin{dcases}
+        \quantifs{\forall n\in\N}x_n\leq y_n \\
+        \sum_nx_n\text{ diverge}
+    \end{dcases}\) alors \(\sum_ny_n\) diverge. \\
+    \item Si \(\begin{dcases}
+        x_n\egqd{n\to\pinf}\O{y_n} \\
+        \sum_nx_n\text{ diverge}
+    \end{dcases}\) alors \(\sum_ny_n\) diverge.
+\end{enumerate}
+\end{theo}
+
+\begin{dem}[1]
+Supposons \(\quantifs{\forall n\in\N}x_n\leq y_n\) et \(\sum_ny_n\) converge.
+
+Selon le \thref{theo:convergenceDesSériesATermesPositifs}, il existe \(M\in\Rp\) tel que \[\quantifs{\forall n\in\N}\sum_{k=0}^ny_k\leq M.\]
+
+Donc : \[\quantifs{\forall n\in\N}\sum_{k=0}^nx_k\leq M.\]
+
+Donc \(\sum_nx_n\) converge car c'est une série à termes positifs dont la suite des sommes partielles est majorée.
+\end{dem}
+
+\begin{dem}[2]
+Découle du (1) car si \(x_n\egqd{n\to\pinf}\O{y_n}\) alors il existe \(K\in\Rp\) tel que \(\quantifs{\forall n\in\N}x_n\leq Ky_n\) et si \(\sum_ny_n\) converge alors \(\sum_nKy_n\) aussi.
+\end{dem}
+
+\begin{dem}[3]
+Découle de (2) car \(x_n\simqd{n\to\pinf}y_n\imp\begin{dcases}
+x_n\egqd{n\to\pinf}\O{y_n} \\
+y_n\egqd{n\to\pinf}\O{x_n}
+\end{dcases}\)
+\end{dem}
+
+\begin{dem}[4]
+Contraposée de (1).
+\end{dem}
+
+\begin{dem}[5]
+Contraposée de (2).
+\end{dem}
+
+\begin{rem}
+Le (1) est suffisant pour énoncer le théorème.
+\end{rem}
+
+\begin{rem}
+Attention à ne surtout pas utiliser le \thref{theo:convergenceDesSériesATermesPositifs} pour comparer des séries quelconques (\cf \thref{exoex:contreExempleUtilisationDuThéorèmeDeComparaisonDesSériesATermesPositifsSurDesSériesQuelconques} pour un contre-exemple).
+
+On peut comparer des séries à termes positifs, ou plus généralement, des séries dont les termes sont de signe constant à partir d'un certain rang.
+\end{rem}
+
+\begin{exoex}
+Soit \(q\in\Rps\).
+
+Étudier la nature des séries suivantes :
+
+\begin{enumerate}
+    \item \(\sum_n\sin\dfrac{1}{2^n}\) \\
+    \item \(\sum_n\dfrac{q^n}{1+q^n}\)
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]~\\
+On a \(\begin{dcases}
+\sin h\simqd{h\to0}h \\
+\lim_n\dfrac{1}{2^n}=0
+\end{dcases}\) donc \(\sin\dfrac{1}{2^n}\simqd{n\to\pinf}\dfrac{1}{2^n}\).
+
+Or la série géométrique \(\sum_n\dfrac{1}{2^n}\) converge donc selon le théorème de comparaison des séries à termes positifs, \(\sum_n\sin\dfrac{1}{2^n}\) converge.
+\end{corr}
+
+\begin{corr}[2]
+On a, quand \(n\to\pinf\) : \[1+q^n\sim\begin{dcases}
+1 &\text{si }q<1 \\
+2 &\text{si }q=1 \\
+q^n &\text{si }q>1
+\end{dcases}\] donc : \[\dfrac{q^n}{1+q^n}\sim\begin{dcases}
+q^n &\text{si }q<1 \\
+\dfrac{1}{2} &\text{si }q=1 \\
+1 &\text{si }q>1
+\end{dcases}\]
+
+Si \(q\geq1\) : \(\sum_n\dfrac{q^n}{1+q^n}\) diverge grossièrement.
+
+Sinon, selon le théorème de comparaison des séries à termes positifs : \[\sum_n\dfrac{q^n}{1+q^n}\text{ converge}\ssi\sum_nq^n\text{ converge}.\]
+
+Or la série géométrique \(\sum_nq^n\) converge car \(\abs{q}<1\) donc \(\sum_n\dfrac{q^n}{1+q^n}\) converge.
+
+Conclusion : \[\sum_n\dfrac{q^n}{1+q^n}\text{ converge}\ssi q<1.\]
+\end{corr}
+
+\subsection{Utilisation des intégrales}
+
+\subsubsection{Méthode}
+
+\begin{rem}
+La proposition suivante est en fait une méthode pour encadrer les sommes partielles d'une série. Vous énoncerez en deuxième année le \guillemets{théorème de comparaison série-intégrale} qui repose sur cette méthode.
+\end{rem}
+
+\begin{prop}
+Soit une fonction décroissante \(f:\Rp\to\R\).
+
+On a : \[\quantifs{\forall n\in\N}\sum_{k=1}^nf\paren{k}\leq\int_0^nf\paren{t}\odif{t}\leq\sum_{k=0}^{n-1}f\paren{k}.\]
+
+D'où l'encadrement des sommes partielles de la série \(\sum_{n\geq0}f\paren{n}\) : \[\quantifs{\forall n\in\N}\int_0^{n+1}f\paren{t}\odif{t}\leq\sum_{k=0}^nf\paren{k}\leq f\paren{0}+\int_0^nf\paren{t}\odif{t}.\]
+\end{prop}
+
+\begin{dem}
+Comme \(f\) est décroissante, on a : \[\quantifs{\forall k\in\N;\forall t\in\intervii{k}{k+1}}f\paren{k+1}\leq f\paren{t}\leq f\paren{k}.\]
+
+D'où, par croissance de l'intégrale : \[\quantifs{\forall k\in\N}\underbrace{\int_k^{k+1}f\paren{k+1}\odif{t}}_{=f\paren{k+1}}\leq\int_k^{k+1}f\paren{t}\odif{t}\leq\underbrace{\int_k^{k+1}f\paren{k}\odif{t}}_{=f\paren{k}}.\]
+
+D'où, par somme : \[\quantifs{\forall n\in\N}\sum_{k=0}^{n-1}f\paren{k+1}\leq\sum_{k=0}^{n-1}\int_k^{k+1}f\paren{t}\odif{t}\leq\sum_{k=0}^{n-1}\paren{k},\] \cad : \[\quantifs{\forall n\in\N}\sum_{k=1}^nf\paren{k}\leq\int_0^nf\paren{t}\odif{t}\leq\sum_{k=0}^{n-1}f\paren{k}.\]
+\end{dem}
+
+\begin{rem}
+\begin{itemize}
+    \item Ne pas retenir l'énoncé de la proposition : ce qui importe est la méthode. En pratique, redémontrer les encadrements utiles, en s'adaptant au contexte (notamment quand la fonction n'est pas définie en \(0\), \cf \hyperref[subsubsec:applicationAuxSériesDeRiemann]{paragraphe 2.3.2}). \\
+    \item La méthode est très intéressante dans le cas (très fréquent) où l'on ne sait pas calculer les sommes partielles alors qu'on sait calculer les intégrales. Elle permet : \begin{itemize}
+        \item de montrer la convergence d'une série (\cf \hyperref[subsubsec:applicationAuxSériesDeRiemann]{paragraphe 2.3.2}) ;
+        \item d'obtenir un équivalent des sommes partielles d'une série ;
+        \item d'obtenir un équivalent des restes d'une série convergente.
+    \end{itemize}
+\end{itemize}
+\end{rem}
+
+\subsubsection{Application aux séries de Riemann}\label{subsubsec:applicationAuxSériesDeRiemann}
+
+\begin{theo}[Convergence des séries de Riemann]
+Soit \(\alpha\in\R\).
+
+On a : \[\sum_n\dfrac{1}{n^\alpha}\text{ converge}\ssi\alpha>1.\]
+\end{theo}
+
+\begin{dem}~\\
+Si \(\alpha\leq0\) alors \(\sum_n\dfrac{1}{n^\alpha}\) est grossièrement divergente.
+
+Sinon, la fonction \(\fonction{f}{\Rps}{\R}{t}{\dfrac{1}{t^\alpha}}\) est décroissante et continue.
+
+On a donc : \[\quantifs{\forall k\in\Ns;\forall t\in\intervii{k}{k+1}}\dfrac{1}{\paren{k+1}^\alpha}\leq\dfrac{1}{t^\alpha}\leq\dfrac{1}{k^\alpha}.\]
+
+D'où, par croissance de l'intégrale : \[\quantifs{\forall k\in\Ns}\dfrac{1}{\paren{k+1}^\alpha}\leq\int_k^{k+1}\dfrac{\odif{t}}{t^\alpha}\leq\dfrac{1}{k^\alpha}.\]
+
+D'où, par somme : \[\quantifs{\forall n\in\interventierie{2}{\pinf}}\sum_{k=1}^{n-1}\dfrac{1}{\paren{k+1}^\alpha}\leq\int_1^n\dfrac{\odif{t}}{t^\alpha}\leq\sum_{k=1}^{n-1}\dfrac{1}{k^\alpha}.\]
+
+D'où : \[\quantifs{\forall n\in\Ns}\int_1^{n+1}\dfrac{\odif{t}}{t^\alpha}\leq\sum_{k=1}^n\dfrac{1}{k^\alpha}\leq1+\int_1^n\dfrac{\odif{t}}{t^\alpha}.\]
+
+Si \(\alpha=1\) (série harmonique), on obtient : \[\quantifs{\forall n\in\Ns}\ln\paren{n+1}\leq\sum_{k=1}^n\dfrac{1}{k}\leq1+\ln n.\]
+
+Or \(\lim_n\ln\paren{n+1}=\lim_n\paren{1+\ln n}=\pinf\) donc selon le théorème des gendarmes, on a \(\lim_n\sum_{k=1}^n\dfrac{1}{k}=\pinf\).
+
+Donc la suite des sommes partielles de la série à termes positifs \(\sum_n\dfrac{1}{n}\) n'est pas majorée donc la série diverge.
+
+Si \(\alpha<1\), on a \(\dfrac{1}{n}\egqd{n\to\pinf}\O{\dfrac{1}{n^\alpha}}\) et \(\sum_n\dfrac{1}{n}\) diverge donc selon le théorème de comparaison des séries à termes positifs, la série \(\sum_n\dfrac{1}{n^\alpha}\) diverge.
+
+Si \(\alpha>1\), on obtient : \[\quantifs{\forall n\in\Ns}\dfrac{1}{\alpha-1}\paren{1-\dfrac{1}{\paren{n+1}^{\alpha-1}}}\leq\sum_{k=1}^n\dfrac{1}{k^\alpha}\leq1+\int_1^nt^{-\alpha}\odif{t}=\croch{\dfrac{t^{1-\alpha}}{1-\alpha}}_1^n=1+\dfrac{1}{\alpha-1}\paren{1-\dfrac{1}{n^{\alpha-1}}}.\]
+
+D'où : \[\quantifs{\forall n\in\Ns}\sum_{k=1}^n\dfrac{1}{k^\alpha}\leq1+\dfrac{1}{\alpha-1}.\]
+
+Donc \(\sum_n\dfrac{1}{n^\alpha}\) converge car c'est une série à termes positifs dont la suite des sommes partielles est majorée.
+\end{dem}
+
+\begin{exoex}
+Étudier la nature des séries suivantes :
+
+\begin{enumerate}
+    \item \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) \\
+    \item \(\sum_n\dfrac{1}{n^{1+\nicefrac{1}{n}}}\)
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a : \[\sin x\egqd{x\to0}x-\dfrac{x^3}{6}+\o{x^3}\qquad\text{et}\qquad\tan x\egqd{x\to0}x+\dfrac{x^3}{3}+\o{x^3}.\]
+
+Donc : \[\begin{aligned}
+\tan\dfrac{1}{n}-\sin\dfrac{1}{n}&\egqd{n\to\pinf}\dfrac{1}{3n^3}+\dfrac{1}{6n^3}+\o{\dfrac{1}{n^3}} \\
+&\egqd{n\to\pinf}\dfrac{1}{2n^3}+\o{\dfrac{1}{n^3}} \\
+&\simqd{n\to\pinf}\dfrac{1}{2n^3}.
+\end{aligned}\]
+
+En particulier, \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) est une série à termes positifs à partir d'un certain rang.
+
+Selon le théorème de comparaison des séries à termes positifs (à partir d'un certain rang) : \[\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\text{ et }\sum_n\dfrac{1}{2n^3}\text{ sont de même nature}.\]
+
+Or la série de Riemann \(\sum_n\dfrac{1}{n^3}\) converge donc \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) converge.
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\begin{aligned}
+n^{1+\nicefrac{1}{n}}&=\exp\paren{\paren{1+\dfrac{1}{n}}\ln n} \\
+&=\exp\paren{\ln n+\dfrac{\ln n}{n}} \\
+&=n\underbrace{\exp\underbrace{\dfrac{\ln n}{n}}_{\tendqd{n\to\pinf}0}}_{\simqd{n\to\pinf}1} \\
+&\simqd{n\to\pinf}n.
+\end{aligned}\]
+
+Donc \(\dfrac{1}{n^{1+\nicefrac{1}{n}}}\simqd{n\to\pinf}\dfrac{1}{n}\).
+
+Donc \(\sum_n\dfrac{1}{n^{1+\nicefrac{1}{n}}}\) et \(\sum_n\dfrac{1}{n}\) sont de même nature selon le théorème de comparaison des séries à termes positifs.
+
+Or la série harmonique diverge donc \(\sum_n\dfrac{1}{n^{1+\nicefrac{1}{n}}}\) diverge.
+\end{corr}
+
+\section{Séries absolument convergentes}
+
+\begin{defi}[Série absolument convergente]
+Soit \(\paren{x_n}_n\in\K^\N\).
+
+On dit que la série \(\sum_nx_n\) est absolument convergente ou converge absolument si la série \(\sum_n\abs{x_n}\) est convergente.
+\end{defi}
+
+\begin{rem}
+Pour une série à termes positifs, la convergence absolue équivaut à la convergence.
+\end{rem}
+
+\begin{rem}
+Une série convergente qui ne converge pas absolument est dite semi-convergente.
+\end{rem}
+
+\begin{theo}[Convergence absolue \(\imp\) convergence]
+Soit \(\paren{x_n}_n\in\K^\N\).
+
+Si la série \(\sum_nx_n\) est absolument convergente alors elle est convergente.
+\end{theo}
+
+\begin{dem}
+Supposons \(\sum_nx_n\) absolument convergente, \cad \(\sum_x\abs{x_n}\) convergente.
+
+Si \(\K=\R\) :
+
+On remarque : \[\begin{WithArrows}
+\quantifs{\forall n\in\N}&-\abs{x_n}\leq x_n\leq\abs{x_n} \Arrow{\(+\abs{x_n}\)} \\
+&0\leq x_n+\abs{x_n}\leq2\abs{x_n}.
+\end{WithArrows}\]
+
+Or \(\sum_n2\abs{x_n}\) est convergente et \(\sum_n\paren{x_n+\abs{x_n}}\) et \(\sum_n2\abs{x_n}\) sont des séries à termes positifs.
+
+Donc selon le théorème de comparaison des séries à termes positifs, \(\sum_n\paren{x_n+\abs{x_n}}\) converge.
+
+Or \(\sum_n\abs{x_n}\) converge donc \(\sum_nx_n\) converge (différence de deux séries convergentes).
+
+Si \(\K=\C\) :
+
+On a : \[\quantifs{\forall n\in\N}\begin{dcases}
+\abs{\Re x_n}\leq\abs{x_n} \\
+\abs{\Im x_n}\leq\abs{x_n}
+\end{dcases}\]
+
+Donc les séries \(\sum_n\abs{\Re x_n}\) et \(\sum_n\abs{\Im x_n}\) sont convergentes selon le théorème de comparaison des séries à termes positifs.
+
+Donc \(\sum_n\Re x_n\) et \(\sum_n\Im x_n\) sont absolument convergentes et donc convergentes selon le cas \(\K=\R\).
+
+Donc \(\sum_nx_n=\sum_n\Re x_n+\i\sum_n\Im x_n\) est convergente.
+\end{dem}
+
+\begin{bilan}[Convergence absolue \(\imp\) convergence \(\imp\) non divergence grossière]
+Pour toute série \(\sum_nx_n\), on a : \[\sum_n\abs{x_n}\text{ converge}\imp\sum_nx_n\text{ converge}\imp\lim_{n\to\pinf}x_n=0.\]
+\end{bilan}
+
+\begin{rem}[Inégalité triangulaire pour les séries absolument convergentes]
+Soit \(\sum_nx_n\) une série absolument convergente.
+
+On a : \[\abs{\sum_{n=0}^{\pinf}x_n}\leq\sum_{n=0}^{\pinf}\abs{x_n}.\]
+\end{rem}
+
+\begin{dem}
+On a, selon l'inégalité triangulaire dans \(\K\) : \[\quantifs{\forall N\in\N}\abs{\sum_{n=0}^Nx_n}\leq\sum_{n=0}^N\abs{x_n}.\]
+
+Or, quand \(N\to\pinf\) : \[\begin{dcases}
+\abs{\sum_{n=0}^Nx_n}\to\abs{\sum_{n=0}^{\pinf}x_n} &\text{car }\sum_nx_n\text{ converge absolument donc converge} \\
+\sum_{n=0}^N\abs{x_n}\to\sum_{n=0}^{\pinf}\abs{x_n} &\text{car }\sum_nx_n\text{ converge absolument}
+\end{dcases}\]
+
+D'où le résultat, par passage à la limite dans l'inégalité.
+\end{dem}
+
+\begin{rem}
+Pour montrer la convergence absolue d'une série, on peut utiliser le théorème de comparaison des séries à termes positifs :
+\end{rem}
+
+\begin{rem}[Corollaire du \thref{theo:théorèmeDeComparaisonDesSériesATermesPositifs}]
+Soient \(\paren{x_n}_n\in\K^\N\) et \(\paren{y_n}_n\in\paren{\Rp}^\N\).
+
+Supposons \[\begin{dcases}
+x_n\egqd{n\to\pinf}\O{y_n} \\
+\sum_ny_n\text{ converge}
+\end{dcases}\]
+
+Alors, selon le théorème de comparaison des séries à termes positifs, \(\sum_n\abs{x_n}\) converge.
+
+Donc la série \(\sum_nx_n\) converge absolument, donc elle converge.
+\end{rem}
+
+\begin{exoex}
+Les séries suivantes sont-elles absolument convergentes ?
+
+\begin{enumerate}
+    \item \(\sum_n\dfrac{\paren{-1}^n}{n}\) \\
+    \item \(\sum_n\dfrac{\cos n}{n^2\Arctan n}\) \\
+    \item \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\)
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a : \[\sum_n\abs{\dfrac{\paren{-1}^n}{n}}=\sum_n\dfrac{1}{n}.\]
+
+Or, la série harmonique diverge donc \(\sum_n\dfrac{\paren{-1}^n}{n}\) ne converge pas absolument.
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\quantifs{\forall n\in\Ns}0\leq\dfrac{1}{\Arctan n}\leq\dfrac{1}{\Arctan1}=\dfrac{4}{\pi}.\]
+
+Donc : \[\quantifs{\forall n\in\Ns}\abs{\dfrac{\cos n}{n^2\Arctan n}}\leq\dfrac{4}{\pi n^2}.\]
+
+Or \(\sum_n\dfrac{4}{\pi n^2}\) converge donc selon le théorème de comparaison des séries à termes positifs, \(\sum_n\abs{\dfrac{\cos n}{n^2\Arctan n}}\) converge et donc \(\sum_n\dfrac{\cos n}{n^2\Arctan n}\) converge absolument.
+\end{corr}
+
+\begin{corr}[3]
+On a, quand \(x\to0\) : \[\tan x=x+\O{x^2}\qquad\text{et}\qquad\sin x=x+\O{x^2}.\]
+
+Donc, quand \(n\to\pinf\) : \[\abs{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}=\O{\dfrac{1}{n^2}}.\]
+
+Or \(\sum_n\dfrac{1}{n^2}\) est une série de Riemann convergente donc selon le théorème de comparaison des séries à termes positifs, \(\sum_n\abs{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) converge et donc \(\sum_n\paren{\tan\dfrac{1}{n}-\sin\dfrac{1}{n}}\) converge absolument.
+\end{corr}
+
+\section{Séries alternées}
+
+\begin{rappel}[\thref{prop:suiteConvergenteSsiSuitesExtraitesPairesEtImpairesConvergentVersLaMêmeLimite}]
+Soient \(\paren{u_n}_n\in\K^\N\) et \(l\in\K\).
+
+On a : \[\lim_{n\to\pinf}u_n=l\ssi\lim_{n\to\pinf}u_{2n}=\lim_{n\to\pinf}u_{2n+1}=l.\]
+\end{rappel}
+
+\begin{rappel}[Suites adjacentes (\thref{theo:théorèmeDesSuitesAdjacentes})]
+Deux suites réelles \(\paren{a_n}_n,\paren{b_n}_n\in\R^\N\) sont dites adjacentes si l'une est croissante, l'autre est décroissante et la limite de leur différence est nulle.
+
+Les deux suites sont alors convergentes et de même limite.
+\end{rappel}
+
+\begin{defi}
+On appelle série alternée une série de la forme \(\sum_n\paren{-1}^na_n\) où \(\paren{a_n}_{n\in\N}\) est une suite de réelle de signe constant : \[\orenv{\quantifs{\forall n\in\N}a_n\geq0 \\ \quantifs{\forall n\in\N}a_n\leq0}\]
+\end{defi}
+
+\begin{theo}[Critère spécial des séries alternées (CSSA)]
+Soit \(\paren{a_n}_n\in\R^\N\).
+
+On suppose :
+
+\begin{enumerate}
+    \item \(\paren{a_n}_n\) est positive : \(\quantifs{\forall n\in\N}a_n\geq0\) ; \\
+    \item \(\paren{a_n}_n\) est décroissante : \(\quantifs{\forall n\in\N}a_{n+1}\leq a_n\) ; \\
+    \item \(\paren{a_n}_n\) tend vers \(0\) : \(\lim_{n\to\pinf}a_n=0\).
+\end{enumerate}
+
+Alors la série \(\sum_n\paren{-1}^na_n\) est convergente.
+
+De plus, on a les encadrements : \[\quantifs{\forall n\in\N}-a_{2n+1}\leq R_{2n}=\sum_{k=2n+1}^{\pinf}\paren{-1}^ka_k\leq0\] et : \[\quantifs{\forall n\in\N}0\leq R_{2n+1}=\sum_{k=2n+2}^{\pinf}\paren{-1}^ka_k\leq a_{2n+2}.\]
+
+En d'autres termes, le reste est du signe de son premier terme et on a la \guillemets{majoration du reste} : \[\quantifs{\forall N\in\N}\abs{R_N}\leq a_{N+1}.\]
+\end{theo}
+
+\begin{dem}[Convergence de la série]
+Montrons que \(\paren{S_{2n}}_n\) et \(\paren{S_{2n+1}}_n\) sont adjacentes, où \(\paren{S_N}_N\) est la suite des sommes partielles de la série : \[\quantifs{\forall N\in\N}S_N=\sum_{k=0}^N\paren{-1}^ka_k.\]
+
+On a : \[\begin{aligned}
+\quantifs{\forall n\in\N}S_{2\paren{n+1}}&=S_{2n}+\paren{-1}^{2n+1}a_{2n+1}+\paren{-1}^{2n+2}a_{2n+2} \\
+&=S_{2n}-a_{2n+1}+a_{2n+2} \\
+&\leq S_{2n}.
+\end{aligned}\]
+
+Donc \(\paren{S_{2n}}_n\) est décroissante.
+
+De même : \[\begin{aligned}
+\quantifs{\forall n\in\N}S_{2n+3}&=S_{2n+1}+a_{2n+2}-a_{2n+3} \\
+&\geq S_{2n+1}.
+\end{aligned}\]
+
+Donc \(\paren{S_{2n+1}}_n\) est croissante.
+
+Enfin, on a : \[\quantifs{\forall n\in\N}S_{2n+1}-S_{2n}=-a_{2n+1}\tendqd{n\to\pinf}0.\]
+
+Donc \(\paren{S_{2n}}_n\) et \(\paren{S_{2n+1}}_n\) sont adjacentes et donc convergentes de même limite \(l\in\R\).
+
+Donc \(\sum_n\paren{-1}^na_n\) est convergente (de somme \(l\)).
+\end{dem}
+
+\begin{dem}[Encadrements]
+Comme \(\paren{S_{2n+1}}_n\) est croissante de limite \(l\) et \(\paren{S_{2n}}_n\) est décroissante de limite \(l\), on a : \[\quantifs{\forall n\in\N}S_{2n+1}\leq l\leq S_{2n},\] \cad : \[\quantifs{\forall n\in\N}\sum_{k=0}^{2n+1}\paren{-1}^ka_k\leq\sum_{k=0}^{\pinf}\paren{-1}^ka_k\leq\sum_{k=0}^{2n}\paren{-1}^ka_k.\]
+
+D'où, en soustrayant \(\sum_{k=0}^{2n}\paren{-1}^ka_k\) : \[\quantifs{\forall n\in\N}-a_{2n+1}\leq\underbrace{\sum_{k=2n+1}^{\pinf}\paren{-1}^ka_k}_{=R_{2n}}\leq0.\]
+
+Idem pour l'autre encadrement en partant de \(S_{2n+1}\leq l\leq S_{2n+2}\).
+\end{dem}
+
+\begin{ex}~\\
+La série \(\sum_{n}\dfrac{\paren{-1}^n}{n}\) est semi-convergente.
+\end{ex}
+
+\begin{dem}~\\
+La suite \(\paren{\dfrac{1}{n}}_n\) est positive, décroissante et de limite nulle donc d'après le critère spécial des séries alternées, \(\sum_n\dfrac{\paren{-1}^n}{n}\) est convergente.
+
+Or, on a vu qu'elle n'est pas absolument convergente donc elle est semi-convergente.
+\end{dem}
+
+\begin{exoex}\thlabel{exoex:contreExempleUtilisationDuThéorèmeDeComparaisonDesSériesATermesPositifsSurDesSériesQuelconques}~\\
+\begin{enumerate}
+    \item La série \(\sum_n\paren{\dfrac{\paren{-1}^n}{\sqrt{n}}+\dfrac{1}{n}}\) est-elle convergente ? \\
+    \item Donner un équivalent de son terme général. Que remarque-t-on ?
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]~\\
+La suite \(\paren{\dfrac{1}{\sqrt{n}}}_n\) est positive, décroissante et de limite nulle donc d'après le critère spécial des séries alternées, \(\sum_n\dfrac{\paren{-1}^n}{\sqrt{n}}\) converge.
+
+Or, \(\sum_n\dfrac{1}{n}\) diverge donc \(\sum_n\paren{\dfrac{\paren{-1}^n}{\sqrt{n}}+\dfrac{1}{n}}\) diverge (somme d'une série convergente et d'une série divergente).
+\end{corr}
+
+\begin{corr}[2]~\\
+On a \(\dfrac{1}{n}\egqd{n\to\pinf}\o{\dfrac{\paren{-1}^n}{\sqrt{n}}}\) donc : \[\dfrac{1}{n}+\dfrac{\paren{-1}^n}{\sqrt{n}}\simqd{n\to\pinf}\dfrac{\paren{-1}^n}{\sqrt{n}}.\]
+
+Pourtant, \(\sum_n\paren{\dfrac{\paren{-1}^n}{\sqrt{n}}+\dfrac{1}{n}}\) et \(\sum_n\dfrac{\paren{-1}^n}{\sqrt{n}}\) ne sont pas de même nature.
+\end{corr}
+
+\section{Familles sommables de réels positifs}\label{sec:famillesSommablesDeRéelsPositifs}
+
+\subsection{L'ensemble \(\intervii{0}{\pinf}\)}
+
+\begin{rappel}
+On a muni l'ensemble \(\intervii{0}{\pinf}\) d'une loi de composition interne \(+\) et d'une relation d'ordre \(\leq\).
+\end{rappel}
+
+\begin{nota}\thlabel{nota:sommeFamilleFinie}
+Comme la loi \(+\) sur \(\intervii{0}{\pinf}\) est associative, commutative et possède un élément neutre, on peut sans problème utiliser la notation \[\sum_{i\in A}x_i\] pour tout famille finie \(\paren{x_i}_{i\in A}\in\intervii{0}{\pinf}^A\) (la somme vaut \(0\) si \(A=\ensvide\)).
+\end{nota}
+
+\begin{prop}
+Toute partie de \(\intervii{0}{\pinf}\) admet une borne supérieure et une borne inférieure dans \(\intervii{0}{\pinf}\).
+
+Par exemple : \[\quantifs{\forall A\subset\intervii{0}{\pinf}}\sup A=\begin{dcases}
+{\sup}_\R\,A &\text{si }A\text{ est une partie de }\R\text{ majorée et non-vide} \\
+\pinf &\text{si }A\text{ n'admet pas de majorant dans }\R \\
+0 &\text{si }A=\ensvide
+\end{dcases}\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice} (\cf \thref{exo:toutePartieDeRbAdmetUnSupEtUnInfDansRb} où on a montré la même chose pour les parties de \(\Rb\)).
+\end{dem}
+
+\subsection{Somme d'une famille de réels positifs}
+
+\begin{nota}
+On note \(\Pf{I}\) l'ensemble des parties finies de l'ensemble \(I\) : \[\Pf{I}=\accol{A\in\P{I}\tq\Card A<\pinf}.\]
+\end{nota}
+
+\begin{defi}\thlabel{defi:sommeD'uneFamilleDeRéelsPositifs}
+Soient \(I\) un ensemble et \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\).
+
+On appelle somme de \(\paren{x_i}_i\) et on note \(\sum_{i\in I}x_i\) l'élément \[\sum_{i\in I}x_i=\sup_{A\in\Pf{I}}\sum_{i\in A}x_i.\]
+\end{defi}
+
+\begin{rem}
+Lorsqu'on manipule des sommes dans \(\intervii{0}{\pinf}\), il n'y a pas de problème de convergence. Les propositions de ce paragraphe sont donc vraies sans autre hypothèse que \guillemets{les éléments sont dans \(\intervii{0}{\pinf}\)}.
+
+Lorsqu'une famille \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\) vérifie \[\sum_{i\in I}x_i<\pinf\] on dit que la famille est sommable.
+
+Cela signifie que tous les termes de la famille sont finis et que l'ensemble de ses sommes finies est une partie majorée de \(\Rp\) : \[\accol{\sum_{i\in A}x_i}_{A\in\Pf{I}}\text{ est une partie majorée de }\Rp.\]
+\end{rem}
+
+\begin{ex}[Familles finies]
+Dans le cas d'une famille finie, la nouvelle notation de la \thref{defi:sommeD'uneFamilleDeRéelsPositifs} coïncide avec la \thref{nota:sommeFamilleFinie}.
+
+Une famille finie d'éléments de \(\intervii{0}{\pinf}\) est sommable si, et seulement si, tous ses termes sont finis.
+\end{ex}
+
+\begin{ex}[Séries à termes positifs]
+Soit \(\paren{x_n}_n\in\paren{\Rp}^\N\).
+
+On a : \[\sum_{n\in\N}x_n=\sum_{n=0}^{\pinf}x_n.\]
+
+Ainsi, \(\paren{x_n}_n\) est sommable si, et seulement si, la série à termes positifs \(\sum_nx_n\) est convergente.
+\end{ex}
+
+\begin{dem}~\\
+\geqbox Montrons que \(\sum_{n=0}^{\pinf}x_n\leq\sum_{n\in\N}x_n\).
+
+Si \(\sum_{n\in\N}x_n=\pinf\), l'inégalité est claire.
+
+Supposons \(\sum_{n\in\N}x_n<\pinf\) et posons \(M=\sum_{n\in\N}x_n\).
+
+On a : \[\quantifs{\forall A\in\Pf{\N}}\sum_{n\in A}x_n\leq M.\]
+
+En particulier, en prenant \(A=\interventierii{0}{N}\) : \[\quantifs{\forall N\in\N}\sum_{n=0}^Nx_n\leq M.\]
+
+Donc \(\sum_nx_n\) est convergente car c'est une série à termes positifs dont la suite des sommes partielles est majorée.
+
+De plus, par passage à la limite dans l'inégalité : \[\sum_{n=0}^{\pinf}x_n\leq M.\]
+
+\leqbox Montrons que \(\sum_{n\in\N}x_n\leq\sum_{n=0}^{\pinf}x_n\).
+
+Si \(\sum_{n=0}^{\pinf}x_n=\pinf\) alors l'inégalité est claire.
+
+Supposons \(\sum_{n=0}^{\pinf}x_n<\pinf\) (\cad la série converge).
+
+Montrons que : \[\quantifs{\forall A\in\Pf{\N}}\sum_{n\in A}x_n\leq\sum_{n=0}^{\pinf}x_n.\]
+
+On sait que \(\paren{\sum_{n=0}^Nx_n}_N\) est croissante et converge vers \(\sum_{n=0}^{\pinf}x_n\) donc : \[\quantifs{\forall N\in\N}\sum_{n=0}^Nx_n\leq\sum_{n=0}^{\pinf}x_n.\]
+
+Soient \(A\in\Pf{\N}\) et \(N\) un majorant de \(A\).
+
+On a \(A\subset\interventierii{0}{N}\).
+
+Donc, comme \(\quantifs{\forall n\in\interventierii{0}{N}}x_n\geq0\) : \[\sum_{n\in A}x_n\leq\sum_{n=0}^Nx_n\leq\sum_{n=0}^{\pinf}x_n.\]
+
+Donc : \[\sum_{n\in\N}x_n\leq\sum_{n=0}^{\pinf}x_n.\]
+\end{dem}
+
+\begin{ex}
+Soit \(q\in\Rps\).
+
+\begin{itemize}
+    \item La famille \(\paren{q^n}_{n\in\Z}\) n'est pas sommable : \[\sum_{n\in\Z}q^n=\pinf.\]~
+    \item La famille \(\paren{q^{\abs{n}}}_{n\in\Z}\) est sommable si, et seulement si, \(q<1\). On a : \[\sum_{n\in\Z}q^{\abs{n}}=\begin{dcases}
+        \dfrac{1+q}{1-q} &\text{si }q<1 \\
+        \pinf &\text{sinon}
+    \end{dcases}\]
+\end{itemize}
+\end{ex}
+
+\subsection{Propriétés}
+
+\begin{prop}[Invariance de la somme par permutation]\thlabel{prop:invarianceDeLaSommeParPermutation}
+Soient \(\paren{x_i}_i\in\intervii{0}{\pinf}^{I}\) et \(\sigma\in\S{I}\).
+
+On a : \[\sum_{i\in I}x_i=\sum_{i\in I}x_{\sigma\paren{i}}.\]
+
+En particulier, \(\paren{x_i}_i\) est sommable si, et seulement si, \(\paren{x_{\sigma\paren{i}}}_i\) est sommable.
+\end{prop}
+
+\begin{dem}
+C'est clair car les sommes finies d'éléments de \(\paren{x_i}_i\) sont les sommes finies d'éléments de \(\paren{x_{\sigma\paren{i}}}_i\).
+\end{dem}
+
+\begin{cor}[Application aux séries à termes positifs]
+Soient \(\paren{x_n}_n\in\paren{\Rp}^\N\) et \(\sigma\in\S{\N}\).
+
+On a : \[\sum_{n=0}^{\pinf}x_n=\sum_{n=0}^{\pinf}x_{\sigma\paren{n}}.\]
+
+En particulier, \(\sum_nx_{\sigma\paren{n}}\) converge si, et seulement si, \(\sum_nx_n\) converge.
+\end{cor}
+
+\begin{rem}
+La proposition suivante généralise la \thref{prop:invarianceDeLaSommeParPermutation}.
+\end{rem}
+
+\begin{prop}[Changement d'indice]
+Soient \(I\) et \(J\) deux ensembles, \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\) et \(\phi:J\to I\) une bijection.
+
+On a : \[\sum_{i\in I}x_i=\sum_{j\in J}x_{\phi\paren{j}}.\]
+
+En particulier, \(\paren{x_i}_{i\in I}\) est sommable si, et seulement si, \(\paren{x_{\phi\paren{j}}}_{j\in J}\) est sommable.
+\end{prop}
+
+\begin{dem}
+C'est clair car les sommes finies d'éléments de \(\paren{x_i}_{i\in I}\) sont les sommes finies d'éléments de \(\paren{x_{\phi\paren{j}}}_{j\in J}\).
+\end{dem}
+
+\begin{prop}[Sous-famille]
+Soient \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\) et \(J\subset I\).
+
+On a : \[\sum_{i\in J}x_i\leq\sum_{i\in I}x_i.\]
+
+En particulier, une sous-famille d'une famille sommable est sommable.
+\end{prop}
+
+\begin{prop}[Croissance de la somme]
+Soient \(\paren{x_i}_i,\paren{y_i}_i\in\intervii{0}{\pinf}^I\) telles que \[\quantifs{\forall i\in I}x_i\leq y_i.\]
+
+On a : \[\sum_{i\in I}x_i\leq\sum_{i\in I}y_i.\]
+
+En particulier, \(\paren{x_i}_i\) est sommable si \(\paren{y_i}_i\) est sommable.
+\end{prop}
+
+\begin{prop}[\guillemets{somme de sommes}]
+Soient \(\paren{x_i}_i,\paren{y_i}_i\in\intervii{0}{\pinf}^I\).
+
+On a : \[\sum_{i\in I}\paren{x_i+y_i}=\sum_{i\in I}x_i+\sum_{i\in I}y_i.\]
+
+En particulier, la somme de deux familles sommables est une famille sommable.
+\end{prop}
+
+\begin{prop}
+Soient \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\) et \(\lambda\in\Rp\).
+
+On a : \[\sum_{i\in I}\lambda x_i=\lambda\sum_{i\in I}x_i.\]
+\end{prop}
+
+\begin{theo}[Sommation par paquets]
+Soit \(\paren{x_i}_i\in\intervii{0}{\pinf}^I\).
+
+On suppose que \(I\) s'écrit comme une réunion disjointe : \[I=\bigunion_{j\in J}I_j\qquad\text{avec}\qquad\quantifs{\forall j_1,j_2\in J}\croch{j_1\not=j_2\imp I_{j_1}\inter I_{j_2}=\ensvide}.\]
+
+Alors : \[\sum_{i\in I}x_i=\sum_{j\in J}\paren{\sum_{i\in I_j}x_i}.\]
+
+En particulier : \[\paren{x_i}_{i\in I}\text{ est sommable}\ssi\begin{dcases}
+\quantifs{\forall j\in J}\paren{x_i}_{i\in I_j}\text{ est sommable} \\
+\paren{\sum_{i\in I_j}x_i}_{j\in J}\text{ est sommable}
+\end{dcases}\]
+\end{theo}
+
+\begin{dem}
+\note{Hors programme}
+\end{dem}
+
+\begin{exoex}
+Calculer : \[\sum_{n=2}^{\pinf}\paren{\zeta\paren{n}-1}.\]
+\end{exoex}
+
+\begin{corr}
+On remarque : \[\quantifs{\forall n\in\interventierie{2}{\pinf}}\zeta\paren{n}=\sum_{k=1}^{\pinf}\dfrac{1}{k^n}\geq1.\]
+
+Donc \(\sum_{n\geq2}\paren{\zeta\paren{n}-1}\) est une série à termes positifs.
+
+Donc : \[\sum_{n=2}^{\pinf}\paren{\zeta\paren{n}-1}=\sum_{n\in\interventierie{2}{\pinf}}\paren{\zeta\paren{n}-1}.\]
+
+Calculons cette somme en utilisant le théorème précédent.
+
+\begin{brouill}
+On a : \[\begin{aligned}
+\sum_{n=2}^{\pinf}\paren{\zeta\paren{n}-1}&=\sum_{n=2}^{\pinf}\sum_{k=2}^{\pinf}\dfrac{1}{k^n} \\
+&\overset{\star}{=}\sum_{k=2}^{\pinf}\sum_{n=2}^{\pinf}\dfrac{1}{k^n} \\
+&=\sum_{k=2}^{\pinf}\dfrac{1}{k^2-k} \\
+&=\sum_{k=2}^{\pinf}\dfrac{1}{k\paren{k-1}} \\
+&=\sum_{k=2}^{\pinf}\paren{\dfrac{1}{k-1}-\dfrac{1}{k}} \\
+&=1.
+\end{aligned}\]
+\end{brouill}
+
+Il ne reste qu'à justifier \(\star\).
+
+Posons \(I=\interventierie{2}{\pinf}^2\).
+
+On considère la famille \(\paren{\dfrac{1}{k^n}}_{\paren{n,k}\in I}\in\intervii{0}{\pinf}^I\).
+
+On remarque que \(I\) s'écrit comme une réunion disjointe : \[I=\bigunion_{n\in\interventierie{2}{\pinf}}\accol{n}\times\interventierie{2}{\pinf}.\]
+
+D'où (sommation par paquets) : \[\sum_{n=2}^{\pinf}\sum_{k=2}^{\pinf}\dfrac{1}{k^n}=\sum_{\paren{n,k}\in I}\dfrac{1}{k^n}.\]
+
+D'autre part, on a \(I=\bigunion_{k\in\interventierie{2}{\pinf}}\interventierie{2}{\pinf}\times\accol{k}\) donc : \[\sum_{k=2}^{\pinf}\sum_{n=2}^{\pinf}\dfrac{1}{k^n}=\sum_{\paren{n,k}\in I}\dfrac{1}{k^n}.\]
+
+D'où l'égalité.
+\end{corr}
+
+\begin{cor}[Théorème de Fubini positif]
+Soient \(I\) et \(J\) des ensembles et \(\paren{x_{ij}}_{\paren{i,j}\in I\times J}\in\intervii{0}{\pinf}^{I\times J}\).
+
+On a : \[\sum_{i\in I}\sum_{j\in J}x_{ij}=\sum_{j\in J}\sum_{i\in I}x_{ij}.\]
+\end{cor}
+
+\begin{dem}
+On a les réunions disjointes : \[I\times J=\bigunion_{i\in I}\accol{i}\times J=\bigunion_{j\in J}I\times\accol{j}.\]
+
+D'où (sommations par paquets) : \[\sum_{\paren{i,j}\in I\times J}x_{ij}=\sum_{i\in I}\sum_{j\in J}x_{ij}=\sum_{j\in J}\sum_{i\in I}x_{ij}.\]
+\end{dem}
+
+\section{Familles sommables de nombres complexes}
+
+\subsection{Somme d'une famille sommable de nombres complexes}
+
+\begin{defi}[Famille sommable]
+Soit \(I\) un ensemble.
+
+On dit qu'une famille \(\paren{x_i}_i\in\C^I\) est sommable si on a : \[\sum_{i\in I}\abs{x_i}<\pinf.\]
+
+L'ensemble des familles sommables d'éléments de \(\C\) indicées par \(I\) est noté : \[l^1\paren{I,\C}\qquad\text{ou}\qquad l^1\paren{I}.\]
+\end{defi}
+
+\begin{ex}
+Prenons \(I=\N\) et \(\paren{x_n}_n\in\C^\N\).
+
+Alors : \[\paren{x_n}_n\text{ est sommable}\ssi\sum_nx_n\text{ converge absolument}.\]
+\end{ex}
+
+\begin{defi}[Somme d'une famille sommable]
+Soient \(I\) un ensemble et \(\paren{z_k}_k\in\C^I\) une famille sommable.
+
+On pose \(\quantifs{\forall x\in\R}\begin{dcases}
+x_+=\max\accol{x;0}\in\Rp \\
+x_-=\max\accol{-x;0}
+\end{dcases}\) tels que \(\quantifs{\forall x\in\R}x=x_+-x_-\).
+
+Ainsi, on a : \[\quantifs{\forall x,y\in\R}x+\i y=x_+-x_-+\i y_+-\i y_-.\]
+
+On remarque : \[\quantifs{\forall x,y\in\R}\begin{dcases}
+0\leq x_+\leq\abs{x}\leq\abs{x+\i y} \\
+0\leq x_-\leq\abs{x}\leq\abs{x+\i y} \\
+0\leq y_+\leq\abs{x}\leq\abs{x+\i y} \\
+0\leq y_-\leq\abs{x}\leq\abs{x+\i y}
+\end{dcases}\]
+
+On pose : \[\quantifs{\forall k\in I}\begin{dcases}
+x_k=\paren{\Re z_k}_+ \\
+x_k\prim=\paren{\Re z_k}_- \\
+y_k=\paren{\Im z_k}_+ \\
+y_k\prim=\paren{\Im z_k}_-
+\end{dcases}\qquad\text{de sorte que}\qquad\quantifs{\forall k\in I}\begin{dcases}
+z_k=x_k-x_k\prim+\i y_k-\i y_k\prim \\
+0\leq x_k\leq\abs{x_k} \\
+0\leq x_k\prim\leq\abs{x_k\prim} \\
+0\leq y_k\leq\abs{y_k} \\
+0\leq y_k\prim\leq\abs{y_k\prim}
+\end{dcases}\]
+
+Or, \(\sum_{k\in I}\abs{z_k}<\pinf\) donc \(\paren{x_k}_{k\in I}\), \(\paren{x_k\prim}_{k\in I}\), \(\paren{y_k}_{k\in I}\) et \(\paren{y_k\prim}_{k\in I}\) sont sommables.
+
+On pose alors : \[\sum_{k\in I}z_k=\sum_{k\in I}x_k-\sum_{k\in I}x_k\prim+\i\sum_{k\in I}y_k-\i\sum_{k\in I}y_k\prim.\]
+
+NB : on a des sommes finies car on a des familles sommables de réels positifs.
+\end{defi}
+
+\begin{ex}[Familles finies]
+Toute famille finie de nombres complexes est sommable. Sa somme est la somme usuelle.
+\end{ex}
+
+\begin{ex}[Suites sommables]
+Soit \(\paren{x_n}_n\in\C^\N\).
+
+On a : \[\sum_{n\in\N}x_n=\sum_{n=0}^{\pinf}x_n.\]
+
+NB : le membre de droite est la somme de la série absolument convergente \(\sum_nx_n\).
+\end{ex}
+
+\subsection{Propriétés}
+
+\begin{prop}
+Soient \(I\) un ensemble et \(\paren{x_i}_i\in\C^I\) une famille sommable.
+
+Pour tout \(\epsilon\in\Rps\), il existe une partie finie \(A\subset I\) telle que : \[\abs{\sum_{i\in I}x_i-\sum_{i\in A}x_i}\leq\epsilon.\]
+\end{prop}
+
+\begin{dem}
+\note{Exercice}
+\end{dem}
+
+\begin{prop}[Invariance de la somme par permutation]\thlabel{prop:invarianceDeLaSommeParPermutationCasComplexe}
+Soient \(\paren{x_i}_i\in\C^I\) et \(\sigma\in\S{I}\).
+
+La famille \(\paren{x_i}_i\) est sommable si, et seulement si, la famille \(\paren{x_{\sigma\paren{i}}}_i\) est sommable.
+
+On a alors : \[\sum_{i\in I}x_i=\sum_{i\in I}x_{\sigma\paren{i}}.\]
+\end{prop}
+
+\begin{cor}[Application aux séries absolument convergentes]
+Soient \(\sum_nx_n\) une série à termes complexes et \(\sigma\in\S{\N}\).
+
+La série \(\sum_nx_n\) est absolument convergente si, et seulement si, la série \(\sum_nx_{\sigma\paren{n}}\) est absolument convergente.
+
+On a alors : \[\sum_{n=0}^{\pinf}x_n=\sum_{n=0}^{\pinf}x_{\sigma\paren{n}}.\]
+\end{cor}
+
+\begin{rem}
+On dit qu'une série à termes complexes \(\sum_nx_n\) est commutativement convergente si quelle que soit la permutation \(\sigma\in\S{\N}\), la série \(\sum_nx_{\sigma\paren{n}}\) est convergente et de même somme que \(\sum_nx_n\).
+
+On peut montrer : \[\sum_nx_n\text{ est commutativement convergente}\ssi\sum_nx_n\text{ est absolument convergente}.\]
+\end{rem}
+
+\begin{rem}
+La proposition suivante généralise la \thref{prop:invarianceDeLaSommeParPermutationCasComplexe}.
+\end{rem}
+
+\begin{prop}[Changement d'indice]
+Soient \(I\) et \(J\) deux ensembles, \(\paren{x_i}_i\in\C^I\) et \(\phi:J\to I\) une bijection.
+
+La famille \(\paren{x_i}_{i\in I}\) est sommable si, et seulement si, la famille \(\paren{x_{\phi\paren{j}}}_{j\in J}\) est sommable.
+
+On a alors : \[\sum_{i\in I}x_i=\sum_{j\in J}x_{\phi\paren{j}}.\]
+\end{prop}
+
+\begin{prop}[Sous-famille]
+Toute sous-famille d'une famille sommable est sommable.
+\end{prop}
+
+\begin{prop}
+Soient \(\paren{x_i}_i\in\C^I\) et \(\paren{y_i}_i\in\intervii{0}{\pinf}^I\) telles que \[\quantifs{\forall i\in I}\abs{x_i}\leq y_i.\]
+
+Alors : \[\sum_{i\in I}\abs{x_i}\leq\sum_{i\in I}y_i.\]
+
+En particulier : \[\paren{y_i}_i\text{ est sommable}\imp\paren{x_i}_i\text{ est sommable}.\]
+\end{prop}
+
+\begin{prop}[Linéarité de la somme]
+Soient \(\paren{x_i}_i,\paren{y_i}_i\in\C^I\) deux familles sommables et \(\lambda,\mu\in\C\).
+
+La combinaison linéaire des deux familles : \[\paren{\lambda x_i+\mu y_i}_i\] est sommable et on a : \[\sum_{i\in I}\paren{\lambda x_i+\mu y_i}=\lambda\sum_{i\in I}x_i+\mu\sum_{i\in I}y_i.\]
+\end{prop}
+
+\begin{theo}[Sommation par paquets]
+Soit \(\paren{x_i}_i\in\C^I\) une famille sommable.
+
+On suppose que l'ensemble \(I\) s'écrit comme une réunion disjointe : \[I=\bigunion_{j\in J}I_j\qquad\text{avec}\qquad\quantifs{\forall j_1,j_2\in J}\croch{j_1\not=j_2\imp I_{j_1}\inter I_{j_2}=\ensvide}.\]
+
+Alors : \[\begin{dcases}
+\quantifs{\forall j\in J}\paren{x_i}_{i\in I_j}\text{ est sommable} \\
+\paren{\sum_{i\in I_j}x_i}_{j\in J}\text{ est sommable}
+\end{dcases}\] et on a : \[\sum_{i\in I}x_i=\sum_{j\in J}\paren{\sum_{i\in I_j}x_i}.\]
+\end{theo}
+
+\begin{dem}
+\note{Hors programme}
+\end{dem}
+
+\begin{cor}[Théorème de Fubini]
+Soient \(I\) et \(J\) des ensembles et \(\paren{x_{ij}}_{\paren{i,j}\in I\times J}\in\C^{I\times J}\) une famille sommable.
+
+On a : \[\sum_{i\in I}\sum_{j\in J}x_{ij}=\sum_{j\in J}\sum_{i\in I}x_{ij}.\]
+\end{cor}
+
+\begin{exoex}
+Soit \(z\in\C\) tel que \(\abs{z}<1\).
+
+\begin{enumerate}
+    \item Calculer \(\sum_{i=1}^{\pinf}\sum_{j=1}^{\pinf}z^{i+j}\) \\
+    \item La famille \(\paren{z^{i+j}}_{\paren{i,j}\in\paren{\Ns}^2}\) est-elle sommable ? Le cas échéant, quelle est sa somme ?
+\end{enumerate}
+\end{exoex}
+
+\begin{corr}[1]
+On a : \[\begin{aligned}
+\sum_{i=1}^{\pinf}\sum_{j=1}^{\pinf}z^{i+j}&=\sum_{i=1}^{\pinf}\dfrac{z^{i+1}}{1-z} \\
+&=\dfrac{z^2}{1-z}\times\dfrac{1}{1-z} \\
+&=\dfrac{z^2}{\paren{1-z}^2}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[2]
+Comme les termes sont positifs, on a, en sommant par paquets : \[\begin{aligned}
+\sum_{\paren{i,j}\in\paren{\Ns}^2}\abs{z^{i+j}}&=\sum_{i=1}^{\pinf}\sum_{j=1}^{\pinf}\abs{z^{i+j}} \\
+&=\dfrac{\abs{z}^2}{\paren{1-\abs{z}}^2} \\
+&<\pinf.
+\end{aligned}\]
+
+Donc la famille est sommable donc, en sommant par paquets : \[\begin{aligned}
+\sum_{\paren{i,j}\in\paren{\Ns}^2}z^{i+j}&=\sum_{i=1}^{\pinf}\sum_{j=1}^{\pinf}z^{i+j} \\
+&=\dfrac{z^2}{\paren{1-z}^2}.
+\end{aligned}\]
+\end{corr}
+
+\begin{cor}\thlabel{cor:produitDeFamillesSommablesEstSommable}
+Soient \(\paren{x_i}_i\in\C^I\) et \(\paren{y_j}_j\in\C^J\) deux familles sommables.
+
+Alors la famille \(\paren{x_iy_j}_{\paren{i,j}\in I\times J}\) est sommable et on a : \[\sum_{\paren{i,j}\in I\times J}x_iy_j=\paren{\sum_{i\in I}x_i}\times\paren{\sum_{j\in J}y_j}.\]
+\end{cor}
+
+\begin{cor}
+Soient \(n\in\interventierie{2}{\pinf}\) et \(\paren{x_{i_1}}_{i_1}\in\C^{I_1},\dots,\paren{x_{i_n}}_{i_n}\in\C^{I_n}\) des familles sommables.
+
+Alors la famille \(\paren{x_{i_1}\dots x_{i_n}}_{\paren{i_1,\dots,i_n}\in I_1\times\dots\times I_n}\) est sommable et on a : \[\sum_{\paren{i_1,\dots,i_n}\in I_1\times\dots\times I_n}x_{i_1}\dots x_{i_n}=\paren{\sum_{i_1\in I_1}x_{i_1}}\times\dots\times\paren{\sum_{i_n\in I_n}x_{i_n}}.\]
+\end{cor}
+
+\subsection{Produits de Cauchy de séries absolument convergentes}
+
+\begin{defi}[Produit de Cauchy de deux séries]
+Soient \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq0}y_n\) deux séries de nombres complexes.
+
+On appelle produit de Cauchy de \(\sum_{n\geq0}x_n\) et \(\sum_{n\geq0}y_n\) la série \(\sum_{n\geq0}z_n\) définie par : \[\quantifs{\forall n\in\N}z_n=\sum_{k=0}^nx_ky_{n-k}.\]
+\end{defi}
+
+\begin{rem}
+\begin{itemize}
+    \item On suppose que les séries sont définies \guillemets{à partir de \(n=0\)}. Quand ce n'est pas le cas, le plus simple est d'ajouter des termes nuls à la série pour manipuler proprement les produits de Cauchy. \\
+    \item Le produit de Cauchy est une loi de composition commutative (on le voit en faisant le changement d'indice \(k\prim=n-k\) dans la somme \(\sum_{k=0}^nx_ky_{n-k}\)).
+\end{itemize}
+\end{rem}
+
+\begin{theo}
+Soient \(\sum_nx_n\) et \(\sum_ny_n\) deux séries de nombres complexes absolument convergentes.
+
+Alors leur produit de Cauchy \(\sum_nz_n\) est une série absolument convergente, de somme : \[\sum_{n=0}^{\pinf}z_n=\paren{\sum_{n=0}^{\pinf}x_n}\times\paren{\sum_{n=0}^{\pinf}y_n}.\]
+\end{theo}
+
+\begin{dem}
+Comme les séries \(\sum_nx_n\) et \(\sum_ny_n\) sont absolument convergentes, les familles \(\paren{x_n}_n\) et \(\paren{y_n}_n\) sont sommables.
+
+Selon le \thref{cor:produitDeFamillesSommablesEstSommable}, la famille \(\paren{x_iy_j}_{\paren{i,j}\in\N^2}\) est sommable et de somme : \[\begin{aligned}
+\sum_{\paren{i,j}\in\N^2}x_iy_j&=\paren{\sum_{i\in\N}x_i}\paren{\sum_{j\in\N}y_j} \\
+&=\paren{\sum_{i=0}^{\pinf}x_i}\paren{\sum_{j=0}^{\pinf}y_j}.
+\end{aligned}\]
+
+Or, on a les réunions disjointes suivantes : \[\begin{aligned}
+\N^2&=\accol{\paren{i,j}\in\N^2} \\
+&=\bigunion_{n\in\N}\accol{\paren{i,j}\in\N^2\tq i+j=n} \\
+&=\bigunion_{n\in\N}\accol{\paren{k,n-k}}_{k\in\interventierii{0}{n}}.
+\end{aligned}\]
+
+D'où (sommation par paquets) : \[\sum_{\paren{i,j}\in\N^2}x_iy_j=\sum_{n=0}^{\pinf}\sum_{k=0}^nx_ky_{n-k}.\]
+
+De plus, la série \(\sum_n\sum_{k=0}^nx_ky_{n-k}\) est absolument convergente.
+\end{dem}
+
+\begin{exoex}
+Soit \(z\in\C\) tel que \(\abs{z}<1\).
+
+Montrer : \[\sum_{n=0}^{\pinf}\paren{n+1}z^n=\dfrac{1}{\paren{1-z}^2}.\]
+\end{exoex}
+
+\begin{corr}
+Considérons les séries \(\sum_nz^n\) et \(\sum_nz^n\) et leur produit de Cauchy \(\sum_nx_n\) défini par : \[\begin{aligned}
+\quantifs{\forall n\in\N}x_n&=\sum_{k=0}^nz^kz^{n-k} \\
+&=\sum_{k=0}^nz^n \\
+&=\paren{n+1}z^n.
+\end{aligned}\]
+
+Comme \(\sum_nz^n\) et \(\sum_nz^n\) sont absolument convergentes, leur produit de Cauchy l'est aussi et on a : \[\sum_{n=0}^{\pinf}x_n=\paren{\sum_{n=0}^{\pinf}z^n}^2=\paren{\dfrac{1}{1-z}}^2=\dfrac{1}{\paren{1-z}^2}.\]
+\end{corr}
+
+\section{Fonction exponentielle}
+
+\begin{defprop}[Fonction exponentielle]\thlabel{defprop:fonctionExponentielle}
+Soit \(z\in\C\).
+
+La série \(\sum_n\dfrac{z^n}{n!}\) est absolument convergente.
+
+Sa somme est appelée exponentielle de \(z\) et est notée \[\exp z=\e{z}=\sum_{n=0}^{\pinf}\dfrac{z^n}{n!}.\]
+\end{defprop}
+
+\begin{dem}
+Selon la \thref{prop:sommesInfiniesExponentielleCosEtSin} : \[\sum_{n=0}^{\pinf}\dfrac{\abs{z}^n}{n!}=\e{\abs{z}}<\pinf.\]
+
+Donc \(\sum_n\dfrac{\abs{z}^n}{n!}\) converge donc \(\sum_n\dfrac{z^n}{n!}\) converge absolument.
+\end{dem}
+
+\begin{prop}\thlabel{prop:propriétésExponentielleDéfinieCommeLaSommeDUneSérie}
+On a :
+
+\begin{enumerate}
+    \item \(\e{0}=1\) \\
+    \item \(\quantifs{\forall z_1,z_2\in\C}\e{z_1+z_2}=\e{z_1}\e{z_2}\) \\
+    \item \(\quantifs{\forall z\in\C}\e{-z}=\dfrac{1}{\e{z}}\)
+\end{enumerate}
+\end{prop}
+
+\begin{dem}[1]
+On a : \[\e{0}=\sum_{n=0}^{\pinf}\dfrac{0^n}{n!}=\dfrac{0^0}{0!}=1.\]
+\end{dem}
+
+\begin{dem}[2]
+Soient \(z_1,z_2\in\C\).
+
+On a : \[\begin{WithArrows}
+\e{z_1+z_2}&=\sum_{n=0}^{\pinf}\dfrac{\paren{z_1+z_2}^n}{n!} \\
+&=\sum_{n=0}^{\pinf}\dfrac{1}{n!}\sum_{k=0}^n\binom{k}{n}z_1^kz_2^{n-k} \\
+&=\sum_{n=0}^{\pinf}\sum_{k=0}^n\dfrac{z_1^k}{k!}\times\dfrac{z_2^{n-k}}{\paren{n-k}!} \Arrow[tikz={text width=4cm}]{produit de Cauchy car \(\sum_n\dfrac{z_1^n}{n!}\) et \(\sum_n\dfrac{z_2^n}{n!}\) convergent absolument} \\
+&=\paren{\sum_{n=0}^{\pinf}\dfrac{z_1^n}{n!}}\paren{\sum_{n=0}^{\pinf}\dfrac{z_2^n}{n!}} \\
+&=\e{z_1}\e{z_2}.
+\end{WithArrows}\]
+\end{dem}
+
+\begin{dem}[3]
+Soit \(z\in\C\).
+
+On a \(\e{z}\e{-z}=1\) donc \(\e{-z}=\dfrac{1}{\e{z}}\) (en particulier, \(\e{z}\not=0\)).
+\end{dem}
+
+\begin{cor}
+La fonction \(\fonction{\exp}{\C}{\Cs}{z}{\e{z}}\) est un morphisme de groupes de \(\groupe{\C}\) vers \(\groupe{\Cs}[\times]\).
+\end{cor}
+
+\begin{rem}[Compatibilité avec les anciennes définitions]
+\begin{enumerate}
+    \item D'après la \thref{prop:sommesInfiniesExponentielleCosEtSin}, la \thref{defprop:fonctionExponentielle} est bien compatible avec la fonction \(\exp:\R\to\R\) vue au lycée. \\
+    \item On avait déjà défini une fonction \(\exp:\C\to\C\) en posant : \[\quantifs{\forall a,b\in\R}\e{a+\i b}=\e{a}\e{\i b}=\e{a}\paren{\cos b+\i\sin b}.\] La \thref{defprop:fonctionExponentielle} est également compatible avec cette définition. \\
+    \item Vous aurez en deuxième année des outils pour étudier les \guillemets{séries de fonctions} qui rendront cette définition davantage exploitable.
+\end{enumerate}
+\end{rem}
+
+\begin{dem}[2]
+Soient \(a,b\in\R\).
+
+D'après la \thref{prop:sommesInfiniesExponentielleCosEtSin}, on a : \[\begin{WithArrows}
+\e{a}\paren{\cos b+\i\sin b}&=\e{a}\paren{\sum_{n=0}^{\pinf}\dfrac{\paren{-1}^nb^{2n}}{\paren{2n}!}+\i\sum_{n=0}^{\pinf}\dfrac{\paren{-1}^nb^{2n+1}}{\paren{2n+1}!}} \\
+&=\e{a}\paren{\sum_{n=0}^{\pinf}\dfrac{\paren{\i b}^{2n}}{\paren{2n}!}+\sum_{n=0}^{\pinf}\dfrac{\paren{\i b}^{2n+1}}{\paren{2n+1}!}} \\
+&=\e{a}\sum_{N=0}^{\pinf}\dfrac{\paren{\i b}^N}{N!} \\
+&=\e{a}\e{\i b} \Arrow[i]{\thref{prop:propriétésExponentielleDéfinieCommeLaSommeDUneSérie} (2)} \\
+&=\e{a+\i b}.
+\end{WithArrows}\]
+\end{dem}

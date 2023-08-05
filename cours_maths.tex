@@ -157,6 +157,7 @@ per-mode=power-positive-first
 \newcommand{\U}{\mathbb{U}} % complex numbers whose modulus is 1
 
 \renewcommand{\P}[1]{\mathscr{P}\paren{#1}} % subsets of a set
+\newcommand{\Pf}[1]{\mathscr{P}_f\paren{#1}} % finite subsets of a set
 \newcommand{\F}[2]{\mathscr{F}\paren{#1,#2}} % functions from 1 to 2
 \newcommand{\V}[1]{\mathscr{V}\paren{#1}} % neighborhood of a number
 
@@ -650,7 +651,9 @@ per-mode=power-positive-first
 
 \newcommand{\egqd}[1]{\underset{#1}{=}}
 \newcommand{\simqd}[1]{\underset{#1}{\sim}}
-\newcommand{\tendqd}[1]{\xrightarrow[#1]{}}
+
+\newcommand{\mediumrightarrow}{\,\begin{tikzpicture}\draw[->] (0, 0) -- (1, 0);\end{tikzpicture}\,}
+\newcommand{\tendqd}[1]{\underset{#1}{\mediumrightarrow}}
 
 \newcommand{\arr}[2]{A_{#2}^{#1}}
 \newcommand{\comb}[2]{C_{#2}^{#1}}
@@ -683,10 +686,6 @@ per-mode=power-positive-first
 Ce document réunit l'ensemble de mes cours de Mathématiques de MP2I, ainsi que les TDs (travaux dirigés) les accompagnant. Le professeur était M. Jansou. J'ai adapté certaines formulations me paraissant floues ou ne me plaisant pas mais le contenu pur des cours est strictement équivalent. Le document est organisé selon la hiérarchie suivante : chapitre, I), 1), a).
 
 Les éléments des tables des matières initiale et présentes au début de chaque chapitre sont cliquables (amenant directement à la partie cliquée). C'est également le cas des références à des éléments antérieurs de la forme, par exemple, \guillemets{Démonstration 5.22}.
-
-Dernier chapitre terminé : Chapitre 23 -- Probabilités (20 manquant).
-
-Dernier TD terminé : Chapitre 23 -- Probabilités.
 
 Dernier TD corrigé : aucun.
 \end{abstract}
