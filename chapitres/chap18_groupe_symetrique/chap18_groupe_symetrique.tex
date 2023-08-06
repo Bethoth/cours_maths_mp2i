@@ -220,11 +220,11 @@ Attention, dans la proposition précédente, les transpositions ne sont pas néc
 \begin{deftheo}[Signature]
 Soit \(n\in\Ns\).
 
-Il existe un unique morphisme de groupes \[\epsilon:\S{n}\to\accol{-1;1}\] tel qu'on ait : \[\epsilon\paren{\tau}=-1\] pour toute transposition \(\tau\in\S{n}\).
+Il existe un unique morphisme de groupes \[\epsilon:\S{n}\to\accol{-1;1}\] tel qu'on ait : \[\sig{\tau}=-1\] pour toute transposition \(\tau\in\S{n}\).
 
 Ce morphisme est appelé la signature.
 
-Si \(\sigma\in\S{n}\) est une permutation alors on dit que \(\epsilon\paren{\sigma}\) est la signature de \(\sigma\).
+Si \(\sigma\in\S{n}\) est une permutation alors on dit que \(\sig{\sigma}\) est la signature de \(\sigma\).
 \end{deftheo}
 
 \begin{dem}\thlabel{dem:existenceEtUnicitéDeLaSignature}
@@ -236,7 +236,7 @@ Soient un morphisme de groupes \[\epsilon:\S{n}\to\accol{-1;1}\] envoyant toute 
 
 Selon la \thref{prop:décompositionEnProduitDeTranspositions}, il existe \(r\in\N\) et  des transpositions \(\tau_1,\dots,\tau_r\in\S{n}\) telles que : \[\sigma=\tau_1\dots\tau_r.\]
 
-On a nécessairement : \[\epsilon\paren{\sigma}=\epsilon\paren{\tau_1}\dots\epsilon\paren{\tau_r}=\paren{-1}^r.\]
+On a nécessairement : \[\sig{\sigma}=\sig{\tau_1}\dots\sig{\tau_r}=\paren{-1}^r.\]
 
 Donc le morphisme \(\epsilon\) est unique.
 
@@ -267,15 +267,15 @@ En effet : \[\begin{aligned}
 &=\pm\prod_{1\leq k<l\leq n}\paren{X_l-X_k}
 \end{aligned}\] car \(\fonctionlambda{\Pdeux}{\Pdeux}{\accol{i;j}}{\accol{\sigma\paren{i};\sigma\paren{j}}}\) est une bijection.
 
-Ainsi, on a montré : \[\quantifs{\forall\sigma\in\S{n};\exists!\epsilon\paren{\sigma}\in\accol{-1;1}}\sigma\cdot P=\epsilon\paren{\sigma}P.\]
+Ainsi, on a montré : \[\quantifs{\forall\sigma\in\S{n};\exists!\sig{\sigma}\in\accol{-1;1}}\sigma\cdot P=\sig{\sigma}P.\]
 
-Enfin, on remarque que l'application \(\epsilon:\S{n}\to\accol{-1;1}\) est un morphisme de groupes car : \[\quantifs{\forall\sigma_1,\sigma_2\in\S{n}}\epsilon\paren{\sigma_1\sigma_2}P=\paren{\sigma_1\sigma_2}\cdot P=\sigma_1\cdot\paren{\sigma_2\cdot P}=\epsilon\paren{\sigma_1}\epsilon\paren{\sigma_2}P\] donc : \[\quantifs{\forall\sigma_1,\sigma_2\in\S{n}}\epsilon\paren{\sigma_1\sigma_2}=\epsilon\paren{\sigma_1}\epsilon\paren{\sigma_2}.\]
+Enfin, on remarque que l'application \(\epsilon:\S{n}\to\accol{-1;1}\) est un morphisme de groupes car : \[\quantifs{\forall\sigma_1,\sigma_2\in\S{n}}\sig{\sigma_1\sigma_2}P=\paren{\sigma_1\sigma_2}\cdot P=\sigma_1\cdot\paren{\sigma_2\cdot P}=\sig{\sigma_1}\sig{\sigma_2}P\] donc : \[\quantifs{\forall\sigma_1,\sigma_2\in\S{n}}\sig{\sigma_1\sigma_2}=\sig{\sigma_1}\sig{\sigma_2}.\]
 
 D'où l'existence du morphisme.
 \end{dem}
 
 \begin{rem}
-La décomposition d'une permutation \(\sigma\in\S{n}\) avec \(n\in\Ns\) en produit de transpositions n'est pas unique, mais si l'on a deux écritures : \[\sigma=\tau_1\dots\tau_r=\tau_1\prim\dots\tau_s\prim\] avec \(r,s\in\N\) et \(\tau_1,\dots,\tau_r,\tau_1\prim,\dots,\tau_s\prim\in\S{n}\) des transpositions, alors \[r\equiv s\croch{2}\] car \[\epsilon\paren{\sigma}=\paren{-1}^r=\paren{-1}^s.\]
+La décomposition d'une permutation \(\sigma\in\S{n}\) avec \(n\in\Ns\) en produit de transpositions n'est pas unique, mais si l'on a deux écritures : \[\sigma=\tau_1\dots\tau_r=\tau_1\prim\dots\tau_s\prim\] avec \(r,s\in\N\) et \(\tau_1,\dots,\tau_r,\tau_1\prim,\dots,\tau_s\prim\in\S{n}\) des transpositions, alors \[r\equiv s\croch{2}\] car \[\sig{\sigma}=\paren{-1}^r=\paren{-1}^s.\]
 \end{rem}
 
 \begin{rem}[Nombre d'inversions]
@@ -283,7 +283,7 @@ Soient \(n\in\Ns\) et \(\sigma\in\S{n}\).
 
 On appelle nombre d'inversions de \(\sigma\) l'entier : \[N=\Card\accol{\paren{i,j}\in\interventierii{1}{n}^2\tq i<j\quad\text{et}\quad\sigma\paren{i}>\sigma\paren{j}}.\]
 
-D'après la partie existence de la \thref{dem:existenceEtUnicitéDeLaSignature}, on a : \[\epsilon\paren{\sigma}=\paren{-1}^N.\]
+D'après la partie existence de la \thref{dem:existenceEtUnicitéDeLaSignature}, on a : \[\sig{\sigma}=\paren{-1}^N.\]
 \end{rem}
 
 \begin{rem}
@@ -293,12 +293,12 @@ En pratique, le plus simple pour calculer la signature d'une permutation est de 
 \begin{prop}[Signature d'un cycle]
 Soient \(n,l\in\N\) tels que \(2\leq l\leq n\) et \(c\in\S{n}\) un cycle de longueur \(l\) : \[c=\cycle{a_1;a_2;a_3;\dots;a_l}\] où \(a_1,\dots,a_l\in\interventierii{1}{n}\) sont deux à deux distincts.
 
-Alors on a : \[\epsilon\paren{c}=\paren{-1}^{l-1}.\]
+Alors on a : \[\sig{c}=\paren{-1}^{l-1}.\]
 \end{prop}
 
 \begin{dem}
 On a \(c=\cycle{a_1;a_2}\cycle{a_2;a_3}\dots\cycle{a_{l-1};a_l}\) donc : \[\begin{aligned}
-\epsilon\paren{c}&=\epsilon\paren{\cycle{a_1;a_2}}\times\dots\times\epsilon\paren{\cycle{a_{l-1};a_l}} \\
+\sig{c}&=\sig{\cycle{a_1;a_2}}\times\dots\times\sig{\cycle{a_{l-1};a_l}} \\
 &=\paren{-1}^{l-1}.
 \end{aligned}\]
 \end{dem}
@@ -308,7 +308,7 @@ Calculer la signature de \[\sigma=\permu{1;2;3;4;5;6;7;8;9;10;11;12;13;14}{10;9;
 \end{exoex}
 
 \begin{corr}
-On a \(\sigma=\cycle{10;4;1}\cycle{9;11;5;6;8;7;2}\cycle{14;13;12}\) donc : \[\epsilon\paren{\sigma}=\paren{-1}^2\times\paren{-1}^6\times\paren{-1}^2=1.\]
+On a \(\sigma=\cycle{10;4;1}\cycle{9;11;5;6;8;7;2}\cycle{14;13;12}\) donc : \[\sig{\sigma}=\paren{-1}^2\times\paren{-1}^6\times\paren{-1}^2=1.\]
 \end{corr}
 
 \begin{defi}[Permutations paires/impaires]
@@ -324,7 +324,7 @@ Alors \(c\) est une permutation paire si, et seulement si, sa longueur est impai
 \begin{defi}[Groupe alterné]
 Soit \(n\in\Ns\).
 
-On appelle groupe alterné d'ordre \(n\) et on note \(A_n\) ou \(\frakA{n}\) le noyau de la signature \(\epsilon:\S{n}\to\accol{-1;1}\) : \[\frakA{n}=\ker\epsilon=\accol{\sigma\in\S{n}\tq\epsilon\paren{\sigma}=1}.\]
+On appelle groupe alterné d'ordre \(n\) et on note \(A_n\) ou \(\frakA{n}\) le noyau de la signature \(\epsilon:\S{n}\to\accol{-1;1}\) : \[\frakA{n}=\ker\epsilon=\accol{\sigma\in\S{n}\tq\sig{\sigma}=1}.\]
 
 Ainsi, \(\frakA{n}\) est le groupe des permutations paires.
 \end{defi}

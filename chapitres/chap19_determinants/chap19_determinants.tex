@@ -69,7 +69,7 @@ D'où le résultat.
 \begin{cor}
 Soient \(E\) un \(\K\)-espace vectoriel, \(r\in\Ns\) et \(f:E^r\to\K\) une forme \(r\)-linéaire alternée.
 
-On a : \[\quantifs{\forall\sigma\in\S{n};\forall\paren{x_1,\dots,x_r}\in E^r}f\paren{x_{\sigma\paren{1}},\dots,x_{\sigma\paren{x_r}}}=\epsilon\paren{\sigma}f\paren{x_1,\dots,x_r}.\]
+On a : \[\quantifs{\forall\sigma\in\S{n};\forall\paren{x_1,\dots,x_r}\in E^r}f\paren{x_{\sigma\paren{1}},\dots,x_{\sigma\paren{x_r}}}=\sig{\sigma}f\paren{x_1,\dots,x_r}.\]
 \end{cor}
 
 \begin{prop}\thlabel{prop:l'ImageD'UneFamilleLiéeParUneFormeMultilinéaireAlternéeEstNulle}
@@ -108,8 +108,8 @@ a_{n1} & \dots & a_{nn}
 \end{pmatrix}\in\M{n}.\]
 
 On a : \[\begin{aligned}
-f\paren{x_1,\dots,x_n}&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}f\paren{e_1,\dots,e_n} \\
-&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}f\paren{e_1,\dots,e_n}.
+f\paren{x_1,\dots,x_n}&=\sum_{\sigma\in\S{n}}\sig{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}f\paren{e_1,\dots,e_n} \\
+&=\sum_{\sigma\in\S{n}}\sig{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}f\paren{e_1,\dots,e_n}.
 \end{aligned}\]
 \end{lem}
 
@@ -121,7 +121,7 @@ f\paren{x_1,\dots,x_n}&=f\paren{\sum_{i_1=1}^na_{i_11}e_{i_1},\dots,\sum_{i_n=1}
 &=\underbrace{\sum_{i_1=1}^n\dots\sum_{i_n=1}^n}_{n^n\text{ termes}}a_{i_11}\dots a_{i_nn}f\paren{e_{i_1},\dots,e_{i_n}} \\
 &=\underbrace{\sum_{\alpha\in\F{\interventierii{1}{n}}{\interventierii{1}{n}}}}_{\star}a_{\alpha\paren{1}1}\dots a_{\alpha\paren{n}n}f\paren{e_{\alpha\paren{1}},\dots,e_{\alpha\paren{n}}} \\
 &=\sum_{\sigma\in\S{n}}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}f\paren{e_{\sigma\paren{1}},\dots,e_{\sigma\paren{n}}} \Arrow{car \(f\) est alternée} \\
-&=\sum_{\sigma\in\S{n}}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}\epsilon\paren{\sigma}f\paren{e_1,\dots,e_n}.
+&=\sum_{\sigma\in\S{n}}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}\sig{\sigma}f\paren{e_1,\dots,e_n}.
 \end{WithArrows}\]
 
 \(\star\) : \(n^n\) termes dont beaucoup sont nuls : tous ceux pour lesquels \(\alpha\) n'est pas injective et donc pas bijective, car \(f\) est alternée.
@@ -146,7 +146,7 @@ Selon le \thref{lem:calculFormeN-LinéaireEnDimensionN}, l'image de toute famill
 a_{11} & \dots & a_{1n} \\
 \vdots &  & \vdots \\
 a_{n1} & \dots & a_{nn}
-\end{pmatrix}\] dans la base \(\fami{B}\) est : \[f\paren{x_1,\dots,x_n}=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}.\]
+\end{pmatrix}\] dans la base \(\fami{B}\) est : \[f\paren{x_1,\dots,x_n}=\sum_{\sigma\in\S{n}}\sig{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}.\]
 
 \synthese (existence)
 
@@ -154,7 +154,7 @@ Considérons la fonction \(f:E^n\to\K\) qui envoie toute famille \(\paren{x_1,\d
 a_{11} & \dots & a_{1n} \\
 \vdots &  & \vdots \\
 a_{n1} & \dots & a_{nn}
-\end{pmatrix}\] dans la base \(\fami{B}\) sur : \[\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}.\]
+\end{pmatrix}\] dans la base \(\fami{B}\) sur : \[\sum_{\sigma\in\S{n}}\sig{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}.\]
 
 Alors \(f\) est clairement une forme \(n\)-linéaire sur \(E\).
 
@@ -175,7 +175,7 @@ Donc, en posant \(\tau=\cycle{k;l}\), on a : \[\quantifs{\forall\sigma\in\S{n}}a
 Or, le groupe symétrique s'écrit comme une réunion disjointe : \[\S{n}=\underbrace{\frakA{n}}_{\substack{\text{permutations} \\ \text{paires}}}\union\underbrace{\frakA{n}\tau}_{\substack{\text{permutations} \\ \text{impaires}}}.\]
 
 D'où : \[\begin{aligned}
-f\paren{x_1,\dots,x_n}&=\sum_{\sigma\in\frakA{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}+\sum_{\sigma\in\frakA{n}}\epsilon\paren{\sigma\tau}a_{1\,\sigma\tau\paren{1}}\dots a_{n\,\sigma\tau\paren{n}} \\
+f\paren{x_1,\dots,x_n}&=\sum_{\sigma\in\frakA{n}}\sig{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}+\sum_{\sigma\in\frakA{n}}\sig{\sigma\tau}a_{1\,\sigma\tau\paren{1}}\dots a_{n\,\sigma\tau\paren{n}} \\
 &=\sum_{\sigma\in\frakA{n}}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}-\sum_{\sigma\in\frakA{n}}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}} \\
 &=0.
 \end{aligned}\]
@@ -194,7 +194,7 @@ a_{11} & \dots & a_{1n} \\
 a_{n1} & \dots & a_{nn}
 \end{pmatrix}.\]
 
-On a : \[\detb\paren{x_1,\dots,x_n}=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}.\]
+On a : \[\detb\paren{x_1,\dots,x_n}=\sum_{\sigma\in\S{n}}\sig{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}}=\sum_{\sigma\in\S{n}}\sig{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}.\]
 \end{prop}
 
 \begin{exoex}
@@ -427,8 +427,8 @@ a_{11} & \dots & a_{1n} \\
 \vdots &  & \vdots \\
 a_{n1} & \dots & a_{nn}
 \end{vmatrix}&=\detb[\fami{B}_0]\paren{\tcoords{a_{11}}{\vdots}{a_{n1}},\dots,\tcoords{a_{1n}}{\vdots}{a_{nn}}} \\
-&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}} \\
-&=\sum_{\sigma\in\S{n}}\epsilon\paren{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}.
+&=\sum_{\sigma\in\S{n}}\sig{\sigma}a_{1\sigma\paren{1}}\dots a_{n\sigma\paren{n}} \\
+&=\sum_{\sigma\in\S{n}}\sig{\sigma}a_{\sigma\paren{1}1}\dots a_{\sigma\paren{n}n}.
 \end{aligned}\]
 \end{defi}
 
@@ -650,7 +650,7 @@ opération sur la matrice & effet sur son déterminant \\
 \hline
 \(C_i\gets\sum_{j=1}^n\lambda_jC_j\) & multiplié par \(\lambda_i\) \\
 \hline
-\(\quantifs{\forall i\in\interventierii{1}{n}}C_i\gets C_{\sigma\paren{i}}\) (où \(\sigma\in\S{n}\)) & multiplié par \(\epsilon\paren{\sigma}\) \\
+\(\quantifs{\forall i\in\interventierii{1}{n}}C_i\gets C_{\sigma\paren{i}}\) (où \(\sigma\in\S{n}\)) & multiplié par \(\sig{\sigma}\) \\
 \hline
 \end{tabular}
 \end{center}
