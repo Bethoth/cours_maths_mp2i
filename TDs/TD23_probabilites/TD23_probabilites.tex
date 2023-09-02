@@ -152,8 +152,56 @@ On note \(X_i\) la variable aléatoire qui vaut \(1\) si l'ascenseur s'arrête �
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1a]
+On pose \(\quantifs{\forall i\in\interventierii{1}{p}}Y_i\in\interventierii{1}{n}\) l'étage où s'arrête la personne \no \(i\).
+
+Soit \(i\in\interventierii{1}{n}\).
+
+\(X_i\) suit une loi de Bernoulli.
+
+On a : \[\begin{WithArrows}
+\proba{X_i=0}&=\proba{Y_1\not=i\text{ et }\dots\text{ et }Y_p\not=i} \Arrow{mutuelle indépendance} \\
+&=\prod_{j=1}^p\proba{Y_j\not=i} \Arrow{\(Y_1,\dots,Y_p\sim\loiuniforme{\interventierii{1}{n}}\)} \\
+&=\paren{\dfrac{n-1}{n}}^p.
+\end{WithArrows}\]
+
+Donc \(\proba{X_i=1}=1-\proba{X_i=0}=1-\paren{\dfrac{n-1}{n}}^p\).
+\end{corr}
+
+\begin{corr}[1b]
+On a : \[X=\sum_{i=1}^nX_i.\]
+\end{corr}
+
+\begin{corr}[1c]
+On a : \[\begin{aligned}
+\esp{X}&=\esp{\sum_{i=1}^nX_i} \\
+&=\sum_{i=1}^n\esp{X_i} \\
+&=\sum_{i=1}^n\paren{1-\paren{\dfrac{n-1}{n}}^p} \\
+&=n-n\paren{\dfrac{n-1}{n}}^p.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[2a et 2b]
+\begin{code}
+from random import randint
+
+def X(n, p):
+    arrets = [0] * n
+    for _ in range(p):
+        arrets[randint(1, n) - 1] = 1
+    return sum(arrets)
+
+def esperance_theorique(n, p):
+    return n * (1 - (1 - 1 / n) ** p)
+
+def esperance_empirique(n, p, N):
+    return sum(X(n, p) for _ in range(N)) / N
+
+for n in range(3, 21):
+    printf(f"""n = {n} :
+{esperance_theorique(n, 10)}
+{esperance_empirique(n, 10, 1000)}""")
+\end{code}
 \end{corr}
 
 \begin{exo}[Exercice 9]
