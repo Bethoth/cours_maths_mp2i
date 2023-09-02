@@ -24,8 +24,16 @@ Calculer les probabilités suivantes :
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]~\\
+Il y a \(\binom{2}{n}\) transpositions dans \(\S{n}\) donc \[\proba{\Sigma\text{ est une transposition}}=\dfrac{\binom{2}{n}}{n!}=\dfrac{1}{2\paren{n-2}!}.\]
+\end{corr}
+
+\begin{corr}[2]~\\
+Il y a \(2\times\binom{3}{n}\) \(3\)-cycles dans \(\S{n}\) donc \[\proba{\Sigma\text{ est un 3-cycle}}=\dfrac{2\times\binom{3}{n}}{n!}=\dfrac{1}{3\paren{n-3}!}.\]
+\end{corr}
+
+\begin{corr}[3]~\\
+Il y a \(\sum_{l\in\interventierii{2}{n}}\binom{l}{n}\times\paren{l-1}!=\sum_{l=2}^n\dfrac{n!}{l!\,\paren{n-l}!}\times\paren{l-1}!=\sum_{l=2}^n\dfrac{n!}{l\paren{n-l}!}\) cycles dans \(\S{n}\) donc \[\proba{\Sigma\text{ est un cycle}}=\sum_{l=2}^n\dfrac{1}{l\paren{n-l}!}.\]
 \end{corr}
 
 \begin{exo}[Exercice 3, suite de l'\thref{exo:td15exo11}]
