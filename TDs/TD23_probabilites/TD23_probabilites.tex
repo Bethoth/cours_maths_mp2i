@@ -65,7 +65,19 @@ Il me semble que le taxi était vert, mais je sais que je ne suis pas complètem
 \end{exo}
 
 \begin{corr}
-\note{À venir}
+On note \(R\) l'événement \guillemets{le taxi était rouge}, \(V\) l'événement \guillemets{le taxi était vert}, \(R\prim\) l'événement \guillemets{j'ai cru voir un taxi rouge} et \(V\prim\) l'événement \guillemets{j'ai cru voir un taxi vert}.
+
+On a : \[\proba{R\prim\mid R}=\dfrac{3}{4}\qquad\proba{V\prim\mid V}=\dfrac{4}{5}\qquad\proba{R}=\dfrac{5000}{5250}\qquad\proba{V}=\dfrac{250}{5250}.\]
+
+On a : \[\begin{aligned}
+\proba{V\mid V\prim}&=\dfrac{\proba{V\prim\mid V}\proba{V}}{\proba{V\prim\mid V}\proba{V}+\proba{V\prim\mid R}\proba{R}} \\
+&=\dfrac{\frac{4}{5}\times\frac{250}{5250}}{\frac{4}{5}\times\frac{250}{5250}+\frac{1}{4}\times\frac{5000}{5250}} \\
+&=\dfrac{200}{200+1250} \\
+&=\dfrac{4}{29} \\
+&<\dfrac{1}{2}.
+\end{aligned}\]
+
+Donc il vaut mieux appeler la compagnie \guillemets{taxis rouges}.
 \end{corr}
 
 \begin{exo}[Exercice 5]
