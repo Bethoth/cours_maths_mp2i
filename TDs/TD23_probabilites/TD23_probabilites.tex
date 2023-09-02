@@ -91,7 +91,15 @@ Quelle proportion de la population programme en OCaml ?
 \end{exo}
 
 \begin{corr}
-\note{À venir}
+On note \(P\) l'événement \guillemets{l'individu programme en Python} et \(O\) l'événement \guillemets{l'individu programme en OCaml}.
+
+On a : \[\proba{P}=\dfrac{8}{10}\qquad\proba{P\mid O}=\dfrac{9}{10}\qquad\proba{O\mid P}=\dfrac{1}{10}.\]
+
+On a \(\proba{P\mid O}=\dfrac{\proba{P}\proba{O\mid P}}{\proba{O}}\) donc : \[\begin{aligned}
+\proba{O}&=\dfrac{\proba{P}\proba{O\mid P}}{\proba{P\mid O}} \\
+&=\dfrac{\frac{8}{10}\times\frac{1}{10}}{\frac{9}{10}} \\
+&=\dfrac{4}{45}.
+\end{aligned}\]
 \end{corr}
 
 \begin{exo}[Exercice 6, TPE EIVP 2018]
