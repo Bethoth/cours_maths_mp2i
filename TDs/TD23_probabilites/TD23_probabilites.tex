@@ -323,8 +323,29 @@ Pour tout \(i\in\interventierii{1}{s}\), on note : \begin{description}
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]~\\
+On a \(\sum_{i=1}^sX_i=n\) et \(\sum_{i=1}^sp_i=1\).
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\quantifs{\forall i\in\interventierii{1}{s}}\begin{dcases}
+X_i\sim\loibinomiale{n}{p_i} \\
+\esp{X_i}=np_i \\
+\vari{X_i}=np_i\paren{1-p_i}
+\end{dcases}\]
+\end{corr}
+
+\begin{corr}[3]
+On a \(X_i+X_j\sim\loibinomiale{n}{p_i+p_j}\) donc \(\vari{X_i+X_j}=n\paren{p_i+p_j}\paren{1-p_i-p_j}\).
+
+Or \(\vari{X_i+X_j}=\vari{X_i}+\vari{X_j}+2\cov{X_i}{X_j}\) donc \[\begin{aligned}
+\cov{X_i}{X_j}&=\dfrac{\vari{X_i+X_j}-\vari{X_i}-\vari{X_j}}{2} \\
+&=\dfrac{n\paren{p_i+p_j}\paren{1-p_i-p_j}-np_i\paren{1-p_i}-np_j\paren{1-p_j}}{2} \\
+&=\dfrac{n\paren{p_i-p_i^2-p_ip_j+p_j-p_ip_j-p_j^2-p_i+p_i^2-p_j+p_j^2}}{2} \\
+&=\dfrac{-2np_ip_j}{2} \\
+&=-np_ip_j \\
+&<0.
+\end{aligned}\]
 \end{corr}
 
 \begin{exo}[Exercice 10, X-Cachan PSI 2015 (BEOS 1204)]
