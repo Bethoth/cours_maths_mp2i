@@ -7,7 +7,15 @@ Donner le nombre d'anagrammes de chacun des noms suivants : \[\text{UGO}\qquad\t
 \end{exo}
 
 \begin{corr}
-\note{À venir}
+UGO : il y a \(3!=6\) anagrammes.
+
+ROBIN : il y a \(5!=120\) anagrammes.
+
+EMMY : il y a \(\dfrac{4!}{2}=12\) anagrammes.
+
+METEHAN : il y a \(\dfrac{7!}{2}=2520\) anagrammes.
+
+PRISCILLA : il y a \(\dfrac{9!}{4}=90720\) anagrammes.
 \end{corr}
 
 \begin{exo}[Exercice 2]
@@ -24,8 +32,16 @@ Calculer les probabilités suivantes :
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]~\\
+Il y a \(\binom{2}{n}\) transpositions dans \(\S{n}\) donc \[\proba{\Sigma\text{ est une transposition}}=\dfrac{\binom{2}{n}}{n!}=\dfrac{1}{2\paren{n-2}!}.\]
+\end{corr}
+
+\begin{corr}[2]~\\
+Il y a \(2\times\binom{3}{n}\) \(3\)-cycles dans \(\S{n}\) donc \[\proba{\Sigma\text{ est un 3-cycle}}=\dfrac{2\times\binom{3}{n}}{n!}=\dfrac{1}{3\paren{n-3}!}.\]
+\end{corr}
+
+\begin{corr}[3]~\\
+Il y a \(\sum_{l\in\interventierii{2}{n}}\binom{l}{n}\times\paren{l-1}!=\sum_{l=2}^n\dfrac{n!}{l!\,\paren{n-l}!}\times\paren{l-1}!=\sum_{l=2}^n\dfrac{n!}{l\paren{n-l}!}\) cycles dans \(\S{n}\) donc \[\proba{\Sigma\text{ est un cycle}}=\sum_{l=2}^n\dfrac{1}{l\paren{n-l}!}.\]
 \end{corr}
 
 \begin{exo}[Exercice 3, suite de l'\thref{exo:td15exo11}]
@@ -42,8 +58,100 @@ Soient \(r,n\in\Ns\) tels que \(r\leq n\) et \(E\) un \(\K\)-espace vectoriel de
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]
+On choisit un premier vecteur \(e_1\in E\excluant\accol{0}\) avec \(q^n-1\) choix possibles.
+
+On choisit un deuxième vecteur \(e_2\in E\excluant\Vect{e_1}\) avec \(q^n-q\) choix possibles.
+
+Ainsi de suite, on choisit un \(n\)-ème vecteur \(e_n\in E\excluant\Vect{e_1,\dots,e_{n-1}}\) avec \(q^n-q^{n-1}\) choix possibles.
+
+Il existe donc \(\prod_{k=0}^{n-1}\paren{q^n-q^k}\) bases de \(E\).
+\end{corr}
+
+\begin{corr}[2]~\\
+\(E\) possède \(\prod_{k=0}^{r-1}\paren{q^n-q^k}\) familles libres à \(r\) éléments.
+
+Donc le nombre de sous-espaces vectoriels de dimension \(r\) de \(E\) est : \[\begin{aligned}
+\dfrac{\ds\prod_{k=0}^{r-1}\paren{q^n-q^k}}{\ds\prod_{k=0}^{r-1}\paren{q^r-q^k}}&=\dfrac{\paren{q^n-q^0}\dots\paren{q^n-q^{r-1}}}{\paren{q^r-q^0}\dots\paren{q^r-q^{r-1}}} \\
+&=\dfrac{\paren{q^n-1}\dots\paren{q^{n-r+1}-1}}{\paren{q^r-1}\dots\paren{q-1}}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[3]
+Soient \(\paren{e_1,\dots,e_r}\) une base de \(F\), \(G_0\) un supplémentaire de \(F\) et \(\paren{e_{r+1},\dots,e_n}\) une base de \(G_0\).
+
+Déterminons les supplémentaires de \(F\).
+
+\analyse
+
+Soit \(G\) un supplémentaire de \(F\).
+
+Notons \(p_G\) le projecteur sur \(G\), parallèlement à \(F\).
+
+D'après le théorème du rang, \(p_G\) induit un isomorphisme de \(G_0\) vers \(G\).
+
+Donc \(\fami{B}_G=\paren{p_G\paren{e_{r+1}},\dots,p_G\paren{e_n}}\) est une base de \(G\).
+
+Soient \(f_{r+1},\dots,f_n\in F\) tels que \(\fami{B}_G=\paren{e_i+f_i}_{i\in\interventierii{r+1}{n}}\).
+
+On a \(G=\Vect{e_{r+1}+f_{r+1},\dots,e_n+f_n}\).
+
+\synthese
+
+Soient \(f_{r+1},\dots,f_n\in F\).
+
+Posons \(G=\Vect{e_{r+1}+f_{r+1},\dots,e_n+f_n}\).
+
+Montrons que \(G\) est un supplémentaire de \(F\).
+
+On a : \[\begin{aligned}
+F+G&=\Vect{e_1,\dots,e_r}+G \\
+&=\Vect{e_1,\dots,e_r,e_{r+1}+f_{r+1},\dots,e_n+f_n} \\
+&=\Vect{e_1,\dots,e_n} \\
+&=E.
+\end{aligned}\]
+
+De plus, \(\dim F=r\) et \(\dim G=n-r\) donc \(\dim E=\dim F+\dim G\).
+
+Donc \(E=F\oplus G\).
+
+\conclusion Les supplémentaires de \(F\) sont les sous-espaces vectoriels \(\Vect{e_{r+1}+f_{r+1},\dots,e_n+f_n}\) où \(f_{r+1},\dots,f_n\in F\).
+
+Montrons qu'une telle écriture est unique.
+
+Soient \(f_{r+1},\dots,f_n,f_{r+1}\prim,\dots,f_n\prim\in F\) tels que \[G=\Vect{e_{r+1}+f_{r+1},\dots,e_n+f_n}=\Vect{e_{r+1}+f_{r+1}\prim,\dots,e_n+f_n\prim}\]
+
+Soit \(i\in\interventierii{r+1}{n}\).
+
+On a \(e_i+f_i-e_i-f_i\prim=f_i-f_i\prim\in G\inter F\).
+
+Or \(G\inter F=\accol{0}\) donc \(f_i=f_i\prim\).
+
+Donc l'écriture est unique.
+
+On a montré que l'application suivante est une bijection : \[\fonctionlambda{F^{n-r}}{\accol{\text{supplémentaires de }F}}{\paren{f_{r+1},\dots,f_n}}{\Vect{e_{r+1}+f_{r+1},\dots,e_n+f_n}}\]
+
+Donc \(F\) admet \(q^{r\paren{n-r}}\) supplémentaires dans \(E\).
+\end{corr}
+
+\begin{corr}[4]
+Il y a autant de projecteurs de rang \(r\) que de décompositions \(E=F\oplus G\) avec \(\dim F=r\) donc : \[\underbrace{\dfrac{\paren{q^n-1}\dots\paren{q^{n-r+1}-1}}{\paren{q^r-1}\dots\paren{q-1}}}_{\text{nb choix }F}\times \underbrace{q^{r\paren{n-r}}}_{\text{nb choix }G}\]
+\end{corr}
+
+\begin{corr}[5, méthode 1]
+Pour construire \(u\in\Lendo{E}\) de rang \(r\), on choisit son noyau avec \(\dfrac{\paren{q^n-1}\dots\paren{q^{r+1}-1}}{\paren{q^{n-r}-1}\dots\paren{q-1}}\) possibilités.
+
+On fixe \(S\) un supplémentaire de \(\ker u\) et \(\paren{e_1,\dots,e_r}\) une base de \(S\).
+
+On choisit \(u\paren{e_1},\dots,u\paren{e_r}\in E\) linéairement indépendants avec \(\prod_{k=0}^{r-1}\paren{q^n-q^k}\) possibilités.
+
+Finalement, il y a \(\dfrac{\paren{q^n-1}\dots\paren{q^{r+1}-1}}{\paren{q^{n-r}-1}\dots\paren{q-1}}\times\prod_{k=0}^{r-1}\paren{q^n-q^k}\) possibilités pour \(u\).
+\end{corr}
+
+\begin{corr}[5, méthode 2]
+\(u\) s'écrit sous la forme \(x\mapsto l_1\paren{x}e_1+\dots+l_r\paren{x}e_r\) où \(\paren{l_1,\dots,l_r}\) est une famille libre d'éléments de \(E\etoile\) et \(\paren{e_1,\dots,e_r}\) une famille libre de \(E\).
+
+Il existe autant d'écritures que de bases \(\paren{e_1,\dots,e_r}\) de \(\Im u\), \cad : \[\dfrac{\ds\prod_{k=0}^{r-1}\paren{q^n-q^k}^2}{\ds\prod_{k=0}^{r-1}\paren{q^n-q^k}}=\prod_{k=0}^{r-1}\dfrac{\paren{q^n-q^k}^2}{q^r-q^k}.\]
 \end{corr}
 
 \begin{exo}[Exercice 4]
@@ -57,7 +165,19 @@ Il me semble que le taxi était vert, mais je sais que je ne suis pas complètem
 \end{exo}
 
 \begin{corr}
-\note{À venir}
+On note \(R\) l'événement \guillemets{le taxi était rouge}, \(V\) l'événement \guillemets{le taxi était vert}, \(R\prim\) l'événement \guillemets{j'ai cru voir un taxi rouge} et \(V\prim\) l'événement \guillemets{j'ai cru voir un taxi vert}.
+
+On a : \[\proba{R\prim\mid R}=\dfrac{3}{4}\qquad\proba{V\prim\mid V}=\dfrac{4}{5}\qquad\proba{R}=\dfrac{5000}{5250}\qquad\proba{V}=\dfrac{250}{5250}.\]
+
+On a : \[\begin{aligned}
+\proba{V\mid V\prim}&=\dfrac{\proba{V\prim\mid V}\proba{V}}{\proba{V\prim\mid V}\proba{V}+\proba{V\prim\mid R}\proba{R}} \\
+&=\dfrac{\frac{4}{5}\times\frac{250}{5250}}{\frac{4}{5}\times\frac{250}{5250}+\frac{1}{4}\times\frac{5000}{5250}} \\
+&=\dfrac{200}{200+1250} \\
+&=\dfrac{4}{29} \\
+&<\dfrac{1}{2}.
+\end{aligned}\]
+
+Donc il vaut mieux appeler la compagnie \guillemets{taxis rouges}.
 \end{corr}
 
 \begin{exo}[Exercice 5]
@@ -71,7 +191,15 @@ Quelle proportion de la population programme en OCaml ?
 \end{exo}
 
 \begin{corr}
-\note{À venir}
+On note \(P\) l'événement \guillemets{l'individu programme en Python} et \(O\) l'événement \guillemets{l'individu programme en OCaml}.
+
+On a : \[\proba{P}=\dfrac{8}{10}\qquad\proba{P\mid O}=\dfrac{9}{10}\qquad\proba{O\mid P}=\dfrac{1}{10}.\]
+
+On a \(\proba{P\mid O}=\dfrac{\proba{P}\proba{O\mid P}}{\proba{O}}\) donc : \[\begin{aligned}
+\proba{O}&=\dfrac{\proba{P}\proba{O\mid P}}{\proba{P\mid O}} \\
+&=\dfrac{\frac{8}{10}\times\frac{1}{10}}{\frac{9}{10}} \\
+&=\dfrac{4}{45}.
+\end{aligned}\]
 \end{corr}
 
 \begin{exo}[Exercice 6, TPE EIVP 2018]
@@ -83,8 +211,27 @@ Un enfant possède vingt figurines qu'il place sur une étagère. Parmi celles-c
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]
+On a : \[\begin{aligned}
+\proba{\text{les deux oiseaux sont côte à côte}}&=\dfrac{19}{\binom{2}{20}} \\
+&=\dfrac{19}{\frac{20\times19}{2}} \\
+&=\dfrac{1}{10}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\begin{aligned}
+\proba{\text{il n'y a pas deux oiseaux côte à côte}}&=\dfrac{\binom{5}{16}}{\binom{5}{20}} \\
+&=\dfrac{\frac{16\times15\times14\times13\times12}{5!}}{\frac{20\times19\times18\times17\times16}{5!}} \\
+&=\dfrac{7\times13}{19\times17}.
+\end{aligned}\]
+
+Donc \[\begin{aligned}
+\proba{\text{deux oiseaux sont côte à côte}}&=1-\dfrac{7\times13}{19\times17} \\
+&=\dfrac{19\times17-7\times13}{19\times17} \\
+&=\dfrac{323-91}{323} \\
+&=\dfrac{232}{323}.
+\end{aligned}\]
 \end{corr}
 
 \begin{exo}[Exercice 7]
@@ -124,8 +271,56 @@ On note \(X_i\) la variable aléatoire qui vaut \(1\) si l'ascenseur s'arrête �
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1a]
+On pose \(\quantifs{\forall i\in\interventierii{1}{p}}Y_i\in\interventierii{1}{n}\) l'étage où s'arrête la personne \no \(i\).
+
+Soit \(i\in\interventierii{1}{n}\).
+
+\(X_i\) suit une loi de Bernoulli.
+
+On a : \[\begin{WithArrows}
+\proba{X_i=0}&=\proba{Y_1\not=i\text{ et }\dots\text{ et }Y_p\not=i} \Arrow{mutuelle indépendance} \\
+&=\prod_{j=1}^p\proba{Y_j\not=i} \Arrow{\(Y_1,\dots,Y_p\sim\loiuniforme{\interventierii{1}{n}}\)} \\
+&=\paren{\dfrac{n-1}{n}}^p.
+\end{WithArrows}\]
+
+Donc \(\proba{X_i=1}=1-\proba{X_i=0}=1-\paren{\dfrac{n-1}{n}}^p\).
+\end{corr}
+
+\begin{corr}[1b]
+On a : \[X=\sum_{i=1}^nX_i.\]
+\end{corr}
+
+\begin{corr}[1c]
+On a : \[\begin{aligned}
+\esp{X}&=\esp{\sum_{i=1}^nX_i} \\
+&=\sum_{i=1}^n\esp{X_i} \\
+&=\sum_{i=1}^n\paren{1-\paren{\dfrac{n-1}{n}}^p} \\
+&=n-n\paren{\dfrac{n-1}{n}}^p.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[2a et 2b]
+\begin{code}
+from random import randint
+
+def X(n, p):
+    arrets = [0] * n
+    for _ in range(p):
+        arrets[randint(1, n) - 1] = 1
+    return sum(arrets)
+
+def esperance_theorique(n, p):
+    return n * (1 - (1 - 1 / n) ** p)
+
+def esperance_empirique(n, p, N):
+    return sum(X(n, p) for _ in range(N)) / N
+
+for n in range(3, 21):
+    printf(f"""n = {n} :
+{esperance_theorique(n, 10)}
+{esperance_empirique(n, 10, 1000)}""")
+\end{code}
 \end{corr}
 
 \begin{exo}[Exercice 9]
@@ -147,8 +342,29 @@ Pour tout \(i\in\interventierii{1}{s}\), on note : \begin{description}
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]~\\
+On a \(\sum_{i=1}^sX_i=n\) et \(\sum_{i=1}^sp_i=1\).
+\end{corr}
+
+\begin{corr}[2]
+On a : \[\quantifs{\forall i\in\interventierii{1}{s}}\begin{dcases}
+X_i\sim\loibinomiale{n}{p_i} \\
+\esp{X_i}=np_i \\
+\vari{X_i}=np_i\paren{1-p_i}
+\end{dcases}\]
+\end{corr}
+
+\begin{corr}[3]
+On a \(X_i+X_j\sim\loibinomiale{n}{p_i+p_j}\) donc \(\vari{X_i+X_j}=n\paren{p_i+p_j}\paren{1-p_i-p_j}\).
+
+Or \(\vari{X_i+X_j}=\vari{X_i}+\vari{X_j}+2\cov{X_i}{X_j}\) donc \[\begin{aligned}
+\cov{X_i}{X_j}&=\dfrac{\vari{X_i+X_j}-\vari{X_i}-\vari{X_j}}{2} \\
+&=\dfrac{n\paren{p_i+p_j}\paren{1-p_i-p_j}-np_i\paren{1-p_i}-np_j\paren{1-p_j}}{2} \\
+&=\dfrac{n\paren{p_i-p_i^2-p_ip_j+p_j-p_ip_j-p_j^2-p_i+p_i^2-p_j+p_j^2}}{2} \\
+&=\dfrac{-2np_ip_j}{2} \\
+&=-np_ip_j \\
+&<0.
+\end{aligned}\]
 \end{corr}
 
 \begin{exo}[Exercice 10, X-Cachan PSI 2015 (BEOS 1204)]
@@ -178,8 +394,144 @@ On considère une suite de \(n\) lancers.
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[Exercice 1, 1]
+On a : \[\begin{aligned}
+\quantifs{\forall k\in\interventierii{0}{n-1}}\proba{X_{k+1}=1}&=\proba{X_{k+1}=1\text{ et }X_k=1}+\proba{X_{k+1}=1\text{ et }X_k=0} \\
+&=\proba{X_{k+1}=1\mid X_k=1}\proba{X_k=1}+\proba{X_{k+1}=1\mid X_k=0}\proba{X_k=0} \\
+&=p\proba{X_k=1}+\paren{1-p}\proba{X_k=0} \\
+&=\cycle{p;1-p}A_k
+\end{aligned}\] et : \[\begin{aligned}
+\quantifs{\forall k\in\interventierii{0}{n-1}}\proba{X_{k+1}=0}&=\proba{X_{k+1}=0\text{ et }X_k=1}+\proba{X_{k+1}=0\text{ et }X_k=0} \\
+&=\proba{X_{k+1}=0\mid X_k=1}\proba{X_k=1}+\proba{X_{k+1}=0\mid X_k=0}\proba{X_k=0} \\
+&=\paren{1-p}\proba{X_k=1}+p\proba{X_k=0} \\
+&=\cycle{1-p;p}A_k.
+\end{aligned}\]
+
+Donc \[\quantifs{\forall k\in\interventierii{0}{n}}A_{k+1}=\begin{pmatrix}
+p & 1-p \\
+1-p & p
+\end{pmatrix}A_k.\]
+\end{corr}
+
+\begin{corr}[Exercice 1, 2]~\\
+On pose \(M=\begin{pmatrix}
+p & 1-p \\
+1-p & p
+\end{pmatrix}\) et \(P=\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix}\).
+
+On a : \[\begin{aligned}
+D=P\inv MP&=\dfrac{-1}{2}\begin{pmatrix}
+-1 & -1 \\
+-1 & 1
+\end{pmatrix}\begin{pmatrix}
+p & 1-p \\
+1-p & p
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix} \\
+&=\dfrac{-1}{2}\begin{pmatrix}
+-1 & -1 \\
+1-2p & 2p-1
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix} \\
+&=\dfrac{-1}{2}\begin{pmatrix}
+-2 & 0 \\
+0 & 2-4p
+\end{pmatrix} \\
+&=\begin{pmatrix}
+1 & 0 \\
+0 & 2p-1
+\end{pmatrix}.
+\end{aligned}\]
+
+Donc \[\begin{aligned}
+M^n&=\paren{PDP\inv}^n \\
+&=PD^nP\inv \\
+&=\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix}\begin{pmatrix}
+1 & 0 \\
+0 & \paren{2p-1}^n
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix}\inv \\
+&=\dfrac{-1}{2}\begin{pmatrix}
+1 & \paren{2p-1}^n \\
+1 & -\paren{2p-1}^n
+\end{pmatrix}\begin{pmatrix}
+-1 & -1 \\
+-1 & 1
+\end{pmatrix} \\
+&=\dfrac{-1}{2}\begin{pmatrix}
+-1-\paren{2p-1}^n & \paren{2p-1}^n-1 \\
+\paren{2p-1}^n-1 & -1-\paren{2p-1}^n
+\end{pmatrix}.
+\end{aligned}\]
+
+Ainsi, en supposant \(A_0=\dcoords{1}{0}\), on a : \[\begin{aligned}
+A_n&=\dfrac{-1}{2}\begin{pmatrix}
+-1-\paren{2p-1}^n & \paren{2p-1}^n-1 \\
+\paren{2p-1}^n-1 & -1-\paren{2p-1}^n
+\end{pmatrix}A_0 \\
+&=\dfrac{-1}{2}\dcoords{-1-\paren{2p-1}^n}{\paren{2p-1}^n-1}.
+\end{aligned}\]
+
+Quand \(n\to\pinf\) : \[A_n\to\begin{dcases}
+\dcoords{\nicefrac{1}{2}}{\nicefrac{1}{2}} &\text{si }p\in\intervee{0}{1} \\
+\dcoords{1}{0} &\text{si }p=1
+\end{dcases}\]
+\end{corr}
+
+\begin{corr}[Exercice 2, 1]
+Intuitivement : \[\quantifs{\forall k\in\interventierii{1}{6}}N_k\simqd{n\to\pinf}\dfrac{n}{6}.\]
+
+\note{En fait, la loi des grands nombres est hors-programme}
+\end{corr}
+
+\begin{corr}[Exercice 2, 2]
+On a : \[\begin{aligned}
+\binom{m}{6m}\binom{m}{5m}\binom{m}{4m}\binom{m}{3m}\binom{m}{2m}\binom{m}{m}&=\dfrac{\paren{6m}!}{m!\,\paren{5m}!}\times\dfrac{\paren{5m}!}{m!\,\paren{4m}!}\times\dots\times\dfrac{\paren{2m}!}{m!\,m!} \\
+&=\dfrac{\paren{6m}!}{\paren{m!}^6}.
+\end{aligned}\]
+
+D'où la probabilité : \[\dfrac{\frac{\paren{6m}!}{\paren{m!}^6}}{6^{6m}}=\dfrac{\paren{6m}!}{6^{6m}\paren{m!}^6}.\]
+\end{corr}
+
+\begin{corr}[Exercice 2, 3]
+\begin{code}
+from random import randint
+from math import factorial
+
+def simul(m):
+    lancer = [randint(1, 6) for _ in range(6 * m)]
+    d = {i : 0 for i in range(1, 7)}
+    for e in lancer:
+        d[e] += 1
+    return all(d[i] == m for i in range(1, 7))
+
+def proba_theorique(m):
+    return factorial(6 * m) / (6 ** (6 * m) * factorial(m) ** 6)
+
+def proba_empirique(m, N):
+    compt = 0
+    for _ in range(N):
+        if simul(m):
+            compt += 1
+    return compt / N
+
+for m in range(1, 11):
+    print(f"""m = {m} :
+{proba_theorique(m)}
+{proba_empirique(m, 10 ** 5)}""")
+\end{code}
 \end{corr}
 
 \begin{exo}[Exercice 11, Centrale maths 1 2016]
@@ -197,8 +549,17 @@ On note \(\groupe{\Omega}[\prem]\) un espace probabilisé modélisant le problè
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1a]~\\
+On a \(X\sim Y\sim \loibinomiale{N}{\dfrac{1}{2}}\) donc \(\vari{X}=\vari{Y}=\dfrac{1}{4}N\).
+
+On a : \[\begin{aligned}
+\cov{X}{Y}&=\dfrac{\overbrace{\vari{X+Y}}^{=0\text{ car }X+Y=N}-\vari{X}-\vari{Y}}{2} \\
+&=\dfrac{-N}{4}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[1b]
+On a \(\cov{X}{Y}\not=0\) donc \(X\) et \(Y\) ne sont pas indépendantes (par contraposée).
 \end{corr}
 
 \begin{exo}[Exercice 12]
@@ -223,6 +584,64 @@ Pour cela, on définit des variables aléatoires \(X_1,\dots,X_n\) en posant : \
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]
+On a : \[\proba{N=n}=\dfrac{1}{n!}.\]
+\end{corr}
+
+\begin{corr}[2]
+On a \(\quantifs{\forall k\in\interventierii{1}{n}}X_k\sim\loibernoulli{\dfrac{1}{n}}\).
+
+On a \(\proba{X_1=1\text{ et }\dots\text{ et }X_{n-1}=1\text{ et }X_n=0}=0\).
+
+Or, on a : \[\proba{X_1=1}\dots\proba{X_{n-1}=1}\proba{X_n=0}=\paren{\dfrac{1}{n}}^{n-1}\paren{1-\dfrac{1}{n}}\not=0.\]
+
+Donc \(X_1,\dots,X_n\) ne sont pas mutuellement indépendantes.
+\end{corr}
+
+\begin{corr}[3]
+On a : \[\esp{N}=\sum_{k=1}^n\esp{X_k}=\sum_{k=1}^n\dfrac{1}{n}=1.\]
+\end{corr}
+
+\begin{corr}[4]
+\(X_iX_j\) suit une loi de Bernoulli.
+
+On a : \[\begin{aligned}
+\proba{X_iX_j=1}&=\proba{X_i=1\text{ et }X_j=1} \\
+&=\proba{\Sigma\paren{i}=i\text{ et }\Sigma\paren{j}=j} \\
+&=\proba{\Sigma\paren{i}=i}\proba{\Sigma\paren{j}=j\mid\Sigma\paren{i}=i} \\
+&=\dfrac{1}{n}\times\dfrac{1}{n-1} \\
+&=\dfrac{1}{n\paren{n-1}}.
+\end{aligned}\]
+
+Donc \(X_iX_j\sim\loibernoulli{\dfrac{1}{n\paren{n-1}}}\).
+
+Donc \(\esp{X_iX_j}=\dfrac{1}{n\paren{n-1}}\).
+
+De plus, on a : \[\begin{aligned}
+\cov{X_i}{X_j}&=\esp{X_iX_j}-\esp{X_i}\esp{X_j} \\
+&=\dfrac{1}{n\paren{n-1}}-\dfrac{1}{n^2} \\
+&=\dfrac{1}{n^2\paren{n-1}} \\
+&>0.
+\end{aligned}\]
+
+Donc \(X_i\) et \(X_j\) ne sont pas indépendantes.
+\end{corr}
+
+\begin{corr}[5]
+On a : \[\begin{aligned}
+\vari{N}&=\vari{X_1+\dots+X_n} \\
+&=\sum_{k=1}^n\vari{X_k}+2\sum_{1\leq i<j\leq n}\cov{X_i}{X_j} \\
+&=\sum_{k=1}^n\dfrac{1}{n}\paren{1-\dfrac{1}{n}}+2\sum_{1\leq i<j\leq n}\dfrac{1}{n^2\paren{n-1}} \\
+&=1-\dfrac{1}{n}+2\binom{2}{n}\dfrac{1}{n^2\paren{n-1}} \\
+&=1-\dfrac{1}{n}+\dfrac{1}{n} \\
+&=1.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[6]
+Selon l'inégalité de Bienaymé-Tchebychev, on a : \[\quantifs{\forall a\in\Rps}\proba{\abs{N-\esp{N}}\geq a}\leq\dfrac{\vari{N}}{a^2}.\]
+
+Donc \(\proba{\abs{N-\esp{N}}\geq3}\leq\dfrac{\vari{N}}{9}\).
+
+Donc \(\proba{N\geq4}\leq\dfrac{1}{9}\).
 \end{corr}
