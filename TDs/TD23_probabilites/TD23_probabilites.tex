@@ -565,6 +565,64 @@ Pour cela, on définit des variables aléatoires \(X_1,\dots,X_n\) en posant : \
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]
+On a : \[\proba{N=n}=\dfrac{1}{n!}.\]
+\end{corr}
+
+\begin{corr}[2]
+On a \(\quantifs{\forall k\in\interventierii{1}{n}}X_k\sim\loibernoulli{\dfrac{1}{n}}\).
+
+On a \(\proba{X_1=1\text{ et }\dots\text{ et }X_{n-1}=1\text{ et }X_n=0}=0\).
+
+Or, on a : \[\proba{X_1=1}\dots\proba{X_{n-1}=1}\proba{X_n=0}=\paren{\dfrac{1}{n}}^{n-1}\paren{1-\dfrac{1}{n}}\not=0.\]
+
+Donc \(X_1,\dots,X_n\) ne sont pas mutuellement indépendantes.
+\end{corr}
+
+\begin{corr}[3]
+On a : \[\esp{N}=\sum_{k=1}^n\esp{X_k}=\sum_{k=1}^n\dfrac{1}{n}=1.\]
+\end{corr}
+
+\begin{corr}[4]
+\(X_iX_j\) suit une loi de Bernoulli.
+
+On a : \[\begin{aligned}
+\proba{X_iX_j=1}&=\proba{X_i=1\text{ et }X_j=1} \\
+&=\proba{\Sigma\paren{i}=i\text{ et }\Sigma\paren{j}=j} \\
+&=\proba{\Sigma\paren{i}=i}\proba{\Sigma\paren{j}=j\mid\Sigma\paren{i}=i} \\
+&=\dfrac{1}{n}\times\dfrac{1}{n-1} \\
+&=\dfrac{1}{n\paren{n-1}}.
+\end{aligned}\]
+
+Donc \(X_iX_j\sim\loibernoulli{\dfrac{1}{n\paren{n-1}}}\).
+
+Donc \(\esp{X_iX_j}=\dfrac{1}{n\paren{n-1}}\).
+
+De plus, on a : \[\begin{aligned}
+\cov{X_i}{X_j}&=\esp{X_iX_j}-\esp{X_i}\esp{X_j} \\
+&=\dfrac{1}{n\paren{n-1}}-\dfrac{1}{n^2} \\
+&=\dfrac{1}{n^2\paren{n-1}} \\
+&>0.
+\end{aligned}\]
+
+Donc \(X_i\) et \(X_j\) ne sont pas indépendantes.
+\end{corr}
+
+\begin{corr}[5]
+On a : \[\begin{aligned}
+\vari{N}&=\vari{X_1+\dots+X_n} \\
+&=\sum_{k=1}^n\vari{X_k}+2\sum_{1\leq i<j\leq n}\cov{X_i}{X_j} \\
+&=\sum_{k=1}^n\dfrac{1}{n}\paren{1-\dfrac{1}{n}}+2\sum_{1\leq i<j\leq n}\dfrac{1}{n^2\paren{n-1}} \\
+&=1-\dfrac{1}{n}+2\binom{2}{n}\dfrac{1}{n^2\paren{n-1}} \\
+&=1-\dfrac{1}{n}+\dfrac{1}{n} \\
+&=1.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[6]
+Selon l'inégalité de Bienaymé-Tchebychev, on a : \[\quantifs{\forall a\in\Rps}\proba{\abs{N-\esp{N}}\geq a}\leq\dfrac{\vari{N}}{a^2}.\]
+
+Donc \(\proba{\abs{N-\esp{N}}\geq3}\leq\dfrac{\vari{N}}{9}\).
+
+Donc \(\proba{N\geq4}\leq\dfrac{1}{9}\).
 \end{corr}
