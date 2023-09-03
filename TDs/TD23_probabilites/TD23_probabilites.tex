@@ -58,8 +58,100 @@ Soient \(r,n\in\Ns\) tels que \(r\leq n\) et \(E\) un \(\K\)-espace vectoriel de
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1]
+On choisit un premier vecteur \(e_1\in E\excluant\accol{0}\) avec \(q^n-1\) choix possibles.
+
+On choisit un deuxième vecteur \(e_2\in E\excluant\Vect{e_1}\) avec \(q^n-q\) choix possibles.
+
+Ainsi de suite, on choisit un \(n\)-ème vecteur \(e_n\in E\excluant\Vect{e_1,\dots,e_{n-1}}\) avec \(q^n-q^{n-1}\) choix possibles.
+
+Il existe donc \(\prod_{k=0}^{n-1}\paren{q^n-q^k}\) bases de \(E\).
+\end{corr}
+
+\begin{corr}[2]~\\
+\(E\) possède \(\prod_{k=0}^{r-1}\paren{q^n-q^k}\) familles libres à \(r\) éléments.
+
+Donc le nombre de sous-espaces vectoriels de dimension \(r\) de \(E\) est : \[\begin{aligned}
+\dfrac{\ds\prod_{k=0}^{r-1}\paren{q^n-q^k}}{\ds\prod_{k=0}^{r-1}\paren{q^r-q^k}}&=\dfrac{\paren{q^n-q^0}\dots\paren{q^n-q^{r-1}}}{\paren{q^r-q^0}\dots\paren{q^r-q^{r-1}}} \\
+&=\dfrac{\paren{q^n-1}\dots\paren{q^{n-r+1}-1}}{\paren{q^r-1}\dots\paren{q-1}}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[3]
+Soient \(\paren{e_1,\dots,e_r}\) une base de \(F\), \(G_0\) un supplémentaire de \(F\) et \(\paren{e_{r+1},\dots,e_n}\) une base de \(G_0\).
+
+Déterminons les supplémentaires de \(F\).
+
+\analyse
+
+Soit \(G\) un supplémentaire de \(F\).
+
+Notons \(p_G\) le projecteur sur \(G\), parallèlement à \(F\).
+
+D'après le théorème du rang, \(p_G\) induit un isomorphisme de \(G_0\) vers \(G\).
+
+Donc \(\fami{B}_G=\paren{p_G\paren{e_{r+1}},\dots,p_G\paren{e_n}}\) est une base de \(G\).
+
+Soient \(f_{r+1},\dots,f_n\in F\) tels que \(\fami{B}_G=\paren{e_i+f_i}_{i\in\interventierii{r+1}{n}}\).
+
+On a \(G=\Vect{e_{r+1}+f_{r+1},\dots,e_n+f_n}\).
+
+\synthese
+
+Soient \(f_{r+1},\dots,f_n\in F\).
+
+Posons \(G=\Vect{e_{r+1}+f_{r+1},\dots,e_n+f_n}\).
+
+Montrons que \(G\) est un supplémentaire de \(F\).
+
+On a : \[\begin{aligned}
+F+G&=\Vect{e_1,\dots,e_r}+G \\
+&=\Vect{e_1,\dots,e_r,e_{r+1}+f_{r+1},\dots,e_n+f_n} \\
+&=\Vect{e_1,\dots,e_n} \\
+&=E.
+\end{aligned}\]
+
+De plus, \(\dim F=r\) et \(\dim G=n-r\) donc \(\dim E=\dim F+\dim G\).
+
+Donc \(E=F\oplus G\).
+
+\conclusion Les supplémentaires de \(F\) sont les sous-espaces vectoriels \(\Vect{e_{r+1}+f_{r+1},\dots,e_n+f_n}\) où \(f_{r+1},\dots,f_n\in F\).
+
+Montrons qu'une telle écriture est unique.
+
+Soient \(f_{r+1},\dots,f_n,f_{r+1}\prim,\dots,f_n\prim\in F\) tels que \[G=\Vect{e_{r+1}+f_{r+1},\dots,e_n+f_n}=\Vect{e_{r+1}+f_{r+1}\prim,\dots,e_n+f_n\prim}\]
+
+Soit \(i\in\interventierii{r+1}{n}\).
+
+On a \(e_i+f_i-e_i-f_i\prim=f_i-f_i\prim\in G\inter F\).
+
+Or \(G\inter F=\accol{0}\) donc \(f_i=f_i\prim\).
+
+Donc l'écriture est unique.
+
+On a montré que l'application suivante est une bijection : \[\fonctionlambda{F^{n-r}}{\accol{\text{supplémentaires de }F}}{\paren{f_{r+1},\dots,f_n}}{\Vect{e_{r+1}+f_{r+1},\dots,e_n+f_n}}\]
+
+Donc \(F\) admet \(q^{r\paren{n-r}}\) supplémentaires dans \(E\).
+\end{corr}
+
+\begin{corr}[4]
+Il y a autant de projecteurs de rang \(r\) que de décompositions \(E=F\oplus G\) avec \(\dim F=r\) donc : \[\underbrace{\dfrac{\paren{q^n-1}\dots\paren{q^{n-r+1}-1}}{\paren{q^r-1}\dots\paren{q-1}}}_{\text{nb choix }F}\times \underbrace{q^{r\paren{n-r}}}_{\text{nb choix }G}\]
+\end{corr}
+
+\begin{corr}[5, méthode 1]
+Pour construire \(u\in\Lendo{E}\) de rang \(r\), on choisit son noyau avec \(\dfrac{\paren{q^n-1}\dots\paren{q^{r+1}-1}}{\paren{q^{n-r}-1}\dots\paren{q-1}}\) possibilités.
+
+On fixe \(S\) un supplémentaire de \(\ker u\) et \(\paren{e_1,\dots,e_r}\) une base de \(S\).
+
+On choisit \(u\paren{e_1},\dots,u\paren{e_r}\in E\) linéairement indépendants avec \(\prod_{k=0}^{r-1}\paren{q^n-q^k}\) possibilités.
+
+Finalement, il y a \(\dfrac{\paren{q^n-1}\dots\paren{q^{r+1}-1}}{\paren{q^{n-r}-1}\dots\paren{q-1}}\times\prod_{k=0}^{r-1}\paren{q^n-q^k}\) possibilités pour \(u\).
+\end{corr}
+
+\begin{corr}[5, méthode 2]
+\(u\) s'écrit sous la forme \(x\mapsto l_1\paren{x}e_1+\dots+l_r\paren{x}e_r\) où \(\paren{l_1,\dots,l_r}\) est une famille libre d'éléments de \(E\etoile\) et \(\paren{e_1,\dots,e_r}\) une famille libre de \(E\).
+
+Il existe autant d'écritures que de bases \(\paren{e_1,\dots,e_r}\) de \(\Im u\), \cad : \[\dfrac{\ds\prod_{k=0}^{r-1}\paren{q^n-q^k}^2}{\ds\prod_{k=0}^{r-1}\paren{q^n-q^k}}=\prod_{k=0}^{r-1}\dfrac{\paren{q^n-q^k}^2}{q^r-q^k}.\]
 \end{corr}
 
 \begin{exo}[Exercice 4]
