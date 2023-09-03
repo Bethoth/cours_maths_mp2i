@@ -530,8 +530,17 @@ On note \(\groupe{\Omega}[\prem]\) un espace probabilisé modélisant le problè
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[1a]~\\
+On a \(X\sim Y\sim \loibinomiale{N}{\dfrac{1}{2}}\) donc \(\vari{X}=\vari{Y}=\dfrac{1}{4}N\).
+
+On a : \[\begin{aligned}
+\cov{X}{Y}&=\dfrac{\overbrace{\vari{X+Y}}^{=0\text{ car }X+Y=N}-\vari{X}-\vari{Y}}{2} \\
+&=\dfrac{-N}{4}.
+\end{aligned}\]
+\end{corr}
+
+\begin{corr}[1b]
+On a \(\cov{X}{Y}\not=0\) donc \(X\) et \(Y\) ne sont pas indépendantes (par contraposée).
 \end{corr}
 
 \begin{exo}[Exercice 12]
