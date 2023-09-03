@@ -254,8 +254,144 @@ On considère une suite de \(n\) lancers.
 \end{enumerate}
 \end{exo}
 
-\begin{corr}
-\note{À venir}
+\begin{corr}[Exercice 1, 1]
+On a : \[\begin{aligned}
+\quantifs{\forall k\in\interventierii{0}{n-1}}\proba{X_{k+1}=1}&=\proba{X_{k+1}=1\text{ et }X_k=1}+\proba{X_{k+1}=1\text{ et }X_k=0} \\
+&=\proba{X_{k+1}=1\mid X_k=1}\proba{X_k=1}+\proba{X_{k+1}=1\mid X_k=0}\proba{X_k=0} \\
+&=p\proba{X_k=1}+\paren{1-p}\proba{X_k=0} \\
+&=\cycle{p;1-p}A_k
+\end{aligned}\] et : \[\begin{aligned}
+\quantifs{\forall k\in\interventierii{0}{n-1}}\proba{X_{k+1}=0}&=\proba{X_{k+1}=0\text{ et }X_k=1}+\proba{X_{k+1}=0\text{ et }X_k=0} \\
+&=\proba{X_{k+1}=0\mid X_k=1}\proba{X_k=1}+\proba{X_{k+1}=0\mid X_k=0}\proba{X_k=0} \\
+&=\paren{1-p}\proba{X_k=1}+p\proba{X_k=0} \\
+&=\cycle{1-p;p}A_k.
+\end{aligned}\]
+
+Donc \[\quantifs{\forall k\in\interventierii{0}{n}}A_{k+1}=\begin{pmatrix}
+p & 1-p \\
+1-p & p
+\end{pmatrix}A_k.\]
+\end{corr}
+
+\begin{corr}[Exercice 1, 2]~\\
+On pose \(M=\begin{pmatrix}
+p & 1-p \\
+1-p & p
+\end{pmatrix}\) et \(P=\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix}\).
+
+On a : \[\begin{aligned}
+D=P\inv MP&=\dfrac{-1}{2}\begin{pmatrix}
+-1 & -1 \\
+-1 & 1
+\end{pmatrix}\begin{pmatrix}
+p & 1-p \\
+1-p & p
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix} \\
+&=\dfrac{-1}{2}\begin{pmatrix}
+-1 & -1 \\
+1-2p & 2p-1
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix} \\
+&=\dfrac{-1}{2}\begin{pmatrix}
+-2 & 0 \\
+0 & 2-4p
+\end{pmatrix} \\
+&=\begin{pmatrix}
+1 & 0 \\
+0 & 2p-1
+\end{pmatrix}.
+\end{aligned}\]
+
+Donc \[\begin{aligned}
+M^n&=\paren{PDP\inv}^n \\
+&=PD^nP\inv \\
+&=\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix}\begin{pmatrix}
+1 & 0 \\
+0 & \paren{2p-1}^n
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix}\inv \\
+&=\dfrac{-1}{2}\begin{pmatrix}
+1 & \paren{2p-1}^n \\
+1 & -\paren{2p-1}^n
+\end{pmatrix}\begin{pmatrix}
+-1 & -1 \\
+-1 & 1
+\end{pmatrix} \\
+&=\dfrac{-1}{2}\begin{pmatrix}
+-1-\paren{2p-1}^n & \paren{2p-1}^n-1 \\
+\paren{2p-1}^n-1 & -1-\paren{2p-1}^n
+\end{pmatrix}.
+\end{aligned}\]
+
+Ainsi, en supposant \(A_0=\dcoords{1}{0}\), on a : \[\begin{aligned}
+A_n&=\dfrac{-1}{2}\begin{pmatrix}
+-1-\paren{2p-1}^n & \paren{2p-1}^n-1 \\
+\paren{2p-1}^n-1 & -1-\paren{2p-1}^n
+\end{pmatrix}A_0 \\
+&=\dfrac{-1}{2}\dcoords{-1-\paren{2p-1}^n}{\paren{2p-1}^n-1}.
+\end{aligned}\]
+
+Quand \(n\to\pinf\) : \[A_n\to\begin{dcases}
+\dcoords{\nicefrac{1}{2}}{\nicefrac{1}{2}} &\text{si }p\in\intervee{0}{1} \\
+\dcoords{1}{0} &\text{si }p=1
+\end{dcases}\]
+\end{corr}
+
+\begin{corr}[Exercice 2, 1]
+Intuitivement : \[\quantifs{\forall k\in\interventierii{1}{6}}N_k\simqd{n\to\pinf}\dfrac{n}{6}.\]
+
+\note{En fait, la loi des grands nombres est hors-programme}
+\end{corr}
+
+\begin{corr}[Exercice 2, 2]
+On a : \[\begin{aligned}
+\binom{m}{6m}\binom{m}{5m}\binom{m}{4m}\binom{m}{3m}\binom{m}{2m}\binom{m}{m}&=\dfrac{\paren{6m}!}{m!\,\paren{5m}!}\times\dfrac{\paren{5m}!}{m!\,\paren{4m}!}\times\dots\times\dfrac{\paren{2m}!}{m!\,m!} \\
+&=\dfrac{\paren{6m}!}{\paren{m!}^6}.
+\end{aligned}\]
+
+D'où la probabilité : \[\dfrac{\frac{\paren{6m}!}{\paren{m!}^6}}{6^{6m}}=\dfrac{\paren{6m}!}{6^{6m}\paren{m!}^6}.\]
+\end{corr}
+
+\begin{corr}[Exercice 2, 3]
+\begin{code}
+from random import randint
+from math import factorial
+
+def simul(m):
+    lancer = [randint(1, 6) for _ in range(6 * m)]
+    d = {i : 0 for i in range(1, 7)}
+    for e in lancer:
+        d[e] += 1
+    return all(d[i] == m for i in range(1, 7))
+
+def proba_theorique(m):
+    return factorial(6 * m) / (6 ** (6 * m) * factorial(m) ** 6)
+
+def proba_empirique(m, N):
+    compt = 0
+    for _ in range(N):
+        if simul(m):
+            compt += 1
+    return compt / N
+
+for m in range(1, 11):
+    print(f"""m = {m} :
+{proba_theorique(m)}
+{proba_empirique(m, 10 ** 5)}""")
+\end{code}
 \end{corr}
 
 \begin{exo}[Exercice 11, Centrale maths 1 2016]
