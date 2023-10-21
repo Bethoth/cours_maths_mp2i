@@ -45,7 +45,7 @@ On a \begin{itemize}
 
 \item \(\quantifs{\forall N\in\N}\paren{\prod_{k=1}^nz_k}^N=\prod_{k=1}^nz_k^N\)
 
-\item \(z_1,\dots,z_n\in\Cs\imp\quantifs{\forall n\in\Z}\paren{\prod_{k=1}^nz_k}^N=\prod_{k=1}^nz_k^N\)
+\item \(z_1,\dots,z_n\in\Cs\imp\quantifs{\forall N\in\Z}\paren{\prod_{k=1}^nz_k}^N=\prod_{k=1}^nz_k^N\)
 \end{itemize}
 
 \item Nombres complexes de module \(1\) :
@@ -133,7 +133,7 @@ On a \begin{itemize}
 
 \item \(\arg\conj{z_1}\equiv-\arg z_1\croch{2\pi}\)
 
-\item \(\quantifs{\forall\lambda\in\Rps}\arg\paren{\lambda z_1}=\lambda\arg z_1\)
+\item \(\quantifs{\forall\lambda\in\Rps}\arg\paren{\lambda z_1}=\arg z_1\)
 \end{itemize}
 \end{prop}
 
@@ -196,7 +196,7 @@ Considérons les écritures trigonométriques de ces trois complexes : \(\begin{
 \begin{defi}[Affixe d'un vecteur]
 Soient \(A,B\in\R^2\) deux points du plan d'affixes respectives \(a,b\in\C\).
 
-L'affixe du vecteur \(\vec{AB}\) est le nombre complexe \(b-a\).
+L'affixe du vecteur \(\v{AB}\) est le nombre complexe \(b-a\).
 
 Son module \(\abs{b-a}\) est la longueur \(AB\) et son argument est l'angle :
 
@@ -275,17 +275,17 @@ Comme on l'a vu pour les réels, on déduit de l'inégalité triangulaire la min
 \begin{cor}
 Soient \(A,B,C\in\R^2\).
 
-On a \(AC\leq AB+BC\) avec égalité ssi \(\exists\lambda\in\Rp,\vec{AB}=\lambda\vec{BC}\) ou \(\vec{BC}=\lambda\vec{AB}\), c'est à dire ssi \(\vec{AB}\) et \(\vec{BC}\) sont colinéaires et de même sens.
+On a \(AC\leq AB+BC\) avec égalité ssi \(\exists\lambda\in\Rp,\v{AB}=\lambda\v{BC}\) ou \(\v{BC}=\lambda\v{AB}\), c'est à dire ssi \(\v{AB}\) et \(\v{BC}\) sont colinéaires et de même sens.
 \end{cor}
 
 \begin{dem}
-Découle de ce qui précède appliqué aux affixes \(z_1,z_2\) respectives de \(\vec{AB}\) et \(\vec{BC}\).
+Découle de ce qui précède appliqué aux affixes \(z_1,z_2\) respectives de \(\v{AB}\) et \(\v{BC}\).
 \end{dem}
 
 \begin{prop}
 Soient \(A,B,C\in\R^2\) trois points deux à deux distincts d'affixes \(a,b,c\in\C\) respectivement.
 
-Interprétation de \(z=\dfrac{c-a}{b-a}\) : \(\abs{z}=\dfrac{AC}{AB}\) et \(\arg z\equiv\paren{\vec{AB};\vec{AC}}\croch{2\pi}\).
+Interprétation de \(z=\dfrac{c-a}{b-a}\) : \(\abs{z}=\dfrac{AC}{AB}\) et \(\arg z\equiv\paren{\v{AB};\v{AC}}\croch{2\pi}\).
 \end{prop}
 
 \begin{ex}
@@ -423,9 +423,9 @@ Voyons comment factoriser \(\e{\i\alpha}\pm\e{\i\beta}\).
 
 On remarque \(\begin{dcases}\alpha=\dfrac{\alpha+\beta}{2}+\dfrac{\alpha-\beta}{2} \\ \beta=\dfrac{\alpha+\beta}{2}-\dfrac{\alpha-\beta}{2}\end{dcases}\)
 
-Donc \(\e{\i\alpha}+\e{\i\beta}=\e{\i\frac{\alpha+\beta}{2}}\paren{\e{\i\frac{\alpha+\beta}{2}}+\e{-\i\frac{\alpha-\beta}{2}}}=2\cos\paren{\dfrac{\alpha+\beta}{2}}\e{\i\frac{\alpha+\beta}{2}}\).
+Donc \(\e{\i\alpha}+\e{\i\beta}=\e{\i\frac{\alpha+\beta}{2}}\paren{\e{\i\frac{\alpha-\beta}{2}}+\e{-\i\frac{\alpha-\beta}{2}}}=2\cos\paren{\dfrac{\alpha-\beta}{2}}\e{\i\frac{\alpha+\beta}{2}}\).
 
-Et \(\e{\i\alpha}-\e{\i\beta}=\e{\i\frac{\alpha+\beta}{2}}\paren{\e{\i\frac{\alpha+\beta}{2}}-\e{-\i\frac{\alpha-\beta}{2}}}=2\i\sin\paren{\dfrac{\alpha+\beta}{2}}\e{\i\frac{\alpha+\beta}{2}}\).
+Et \(\e{\i\alpha}-\e{\i\beta}=\e{\i\frac{\alpha+\beta}{2}}\paren{\e{\i\frac{\alpha-\beta}{2}}-\e{-\i\frac{\alpha-\beta}{2}}}=2\i\sin\paren{\dfrac{\alpha-\beta}{2}}\e{\i\frac{\alpha+\beta}{2}}\).
 \end{rem}
 
 \subsection{Application 1 : sommes particulières}

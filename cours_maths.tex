@@ -678,6 +678,18 @@ per-mode=power-positive-first
 
 \newcommand{\sig}[1]{\epsilon\paren{#1}}
 
+\ExplSyntaxOn
+\RenewDocumentCommand{\v}{m}{
+    \int_compare:nTF { \tl_count:n { #1 } > 1 }
+    {
+        \overrightarrow{#1}
+    }
+    {
+        \vec{#1}
+    }
+}
+\ExplSyntaxOff
+
 \begin{document}
 \renewcommand{\labelitemi}{\(\bullet\)}
 \renewcommand{\labelenumi}{(\arabic{enumi})}
