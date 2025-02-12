@@ -388,7 +388,7 @@ On considère un dé non-pipé à six faces numérotées de 1 à 6.
 On considère une suite de \(n\) lancers.
 
 \begin{enumerate}
-    \item On note \(N_k\) le nombre d'apparitions de la face \(k\in\interventierii{1}{6}\) dans la suite des \(n\) lancers. \\ Intuitivement, que peut-on dire de \(N_k\) lorsque \(n\) tend vers \(\pinf\) ? \\ Rigoureusement, que donne la loi faible des grands nombres ? \\
+    \item On note \(N_k\) le nombre d'apparitions de la face \(k\in\interventierii{1}{6}\) dans la suite des \(n\) lancers. \\ Intuitivement, que peut-on dire de \(N_k\) lorsque \(n\) tend vers \(\pinf\) ? \\
     \item On suppose que \(n=6m\) est un multiple de \(6\). Quelle est la probabilité d'obtenir une suite de lancers telle que \[\quantifs{\forall k\in\interventierii{1}{6}}N_k=m\text{ ?}\]
     \item Vérifier le résultat de la question précédente avec Python pour \(m\in\interventierii{1}{10}\), en faisant pour chaque valeur de \(m\) une série de \(10^5\) lancers. \\ Que remarque-t-on ?
 \end{enumerate}
@@ -492,8 +492,6 @@ Quand \(n\to\pinf\) : \[A_n\to\begin{dcases}
 
 \begin{corr}[Exercice 2, 1]
 Intuitivement : \[\quantifs{\forall k\in\interventierii{1}{6}}N_k\simqd{n\to\pinf}\dfrac{n}{6}.\]
-
-\note{En fait, la loi des grands nombres est hors-programme}
 \end{corr}
 
 \begin{corr}[Exercice 2, 2]
@@ -539,17 +537,15 @@ On lance \(N\) fois une pièce de monnaie équilibrée.
 
 On note \(\groupe{\Omega}[\prem]\) un espace probabilisé modélisant le problème, \(X\) le nombre de \guillemets{pile} et \(Y\) le nombre de \guillemets{face} obtenus.
 
+On suppose que \(N\) est un entier naturel non-nul fixé.
+
 \begin{enumerate}
-    \item On suppose que \(N\) est un entier naturel non-nul fixé. \\ \begin{enumerate}
-        \item Calculer la covariance de \(X\) et de \(Y\). \\
-        \item Les variables aléatoires \(X\) et \(Y\) sont-elles indépendantes ? \\
-    \end{enumerate}
-    \item ... \\
-    \item ...
+    \item Calculer la covariance de \(X\) et de \(Y\). \\
+    \item Les variables aléatoires \(X\) et \(Y\) sont-elles indépendantes ? \\
 \end{enumerate}
 \end{exo}
 
-\begin{corr}[1a]~\\
+\begin{corr}[1]~\\
 On a \(X\sim Y\sim \loibinomiale{N}{\dfrac{1}{2}}\) donc \(\vari{X}=\vari{Y}=\dfrac{1}{4}N\).
 
 On a : \[\begin{aligned}
@@ -558,7 +554,7 @@ On a : \[\begin{aligned}
 \end{aligned}\]
 \end{corr}
 
-\begin{corr}[1b]
+\begin{corr}[2]
 On a \(\cov{X}{Y}\not=0\) donc \(X\) et \(Y\) ne sont pas indépendantes (par contraposée).
 \end{corr}
 
